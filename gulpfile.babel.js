@@ -5,6 +5,7 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 
+
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
@@ -170,6 +171,69 @@ gulp.task('templates', function () {
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+});
+
+gulp.task('production', () => {
+  rsync({
+    ssh: true,
+    src: './dist/',
+    dest: 'glennreyes.com@ssh.glennreyes.com:/www',
+    recursive: true,
+    syncDest: true,
+    args: ['--verbose']
+  }, function(error, stdout, stderr, cmd) {
+    $.util(stdout);
+  });
+});
+
+gulp.task('staging', () => {
+  return gulp.src('dist/**')
+    .pipe($.rsync({
+      root: 'dist',
+      hostname: 'ssh.glennreyes.com',
+      username: 'glennreyes.com',
+      destination: '/www/staging',
+      incremental: true,
+      recursive: true,
+      clean: true,
+      exclude: ['.DS_Store']
+    }));
+});
+
+gulp.task('staging:clean', () => {
+  // var gulpSSH = $.ssh({
+  //   sshConfig: {
+  //     host: 'ssh.glennreyes.com',
+  //     username: 'glennreyes.com'
+  //   }
+  // });
+
+  // return gulpSSH
+  //   // .exec(['rm -rf /www/staging/*']);
+  //   .exec(['ls -la'], {filePath: 'commands.log'})
+  //   .pipe(gulp.dest('logs'));
+});
+
+gulp.task('production', () => {
+  return gulp.src('dist/**')
+    .pipe($.rsync({
+      root: 'dist',
+      hostname: 'ssh.glennreyes.com',
+      username: 'glennreyes.com',
+      destination: '/www',
+      incremental: true,
+      recursive: true,
+      clean: true,
+      exclude: ['.DS_Store']
+    }));
+});
+
+gulp.task('deploy', () => {
+  gulp.start('production');
+});
+
+gulp.task('default', ['clean'], () => {
+  gulp.start('build');
 });
 
 gulp.task('default', ['clean'], () => {
