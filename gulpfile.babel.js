@@ -201,17 +201,7 @@ gulp.task('staging', () => {
 });
 
 gulp.task('staging:clean', () => {
-  // var gulpSSH = $.ssh({
-  //   sshConfig: {
-  //     host: 'ssh.glennreyes.com',
-  //     username: 'glennreyes.com'
-  //   }
-  // });
 
-  // return gulpSSH
-  //   // .exec(['rm -rf /www/staging/*']);
-  //   .exec(['ls -la'], {filePath: 'commands.log'})
-  //   .pipe(gulp.dest('logs'));
 });
 
 gulp.task('production', () => {
