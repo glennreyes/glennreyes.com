@@ -19,12 +19,6 @@
     "font-awesome": "fontawesome#~4.4.0"
   },
   "overrides": {
-    "bootstrap": {
-      "main": [
-        "scss/bootstrap.scss",
-        "dist/js/bootstrap.js"
-      ]
-    },
     "font-awesome": {
       "main": [
         "scss/font-awesome.scss",

@@ -3,7 +3,20 @@
   "author": "Glenn Reyes",
   "description": "Website of Glenn Reyes",
   "homepage": "http://www.glennreyes.com",
-  "license": "ISC",
+  "keywords": [
+    "glennreyes",
+    "web",
+    "development",
+    "design",
+    "html",
+    "html5",
+    "css",
+    "css3",
+    "javascript",
+    "vienna",
+    "austria"
+  ],
+  "license": "MIT",
   "private": true,
   "version": "0.1.0",
   "repository": {

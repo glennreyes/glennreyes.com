@@ -5,10 +5,16 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 import mainBowerFiles from 'main-bower-files';
-
+import p from './package';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const metaData = {
+  name: p.author,
+  description: p.description,
+  homepage: p.homepage,
+  keywords: p.keywords
+}
 
 gulp.task('styles', () => {
   return gulp.src('src/styles/*.scss')
@@ -158,7 +164,10 @@ gulp.task('wiredep', () => {
 
 gulp.task('handlebars', () => {
   return gulp.src('src/templates/index.hbs')
-    .pipe($.compileHandlebars())
+    .pipe($.compileHandlebars(metaData, {
+      ignorePartials: true,
+      batch: ['src/templates']
+    }))
     .pipe($.rename('index.html'))
     .pipe(gulp.dest('.tmp'));
 });
