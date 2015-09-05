@@ -1,0 +1,60 @@
+// Variables
+//
+// Copy settings from this file into the provided `_custom.scss` to override
+// the Bootstrap defaults without modifying key, versioned files.
+
+
+
+// Colors
+//
+// Glenn Reyes Corporate Colors
+$gr-bright-turquoise: #01c4f5;
+$gr-pacific-blue:     #029bc2;
+$gr-deep-cerulean:    #08a;
+$gr-blue-lagoon:      #02728e;
+$gr-astronaut-blue:   #024a5c;
+$gr-daintree:         #012129;
+$gr-gallery:          #eee;
+$gr-boulder:          #7b7b7b;
+$gr-dove-gray:        #626262;
+$gr-mine-shaft:       #2f2f2f;
+$gr-cod-gray:         #151515;
+$gr-black:            #000;
+$gr-white:            #fff;
+$gr-la-palma:         #399014;
+$gr-trendy-green:     #6a8314;
+$gr-pueblo:           #832a14;
+$gr-kenyan-copper:    #812109;
+$gr-honey-flower:     #591476;
+$gr-disco:            #761464;
+
+
+
+// Bootstrap overrides
+//
+// 
+
+
+// Colors
+//
+// Grayscale and brand colors for use across Bootstrap.
+
+$gray-dark:                 $gr-cod-gray;
+$gray:                      $gr-mine-shaft;
+$gray-light:                $gr-dove-gray;
+$gray-lighter:              $gr-boulder;
+$gray-lightest:             $gr-gallery;
+
+$brand-primary:             $gr-deep-cerulean;
+$brand-success:             $gr-la-palma;
+$brand-info:                $gr-bright-turquoise;
+$brand-warning:             $gr-gallery;
+$brand-danger:              $gr-pueblo;
+
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+$enable-flex: true;
+$enable-rounded: true;
+$enable-transitions: true;
