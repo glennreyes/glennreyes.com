@@ -142,7 +142,6 @@ gulp.task('serve:test', () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
-// inject bower components
 gulp.task('wiredep', () => {
   gulp.src('src/styles/*.scss')
     .pipe(wiredep({
@@ -157,16 +156,41 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('src/templates'));
 });
 
-gulp.task('handlebars', function () {
+gulp.task('handlebars', () => {
   return gulp.src('src/templates/index.hbs')
     .pipe($.compileHandlebars())
     .pipe($.rename('index.html'))
     .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('templates', function () {
+gulp.task('templates', () => {
   return gulp.src('.tmp/*.html')
     .pipe(gulp.dest('dist'));
+});
+
+function bump(options) {
+  gulp.src([
+      'bower.json',
+      'package.json'
+    ])
+    .pipe($.bump(options))
+    .pipe(gulp.dest('./'));
+}
+
+gulp.task('bump', () => {
+  gulp.start('bump:patch')
+});
+
+gulp.task('bump:patch', () => {
+  bump();
+});
+
+gulp.task('bump:minor', () => {
+  bump({type: 'minor'});
+});
+
+gulp.task('bump:major', () => {
+  bump({type: 'major'});
 });
 
 gulp.task('staging', () => {

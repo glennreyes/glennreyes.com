@@ -1,6 +1,19 @@
 {
+  "authors": [
+    "Glenn Reyes <office@glennreyes.com>"
+  ],
+  "description": "Website of Glenn Reyes",
+  "homepage": "http://www.glennreyes.com",
+  "version": "0.1.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "name": "glennreyes",
-  "private": true,
   "dependencies": {
     "bootstrap": "v4-dev",
     "font-awesome": "fontawesome#~4.4.0"
