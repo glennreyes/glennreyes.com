@@ -109,6 +109,7 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   });
 
   gulp.watch([
+    '*.json',
     'src/*.html',
     'src/scripts/**/*.js',
     'src/images/**/*',

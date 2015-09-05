@@ -2,8 +2,21 @@
   "authors": [
     "Glenn Reyes <office@glennreyes.com>"
   ],
-  "description": "Website of Glenn Reyes",
+  "description": "I'm Glenn, a web developer from Vienna, Austria",
   "homepage": "http://www.glennreyes.com",
+  "keywords": [
+    "glennreyes",
+    "web",
+    "development",
+    "design",
+    "html",
+    "html5",
+    "css",
+    "css3",
+    "javascript",
+    "vienna",
+    "austria"
+  ],
   "version": "0.1.0",
   "license": "MIT",
   "ignore": [
