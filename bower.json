@@ -3,8 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "v4-dev",
-    "font-awesome": "fontawesome#~4.4.0",
-    "handlebars": "~3.0.3"
+    "font-awesome": "fontawesome#~4.4.0"
   },
   "overrides": {
     "bootstrap": {
@@ -15,7 +14,6 @@
     },
     "font-awesome": {
       "main": [
-        "less/font-awesome.less",
         "scss/font-awesome.scss",
         "fonts/*.{eot,svg,ttf,woff,woff2}"
       ]

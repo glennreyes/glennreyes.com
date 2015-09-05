@@ -34,19 +34,18 @@ function lint(files, options) {
       .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
-const testLintOptions = {
+
+gulp.task('lint', lint('app/scripts/**/*.js'));
+gulp.task('lint:test', lint('test/spec/**/*.js', {
   env: {
     mocha: true
   }
-};
-
-gulp.task('lint', lint('app/scripts/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
+}));
 
 gulp.task('html', ['styles', 'templates'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'app', '.']});
 
-  return gulp.src('app/*.html')
+  return gulp.src('.tmp/*.html')
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
@@ -91,7 +90,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'templates', 'fonts'], () => {
+gulp.task('serve', ['styles', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 2109,
@@ -108,11 +107,10 @@ gulp.task('serve', ['styles', 'templates', 'fonts'], () => {
     'app/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*',
-    '.tmp/templates/**/*.js',
   ]).on('change', reload);
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
-  gulp.watch('app/templates/**/*.hbs', ['templates', reload]);
+  gulp.watch('app/templates/**/*.hbs', ['handlebars', reload]);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
@@ -152,21 +150,23 @@ gulp.task('wiredep', () => {
     }))
     .pipe(gulp.dest('app/styles'));
 
-  gulp.src('app/*.html')
+  gulp.src('app/templates/**/*.hbs')
     .pipe(wiredep({
       ignorePath: /^(\.\.\/)*\.\./
     }))
-    .pipe(gulp.dest('app'));
+    .pipe(gulp.dest('app/templates'));
+});
+
+gulp.task('handlebars', function () {
+  return gulp.src('app/templates/index.hbs')
+    .pipe($.compileHandlebars())
+    .pipe($.rename('index.html'))
+    .pipe(gulp.dest('.tmp'));
 });
 
 gulp.task('templates', function () {
-  return gulp.src('app/templates/**/*.hbs')
-    .pipe($.handlebars())
-    .pipe($.defineModule('plain'))
-    .pipe($.declare({
-      namespace: 'GlennReyes.templates' // change this to whatever you want
-    }))
-    .pipe(gulp.dest('.tmp/templates'));
+  return gulp.src('.tmp/*.html')
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('staging', () => {
@@ -201,7 +201,8 @@ gulp.task('deploy', () => {
   gulp.start('production');
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'handlebars'], () => {
+  gulp.start('templates');
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
