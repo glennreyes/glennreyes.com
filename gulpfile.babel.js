@@ -48,7 +48,7 @@ gulp.task('lint:test', lint('test/spec/**/*.js', {
   }
 }));
 
-gulp.task('html', ['styles', 'templates'], () => {
+gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'src', '.']});
 
   return gulp.src('.tmp/*.html')
@@ -235,7 +235,6 @@ gulp.task('deploy', () => {
 });
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'handlebars'], () => {
-  gulp.start('templates');
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
