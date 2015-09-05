@@ -1,8 +1,16 @@
 $icon-font-path: '../fonts/';
 
 // bower:scss
-@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+@import "bower_components/font-awesome/scss/font-awesome.scss";
 // endbower
+
+
+// Glenn Reyes
+@import "_variables";
+@import "_colors";
+@import "_linearicons";
+
 
 .browserupgrade {
   margin: 0.2em 0;

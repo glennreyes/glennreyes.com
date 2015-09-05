@@ -2,15 +2,22 @@
   "name": "glennreyes",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "~3.3.5",
+    "bootstrap": "v4-dev",
+    "font-awesome": "fontawesome#~4.4.0",
     "handlebars": "~3.0.3"
   },
   "overrides": {
-    "bootstrap-sass": {
+    "bootstrap": {
       "main": [
-        "assets/stylesheets/_bootstrap.scss",
-        "assets/fonts/bootstrap/*",
-        "assets/javascripts/bootstrap.js"
+        "scss/bootstrap.scss",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "scss/font-awesome.scss",
+        "fonts/*.{eot,svg,ttf,woff,woff2}"
       ]
     }
   },

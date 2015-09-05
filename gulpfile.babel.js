@@ -4,6 +4,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
+import mainBowerFiles from 'main-bower-files';
 
 
 const $ = gulpLoadPlugins();
@@ -72,7 +73,7 @@ gulp.task('images', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(require('main-bower-files')({
+  return gulp.src(mainBowerFiles({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
   }).concat('app/fonts/**/*'))
     .pipe(gulp.dest('.tmp/fonts'))
@@ -93,7 +94,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['styles', 'templates', 'fonts'], () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: 2109,
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
@@ -119,7 +120,7 @@ gulp.task('serve', ['styles', 'templates', 'fonts'], () => {
 gulp.task('serve:dist', () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: 2109,
     server: {
       baseDir: ['dist']
     }
@@ -129,7 +130,7 @@ gulp.task('serve:dist', () => {
 gulp.task('serve:test', () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: 2109,
     ui: false,
     server: {
       baseDir: 'test',
@@ -153,7 +154,6 @@ gulp.task('wiredep', () => {
 
   gulp.src('app/*.html')
     .pipe(wiredep({
-      exclude: ['bootstrap-sass'],
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
@@ -164,26 +164,9 @@ gulp.task('templates', function () {
     .pipe($.handlebars())
     .pipe($.defineModule('plain'))
     .pipe($.declare({
-      namespace: 'MyApp.templates' // change this to whatever you want
+      namespace: 'GlennReyes.templates' // change this to whatever you want
     }))
     .pipe(gulp.dest('.tmp/templates'));
-});
-
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-});
-
-gulp.task('production', () => {
-  rsync({
-    ssh: true,
-    src: './dist/',
-    dest: 'glennreyes.com@ssh.glennreyes.com:/www',
-    recursive: true,
-    syncDest: true,
-    args: ['--verbose']
-  }, function(error, stdout, stderr, cmd) {
-    $.util(stdout);
-  });
 });
 
 gulp.task('staging', () => {
@@ -200,10 +183,6 @@ gulp.task('staging', () => {
     }));
 });
 
-gulp.task('staging:clean', () => {
-
-});
-
 gulp.task('production', () => {
   return gulp.src('dist/**')
     .pipe($.rsync({
@@ -213,7 +192,7 @@ gulp.task('production', () => {
       destination: '/www',
       incremental: true,
       recursive: true,
-      clean: true,
+      clean: false,
       exclude: ['.DS_Store']
     }));
 });
@@ -222,8 +201,8 @@ gulp.task('deploy', () => {
   gulp.start('production');
 });
 
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {
