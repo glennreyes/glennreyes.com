@@ -5,15 +5,29 @@ import browserSync from 'browser-sync';
 import del from 'del';
 import {stream as wiredep} from 'wiredep';
 import mainBowerFiles from 'main-bower-files';
-import p from './package';
+import fs from 'fs';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
-const metaData = {
-  name: p.author,
-  description: p.description,
-  homepage: p.homepage,
-  keywords: p.keywords
+
+function getMetaData() {
+  var p = JSON.parse(fs.readFileSync('package.json'));
+  return {
+    author:         p.author,
+    description:    p.description,
+    homepage:       p.homepage,
+    keywords:       p.keywords,
+    profession:     p._profession,
+    address:        p._address,
+    zip:            p._zipcitycountry,
+    mail:           p._mail,
+    phone:          p._phone,
+    'twitter-user': p['_twitter-user'],
+    facebook:       p._facebook,
+    github:         p._github,
+    linkedin:       p._linkedin,
+    twitter:        p._twitter
+  };
 }
 
 gulp.task('styles', () => {
@@ -65,10 +79,7 @@ gulp.task('images', () => {
   return gulp.src('src/images/**/*')
     .pipe($.if($.if.isFile, $.cache($.imagemin({
       progressive: true,
-      interlaced: true,
-      // don't remove IDs from SVGs, they are often used
-      // as hooks for embedding and styling
-      svgoPlugins: [{cleanupIDs: false}]
+      interlaced: true
     }))
     .on('error', function (err) {
       console.log(err);
@@ -98,7 +109,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], () => {
   browserSync({
-    notify: false,
+    notify: true,
     port: 2109,
     server: {
       baseDir: ['.tmp', 'src'],
@@ -109,15 +120,13 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   });
 
   gulp.watch([
-    '*.json',
-    'src/*.html',
     'src/scripts/**/*.js',
     'src/images/**/*',
-    '.tmp/fonts/**/*',
+    '.tmp/**/*',
   ]).on('change', reload);
 
   gulp.watch('src/styles/**/*.scss', ['styles']);
-  gulp.watch('src/templates/**/*.hbs', ['handlebars', reload]);
+  gulp.watch(['src/templates/**/*.hbs', 'package.json'], ['handlebars']);
   gulp.watch('src/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
@@ -165,7 +174,7 @@ gulp.task('wiredep', () => {
 
 gulp.task('handlebars', () => {
   return gulp.src('src/templates/index.hbs')
-    .pipe($.compileHandlebars(metaData, {
+    .pipe($.compileHandlebars(getMetaData(), {
       ignorePartials: true,
       batch: ['src/templates']
     }))
