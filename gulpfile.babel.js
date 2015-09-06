@@ -235,7 +235,7 @@ gulp.task('production', () => {
       destination: '/www',
       incremental: true,
       recursive: true,
-      clean: false,
+      clean: true,
       exclude: ['.DS_Store']
     }));
 });
