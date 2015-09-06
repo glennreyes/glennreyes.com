@@ -1,0 +1,1 @@
+document.documentElement.className = 'js' + document.documentElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2');
