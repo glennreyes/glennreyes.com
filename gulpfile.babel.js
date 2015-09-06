@@ -13,20 +13,20 @@ const reload = browserSync.reload;
 function getMetaData() {
   var p = JSON.parse(fs.readFileSync('package.json'));
   return {
-    author:         p.author,
-    description:    p.description,
-    homepage:       p.homepage,
-    keywords:       p.keywords,
-    profession:     p._profession,
-    address:        p._address,
-    zip:            p._zipcitycountry,
-    mail:           p._mail,
-    phone:          p._phone,
-    'twitter-user': p['_twitter-user'],
-    facebook:       p._facebook,
-    github:         p._github,
-    linkedin:       p._linkedin,
-    twitter:        p._twitter
+    author:         p.author.name,
+    mail:           p.author.email,
+    homepage:       p.author.url,
+    description:    p.author._description,
+    keywords:       p.author._keywords,
+    profession:     p.author._profession,
+    address:        p.author._address,
+    zip:            p.author._zipcitycountry,
+    phone:          p.author._phone,
+    'twitter-user': p.author['_twitter-user'],
+    facebook:       p.author._facebook,
+    github:         p.author._github,
+    linkedin:       p.author._linkedin,
+    twitter:        p.author._twitter
   };
 }
 
@@ -109,7 +109,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts'], () => {
   browserSync({
-    notify: true,
+    notify: false,
     port: 2109,
     server: {
       baseDir: ['.tmp', 'src'],

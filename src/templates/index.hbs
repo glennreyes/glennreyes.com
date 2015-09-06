@@ -1,106 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="author" content="{{author}}">
-    <meta name="description" content="{{description}}">
-    <meta name="keywords" content="{{keywords}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{> partials/meta}}
     <title>{{author}}</title>
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
     
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    {{> partials/styles}}
   </head>
   <body>
-    <!--[if lt IE 10]>
-      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+    {{> partials/browserupgrade}}
     <div class="container">
-      <header>
-        <a href class="logo">
-          {{> assets/logo}}
-          <span class="sr-only">{{author}}</span>
-        </a>
-        <nav class="header-nav" role="navigation">
-          <ul class="nav header-nav__main">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Expertise</a></li>
-            <li><a href="#">Work</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          {{> partials/contact}}
-          {{> partials/social}}
-        </nav>
-      </header>
-      <main role="main">
-        <section class="home jumbotron">
-          <h1 class="home__glennreyes">{{author}}</h1>
-          <p class="lead">{{description}}</p>
-        </section>
-        <section class="">
-        </section>
-      </main>
-      <footer role="contentinfo">
-        <section class="content-info">
-          {{> partials/social}}
-          <p class="copyright">&copy; 2015 {{author}}. All rights reserved.</p>
-          <ul class="nav imprint">
-            <li><a href="#">Imprint</a></li>
-            <li><a href="#">Legal Notice</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </section>
-        <section id="imprint" class="imprint">
-          <address>
-            {{name}}<br>
-            {{profession}}<br>
-            {{address}}<br>
-            {{zip}}<br>
-            <a href="tel:{{phone}}">+43 660 540 25 84</a><br>
-            <a href="mailto:{{mail}}">{{mail}}</a><br>
-            <a href="https://twitter.com/glnnrys">{{twitter-user}}</a>
-            <!-- WKO Message -->
-          </address>
-          <p class="add-message">Credits to <a href="https://linearicons.com" target="_blank">Linearicons</a> (<a href="https://perxis.com" target="_blank">Perxis</a>)</p>
-        </section>
-        <section id="legal-notice" class="legal-notice">
-          <!-- Legal Notice -->
-        </section>
-        <section id="privacy-policy" class="privacy-policy">
-          <!-- Privacy Policy -->
-        </section>
-      </footer>
+      {{> layout/header}}
+      {{> layout/main}}
+      {{> layout/footer}}
     </div>
     
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-59110202-1');ga('send','pageview');
-    </script>
-
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    
-    <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
-    <!-- endbuild -->
+    {{!-- {{> partials/scripts}} --}}
   </body>
 </html>
