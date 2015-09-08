@@ -1,0 +1,29 @@
+header {
+  .no-js & {
+    background: $gr-gallery;
+  }
+}
+
+// Navigation Panel
+// 
+.nav-panel {
+  background: $gr-gallery;
+  height: 100vh;
+  padding: 3.125rem .9375rem;
+}
+
+// Header Navigation
+// 
+.header-nav__item {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 1.6rem;
+}
+
+// Contact
+// 
+.contact__button {
+  // display: inline-block;
+  @include size(3.125rem);
+}

@@ -1,0 +1,24 @@
+// Webfont Loader
+// 
+.wf-loading {
+  opacity: 0;
+}
+
+// Browser Upgrade
+// 
+.browserupgrade {
+  background: rgba($gr-white, .5);
+  color: $gr-dove-gray;
+  padding: .9375rem;
+}
+
+// Logo
+// 
+.logo {
+  display: inline-block;
+  margin: .625rem .9375rem;
+  svg {
+    display: block;
+    @include size(1.875rem);
+  }
+}

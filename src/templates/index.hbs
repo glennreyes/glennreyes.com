@@ -1,34 +1,18 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Roboto:300,400,500:latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })(); </script>
-    {{> partials/meta}}
+    {{> partials/meta-initial}}
+    {{!-- {{> partials/scripts-initial}} --}}
     <title>{{author}}</title>
-    
+    {{> partials/meta}}
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
     {{> partials/styles}}
   </head>
   <body>
     {{> partials/browserupgrade}}
-    <div class="container">
-      {{> layout/header}}
-      {{> layout/main}}
-      {{> layout/footer}}
-    </div>
-    
-    {{> partials/scripts}}
+    {{> layout/header}}
+    {{> layout/main}}
+    {{> layout/footer}}
+    {{!-- {{> partials/scripts}} --}}
   </body>
 </html>
