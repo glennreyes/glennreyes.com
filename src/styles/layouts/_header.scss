@@ -23,7 +23,11 @@ header {
 
 // Contact
 // 
-.contact__button {
-  // display: inline-block;
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+}
+.contact-buttons__item {
+  display: block;
   @include size(3.125rem);
 }
