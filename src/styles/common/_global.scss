@@ -2,6 +2,7 @@
 // 
 h1, h2, h3 {
   letter-spacing: .05em;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -46,6 +47,14 @@ p {
 
 // Icons
 // 
+.icon-chevron-down {
+  @extend .lnr, .lnr-chevron-down;
+}
+
+.icon-chevron-up {
+  @extend .lnr, .lnr-chevron-up;
+}
+
 .icon-envelope {
   @extend .lnr, .lnr-envelope;
   position: relative;

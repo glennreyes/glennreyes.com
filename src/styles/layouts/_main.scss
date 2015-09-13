@@ -1,4 +1,4 @@
-.expertise,
+.about,
 .work {
   background: $gray-lightest;
 }
@@ -12,7 +12,6 @@
   min-height: 30rem;
   padding-bottom: 4rem;
   padding-top: 4rem;
-  text-align: center;
 }
 
 .about__title,
@@ -26,7 +25,7 @@
     border-bottom: 1px solid $gray-lightest;
     margin: 1em auto 0;
     width: 75px;
-    .expertise &,
+    .about &,
     .work & {
       border-bottom-color: $gr-white;
     }
@@ -69,6 +68,7 @@
 .home__lead {
   @extend .lead;
   color: $gr-white;
+  text-align: center;
 }
 
 .scroll-down {
@@ -77,4 +77,90 @@
   color: $gr-white;
   left: calc(50% - 2.03125rem);
   position: absolute;
+}
+
+.scroll-down__title {
+  @extend .sr-only;
+}
+
+// Expertise
+//
+.expertise__item {
+  + .expertise__item {
+    margin-top: 4rem;
+  }
+}
+
+.expertise__title {
+  @extend .sr-only;
+}
+
+.expertise__sub-title {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+// Work
+// 
+.work__item {
+  @extend .row;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.work__screen {
+  margin-bottom: 0;
+}
+
+.work__sub-title {
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  top: 0;
+}
+
+.work__tags {
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.work__tag {
+  background: $gr-white;
+  border-radius: .75rem;
+  font-size: .875rem;
+  line-height: 1;
+  margin: .15625rem;
+  padding: .3125rem .625rem;
+}
+
+.work__image {
+  @extend .img-fluid;
+}
+
+// Contact
+//
+.contact {
+  position: relative;
+}
+
+.scroll-up {
+  @include button-circle;
+  bottom: 0;
+  color: $brand-primary;
+  left: calc(50% - 2.03125rem);
+  position: absolute;
+}
+
+.scroll-up__title {
+  @extend .sr-only;
 }
