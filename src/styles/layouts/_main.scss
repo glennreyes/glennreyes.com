@@ -113,17 +113,18 @@
   }
 }
 
-.work__screen {
-  margin-bottom: 0;
-}
-
-.work__sub-title {
+.work__item-title {
+  font-weight: 300;
   left: 0;
   padding: 1rem;
   position: absolute;
   right: 0;
   text-align: left;
   top: 0;
+}
+
+.work__screen {
+  margin-bottom: 0;
 }
 
 .work__tags {

@@ -2,13 +2,22 @@
   @extend .sr-only;
 }
 
-.contact-form__group {
+.contact-form__row {
+  @extend .row;
+}
+
+.contact-form__group-message {
+  @extend .col-xs-12;
   display: flex;
   flex-direction: row-reverse;
   padding-bottom: 1.25rem;
   padding-top: 1.25rem;
   position: relative;
   width: 100%;
+}
+
+.contact-form__group {
+  @extend .contact-form__group-message, .col-sm-6;
 }
 
 .contact-form__input {
@@ -61,17 +70,21 @@
   pointer-events: none;
   position: absolute;
   transition: .2s;
-  width: 100%;
+  width: calc(100% - #{$grid-gutter-width});
   &:after {
     bottom: 0;
     content: '';
     border-bottom: 2px solid $gray-lighter;
-    height: 2.5rem;
+    height: 0;
     left: 0;
     position: absolute;    
     transition: width .4s .2s, transform .2s;
     width: 0;
   }
+}
+
+.contact-form__submit-container {
+  @extend .col-xs-12;
 }
 
 .contact-form__submit {

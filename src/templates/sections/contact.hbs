@@ -2,28 +2,22 @@
   <h2 class="contact__title">Say hello</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, rem. Dolore quos quibusdam nobis quis maiores sapiente voluptatem fugit, consectetur.</p>
   <form method="post" class="contact-form" action="#">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="contact-form__group">
-          <input class="contact-form__input" id="contact-name" type="text" name="name" placeholder="Name" required>
-          <label class="contact-form__label" for="contact-name">Name</label>
-        </div>
+    <div class="contact-form__row">
+      <div class="contact-form__group">
+        <input class="contact-form__input" id="contact-name" type="text" name="name" placeholder="Name" required>
+        <label class="contact-form__label" for="contact-name">Name</label>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="contact-form__group">
-          <input class="contact-form__input" id="contact-email" type="text" name="email" placeholder="Email" required>
-          <label class="contact-form__label" for="contact-email">Email</label>
-        </div>
+      <div class="contact-form__group">
+        <input class="contact-form__input" id="contact-email" type="text" name="email" placeholder="Email" required>
+        <label class="contact-form__label" for="contact-email">Email</label>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="contact-form__group">
-          <textarea class="contact-form__text-field" id="contact-message" name="message" placeholder="Message" required></textarea>
-          <label class="contact-form__label" for="contact-message">Message</label>
-        </div>
+    <div class="contact-form__row">
+      <div class="contact-form__group-message">
+        <textarea class="contact-form__text-field" id="contact-message" name="message" placeholder="Message" required></textarea>
+        <label class="contact-form__label" for="contact-message">Message</label>
       </div>
-      <div class="col-xs-12">
+      <div class="contact-form__submit-container">
         <button class="contact-form__submit" name="submit" type="submit" tabindex="0">Submit</button>
       </div>
     </div>
