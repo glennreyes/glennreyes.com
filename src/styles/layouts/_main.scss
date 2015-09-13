@@ -50,6 +50,7 @@
   background: $gr-daintree url(../images/workspace-from-behind-mobile.jpg) no-repeat 50% 50% / cover;
   display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
   position: relative;
 }
@@ -105,8 +106,11 @@
 // 
 .work__item {
   @extend .row;
-  margin-bottom: 4rem;
+  max-width: 48rem;
   position: relative;
+  + .work__item {
+    margin-top: 4rem;
+  }
 }
 
 .work__screen {

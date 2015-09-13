@@ -39,6 +39,7 @@
 .contact-form__text-field {
   @extend .contact-form__input;
   font-weight: 300;
+  resize: none;
   transition: .4s;
   &:focus,
   &:valid {
@@ -68,7 +69,7 @@
     height: 2.5rem;
     left: 0;
     position: absolute;    
-    transition: width .2s .2s, transform .2s;
+    transition: width .4s .2s, transform .2s;
     width: 0;
   }
 }
