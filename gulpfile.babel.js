@@ -212,38 +212,6 @@ gulp.task('bump:major', () => {
   bump({type: 'major'});
 });
 
-gulp.task('staging', () => {
-  return gulp.src('dist/**')
-    .pipe($.rsync({
-      root: 'dist',
-      hostname: 'ssh.glennreyes.com',
-      username: 'glennreyes.com',
-      destination: '/www/staging',
-      incremental: true,
-      recursive: true,
-      clean: true,
-      exclude: ['.DS_Store']
-    }));
-});
-
-gulp.task('production', () => {
-  return gulp.src('dist/**')
-    .pipe($.rsync({
-      root: 'dist',
-      hostname: 'ssh.glennreyes.com',
-      username: 'glennreyes.com',
-      destination: '/www',
-      incremental: true,
-      recursive: true,
-      clean: true,
-      exclude: ['.DS_Store']
-    }));
-});
-
-gulp.task('deploy', () => {
-  gulp.start('production');
-});
-
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'handlebars'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
