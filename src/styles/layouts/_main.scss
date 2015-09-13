@@ -1,0 +1,80 @@
+.expertise,
+.work {
+  background: $gray-lightest;
+}
+
+.home,
+.about,
+.expertise,
+.work,
+.contact {
+  @extend .col-xs-12;
+  min-height: 30rem;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+  text-align: center;
+}
+
+.about__title,
+.expertise__title,
+.work__title,
+.contact__title {
+  margin-bottom: 2em;
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid $gray-lightest;
+    margin: 1em auto 0;
+    width: 75px;
+    .expertise &,
+    .work & {
+      border-bottom-color: $gr-white;
+    }
+  }
+}
+
+// Avatars
+// 
+.avatar {
+  margin: 0 auto 2rem;
+  max-width: 15.625rem;
+}
+
+.avatar__image {
+  @extend .img-circle, .img-fluid;
+}
+
+// Home
+// 
+.home {
+  align-items: center;
+  background: $gr-daintree url(../images/workspace-from-behind-mobile.jpg) no-repeat 50% 50% / cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.home__slide-1,
+.home__slide-2 {
+  max-width: 24rem;
+  min-width: 20rem;
+  padding: 1.25rem 2.5rem;
+}
+
+.home__title--white {
+  color: $gr-white;
+}
+
+.home__lead {
+  @extend .lead;
+  color: $gr-white;
+}
+
+.scroll-down {
+  @include button-circle;
+  bottom: 0;
+  color: $gr-white;
+  left: calc(50% - 2.03125rem);
+  position: absolute;
+}

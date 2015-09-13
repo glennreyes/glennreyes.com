@@ -1,5 +1,21 @@
-// Webfont Loader
+// Type
 // 
+h1, h2, h3 {
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+p {
+  color: $gray;
+  font-weight: 300;
+}
+
+// Webfont Loader
+//
 .wf-loading {
   opacity: 0;
 }
@@ -15,10 +31,84 @@
 // Logo
 // 
 .logo {
-  display: inline-block;
+  @include size(1.875rem);
+  display: block;
   margin: .625rem .9375rem;
-  svg {
-    display: block;
-    @include size(1.875rem);
+}
+
+.logo__graphic {
+  @include size(100%);
+}
+
+.logo__title {
+  @extend .sr-only;
+}
+
+// Icons
+// 
+.icon-envelope {
+  @extend .lnr, .lnr-envelope;
+  position: relative;
+  top: -2px;
+}
+
+.icon-phone {
+  @extend .lnr, .lnr-phone-handset;
+}
+
+.icon-facebook {
+  @extend .fa, .fa-facebook;
+}
+
+.icon-github {
+  @extend .fa, .fa-github;
+}
+
+.icon-linkedin {
+  @extend .fa, .fa-linkedin;
+}
+
+.icon-twitter {
+  @extend .fa, .fa-twitter;
+}
+
+// Social
+// 
+.social {
+  @extend .nav;
+  display: flex;
+  justify-content: center;
+}
+
+.social__facebook,
+.social__github,
+.social__linkedin,
+.social__twitter {
+  @include button-circle;
+  background: $gr-deep-cerulean;
+  color: $gr-white;
+  &:hover {
+    color: $gr-white;
+    // FANCY HOVER tbd
   }
+}
+
+.social__facebook {
+  background-color: $gr-facebook;
+}
+
+.social__github {
+  background-color: $gr-github;
+}
+
+.social__linkedin {
+  background-color: $gr-linkedin;
+}
+
+.social__twitter {
+  background-color: $gr-twitter;
+}
+
+.social__title {
+  @extend .sr-only;
 }

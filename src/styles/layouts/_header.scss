@@ -1,19 +1,21 @@
-header {
-  .no-js & {
-    background: $gr-gallery;
-  }
-}
-
 // Navigation Panel
 // 
 .nav-panel {
-  background: $gr-gallery;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 3.125rem);
+  justify-content: space-around;
+  min-height: 30rem;
   padding: 3.125rem .9375rem;
+  text-align: center;
 }
 
 // Header Navigation
-// 
+//
+.header-nav {
+  @extend .nav;
+}
+
 .header-nav__item {
   display: inline-block;
   font-size: 1.125rem;
@@ -22,12 +24,34 @@ header {
 }
 
 // Contact
-// 
+//
 .contact-buttons {
+  @extend .nav;
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5625rem;
 }
-.contact-buttons__item {
-  display: block;
-  @include size(3.125rem);
+
+.contact-buttons__mail {
+  @include button-circle(1.25rem);
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  &:hover {
+    @extend .contact-buttons__mail;
+    // FANCY HOVER tbd
+  }
+}
+
+.contact-buttons__phone {
+  @extend .contact-buttons__mail;
+  border-color: $gr-la-palma;
+  color: $gr-la-palma;
+  &:hover {
+    @extend .contact-buttons__phone;
+    // FANCY HOVER tbd
+  }
+}
+
+.contact-buttons__title {
+  @extend .sr-only;
 }
