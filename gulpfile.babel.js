@@ -193,7 +193,7 @@ gulp.task('fonts', () => {
 });
 
 gulp.task('fonts:dist', ['fonts'], () => {
-  return gulp.src('.tmp/fonts')
+  return gulp.src('.tmp/fonts/**/*')
     .pipe(gulp.dest('dist/fonts'));
 });
 
