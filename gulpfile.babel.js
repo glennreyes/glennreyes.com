@@ -62,6 +62,50 @@ gulp.task('lint:test', lint('test/spec/**/*.js', {
   }
 }));
 
+gulp.task("webpack:build", function(callback) {
+  // modify some webpack config options
+  webpackConfig.plugins = [
+    new webpack.DefinePlugin({
+      "process.env": {
+        // This has effect on the react lib size
+        "NODE_ENV": JSON.stringify("production")
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ];
+
+  // run webpack
+  webpack(webpackConfig, function(err, stats) {
+    if(err) throw new $.util.PluginError("webpack:build", err);
+    $.util.log("[webpack:build]", stats.toString({
+      colors: true
+    }));
+    callback();
+  });
+});
+
+
+// modify some webpack config options
+var myDevConfig = Object.create(webpackConfig);
+myDevConfig.devtool = "sourcemap";
+myDevConfig.debug = true;
+
+
+// create a single instance of the compiler to allow caching
+var devCompiler = webpack(myDevConfig);
+
+gulp.task("webpack:build-dev", function(callback) {
+  // run webpack
+  devCompiler.run(function(err, stats) {
+    if(err) throw new $.util.PluginError("webpack:build-dev", err);
+    $.util.log("[webpack:build-dev]", stats.toString({
+      colors: true
+    }));
+    callback();
+  });
+});
+
 gulp.task('html', ['styles'], () => {
   const assets = $.useref.assets({searchPath: ['.tmp', 'src', '.']});
 
