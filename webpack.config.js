@@ -9,6 +9,9 @@ module.exports = {
   resolve: {
     root: [path.join(__dirname, "bower_components")]
   },
+  loaders: [
+    { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel' }
+  ],
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
