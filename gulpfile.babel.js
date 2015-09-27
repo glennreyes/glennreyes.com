@@ -229,7 +229,7 @@ gulp.task('serve', ['styles', 'fonts', 'webpack:build-dev'], () => {
     '.tmp/fonts/**/*',
   ]).on('change', browserSync.reload);
 
-  gulp.watch(['src/**/*.js', 'webpack.config.js'], () => {
+  gulp.watch(['src/**/*.js', 'webpack.config.js'], ['lint'], () => {
     gulp.start('webpack:build-dev', browserSync.reload);
   });
   gulp.watch('src/styles/**/*.scss', ['styles']);
