@@ -6,29 +6,56 @@ import del from 'del';
 import {stream as wiredep} from 'wiredep';
 import mainBowerFiles from 'main-bower-files';
 import fs from 'fs';
+import webpack from 'webpack';
+import webpackConfig from './webpack.config.js';
 
 const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
 
-function getMetaData() {
-  var p = JSON.parse(fs.readFileSync('package.json'));
+var getMetaData = function getMetaData() {
+  const PACKAGE = JSON.parse(fs.readFileSync('package.json'));
   return {
-    author:         p.author.name,
-    mail:           p.author.email,
-    homepage:       p.author.url,
-    description:    p.author._description,
-    keywords:       p.author._keywords,
-    profession:     p.author._profession,
-    address:        p.author._address,
-    zip:            p.author._zipcitycountry,
-    phone:          p.author._phone,
-    'twitter-user': p.author['_twitter-user'],
-    facebook:       p.author._facebook,
-    github:         p.author._github,
-    linkedin:       p.author._linkedin,
-    twitter:        p.author._twitter
+    author: PACKAGE.author.name,
+    mail: PACKAGE.author.email,
+    homepage: PACKAGE.author.url,
+    description: PACKAGE.author._description,
+    keywords: PACKAGE.author._keywords,
+    profession: PACKAGE.author._profession,
+    address: PACKAGE.author._address,
+    zip: PACKAGE.author._zipcitycountry,
+    phone: PACKAGE.author._phone,
+    'twitter-user': PACKAGE.author['_twitter-user'],
+    facebook: PACKAGE.author._facebook,
+    github: PACKAGE.author._github,
+    linkedin: PACKAGE.author._linkedin,
+    twitter: PACKAGE.author._twitter
   };
-}
+};
+
+var lint = function lint(files, options) {
+  return () => {
+    return gulp.src(files)
+      .pipe(browserSync.reload({stream: true, once: true}))
+      .pipe($.eslint(options))
+      .pipe($.eslint.format())
+      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
+  };
+};
+
+var bump = function bump(options) {
+  gulp.src([
+      'bower.json',
+      'package.json'
+    ])
+    .pipe($.bump(options))
+    .pipe(gulp.dest('./'));
+};
+
+
+
+
+/**
+ * STYLES
+ */
 
 gulp.task('styles', () => {
   return gulp.src('src/styles/*.scss')
@@ -42,27 +69,26 @@ gulp.task('styles', () => {
     .pipe($.autoprefixer({browsers: ['last 1 version']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(browserSync.reload({stream: true}));
 });
 
-function lint(files, options) {
-  return () => {
-    return gulp.src(files)
-      .pipe(reload({stream: true, once: true}))
-      .pipe($.eslint(options))
-      .pipe($.eslint.format())
-      .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
-  };
-}
 
-gulp.task('lint', lint('src/scripts/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', {
-  env: {
-    mocha: true
-  }
-}));
 
-gulp.task("webpack:build", function(callback) {
+
+/**
+ * SCRIPTS
+ */
+
+gulp.task('scripts', () => {
+  gulp.start('lint');
+  gulp.start('webpack:build', () => {
+    gulp.src('.tmp/scripts/**/*.js')
+      .pipe($.uglify())
+      .pipe(gulp.dest('dist/scripts'));
+  });
+});
+
+gulp.task("webpack:build", (callback) => {
   // modify some webpack config options
   webpackConfig.plugins = [
     new webpack.DefinePlugin({
@@ -76,7 +102,7 @@ gulp.task("webpack:build", function(callback) {
   ];
 
   // run webpack
-  webpack(webpackConfig, function(err, stats) {
+  webpack(webpackConfig, (err, stats) => {
     if(err) throw new $.util.PluginError("webpack:build", err);
     $.util.log("[webpack:build]", stats.toString({
       colors: true
@@ -85,17 +111,16 @@ gulp.task("webpack:build", function(callback) {
   });
 });
 
-
-// modify some webpack config options
-var myDevConfig = Object.create(webpackConfig);
-myDevConfig.devtool = "sourcemap";
-myDevConfig.debug = true;
-
-
-// create a single instance of the compiler to allow caching
-var devCompiler = webpack(myDevConfig);
-
 gulp.task("webpack:build-dev", function(callback) {
+  // modify some webpack config options
+  var myDevConfig = Object.create(webpackConfig);
+  myDevConfig.devtool = "sourcemap";
+  myDevConfig.debug = true;
+
+
+  // create a single instance of the compiler to allow caching
+  var devCompiler = webpack(myDevConfig);
+
   // run webpack
   devCompiler.run(function(err, stats) {
     if(err) throw new $.util.PluginError("webpack:build-dev", err);
@@ -104,6 +129,34 @@ gulp.task("webpack:build-dev", function(callback) {
     }));
     callback();
   });
+});
+
+gulp.task('lint', lint('src/scripts/**/*.js'));
+gulp.task('lint:test', lint('test/spec/**/*.js', {
+  env: {
+    mocha: true
+  }
+}));
+
+
+
+/**
+ * TEMPLATES, IMAGES & EXTRAS
+ */
+
+gulp.task('templates', () => {
+  return gulp.src('.tmp/*.html')
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('handlebars', () => {
+  return gulp.src('src/templates/index.hbs')
+    .pipe($.compileHandlebars(getMetaData(), {
+      ignorePartials: true,
+      batch: ['src/templates']
+    }))
+    .pipe($.rename('index.html'))
+    .pipe(gulp.dest('.tmp'));
 });
 
 gulp.task('html', ['styles'], () => {
@@ -134,9 +187,13 @@ gulp.task('images', () => {
 
 gulp.task('fonts', () => {
   return gulp.src(mainBowerFiles({
-    filter: '**/*.{eot,svg,ttf,woff,woff2}'
+    filter: '**/*.{eot,ttf,woff,woff2}'
   }).concat('src/fonts/**/*'))
-    .pipe(gulp.dest('.tmp/fonts'))
+    .pipe(gulp.dest('.tmp/fonts'));
+});
+
+gulp.task('fonts:dist', ['fonts'], () => {
+  return gulp.src('.tmp/fonts')
     .pipe(gulp.dest('dist/fonts'));
 });
 
@@ -149,9 +206,13 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts'], () => {
+
+/**
+ * BROWSERSYNC & WATCH
+ */
+
+gulp.task('serve', ['styles', 'fonts', 'webpack:build-dev'], () => {
   browserSync({
     notify: false,
     port: 2109,
@@ -164,11 +225,13 @@ gulp.task('serve', ['styles', 'fonts'], () => {
   });
 
   gulp.watch([
-    'src/scripts/**/*.js',
     'src/images/**/*',
-    '.tmp/**/*',
-  ]).on('change', reload);
+    '.tmp/fonts/**/*',
+  ]).on('change', browserSync.reload);
 
+  gulp.watch(['src/**/*.js', 'webpack.config.js'], () => {
+    gulp.start('webpack:build-dev', browserSync.reload);
+  });
   gulp.watch('src/styles/**/*.scss', ['styles']);
   gulp.watch(['src/templates/**/*.hbs', 'package.json'], ['handlebars']);
   gulp.watch('src/fonts/**/*', ['fonts']);
@@ -198,47 +261,31 @@ gulp.task('serve:test', () => {
     }
   });
 
-  gulp.watch('test/spec/**/*.js').on('change', reload);
+  gulp.watch('test/spec/**/*.js').on('change', browserSync.reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
+
+
+/**
+ * WIREDEP
+ */
+
 gulp.task('wiredep', () => {
   gulp.src('src/styles/*.scss')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)+/
-    }))
+    .pipe(wiredep({ ignorePath: /^(\.\.\/)+/ }))
     .pipe(gulp.dest('src/styles'));
 
   gulp.src('src/templates/**/*.hbs')
-    .pipe(wiredep({
-      ignorePath: /^(\.\.\/)*\.\./
-    }))
+    .pipe(wiredep({ ignorePath: /^(\.\.\/)*\.\./ }))
     .pipe(gulp.dest('src/templates'));
 });
 
-gulp.task('handlebars', () => {
-  return gulp.src('src/templates/index.hbs')
-    .pipe($.compileHandlebars(getMetaData(), {
-      ignorePartials: true,
-      batch: ['src/templates']
-    }))
-    .pipe($.rename('index.html'))
-    .pipe(gulp.dest('.tmp'));
-});
 
-gulp.task('templates', () => {
-  return gulp.src('.tmp/*.html')
-    .pipe(gulp.dest('dist'));
-});
 
-function bump(options) {
-  gulp.src([
-      'bower.json',
-      'package.json'
-    ])
-    .pipe($.bump(options))
-    .pipe(gulp.dest('./'));
-}
+/**
+ * VERSION BUMPS
+ */
 
 gulp.task('bump', () => {
   gulp.start('bump:patch')
@@ -256,10 +303,20 @@ gulp.task('bump:major', () => {
   bump({type: 'major'});
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'handlebars'], () => {
+
+
+/**
+ * CLEAN & BUILD
+ */
+
+gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+
+gulp.task('build', ['lint', 'html', 'images', 'fonts:dist', 'extras', 'handlebars'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', ['clean'], () => {
-  gulp.start('build');
+  gulp.start('wiredep');
+  gulp.start('scripts');
+  return gulp.start('build');
 });
