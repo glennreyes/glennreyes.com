@@ -7,6 +7,7 @@ import {stream as wiredep} from 'wiredep';
 import mainBowerFiles from 'main-bower-files';
 import fs from 'fs';
 import webpack from 'webpack';
+import webpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config.js';
 
 const $ = gulpLoadPlugins();
@@ -102,10 +103,12 @@ gulp.task("webpack:build", (callback) => {
 
 gulp.task("webpack:build-dev", function(callback) {
   // modify some webpack config options
-  var myDevConfig = Object.create(webpackConfig);
+  var myDevConfig = webpackConfig;
   myDevConfig.devtool = "sourcemap";
   myDevConfig.debug = true;
 
+  // console.log(myDevConfig);
+  // return;
 
   // create a single instance of the compiler to allow caching
   var devCompiler = webpack(myDevConfig);
@@ -195,6 +198,7 @@ gulp.task('extras', () => {
  */
 
 gulp.task('serve', ['styles', 'fonts', 'webpack:build-dev'], () => {
+  return;
   browserSync({
     notify: false,
     port: 2109,

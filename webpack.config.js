@@ -1,4 +1,4 @@
-var path = require('path');
+var path = require('path'); 
 var webpack = require('webpack');
 
 module.exports = {
@@ -9,9 +9,11 @@ module.exports = {
   resolve: {
     root: [path.join(__dirname, "bower_components")]
   },
-  loaders: [
-    { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel' }
-  ],
+  module: {
+    loaders: [
+      { test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: 'babel' }
+    ]
+  },
   plugins: [
     new webpack.ProvidePlugin({
       $: "jquery",
