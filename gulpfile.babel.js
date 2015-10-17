@@ -198,7 +198,6 @@ gulp.task('extras', () => {
  */
 
 gulp.task('serve', ['styles', 'fonts', 'webpack:build-dev'], () => {
-  return;
   browserSync({
     notify: false,
     port: 2109,
