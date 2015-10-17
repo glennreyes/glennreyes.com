@@ -1,28 +1,34 @@
-var Navigation = function(OPTIONS, cb) {
+class Navigation {
+  constructor() {
+    
+  }
+}
 
-  var DEFAULTS = {
-    navPanelClass: '.nav-panel',
-    buttonClass: '.nav-toggle'
-  };
-  var SETTINGS = $.extend(true, {}, DEFAULTS, OPTIONS);
-  var nav = {
-    classes: {
-      navPanel: SETTINGS.navPanelClass,
-      button: SETTINGS.buttonClass
-    }
-  };
+// var Navigation = function(OPTIONS, cb) {
 
-  this.init = function init() {
-    $(nav.classes.navPanel).addClass('nav-panel--hidden');
+//   var DEFAULTS = {
+//     navPanelClass: '.nav-panel',
+//     buttonClass: '.nav-toggle'
+//   };
+//   var SETTINGS = $.extend(true, {}, DEFAULTS, OPTIONS);
+//   var nav = {
+//     classes: {
+//       navPanel: SETTINGS.navPanelClass,
+//       button: SETTINGS.buttonClass
+//     }
+//   };
 
-    if (typeof cb === 'function') {
-      cb.apply(this, arguments);
-    }
-    return this;
-  };
+//   this.init = function init() {
+//     $(nav.classes.navPanel).addClass('nav-panel--hidden');
 
-  return this.init();
+//     if (typeof cb === 'function') {
+//       cb.apply(this, arguments);
+//     }
+//     return this;
+//   };
 
-};
+//   return this.init();
+
+// };
 
 module.exports = Navigation;
