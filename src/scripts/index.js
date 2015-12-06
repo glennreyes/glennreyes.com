@@ -1,7 +1,7 @@
-import Navigation from './modules/navigation';
+import Toggle from './toggle'
 
-/**
- * Initialize navigation panel
- * @type {Navigation}
- */
-var navPanel = new Navigation();
+// const nav = new Navigation('.nav-toggle')
+const navToggle = new Toggle('.nav-toggle', {
+  modifier: 'nav-open',
+  name: 'nav'
+})
