@@ -1,24 +1,14 @@
 {
+  "name": "glennreyes",
+  "description": "Website of Glenn Reyes",
   "authors": [
     "Glenn Reyes <office@glennreyes.com>"
   ],
-  "description": "I'm Glenn, a web developer from Vienna, Austria",
-  "homepage": "http://www.glennreyes.com",
-  "keywords": [
-    "glennreyes",
-    "web",
-    "development",
-    "design",
-    "html",
-    "html5",
-    "css",
-    "css3",
-    "javascript",
-    "vienna",
-    "austria"
-  ],
-  "version": "0.1.0",
   "license": "MIT",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "http://www.glennreyes.com",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -26,10 +16,9 @@
     "test",
     "tests"
   ],
-  "name": "glennreyes",
   "dependencies": {
     "bootstrap": "v4-dev",
-    "font-awesome": "fontawesome#~4.4.0"
+    "font-awesome": "fontawesome#~4.5.0"
   },
   "overrides": {
     "font-awesome": {
@@ -38,9 +27,5 @@
         "fonts/fontawesome-webfont.*"
       ]
     }
-  },
-  "devDependencies": {
-    "chai": "~3.2.0",
-    "mocha": "~2.3.0"
   }
 }

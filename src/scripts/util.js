@@ -1,3 +1,5 @@
+import jQuery from 'jquery'
+
 const Util = (($) => {
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
