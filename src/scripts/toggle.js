@@ -12,12 +12,11 @@ const DATA_KEY = 'gr.toggle'
 const EVENT_KEY = `.${DATA_KEY}`
 
 const Default = {
-  modifier: 'active',
-  target: document.body
+  modifier: 'active'
 }
 const DefaultType = {
   modifier: 'string',
-  target: '(string|element)'
+  target: '(string|element|undefined)'
 }
 const Event = {
   CLICK: `click${EVENT_KEY}`
@@ -41,7 +40,7 @@ class Toggle {
   // public
 
   toggle() {
-    $(this._config.target).toggleClass(this._config.modifier)
+    $(this._config.target || this._element).toggleClass(this._config.modifier)
   }
 
 

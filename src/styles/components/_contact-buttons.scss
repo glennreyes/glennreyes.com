@@ -1,0 +1,32 @@
+// Contact Buttons
+//
+.contact-buttons {
+  @extend .nav;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5625rem;
+}
+
+.contact-buttons__mail {
+  @include button-circle(1.25rem);
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  &:hover {
+    @extend .contact-buttons__mail;
+    // FANCY HOVER tbd
+  }
+}
+
+.contact-buttons__phone {
+  @extend .contact-buttons__mail;
+  border-color: $gr-la-palma;
+  color: $gr-la-palma;
+  &:hover {
+    @extend .contact-buttons__phone;
+    // FANCY HOVER tbd
+  }
+}
+
+.contact-buttons__title {
+  @extend .sr-only;
+}

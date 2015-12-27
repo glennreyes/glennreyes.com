@@ -1,0 +1,12 @@
+// Header Navigation
+//
+.header-nav {
+  @extend .nav;
+}
+
+.header-nav__item {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 1.6rem;
+}

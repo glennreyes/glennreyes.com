@@ -1,0 +1,9 @@
+// Navigation Toggle
+//
+.nav-toggle {
+  display: none;
+
+  .no-js & {
+    display: none;
+  }
+}

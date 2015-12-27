@@ -1,7 +1,6 @@
 import Toggle from './toggle'
 
 const navToggle = new Toggle('.nav-toggle', {
-  modifier: 'nav-open',
-  target: ''
-
+  target: '.nav-panel',
+  modifier: 'nav-panel--open'
 })

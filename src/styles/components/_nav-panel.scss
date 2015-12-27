@@ -1,0 +1,15 @@
+// Navigation Panel
+//
+.nav-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(100vh - 3.125rem);
+  min-height: 30rem;
+  padding: 3.125rem .9375rem;
+  text-align: center;
+
+  .no-js & {
+    height: auto;
+  }
+}
