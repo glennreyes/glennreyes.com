@@ -60,6 +60,7 @@ $brand-danger:              $gr-pueblo;
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
+
 $enable-flex: true;
 $enable-rounded: true;
 $enable-transitions: true;
@@ -72,6 +73,8 @@ $enable-transitions: true;
 $icon-font-path: '../fonts/';
 
 $font-family-sans-serif:     Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$font-size-root:             18px;
 
 $font-size-h1:               1.5rem;
 $font-size-h2:               1.5rem;

@@ -6,17 +6,13 @@
     "homepage": "http://www.glennreyes.com",
     "description": "I'm Glenn, a web developer from Vienna, Austria",
     "keywords": [
-      "glennreyes",
       "web",
+      "frontend",
       "development",
       "design",
-      "html",
       "html5",
-      "css",
       "css3",
-      "javascript",
-      "vienna",
-      "austria"
+      "javascript"
     ],
     "profession": "Web Developer",
     "address": "Wagramer Straße 151/10",

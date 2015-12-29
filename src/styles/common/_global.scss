@@ -1,5 +1,25 @@
+// Basic
+//
+body {
+  &.nav-open {
+    overflow: hidden;
+  }
+}
+
+a {
+  &:focus {
+    outline: 0;
+  }
+}
+
+button {
+  &:focus {
+    @extend a:focus;
+  }
+}
+
 // Type
-// 
+//
 h1, h2, h3 {
   letter-spacing: .05em;
   text-align: center;
@@ -15,38 +35,20 @@ p {
   font-weight: 300;
 }
 
+
 // Webfont Loader
 //
 .wf-loading {
   opacity: 0;
 }
 
-// Browser Upgrade
-// 
-.browserupgrade {
-  background: rgba($gr-white, .5);
-  color: $gr-dove-gray;
-  padding: .9375rem;
-}
-
-// Logo
-// 
-.logo {
-  @include size(1.875rem);
-  display: block;
-  margin: .625rem .9375rem;
-}
-
-.logo__graphic {
-  @include size(100%);
-}
-
-.logo__title {
-  @extend .sr-only;
-}
 
 // Icons
-// 
+//
+[class^=icon] {
+  font-style: normal;
+}
+
 .icon-chevron-down {
   @extend .lnr, .lnr-chevron-down;
 }
@@ -81,43 +83,25 @@ p {
   @extend .fa, .fa-twitter;
 }
 
-// Social
-// 
-.social {
-  @extend .nav;
+.icon-bars {
+  border-color: inherit;
   display: flex;
-  justify-content: center;
-}
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24/18 * 1rem;
+  width: 26/18 * 1rem;
 
-.social__facebook,
-.social__github,
-.social__linkedin,
-.social__twitter {
-  @include button-circle;
-  background: $gr-deep-cerulean;
-  color: $gr-white;
-  &:hover {
-    color: $gr-white;
-    // FANCY HOVER tbd
+  &__bar {
+    border-top: 2px solid;
+    border-color: inherit;
+    display: block;
+    height: 2px;
   }
 }
 
-.social__facebook {
-  background-color: $gr-facebook;
-}
 
-.social__github {
-  background-color: $gr-github;
-}
-
-.social__linkedin {
-  background-color: $gr-linkedin;
-}
-
-.social__twitter {
-  background-color: $gr-twitter;
-}
-
-.social__title {
+// Forms
+//
+&::placeholder {
   @extend .sr-only;
 }

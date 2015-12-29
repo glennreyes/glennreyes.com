@@ -1,0 +1,41 @@
+// Social
+//
+.social {
+  @extend .nav;
+  display: flex;
+  justify-content: center;
+
+  &__facebook,
+  &__github,
+  &__linkedin,
+  &__twitter {
+    @include button-circle;
+    background: $gr-deep-cerulean;
+    color: $gr-white;
+
+    &:hover {
+      color: $gr-white;
+      // FANCY HOVER tbd
+    }
+  }
+
+  &__facebook {
+    background-color: $gr-facebook;
+  }
+
+  &__github {
+    background-color: $gr-github;
+  }
+
+  &__linkedin {
+    background-color: $gr-linkedin;
+  }
+
+  &__twitter {
+    background-color: $gr-twitter;
+  }
+
+  &__title {
+    @extend .sr-only;
+  }
+}

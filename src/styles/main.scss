@@ -9,11 +9,5 @@
 @import "common/_global";
 @import "common/_colors";
 @import "common/_linearicons";
-@import "layouts/_header";
-@import "layouts/_main";
-@import "layouts/_footer";
-@import "components/_contact-buttons";
-@import "components/_contact-form";
-@import "components/_header-nav";
-@import "components/_nav-panel";
-@import "components/_nav-toggle";
+@import "layouts/**/*.scss";
+@import "components/**/*.scss";

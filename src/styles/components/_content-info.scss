@@ -1,0 +1,46 @@
+// Content Info
+//
+.content-info {
+  background: $gr-daintree;
+  text-align: center;
+
+  &__text,
+  &__link {
+    color: $gr-white;
+    font-size: $font-size-sm;
+    font-weight: 300;
+  }
+
+  &__text {
+    margin: 3rem 0 0;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__link {
+    + & {
+      margin-left: .9375rem;
+      position: relative;
+
+      &:hover,
+      &:focus {
+        
+        &:before {
+          color: $gr-white;
+          text-decoration: none;
+        }
+      }
+
+      &:before {
+        content: '\00b7';
+        left: -.9375rem;
+        position: absolute;
+        top: 0;
+        width: .9375rem;
+      }
+    }
+  }
+}

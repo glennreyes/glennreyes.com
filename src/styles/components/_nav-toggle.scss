@@ -1,9 +1,22 @@
 // Navigation Toggle
 //
 .nav-toggle {
-  display: none;
+  background: none;
+  border: 0 $gr-white;
+  display: block;
+  padding: 0;
+  position: relative;
+  z-index: 10;
 
   .no-js & {
     display: none;
+  }
+
+  .nav-open & {
+    border-color: $brand-primary;
+  }
+
+  &__title {
+    @extend .sr-only;
   }
 }

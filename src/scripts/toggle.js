@@ -1,61 +1,62 @@
 import Util from './util'
-import $ from 'jquery'
 
 
 /**
  * Constants
  */
-
 const NAME = 'toggle'
 const VERSION = '1.0.0'
-const DATA_KEY = 'gr.toggle'
-const EVENT_KEY = `.${DATA_KEY}`
-
 const Default = {
   modifier: 'active'
 }
 const DefaultType = {
   modifier: 'string',
-  target: '(string|element|undefined)'
+  target: '(string|undefined)'
 }
 const Event = {
-  CLICK: `click${EVENT_KEY}`
+  CLICK: 'click'
 }
 
 
 /**
  * Class Definition
  */
-
 class Toggle {
 
-  constructor(element, config) {
+  constructor(element, ...configs) {
     this._element = element
-    this._config  = this._getConfig(config)
 
-    this._addEventListener()
+    for (const i in configs) {
+      const config = this._getConfig(configs[i])
+      this._addEventListener(config)
+    }
   }
 
 
   // public
 
-  toggle() {
-    $(this._config.target || this._element).toggleClass(this._config.modifier)
+  toggle(config) {
+    document
+      .querySelector(config.target || this._element)
+      .classList
+      .toggle(config.modifier)
   }
 
 
   // private
 
   _getConfig(config) {
-    config = $.extend({}, Default, config)
+    config = Object.assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
-  _addEventListener() {
-    $(this._element).on(Event.CLICK, () => {
-      this.toggle()
-    })
+  _addEventListener(config) {
+    document
+      .querySelector(this._element)
+      .addEventListener(Event.CLICK, () => {
+        this.toggle(config)
+      })
   }
 }
 

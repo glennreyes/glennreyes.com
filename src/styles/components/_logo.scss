@@ -1,0 +1,16 @@
+// Logo
+//
+.logo {
+  @include size(1.875rem);
+  display: block;
+  position: relative;
+  z-index: 10;
+
+  &__graphic {
+    @include size(100%);
+  }
+
+  &__title {
+    @extend .sr-only;
+  }
+}
