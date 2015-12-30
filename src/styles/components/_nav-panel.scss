@@ -5,22 +5,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100%;
-  min-height: 30rem;
-  padding: 3.125rem .9375rem;
+  height: 100vh;
+  min-height: 35rem;
+  padding: 5rem 1.25rem;
   left: 0;
+  opacity: 0;
   position: fixed;
   text-align: center;
-  transform: translateX(100%);
-  transition: .2s;
+  transform: translateX(100%) scaleX(0);
+  transition: .3s;
   top: 0;
-  width: 100%;
+  width: 100vw;
 
   .no-js & {
     height: auto;
   }
 
   .nav-open & {
-    transform: translateX(0);
+    opacity: 1;
+    width: 100%;
+    transform: translateX(0) scaleX(1);
   }
 }

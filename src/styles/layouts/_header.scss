@@ -2,9 +2,13 @@
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: .625rem .9375rem;
+  padding: .875rem 1.25rem;
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
+
+  .nav-open & {
+    position: fixed;
+  }
 }

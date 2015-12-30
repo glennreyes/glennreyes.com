@@ -21,20 +21,21 @@
   }
 
   &__link {
-    + & {
+    
+    & + & {
       margin-left: .9375rem;
       position: relative;
 
       &:hover,
       &:focus {
-        
-        &:before {
+
+        &::before {
           color: $gr-white;
           text-decoration: none;
         }
       }
 
-      &:before {
+      &::before {
         content: '\00b7';
         left: -.9375rem;
         position: absolute;
