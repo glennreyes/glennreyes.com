@@ -8,6 +8,7 @@ const NAME = 'toggle'
 const VERSION = '1.0.0'
 const Default = {
   modifier: 'active'
+  // modifierOff: 'inactive'
 }
 const DefaultType = {
   modifier: 'string',
@@ -25,21 +26,48 @@ class Toggle {
 
   constructor(element, ...configs) {
     this._element = element
+    // this._state = null
 
-    for (const i in configs) {
-      const config = this._getConfig(configs[i])
+    for (let i in configs) {
+      let config = this._getConfig(configs[i])
       this._addEventListener(config)
     }
+  }
+
+
+  // getters
+
+  static get NAME() {
+    return NAME
+  }
+
+  static get VERSION() {
+    return VERSION
+  }
+
+  static get Default() {
+    return Default
   }
 
 
   // public
 
   toggle(config) {
+    // let toggleState = this._state
+
     document
       .querySelector(config.target || this._element)
       .classList
       .toggle(config.modifier)
+
+    // if (typeof toggleState === 'boolean') {
+    //   document
+    //     .querySelector(config.target || this._element)
+    //     .classList
+    //     .toggle(config.modifierOff)
+    // }
+    //
+    // this._state = toggleState ? false : true
   }
 
 

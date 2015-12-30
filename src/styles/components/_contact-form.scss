@@ -48,6 +48,7 @@
     font-weight: 300;
     resize: none;
     transition: .4s;
+
     &:focus,
     &:valid {
       height: 15rem;
@@ -69,7 +70,8 @@
     position: absolute;
     transition: .2s;
     width: calc(100% - #{$grid-gutter-width});
-    &:after {
+
+    &::after {
       bottom: 0;
       content: '';
       border-bottom: 2px solid $gray-lighter;
@@ -93,6 +95,7 @@
     padding: .5rem 1rem;
     text-transform: uppercase;
     transition: .2s;
+    
     &:active {
       background: $gray-lightest;
     }

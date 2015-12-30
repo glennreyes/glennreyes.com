@@ -1,11 +1,11 @@
-@mixin button-circle($font-size: 1.5rem, $size: 3.125rem) {
+@mixin button-circle($font-size: 1.5rem, $size: 3.75rem) {
   @include size(#{$size});
   align-items: center;
   border-radius: 50%;
   display: flex;
   font-size: $font-size;
   justify-content: center;
-  margin: .9375rem .46875rem;
+  margin: .9375rem .625rem;
   min-width: #{$size};
   &:hover {
     text-decoration: none;
