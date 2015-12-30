@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   left: 0;
-  padding: .875rem 1.25rem;
+  padding: .875rem $grid-gutter-width/2;
   position: absolute;
   top: 0;
   width: 100vw;

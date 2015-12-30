@@ -1,0 +1,10 @@
+// Photos
+//
+.photo {
+  margin: 0 auto 2rem;
+  max-width: 15.625rem;
+}
+
+.photo__image {
+  @extend .img-circle, .img-fluid;
+}
