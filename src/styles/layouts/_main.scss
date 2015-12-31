@@ -2,6 +2,7 @@
 %section {
   @extend .col-xs-12;
   min-height: 30rem;
+  overflow: hidden;
   padding-bottom: 4rem;
   padding-top: 4rem;
 }
@@ -36,7 +37,7 @@
 .home {
   @extend %section;
   align-items: center;
-  background: $gr-daintree url(../images/workspace-from-behind-mobile.jpg) no-repeat 50% 50% / cover;
+  background: $gr-daintree url(../images/workspace-mobile.jpg) no-repeat 50% 50% / cover;
   display: flex;
   flex-direction: column;
   height: 100vh;
