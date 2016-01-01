@@ -3,11 +3,11 @@ $reveal-timing-function: cubic-bezier(0.47,-0.52, 0.51, 1.47);
 $reveal-duration: 12s;
 
 @keyframes reveal {
-  0%, 20%, 80%, 100% {
+  0%, 60%, 80%, 100% {
     opacity: 0;
-    transform: translateX(10%) scale(.95);
+    transform: translateX(12.5%) scale(.95);
   }
-  30%, 70% {
+  10%, 50% {
     opacity: 1;
     right: 100%;
     transform: translateX(0) scale(1);

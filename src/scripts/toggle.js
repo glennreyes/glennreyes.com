@@ -80,11 +80,15 @@ class Toggle {
   }
 
   _addEventListener(config) {
-    document
-      .querySelector(this._element)
-      .addEventListener(Event.CLICK, () => {
+    let elements = document.querySelectorAll(this._element)
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener(Event.CLICK, (e) => {
+        console.log('clicky')
+        e.preventDefault()
         this.toggle(config)
       })
+    }
   }
 }
 

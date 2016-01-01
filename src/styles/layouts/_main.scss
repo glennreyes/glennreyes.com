@@ -18,16 +18,13 @@
 .contact__title,
 %section__title {
   margin-bottom: 2em;
+
   &:after {
     content: '';
     display: block;
-    border-bottom: 1px solid $gray-lightest;
-    margin: 1em auto 0;
-    width: 75px;
-    .about &,
-    .work & {
-      border-bottom-color: $gr-white;
-    }
+    border-bottom: 2px solid $brand-primary;
+    margin: .25em auto 0;
+    width: 15vw;
   }
 }
 
@@ -68,9 +65,9 @@
     }
   }
 
-  &__title {
-    @extend .sr-only, %section__title;
-  }
+  // &__title {
+  //   @extend .sr-only, %section__title;
+  // }
 
   &__sub-title {
     font-size: 2rem;
