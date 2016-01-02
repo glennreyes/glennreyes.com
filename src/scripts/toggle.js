@@ -84,7 +84,6 @@ class Toggle {
 
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener(Event.CLICK, (e) => {
-        console.log('clicky')
         e.preventDefault()
         this.toggle(config)
       })
