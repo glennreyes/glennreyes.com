@@ -87,59 +87,6 @@ p {
   @extend .fa, .fa-twitter;
 }
 
-.icon-bars {
-  border-color: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 24/18 * 1rem;
-  width: 26/18 * 1rem;
-
-  &__bar {
-    border-top: 3px solid;
-    border-color: inherit;
-    display: block;
-    height: 3px;
-    position: relative;
-    transition: bottom .1s .4s, border-color .1s, transform .2s;
-
-    &::before {
-      content: '';
-      border-top: inherit;
-      bottom: 8px;
-      height: inherit;
-      display: inherit;
-      left: 0;
-      position: absolute;
-      right: 0;
-      transition: inherit;
-    }
-
-    &::after {
-      @extend .icon-bars__bar::before;
-      bottom: -8px;
-    }
-
-    .nav-open & {
-      transition: bottom .1s, border-top .1s, transform .2s .4s;
-
-      &::before,
-      &::after {
-        border-color: $brand-primary;
-        bottom: 0;
-      }
-
-      &::before {
-        transform: rotate(45deg);
-      }
-
-      &::after {
-        transform: rotate(135deg);
-      }
-    }
-  }
-}
-
 
 // Forms
 //

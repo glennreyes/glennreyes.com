@@ -1,5 +1,6 @@
 import Toggle from './toggle'
 import AnchorScroll from './anchor-scroll'
+import StickyHeader from './sticky-header'
 
 
 /**
@@ -18,3 +19,11 @@ const navToggle = new Toggle('.nav-toggle, .header-nav__item', {
  * Anchor Scroll
  */
 const anchorScroll = new AnchorScroll()
+
+
+/**
+ * Sticky Header
+ */
+const stickyHeader = new StickyHeader('.header', {
+  aboveTheFold: '#home'
+})

@@ -14,7 +14,7 @@
   position: fixed;
   text-align: center;
   transform: scale(.25);
-  transition: .3s;
+  transition: opacity .3s, transform .3s;
   top: 0;
   width: 100vw;
 

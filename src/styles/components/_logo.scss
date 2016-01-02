@@ -1,16 +1,23 @@
 // Logo
 //
 .logo {
-  @include size(1.875rem);
-  display: block;
+  align-items: center;
+  color: $gr-astronaut-blue;
+  display: flex;
   position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
   z-index: 10;
 
   &__graphic {
-    @include size(100%);
+    @include size(1.875rem);
   }
 
   &__title {
-    @extend .sr-only;
+    padding-left: 1rem;
+
+    .header:not(.header--sticky) & {
+      @extend .text-hide;
+    }
   }
 }

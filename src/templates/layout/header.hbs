@@ -1,9 +1,9 @@
 <header class="header">
   {{> assets/logo}}
   <button type="button" class="nav-toggle">
-    <i class="icon-bars">
-      <span class="icon-bars__bar"></span>
-    </i>
+    <span class="bars">
+      <span class="bars__bar"></span>
+    </span>
     <span class="nav-toggle__title">Menu</span>
   </button>
   <nav class="nav-panel" role="navigation">
@@ -13,7 +13,6 @@
       <li><a class="header-nav__item" href="#work">Work</a></li>
       <li><a class="header-nav__item" href="#contact">Contact</a></li>
     </ul>
-    {{> partials/contact}}
     {{> partials/social}}
   </nav>
 </header>

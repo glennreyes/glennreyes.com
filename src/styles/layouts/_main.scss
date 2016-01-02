@@ -61,8 +61,8 @@
 
   &__item {
     background: $gray-lightest;
-    border-radius: .5rem;
-    padding: $grid-gutter-width/2;
+    border-radius: 5px;
+    padding: $grid-gutter-width;
 
     & + & {
       margin-top: 4rem;

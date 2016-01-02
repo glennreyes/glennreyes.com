@@ -1,40 +1,32 @@
 // Social
 //
+%social__button {
+  @include button-circle;
+  background: $gr-deep-cerulean;
+  color: $gr-white;
+
+  &:hover {
+    color: $gr-white;
+    // FANCY HOVER tbd
+  }
+}
+
 .social {
   @extend .nav;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   max-width: 25rem;
 
-  &__facebook,
-  &__github,
-  &__linkedin,
-  &__twitter {
-    @include button-circle;
-    background: $gr-deep-cerulean;
-    color: $gr-white;
-
-    &:hover {
-      color: $gr-white;
-      // FANCY HOVER tbd
-    }
-  }
-
-  &__facebook {
-    background-color: $gr-facebook;
-  }
-
   &__github {
+    @extend %social__button;
     background-color: $gr-github;
   }
 
-  &__linkedin {
-    background-color: $gr-linkedin;
-  }
-
   &__twitter {
+    @extend %social__button;
     background-color: $gr-twitter;
   }
 

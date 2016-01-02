@@ -5,7 +5,7 @@ $reveal-duration: 12s;
 @keyframes reveal {
   0%, 60%, 100% {
     opacity: 0;
-    transform: translateX(50%) scale(.95);
+    transform: translateX(10%) scale(.95);
   }
   10%, 50% {
     opacity: 1;
@@ -19,8 +19,8 @@ $reveal-duration: 12s;
 //
 .messages {
   display: flex;
-  // overflow: hidden;
   margin-bottom: 4rem;
+  overflow: hidden;
   width: 100%;
 }
 
