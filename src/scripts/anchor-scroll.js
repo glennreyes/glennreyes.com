@@ -51,8 +51,8 @@ class AnchorScroll {
   // public
 
   scrollTo(targetElement, options) {
-    let offsetTop = this._scrollTop(targetElement, options.offsetElement)
-    let properties = { scrollTop: offsetTop }
+    let scrollTop = this._scrollTop(targetElement, options.offsetElement)
+    let properties = { scrollTop: scrollTop }
 
     $('html, body').animate(properties, options)
   }
@@ -79,7 +79,6 @@ class AnchorScroll {
     let offset = document.querySelector(offsetElement) ?
       document.querySelector(offsetElement).offsetHeight :
       0
-
     return document.querySelector(targetElement).offsetTop - offset
   }
 }

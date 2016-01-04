@@ -51,10 +51,8 @@ class Toggle {
   // public
 
   toggle(element, config) {
-    let targetElement = element.hash ?
-      document.querySelector(element.hash) :
-      document.querySelector(config.target) || element
-
+    let targetElement = document.querySelector(config.target) || element
+    
     targetElement
       .classList
       .toggle(config.modifier)

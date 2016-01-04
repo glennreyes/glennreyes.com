@@ -49,19 +49,26 @@ class Tabs {
 
   // public
 
-  activateTab(link, config) {
+  openTab(link, config) {
     let elements = document.querySelectorAll(config.content)
     let tab = document.querySelector(link.hash)
 
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i]
 
-      console.log(element === tab)
       if (element === tab) {
         element.classList.add(config.modifier)
       } else {
         element.classList.remove(config.modifier)
       }
+    }
+  }
+
+  closeTab(link, config) {
+    let elements = document.querySelectorAll(config.content)
+
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].classList.remove(config.modifier)
     }
   }
 
@@ -75,6 +82,8 @@ class Tabs {
   }
 
   _addEventListener(selector, config) {
+
+    // Open
     let elements = document.querySelectorAll(selector)
 
     for (let i = 0; i < elements.length; i++) {
@@ -82,7 +91,19 @@ class Tabs {
 
       element.addEventListener(Event.CLICK, (e) => {
         e.preventDefault()
-        this.activateTab(element, config)
+        this.openTab(element, config)
+      })
+    }
+
+    // Close
+    let closeElements = document.querySelectorAll(config.close)
+
+    for (let i = 0; i < closeElements.length; i++) {
+      let closeElement = closeElements[i];
+
+      closeElement.addEventListener(Event.CLICK, (e) => {
+        e.preventDefault()
+        this.closeTab(closeElement, config)
       })
     }
   }

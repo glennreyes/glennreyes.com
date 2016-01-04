@@ -1,0 +1,28 @@
+// Close Button
+//
+.close {
+  @include size(1.25rem);
+  background: $brand-primary;
+  display: none;
+  float: none;
+  margin: $grid-gutter-width/2;
+  opacity: 1;
+  position: absolute;
+
+  .footer-section--open & {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__min {
+    background: $brand-primary;
+    display: block;
+    height: .1875rem;
+  }
+
+  &__text {
+    @extend .sr-only;
+  }
+}
