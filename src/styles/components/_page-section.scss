@@ -1,0 +1,43 @@
+// Page Section
+//
+
+.page-section {
+  @extend .col-xs-12;
+  min-height: 30rem;
+  overflow: hidden;
+  padding-bottom: 4rem;
+  padding-top: 6rem;
+  text-align: center;
+
+  &:nth-child(odd) {
+    background: $gray-lightest;
+  }
+
+  &__title {
+    border-bottom: .1875em solid $brand-primary;
+    display: inline-block;
+    text-align: center;
+  }
+
+  &__content {
+    text-align: left;
+  }
+}
+
+
+
+
+
+// Page Section: Home
+//
+
+.home {
+  @extend %section;
+  align-items: center;
+  background: $gr-daintree url(../images/workspace.jpg) no-repeat 50% 50% / cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+}

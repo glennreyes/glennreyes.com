@@ -12,6 +12,7 @@ const Default = {
   easing: 'swing'
 }
 const DefaultType = {
+  offsetElement: '(string|undefined)',
   duration: 'number',
   easing: 'string'
 }
@@ -27,7 +28,8 @@ class AnchorScroll {
 
   constructor(element, config) {
     this._element = element || 'a'
-    this._addEventListener(this._element, this._getConfig(config))
+    this._config = this._getConfig(config)
+    this._addEventListener(this._element, this._config)
   }
 
 
@@ -49,7 +51,7 @@ class AnchorScroll {
   // public
 
   scrollTo(targetElement, options) {
-    let offsetTop = $(targetElement).offset().top
+    let offsetTop = this._scrollTop(targetElement, options.offsetElement)
     let properties = { scrollTop: offsetTop }
 
     $('html, body').animate(properties, options)
@@ -71,6 +73,14 @@ class AnchorScroll {
       e.preventDefault()
       self.scrollTo(this.hash, config)
     })
+  }
+
+  _scrollTop(targetElement, offsetElement) {
+    let offset = document.querySelector(offsetElement) ?
+      document.querySelector(offsetElement).offsetHeight :
+      0
+
+    return document.querySelector(targetElement).offsetTop - offset
   }
 }
 

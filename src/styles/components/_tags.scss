@@ -1,0 +1,28 @@
+// Tags
+//
+.tags {
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -.25rem;
+
+  * + & {
+    margin-top: $grid-gutter-width/2;
+  }
+}
+
+.tag {
+  background: $gr-white;
+  border-radius: 1rem;
+  color: $brand-primary;
+  font-weight: 300;
+  line-height: 1;
+  margin: .25rem;
+  padding: .5rem 1rem;
+  text-transform: lowercase;
+  white-space: nowrap;
+
+  &::before {
+    content: '#';
+  }
+}

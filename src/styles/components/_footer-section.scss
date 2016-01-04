@@ -1,0 +1,32 @@
+// Footer Section
+//
+
+.footer-section {
+  @extend .col-xs-12;
+  display: none;
+  color: $gr-white;
+  font-size: .875rem;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+  padding-top: 4rem;
+  position: relative;
+
+  &--open {
+    display: block;
+  }
+
+  &::after {
+    bottom: 0;
+    content: '';
+    background: $brand-primary;
+    display: block;
+    height: .1875rem;
+    left: $grid-gutter-width;
+    position: absolute;
+    right: $grid-gutter-width;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+  }
+}

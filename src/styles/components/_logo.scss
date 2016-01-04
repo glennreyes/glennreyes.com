@@ -16,8 +16,8 @@
   &__title {
     padding-left: 1rem;
 
-    .header:not(.header--sticky) & {
-      @extend .text-hide;
+    .page-header:not(.page-header--sticky) & {
+      display: none;
     }
   }
 }

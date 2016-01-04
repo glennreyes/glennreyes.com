@@ -1,0 +1,54 @@
+// Icons
+//
+
+[class^=icon] {
+  font-style: normal;
+}
+
+.icon-chevron-down {
+  @extend .lnr, .lnr-chevron-down;
+}
+
+.icon-chevron-up {
+  @extend .lnr, .lnr-chevron-up;
+}
+
+.icon-envelope {
+  @extend .lnr, .lnr-envelope;
+  position: relative;
+  top: -2px;
+}
+
+.icon-phone {
+  @extend .lnr, .lnr-phone-handset;
+}
+
+.icon-design {
+  @extend .lnr, .lnr-pencil;
+}
+
+.icon-code {
+  @extend .lnr, .lnr-code;
+  font-size: 1.25em;
+}
+
+.icon-rwd {
+  @extend .lnr, .lnr-laptop-phone;
+  font-size: 1.1em;
+}
+
+.icon-facebook {
+  @extend .fa, .fa-facebook;
+}
+
+.icon-github {
+  @extend .fa, .fa-github;
+}
+
+.icon-linkedin {
+  @extend .fa, .fa-linkedin;
+}
+
+.icon-twitter {
+  @extend .fa, .fa-twitter;
+}

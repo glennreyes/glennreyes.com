@@ -1,7 +1,11 @@
 // Content Info
 //
+
 .content-info {
+  @extend .col-xs-12;
   background: $gr-daintree;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   text-align: center;
 
   &__text,
@@ -21,7 +25,7 @@
   }
 
   &__link {
-    
+
     & + & {
       margin-left: .9375rem;
       position: relative;

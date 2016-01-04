@@ -1,9 +1,7 @@
 @keyframes bounce {
-
   0%, 100% {
     transform: translate(-50%, -12.5%)
   }
-
   50% {
     transform: translate(-50%, 12.5%);
   }
@@ -15,9 +13,7 @@
   @include button-circle;
   bottom: 0;
   color: $brand-primary;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
+  margin: 2rem auto -2rem;
 }
 
 .scroll-up__title {
@@ -31,7 +27,10 @@
   @extend .scroll-up;
   animation: bounce cubic-bezier(0.39, 0.58, 0.57, 1) 4s infinite;
   color: $gr-white;
-  margin: 0 0 6rem;
+  margin-bottom: 6rem;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
 }
 
 .scroll-down__title {

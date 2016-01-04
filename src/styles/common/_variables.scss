@@ -8,12 +8,14 @@
 // Colors
 //
 // Glenn Reyes Corporate Colors
+
 $gr-bright-turquoise: #01c4f5;
 $gr-pacific-blue:     #029bc2;
 $gr-deep-cerulean:    #08a;
 $gr-blue-lagoon:      #02728e;
 $gr-astronaut-blue:   #024a5c;
 $gr-daintree:         #012129;
+$gr-wild-sand:        #f5f5f5;
 $gr-gallery:          #eee;
 $gr-boulder:          #7b7b7b;
 $gr-dove-gray:        #626262;
@@ -29,7 +31,7 @@ $gr-honey-flower:     #591476;
 $gr-disco:            #761464;
 
 $gr-facebook:         #3b5998;
-$gr-github:           #171515;
+$gr-github:           #333;
 $gr-linkedin:         #007bb6;
 $gr-twitter:          #55acee;
 
@@ -48,7 +50,7 @@ $gray-dark:                 $gr-cod-gray;
 $gray:                      $gr-mine-shaft;
 $gray-light:                $gr-dove-gray;
 $gray-lighter:              $gr-boulder;
-$gray-lightest:             $gr-gallery;
+$gray-lightest:             $gr-wild-sand;
 
 $brand-primary:             $gr-deep-cerulean;
 $brand-success:             $gr-la-palma;
@@ -64,6 +66,24 @@ $brand-danger:              $gr-pueblo;
 $enable-flex: true;
 $enable-rounded: true;
 $enable-transitions: true;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg:                    #fff;
+$body-color:                 $gray;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                 $brand-primary;
+$link-decoration:            none;
+// $link-hover-color:           darken($link-color, 15%) !default;
+$link-hover-decoration:      none;
 
 
 // Grid columns

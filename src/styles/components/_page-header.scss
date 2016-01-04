@@ -1,3 +1,6 @@
+// Header
+//
+
 @keyframes sticky-header {
   0% {
     opacity: 0;
@@ -10,7 +13,7 @@
   }
 }
 
-.header {
+.page-header {
   display: flex;
   justify-content: space-between;
   left: 0;
@@ -18,12 +21,13 @@
   position: absolute;
   top: 0;
   width: 100vw;
+  will-change: transform;
   z-index: 10;
 
   &--sticky {
     animation: sticky-header cubic-bezier(0.91,-0.18, 0.09, 1.21) .8s forwards;
-    background: rgba($gr-white, .9);
-    box-shadow: 0 0 1rem $gr-gallery;
+    background: rgba($gr-white, .95);
+    box-shadow: 0 0 1rem rgba($gr-daintree, .1);
     position: fixed;
   }
 

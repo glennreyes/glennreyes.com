@@ -17,6 +17,7 @@
   transition: opacity .3s, transform .3s;
   top: 0;
   width: 100vw;
+  will-change: transform;
 
   .no-js & {
     height: auto;

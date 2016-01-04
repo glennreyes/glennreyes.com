@@ -7,10 +7,13 @@ import Util from './util'
 const NAME = 'sticky-header'
 const VERSION = '1.0.0'
 const Default = {
-  aboveTheFold: '#home'
+  aboveTheFold: '#home',
+  stickyClass: 'sticky'
 }
 const DefaultType = {
-  aboveTheFold: 'string'
+  aboveTheFold: 'string',
+  stickyClass: 'string',
+  offsetElement: '(string|undefined)',
 }
 const Event = {
   SCROLL: 'scroll'
@@ -24,7 +27,8 @@ class StickyHeader {
 
   constructor(element, config) {
     this._element = element || '.header'
-    this._addEventListener(this._element, this._getConfig(config))
+    this._config = this._getConfig(config)
+    this._addEventListener(this._element, this._config)
   }
 
 
@@ -61,17 +65,23 @@ class StickyHeader {
     let header = document.querySelector(element)
 
     document.addEventListener(Event.SCROLL, () => {
-      let aboveTheFoldHeight = document
-        .querySelector(config.aboveTheFold)
-        .offsetHeight
+      let aboveTheFoldHeight = this._aboveTheFoldHeight(config)
       let scrollTopPosition = document.body.scrollTop
 
       if (scrollTopPosition >= aboveTheFoldHeight) {
-        header.classList.add('header--sticky')
+        header.classList.add(config.stickyClass)
       } else {
-        header.classList.remove('header--sticky')
+        header.classList.remove(config.stickyClass)
       }
     })
+  }
+
+  _aboveTheFoldHeight(config) {
+    let offset = document.querySelector(config.offsetElement) ?
+      document.querySelector(config.offsetElement).offsetHeight :
+      0
+
+    return document.querySelector(config.aboveTheFold).offsetHeight - offset
   }
 }
 

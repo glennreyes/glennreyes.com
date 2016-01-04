@@ -20,16 +20,19 @@ $reveal-duration: 12s;
 .messages {
   display: flex;
   margin-bottom: 4rem;
+  padding: $grid-gutter-width/2;
   overflow: hidden;
   width: 100%;
 }
 
 .message {
   min-width: 100%;
-  padding: $grid-gutter-width/2 0;
 
   &__title {
+    color: $brand-primary;
     font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
     white-space: nowrap;
 
     &--white {
@@ -42,6 +45,7 @@ $reveal-duration: 12s;
 
     &--two {
       animation: reveal $reveal-timing-function $reveal-duration $reveal-duration/2 infinite;
+      opacity: 0;
       position: relative;
     }
   }
@@ -53,10 +57,12 @@ $reveal-duration: 12s;
 
     &--one {
       animation: reveal $reveal-timing-function $reveal-duration .4s infinite;
+      opacity: 0;
     }
 
     &--two {
       animation: reveal $reveal-timing-function $reveal-duration ($reveal-duration/2 + .4s) infinite;
+      opacity: 0;
       position: relative;
     }
   }

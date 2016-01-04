@@ -4,12 +4,14 @@ import Util from './util'
 /**
  * Constants
  */
-const NAME = 'toggle'
+const NAME = 'tabs'
 const VERSION = '1.0.0'
 const Default = {
   modifier: 'active'
 }
 const DefaultType = {
+  close: 'string',
+  content: 'string',
   modifier: 'string',
   target: '(string|undefined)'
 }
@@ -21,15 +23,12 @@ const Event = {
 /**
  * Class Definition
  */
-class Toggle {
+class Tabs {
 
-  constructor(element, ...configs) {
+  constructor(element, config) {
     this._element = element
-
-    for (let i in configs) {
-      let config = this._getConfig(configs[i])
-      this._addEventListener(this._element, config)
-    }
+    this._config = this._getConfig(config)
+    this._addEventListener(this._element, this._config)
   }
 
 
@@ -50,14 +49,20 @@ class Toggle {
 
   // public
 
-  toggle(element, config) {
-    let targetElement = element.hash ?
-      document.querySelector(element.hash) :
-      document.querySelector(config.target) || element
+  activateTab(link, config) {
+    let elements = document.querySelectorAll(config.content)
+    let tab = document.querySelector(link.hash)
 
-    targetElement
-      .classList
-      .toggle(config.modifier)
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i]
+
+      console.log(element === tab)
+      if (element === tab) {
+        element.classList.add(config.modifier)
+      } else {
+        element.classList.remove(config.modifier)
+      }
+    }
   }
 
 
@@ -77,11 +82,11 @@ class Toggle {
 
       element.addEventListener(Event.CLICK, (e) => {
         e.preventDefault()
-        this.toggle(element, config)
+        this.activateTab(element, config)
       })
     }
   }
 }
 
 
-export default Toggle
+export default Tabs

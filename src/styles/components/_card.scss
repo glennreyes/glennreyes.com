@@ -1,0 +1,51 @@
+// Cards
+//
+
+.card {
+  background: $gr-white;
+  border: 0;
+  border-radius: 5px;
+  min-height: 24rem;
+  overflow: hidden;
+  padding: $grid-gutter-width;
+
+  & + & {
+    margin-top: 4rem;
+  }
+
+  &--gray {
+    background: $gray-lightest;
+  }
+
+  &__content {
+    text-align: left;
+
+    .card__photo + & {
+      margin-top: $grid-gutter-width/2;
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+
+    .card--gray & {
+      color: $gr-astronaut-blue;
+    }
+  }
+
+  &__symbol {
+    @include size(10rem);
+    align-items: center;
+    background: $brand-primary;
+    border-radius: 50%;
+    color: $gr-white;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 2rem auto;
+  }
+
+  &__photo {
+    margin: (-$grid-gutter-width) (-$grid-gutter-width) 0;
+  }
+}
