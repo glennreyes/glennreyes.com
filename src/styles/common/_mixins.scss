@@ -1,4 +1,4 @@
-@mixin button-circle($font-size: 2rem, $size: 3.75rem) {
+@mixin button-circle($font-size: 30/18 * 1rem, $size: 3.75rem) {
   @include size(#{$size});
   align-items: center;
   border-radius: 50%;
@@ -7,7 +7,40 @@
   justify-content: center;
   margin: 0 .5rem;
   min-width: #{$size};
+
   &:hover {
     text-decoration: none;
+  }
+}
+
+
+
+
+
+@mixin hover-state($height: 2px) {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    content: '';
+    background: transparent;
+    display: block;
+    height: $height;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transform: scale(.9, 1) translateY(4px);
+    transform-origin: top center;
+    transition: .3s;
+  }
+
+  &:focus,
+  &:hover {
+
+    &::before {
+      background: $brand-primary;
+      transform: none;
+    }
   }
 }

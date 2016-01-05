@@ -1,3 +1,58 @@
+// Scroll Arrows
+//
+
+%scroll-arrow {
+  @include button-circle;
+  bottom: 0;
+  color: $brand-primary;
+  margin: 6rem auto -1rem;
+  position: relative;
+  transition: .4s;
+
+  &::before {
+    border: 3px solid transparent;
+    border-radius: 50%;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: cubic-bezier(0.54,-0.27, 0.15, 1.61) .4s;
+    transform: scale(.9) translateY(-5px);
+  }
+
+  &:hover {
+
+    &::before {
+      border-color: $link-hover-color;
+      transform: none;
+    }
+  }
+}
+
+
+
+
+
+// Scroll Up
+//
+
+.scroll-up {
+  @extend %scroll-arrow;
+}
+
+.scroll-up__title {
+  @extend .sr-only;
+}
+
+
+
+
+
+// Scroll Down
+//
+
 @keyframes bounce {
   0%, 100% {
     transform: translate(-50%, -12.5%)
@@ -7,24 +62,8 @@
   }
 }
 
-// Scroll up
-//
-.scroll-up {
-  @include button-circle;
-  bottom: 0;
-  color: $brand-primary;
-  margin: 2rem auto -2rem;
-}
-
-.scroll-up__title {
-  @extend .sr-only;
-}
-
-
-// Scroll down
-//
 .scroll-down {
-  @extend .scroll-up;
+  @extend %scroll-arrow;
   animation: bounce cubic-bezier(0.39, 0.58, 0.57, 1) 4s infinite;
   color: $gr-white;
   margin-bottom: 6rem;

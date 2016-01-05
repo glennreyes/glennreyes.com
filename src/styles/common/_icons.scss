@@ -13,16 +13,6 @@
   @extend .lnr, .lnr-chevron-up;
 }
 
-.icon-envelope {
-  @extend .lnr, .lnr-envelope;
-  position: relative;
-  top: -2px;
-}
-
-.icon-phone {
-  @extend .lnr, .lnr-phone-handset;
-}
-
 .icon-design {
   @extend .lnr, .lnr-pencil;
 }
@@ -37,18 +27,12 @@
   font-size: 1.1em;
 }
 
-.icon-facebook {
-  @extend .fa, .fa-facebook;
-}
-
 .icon-github {
   @extend .fa, .fa-github;
-}
-
-.icon-linkedin {
-  @extend .fa, .fa-linkedin;
+  position: relative;
 }
 
 .icon-twitter {
   @extend .fa, .fa-twitter;
+  position: relative;
 }

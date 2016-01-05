@@ -2,7 +2,6 @@
 //
 .close {
   @include size(1.25rem);
-  background: $brand-primary;
   display: none;
   float: none;
   margin: $grid-gutter-width/2;
@@ -17,7 +16,7 @@
   }
 
   &__min {
-    background: $brand-primary;
+    background: $gr-astronaut-blue;
     display: block;
     height: .1875rem;
   }

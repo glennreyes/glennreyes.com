@@ -1,21 +1,19 @@
 // Content Info
 //
+%content-info__type {
+  color: $gr-white;
+  font-size: $font-size-sm;
+  font-weight: 300;
+}
 
 .content-info {
   @extend .col-xs-12;
-  background: $gr-daintree;
   padding-bottom: 2rem;
   padding-top: 2rem;
   text-align: center;
 
-  &__text,
-  &__link {
-    color: $gr-white;
-    font-size: $font-size-sm;
-    font-weight: 300;
-  }
-
   &__text {
+    @extend %content-info__type;
     margin: 3rem 0 0;
   }
 
@@ -25,27 +23,13 @@
   }
 
   &__link {
+    @extend %content-info__type;
+    @include hover-state;
+  }
 
-    & + & {
-      margin-left: .9375rem;
-      position: relative;
-
-      &:hover,
-      &:focus {
-
-        &::before {
-          color: $gr-white;
-          text-decoration: none;
-        }
-      }
-
-      &::before {
-        content: '\00b7';
-        left: -.9375rem;
-        position: absolute;
-        top: 0;
-        width: .9375rem;
-      }
-    }
+  &__separator {
+    @extend %content-info__type;
+    margin-left: .5em;
+    margin-right: .5em;
   }
 }

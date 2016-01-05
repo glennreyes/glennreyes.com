@@ -1,0 +1,32 @@
+// Buttons
+//
+
+
+
+
+
+// Say Hello
+//
+
+.btn--big {
+  @extend .btn-lg;
+  background: $brand-primary;
+  box-shadow:
+    1px 1px 0 0 $gr-astronaut-blue,
+    2px 2px 0 0 $gr-astronaut-blue,
+    3px 3px 0 0 $gr-astronaut-blue,
+    4px 4px 0 0 $gr-astronaut-blue,
+    5px 5px 0 0 $gr-astronaut-blue;
+  color: $gr-white;
+  display: block;
+  letter-spacing: .1em;
+  margin-top: 3rem;
+  transition: background .4s;
+
+  &:hover {
+    background: $gr-blue-lagoon;
+    box-shadow: 3px 3px 0 0 $gr-astronaut-blue;
+    color: $gr-white;
+    transform: translate(2px, 2px);
+  }
+}

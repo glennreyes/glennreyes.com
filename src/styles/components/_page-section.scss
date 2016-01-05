@@ -30,14 +30,47 @@
 
 // Page Section: Home
 //
+@keyframes home-bg {
+  0%, 40%, 100% {
+    background-image: url(../images/workspace.jpg);
+  }
+  50%, 90% {
+    background-image: url(../images/keyboard.jpg);
+  }
+}
 
+@keyframes home-bg-motion {
+  0%, 100% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
 .home {
   @extend %section;
   align-items: center;
-  background: $gr-daintree url(../images/workspace.jpg) no-repeat 50% 50% / cover;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: center;
+  min-height: 28rem;
+  overflow: hidden;
   position: relative;
+
+  &::before {
+    animation:
+      home-bg 30s infinite,
+      home-bg-motion 30s infinite;
+    background: $gr-daintree no-repeat 50% 50% / cover;
+    background-image:
+      url(../images/workspace.jpg),
+      url(../images/keyboard.jpg);
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }

@@ -9,6 +9,10 @@
   white-space: nowrap;
   z-index: 10;
 
+  &:hover {
+    color: $gr-astronaut-blue;
+  }
+
   &__graphic {
     @include size(1.875rem);
   }

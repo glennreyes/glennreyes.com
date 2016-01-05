@@ -1,13 +1,33 @@
 // Social
 //
+
 %social__button {
-  @include button-circle;
-  background: $gr-deep-cerulean;
-  color: $gr-white;
+  @include button-circle(2.5rem);
+  position: relative;
+  transition: cubic-bezier(0.54,-0.27, 0.15, 1.61) .4s;
+
+  &::before {
+    border-radius: 50%;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(.9) translateY(-5px);
+    transition: inherit;
+  }
 
   &:hover {
     color: $gr-white;
-    // FANCY HOVER tbd
+
+    &::before {
+      transform: none;
+    }
+  }
+
+  .page-footer & {
+    color: $gr-white;
   }
 }
 
@@ -21,12 +41,18 @@
 
   &__github {
     @extend %social__button;
-    background-color: $gr-github;
+
+    &:hover::before {
+      background-color: $gr-github;
+    }
   }
 
   &__twitter {
     @extend %social__button;
-    background-color: $gr-twitter;
+
+    &:hover::before {
+      background-color: $gr-twitter;
+    }
   }
 
   &__title {

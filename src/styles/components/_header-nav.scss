@@ -4,9 +4,15 @@
   @extend .nav;
 
   &__item {
+    @include hover-state(.2em);
     display: inline-block;
     font-size: 1.5rem;
     font-weight: 300;
     margin: 1rem 0;
+    transition: .3s;
+
+    &:hover {
+      color: $gr-astronaut-blue;
+    }
   }
 }
