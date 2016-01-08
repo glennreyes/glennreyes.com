@@ -3,11 +3,17 @@
   {{> sections/legal-notice}}
   <section class="content-info">
     {{> partials/social}}
-    <p class="content-info__text">&copy; 2015 {{author}}. All rights reserved.</p>
+    <p class="content-info__text">
+      &copy; {{year}} {{author}}. {{all-rights-reserved}}.
+    </p>
     <div class="content-info__links">
-      <a class="content-info__link" href="#privacy-policy">Privacy Policy</a>
+      <a class="content-info__link" href="{{switch-lang-path}}">{{switch-lang}}</a>
       <span class="content-info__separator">&middot;</span>
-      <a class="content-info__link" href="#legal-notice">Legal Notice</a>
+      <a class="content-info__link tab-link" href="#privacy-policy">
+        {{privacy-policy}}
+      </a>
+      <span class="content-info__separator">&middot;</span>
+      <a class="content-info__link tab-link" href="#legal-notice">{{legal-notice}}</a>
     </div>
   </section>
 </footer>

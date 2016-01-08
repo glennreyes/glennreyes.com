@@ -41,17 +41,18 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
-// h3, h4, h5, h6 {
-//   font-weight: 300;
-// }
-
 h2 {
   color: $gr-astronaut-blue;
   margin-bottom: 1.5em;
 }
 
+h6 {
+  margin-bottom: 0;
+}
+
 p {
   font-weight: 300;
+  line-height: 1.75;
 }
 
 address {

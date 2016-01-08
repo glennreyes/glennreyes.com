@@ -24,7 +24,7 @@ const navToggle = new Toggle('.nav-toggle, .header-nav__item', {
 /**
  * Footer Links
  */
-const footerLinks = new Tabs('.content-info__link', {
+const footerLinks = new Tabs('.tab-link', {
   close: '.close',
   content: '.footer-section',
   modifier: 'footer-section--open'

@@ -1,15 +1,23 @@
 <section class="page-section about" id="about">
 
-  <h2 class="page-section__title">About</h2>
+  <h2 class="page-section__title">{{about}}</h2>
 
   <figure class="photo">
-    <img class="photo__image" src="images/photo.jpg" alt="{{author}} - {{profession}}">
+    <img class="photo__image" src="{{path}}images/photo.jpg" alt="{{author}}">
   </figure>
 
   <div class="page-section__content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe eum, earum vero accusantium molestiae, maiores, similique deserunt consequatur nobis labore pariatur minima aut! Autem voluptatem porro quod nesciunt recusandae ipsum, dolor labore, officia, quidem corrupti excepturi quaerat animi facilis at saepe iure! Est, earum laborum sint tenetur porro consequatur sapiente voluptatibus. Nihil nobis dolor iste veniam, odit, accusantium assumenda praesentium dignissimos sint, quia at dolore distinctio quasi ratione voluptatem sequi porro. Doloribus autem repellendus dolorem animi eligendi corporis. Et explicabo laudantium eveniet earum repellat, illum vitae iure assumenda, minima vero sit debitis tempore voluptas eaque, aliquam quo nobis consectetur illo.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates odit nostrum, mollitia voluptas delectus dolores qui laborum voluptate harum autem vitae ratione assumenda provident dicta nemo officiis eos, repellat sequi.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto sed autem, voluptate itaque tempore quidem non, libero earum optio magni similique quasi sit porro, consequatur quos provident saepe, quam accusantium!</p>
+    <p>{{{about-tldr}}}</p>
+    <p>{{{about-resume}}}</p>
+    <p>{{{about-private}}}</p>
+    <p>
+      {{{about-questions}}}
+      <a href="mailto:{{mail}}">{{about-emailme}}</a>.
+      {{{about-connect}}}
+      <a href="{{twitter}}" target="_blank">Twitter</a>
+      {{{about-and}}}
+      <a href="{{github}}" target="_blank">Github</a>.
+    </p>
   </div>
 
 </section>

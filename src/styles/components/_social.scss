@@ -19,9 +19,8 @@
   }
 
   &:hover {
-    color: $gr-white;
-
     &::before {
+      background: $gr-white;
       transform: none;
     }
   }
@@ -42,16 +41,16 @@
   &__github {
     @extend %social__button;
 
-    &:hover::before {
-      background-color: $gr-github;
+    &:hover {
+      color: $gr-github;
     }
   }
 
   &__twitter {
     @extend %social__button;
 
-    &:hover::before {
-      background-color: $gr-twitter;
+    &:hover {
+      color: $gr-twitter;
     }
   }
 

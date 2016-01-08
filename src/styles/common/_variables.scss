@@ -72,7 +72,7 @@ $enable-transitions: true;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                    #fff;
+$body-bg:                    $gr-white;
 $body-color:                 $gray;
 
 
@@ -108,8 +108,8 @@ $font-size-base:             1.125rem;
 // $font-size-h2:               1.625rem;
 // $font-size-h3:               1.375rem;
 // $font-size-h4:               1.375rem;
-// $font-size-h5:               1.5rem;
-// $font-size-h6:               1.5rem;
+$font-size-h5:               1rem;
+$font-size-h6:               1rem;
 
 $headings-font-weight:       400;
 $headings-line-height:       1.5;

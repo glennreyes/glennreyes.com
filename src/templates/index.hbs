@@ -1,15 +1,14 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="{{lang}}" class="no-js">
   <head>
     {{> partials/meta-initial}}
     {{> partials/scripts-initial}}
     <title>{{author}}</title>
     {{> partials/meta}}
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    {{> partials/styles}}
+    <link rel="stylesheet" href="{{path}}styles/main.css">
   </head>
   <body>
-    {{!-- {{> partials/browserupgrade}} --}}
     {{> layout/header}}
     {{> layout/main}}
     {{> layout/footer}}

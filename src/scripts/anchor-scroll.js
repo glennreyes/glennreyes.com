@@ -8,13 +8,11 @@ import Util from './util'
 const NAME = 'anchor-scroll'
 const VERSION = '1.0.0'
 const Default = {
-  duration: 600,
-  easing: 'swing'
+  duration: 600
 }
 const DefaultType = {
   offsetElement: '(string|undefined)',
-  duration: 'number',
-  easing: 'string'
+  duration: 'number'
 }
 const Event = {
   CLICK: 'click'

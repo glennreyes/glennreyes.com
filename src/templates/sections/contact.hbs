@@ -1,9 +1,18 @@
 <section class="page-section contact" id="contact">
-  <h2 class="page-section__title">Let's work together</h2>
+  <h2 class="page-section__title">{{contact-title}}</h2>
   <div class="page-section__content">
-    <p>I am looking forward to hear more about your exciting project. At the moment, I am currently accepting projects from agencies and companies around the globe. If you are interested on working together, let's <a href="mailto:{{mail}}">get in touch</a>.</p>
-    <p>If you need help on building your website or web application, just pop me an email at <a href="mailto:{{mail}}">{{mail}}</a>.</p>
-    <a href="mailto:{{mail}}?subject=Hello" class="btn btn--big">Say hello!</a>
+    <p>
+      {{{contact-projects}}}
+      <a href="mailto:{{mail}}">{{contact-getintouch}}</a>.
+    </p>
+    <p>
+      {{{contact-help}}}
+      <a href="mailto:{{mail}}">{{mail}}</a>.
+    </p>
+    <a href="mailto:{{mail}}?subject=Hello" class="btn btn--big">{{contact-button}}</a>
   </div>
-  <a href="#home" class="scroll-up"><i class="icon-chevron-up"></i><span class="scroll-up__title">Scroll up</span></a>
+  <a href="#home" class="scroll-up">
+    <i class="icon-chevron-up"></i>
+    <span class="scroll-up__title">{{scroll-up}}</span>
+  </a>
 </section>
