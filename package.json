@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "deploy": "s3cmd sync dist s3://glennreyes.com --acl-public",
+    "deploy": "s3cmd sync dist s3://glennreyes.com",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
