@@ -2,17 +2,32 @@
 //
 .header-nav {
   @extend .nav;
+  font-size: 1.25em;
 
   &__item {
     @include hover-state(.2em);
     display: inline-block;
-    font-size: 1.5rem;
     font-weight: 300;
     margin: 1rem 0;
     transition: .3s;
 
     &:hover {
       color: $gr-astronaut-blue;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    font-size: 1em;
+    justify-content: space-between;
+
+    .page-header:not(.page-header--sticky) &__item {
+      color: $gr-white;
+
+      &:focus,
+      &:hover {
+        color: $link-hover-color;
+      }
     }
   }
 }

@@ -9,7 +9,8 @@
   padding-top: 6rem;
   text-align: center;
 
-  &:nth-child(odd) {
+  &__inner {
+    @include container();
   }
 
   &__title {
@@ -20,6 +21,21 @@
 
   &__content {
     text-align: left;
+    margin: 0 auto;
+    max-width: 60rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    // font-size: 1.5rem;
+    padding: 10rem 1.875rem 6rem;
+
+    &__title {
+      font-size: 2.5rem;
+    }
+
+    &__content {
+      font-size: 1.25rem;
+    }
   }
 }
 
@@ -73,6 +89,14 @@
     right: 0;
     top: 0;
   }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 1.75rem;
+  }
 }
 
 
@@ -85,4 +109,8 @@
 .expertise,
 .work {
   background: $gray-lightest;
+}
+
+.expertise {
+  padding-bottom: 0;
 }

@@ -2,12 +2,10 @@
 //
 %content-info__type {
   color: $gr-white;
-  font-size: $font-size-sm;
   font-weight: 300;
 }
 
 .content-info {
-  @extend .col-xs-12;
   padding-bottom: 2rem;
   padding-top: 2rem;
   text-align: center;

@@ -7,21 +7,27 @@
   position: relative;
   text-transform: uppercase;
   white-space: nowrap;
-  z-index: 10;
+  z-index: 100;
 
   &:hover {
     color: $gr-astronaut-blue;
   }
 
   &__graphic {
-    @include size(1.875rem);
+    @include size(1.875em);
   }
 
   &__title {
-    padding-left: 1rem;
+    padding-left: 1em;
 
     .page-header:not(.page-header--sticky) & {
       display: none;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__graphic {
+      @include size(2.5em);
     }
   }
 }

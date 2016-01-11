@@ -1,17 +1,43 @@
 // Cards
 //
 
+.cards {
+  @extend .row;
+
+  &__item {
+    @extend .col-lg-6, .col-xl-4;
+    margin-bottom: $grid-gutter-width;
+  }
+
+  @include media-breakpoint-up(lg) {
+    justify-content: center;
+
+    &__item {
+      display: flex;
+      align-items: stretch;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+
+    .expertise &__item {
+      margin-top: 2em;
+
+      &:nth-child(2) {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
 .card {
   background: $gr-white;
   border: 0;
   border-radius: 5px;
-  min-height: 24rem;
+  margin: 0;
+  min-height: 17.5rem;
   overflow: hidden;
   padding: $grid-gutter-width;
-
-  & + & {
-    margin-top: 4rem;
-  }
 
   &__content {
     text-align: left;
@@ -22,6 +48,7 @@
   }
 
   &__title {
+    font-size: 1.5rem;
     text-transform: uppercase;
 
     .card--gray & {
@@ -47,5 +74,53 @@
 
   &__image {
     @extend .img-fluid;
+  }
+
+  @include media-breakpoint-up(md) {
+
+    &__content {
+      font-size: 1.25rem;
+    }
+
+    .expertise &__title {
+      font-size: 2rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    &__photo {
+      filter: grayscale(.5);
+      margin: (-$grid-gutter-width);
+      opacity: .75;
+      position: relative;
+      transform: scale(1.4);
+      transform-origin: left top;
+      transition: .3s;
+
+      .card__link:hover & {
+        filter: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    &__content--monkey {
+      background: $gr-white;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      opacity: 0;
+      padding: $grid-gutter-width;
+      position: absolute;
+      right: 0;
+      transition: .6s;
+      transform: scale(1.1);
+
+      .card__link:hover & {
+        opacity: 1;
+        transform: none;
+      }
+    }
   }
 }

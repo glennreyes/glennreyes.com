@@ -2,13 +2,11 @@
 //
 
 .footer-section {
-  @extend .col-xs-12;
   display: none;
   color: $gr-white;
-  font-size: .875rem;
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
-  padding-top: 5rem;
+  margin-bottom: 1em;
+  padding-bottom: 2em;
+  padding-top: 5em;
   position: relative;
 
   &--open {
@@ -21,9 +19,9 @@
     background: $brand-primary;
     display: block;
     height: .1875rem;
-    left: $grid-gutter-width;
+    left: $grid-gutter-width/2;
     position: absolute;
-    right: $grid-gutter-width;
+    right: $grid-gutter-width/2;
   }
 
   &__title {

@@ -4,9 +4,8 @@
   @include size(1.25rem);
   display: none;
   float: none;
-  margin: $grid-gutter-width/2;
+  margin: $grid-gutter-width/2 0;
   opacity: 1;
-  position: absolute;
 
   .footer-section--open & {
     display: block;

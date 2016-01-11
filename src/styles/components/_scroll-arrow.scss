@@ -2,15 +2,15 @@
 //
 
 %scroll-arrow {
-  @include button-circle;
+  @include button-circle(1.875rem);
   bottom: 0;
   color: $brand-primary;
-  margin: 6rem auto -1rem;
+  margin: 2em auto -1rem;
   position: relative;
   transition: .4s;
 
   &::before {
-    border: 3px solid transparent;
+    border: .1em solid transparent;
     border-radius: 50%;
     bottom: 0;
     content: '';
@@ -18,8 +18,8 @@
     position: absolute;
     right: 0;
     top: 0;
-    transition: cubic-bezier(0.54,-0.27, 0.15, 1.61) .4s;
-    transform: scale(.9) translateY(-5px);
+    transition: cubic-bezier(0.54, -0.27, 0.15, 1.61) .4s;
+    transform: scale(.9) translateY(-.3125rem);
   }
 
   &:hover {
@@ -28,6 +28,10 @@
       border-color: $link-hover-color;
       transform: none;
     }
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 2.5rem;
   }
 }
 

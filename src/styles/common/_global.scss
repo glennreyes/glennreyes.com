@@ -3,9 +3,11 @@
 
 body {
 
-  &.nav-open {
-    height: 100vh;
-    overflow: hidden;
+  @include media-breakpoint-down(md) {
+    &.nav-open {
+      height: 100vh;
+      overflow: hidden;
+    }
   }
 }
 
@@ -17,7 +19,7 @@ a {
 
   p &,
   address & {
-    @include hover-state;
+    @include hover-state();
   }
 }
 

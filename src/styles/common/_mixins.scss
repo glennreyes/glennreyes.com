@@ -1,4 +1,4 @@
-@mixin button-circle($font-size: 30/18 * 1rem, $size: 3.75rem) {
+@mixin button-circle($font-size: 30/18 * 1em, $size: 2em) {
   @include size(#{$size});
   align-items: center;
   border-radius: 50%;
@@ -17,7 +17,7 @@
 
 
 
-@mixin hover-state($height: 2px) {
+@mixin hover-state($height: .125rem) {
   display: inline-block;
   position: relative;
 
@@ -30,7 +30,7 @@
     position: absolute;
     right: 0;
     top: 100%;
-    transform: scale(.9, 1) translateY(4px);
+    transform: scale(.9, 1) translateY(.25rem);
     transform-origin: top center;
     transition: .3s;
   }
@@ -43,4 +43,14 @@
       transform: none;
     }
   }
+}
+
+
+
+
+
+@mixin container() {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100rem;
 }

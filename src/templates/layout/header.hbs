@@ -1,21 +1,22 @@
 <header class="page-header">
   <div class="page-header__bar">
-    {{> assets/logo}}
-    <button type="button" class="nav-toggle">
-      <span class="bars">
-        <span class="bars__bar"></span>
-      </span>
-      <span class="nav-toggle__title">Menu</span>
-    </button>
+    <div class="page-header__inner">
+      {{> assets/logo}}
+      <button type="button" class="nav-toggle">
+        <span class="bars">
+          <span class="bars__bar"></span>
+        </span>
+        <span class="nav-toggle__title">Menu</span>
+      </button>
+      <nav class="nav-panel" role="navigation">
+        <ul class="header-nav">
+          <li><a class="header-nav__item" href="#about">{{about}}</a></li>
+          <li><a class="header-nav__item" href="#expertise">{{expertise}}</a></li>
+          <li><a class="header-nav__item" href="#work">{{work}}</a></li>
+          <li><a class="header-nav__item" href="#contact">{{contact}}</a></li>
+        </ul>
+        {{> partials/social}}
+      </nav>
+    </div>
   </div>
-
-  <nav class="nav-panel" role="navigation">
-    <ul class="header-nav">
-      <li><a class="header-nav__item" href="#about">{{about}}</a></li>
-      <li><a class="header-nav__item" href="#expertise">{{expertise}}</a></li>
-      <li><a class="header-nav__item" href="#work">{{work}}</a></li>
-      <li><a class="header-nav__item" href="#contact">{{contact}}</a></li>
-    </ul>
-    {{> partials/social}}
-  </nav>
 </header>

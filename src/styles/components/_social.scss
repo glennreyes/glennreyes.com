@@ -2,7 +2,7 @@
 //
 
 %social__button {
-  @include button-circle(2.5rem);
+  @include button-circle(2.5em, 1.5em);
   position: relative;
   transition: cubic-bezier(0.54,-0.27, 0.15, 1.61) .4s;
 
@@ -56,5 +56,15 @@
 
   &__title {
     @extend .sr-only;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.33333333rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .nav-panel & {
+      display: none;
+    }
   }
 }

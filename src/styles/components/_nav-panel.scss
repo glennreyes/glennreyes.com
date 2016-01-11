@@ -7,26 +7,47 @@
   justify-content: space-around;
   height: 100vh;
   min-height: 35rem;
-  padding: 5rem 1.25rem;
+  padding: 5em 1.25em;
   left: 0;
   opacity: 0;
   pointer-events: none;
   position: fixed;
   text-align: center;
-  transform: scale(.25);
-  transition: opacity .3s, transform .3s;
+  transform: scale(1.5);
+  transition: opacity .3s, transform .3s, visibility 0s .3s;
   top: 0;
   width: 100vw;
   will-change: transform;
+  visibility: hidden;
   z-index: 10;
 
   .no-js & {
     height: auto;
   }
 
-  .nav-open & {
+  @include media-breakpoint-down(md) {
+    .nav-open & {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      transition: opacity .3s, transform .3s, visibility 0s;
+      visibility: visible;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    background: none;
+    font-size: 1.25rem;
+    height: auto;
+    max-width: 31.25rem;
+    min-height: 0;
     opacity: 1;
+    padding: 0;
     pointer-events: auto;
-    transform: scale(1);
+    position: static;
+    transform: none;
+    transition: none;
+    visibility: visible;
+    width: 50%;
   }
 }

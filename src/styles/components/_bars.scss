@@ -1,0 +1,55 @@
+// Bars
+//
+
+.bars {
+  @include size(26/18 * 1em, 24/18 * 1em);
+
+  border-color: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  &__bar {
+    border-top: .1875em solid;
+    border-color: inherit;
+    display: block;
+    height: .1875em;
+    position: relative;
+    transition: bottom .1s .4s, border-color .1s, transform .2s;
+
+    &::before {
+      content: '';
+      border-top: inherit;
+      bottom: .5em;
+      height: inherit;
+      display: inherit;
+      left: 0;
+      position: absolute;
+      right: 0;
+      transition: inherit;
+    }
+
+    &::after {
+      @extend .bars__bar::before;
+      bottom: -.5em;
+    }
+
+    .nav-open & {
+      transition: bottom .1s, border-top .1s, transform .2s .4s;
+
+      &::before,
+      &::after {
+        border-color: $brand-primary;
+        bottom: 0;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(135deg);
+      }
+    }
+  }
+}

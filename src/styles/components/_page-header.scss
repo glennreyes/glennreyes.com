@@ -16,10 +16,8 @@
 .page-header {
 
   &__bar {
-    display: flex;
-    justify-content: space-between;
     left: 0;
-    padding: .875rem $grid-gutter-width/2;
+    padding: .875em $grid-gutter-width/2;
     position: absolute;
     transition: box-shadow .3s;
     top: 0;
@@ -30,13 +28,34 @@
     .page-header--sticky & {
       animation: sticky-header cubic-bezier(0.91,-0.18, 0.09, 1.21) .8s forwards;
       background: rgba($gr-white, .95);
-      box-shadow: 0 0 1rem rgba($gr-daintree, .1);
+      box-shadow: 0 0 1em rgba($gr-daintree, .1);
       position: fixed;
     }
+  }
 
-    .nav-open & {
-      box-shadow: none;
-      position: fixed;
+  &__inner {
+    @include container();
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+
+    &__bar {
+      padding: 1rem 1.875rem;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+
+    &__bar {
+
+      .nav-open & {
+        box-shadow: none;
+        position: fixed;
+      }
     }
   }
 }
