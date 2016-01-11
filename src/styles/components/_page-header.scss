@@ -14,7 +14,7 @@
 }
 
 .page-header {
-  @include container();
+
   &__bar {
     left: 0;
     padding: .875em $grid-gutter-width/2;
@@ -24,16 +24,10 @@
     width: 100vw;
     will-change: transform;
     z-index: 100;
-
-    .page-header--sticky & {
-      animation: sticky-header cubic-bezier(0.91,-0.18, 0.09, 1.21) .8s forwards;
-      background: rgba($gr-white, .95);
-      box-shadow: 0 0 1em rgba($gr-daintree, .1);
-      position: fixed;
-    }
   }
 
   &__inner {
+    @include container();
 
     display: flex;
     justify-content: space-between;
@@ -46,15 +40,27 @@
       padding: 1rem 1.875rem;
     }
   }
+}
 
-  @include media-breakpoint-down(md) {
+/* uncss:ignore */
+.page-header--sticky .page-header {
+
+  &__bar {
+    animation: sticky-header cubic-bezier(0.91,-0.18, 0.09, 1.21) .8s forwards;
+    background: rgba($gr-white, .95);
+    box-shadow: 0 0 1em rgba($gr-daintree, .1);
+    position: fixed;
+  }
+}
+
+@include media-breakpoint-down(md) {
+
+  /* uncss:ignore */
+  .nav-open .page-header {
 
     &__bar {
-
-      .nav-open & {
-        box-shadow: none;
-        position: fixed;
-      }
+      box-shadow: none;
+      position: fixed;
     }
   }
 }

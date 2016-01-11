@@ -7,13 +7,6 @@
   margin: $grid-gutter-width/2 0;
   opacity: 1;
 
-  .footer-section--open & {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
   &__min {
     background: $gr-astronaut-blue;
     display: block;
@@ -23,4 +16,12 @@
   &__text {
     @extend .sr-only;
   }
+}
+
+/* uncss:ignore */
+.footer-section--open .close {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

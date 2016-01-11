@@ -12,14 +12,6 @@
     display: none;
   }
 
-  .page-header--sticky & {
-    border-color: $brand-primary;
-  }
-
-  .nav-open & {
-    border-color: transparent;
-  }
-
   &__title {
     @extend .sr-only;
   }
@@ -27,4 +19,14 @@
   @include media-breakpoint-up(lg) {
     display: none;
   }
+}
+
+/* uncss:ignore */
+.page-header--sticky .nav-toggle {
+  border-color: $brand-primary;
+}
+
+/* uncss:ignore */
+.nav-open .nav-toggle {
+  border-color: transparent;
 }

@@ -1,9 +1,10 @@
 // Basic
 //
 
-body {
+@include media-breakpoint-down(md) {
 
-  @include media-breakpoint-down(md) {
+  /* uncss:ignore */
+  body {
     &.nav-open {
       height: 100vh;
       overflow: hidden;

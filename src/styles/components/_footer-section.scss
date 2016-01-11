@@ -9,10 +9,6 @@
   padding-top: 5em;
   position: relative;
 
-  &--open {
-    display: block;
-  }
-
   &::after {
     bottom: 0;
     content: '';
@@ -35,5 +31,12 @@
 
   @include media-breakpoint-up(lg) {
     @include container();
+  }
+}
+
+/* uncss:ignore */
+.footer-section {
+  &--open {
+    display: block;
   }
 }

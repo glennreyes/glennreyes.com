@@ -33,23 +33,24 @@
       @extend .bars__bar::before;
       bottom: -.5em;
     }
+  }
+}
 
-    .nav-open & {
-      transition: bottom .1s, border-top .1s, transform .2s .4s;
+/* uncss:ignore */
+.nav-open .bars {
+  transition: bottom .1s, border-top .1s, transform .2s .4s;
 
-      &::before,
-      &::after {
-        border-color: $brand-primary;
-        bottom: 0;
-      }
+  &::before,
+  &::after {
+    border-color: $brand-primary;
+    bottom: 0;
+  }
 
-      &::before {
-        transform: rotate(45deg);
-      }
+  &::before {
+    transform: rotate(45deg);
+  }
 
-      &::after {
-        transform: rotate(135deg);
-      }
-    }
+  &::after {
+    transform: rotate(135deg);
   }
 }

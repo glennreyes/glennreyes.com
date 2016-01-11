@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import scrollTo from 'animated-scrollto'
 import Util from './util'
 
 
@@ -48,11 +48,16 @@ class AnchorScroll {
 
   // public
 
-  scrollTo(targetElement, options) {
-    let scrollTop = this._scrollTop(targetElement, options.offsetElement)
+  scrollTo(element, options) {
+    let scrollTop = this._scrollTop(element, options.offsetElement)
     let properties = { scrollTop: scrollTop }
+    let target = document.querySelectorAll('html, body');
 
-    $('html, body').animate(properties, options)
+    for (let i = 0; i < target.length; i++) {
+      scrollTo(target[i], scrollTop, options.duration)
+    }
+    // $('html, body').animate(properties, options)
+
   }
 
 
@@ -66,11 +71,14 @@ class AnchorScroll {
 
   _addEventListener(element, config) {
     let self = this
+    let elements = document.querySelectorAll(element)
 
-    $(`${element}[href^=#]`).on(Event.CLICK, function(e) {
-      e.preventDefault()
-      self.scrollTo(this.hash, config)
-    })
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener(Event.CLICK, function(e) {
+        e.preventDefault()
+        self.scrollTo(this.hash, config)
+      })
+    }
   }
 
   _scrollTop(targetElement, offsetElement) {

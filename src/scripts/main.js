@@ -37,7 +37,8 @@ const footerLinks = new Tabs('.tab-link', {
 /**
  * Anchor Scroll
  */
-const anchorScroll = new AnchorScroll()
+const anchorScroll =
+  new AnchorScroll('.header-nav__item, .scroll-down, .scroll-up, .tab-link')
 
 
 

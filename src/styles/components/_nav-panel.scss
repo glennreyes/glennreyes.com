@@ -24,15 +24,6 @@
     height: auto;
   }
 
-  @include media-breakpoint-down(md) {
-    .nav-open & {
-      opacity: 1;
-      pointer-events: auto;
-      transform: none;
-      transition: opacity .3s, transform .3s;
-    }
-  }
-
   @include media-breakpoint-up(lg) {
     background: none;
     font-size: 1.25rem;
@@ -46,5 +37,16 @@
     transform: none;
     transition: none;
     width: 50%;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  
+  /* uncss:ignore */
+  .nav-open .nav-panel {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    transition: opacity .3s, transform .3s;
   }
 }
