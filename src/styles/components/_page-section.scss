@@ -1,6 +1,10 @@
 // Page Section
 //
 
+.page-main {
+  @include clearfix();
+}
+
 .page-section {
   @extend .col-xs-12;
   min-height: 30rem;

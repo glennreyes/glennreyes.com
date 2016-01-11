@@ -14,7 +14,7 @@
 }
 
 .page-header {
-
+  @include container();
   &__bar {
     left: 0;
     padding: .875em $grid-gutter-width/2;
@@ -34,7 +34,6 @@
   }
 
   &__inner {
-    @include container();
 
     display: flex;
     justify-content: space-between;

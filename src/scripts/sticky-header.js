@@ -66,7 +66,7 @@ class StickyHeader {
 
     document.addEventListener(Event.SCROLL, () => {
       let aboveTheFoldHeight = this._aboveTheFoldHeight(config)
-      let scrollTopPosition = document.body.scrollTop
+      let scrollTopPosition = this._scrollTopPosition()
 
       if (scrollTopPosition >= aboveTheFoldHeight) {
         header.classList.add(config.stickyClass)
@@ -82,6 +82,10 @@ class StickyHeader {
       0
 
     return document.querySelector(config.aboveTheFold).offsetHeight - offset
+  }
+
+  _scrollTopPosition() {
+    return document.documentElement.scrollTop || document.body.scrollTop
   }
 }
 

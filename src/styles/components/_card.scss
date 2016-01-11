@@ -74,6 +74,7 @@
 
   &__image {
     @extend .img-fluid;
+    width: 100%;
   }
 
   @include media-breakpoint-up(md) {

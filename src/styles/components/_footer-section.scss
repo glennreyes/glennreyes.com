@@ -19,9 +19,9 @@
     background: $brand-primary;
     display: block;
     height: .1875rem;
-    left: $grid-gutter-width/2;
+    left: 0;
     position: absolute;
-    right: $grid-gutter-width/2;
+    right: 0;
   }
 
   &__title {
@@ -31,5 +31,9 @@
 
   &__link {
     color: $gr-white;
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include container();
   }
 }

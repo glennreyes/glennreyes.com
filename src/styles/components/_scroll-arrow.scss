@@ -59,10 +59,10 @@
 
 @keyframes bounce {
   0%, 100% {
-    transform: translate(-50%, -12.5%)
+    transform: translateY(-12.5%);
   }
   50% {
-    transform: translate(-50%, 12.5%);
+    transform: translateY(12.5%);
   }
 }
 
@@ -71,9 +71,9 @@
   animation: bounce cubic-bezier(0.39, 0.58, 0.57, 1) 4s infinite;
   color: $gr-white;
   margin-bottom: 6rem;
+  margin-left: -1em;
   left: 50%;
   position: absolute;
-  transform: translateX(-50%);
 }
 
 .scroll-down__title {
