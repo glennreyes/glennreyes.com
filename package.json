@@ -8,6 +8,7 @@
   },
   "scripts": {
     "deploy": "s3cmd sync dist s3://glennreyes.com",
+    "clean": "s3cmd del -r s3://glennreyes.com/dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
