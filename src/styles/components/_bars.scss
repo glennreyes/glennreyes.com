@@ -38,19 +38,22 @@
 
 /* uncss:ignore */
 .nav-open .bars {
-  transition: bottom .1s, border-top .1s, transform .2s .4s;
 
-  &::before,
-  &::after {
-    border-color: $brand-primary;
-    bottom: 0;
-  }
+  &__bar {
+    transition: bottom .1s, border-top .1s, transform .2s .4s;
 
-  &::before {
-    transform: rotate(45deg);
-  }
+    &::before,
+    &::after {
+      border-color: $brand-primary;
+      bottom: 0;
+    }
 
-  &::after {
-    transform: rotate(135deg);
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(135deg);
+    }
   }
 }
