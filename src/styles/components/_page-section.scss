@@ -24,13 +24,12 @@
   }
 
   &__content {
+    @include content-width();
     text-align: left;
     margin: 0 auto;
-    max-width: 60rem;
   }
 
   @include media-breakpoint-up(md) {
-    // font-size: 1.5rem;
     padding: 10rem 1.875rem 6rem;
 
     &__title {

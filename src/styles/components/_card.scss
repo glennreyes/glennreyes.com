@@ -5,8 +5,12 @@
   @extend .row;
 
   &__item {
-    @extend .col-lg-6, .col-xl-4;
+    @extend .col-lg-6;
     margin-bottom: $grid-gutter-width;
+  }
+
+  .expertise &__item {
+    @extend .col-xl-4;
   }
 
   @include media-breakpoint-up(lg) {
@@ -91,18 +95,19 @@
   @include media-breakpoint-up(xl) {
 
     &__photo {
-      filter: grayscale(.5);
       margin: (-$grid-gutter-width);
-      opacity: .75;
       position: relative;
-      transform: scale(1.4);
-      transform-origin: left top;
-      transition: .3s;
+      transition: .2s;
 
       .card__link:hover & {
-        filter: none;
-        opacity: 1;
-        transform: none;
+        transform: scale(1.2);
+      }
+    }
+
+    &__image {
+
+      .card__link:hover & {
+        filter: blur(8px) brightness(.9);
       }
     }
 

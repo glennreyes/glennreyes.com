@@ -54,3 +54,11 @@
   margin-right: auto;
   max-width: 100rem;
 }
+
+
+
+
+
+@mixin content-width() {
+  max-width: 60rem;
+}

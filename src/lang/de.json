@@ -47,8 +47,9 @@
   "contact-button": "Say hello!",
 
   "all-rights-reserved": "All rights reserved",
-  "privacy-policy": "Privacy Policy",
   "legal-notice": "Legal Notice",
+  "privacy-policy": "Privacy Policy",
+  "disclaimer": "Disclaimer",
   "switch-lang": "Deutsch",
   "switch-lang-path": "./de",
 
