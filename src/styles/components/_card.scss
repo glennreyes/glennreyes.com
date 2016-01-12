@@ -81,6 +81,11 @@
     width: 100%;
   }
 
+  &__description {
+    line-height: 1;
+    margin: 2rem 0 0;
+  }
+
   @include media-breakpoint-up(md) {
 
     &__content {

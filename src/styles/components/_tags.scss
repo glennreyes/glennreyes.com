@@ -3,23 +3,23 @@
 .tags {
   bottom: 0;
   display: flex;
-  font-size: 1rem;
+  font-size: 1.25rem;
   flex-wrap: wrap;
-  margin: -.25rem;
+  margin: -.25em;
 
   * + & {
-    margin-top: $grid-gutter-width/2;
+    margin-top: 1.5rem;
   }
 }
 
 .tag {
   background: $gray-lightest;
-  border-radius: 1rem;
+  border-radius: 1em;
   color: $brand-primary;
   font-weight: 300;
   line-height: 1;
-  margin: .25rem;
-  padding: .5rem 1rem;
+  margin: .25em;
+  padding: .5em 1em;
   text-transform: lowercase;
   white-space: nowrap;
 
