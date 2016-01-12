@@ -3,6 +3,10 @@
 .photo {
   margin: 0 auto 2em;
   max-width: 15.625rem;
+
+  @include media-breakpoint-up(lg) {
+    max-width: 20rem;
+  }
 }
 
 .photo__image {

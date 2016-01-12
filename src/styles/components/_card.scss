@@ -5,15 +5,15 @@
   @extend .row;
 
   &__item {
-    @extend .col-lg-6;
+    @extend .col-md-6;
     margin-bottom: $grid-gutter-width;
   }
 
   .expertise &__item {
-    @extend .col-xl-4;
+    @extend .col-md-12, .col-xl-4;
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(md) {
     justify-content: center;
 
     &__item {
