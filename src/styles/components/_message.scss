@@ -9,7 +9,6 @@ $reveal-duration: 12s;
   }
   10%, 50% {
     opacity: 1;
-    right: 100%;
     transform: translateX(0) scale(1);
   }
 }
@@ -51,6 +50,7 @@ $reveal-duration: 12s;
       animation: reveal $reveal-timing-function $reveal-duration $reveal-duration/2 infinite;
       opacity: 0;
       position: relative;
+      right: 100%;
     }
   }
 
@@ -68,6 +68,7 @@ $reveal-duration: 12s;
       animation: reveal $reveal-timing-function $reveal-duration ($reveal-duration/2 + .4s) infinite;
       opacity: 0;
       position: relative;
+      right: 100%;
     }
   }
 }
