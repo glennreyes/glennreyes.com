@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: space-around;
   height: 100vh;
-  min-height: 35rem;
+  min-height: 28rem;
   padding: 3.5em 1.25em 0;
   left: 0;
   opacity: 0;
@@ -41,7 +41,7 @@
 }
 
 @include media-breakpoint-down(md) {
-  
+
   /* uncss:ignore */
   .nav-open .nav-panel {
     opacity: 1;
