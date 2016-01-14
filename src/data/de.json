@@ -1,6 +1,7 @@
 {
-  "lang": "en",
+  "lang": "de",
   "path": "../",
+  "pathname": "/de/",
 
   "city": "Wien",
   "description": "Glenn ist selbstständiger Web Developer aus Wien, Österreich mit philippinischen Wurzeln und entwickelt Webseiten und Applikationen für Unternehmen aus aller Welt.",
@@ -24,7 +25,7 @@
 
   "design": "Design",
   "dev": "Web Development",
-  "rwd": "Resposive Web&nbsp;Design",
+  "rwd": "Responsive Web&nbsp;Design",
   "design-description": "Du erhältst moderne Web- und UI-Designs mit dem Fokus auf Einfachheit und Perfektion, Pixel für Pixel. Gerne wirst Du zu Deinem Designkonzept beraten, um das Beste aus Deiner Corporate Identity heraus zu holen.",
   "dev-description": "Glenn entwickelt für Dich interaktive Webseiten und Applikationen mit maximaler Usability und effizienter User Experience. Die Performance, Skalierbarkeit und Wartbarkeit deines Produktes stehen dabei im Mittelpunkt.",
   "rwd-description": "Du erhältst ausschließlich responsive Webseiten, die in allen Endgeräten optimal dargestellt werden.",
