@@ -1,4 +1,5 @@
 import Util from './util'
+import _ from 'lodash'
 
 
 /**
@@ -52,7 +53,7 @@ class Toggle {
 
   toggle(element, config) {
     let targetElement = document.querySelector(config.target) || element
-    
+
     targetElement
       .classList
       .toggle(config.modifier)
@@ -62,7 +63,7 @@ class Toggle {
   // private
 
   _getConfig(config) {
-    config = Object.assign({}, Default, config)
+    config = _.assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }

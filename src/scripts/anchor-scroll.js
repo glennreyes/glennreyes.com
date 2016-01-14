@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import scrollTo from 'animated-scrollto'
 import Util from './util'
 
@@ -64,7 +65,7 @@ class AnchorScroll {
   // private
 
   _getConfig(config) {
-    config = Object.assign({}, Default, config)
+    config = _.assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }

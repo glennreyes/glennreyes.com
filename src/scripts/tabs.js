@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import Util from './util'
 
 
@@ -76,7 +77,7 @@ class Tabs {
   // private
 
   _getConfig(config) {
-    config = Object.assign({}, Default, config)
+    config = _.assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }
