@@ -57,8 +57,6 @@ class AnchorScroll {
     for (let i = 0; i < target.length; i++) {
       scrollTo(target[i], scrollTop, options.duration)
     }
-    // $('html, body').animate(properties, options)
-
   }
 
 
@@ -77,7 +75,7 @@ class AnchorScroll {
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener(Event.CLICK, function(e) {
         e.preventDefault()
-        self.scrollTo(this.hash, config)
+        self.scrollTo(this.hash || '#home', config)
       })
     }
   }
