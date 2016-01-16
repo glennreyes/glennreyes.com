@@ -1,5 +1,5 @@
 import Util from './util'
-import { assign } from 'lodash'
+import assign from 'lodash/assign'
 
 
 /**
