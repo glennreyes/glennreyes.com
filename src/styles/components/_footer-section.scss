@@ -39,7 +39,8 @@
 
 /* uncss:ignore */
 .footer-section {
-  &--open {
+  &--open,
+  .no-js & {
     display: block;
   }
 }
