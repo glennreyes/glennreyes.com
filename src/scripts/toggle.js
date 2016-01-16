@@ -1,5 +1,5 @@
 import Util from './util'
-import _ from 'lodash'
+import { assign } from 'lodash'
 
 
 /**
@@ -63,7 +63,7 @@ class Toggle {
   // private
 
   _getConfig(config) {
-    config = _.assign({}, Default, config)
+    config = assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }

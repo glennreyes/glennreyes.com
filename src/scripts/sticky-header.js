@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { assign } from 'lodash'
 import Util from './util'
 
 
@@ -56,7 +56,7 @@ class StickyHeader {
   // private
 
   _getConfig(config) {
-    config = _.assign({}, Default, config)
+    config = assign({}, Default, config)
     Util.typeCheckConfig(NAME, config, DefaultType)
     return config
   }
