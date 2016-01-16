@@ -6,7 +6,7 @@
   color: $gr-white;
   margin-bottom: 1em;
   padding-bottom: 2em;
-  padding-top: 5em;
+  padding-top: 6em;
   position: relative;
 
   &::after {
@@ -32,6 +32,8 @@
   @include media-breakpoint-up(lg) {
     @include container();
     @include content-width();
+
+    padding-top: 8em;
   }
 }
 
