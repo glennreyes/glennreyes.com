@@ -12,6 +12,7 @@ const Default = {
 }
 const DefaultType = {
   modifier: 'string',
+  close: '(string|undefined)',
   target: '(string|undefined)'
 }
 const Event = {
@@ -51,12 +52,20 @@ class Toggle {
 
   // public
 
-  toggle(element, config) {
+  toggle(element, config, onOff) {
     let targetElement = document.querySelector(config.target) || element
+    let targetClassList = targetElement.classList
 
-    targetElement
-      .classList
-      .toggle(config.modifier)
+    switch (onOff) {
+    case true:
+      targetClassList.add(config.modifier)
+      break
+    case false:
+      targetClassList.remove(config.modifier)
+      break
+    default:
+      targetClassList.toggle(config.modifier)
+    }
   }
 
 
@@ -79,6 +88,13 @@ class Toggle {
         this.toggle(element, config)
       })
     }
+
+    let close = document.querySelector(config.close)
+
+    close.addEventListener(Event.CLICK, (e) => {
+      e.preventDefault()
+      this.toggle(close, config, false)
+    })
   }
 }
 

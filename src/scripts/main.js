@@ -12,6 +12,7 @@ import Tabs from './tabs'
  */
 const navToggle = new Toggle('.nav-toggle, .header-nav__item', {
   target: 'body',
+  close: '.logo',
 
   // UnCSS
   modifier: 'nav-open'
