@@ -7,9 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "deploy": "s3cmd sync dist/* s3://glennreyes.com",
-    "clean": "s3cmd del -rf s3://glennreyes.com/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "build": "gulp",
+    "start": "gulp serve",
+    "start:static": "gulp serve:dist"
   },
   "repository": {
     "type": "git",
