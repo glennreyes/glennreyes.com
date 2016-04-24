@@ -1,5 +1,5 @@
 {
-  "name": "glennreyes",
+  "name": "glennreyes.github.io",
   "version": "1.0.0",
   "description": "Website of Glenn Reyes",
   "main": "gulpfile.babel.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/glennreyes/glennreyes.git"
+    "url": "git+ssh://git@github.com/glennreyes/glennreyes.github.io.git"
   },
   "author": "Glenn Reyes <office@glennreyes.com>",
   "license": "MIT",
@@ -53,5 +53,8 @@
   "dependencies": {
     "animated-scrollto": "^1.1.0",
     "lodash": "^4.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/glennreyes/glennreyes.github.io/issues"
   }
 }
