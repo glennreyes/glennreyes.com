@@ -27,9 +27,9 @@
     .expertise &__item {
       margin-top: 2em;
 
-      &:nth-child(2) {
-        transform: scale(1.1);
-      }
+      // &:nth-child(2) {
+      //   transform: scale(1.1);
+      // }
     }
   }
 }
@@ -42,9 +42,9 @@
   min-height: 17.5rem;
   overflow: hidden;
   padding: $grid-gutter-width;
+  width: 100%;
 
   &__content {
-    text-align: left;
 
     .card__photo + & {
       margin-top: $grid-gutter-width/2;
@@ -84,6 +84,7 @@
   &__description {
     line-height: 1;
     margin: 2rem 0 0;
+    text-align: right;
   }
 
   @include media-breakpoint-up(md) {

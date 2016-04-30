@@ -13,18 +13,17 @@
   @extend .lnr, .lnr-chevron-up;
 }
 
-.icon-design {
-  @extend .lnr, .lnr-pencil;
+.icon-expertise-1 {
+  @extend .lnr, .lnr-heart;
 }
 
-.icon-code {
-  @extend .lnr, .lnr-code;
-  font-size: 1.25em;
+.icon-expertise-2 {
+  @extend .lnr, .lnr-rocket;
 }
 
-.icon-rwd {
-  @extend .lnr, .lnr-laptop-phone;
-  font-size: 1.1em;
+.icon-expertise-3 {
+  @extend .lnr, .lnr-graduation-hat;
+  font-size: 1.125em;
 }
 
 .icon-github {
