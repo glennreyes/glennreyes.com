@@ -12,27 +12,25 @@
   @extend .btn-lg;
   background: $brand-primary;
   box-shadow:
-    1px 1px 0 0 $gr-astronaut-blue,
-    2px 2px 0 0 $gr-astronaut-blue,
-    3px 3px 0 0 $gr-astronaut-blue,
-    4px 4px 0 0 $gr-astronaut-blue,
-    5px 5px 0 0 $gr-astronaut-blue;
+    0 1px 0 0 $gr-blue-lagoon,
+    0 2px 0 0 $gr-blue-lagoon,
+    0 3px 0 0 $gr-blue-lagoon,
+    0 4px 0 0 $gr-blue-lagoon,
+    0 5px 0 0 $gr-blue-lagoon;
   color: $gr-white;
   display: block;
   font-size: inherit;
   letter-spacing: .1em;
   margin: 3em auto;
   max-width: 31.25rem;
-  transition: background .4s;
+  transition: .4s;
 
   &:hover {
-    background: $gr-blue-lagoon;
-    box-shadow: 3px 3px 0 0 $gr-astronaut-blue;
+    background: $gr-pacific-blue;
     color: $gr-white;
-    transform: translate(2px, 2px);
   }
 
   @include media-breakpoint-up(md) {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
