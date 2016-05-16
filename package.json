@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/glennreyes/glennreyes.github.io.git"
   },
-  "author": "Glenn Reyes <office@glennreyes.com>",
+  "author": "Glenn Reyes <glenn@glennreyes.com>",
   "license": "MIT",
   "homepage": "http://www.glennreyes.com",
   "devDependencies": {
