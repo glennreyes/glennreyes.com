@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "bower install",
     "build": "gulp",
-    "deploy": "gh-pages -d dist",
+    "deploy": "npm run build && gh-pages -d dist",
     "start": "gulp serve",
     "start:static": "gulp serve:dist"
   },
