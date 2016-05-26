@@ -32,10 +32,12 @@
   "expertise-2-description": "I'm strongly focused on building high-quality products with best user experience and great usability.",
   "expertise-3-description": "I've never stopped learning from the open-source community and I love to contribute to new front-end technologies.",
 
+  "work-countup": "React CountUp",
+  "work-countup-url": "https://glennreyes.github.io/react-countup",
   "work-iwh": "iwanna.help",
   "work-iwh-url": "//iwanna.help",
   "work-papp": "Papperlapapp",
-  "work-papp-url": "//papperlapapp.co.at",
+  "work-papp-url": "https://www.papperlapapp.co.at/",
   "work-p7s1": "ProSiebenSat.1 Annual Report 2014",
   "work-p7s1-url": "//annual-report2014.prosiebensat1.com",
   "work-vw": "Volkswagen Annual Report 2014",
@@ -47,7 +49,7 @@
   "work-desesc": "Design Escalation",
   "work-desesc-url": "//www.designescalation.com",
   "work-nxrlab": "nexxar Lab",
-  "work-nxrlab-url": "//lab.nexxar.com",
+  "work-nxrlab-url": "https://lab.nexxar.com/",
   "work-by-nexxar": "Created at nexxar",
   "work-by-styria": "Created at Styria",
 
