@@ -8,7 +8,7 @@
   "moduleType": [
     "es6"
   ],
-  "homepage": "http://www.glennreyes.com",
+  "homepage": "https://glennreyes.com",
   "ignore": [
     "**/.*",
     "node_modules",
