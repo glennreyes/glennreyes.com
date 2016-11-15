@@ -5,27 +5,6 @@
   font-style: normal;
 }
 
-.icon-chevron-down {
-  @extend .lnr, .lnr-chevron-down;
-}
-
-.icon-chevron-up {
-  @extend .lnr, .lnr-chevron-up;
-}
-
-.icon-expertise-1 {
-  @extend .lnr, .lnr-heart;
-}
-
-.icon-expertise-2 {
-  @extend .lnr, .lnr-rocket;
-}
-
-.icon-expertise-3 {
-  @extend .lnr, .lnr-graduation-hat;
-  font-size: 1.125em;
-}
-
 .icon-github {
   @extend .fa, .fa-github;
   position: relative;

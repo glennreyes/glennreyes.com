@@ -9,27 +9,12 @@
     margin-bottom: $grid-gutter-width;
   }
 
-  .expertise &__item {
-    @extend .col-md-12, .col-xl-4;
-  }
-
   @include media-breakpoint-up(md) {
     justify-content: center;
 
     &__item {
       display: flex;
       align-items: stretch;
-    }
-  }
-
-  @include media-breakpoint-up(xl) {
-
-    .expertise &__item {
-      margin-top: 2em;
-
-      // &:nth-child(2) {
-      //   transform: scale(1.1);
-      // }
     }
   }
 }
@@ -91,10 +76,6 @@
 
     &__content {
       font-size: 1.25rem;
-    }
-
-    .expertise &__title {
-      font-size: 2rem;
     }
   }
 

@@ -11,7 +11,6 @@
 
   "about": "About",
   "about-title": "That's me",
-  "expertise": "Expertise",
   "work": "Work",
   "work-title": "What I've done",
   "contact": "Contact",
@@ -20,13 +19,6 @@
   "about-tldr": "I'm Glenn, a <i>Freelance Front-End Engineer</i> from Vienna, Austria. I build web apps with <a href=\"//facebook.github.io/react\">React</a> and learn a lot from the open-source community.",
   "about-resume": "I've built internal React apps at <a href=\"//styria.com\">Styria</a> and websites for ProSiebenSat.1, Volkswagen and more, at <a href=\"//www.nexxar.com\">nexxar</a>.",
   "about-private": "When I'm not coding, I spend my time with my lovely wife. I also enjoy playing the guitar and love to travel around the world and discover cities and cultures.",
-
-  "expertise-1": "Passion",
-  "expertise-2": "Focus",
-  "expertise-3": "Learn",
-  "expertise-1-description": "I'm passionate about building amazing web applications using <a href=\"//facebook.github.io/react\">React</a> &amp; <a href=\"//redux.js.org/\">Redux</a>.",
-  "expertise-2-description": "I'm strongly focused on building high-quality products with best user experience and great usability.",
-  "expertise-3-description": "I've never stopped learning from the open-source community and I love to contribute to new front-end technologies.",
 
   "work-countup": "React CountUp",
   "work-countup-url": "https://glennreyes.github.io/react-countup",
