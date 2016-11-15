@@ -35,7 +35,6 @@
     "bower": "^1.7.9",
     "browser-sync": "^2.12.8",
     "browserify": "^13.0.1",
-    "critical": "^0.7.2",
     "del": "^2.2.0",
     "gh-pages": "^0.11.0",
     "gulp": "^3.9.1",
