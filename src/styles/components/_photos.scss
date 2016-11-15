@@ -10,5 +10,5 @@
 }
 
 .photo__image {
-  @extend .img-circle, .img-fluid;
+  @extend .rounded-circle, .img-fluid;
 }
