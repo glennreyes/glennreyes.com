@@ -50,7 +50,6 @@
     "gulp-sass": "^2.3.1",
     "gulp-sass-glob": "1.0.6",
     "gulp-uglify": "^1.5.3",
-    "gulp-uncss": "^1.0.5",
     "gulp-util": "^3.0.7",
     "main-bower-files": "^2.13.0",
     "require-dir": "^0.3.0",
