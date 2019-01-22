@@ -6,6 +6,6 @@ export default () => (
     <Head>
       <title>{`${me.name} — ${me.job}`}</title>
     </Head>
-    <div>Welcome to next.js!</div>
+    <div css={{ color: 'blue' }}>Welcome to next.js!</div>
   </>
 );
