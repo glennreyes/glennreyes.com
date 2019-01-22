@@ -11,9 +11,12 @@
     "start": "next start"
   },
   "devDependencies": {
+    "@types/next": "^7.0.6",
+    "fork-ts-checker-webpack-plugin": "^0.5.2",
     "husky": "^1.3.1",
     "prettier": "^1.16.0",
-    "pretty-quick": "^1.10.0"
+    "pretty-quick": "^1.10.0",
+    "typescript": "^3.2.4"
   },
   "dependencies": {
     "@zeit/next-typescript": "^1.1.1",
