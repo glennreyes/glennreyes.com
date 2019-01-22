@@ -1,5 +1,7 @@
 # [glennreyes.com](http://glennreyes.com)
-Website of [Glenn](mailto:glenn@glennreyes.com), built with ❤️ on top of Gulp.
+
+Source code of my personal website.
 
 # License
+
 MIT

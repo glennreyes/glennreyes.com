@@ -1,5 +1,2 @@
-*.log
-bower_components
+.env
 node_modules
-dist
-.tmp
