@@ -1,3 +1,4 @@
 {
+  "plugins": ["styled-components"],
   "presets": ["next/babel", "@zeit/next-typescript/babel"]
 }

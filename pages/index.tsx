@@ -1,11 +1,11 @@
-import Head from '../components/Head';
+import Head from 'next/head';
 import me from '../data/me';
-
-const title = `${me.name} — ${me.job}`;
 
 export default () => (
   <>
-    <Head title={title} />
+    <Head>
+      <title>{`${me.name} — ${me.job}`}</title>
+    </Head>
     <div>Welcome to next.js!</div>
   </>
 );
