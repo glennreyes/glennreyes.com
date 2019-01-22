@@ -1,16 +1,17 @@
 import Document, {
-  NextDocumentContext,
   Head,
   Main,
+  NextDocumentContext,
   NextScript,
 } from 'next/document';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 type DocumentProps = {
   styleTags: React.ReactElement<{}>[];
 };
 
-export default class extends Document<DocumentProps> {
+class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
@@ -32,3 +33,5 @@ export default class extends Document<DocumentProps> {
     );
   }
 }
+
+export default MyDocument;
