@@ -1,8 +1,8 @@
 import { Interpolation } from 'styled-components';
-import { Theme } from './theme';
 
 declare module 'react' {
   interface DOMAttributes<T> {
-    css?: Interpolation<Theme>;
+    // This adds the type for the global css prop by styled-components
+    css?: Interpolation;
   }
 }

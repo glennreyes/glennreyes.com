@@ -1,6 +1,7 @@
 import App, { Container, NextAppContext } from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyle from '../components/GlobalStyle';
 import theme from '../lib/theme';
 
 class MyApp extends App {
@@ -8,10 +9,10 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       const pageProps = await Component.getInitialProps(ctx);
 
-      return pageProps;
+      return { pageProps };
     }
 
-    return {};
+    return { pageProps: null };
   }
 
   render() {
@@ -20,7 +21,10 @@ class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <>
+            <GlobalStyle />
+            <Component {...pageProps} />
+          </>
         </ThemeProvider>
       </Container>
     );

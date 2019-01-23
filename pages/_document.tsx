@@ -18,6 +18,7 @@ class MyDocument extends Document<DocumentProps> {
       sheet.collectStyles(<App {...props} />),
     );
     const styleTags = sheet.getStyleElement();
+
     return { ...page, styleTags };
   }
 

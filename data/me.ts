@@ -1,15 +1,6 @@
-interface Me {
-  description: string;
-  email: string;
-  job: string;
-  github: string;
-  name: string;
-  twitter: string;
-}
-
-const job: string = 'Software Engineer';
-const description: string = `${job} building things with React & GraphQL`;
-const me: Me = {
+const job = 'Software Engineer';
+const description = `${job} building things with React & GraphQL`;
+const me = {
   description,
   email: 'glenn@glennreyes.com',
   job,
