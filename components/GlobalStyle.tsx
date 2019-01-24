@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-const GlobalStyle = createGlobalStyle`
+export default createGlobalStyle`
   ::-webkit-scrollbar {
     display: none;
   }
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, #root {
+  html, body, #__next {
     height: 100%;
   }
 
@@ -34,5 +34,3 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 `;
-
-export default GlobalStyle;

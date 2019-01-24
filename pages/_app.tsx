@@ -2,9 +2,10 @@ import App, { Container, NextAppContext } from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../components/GlobalStyle';
+import Theme from '../components/Theme';
 import theme from '../lib/theme';
 
-class MyApp extends App {
+export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }: NextAppContext) {
     if (Component.getInitialProps) {
       const pageProps = await Component.getInitialProps(ctx);
@@ -21,14 +22,14 @@ class MyApp extends App {
     return (
       <Container>
         <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyle />
-            <Component {...pageProps} />
-          </>
+          <Theme>
+            <>
+              <GlobalStyle />
+              <Component {...pageProps} />
+            </>
+          </Theme>
         </ThemeProvider>
       </Container>
     );
   }
 }
-
-export default MyApp;

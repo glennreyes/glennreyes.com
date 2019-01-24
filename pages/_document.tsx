@@ -4,14 +4,14 @@ import Document, {
   NextDocumentContext,
   NextScript,
 } from 'next/document';
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 type DocumentProps = {
-  styleTags: React.ReactElement<{}>[];
+  styleTags: ReactElement<{}>[];
 };
 
-class MyDocument extends Document<DocumentProps> {
+export default class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
@@ -25,7 +25,13 @@ class MyDocument extends Document<DocumentProps> {
   render() {
     return (
       <html>
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />
@@ -34,5 +40,3 @@ class MyDocument extends Document<DocumentProps> {
     );
   }
 }
-
-export default MyDocument;

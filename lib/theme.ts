@@ -44,13 +44,6 @@ const system = {
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
-      'Roboto',
-      'Oxygen',
-      'Ubuntu',
-      'Cantarell',
-      'Fira Sans',
-      'Droid Sans',
-      'Helvetica Neue',
       'Helvetica',
       'Arial',
       'sans-serif',
@@ -104,4 +97,6 @@ const variants = {
 
 const theme = { ...system, ...variants };
 
-export default theme;
+export type Theme = typeof theme;
+
+export default { ...system };

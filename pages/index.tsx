@@ -1,30 +1,22 @@
+import { NextFunctionComponent } from 'next';
 import Head from 'next/head';
-import React, { Component } from 'react';
-import { Card } from 'rebass';
+import React from 'react';
+import Intro from '../components/home/Intro';
 import me from '../data/me';
 
 type HomeProps = {
   me: typeof me;
 };
 
-class Home extends Component<HomeProps> {
-  static async getInitialProps() {
-    return { me };
-  }
+const Home: NextFunctionComponent<HomeProps> = ({ me }) => (
+  <>
+    <Head>
+      <title>{`${me.name} — ${me.job}`}</title>
+    </Head>
+    <Intro me={me} />
+  </>
+);
 
-  render() {
-    const { job, name } = this.props.me;
-
-    return (
-      <>
-        <Head>
-          <title>{`${name} — ${job}`}</title>
-        </Head>
-        <Card variant="outline">Sample card</Card>
-        <div css={{ color: 'blue' }}>Welcome to next.js!</div>
-      </>
-    );
-  }
-}
+Home.getInitialProps = () => ({ me });
 
 export default Home;

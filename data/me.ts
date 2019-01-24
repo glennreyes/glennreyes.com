@@ -9,4 +9,6 @@ const me = {
   twitter: 'glnnrys',
 };
 
+export type Me = typeof me;
+
 export default me;
