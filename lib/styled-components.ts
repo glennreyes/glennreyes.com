@@ -2,6 +2,8 @@ import * as styledComponents from 'styled-components';
 import { ThemedStyledComponentsModule } from 'styled-components';
 import { Theme } from './theme';
 
+type ThemeProps<T = {}> = styledComponents.ThemeProps<Theme & T>;
+
 const {
   default: styled,
   css,
@@ -10,5 +12,5 @@ const {
   ThemeProvider,
 } = styledComponents as ThemedStyledComponentsModule<Theme>;
 
-export { css, createGlobalStyle, keyframes, ThemeProvider };
+export { css, createGlobalStyle, keyframes, ThemeProps, ThemeProvider };
 export default styled;

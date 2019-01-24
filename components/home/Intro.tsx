@@ -1,6 +1,8 @@
+import React from 'react';
 import { Flex } from 'rebass';
 import { H1 } from '../Heading';
-import React from 'react';
+import ScrollDown from '../ScrollDown';
+import SocialLinks from '../SocialLinks';
 import Text from '../Text';
 import { Me } from '../../data/me';
 import { css } from '../../lib/styled-components';
@@ -21,6 +23,7 @@ const Intro: React.FunctionComponent<IntroProps> = ({ me }) => (
         ${props => props.theme.colors.lightGray}
       );
       height: 100%;
+      position: relative;
     `}
   >
     <H1>{me.name}</H1>
@@ -35,6 +38,10 @@ const Intro: React.FunctionComponent<IntroProps> = ({ me }) => (
       <br />
       {'building things with React & GraphQL'}
     </Text>
+    <Flex mt={4}>
+      <SocialLinks me={me} />
+    </Flex>
+    <ScrollDown />
   </Flex>
 );
 

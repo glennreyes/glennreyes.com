@@ -6,6 +6,12 @@ module.exports = withTypescript({
     // Do not run type checking twice:
     if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
 
+    // SVGR for importing SVGs as React components
+    config.module.rules.push({
+      test: /.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
 });

@@ -5,6 +5,7 @@ const me = {
   email: 'glenn@glennreyes.com',
   job,
   github: 'glennreyes',
+  instagram: 'glnnrys',
   name: 'Glenn Reyes',
   twitter: 'glnnrys',
 };

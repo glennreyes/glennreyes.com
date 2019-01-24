@@ -58,6 +58,7 @@ const system = {
   opacity: [0, 0.25, 0.5, 0.75, 1],
   radii,
   space,
+  transition: ['0.4s'],
 };
 
 // Variants
@@ -98,5 +99,4 @@ const variants = {
 const theme = { ...system, ...variants };
 
 export type Theme = typeof theme;
-
 export default { ...system };

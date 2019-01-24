@@ -17,10 +17,10 @@
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
     "rebass": "^3.0.1",
-    "styled-components": "^4.1.3",
-    "styled-normalize": "^8.0.4"
+    "styled-components": "^4.1.3"
   },
   "devDependencies": {
+    "@svgr/webpack": "^4.1.0",
     "@types/next": "^7.0.6",
     "@types/rebass": "^0.3.4",
     "@types/styled-components": "^4.1.6",
