@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react';
-import { Box, Flex } from 'rebass';
+import React from 'react';
+import { Flex } from 'rebass';
+import Icon from './Icon';
 import { Me } from '../data/me';
 import GitHub from '../icons/github.svg';
 import Instagram from '../icons/instagram.svg';
@@ -7,9 +8,11 @@ import Mail from '../icons/mail.svg';
 import Twitter from '../icons/twitter.svg';
 import { css } from '../lib/styled-components';
 
-type SocialLinksProps = { me: Me };
+interface SocialLinksProps {
+  me: Me;
+}
 
-const SocialLinks: FunctionComponent<SocialLinksProps> = ({ me, ...props }) => {
+const SocialLinks: React.FC<SocialLinksProps> = ({ me, ...props }) => {
   const socialItems = [
     {
       component: Twitter,
@@ -47,7 +50,7 @@ const SocialLinks: FunctionComponent<SocialLinksProps> = ({ me, ...props }) => {
           as="a"
           css={css`
             opacity: ${props => props.theme.opacity[1]};
-            transition: ${props => props.theme.transition[0]};
+            transition: ${props => props.theme.transitions[0]};
 
             &:hover {
               opacity: ${props => props.theme.opacity[2]};
@@ -56,7 +59,7 @@ const SocialLinks: FunctionComponent<SocialLinksProps> = ({ me, ...props }) => {
           key={id}
           {...rest}
         >
-          <Box color="blue" as={component} />
+          <Icon as={component} />
         </Flex>
       ))}
     </Flex>

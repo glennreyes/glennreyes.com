@@ -2,11 +2,11 @@ import { NextFunctionComponent } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import Intro from '../components/home/Intro';
-import me from '../data/me';
+import me, { Me } from '../data/me';
 
-type HomeProps = {
-  me: typeof me;
-};
+interface HomeProps {
+  me: Me;
+}
 
 const Home: NextFunctionComponent<HomeProps> = ({ me }) => (
   <>

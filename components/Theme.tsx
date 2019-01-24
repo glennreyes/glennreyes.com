@@ -1,19 +1,18 @@
-import React, { createContext, FunctionComponent, useState } from 'react';
+import React, { createContext, useState } from 'react';
 
 export const ThemeContext = createContext({
-  theme: 'light',
-  toggleTheme: () => {},
+  darkMode: false,
+  toggleDarkMode: () => {},
 });
 
-const Theme: FunctionComponent = ({ children }) => {
-  const [theme, setTheme] = useState('light');
+const Theme: React.FC = ({ children }) => {
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <ThemeContext.Provider
       value={{
-        theme,
-        toggleTheme: () =>
-          setTheme(theme => (theme === 'light' ? 'dark' : 'light')),
+        darkMode,
+        toggleDarkMode: () => setDarkMode(darkMode => !darkMode),
       }}
     >
       {children}

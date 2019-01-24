@@ -1,25 +1,20 @@
 import React, { useContext } from 'react';
-import { Text as BaseText, TextProps } from 'rebass';
+import { Box, BoxProps } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-const Text: React.FC<TextProps> = props => {
+const Icon: React.FC<BoxProps> = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <BaseText
-      as="p"
-      color={darkMode ? 'lightGray' : 'darkGray'}
+    <Box
+      color={darkMode ? 'lightGray' : 'blue'}
       css={css`
         transition: ${props => props.theme.transitions[0]};
       `}
-      fontFamily="sans"
-      lineHeight={1}
-      mb={0}
-      mt={0}
       {...props}
     />
   );
 };
 
-export default Text;
+export default Icon;

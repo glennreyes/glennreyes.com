@@ -1,48 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Flex } from 'rebass';
+import Container from './Container';
 import { H1 } from '../Heading';
-import ScrollDown from '../ScrollDown';
+import ScrollDown from './ScrollDown';
+import ThemeSwitch from './ThemeSwitch';
 import SocialLinks from '../SocialLinks';
 import Text from '../Text';
+import { ThemeContext } from '../Theme';
 import { Me } from '../../data/me';
 import { css } from '../../lib/styled-components';
 
-type IntroProps = {
+interface IntroProps {
   me: Me;
-};
+}
 
-const Intro: React.FunctionComponent<IntroProps> = ({ me }) => (
-  <Flex
-    alignItems="center"
-    flexDirection="column"
-    justifyContent="center"
-    css={css`
-      background: linear-gradient(
-        to right,
-        ${props => props.theme.colors.white},
-        ${props => props.theme.colors.lightGray}
-      );
-      height: 100%;
-      position: relative;
-    `}
-  >
-    <H1>{me.name}</H1>
-    <Text
-      color="blue50"
-      css={css`
-        text-align: center;
-      `}
-      mt={1}
-    >
-      {`Hi! I'm a ${me.job}`}
-      <br />
-      {'building things with React & GraphQL'}
-    </Text>
-    <Flex mt={4}>
-      <SocialLinks me={me} />
-    </Flex>
-    <ScrollDown />
-  </Flex>
-);
+const Intro: React.FC<IntroProps> = ({ me }) => {
+  const { darkMode } = useContext(ThemeContext);
+
+  return (
+    <Container>
+      <H1>{me.name}</H1>
+      <Text
+        color={darkMode ? 'lightGray50' : 'blue50'}
+        css={css`
+          text-align: center;
+        `}
+        mt={1}
+      >
+        {`Hi! I'm a ${me.job}`}
+        <br />
+        {'building things with React & GraphQL'}
+      </Text>
+      <Flex mt={4}>
+        <SocialLinks me={me} />
+      </Flex>
+      <ScrollDown />
+      <ThemeSwitch />
+    </Container>
+  );
+};
 
 export default Intro;

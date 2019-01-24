@@ -4,12 +4,12 @@ import Document, {
   NextDocumentContext,
   NextScript,
 } from 'next/document';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
-type DocumentProps = {
-  styleTags: ReactElement<{}>[];
-};
+interface DocumentProps {
+  styleTags: React.ReactElement<{}>[];
+}
 
 export default class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {
