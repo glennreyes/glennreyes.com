@@ -27,6 +27,7 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
         css={css`
           text-align: center;
         `}
+        lineHeight={1}
         mt={1}
       >
         {`Hi! I'm a ${me.job}`}

@@ -14,7 +14,7 @@ const Text: React.FC<TextProps> = props => {
         transition: ${props => props.theme.transitions[0]};
       `}
       fontFamily="sans"
-      lineHeight={1}
+      lineHeight={0}
       mb={0}
       mt={0}
       {...props}

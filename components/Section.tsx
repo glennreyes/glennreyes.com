@@ -9,7 +9,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, ...props }) => (
   <Box as="section" p={3}>
-    <Heading fontSize={0} mb={3}>
+    <Heading fontSize={1} mb={3}>
       {title}
     </Heading>
     <Box

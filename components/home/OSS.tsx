@@ -38,12 +38,12 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
               >
                 {name}
               </Heading>
-              <Text fontWeight="bold" ml="auto">
+              <Text fontWeight="bold" lineHeight={1} ml="auto">
                 {stars}
               </Text>
               <Icon as={Star} color={darkMode ? 'yellow50' : 'yellow'} ml={1} />
             </Flex>
-            <Text mt={2}>{description}</Text>
+            <Text mt={1}>{description}</Text>
           </Card>
         </Link>
       ))}
