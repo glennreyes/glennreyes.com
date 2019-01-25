@@ -1,11 +1,10 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 
-const {
-  serverRuntimeConfig: { githubToken },
-} = getConfig();
+const githubToken = process.env.GITHUB_TOKEN;
 
 const fetchRepos = async () => {
+  if (!githubToken) return [];
+
   try {
     const res = await axios({
       method: 'post',

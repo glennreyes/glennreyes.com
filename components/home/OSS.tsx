@@ -41,7 +41,7 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
               <Text fontWeight="bold" ml="auto">
                 {stars}
               </Text>
-              <Icon as={Star} color="yellow" ml={1} />
+              <Icon as={Star} color={darkMode ? 'yellow50' : 'yellow'} ml={1} />
             </Flex>
             <Text mt={2}>{description}</Text>
           </Card>

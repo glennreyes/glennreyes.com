@@ -9,7 +9,7 @@ const Text: React.FC<TextProps> = props => {
   return (
     <BaseText
       as="p"
-      color={darkMode ? 'gray' : 'darkGray'}
+      color={darkMode ? 'gray50' : 'darkGray'}
       css={css`
         transition: ${props => props.theme.transitions[0]};
       `}

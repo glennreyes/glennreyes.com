@@ -3,12 +3,6 @@ const withTypescript = require('@zeit/next-typescript');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = withTypescript({
-  publicRuntimeConfig: {
-    gaTrackingId: process.env.GA_TRACKING_ID,
-  },
-  serverRuntimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN,
-  },
   target: 'serverless',
   webpack(config, options) {
     // Do not run type checking twice:
