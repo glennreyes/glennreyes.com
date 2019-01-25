@@ -13,7 +13,6 @@ const Heading: React.FC<HeadingProps> = props => {
         transition: ${props => props.theme.transitions[0]};
       `}
       fontFamily="sans"
-      lineHeight={1}
       {...props}
     />
   );

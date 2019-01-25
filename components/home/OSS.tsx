@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { Flex } from 'rebass';
+import { Flex, Heading } from 'rebass';
 import Card from '../Card';
-import Heading from '../Heading';
 import Icon from '../Icon';
 import Link from '../Link';
 import Section from '../Section';
 import Text from '../Text';
 import { ThemeContext } from '../Theme';
 import Star from '../../icons/star.svg';
+import { css } from '../../lib/styled-components';
 
 interface OSSProps {
   repos: Repository[];
@@ -24,8 +24,16 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
             <Flex alignItems="center" justifyContent="space-between">
               <Heading
                 color={darkMode ? 'lightGray' : 'blue'}
+                css={css`
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  transition: ${props => props.theme.transitions[0]};
+                  white-space: nowrap;
+                `}
                 as="h3"
+                fontFamily="sans"
                 fontSize={1}
+                mr={1}
               >
                 {name}
               </Heading>
