@@ -23,6 +23,7 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
           <Card>
             <Flex alignItems="center" justifyContent="space-between">
               <Heading
+                as="h3"
                 color={darkMode ? 'lightGray' : 'blue'}
                 css={css`
                   overflow: hidden;
@@ -30,9 +31,9 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
                   transition: ${props => props.theme.transitions[0]};
                   white-space: nowrap;
                 `}
-                as="h3"
                 fontFamily="sans"
                 fontSize={1}
+                lineHeight={1}
                 mr={1}
               >
                 {name}
