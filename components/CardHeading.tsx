@@ -1,24 +1,28 @@
 import React, { useContext } from 'react';
-import { Text as BaseText, TextProps } from 'rebass';
+import { Heading } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-const Text: React.FC<TextProps> = props => {
+const CardHeading: React.FC = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <BaseText
-      as="p"
-      color={darkMode ? 'gray50' : 'darkGray'}
+    <Heading
+      as="h3"
+      color={darkMode ? 'lightGray' : 'blue'}
       css={css`
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition: ${props => props.theme.transitions[0]};
+        white-space: nowrap;
       `}
       fontFamily="sans"
-      mb={0}
-      mt={0}
+      fontSize={1}
+      lineHeight={2}
+      mr={1}
       {...props}
     />
   );
 };
 
-export default Text;
+export default CardHeading;

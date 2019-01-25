@@ -54,7 +54,7 @@ const system = {
   },
   fontSizes: [12, 16, 24, 32, 48, 64],
   fontWeights: ['normal', 'bold'],
-  lineHeights: ['normal', 1.5],
+  lineHeights: ['normal', 1.25, 1.5],
   opacity: [0, 0.25, 0.5, 0.75, 1],
   radii,
   space,

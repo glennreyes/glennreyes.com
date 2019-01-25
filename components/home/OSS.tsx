@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { Flex, Heading } from 'rebass';
+import { Flex } from 'rebass';
 import Card from '../Card';
+import CardHeading from '../CardHeading';
+import CardText from '../CardText';
 import Icon from '../Icon';
 import Link from '../Link';
 import Section from '../Section';
-import Text from '../Text';
 import { ThemeContext } from '../Theme';
 import Star from '../../icons/star.svg';
-import { css } from '../../lib/styled-components';
 
 interface OSSProps {
   repos: Repository[];
@@ -22,28 +22,13 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
         <Link href={url} key={id} target="_blank">
           <Card>
             <Flex alignItems="center" justifyContent="space-between">
-              <Heading
-                as="h3"
-                color={darkMode ? 'lightGray' : 'blue'}
-                css={css`
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  transition: ${props => props.theme.transitions[0]};
-                  white-space: nowrap;
-                `}
-                fontFamily="sans"
-                fontSize={1}
-                lineHeight={1}
-                mr={1}
-              >
-                {name}
-              </Heading>
-              <Text fontWeight="bold" lineHeight={1} ml="auto">
+              <CardHeading>{name}</CardHeading>
+              <CardText lineHeight={2} ml="auto">
                 {stars}
-              </Text>
+              </CardText>
               <Icon as={Star} color={darkMode ? 'yellow50' : 'yellow'} ml={1} />
             </Flex>
-            <Text mt={1}>{description}</Text>
+            <CardText mt={2}>{description}</CardText>
           </Card>
         </Link>
       ))}
