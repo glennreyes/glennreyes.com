@@ -33,7 +33,7 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
         <br />
         {'building things with React & GraphQL'}
       </Text>
-      <Flex mt={4}>
+      <Flex mt={5}>
         <SocialLinks me={me} />
       </Flex>
       <ScrollDown />
