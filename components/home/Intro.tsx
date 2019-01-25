@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Flex } from 'rebass';
-import Container from './Container';
-import { H1 } from '../Heading';
+import IntroContainer from './IntroContainer';
+import Heading from '../Heading';
 import ScrollDown from './ScrollDown';
 import ThemeSwitch from './ThemeSwitch';
 import SocialLinks from '../SocialLinks';
@@ -18,8 +18,10 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <Container>
-      <H1>{me.name}</H1>
+    <IntroContainer>
+      <Heading as="h1" color={darkMode ? 'lightGray' : 'blue'} fontSize={2}>
+        {me.name}
+      </Heading>
       <Text
         color={darkMode ? 'lightGray50' : 'blue50'}
         css={css`
@@ -36,7 +38,7 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
       </Flex>
       <ScrollDown />
       <ThemeSwitch />
-    </Container>
+    </IntroContainer>
   );
 };
 

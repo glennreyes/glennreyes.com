@@ -3,20 +3,17 @@ import { Flex, FlexProps } from 'rebass';
 import { ThemeContext } from '../Theme';
 import { css } from '../../lib/styled-components';
 
-export interface ContainerProps {
+export interface IntroContainerProps {
   darkMode?: boolean;
 }
 
-const Container: React.FC<FlexProps & ContainerProps> = props => {
+const IntroContainer: React.FC<FlexProps & IntroContainerProps> = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
     <Flex
       alignItems="center"
-      darkMode={darkMode}
-      flexDirection="column"
-      justifyContent="center"
-      css={css<ContainerProps>`
+      css={css<IntroContainerProps>`
         height: 100%;
         position: relative;
 
@@ -50,9 +47,12 @@ const Container: React.FC<FlexProps & ContainerProps> = props => {
           opacity: ${props => props.theme.opacity[props.darkMode ? 0 : 4]};
         }
       `}
+      darkMode={darkMode}
+      flexDirection="column"
+      justifyContent="center"
       {...props}
     />
   );
 };
 
-export default Container;
+export default IntroContainer;

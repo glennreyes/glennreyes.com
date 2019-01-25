@@ -1,0 +1,10 @@
+{
+  "name": "glennreyes",
+  "alias": "glennreyes",
+  "env": {
+    "GA_TRACKING_ID": "@glennreyes-ga-tracking-id",
+    "GITHUB_TOKEN": "@glennreyes-github-token"
+  },
+  "builds": [{ "src": "package.json", "use": "@now/next" }],
+  "version": 2
+}

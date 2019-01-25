@@ -18,7 +18,7 @@ const ThemeSwitch: React.FC = () => {
         display: flex;
         opacity: ${props => props.theme.opacity[1]};
         outline: none;
-        position: absolute;
+        position: fixed;
         right: ${props => props.theme.space[4]}px;
         transition: ${props => props.theme.transitions[0]};
 

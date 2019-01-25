@@ -23,10 +23,12 @@ export default class MyApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <Theme>
-            <>
-              <GlobalStyle />
-              <Component {...pageProps} />
-            </>
+            {({ darkMode }) => (
+              <>
+                <GlobalStyle darkMode={darkMode} />
+                <Component {...pageProps} />
+              </>
+            )}
           </Theme>
         </ThemeProvider>
       </Container>

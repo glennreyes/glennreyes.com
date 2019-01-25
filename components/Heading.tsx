@@ -13,21 +13,7 @@ const Heading: React.FC<HeadingProps> = props => {
         transition: ${props => props.theme.transitions[0]};
       `}
       fontFamily="sans"
-      fontSize={0}
       lineHeight={1}
-      {...props}
-    />
-  );
-};
-
-export const H1: React.FC<HeadingProps> = props => {
-  const { darkMode } = useContext(ThemeContext);
-
-  return (
-    <Heading
-      as="h1"
-      color={darkMode ? 'lightGray' : 'blue'}
-      fontSize={2}
       {...props}
     />
   );

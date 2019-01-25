@@ -5,7 +5,11 @@ export const ThemeContext = createContext({
   toggleDarkMode: () => {},
 });
 
-const Theme: React.FC = ({ children }) => {
+interface ThemeProps {
+  children: (props: { darkMode: boolean }) => React.ReactNode;
+}
+
+const Theme: React.FC<ThemeProps> = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -15,7 +19,7 @@ const Theme: React.FC = ({ children }) => {
         toggleDarkMode: () => setDarkMode(darkMode => !darkMode),
       }}
     >
-      {children}
+      {children({ darkMode })}
     </ThemeContext.Provider>
   );
 };
