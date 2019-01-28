@@ -3,9 +3,9 @@ import { Flex, FlexProps } from 'rebass';
 import { ThemeContext } from '../Theme';
 import { css } from '../../lib/styled-components';
 
-export interface IntroContainerProps {
+type IntroContainerProps = {
   darkMode?: boolean;
-}
+};
 
 const IntroContainer: React.FC<FlexProps & IntroContainerProps> = props => {
   const { darkMode } = useContext(ThemeContext);

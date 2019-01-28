@@ -10,11 +10,11 @@ import projects, { Project } from '../data/projects';
 import me, { Me } from '../data/me';
 import { css } from '../lib/styled-components';
 
-interface HomeProps {
+type HomeProps = {
   me: Me;
   projects: Project[];
   repos: Repository[];
-}
+};
 
 const Home: NextFC<HomeProps> = ({ me, projects, repos }) => (
   <>

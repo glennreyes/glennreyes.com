@@ -8,9 +8,9 @@ import Mail from '../icons/mail.svg';
 import Twitter from '../icons/twitter.svg';
 import { css } from '../lib/styled-components';
 
-interface SocialLinksProps {
+type SocialLinksProps = {
   me: Me;
-}
+};
 
 const SocialLinks: React.FC<SocialLinksProps> = ({ me, ...props }) => {
   const socialItems = [

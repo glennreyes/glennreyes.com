@@ -4,13 +4,13 @@ import { Card as BaseCard, CardProps as BaseCardProps } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-interface CardProps {
+type CardProps = {
   darkMode?: boolean;
   image?: {
     src: string;
     alt?: string;
   };
-}
+};
 
 const Card: React.FC<BaseCardProps & CardProps> = ({
   children,

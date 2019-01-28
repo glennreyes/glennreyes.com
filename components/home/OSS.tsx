@@ -9,9 +9,9 @@ import Section from '../Section';
 import { ThemeContext } from '../Theme';
 import Star from '../../icons/star.svg';
 
-interface OSSProps {
+type OSSProps = {
   repos: Repository[];
-}
+};
 
 const OSS: React.FC<OSSProps> = ({ repos }) => {
   const { darkMode } = useContext(ThemeContext);

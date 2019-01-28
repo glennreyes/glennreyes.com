@@ -3,12 +3,12 @@ import React from 'react';
 import { Link as BaseLink } from 'rebass';
 import { css } from '../lib/styled-components';
 
-interface LinkProps {
+type LinkProps = {
   children: React.ReactElement<any>;
   href: string;
   target?: '_blank';
   title?: string;
-}
+};
 
 const Link: React.FC<LinkProps> = props => {
   if (props.href.startsWith('http')) {

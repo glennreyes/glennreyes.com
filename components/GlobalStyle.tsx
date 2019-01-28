@@ -1,9 +1,9 @@
 import { createGlobalStyle, ThemeProps } from '../lib/styled-components';
 import { GlobalStyleComponent } from 'styled-components';
 
-interface GlobalStyleProps {
+type GlobalStyleProps = {
   darkMode?: boolean;
-}
+};
 
 const GlobalStyle: GlobalStyleComponent<
   GlobalStyleProps,

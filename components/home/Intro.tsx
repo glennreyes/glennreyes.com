@@ -10,9 +10,9 @@ import { ThemeContext } from '../Theme';
 import { Me } from '../../data/me';
 import { css } from '../../lib/styled-components';
 
-interface IntroProps {
+type IntroProps = {
   me: Me;
-}
+};
 
 const Intro: React.FC<IntroProps> = ({ me }) => {
   const { darkMode } = useContext(ThemeContext);

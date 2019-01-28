@@ -3,9 +3,9 @@ import { Box } from 'rebass';
 import Heading from './Heading';
 import { css } from '../lib/styled-components';
 
-interface SectionProps {
+type SectionProps = {
   title: string;
-}
+};
 
 const Section: React.FC<SectionProps> = ({ title, ...props }) => (
   <Box as="section" p={3}>

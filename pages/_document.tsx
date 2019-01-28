@@ -7,9 +7,9 @@ import Document, {
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
-interface DocumentProps {
+type DocumentProps = {
   styleTags: React.ReactElement<{}>[];
-}
+};
 
 export default class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {

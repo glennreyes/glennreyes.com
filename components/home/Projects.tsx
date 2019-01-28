@@ -6,9 +6,9 @@ import Link from '../Link';
 import Section from '../Section';
 import { Project } from '../../data/projects';
 
-interface ProjectsProps {
+type ProjectsProps = {
   projects: Project[];
-}
+};
 
 const OSS: React.FC<ProjectsProps> = ({ projects }) => (
   <Section title="Projects">
