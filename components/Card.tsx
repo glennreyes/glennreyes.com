@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { Image } from 'rebass';
 import { Card as BaseCard, CardProps as BaseCardProps } from 'rebass';
+import { Interpolation } from 'styled-components';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
+
+const CardContainer: React.FC<BaseCardProps & CardProps> = BaseCard;
 
 type CardProps = {
   darkMode?: boolean;
@@ -20,10 +23,20 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <BaseCard
-      css={css`
+    <CardContainer
+      bg={darkMode ? 'blue25' : 'transparent'}
+      borderRadius={1}
+      css={css<CardProps>`
         overflow: hidden;
+        transition: ${props => props.theme.transitions[0]};
+
+        &:hover ${CardContainer as Interpolation<{}>} {
+          background-color: ${props =>
+            props.theme.colors[props.darkMode ? 'blue' : 'lightGray']};
+        }
       `}
+      darkMode={darkMode}
+      {...props}
     >
       {props.image && (
         <Image
@@ -38,28 +51,22 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
           src={props.image.src}
         />
       )}
-      <BaseCard
-        bg={darkMode ? 'blue25' : 'transparent'}
+      <CardContainer
         border={darkMode ? 0 : 1}
         css={css<CardProps>`
           border-radius: ${props =>
             props.image
               ? `0 0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px`
               : `${props.theme.radii[1]}px`};
+          ${props => (props.image ? 'border-top-width: 0;' : '')}
           transition: ${props => props.theme.transitions[0]};
-
-          &:hover {
-            background-color: ${props =>
-              props.theme.colors[props.darkMode ? 'blue' : 'lightGray']};
-          }
         `}
-        darkMode={darkMode}
         p={3}
         {...props}
       >
         {children}
-      </BaseCard>
-    </BaseCard>
+      </CardContainer>
+    </CardContainer>
   );
 };
 
