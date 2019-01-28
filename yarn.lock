@@ -3095,11 +3095,6 @@ html-entities@^1.2.0:
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
   integrity sha1-DfKTUfByEWNRXfueVUPl9u7VFi8=
 
-htmlescape@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/htmlescape/-/htmlescape-1.1.1.tgz#3a03edc2214bca3b66424a3e7959349509cb0351"
-  integrity sha1-OgPtwiFLyjtmQko+eVk0lQnLA1E=
-
 http-errors@~1.6.2:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
@@ -3940,10 +3935,10 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
-next-server@8.0.0-canary.13:
-  version "8.0.0-canary.13"
-  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.0.0-canary.13.tgz#698f1bddacd52ecc78b28267fa76121a433c88c3"
-  integrity sha512-KfRTA1o+RXGm6FUdIzgHHhl4nvfO+83AU5feTUNr08TJhUKgzpyqQqBRJ2OPBrmidnNbPRgeFwZOSXN2NlQiXQ==
+next-server@8.0.0-canary.17:
+  version "8.0.0-canary.17"
+  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.0.0-canary.17.tgz#d229885d2a8c3bd4f1acf9204baecc6c5b64bea0"
+  integrity sha512-NsP7I5MOGJ5paUmUKRKn/OxEEbssbS/rwCUhuiSByIKs6eqpoFXCi7B7vPFn3cI2a1u8xeh6t6RpcUhuogj/Aw==
   dependencies:
     etag "1.8.1"
     find-up "3.0.0"
@@ -3953,10 +3948,10 @@ next-server@8.0.0-canary.13:
     send "0.16.1"
     url "0.11.0"
 
-next@^8.0.0-canary.13:
-  version "8.0.0-canary.13"
-  resolved "https://registry.yarnpkg.com/next/-/next-8.0.0-canary.13.tgz#733adf5d0bd2a629181a1d14d0d817221373f844"
-  integrity sha512-WNRKsNRj48I6oQHerEEgPEbuDsDro7exQGRAtBh8wdJLTLGGZapR/8I+B1yCGT8c+2myErwz12AbuVoFAyPmGA==
+next@^8.0.0-canary.17:
+  version "8.0.0-canary.17"
+  resolved "https://registry.yarnpkg.com/next/-/next-8.0.0-canary.17.tgz#c59f9b894deaa42c65d233538f1707d50b447858"
+  integrity sha512-/kBtkMXpBaoq1tPJFY40H2QVD9zu2gqv3dn4NyD5oOlYIGnlSjKZDl3AEL9OC8fr81DV50RnlgcJwRVmRYrG0Q==
   dependencies:
     "@babel/core" "7.1.2"
     "@babel/plugin-proposal-class-properties" "7.1.0"
@@ -3969,6 +3964,7 @@ next@^8.0.0-canary.13:
     "@babel/runtime" "7.1.2"
     "@babel/runtime-corejs2" "7.1.2"
     "@babel/template" "7.1.2"
+    acorn "^6.0.5"
     ansi-html "0.0.7"
     arg "3.0.0"
     async-sema "2.1.4"
@@ -3986,13 +3982,12 @@ next@^8.0.0-canary.13:
     friendly-errors-webpack-plugin "1.7.0"
     glob "7.1.2"
     hoist-non-react-statics "3.2.0"
-    htmlescape "1.1.1"
     http-status "1.0.1"
     launch-editor "2.2.1"
     loader-utils "1.1.0"
     mkdirp-then "1.2.0"
     nanoid "1.2.1"
-    next-server "8.0.0-canary.13"
+    next-server "8.0.0-canary.17"
     prop-types "15.6.2"
     prop-types-exact "1.2.0"
     react-error-overlay "4.0.0"
