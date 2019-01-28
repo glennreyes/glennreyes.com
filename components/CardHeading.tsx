@@ -1,20 +1,24 @@
 import React, { useContext } from 'react';
-import { Heading } from 'rebass';
+import { Heading, HeadingProps } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-const CardHeading: React.FC = props => {
+type CardHeadingProps = {
+  truncate?: boolean;
+};
+
+const CardHeading: React.FC<HeadingProps & CardHeadingProps> = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
     <Heading
       as="h3"
       color={darkMode ? 'lightGray' : 'blue'}
-      css={css`
+      css={css<CardHeadingProps>`
         overflow: hidden;
-        text-overflow: ellipsis;
+        ${props => (props.truncate ? 'text-overflow: ellipsis;' : '')}
         transition: ${props => props.theme.transitions[0]};
-        white-space: nowrap;
+        ${props => (props.truncate ? 'white-space: nowrap;' : '')}
       `}
       fontFamily="sans"
       fontSize={1}

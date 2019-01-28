@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from 'rebass';
+import { Box, BoxProps } from 'rebass';
 import Heading from './Heading';
 import { css } from '../lib/styled-components';
 
@@ -7,7 +7,7 @@ type SectionProps = {
   title: string;
 };
 
-const Section: React.FC<SectionProps> = ({ title, ...props }) => (
+const Section: React.FC<BoxProps & SectionProps> = ({ title, ...props }) => (
   <Box as="section" p={3}>
     <Heading fontSize={1} mb={3}>
       {title}

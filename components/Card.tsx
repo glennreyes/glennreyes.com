@@ -30,13 +30,12 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
         overflow: hidden;
         transition: ${props => props.theme.transitions[0]};
 
-        &:hover ${CardContainer as Interpolation<{}>} {
+        &:hover > ${CardContainer as Interpolation<{}>} {
           background-color: ${props =>
             props.theme.colors[props.darkMode ? 'blue' : 'lightGray']};
         }
       `}
       darkMode={darkMode}
-      {...props}
     >
       {props.image && (
         <Image
@@ -59,6 +58,7 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
               ? `0 0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px`
               : `${props.theme.radii[1]}px`};
           ${props => (props.image ? 'border-top-width: 0;' : '')}
+          height: 100%;
           transition: ${props => props.theme.transitions[0]};
         `}
         p={3}

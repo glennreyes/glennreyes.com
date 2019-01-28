@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex } from 'rebass';
+import { Flex, FlexProps } from 'rebass';
 import Icon from './Icon';
 import { Me } from '../data/me';
 import GitHub from '../icons/github.svg';
@@ -12,7 +12,10 @@ type SocialLinksProps = {
   me: Me;
 };
 
-const SocialLinks: React.FC<SocialLinksProps> = ({ me, ...props }) => {
+const SocialLinks: React.FC<FlexProps & SocialLinksProps> = ({
+  me,
+  ...props
+}) => {
   const socialItems = [
     {
       component: Twitter,

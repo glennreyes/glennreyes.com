@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Text as BaseText, TextProps } from 'rebass';
+import { Text as BaseText, TextProps as BaseTextProps } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-const Text: React.FC<TextProps> = props => {
+const Text: React.FC<BaseTextProps> = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (

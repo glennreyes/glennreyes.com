@@ -22,7 +22,7 @@ const OSS: React.FC<OSSProps> = ({ repos }) => {
         <Link href={url} key={id} target="_blank">
           <Card>
             <Flex alignItems="center" justifyContent="space-between">
-              <CardHeading>{name}</CardHeading>
+              <CardHeading truncate>{name}</CardHeading>
               <CardText lineHeight={2} ml="auto">
                 {stars}
               </CardText>
