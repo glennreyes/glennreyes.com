@@ -27,6 +27,9 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
       bg={darkMode ? 'blue25' : 'transparent'}
       borderRadius={1}
       css={css<CardProps>`
+        display: flex;
+        flex: 1;
+        flex-direction: column;
         overflow: hidden;
         transition: ${props => props.theme.transitions[0]};
 
@@ -58,7 +61,9 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
               ? `0 0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px`
               : `${props.theme.radii[1]}px`};
           ${props => (props.image ? 'border-top-width: 0;' : '')}
-          height: 100%;
+          display: flex;
+          flex: 1;
+          flex-direction: column;
           transition: ${props => props.theme.transitions[0]};
         `}
         p={3}

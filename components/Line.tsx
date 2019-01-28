@@ -15,6 +15,7 @@ const Line: React.FC<BoxProps & LineProps> = props => (
       border-style: solid;
       border-width: 1px 0 0;
       flex: 1;
+      transition: ${props => props.theme.transitions[0]};
     `}
     {...props}
   />

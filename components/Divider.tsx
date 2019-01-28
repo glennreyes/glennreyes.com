@@ -12,7 +12,7 @@ const Divider: React.FC<FlexProps> = ({ children, ...props }) => {
       <Line darkMode={darkMode} />
       {children && (
         <Text
-          color={darkMode ? 'darkBlue' : 'gray'}
+          color={darkMode ? 'blue' : 'gray'}
           fontSize={0}
           fontWeight="bold"
           mx={1}

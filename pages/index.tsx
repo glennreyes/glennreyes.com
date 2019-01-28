@@ -35,7 +35,7 @@ const Home: NextFC<HomeProps> = ({ me, projects, repos, talks }) => (
         );
         justify-content: center;
       `}
-      my={3}
+      my={4}
     >
       <OSS repos={repos} />
       <Projects projects={projects} />
