@@ -1,4 +1,4 @@
-interface Talk {
+export interface Talk {
   date: Date;
   eventUrl: string;
   isLightningTalk?: boolean;

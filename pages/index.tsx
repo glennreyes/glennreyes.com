@@ -5,15 +5,18 @@ import { Box } from 'rebass';
 import fetchRepos from '../api/fetchRepos';
 import Intro from '../components/home/Intro';
 import OSS from '../components/home/OSS';
+import Projects from '../components/home/Projects';
+import projects, { Project } from '../data/projects';
 import me, { Me } from '../data/me';
 import { css } from '../lib/styled-components';
 
 interface HomeProps {
   me: Me;
-  repos: any;
+  projects: Project[];
+  repos: Repository[];
 }
 
-const Home: NextFC<HomeProps> = ({ me, repos }) => (
+const Home: NextFC<HomeProps> = ({ me, projects, repos }) => (
   <>
     <Head>
       <title>{`${me.name} — ${me.job}`}</title>
@@ -32,6 +35,7 @@ const Home: NextFC<HomeProps> = ({ me, repos }) => (
       my={3}
     >
       <OSS repos={repos} />
+      <Projects projects={projects} />
     </Box>
   </>
 );
@@ -39,7 +43,7 @@ const Home: NextFC<HomeProps> = ({ me, repos }) => (
 Home.getInitialProps = async () => {
   const repos = await fetchRepos();
 
-  return { me, repos };
+  return { me, projects, repos };
 };
 
 export default Home;

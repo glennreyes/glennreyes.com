@@ -1,4 +1,4 @@
-interface Workshop {
+export interface Workshop {
   description: string;
   endDate: Date;
   eventUrl: string;
