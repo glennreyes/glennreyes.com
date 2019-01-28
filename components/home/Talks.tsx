@@ -6,7 +6,6 @@ import CardHeading from '../CardHeading';
 import CardIcon from '../CardIcon';
 import CardText from '../CardText';
 import Divider from '../Divider';
-import Icon from '../Icon';
 import Link from '../Link';
 import Section from '../Section';
 import { ThemeContext } from '../Theme';

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Flex } from 'rebass';
 import IntroContainer from './IntroContainer';
 import Heading from '../Heading';
@@ -16,9 +16,10 @@ type IntroProps = {
 
 const Intro: React.FC<IntroProps> = ({ me }) => {
   const { darkMode } = useContext(ThemeContext);
+  const container: React.MutableRefObject<HTMLDivElement | null> = useRef(null);
 
   return (
-    <IntroContainer>
+    <IntroContainer ref={container}>
       <Heading as="h1" color={darkMode ? 'lightGray' : 'blue'} fontSize={2}>
         {me.name}
       </Heading>
@@ -37,7 +38,7 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
       <Flex mt={5}>
         <SocialLinks me={me} />
       </Flex>
-      <ScrollDown />
+      <ScrollDown container={container} />
       <ThemeSwitch />
     </IntroContainer>
   );

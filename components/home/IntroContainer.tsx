@@ -3,17 +3,19 @@ import { Flex, FlexProps } from 'rebass';
 import { ThemeContext } from '../Theme';
 import { css } from '../../lib/styled-components';
 
-type IntroContainerProps = {
+type ContainerProps = {
   darkMode?: boolean;
 };
 
-const IntroContainer: React.FC<FlexProps & IntroContainerProps> = props => {
+const Container: React.FC<FlexProps & ContainerProps> = Flex;
+
+const IntroContainer = React.forwardRef(({ children }, ref) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <Flex
+    <Container
       alignItems="center"
-      css={css<IntroContainerProps>`
+      css={css<{ darkMode?: boolean }>`
         height: 100%;
         position: relative;
 
@@ -50,9 +52,16 @@ const IntroContainer: React.FC<FlexProps & IntroContainerProps> = props => {
       darkMode={darkMode}
       flexDirection="column"
       justifyContent="center"
-      {...props}
-    />
+      ref={
+        ref as
+          | string
+          | ((instance: React.FunctionComponent<FlexProps> | null) => void)
+          | React.RefObject<React.FunctionComponent<FlexProps>>
+      }
+    >
+      {children}
+    </Container>
   );
-};
+});
 
 export default IntroContainer;

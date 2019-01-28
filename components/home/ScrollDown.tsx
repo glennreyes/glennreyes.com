@@ -1,27 +1,48 @@
 import React from 'react';
+import { ButtonProps } from 'rebass';
 import Icon from '../Icon';
 import Button from '../Button';
 import { css } from '../../lib/styled-components';
 import ChevronDown from '../../icons/chevron-down.svg';
 
-const ScrollDown: React.FC = () => (
-  <Button
-    css={css`
-      bottom: ${props => props.theme.space[7]}px;
-      cursor: pointer;
-      display: flex;
-      opacity: ${props => props.theme.opacity[1]};
-      outline: none;
-      position: absolute;
-      transition: ${props => props.theme.transitions[0]};
+type ScrollDownProps = {
+  container: React.MutableRefObject<HTMLDivElement | null>;
+};
 
-      &:hover {
-        opacity: ${props => props.theme.opacity[2]};
-      }
-    `}
-  >
-    <Icon as={ChevronDown} />
-  </Button>
-);
+const ScrollDown: React.FC<ButtonProps & ScrollDownProps> = ({
+  container,
+  ...props
+}) => {
+  const handleClick = () => {
+    if (container.current && typeof window !== 'undefined') {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: container.current.getBoundingClientRect().height,
+      });
+    }
+  };
+
+  return (
+    <Button
+      css={css`
+        bottom: ${props => props.theme.space[7]}px;
+        cursor: pointer;
+        display: flex;
+        opacity: ${props => props.theme.opacity[1]};
+        outline: none;
+        position: absolute;
+        transition: ${props => props.theme.transitions[0]};
+
+        &:hover {
+          opacity: ${props => props.theme.opacity[2]};
+        }
+      `}
+      onClick={handleClick}
+      {...props}
+    >
+      <Icon as={ChevronDown} />
+    </Button>
+  );
+};
 
 export default ScrollDown;
