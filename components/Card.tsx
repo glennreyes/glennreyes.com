@@ -30,6 +30,7 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
         display: flex;
         flex: 1;
         flex-direction: column;
+        grid-column: span 2;
         overflow: hidden;
         transition: ${props => props.theme.transitions[0]};
 

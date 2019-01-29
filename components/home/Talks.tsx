@@ -35,7 +35,7 @@ const OSS: React.FC<TalksProps> = ({ talks }) => {
           <Fragment key={year}>
             <Divider
               css={css`
-                grid-column: 1 / span 2;
+                grid-column: span 2;
               `}
               mb={-1}
               mt={index === 0 ? 0 : 2}

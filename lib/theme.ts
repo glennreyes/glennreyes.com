@@ -19,7 +19,7 @@ const yellow50 = rgba(yellow, 0.5);
 // System
 const radii = [0, 8];
 const borders = [`1px solid ${blue}`, `1px solid ${lightGray}`];
-const space = [0, 4, 8, 16, 24, 32, 48, 64, 128, 256, 512, 768, 1024];
+const space = [0, 4, 8, 16, 24, 32, 48, 64, 128, 256, 512, 640, 768, 1024];
 const system = {
   borders,
   breakpoints: ['768px', '1024px'],
