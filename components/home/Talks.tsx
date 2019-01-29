@@ -6,12 +6,14 @@ import CardHeading from '../CardHeading';
 import CardIcon from '../CardIcon';
 import CardText from '../CardText';
 import Divider from '../Divider';
+import Icon from '../Icon';
 import Link from '../Link';
 import Section from '../Section';
 import { ThemeContext } from '../Theme';
 import { Talk } from '../../data/talks';
 import File from '../../icons/file-text.svg';
 import Pin from '../../icons/pin.svg';
+import Flash from '../../icons/flash.svg';
 import Video from '../../icons/video.svg';
 import { css } from '../../lib/styled-components';
 
@@ -47,6 +49,7 @@ const OSS: React.FC<TalksProps> = ({ talks }) => {
                 date,
                 event,
                 eventUrl,
+                isLightningTalk,
                 location: { city, country },
                 slidesUrl,
                 title,
@@ -57,9 +60,21 @@ const OSS: React.FC<TalksProps> = ({ talks }) => {
                   <CardHeading>
                     <Link
                       color="currentColor"
+                      css={css`
+                        align-items: center;
+                        display: flex;
+                        text-decoration: none;
+                      `}
                       href={videoUrl || slidesUrl || eventUrl}
                       target="_blank"
                     >
+                      {isLightningTalk && (
+                        <Icon
+                          as={Flash}
+                          color={darkMode ? 'yellow50' : 'yellow'}
+                          mr={1}
+                        />
+                      )}
                       {title}
                     </Link>
                   </CardHeading>
