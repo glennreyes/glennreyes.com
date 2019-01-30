@@ -10,7 +10,7 @@ type ProjectsProps = {
   projects: Project[];
 };
 
-const OSS: React.FC<ProjectsProps> = ({ projects }) => (
+const Projects: React.FC<ProjectsProps> = ({ projects }) => (
   <Section title="Projects">
     {projects.map(({ description, imageUrl, title, url }) => {
       const name = title || url.replace('https://', '');
@@ -26,4 +26,4 @@ const OSS: React.FC<ProjectsProps> = ({ projects }) => (
   </Section>
 );
 
-export default OSS;
+export default Projects;

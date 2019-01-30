@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
-import { Image } from 'rebass';
+import { Image as BaseImage, ImageProps as BaseImageProps } from 'rebass';
 import { Card as BaseCard, CardProps as BaseCardProps } from 'rebass';
 import { Interpolation } from 'styled-components';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
 const CardContainer: React.FC<BaseCardProps & CardProps> = BaseCard;
+const Image: React.FC<BaseImageProps & CardProps> = BaseImage;
 
 type CardProps = {
   darkMode?: boolean;
+  type?: 'default' | 'light';
   image?: {
     src: string;
     alt?: string;
@@ -18,6 +20,7 @@ type CardProps = {
 const Card: React.FC<BaseCardProps & CardProps> = ({
   children,
   p,
+  type,
   ...props
 }) => {
   const { darkMode } = useContext(ThemeContext);
@@ -29,7 +32,7 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
       css={css<CardProps>`
         display: flex;
         flex: 1;
-        flex-direction: column;
+        flex-direction: ${props => (props.type === 'light' ? 'row' : 'column')};
         grid-column: span 2;
         overflow: hidden;
         transition: ${props => props.theme.transitions[0]};
@@ -40,18 +43,25 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
         }
       `}
       darkMode={darkMode}
+      type={type}
     >
       {props.image && (
         <Image
-          css={css<{ src: string }>`
+          css={css<BaseImageProps & CardProps>`
             border-radius: ${props =>
               props.src
-                ? `${props.theme.radii[1]}px ${props.theme.radii[1]}px 0 0`
-                : 'none'};
+                ? props.type === 'light'
+                  ? `${props.theme.radii[1]}px 0 0 ${props.theme.radii[1]}px`
+                  : `${props.theme.radii[1]}px ${props.theme.radii[1]}px 0 0`
+                : 0};
             display: block;
+            height: ${props => props.theme.space[8]}px;
+            object-fit: cover;
+            ${props => (props.type === 'light' ? `width: 96px;}` : '')}
           `}
           alt={props.image.alt}
           src={props.image.src}
+          type={type}
         />
       )}
       <CardContainer
@@ -59,15 +69,23 @@ const Card: React.FC<BaseCardProps & CardProps> = ({
         css={css<CardProps>`
           border-radius: ${props =>
             props.image
-              ? `0 0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px`
+              ? props.type === 'light'
+                ? `0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px 0`
+                : `0 0 ${props.theme.radii[1]}px ${props.theme.radii[1]}px`
               : `${props.theme.radii[1]}px`};
-          ${props => (props.image ? 'border-top-width: 0;' : '')}
+          ${props =>
+            props.image
+              ? props.type === 'light'
+                ? 'border-left-width: 0;'
+                : 'border-top-width: 0;'
+              : ''}
           display: flex;
           flex: 1;
           flex-direction: column;
           transition: ${props => props.theme.transitions[0]};
         `}
         p={3}
+        type={type}
         {...props}
       >
         {children}

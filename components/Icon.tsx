@@ -3,7 +3,9 @@ import { Box, BoxProps } from 'rebass';
 import { ThemeContext } from './Theme';
 import { css } from '../lib/styled-components';
 
-const Icon: React.FC<BoxProps> = props => {
+export type IconProps = BoxProps;
+
+const Icon: React.FC<IconProps> = props => {
   const { darkMode } = useContext(ThemeContext);
 
   return (

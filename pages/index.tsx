@@ -2,7 +2,9 @@ import { NextFC } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Box } from 'rebass';
+import fetchBooks from '../api/fetchBooks';
 import fetchRepos from '../api/fetchRepos';
+import Books from '../components/home/Books';
 import Intro from '../components/home/Intro';
 import OSS from '../components/home/OSS';
 import Projects from '../components/home/Projects';
@@ -13,13 +15,14 @@ import talks, { Talk } from '../data/talks';
 import { css } from '../lib/styled-components';
 
 type HomeProps = {
+  books: Book[];
   me: Me;
   projects: Project[];
   repos: Repository[];
   talks: Talk[];
 };
 
-const Home: NextFC<HomeProps> = ({ me, projects, repos, talks }) => (
+const Home: NextFC<HomeProps> = ({ books, me, projects, repos, talks }) => (
   <>
     <Head>
       <title>{`${me.name} — ${me.job}`}</title>
@@ -41,14 +44,15 @@ const Home: NextFC<HomeProps> = ({ me, projects, repos, talks }) => (
       <OSS repos={repos} />
       <Projects projects={projects} />
       <Talks talks={talks} />
+      <Books books={books} />
     </Box>
   </>
 );
 
 Home.getInitialProps = async () => {
-  const repos = await fetchRepos();
+  const [books, repos] = await Promise.all([fetchBooks(), fetchRepos()]);
 
-  return { me, projects, repos, talks };
+  return { books, me, projects, repos, talks };
 };
 
 export default Home;

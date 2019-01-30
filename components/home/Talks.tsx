@@ -21,7 +21,7 @@ type TalksProps = {
   talks: Talk[];
 };
 
-const OSS: React.FC<TalksProps> = ({ talks }) => {
+const Talks: React.FC<TalksProps> = ({ talks }) => {
   const { darkMode } = useContext(ThemeContext);
   // Unique years
   const years = [...new Set(talks.map(({ date }) => dayjs(date).year()))];
@@ -122,4 +122,4 @@ const OSS: React.FC<TalksProps> = ({ talks }) => {
   );
 };
 
-export default OSS;
+export default Talks;
