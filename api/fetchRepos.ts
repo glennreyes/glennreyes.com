@@ -15,7 +15,7 @@ const fetchRepos = async ({ first = 4 } = {}) => {
       data: {
         query: `
             query getPinnedRepositories($first: Int!) {
-              repositoryOwner(login:"glennreyes") {
+              repositoryOwner(login: "glennreyes") {
                 repositories(
                   first: $first, isFork: false
                   orderBy: { field: STARGAZERS, direction: DESC }

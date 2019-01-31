@@ -4,14 +4,16 @@ import Heading from './Heading';
 import { css } from '../lib/styled-components';
 
 type SectionProps = {
-  title: string;
+  title?: string;
 };
 
 const Section: React.FC<BoxProps & SectionProps> = ({ title, ...props }) => (
   <Box as="section" py={5}>
-    <Heading fontSize={1} mb={3}>
-      {title}
-    </Heading>
+    {title && (
+      <Heading fontSize={1} mb={3}>
+        {title}
+      </Heading>
+    )}
     <Box
       css={css`
         display: grid;
