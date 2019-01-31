@@ -1,0 +1,16 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "graphpack build",
+    "dev": "graphpack",
+    "start": "node build/index.js"
+  },
+  "devDependencies": {
+    "graphpack": "^1.0.6"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
