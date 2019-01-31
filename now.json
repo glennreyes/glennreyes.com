@@ -3,10 +3,10 @@
   "alias": "glennreyes",
   "builds": [
     {
-      "src": "graphql/build/index.js",
+      "src": "api/build/index.js",
       "use": "@now/node-server"
     },
-    { "src": "website/package.json", "use": "@now/next" }
+    { "src": "www/package.json", "use": "@now/next" }
   ],
   "env": {
     "GA_TRACKING_ID": "@glennreyes-ga-tracking-id",
@@ -15,8 +15,8 @@
     "GOODREADS_USER_ID": "@glennreyes-goodreads-user-id"
   },
   "routes": [
-    { "src": "/graphql", "dest": "/graphql/build/index.js" },
-    { "src": "/(.*)", "dest": "/website/$1" }
+    { "src": "/api", "dest": "/api/build/index.js" },
+    { "src": "/(.*)", "dest": "/www/$1" }
   ],
   "version": 2
 }
