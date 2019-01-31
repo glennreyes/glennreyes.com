@@ -48,10 +48,15 @@ const IntroContainer = React.forwardRef(({ children }, ref) => {
           );
           opacity: ${props => props.theme.opacity[props.darkMode ? 0 : 4]};
         }
+
+        @media (min-width: ${props => props.theme.breakpoints[0]}) {
+          height: auto;
+        }
       `}
       darkMode={darkMode}
       flexDirection="column"
       justifyContent="center"
+      py={8}
       ref={
         ref as
           | string

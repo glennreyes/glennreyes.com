@@ -8,7 +8,7 @@ type SectionProps = {
 };
 
 const Section: React.FC<BoxProps & SectionProps> = ({ title, ...props }) => (
-  <Box as="section" py={4}>
+  <Box as="section" py={5}>
     <Heading fontSize={1} mb={3}>
       {title}
     </Heading>

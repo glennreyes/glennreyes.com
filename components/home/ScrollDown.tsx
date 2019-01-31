@@ -36,6 +36,10 @@ const ScrollDown: React.FC<ButtonProps & ScrollDownProps> = ({
         &:hover {
           opacity: ${props => props.theme.opacity[2]};
         }
+
+        @media (min-width: ${props => props.theme.breakpoints[0]}) {
+          display: none;
+        }
       `}
       onClick={handleClick}
       {...props}
