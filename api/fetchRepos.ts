@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const githubToken = process.env.GITHUB_TOKEN;
 
-const fetchRepos = async () => {
+const fetchRepos = async ({ first = 4 } = {}) => {
   if (!githubToken) return [];
 
   try {
@@ -14,22 +14,27 @@ const fetchRepos = async () => {
       },
       data: {
         query: `
-          {
-            repositoryOwner(login:"glennreyes") {
-              pinnedRepositories(first: 6, orderBy:{field:STARGAZERS, direction:DESC}) {
-                nodes {
-                  id
-                  name
-                  description
-                  stargazers {
-                    totalCount
+            query getPinnedRepositories($first: Int!) {
+              repositoryOwner(login:"glennreyes") {
+                repositories(
+                  first: $first, isFork: false
+                  orderBy: { field: STARGAZERS, direction: DESC }
+                  ownerAffiliations: [OWNER]
+                ) {
+                  nodes{
+                    id
+                    name
+                    description
+                    stargazers {
+                      totalCount
+                    }
+                    url
                   }
-                  url
                 }
               }
             }
-          }
-      `,
+        `,
+        variables: { first },
       },
     });
 
@@ -38,10 +43,10 @@ const fetchRepos = async () => {
       res.data &&
       res.data.data &&
       res.data.data.repositoryOwner &&
-      res.data.data.repositoryOwner.pinnedRepositories &&
-      res.data.data.repositoryOwner.pinnedRepositories.nodes
+      res.data.data.repositoryOwner.repositories &&
+      res.data.data.repositoryOwner.repositories.nodes
     ) {
-      return res.data.data.repositoryOwner.pinnedRepositories.nodes.map(
+      return res.data.data.repositoryOwner.repositories.nodes.map(
         ({
           stargazers,
           ...repo

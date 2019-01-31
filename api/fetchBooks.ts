@@ -5,7 +5,7 @@ import { parseString } from 'xml2js';
 const goodreadsKey = process.env.GOODREADS_KEY || 'xXp6fv3bvGnkQB0ap7yPIw';
 const goodreadsUserId = process.env.GOODREADS_USER_ID || '78272035';
 
-const fetchBooks = async () => {
+const fetchBooks = async ({ first = 10 } = {}) => {
   if (!goodreadsKey) return [];
 
   try {
@@ -15,7 +15,7 @@ const fetchBooks = async () => {
         url: `https://www.goodreads.com/review/list/${goodreadsUserId}.xml`,
         params: {
           key: goodreadsKey,
-          per_page: 200,
+          per_page: first,
           sort: 'date_read',
           v: 2,
         },
