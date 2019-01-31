@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../components/GlobalStyle';
 import Theme from '../components/Theme';
+import ThemeSwitch from '../components/ThemeSwitch';
 import theme from '../lib/theme';
 
 export default class MyApp extends App {
@@ -27,6 +28,7 @@ export default class MyApp extends App {
               <>
                 <GlobalStyle darkMode={darkMode} />
                 <Component {...pageProps} />
+                <ThemeSwitch />
               </>
             )}
           </Theme>

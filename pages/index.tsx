@@ -4,6 +4,7 @@ import React from 'react';
 import { Box } from 'rebass';
 import fetchBooks from '../api/fetchBooks';
 import fetchRepos from '../api/fetchRepos';
+import Footer from '../components/Footer';
 import Books from '../components/home/Books';
 import Intro from '../components/home/Intro';
 import OSS from '../components/home/OSS';
@@ -46,6 +47,7 @@ const Home: NextFC<HomeProps> = ({ books, me, projects, repos, talks }) => (
       <Talks talks={talks} />
       <Books books={books} />
     </Box>
+    <Footer me={me} />
   </>
 );
 

@@ -3,7 +3,6 @@ import { Flex } from 'rebass';
 import IntroContainer from './IntroContainer';
 import Heading from '../Heading';
 import ScrollDown from './ScrollDown';
-import ThemeSwitch from './ThemeSwitch';
 import SocialLinks from '../SocialLinks';
 import Text from '../Text';
 import { ThemeContext } from '../Theme';
@@ -39,7 +38,6 @@ const Intro: React.FC<IntroProps> = ({ me }) => {
         <SocialLinks me={me} />
       </Flex>
       <ScrollDown container={container} />
-      <ThemeSwitch />
     </IntroContainer>
   );
 };

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import Icon from '../Icon';
-import Button from '../Button';
-import { ThemeContext } from '../Theme';
-import { css } from '../../lib/styled-components';
-import Moon from '../../icons/moon.svg';
-import Sun from '../../icons/sun.svg';
+import Icon from './Icon';
+import Button from './Button';
+import { ThemeContext } from './Theme';
+import { css } from '../lib/styled-components';
+import Moon from '../icons/moon.svg';
+import Sun from '../icons/sun.svg';
 
 const ThemeSwitch: React.FC = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
