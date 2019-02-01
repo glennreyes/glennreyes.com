@@ -1,3 +1,72 @@
+type Book {
+  id: ID!
+  imageUrl: String!
+  link: String!
+  progress: Float
+  rating: Int
+  shelf: String!
+  title: String!
+}
+
+type Location {
+  city: String!
+  country: String!
+}
+
+type Me {
+  description: String!
+  email: String!
+  job: String!
+  github: String!
+  instagram: String!
+  name: String!
+  twitter: String!
+}
+
+type Project {
+  description: String!
+  imageUrl: String!
+  title: String
+  url: String!
+}
+
 type Query {
-  sayHello: String
+  books: [Book!]!
+  me: Me!
+  repos: [Repository!]!
+  projects: [Project!]!
+  talks: [Talk!]!
+  workshops: [Workshop!]!
+}
+
+type Repository {
+  description: String!
+  id: ID!
+  name: String!
+  stars: Int!
+  url: String!
+}
+
+type Talk {
+  date: String!
+  event: String!
+  eventUrl: String!
+  isLightningTalk: Boolean
+  location: Location!
+  slidesUrl: String
+  title: String!
+  venue: String!
+  videoUrl: String
+}
+
+type Workshop {
+  description: String!
+  endDate: String!
+  eventUrl: String!
+  organizer: String!
+  place: String!
+  repo: String
+  startDate: String!
+  title: String!
+  venue: String!
 }

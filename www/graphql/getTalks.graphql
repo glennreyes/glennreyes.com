@@ -1,0 +1,16 @@
+query getTalks {
+  talks {
+    date
+    event
+    eventUrl
+    isLightningTalk
+    location {
+      city
+      country
+    }
+    slidesUrl
+    title
+    venue
+    videoUrl
+  }
+}

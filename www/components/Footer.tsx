@@ -2,16 +2,11 @@ import React, { useContext } from 'react';
 import { Flex, FlexProps } from 'rebass';
 import SocialLinks from './SocialLinks';
 import { ThemeContext } from './Theme';
-import { Me } from '../data/me';
 import { css } from '../lib/styled-components';
-
-type FooterProps = {
-  me: Me;
-};
 
 const FooterContainer: React.FC<FlexProps & { darkMode?: boolean }> = Flex;
 
-const Footer: React.FC<FooterProps> = ({ me }) => {
+const Footer: React.FC = () => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
@@ -59,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ me }) => {
       mt={8}
       py={5}
     >
-      <SocialLinks me={me} />
+      <SocialLinks />
     </FooterContainer>
   );
 };

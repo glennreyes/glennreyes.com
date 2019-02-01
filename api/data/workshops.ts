@@ -30,7 +30,7 @@ In this workshop we will build a production-ready React app with GraphQL backend
     organizer: `React Finland`,
     place: 'Helsinki, Finland',
     startDate: new Date('Apr 24, 2019 05:30 pm'),
-    title: 'tbd',
+    title: 'React and GraphQL – From zero to production',
     venue: 'Paasitorni',
   },
 ];

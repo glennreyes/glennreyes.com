@@ -47,13 +47,10 @@ const fetchRepos = async ({ first = 4 } = {}) => {
       res.data.data.repositoryOwner.repositories.nodes
     ) {
       return res.data.data.repositoryOwner.repositories.nodes.map(
-        ({
-          stargazers,
-          ...repo
-        }: Repository & {
-          name: string;
-          stargazers: { totalCount: number };
-        }) => ({ ...repo, stars: stargazers.totalCount }),
+        ({ stargazers, ...repo }) => ({
+          ...repo,
+          stars: stargazers.totalCount,
+        }),
       );
     }
   } catch (error) {

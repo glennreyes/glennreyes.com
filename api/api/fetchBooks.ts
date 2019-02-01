@@ -2,8 +2,8 @@ import axios from 'axios';
 import util from 'util';
 import { parseString } from 'xml2js';
 
-const goodreadsKey = process.env.GOODREADS_KEY || 'xXp6fv3bvGnkQB0ap7yPIw';
-const goodreadsUserId = process.env.GOODREADS_USER_ID || '78272035';
+const goodreadsKey = process.env.GOODREADS_KEY;
+const goodreadsUserId = process.env.GOODREADS_USER_ID;
 
 const fetchBooks = async ({ first = 10 } = {}) => {
   if (!goodreadsKey) return [];

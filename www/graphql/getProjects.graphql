@@ -1,0 +1,8 @@
+query getProjects {
+  projects {
+    description
+    imageUrl
+    title
+    url
+  }
+}

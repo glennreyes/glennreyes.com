@@ -1,0 +1,11 @@
+query getBooks {
+  books {
+    id
+    imageUrl
+    link
+    progress
+    rating
+    shelf
+    title
+  }
+}

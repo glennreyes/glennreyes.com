@@ -1,0 +1,9 @@
+query getRepos {
+  repos {
+    description
+    id
+    name
+    stars
+    url
+  }
+}

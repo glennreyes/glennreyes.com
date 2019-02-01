@@ -1,30 +1,28 @@
 import { NextFC } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { Query } from 'react-apollo';
 import { Box, Flex } from 'rebass';
-import fetchBooks from '../api/fetchBooks';
-import fetchRepos from '../api/fetchRepos';
 import Footer from '../components/Footer';
 import Heading from '../components/Heading';
 import OSS from '../components/oss/OSS';
-import me, { Me } from '../data/me';
-import projects, { Project } from '../data/projects';
-import talks, { Talk } from '../data/talks';
+import getMe from '../graphql/getMe.graphql';
 import { css } from '../lib/styled-components';
+import { GetMeQuery } from '../typings/__generated__/graphql';
 
-type HomeProps = {
-  books: Book[];
-  me: Me;
-  projects: Project[];
-  repos: Repository[];
-  talks: Talk[];
-};
-
-const Home: NextFC<HomeProps> = ({ me, repos }) => (
+const Home: NextFC = () => (
   <>
-    <Head>
-      <title>{`Open Source Projects — ${me.name}`}</title>
-    </Head>
+    <Query<GetMeQuery> query={getMe}>
+      {({ data, loading }) => {
+        if (loading || !data) return null;
+
+        return (
+          <Head>
+            <title>{`Open Source Projects — ${data.me.name}`}</title>
+          </Head>
+        );
+      }}
+    </Query>
     <Box
       as="main"
       css={css`
@@ -43,19 +41,10 @@ const Home: NextFC<HomeProps> = ({ me, repos }) => (
           Open Source Projects
         </Heading>
       </Flex>
-      <OSS repos={repos} />
+      <OSS />
     </Box>
-    <Footer me={me} />
+    <Footer />
   </>
 );
-
-Home.getInitialProps = async () => {
-  const [books, repos] = await Promise.all([
-    fetchBooks(),
-    fetchRepos({ first: 100 }),
-  ]);
-
-  return { books, me, projects, repos, talks };
-};
 
 export default Home;

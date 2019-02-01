@@ -1,0 +1,11 @@
+query GetMe {
+  me {
+    description
+    email
+    job
+    github
+    instagram
+    name
+    twitter
+  }
+}
