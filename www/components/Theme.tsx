@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { createContext, useState } from 'react';
 
 export const ThemeContext = createContext({
@@ -10,7 +11,9 @@ type ThemeProps = {
 };
 
 const Theme: React.FC<ThemeProps> = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const currentHour = dayjs().hour();
+  const isNight = currentHour >= 18 || currentHour <= 6;
+  const [darkMode, setDarkMode] = useState(isNight);
 
   return (
     <ThemeContext.Provider
