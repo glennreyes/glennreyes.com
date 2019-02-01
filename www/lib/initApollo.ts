@@ -17,7 +17,10 @@ if (isBrowser) {
 
 const create = (initialState?: NormalizedCacheObject) =>
   new ApolloClient({
-    cache: new InMemoryCache().restore(initialState || {}),
+    cache: new InMemoryCache().restore(
+      // @ts-ignore
+      initialState || (isBrowser ? global.__NEXT_DATA__.props.apolloState : {}),
+    ),
     connectToDevTools: isBrowser,
     link: new HttpLink({ uri: process.env.GRAPHQL_URL }),
     ssrMode: !isBrowser, // Disables forceFetch on the server (so queries are only run once)

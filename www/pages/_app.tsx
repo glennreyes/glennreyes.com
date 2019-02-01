@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../components/GlobalStyle';
 import Theme from '../components/Theme';
 import ThemeSwitch from '../components/ThemeSwitch';
-import withApolloClient from '../lib/with-apollo-client';
+import withApolloClient from '../lib/withApolloClient';
 import theme from '../lib/theme';
 
 type MyAppProps = {

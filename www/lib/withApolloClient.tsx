@@ -3,7 +3,7 @@ import { NextAppContext } from 'next/app';
 import Head from 'next/head';
 import React, { Component } from 'react';
 import { getDataFromTree } from 'react-apollo';
-import initApollo from './init-apollo';
+import initApollo from './initApollo';
 import { isBrowser } from '../utils';
 
 type ApolloProps = {
@@ -11,8 +11,7 @@ type ApolloProps = {
 };
 
 const withApolloClient = (App: any) =>
-  class Apollo extends Component<ApolloProps> {
-    static displayName = 'withApollo(App)';
+  class WithApolloClient extends Component<ApolloProps> {
     static async getInitialProps(context: NextAppContext) {
       const { Component, router } = context;
 
@@ -48,7 +47,7 @@ const withApolloClient = (App: any) =>
       }
 
       // Extract query data from the Apollo store
-      const apolloState: NormalizedCacheObject = apollo.cache.extract();
+      const apolloState = apollo.cache.extract();
 
       return { ...appProps, apolloState };
     }

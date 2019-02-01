@@ -30,7 +30,11 @@ const Link: React.FC<LinkProps> = ({ children, color, ml, ...props }) => {
     );
   }
 
-  return <NextLink {...props}>{children as React.ReactElement<any>}</NextLink>;
+  return (
+    <NextLink {...props}>
+      <a>{children as React.ReactElement<any>}</a>
+    </NextLink>
+  );
 };
 
 export default Link;
