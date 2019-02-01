@@ -63,7 +63,7 @@ export interface Me {
 }
 
 export interface Repository {
-  description: string;
+  description?: Maybe<string>;
 
   id: string;
 
@@ -214,7 +214,9 @@ export type GetProjectsProjects = {
   url: string;
 };
 
-export type GetReposVariables = {};
+export type GetReposVariables = {
+  first?: Maybe<number>;
+};
 
 export type GetReposQuery = {
   __typename?: 'Query';
@@ -225,7 +227,7 @@ export type GetReposQuery = {
 export type GetReposRepos = {
   __typename?: 'Repository';
 
-  description: string;
+  description: Maybe<string>;
 
   id: string;
 

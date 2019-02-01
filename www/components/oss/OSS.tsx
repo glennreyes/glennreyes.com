@@ -17,7 +17,7 @@ const OSS: React.FC = () => {
 
   return (
     <Section>
-      <Query<GetReposQuery> query={getRepos}>
+      <Query<GetReposQuery> query={getRepos} variables={{ first: 100 }}>
         {({ data, loading }) => {
           if (loading || !data) return null;
 

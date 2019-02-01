@@ -1,5 +1,5 @@
-query getRepos {
-  repos {
+query getRepos($first: Int) {
+  repos(first: $first) {
     description
     id
     name

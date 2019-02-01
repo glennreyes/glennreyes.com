@@ -40,7 +40,7 @@ type Query {
 }
 
 type Repository {
-  description: String!
+  description: String
   id: ID!
   name: String!
   stars: Int!
