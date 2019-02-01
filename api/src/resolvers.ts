@@ -10,7 +10,7 @@ const resolvers = {
     books: () => fetchBooks(),
     me: () => me,
     projects: () => projects,
-    repos: () => fetchRepos(),
+    repos: (_, { first }) => fetchRepos({ first }),
     talks: () => talks,
     workshops: () => workshops,
   },

@@ -134,6 +134,10 @@ export interface Workshop {
 // Arguments
 // ====================================================
 
+export interface ReposQueryArgs {
+  first?: Maybe<number>;
+}
+
 // ====================================================
 // Documents
 // ====================================================

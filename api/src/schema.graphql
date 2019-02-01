@@ -33,7 +33,7 @@ type Project {
 type Query {
   books: [Book!]!
   me: Me!
-  repos: [Repository!]!
+  repos(first: Int): [Repository!]!
   projects: [Project!]!
   talks: [Talk!]!
   workshops: [Workshop!]!
