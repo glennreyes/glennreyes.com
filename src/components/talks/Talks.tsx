@@ -12,7 +12,7 @@ import Link from '../Link';
 import Section from '../Section';
 import Text from '../Text';
 import { ThemeContext } from '../Theme';
-import getTalks from '../../graphql/getTalks.graphql';
+import { getTalks } from '../../graphql';
 import { ReactComponent as ChevronLeft } from '../../icons/chevron-left.svg';
 import { ReactComponent as File } from '../../icons/file-text.svg';
 import { ReactComponent as Pin } from '../../icons/pin.svg';
@@ -147,7 +147,7 @@ const OSS: React.FC = () => {
                 href="/"
               >
                 <Icon as={ChevronLeft} color="currentColor" />
-                Back to home
+                Back to Home
               </Link>
             </Text>
           </>

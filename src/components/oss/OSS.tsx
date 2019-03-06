@@ -61,7 +61,7 @@ const OSS: React.FC = () => {
                 href="/"
               >
                 <Icon as={ChevronLeft} color="currentColor" />
-                Back to home
+                Back to Home
               </Link>
             </Text>
           </>

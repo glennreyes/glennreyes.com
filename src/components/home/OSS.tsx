@@ -60,7 +60,7 @@ const OSS: React.FC = () => {
                 href="/oss"
               >
                 <Icon as={ChevronRight} color="currentColor" />
-                Show all packages
+                View all
               </Link>
             </Text>
           </>
