@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["es6", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": false,
+    "strict": true,
+    "target": "es5"
+  },
+  "exclude": ["src/setupProxy.js", "src/lambda"],
+  "include": ["src"]
+}

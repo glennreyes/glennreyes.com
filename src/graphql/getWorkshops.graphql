@@ -1,0 +1,12 @@
+query getWorkshops {
+  workshops {
+    date
+    event
+    eventUrl
+    location {
+      city
+      country
+    }
+    title
+  }
+}

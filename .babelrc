@@ -1,0 +1,14 @@
+// This file is only used by netlify-lambda
+{
+  "presets": [
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "6.10.3"
+        }
+      }
+    ]
+  ]
+}

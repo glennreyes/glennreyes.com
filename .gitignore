@@ -1,4 +1,4 @@
+/build
+/lambda
+/node_modules
 .env
-.next
-build
-node_modules
