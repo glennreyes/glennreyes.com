@@ -21,9 +21,11 @@ export const system = {
 export const light = {
   bg: system.colors.gray[0],
   headerBg: system.colors.white,
+  textColor: system.colors.black,
 };
 
 export const dark = {
   bg: system.colors.black,
   headerBg: system.colors.gray[3],
+  textColor: system.colors.white,
 };
