@@ -9,7 +9,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    background: ${p => p.theme.bg};
+    margin: ${p => p.theme.space[0]};
+    transition: ${p => p.theme.transition};
   }
 `;
 
