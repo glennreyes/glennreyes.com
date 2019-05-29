@@ -3,9 +3,18 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   html {
+    box-sizing: border-box;
     font-family: ${p => p.theme.fonts.sans};
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    &,
+    &::after,
+    &::before {
+      box-sizing: inherit;
+    }
   }
 
   body {
