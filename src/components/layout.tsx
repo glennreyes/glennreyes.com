@@ -12,7 +12,6 @@ import Header from './header';
 import DarkModeContext from './dark-mode-context';
 import GlobalStyle from './global-style';
 import ThemeProvider from './theme-provider';
-// import './layout.css';
 
 type LayoutProps = {
   children: React.ReactNode;
