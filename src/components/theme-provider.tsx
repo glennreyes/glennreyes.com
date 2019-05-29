@@ -1,20 +1,26 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import DarkModeContext, { DarkModeProvider } from './dark-mode-context';
-import theme from '../theme';
+import { dark, light, system } from '../theme';
 
 type ThemeProviderProps = {
   children?: React.ReactChild;
 };
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const CustomThemeProvider = ({ children }) => {
   const { darkMode } = React.useContext(DarkModeContext);
 
   return (
+    <StyledThemeProvider theme={{ ...system, ...(darkMode ? dark : light) }}>
+      {children}
+    </StyledThemeProvider>
+  );
+};
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  return (
     <DarkModeProvider>
-      <StyledThemeProvider theme={{ ...theme, darkMode }}>
-        {children}
-      </StyledThemeProvider>
+      <CustomThemeProvider children={children} />
     </DarkModeProvider>
   );
 };

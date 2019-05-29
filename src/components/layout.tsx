@@ -9,7 +9,6 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
-import DarkModeContext from './dark-mode-context';
 import GlobalStyle from './global-style';
 import ThemeProvider from './theme-provider';
 

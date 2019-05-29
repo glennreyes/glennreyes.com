@@ -1,14 +1,9 @@
-const system = {
+export const system = {
   borders: [0, 1, 2, 4],
   breakpoints: ['768px', '1024px'],
   colors: {
     black: '#000',
-    gray: {
-      0: '#f9f9f9',
-      1: '#c4c4c4',
-      2: '#767676',
-      3: '#2e2e2e',
-    },
+    gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
     white: '#fff',
   },
   fonts: {
@@ -20,6 +15,15 @@ const system = {
   lineHeights: [1, 1.25, 1.5],
   radii: [0, 8, 16],
   space: [0, 4, 8, 16, 32, 64, 128],
+  transition: '0.4s',
 };
 
-export default { ...system };
+export const light = {
+  bg: system.colors.gray[0],
+  headerBg: system.colors.white,
+};
+
+export const dark = {
+  bg: system.colors.black,
+  headerBg: system.colors.gray[3],
+};
