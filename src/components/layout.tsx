@@ -10,8 +10,9 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
 import DarkModeContext from './dark-mode-context';
+import GlobalStyle from './global-style';
 import ThemeProvider from './theme-provider';
-import './layout.css';
+// import './layout.css';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ const Layout = ({ children }: LayoutProps) => (
       return (
         <ThemeProvider>
           <>
+            <GlobalStyle />
             <Header siteTitle={title} />
             <div
               style={{
