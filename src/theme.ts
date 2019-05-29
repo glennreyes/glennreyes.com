@@ -1,4 +1,4 @@
-const theme = {
+const system = {
   borders: [0, 1, 2, 4],
   breakpoints: ['768px', '1024px'],
   colors: {
@@ -22,4 +22,4 @@ const theme = {
   space: [0, 4, 8, 16, 32, 64, 128],
 };
 
-export default theme;
+export default { ...system };
