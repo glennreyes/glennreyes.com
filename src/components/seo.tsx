@@ -76,7 +76,11 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         ...meta,
       ]}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={
+        title === 'Home'
+          ? site.siteMetadata.title
+          : `%s | ${site.siteMetadata.title}`
+      }
     />
   );
 };
