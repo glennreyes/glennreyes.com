@@ -4,7 +4,7 @@ const system = {
   colors: {
     black: '#000',
     gray: {
-      0: '#e5e5e5',
+      0: '#f9f9f9',
       1: '#c4c4c4',
       2: '#767676',
       3: '#2e2e2e',
