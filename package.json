@@ -15,7 +15,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "yarn develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "generate": "graphql-codegen"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
@@ -29,12 +30,16 @@
     "gatsby-plugin-typescript": "^2.0.15",
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-transformer-sharp": "^2.1.19",
+    "graphql": "^14.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.2.0",
+    "@graphql-codegen/typescript": "^1.2.0",
+    "@graphql-codegen/typescript-operations": "1.2.0",
     "@types/node": "^12.0.3",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",

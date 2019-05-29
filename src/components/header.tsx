@@ -1,9 +1,10 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
+import { HeaderQuery } from '../types/generated/graphql';
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
+  const data: HeaderQuery = useStaticQuery(graphql`
+    query Header {
       site {
         siteMetadata {
           title
