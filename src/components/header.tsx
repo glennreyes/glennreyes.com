@@ -19,6 +19,11 @@ const Container = styled.div`
   flex: 1;
   justify-content: space-between;
   margin: 0 ${p => p.theme.space[3]}px;
+
+  ${p => p.theme.media.tablet`
+    margin-left: ${p.theme.space[4]}px;
+    margin-right: ${p.theme.space[4]}px;
+  `}
 `;
 
 const MenuButton = styled.button``;

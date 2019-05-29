@@ -1,6 +1,22 @@
+import { css } from 'styled-components';
+
+const breakpoints = {
+  tablet: 768,
+  desktop: 1024,
+};
+
+const media: any = Object.keys(breakpoints).reduce((acc, label) => {
+  acc[label] = (first, ...interpolations) => css`
+    @media (min-width: ${breakpoints[label]}px) {
+      ${css(first, ...interpolations)}
+    }
+  `;
+
+  return acc;
+}, {});
+
 export const system = {
   borders: [0, 1, 2, 4],
-  breakpoints: ['768px', '1024px'],
   colors: {
     black: '#000',
     gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
@@ -13,6 +29,7 @@ export const system = {
   fontSizes: [16, 20, 24, 32, 48, 72],
   fontWeights: ['normal', 'bold'],
   lineHeights: [1, 1.25, 1.5],
+  media,
   radii: [0, 8, 16],
   space: [0, 4, 8, 16, 32, 64, 128],
   transition: '0.4s',
