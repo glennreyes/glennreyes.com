@@ -1,6 +1,14 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
+import styled, { css } from 'styled-components';
+import DarkModeContext from './dark-mode-context';
 import { HeaderQuery } from '../types/generated/graphql';
+
+const Container = styled.header`
+  background: ${p => p.theme.headerBg};
+  height: ${p => p.theme.space[5]}px;
+  transition: ${p => p.theme.transition};
+`;
 
 const Header = () => {
   const data: HeaderQuery = useStaticQuery(graphql`
@@ -14,13 +22,10 @@ const Header = () => {
   `);
   const { title } = data.site.siteMetadata;
 
+  const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
+
   return (
-    <header
-      style={{
-        background: `rebeccapurple`,
-        marginBottom: `1.45rem`,
-      }}
-    >
+    <Container>
       <div
         style={{
           margin: `0 auto`,
@@ -29,18 +34,13 @@ const Header = () => {
         }}
       >
         <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {title}
-          </Link>
+          <Link to="/">{title}</Link>
         </h1>
+        <button onClick={() => toggleDarkMode()}>
+          Switch to {darkMode ? 'light' : 'dark'} mode
+        </button>
       </div>
-    </header>
+    </Container>
   );
 };
 
