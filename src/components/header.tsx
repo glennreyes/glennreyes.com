@@ -1,14 +1,34 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import DarkModeContext from './dark-mode-context';
+import Link from './Link';
 import { HeaderQuery } from '../types/generated/graphql';
 
-const Container = styled.header`
+const Wrapper = styled.header`
   background: ${p => p.theme.headerBg};
+  display: flex;
   height: ${p => p.theme.space[5]}px;
+  justify-content: space-between;
   transition: ${p => p.theme.transition};
 `;
+
+const Container = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  margin: 0 ${p => p.theme.space[3]}px;
+`;
+
+const MenuButton = styled.button``;
+
+const TitleLink = styled(Link)`
+  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-weight: ${p => p.theme.fontWeights[1]};
+`;
+
+const DarkModeButton = styled.button``;
 
 const Header = () => {
   const data: HeaderQuery = useStaticQuery(graphql`
@@ -25,22 +45,15 @@ const Header = () => {
   const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
 
   return (
-    <Container>
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `1.45rem 1.0875rem`,
-        }}
-      >
-        <h1 style={{ margin: 0 }}>
-          <Link to="/">{title}</Link>
-        </h1>
-        <button onClick={() => toggleDarkMode()}>
+    <Wrapper>
+      <Container>
+        <MenuButton>Menu</MenuButton>
+        <TitleLink to="/">{title}</TitleLink>
+        <DarkModeButton onClick={() => toggleDarkMode()}>
           Switch to {darkMode ? 'light' : 'dark'} mode
-        </button>
-      </div>
-    </Container>
+        </DarkModeButton>
+      </Container>
+    </Wrapper>
   );
 };
 
