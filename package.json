@@ -13,10 +13,10 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "start": "yarn develop",
+    "dev": "gatsby develop",
+    "generate": "graphql-codegen",
     "serve": "gatsby serve",
-    "generate": "graphql-codegen"
+    "start": "yarn dev"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
