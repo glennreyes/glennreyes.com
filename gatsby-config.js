@@ -2,6 +2,8 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const IS_DEV = process.env.NODE_ENV === 'development';
+
 module.exports = {
   siteMetadata: {
     title: `Glenn Reyes`,
@@ -21,6 +23,12 @@ module.exports = {
         theme_color: `#000000`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        displayName: IS_DEV,
       },
     },
     `gatsby-plugin-typescript`,
