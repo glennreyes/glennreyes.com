@@ -1,10 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import DarkModeContext from './dark-mode-context';
-import Link from './Link';
-import { ReactComponent as Moon } from '../icons/moon.svg';
-import { ReactComponent as Sun } from '../icons/sun.svg';
+
+import DarkModeButton from './dark-mode-button';
+import Link from './link';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header`
@@ -35,8 +34,6 @@ const TitleLink = styled(Link)`
   font-weight: ${p => p.theme.fontWeights[1]};
 `;
 
-const DarkModeButton = styled.button``;
-
 const Header = () => {
   const data: HeaderQuery = useStaticQuery(graphql`
     query Header {
@@ -48,8 +45,6 @@ const Header = () => {
     }
   `);
 
-  const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
-
   return (
     <Wrapper>
       <Container>
@@ -57,9 +52,7 @@ const Header = () => {
         <TitleLink to="/">
           {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
         </TitleLink>
-        <DarkModeButton onClick={() => toggleDarkMode()}>
-          {darkMode ? <Moon /> : <Sun />}
-        </DarkModeButton>
+        <DarkModeButton />
       </Container>
     </Wrapper>
   );
