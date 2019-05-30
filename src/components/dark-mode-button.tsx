@@ -17,7 +17,9 @@ const iconStyles = css`
   left: 0;
   position: absolute;
   top: 0;
-  transition: color ${p => p.theme.transition}, opacity 0.2s, transform 0.8s;
+  transition: color ${p => p.theme.transition},
+    opacity ${p => `${parseFloat(p.theme.transition) * 0.5}`}s,
+    transform ${p => `${parseFloat(p.theme.transition) * 2}`}s;
 `;
 
 const MoonIcon = styled(Moon)<{ darkMode: boolean }>`
