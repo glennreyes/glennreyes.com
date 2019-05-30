@@ -32,6 +32,7 @@ const MenuButton = styled.button``;
 const TitleLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[1]}px;
   font-weight: ${p => p.theme.fontWeights[1]};
+  line-height: ${p => p.theme.lineHeights[0]};
 `;
 
 const Header = () => {
