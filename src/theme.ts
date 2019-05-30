@@ -1,19 +1,32 @@
-import { css } from 'styled-components';
+import {
+  css,
+  CSSObject,
+  FlattenSimpleInterpolation,
+  SimpleInterpolation,
+} from 'styled-components';
 
-const breakpoints = {
-  tablet: 768,
-  desktop: 1024,
-};
+type MediaQueryCssFunction = (
+  first: CSSObject | TemplateStringsArray,
+  ...interpolations: SimpleInterpolation[]
+) => FlattenSimpleInterpolation;
 
-const media: any = Object.keys(breakpoints).reduce((acc, label) => {
-  acc[label] = (first, ...interpolations) => css`
-    @media (min-width: ${breakpoints[label]}px) {
+interface Media {
+  tablet: MediaQueryCssFunction;
+  desktop: MediaQueryCssFunction;
+}
+
+const media: Media = {
+  tablet: (first, ...interpolations) => css`
+    @media (min-width: 768px) {
       ${css(first, ...interpolations)}
     }
-  `;
-
-  return acc;
-}, {});
+  `,
+  desktop: (first, ...interpolations) => css`
+    @media (min-width: 1024px) {
+      ${css(first, ...interpolations)}
+    }
+  `,
+};
 
 export const system = {
   borders: [0, 1, 2, 4],
