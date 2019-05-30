@@ -6,32 +6,32 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   siteMetadata: {
-    title: `Glenn Reyes`,
-    description: `I help people create beautiful products through web technologies.`,
-    author: `@glnnrys`,
+    title: 'Glenn Reyes',
+    description:
+      'I help people create beautiful products through web technologies.',
+    author: '@glnnrys',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Glenn Reyes`,
-        short_name: `Glenn R.`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#000000`,
-        display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        name: 'Glenn Reyes',
+        short_name: 'Glenn R.',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#000000',
+        display: 'minimal-ui',
+        icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: 'gatsby-plugin-styled-components',
       options: {
         displayName: IS_DEV,
       },
     },
-    `gatsby-plugin-typescript`,
     {
       resolve: 'gatsby-plugin-svgr',
       options: {
@@ -50,6 +50,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
+    'gatsby-transformer-sharp',
   ],
 };
