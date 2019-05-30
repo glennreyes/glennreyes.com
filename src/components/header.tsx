@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
 import { HeaderQuery } from '../types/generated/graphql';

@@ -1,8 +1,8 @@
 import {
-  css,
   CSSObject,
   FlattenSimpleInterpolation,
   SimpleInterpolation,
+  css,
 } from 'styled-components';
 
 type MediaQueryCssFunction = (
@@ -11,18 +11,18 @@ type MediaQueryCssFunction = (
 ) => FlattenSimpleInterpolation;
 
 interface Media {
-  tablet: MediaQueryCssFunction;
   desktop: MediaQueryCssFunction;
+  tablet: MediaQueryCssFunction;
 }
 
 const media: Media = {
-  tablet: (first, ...interpolations) => css`
-    @media (min-width: 768px) {
+  desktop: (first, ...interpolations) => css`
+    @media (min-width: 1024px) {
       ${css(first, ...interpolations)}
     }
   `,
-  desktop: (first, ...interpolations) => css`
-    @media (min-width: 1024px) {
+  tablet: (first, ...interpolations) => css`
+    @media (min-width: 768px) {
       ${css(first, ...interpolations)}
     }
   `,
@@ -35,12 +35,12 @@ export const system = {
     gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
     white: '#fff',
   },
-  fonts: {
-    sans: 'system-ui, sans-serif',
-    mono: 'Menlo, monospace',
-  },
   fontSizes: [16, 20, 24, 32, 48, 72],
   fontWeights: ['normal', 'bold'],
+  fonts: {
+    mono: 'Menlo, monospace',
+    sans: 'system-ui, sans-serif',
+  },
   lineHeights: [1, 1.25, 1.5],
   media,
   radii: [0, 8, 16],

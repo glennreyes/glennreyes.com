@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-
 import Button from './button';
 import DarkModeContext from './dark-mode-context';
 import { ReactComponent as Moon } from '../icons/moon.svg';
