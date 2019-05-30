@@ -27,6 +27,9 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/tree/master/docs/rules
     'import/named': 'off',
 
+    // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
+    'react/prop-types': 'off',
+
     // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
