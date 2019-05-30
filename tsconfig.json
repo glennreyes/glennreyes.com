@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "noEmit": true,
+    "skipLibCheck": true,
     "strict": true
   }
 }
