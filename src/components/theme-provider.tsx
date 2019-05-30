@@ -4,7 +4,7 @@ import DarkModeContext, { DarkModeProvider } from './dark-mode-context';
 import { dark, light, system } from '../theme';
 
 type CustomThemeProviderProps = {
-  children?: React.ReactChild;
+  children: React.ReactChild;
 };
 
 const CustomThemeProvider = ({ children }: CustomThemeProviderProps) => {
@@ -18,7 +18,7 @@ const CustomThemeProvider = ({ children }: CustomThemeProviderProps) => {
 };
 
 type ThemeProviderProps = {
-  children?: React.ReactChild;
+  children: React.ReactChild;
 };
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => (
