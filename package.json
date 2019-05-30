@@ -15,8 +15,7 @@
     "build": "gatsby build",
     "dev": "gatsby develop",
     "generate": "graphql-codegen",
-    "serve": "gatsby serve",
-    "start": "yarn dev"
+    "serve": "gatsby serve"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
