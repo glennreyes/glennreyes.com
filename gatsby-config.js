@@ -39,7 +39,7 @@ module.exports = {
           '#000': 'currentColor',
           '#fff': 'currentColor',
         },
-        svgProps: { fill: undefined },
+        svgProps: { fill: 'currentColor' },
       },
     },
     'gatsby-plugin-typescript',

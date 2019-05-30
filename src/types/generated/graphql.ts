@@ -1767,6 +1767,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
   pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
+  pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
@@ -1965,6 +1966,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___displayName = 'pluginOptions___displayName',
   pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
   pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
+  pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
   nodeAPIs = 'nodeAPIs',
@@ -2095,6 +2097,7 @@ export type SitePluginPluginOptions = {
   icon?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['Boolean']>;
   replaceAttrValues?: Maybe<SitePluginPluginOptionsReplaceAttrValues>;
+  svgProps?: Maybe<SitePluginPluginOptionsSvgProps>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
@@ -2111,6 +2114,7 @@ export type SitePluginPluginOptionsFilterInput = {
   replaceAttrValues?: Maybe<
     SitePluginPluginOptionsReplaceAttrValuesFilterInput
   >;
+  svgProps?: Maybe<SitePluginPluginOptionsSvgPropsFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
@@ -2124,6 +2128,15 @@ export type SitePluginPluginOptionsReplaceAttrValues = {
 export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
   _000?: Maybe<StringQueryOperatorInput>;
   _fff?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsSvgProps = {
+  __typename?: 'SitePluginPluginOptionsSvgProps';
+  fill?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsSvgPropsFilterInput = {
+  fill?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
