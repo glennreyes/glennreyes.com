@@ -12,8 +12,13 @@ module.exports = {
     author: '@glnnrys',
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.tsx?$/,
+      },
+    },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -26,6 +31,7 @@ module.exports = {
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-styled-components',
       options: {
