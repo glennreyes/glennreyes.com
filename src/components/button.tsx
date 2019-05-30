@@ -1,5 +1,4 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const Button = styled.button`
   background: none;

@@ -23,7 +23,7 @@ type ThemeProviderProps = {
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => (
   <DarkModeProvider>
-    <CustomThemeProvider children={children} />
+    <CustomThemeProvider>{children}</CustomThemeProvider>
   </DarkModeProvider>
 );
 

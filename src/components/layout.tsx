@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
 import GlobalStyle from './global-style';

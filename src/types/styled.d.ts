@@ -1,4 +1,3 @@
-import { CSSObject, CSSProp } from 'styled-components';
 import { dark, light, system } from '../theme';
 
 // Strongly type the styled-components theme

@@ -9,15 +9,15 @@ import { useStaticQuery, graphql } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
 
-type SEOProps = typeof defaultProps & {
-  meta: [{ content: string; name?: string; property?: string }];
-  title: string;
-};
-
 const defaultProps = {
   lang: 'en',
   meta: [],
   description: '',
+};
+
+type SEOProps = typeof defaultProps & {
+  meta: [{ content: string; name?: string; property?: string }];
+  title: string;
 };
 
 const SEO = ({ description, lang, meta, title }: SEOProps) => {
