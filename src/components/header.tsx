@@ -47,7 +47,6 @@ const Header = () => {
       }
     }
   `);
-  const { title } = data.site.siteMetadata;
 
   const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
 
@@ -55,7 +54,9 @@ const Header = () => {
     <Wrapper>
       <Container>
         <MenuButton>Menu</MenuButton>
-        <TitleLink to="/">{title}</TitleLink>
+        <TitleLink to="/">
+          {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
+        </TitleLink>
         <DarkModeButton onClick={() => toggleDarkMode()}>
           {darkMode ? <Moon /> : <Sun />}
         </DarkModeButton>
