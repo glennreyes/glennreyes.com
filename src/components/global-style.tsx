@@ -21,7 +21,9 @@ const GlobalStyle = createGlobalStyle`
     background: ${p => p.theme.bg};
     color: ${p => p.theme.textColor};
     margin: ${p => p.theme.space[0]};
-    transition: ${p => p.theme.transition};
+    transition:
+      background ${p => p.theme.transition},
+      color ${p => p.theme.transition};
   }
 `;
 
