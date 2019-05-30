@@ -1765,6 +1765,8 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___display = 'pluginCreator___pluginOptions___display',
   pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
   pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
+  pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
+  pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
@@ -1774,7 +1776,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___packageJson___description = 'pluginCreator___packageJson___description',
   pluginCreator___packageJson___version = 'pluginCreator___packageJson___version',
   pluginCreator___packageJson___main = 'pluginCreator___packageJson___main',
-  pluginCreator___packageJson___author = 'pluginCreator___packageJson___author',
   pluginCreator___packageJson___license = 'pluginCreator___packageJson___license',
   pluginCreator___packageJson___dependencies = 'pluginCreator___packageJson___dependencies',
   pluginCreator___packageJson___dependencies___name = 'pluginCreator___packageJson___dependencies___name',
@@ -1962,6 +1963,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___display = 'pluginOptions___display',
   pluginOptions___icon = 'pluginOptions___icon',
   pluginOptions___displayName = 'pluginOptions___displayName',
+  pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
+  pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
   nodeAPIs = 'nodeAPIs',
@@ -1971,7 +1974,6 @@ export enum SitePluginFieldsEnum {
   packageJson___description = 'packageJson___description',
   packageJson___version = 'packageJson___version',
   packageJson___main = 'packageJson___main',
-  packageJson___author = 'packageJson___author',
   packageJson___license = 'packageJson___license',
   packageJson___dependencies = 'packageJson___dependencies',
   packageJson___dependencies___name = 'packageJson___dependencies___name',
@@ -2016,7 +2018,6 @@ export type SitePluginPackageJson = {
   description?: Maybe<Scalars['String']>;
   version?: Maybe<Scalars['String']>;
   main?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
   license?: Maybe<Scalars['String']>;
   dependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
   devDependencies?: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
@@ -2059,7 +2060,6 @@ export type SitePluginPackageJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   version?: Maybe<StringQueryOperatorInput>;
   main?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
   license?: Maybe<StringQueryOperatorInput>;
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
@@ -2094,6 +2094,7 @@ export type SitePluginPluginOptions = {
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   displayName?: Maybe<Scalars['Boolean']>;
+  replaceAttrValues?: Maybe<SitePluginPluginOptionsReplaceAttrValues>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
@@ -2107,8 +2108,22 @@ export type SitePluginPluginOptionsFilterInput = {
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   displayName?: Maybe<BooleanQueryOperatorInput>;
+  replaceAttrValues?: Maybe<
+    SitePluginPluginOptionsReplaceAttrValuesFilterInput
+  >;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsReplaceAttrValues = {
+  __typename?: 'SitePluginPluginOptionsReplaceAttrValues';
+  _000?: Maybe<Scalars['String']>;
+  _fff?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
+  _000?: Maybe<StringQueryOperatorInput>;
+  _fff?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {

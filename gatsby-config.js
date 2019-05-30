@@ -33,9 +33,20 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-plugin-svgr',
       options: {
-        name: `images`,
+        replaceAttrValues: {
+          '#000': 'currentColor',
+          '#fff': 'currentColor',
+        },
+        svgProps: { fill: undefined },
+      },
+    },
+    'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },

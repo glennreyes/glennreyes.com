@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import DarkModeContext from './dark-mode-context';
 import Link from './Link';
+import { ReactComponent as Moon } from '../icons/moon.svg';
+import { ReactComponent as Sun } from '../icons/sun.svg';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header`
@@ -55,7 +57,7 @@ const Header = () => {
         <MenuButton>Menu</MenuButton>
         <TitleLink to="/">{title}</TitleLink>
         <DarkModeButton onClick={() => toggleDarkMode()}>
-          Switch to {darkMode ? 'light' : 'dark'} mode
+          {darkMode ? <Moon /> : <Sun />}
         </DarkModeButton>
       </Container>
     </Wrapper>
