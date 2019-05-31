@@ -49,7 +49,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
-    'gatsby-plugin-typescript-checker',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
