@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
+import MenuButton from './menu-button';
+import { MenuToggleProvider } from './menu-toggle-context';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header`
@@ -26,8 +28,6 @@ const Container = styled.div`
   `}
 `;
 
-const MenuButton = styled.button``;
-
 const TitleLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[1]}px;
   font-weight: ${p => p.theme.fontWeights[1]};
@@ -48,7 +48,9 @@ const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <MenuButton>Menu</MenuButton>
+        <MenuToggleProvider>
+          <MenuButton />
+        </MenuToggleProvider>
         <TitleLink to="/">
           {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
         </TitleLink>
