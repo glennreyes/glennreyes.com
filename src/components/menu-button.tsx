@@ -52,11 +52,11 @@ const BottomStroke = posed(Stroke)({
 });
 
 const MenuButton = () => {
-  const { isOpen, toggleOpen } = React.useContext(MenuToggleContext);
+  const { isOpen, toggle } = React.useContext(MenuToggleContext);
   const pose = isOpen ? 'open' : 'closed';
 
   return (
-    <Wrapper onClick={() => toggleOpen()}>
+    <Wrapper onClick={() => toggle()}>
       <TopStroke pose={pose} />
       <BottomStroke pose={pose} />
     </Wrapper>

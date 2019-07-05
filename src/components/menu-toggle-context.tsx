@@ -1,8 +1,9 @@
 import React from 'react';
 
 const MenuToggleContext = React.createContext({
+  close: () => {},
   isOpen: false,
-  toggleOpen: () => {},
+  toggle: () => {},
 });
 
 type NavMenuToggleProps = {
@@ -15,8 +16,9 @@ export const MenuToggleProvider = ({ children }: NavMenuToggleProps) => {
   return (
     <MenuToggleContext.Provider
       value={{
+        close: () => setOpen(false),
         isOpen,
-        toggleOpen: () => setOpen(isOpen => !isOpen),
+        toggle: () => setOpen(isOpen => !isOpen),
       }}
     >
       {children}

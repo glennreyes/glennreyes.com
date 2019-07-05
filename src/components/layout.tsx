@@ -8,16 +8,18 @@
 import React from 'react';
 import Header from './header';
 import GlobalStyle from './global-style';
+import MenuToggleContext, { MenuToggleProvider } from './menu-toggle-context';
 import ThemeProvider from './theme-provider';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => (
-  <ThemeProvider>
+const Content = ({ children }: LayoutProps) => {
+  const { isOpen } = React.useContext(MenuToggleContext);
+  return (
     <>
-      <GlobalStyle />
+      <GlobalStyle isMenuOpen={isOpen} />
       <Header />
       <div
         style={{
@@ -34,6 +36,14 @@ const Layout = ({ children }: LayoutProps) => (
         </footer>
       </div>
     </>
+  );
+};
+
+const Layout = (props: LayoutProps) => (
+  <ThemeProvider>
+    <MenuToggleProvider>
+      <Content {...props} />
+    </MenuToggleProvider>
   </ThemeProvider>
 );
 

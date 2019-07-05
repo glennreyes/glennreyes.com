@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { useMedia } from 'use-media';
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
+import Menu from './menu';
 import MenuButton from './menu-button';
-import { MenuToggleProvider } from './menu-toggle-context';
+import MenuToggleContext from './menu-toggle-context';
 import { breakpoints } from '../theme';
 import { HeaderQuery } from '../types/generated/graphql';
 
@@ -14,7 +15,11 @@ const Wrapper = styled.header`
   display: flex;
   height: ${p => p.theme.space[5]}px;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
   transition: background ${p => p.theme.transition};
+  width: 100%;
+  z-index: 10;
 
   ${p => p.theme.media.desktop`
     height: ${p.theme.space[6]}px;
@@ -26,11 +31,11 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  margin: 0 ${p => p.theme.space[3]}px;
+  padding: 0 ${p => p.theme.space[3]}px;
 
   ${p => p.theme.media.tablet`
-    margin-left: ${p.theme.space[4]}px;
-    margin-right: ${p.theme.space[4]}px;
+    padding-left: ${p.theme.space[4]}px;
+    padding-right: ${p.theme.space[4]}px;
   `}
 `;
 
@@ -55,19 +60,17 @@ const Header = () => {
       }
     }
   `);
+  const { close } = React.useContext(MenuToggleContext);
   const isDesktop = useMedia({ minWidth: breakpoints.desktop });
 
   return (
     <Wrapper>
       <Container>
-        {!isDesktop && (
-          <MenuToggleProvider>
-            <MenuButton />
-          </MenuToggleProvider>
-        )}
-        <TitleLink to="/">
+        {!isDesktop && <MenuButton />}
+        <TitleLink onClick={() => close()} to="/">
           {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
         </TitleLink>
+        <Menu />
         <DarkModeButton />
       </Container>
     </Wrapper>

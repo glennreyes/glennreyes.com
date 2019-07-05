@@ -55,12 +55,14 @@ export const system = {
 
 export const light = {
   bg: system.colors.gray[0],
+  borderColor: system.colors.gray[1],
   headerBg: system.colors.white,
   textColor: system.colors.black,
 };
 
 export const dark = {
   bg: system.colors.black,
+  borderColor: system.colors.gray[2],
   headerBg: system.colors.gray[3],
   textColor: system.colors.white,
 };
