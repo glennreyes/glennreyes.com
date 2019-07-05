@@ -230,6 +230,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'warn',
     'react/require-render-return': 'warn',
+    'react/self-closing-comp': 'warn',
     'react/style-prop-object': 'warn',
 
     // https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks
