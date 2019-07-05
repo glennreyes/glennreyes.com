@@ -11,19 +11,24 @@ type MediaQueryCssFunction = (
 ) => FlattenSimpleInterpolation;
 
 interface Media {
-  desktop: MediaQueryCssFunction;
-  tablet: MediaQueryCssFunction;
+  desktop?: MediaQueryCssFunction;
+  tablet?: MediaQueryCssFunction;
 }
 
+export const breakpoints = {
+  desktop: 1024,
+  tablet: 768,
+};
+
 const media: Media = {
-  desktop: (first, ...interpolations) => css`
-    @media (min-width: 1024px) {
-      ${css(first, ...interpolations)}
+  desktop: (...args) => css`
+    @media (min-width: ${breakpoints.desktop}px) {
+      ${css(...args)}
     }
   `,
-  tablet: (first, ...interpolations) => css`
-    @media (min-width: 768px) {
-      ${css(first, ...interpolations)}
+  tablet: (...args) => css`
+    @media (min-width: ${breakpoints.tablet}px) {
+      ${css(...args)}
     }
   `,
 };
