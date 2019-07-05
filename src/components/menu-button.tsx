@@ -18,7 +18,7 @@ const Stroke = styled.span`
   display: block;
   height: 2px;
   margin: 3px 0;
-  width: 20px;
+  width: 24px;
 `;
 
 const transition = {
