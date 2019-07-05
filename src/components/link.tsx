@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Link = styled(GatsbyLink)`
   color: ${p => p.theme.textColor};
   text-decoration: none;
-  transition: ${p => p.theme.transition};
+  transition: color ${p => p.theme.transition};
 `;
 
 export default Link;
