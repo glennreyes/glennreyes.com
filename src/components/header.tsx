@@ -1,10 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { useMedia } from 'use-media';
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
 import MenuButton from './menu-button';
 import { MenuToggleProvider } from './menu-toggle-context';
+import { breakpoints } from '../theme';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header`
@@ -44,13 +46,16 @@ const Header = () => {
       }
     }
   `);
+  const isDesktop = useMedia({ minWidth: breakpoints.desktop });
 
   return (
     <Wrapper>
       <Container>
-        <MenuToggleProvider>
-          <MenuButton />
-        </MenuToggleProvider>
+        {!isDesktop && (
+          <MenuToggleProvider>
+            <MenuButton />
+          </MenuToggleProvider>
+        )}
         <TitleLink to="/">
           {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
         </TitleLink>
