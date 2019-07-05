@@ -11,8 +11,8 @@ type MediaQueryCssFunction = (
 ) => FlattenSimpleInterpolation;
 
 interface Media {
-  desktop?: MediaQueryCssFunction;
-  tablet?: MediaQueryCssFunction;
+  desktop: MediaQueryCssFunction;
+  tablet: MediaQueryCssFunction;
 }
 
 export const breakpoints = {
