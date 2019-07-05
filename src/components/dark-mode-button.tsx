@@ -16,10 +16,12 @@ const Wrapper = styled(Button)`
 
 const iconStyles = css`
   color: ${p => p.theme.textColor};
+  height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   transition: color ${p => p.theme.transition};
+  width: 100%;
 `;
 
 const transition = {
