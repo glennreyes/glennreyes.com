@@ -21,47 +21,19 @@ const Stroke = styled.span`
   width: 20px;
 `;
 
-const transitionDefaultProps = {
+const transition = {
   duration: ms(system.transition),
-  type: 'keyframes',
 };
-
-interface TransitionProps {
-  from: string;
-  to: string;
-}
-
-const closeTransition = ({ from, to }: TransitionProps) => ({
-  rotate: {
-    ...transitionDefaultProps,
-    values: [from, to, to],
-  },
-  y: {
-    ...transitionDefaultProps,
-    values: [from, from, to],
-  },
-});
-
-const openTransition = ({ from, to }: TransitionProps) => ({
-  rotate: {
-    ...transitionDefaultProps,
-    values: [from, from, to],
-  },
-  y: {
-    ...transitionDefaultProps,
-    values: [from, to, to],
-  },
-});
 
 const TopStroke = posed(Stroke)({
   closed: {
     rotate: '0deg',
-    transition: closeTransition,
+    transition,
     y: 0,
   },
   open: {
-    rotate: '135deg',
-    transition: openTransition,
+    rotate: '45deg',
+    transition,
     y: 4,
   },
 });
@@ -69,12 +41,12 @@ const TopStroke = posed(Stroke)({
 const BottomStroke = posed(Stroke)({
   closed: {
     rotate: '0deg',
-    transition: closeTransition,
+    transition,
     y: 0,
   },
   open: {
-    rotate: '-135deg',
-    transition: openTransition,
+    rotate: '135deg',
+    transition,
     y: -4,
   },
 });
