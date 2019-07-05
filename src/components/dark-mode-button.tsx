@@ -1,9 +1,12 @@
+import ms from 'ms';
 import React from 'react';
+import posed from 'react-pose';
 import styled, { css } from 'styled-components';
 import Button from './button';
 import DarkModeContext from './dark-mode-context';
 import { ReactComponent as MoonSvg } from '../icons/moon.svg';
 import { ReactComponent as SunSvg } from '../icons/sun.svg';
+import { system } from '../theme';
 
 const Wrapper = styled(Button)`
   height: 24px;
@@ -16,38 +19,60 @@ const iconStyles = css`
   left: 0;
   position: absolute;
   top: 0;
-  transition: color ${p => p.theme.transition},
-    opacity ${p => `${parseFloat(p.theme.transition) * 0.5}`}s,
-    transform ${p => `${parseFloat(p.theme.transition) * 2}`}s;
+  transition: color ${p => p.theme.transition};
 `;
 
-const MoonIcon = ({ darkMode, ...props }: { darkMode?: boolean }) => (
-  <MoonSvg {...props} />
-);
+const transition = {
+  opacity: {
+    duration: ms(system.transition) / 2,
+  },
+  rotate: {
+    duration: ms(system.transition) * 2,
+  },
+};
 
-const Moon = styled(MoonIcon)`
+const Moon = posed(styled.span`
   ${iconStyles}
-  opacity: ${p => (p.darkMode ? '1' : '0')};
-  transform: ${p => (p.darkMode ? 'none' : 'rotate(-135deg)')};
-`;
+`)({
+  dark: {
+    opacity: 1,
+    rotate: '0deg',
+    transition,
+  },
+  light: {
+    opacity: 0,
+    rotate: '-135deg',
+    transition,
+  },
+});
 
-const SunIcon = ({ darkMode, ...props }: { darkMode?: boolean }) => (
-  <SunSvg {...props} />
-);
-
-const Sun = styled(SunIcon)`
+const Sun = posed(styled.span`
   ${iconStyles}
-  opacity: ${p => (p.darkMode ? '0' : '1')};
-  transform: ${p => (p.darkMode ? 'none' : 'rotate(-90deg)')};
-`;
+`)({
+  dark: {
+    opacity: 0,
+    rotate: '0deg',
+    transition,
+  },
+  light: {
+    opacity: 1,
+    rotate: '-90deg',
+    transition,
+  },
+});
 
 const DarkModeButton = () => {
   const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
+  const pose = darkMode ? 'dark' : 'light';
 
   return (
     <Wrapper onClick={() => toggleDarkMode()}>
-      <Moon darkMode={darkMode} />
-      <Sun darkMode={darkMode} />
+      <Moon pose={pose}>
+        <MoonSvg />
+      </Moon>
+      <Sun pose={pose}>
+        <SunSvg />
+      </Sun>
     </Wrapper>
   );
 };
