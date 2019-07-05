@@ -14,7 +14,11 @@ const Wrapper = styled.header`
   display: flex;
   height: ${p => p.theme.space[5]}px;
   justify-content: space-between;
-  transition: ${p => p.theme.transition};
+  transition: background ${p => p.theme.transition};
+
+  ${p => p.theme.media.desktop`
+    height: ${p.theme.space[6]}px;
+  `}
 `;
 
 const Container = styled.div`
