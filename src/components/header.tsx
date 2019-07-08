@@ -32,6 +32,10 @@ const Wrapper = styled.header<{
 
   ${p => p.theme.media.desktop`
     height: ${p.isDefaultPosition ? p.theme.space[7] : p.theme.space[6]}px;
+
+    &:hover {
+      background: ${p.theme.headerBg};
+    }
   `}
 `;
 
