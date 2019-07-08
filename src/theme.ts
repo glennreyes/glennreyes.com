@@ -55,6 +55,7 @@ export const system = {
 };
 
 export const light = {
+  activeTextColor: system.colors.gray[2],
   bg: system.colors.gray[0],
   borderColor: system.colors.gray[1],
   headerBg: system.colors.white,
@@ -62,6 +63,7 @@ export const light = {
 };
 
 export const dark = {
+  activeTextColor: system.colors.gray[1],
   bg: system.colors.black,
   borderColor: system.colors.gray[2],
   headerBg: system.colors.gray[3],

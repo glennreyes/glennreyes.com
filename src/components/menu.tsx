@@ -31,7 +31,7 @@ const links = [
 ];
 
 const Wrapper = styled.nav`
-  background: ${p => p.theme.headerBg};
+  background: ${p => p.theme.bg};
   display: flex;
   flex-direction: column;
   height: calc(100vh - ${p => p.theme.space[5]}px);
@@ -60,15 +60,13 @@ const PosedWrapper = posed(Wrapper)({
 });
 
 const MenuLink = styled(Link)`
-  border-color: ${p => p.theme.bg};
-  border-style: solid;
-  border-width: ${p => p.theme.borders[2]}px 0;
+  border-bottom: ${p => p.theme.borders[2]}px solid ${p => p.theme.headerBg};
   font-size: ${p => p.theme.fontSizes[1]}px;
   padding: ${p => p.theme.space[3]}px;
   text-transform: lowercase;
 
-  & + & {
-    border-top: none;
+  &[aria-current='page'] {
+    color: ${p => p.theme.activeTextColor};
   }
 
   ${p => p.theme.media.tablet`
@@ -77,7 +75,7 @@ const MenuLink = styled(Link)`
   `}
 
   ${p => p.theme.media.desktop`
-    border: none;
+    border-bottom: none;
     margin: 0 ${p.theme.space[2]}px;
     padding-left: ${p.theme.space[3]}px;
     padding-right: ${p.theme.space[3]}px;

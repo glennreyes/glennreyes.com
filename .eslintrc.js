@@ -122,7 +122,6 @@ module.exports = {
           'Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting',
       },
     ],
-    'no-unexpected-multiline': 'warn',
     'no-unreachable': 'warn',
     'no-unused-expressions': [
       'warn',

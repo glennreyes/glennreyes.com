@@ -12,9 +12,14 @@ import MenuToggleContext from './menu-toggle-context';
 import { breakpoints } from '../theme';
 import { HeaderQuery } from '../types/generated/graphql';
 
-const Wrapper = styled.header<{ isDefaultPosition: boolean }>`
+const Wrapper = styled.header<{
+  isDefaultPosition: boolean;
+  isMenuOpen: boolean;
+}>`
   background: ${p =>
-    p.isDefaultPosition ? p.theme.headerBg : rgba(p.theme.headerBg, 0.95)};
+    p.isDefaultPosition || p.isMenuOpen
+      ? p.theme.headerBg
+      : rgba(p.theme.headerBg, 0.95)};
   ${p => (p.isDefaultPosition ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
   height: ${p => p.theme.space[5]}px;
@@ -64,12 +69,12 @@ const Header = () => {
       }
     }
   `);
-  const { close } = React.useContext(MenuToggleContext);
+  const { isOpen, close } = React.useContext(MenuToggleContext);
   const isDesktop = useMedia({ minWidth: breakpoints.desktop });
   const { y } = useWindowScroll();
 
   return (
-    <Wrapper isDefaultPosition={y === 0}>
+    <Wrapper isDefaultPosition={y === 0} isMenuOpen={isOpen}>
       <Container>
         {!isDesktop && <MenuButton />}
         {data.site && data.site.siteMetadata && (
