@@ -54,7 +54,6 @@ const Wrapper = styled.nav`
 
 const PosedWrapper = posed(Wrapper)({
   close: { height: 0 },
-  default: { height: 'auto' },
   open: {
     height: `calc(100vh - ${system.space[5]}px)`,
   },
