@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { rgba } from 'polished';
 import React from 'react';
+import { useWindowScroll } from 'react-use';
 import styled from 'styled-components';
 import { useMedia } from 'use-media';
 import DarkModeButton from './dark-mode-button';
@@ -10,19 +12,21 @@ import MenuToggleContext from './menu-toggle-context';
 import { breakpoints } from '../theme';
 import { HeaderQuery } from '../types/generated/graphql';
 
-const Wrapper = styled.header`
-  background: ${p => p.theme.headerBg};
+const Wrapper = styled.header<{ isDefaultPosition: boolean }>`
+  background: ${p =>
+    p.isDefaultPosition ? p.theme.headerBg : rgba(p.theme.headerBg, 0.95)};
+  ${p => (p.isDefaultPosition ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
   height: ${p => p.theme.space[5]}px;
   justify-content: space-between;
   position: fixed;
   top: 0;
-  transition: background ${p => p.theme.transition};
+  transition: ${p => p.theme.transition};
   width: 100%;
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.theme.space[6]}px;
+    height: ${p.isDefaultPosition ? p.theme.space[6] : p.theme.space[5]}px;
   `}
 `;
 
@@ -62,14 +66,17 @@ const Header = () => {
   `);
   const { close } = React.useContext(MenuToggleContext);
   const isDesktop = useMedia({ minWidth: breakpoints.desktop });
+  const { y } = useWindowScroll();
 
   return (
-    <Wrapper>
+    <Wrapper isDefaultPosition={y === 0}>
       <Container>
         {!isDesktop && <MenuButton />}
-        <TitleLink onClick={() => close()} to="/">
-          {data.site && data.site.siteMetadata && data.site.siteMetadata.title}
-        </TitleLink>
+        {data.site && data.site.siteMetadata && (
+          <TitleLink onClick={() => close()} to="/">
+            {data.site.siteMetadata.title}
+          </TitleLink>
+        )}
         <Menu />
         <DarkModeButton />
       </Container>

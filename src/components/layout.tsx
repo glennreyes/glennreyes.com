@@ -17,6 +17,7 @@ type LayoutProps = {
 };
 
 const Main = styled.main`
+  background: ${p => p.theme.bg};
   padding: ${p => p.theme.space[5]}px ${p => p.theme.space[3]}px 0;
 
   ${p => p.theme.media.tablet`
