@@ -37,6 +37,7 @@ const Wrapper = styled.nav`
   height: calc(100vh - ${p => p.theme.space[6]}px);
   left: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   top: 100%;
   width: 100%;
