@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import styled from 'styled-components';
 import Header from './header';
 import GlobalStyle from './global-style';
 import MenuToggleContext, { MenuToggleProvider } from './menu-toggle-context';
@@ -15,26 +16,30 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
+const Main = styled.main`
+  padding: ${p => p.theme.space[5]}px ${p => p.theme.space[3]}px 0;
+
+  ${p => p.theme.media.tablet`
+    padding-left: ${p.theme.space[4]}px;
+    padding-right: ${p.theme.space[4]}px;
+  `}
+
+  ${p => p.theme.media.desktop`
+    padding-top: ${p.theme.space[6]}px;
+  `}
+`;
+
 const Content = ({ children }: LayoutProps) => {
   const { isOpen } = React.useContext(MenuToggleContext);
   return (
     <>
       <GlobalStyle isMenuOpen={isOpen} />
       <Header />
-      <div
-        style={{
-          margin: '0 auto',
-          maxWidth: 960,
-          padding: '0px 1.0875rem 1.45rem',
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with{' '}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Main>{children}</Main>
+      <footer>
+        © {new Date().getFullYear()}, Built with{' '}
+        <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </footer>
     </>
   );
 };
