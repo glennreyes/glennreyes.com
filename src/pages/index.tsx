@@ -1,8 +1,10 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
+import { HomeQuery } from '../types/generated/graphql';
 
 const Section = styled.section`
   padding: 0 ${p => p.theme.space[3]}px;
@@ -87,21 +89,36 @@ const Tagline = styled.p`
   `}
 `;
 
-const Home = () => (
-  <Layout>
-    <SEO title="Home" />
-    <IntroSection>
-      <Content>
-        <Photo />
-        <Intro>
-          <Greeting>Hey there, I’m Glenn.</Greeting>
-          <Tagline>
-            I help people create beautiful products through web technologies.
-          </Tagline>
-        </Intro>
-      </Content>
-    </IntroSection>
-  </Layout>
-);
+const Home = () => {
+  const { site }: HomeQuery = useStaticQuery(
+    graphql`
+      query Home {
+        site {
+          siteMetadata {
+            description
+          }
+        }
+      }
+    `,
+  );
+
+  const tagline =
+    (site && site.siteMetadata && site.siteMetadata.description) || null;
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <IntroSection>
+        <Content>
+          <Photo />
+          <Intro>
+            <Greeting>Hey there, I’m Glenn.</Greeting>
+            {tagline && <Tagline>{tagline}</Tagline>}
+          </Intro>
+        </Content>
+      </IntroSection>
+    </Layout>
+  );
+};
 
 export default Home;

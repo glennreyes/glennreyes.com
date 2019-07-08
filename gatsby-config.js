@@ -6,10 +6,10 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 
 module.exports = {
   siteMetadata: {
-    title: 'Glenn Reyes',
+    author: 'Glenn Reyes',
     description:
       'I help people create beautiful products through web technologies.',
-    author: '@glnnrys',
+    title: 'Glenn Reyes',
   },
   plugins: [
     {

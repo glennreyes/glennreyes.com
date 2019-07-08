@@ -1,9 +1,11 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Link from './link';
 import { ReactComponent as GitHub } from '../icons/github.svg';
 import { ReactComponent as Instagram } from '../icons/instagram.svg';
 import { ReactComponent as Twitter } from '../icons/twitter.svg';
+import { FooterQuery } from '../types/generated/graphql';
 
 const links = [
   {
@@ -49,23 +51,38 @@ const Text = styled.p`
   `}
 `;
 
-const Footer = () => (
-  <Wrapper>
-    <Socials>
-      {links.map(({ icon: Icon, label, url }) => (
-        <SocialLink key={label.toLowerCase()} target="_blank" to={url}>
-          <Icon />
-        </SocialLink>
-      ))}
-    </Socials>
-    <Text>
-      © {new Date().getFullYear()} Glenn Reyes. View{' '}
-      <Link target="_blank" to="https://github.com/glennreyes/glennreyes.com">
-        source
-      </Link>{' '}
-      on GitHub.
-    </Text>
-  </Wrapper>
-);
+const Footer = () => {
+  const { site }: FooterQuery = useStaticQuery(
+    graphql`
+      query Footer {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `,
+  );
+  const title = (site && site.siteMetadata && site.siteMetadata.title) || '';
+
+  return (
+    <Wrapper>
+      <Socials>
+        {links.map(({ icon: Icon, label, url }) => (
+          <SocialLink key={label.toLowerCase()} target="_blank" to={url}>
+            <Icon />
+          </SocialLink>
+        ))}
+      </Socials>
+      <Text>
+        {`© ${new Date().getFullYear()} ${title}`.trim()}. View{' '}
+        <Link target="_blank" to="https://github.com/glennreyes/glennreyes.com">
+          source
+        </Link>{' '}
+        on GitHub.
+      </Text>
+    </Wrapper>
+  );
+};
 
 export default Footer;

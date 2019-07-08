@@ -8,6 +8,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Helmet from 'react-helmet';
+import { SeoQuery } from '../types/generated/graphql';
 
 const defaultProps = {
   description: '',
@@ -21,9 +22,9 @@ type SEOProps = typeof defaultProps & {
 };
 
 const SEO = ({ description, lang, meta, title }: SEOProps) => {
-  const { site } = useStaticQuery(
+  const { site }: SeoQuery = useStaticQuery(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             author
@@ -35,7 +36,10 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
     `,
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription =
+    description ||
+    (site && site.siteMetadata && site.siteMetadata.description) ||
+    '';
 
   return (
     <Helmet

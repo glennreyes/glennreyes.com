@@ -2181,6 +2181,18 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+export type FooterQueryVariables = {};
+
+export type FooterQuery = { __typename?: 'Query' } & {
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'title'>
+      >;
+    }
+  >;
+};
+
 export type HeaderQueryVariables = {};
 
 export type HeaderQuery = { __typename?: 'Query' } & {
@@ -2209,9 +2221,9 @@ export type Unnamed_1_Query = { __typename?: 'Query' } & {
   >;
 };
 
-export type Unnamed_2_QueryVariables = {};
+export type SeoQueryVariables = {};
 
-export type Unnamed_2_Query = { __typename?: 'Query' } & {
+export type SeoQuery = { __typename?: 'Query' } & {
   site: Maybe<
     { __typename?: 'Site' } & {
       siteMetadata: Maybe<
@@ -2224,15 +2236,15 @@ export type Unnamed_2_Query = { __typename?: 'Query' } & {
   >;
 };
 
-export type Unnamed_3_QueryVariables = {};
+export type HomeQueryVariables = {};
 
-export type Unnamed_3_Query = { __typename?: 'Query' } & {
+export type HomeQuery = { __typename?: 'Query' } & {
   site: Maybe<
     { __typename?: 'Site' } & {
       siteMetadata: Maybe<
         { __typename?: 'SiteSiteMetadata' } & Pick<
           SiteSiteMetadata,
-          'description' | 'title'
+          'description'
         >
       >;
     }

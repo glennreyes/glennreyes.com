@@ -60,7 +60,7 @@ const TitleLink = styled(Link)`
 `;
 
 const Header = () => {
-  const data: HeaderQuery = useStaticQuery(graphql`
+  const { site }: HeaderQuery = useStaticQuery(graphql`
     query Header {
       site {
         siteMetadata {
@@ -69,6 +69,7 @@ const Header = () => {
       }
     }
   `);
+  const title = (site && site.siteMetadata && site.siteMetadata.title) || null;
   const { isOpen, close } = React.useContext(MenuToggleContext);
   const isDesktop = useMedia({ minWidth: breakpoints.desktop });
   const { y } = useWindowScroll();
@@ -77,9 +78,9 @@ const Header = () => {
     <Wrapper isDefaultPosition={y === 0} isMenuOpen={isOpen}>
       <Container>
         {!isDesktop && <MenuButton />}
-        {data.site && data.site.siteMetadata && (
+        {title && (
           <TitleLink onClick={() => close()} to="/">
-            {data.site.siteMetadata.title}
+            {title}
           </TitleLink>
         )}
         <Menu />
