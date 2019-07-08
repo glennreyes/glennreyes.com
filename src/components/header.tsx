@@ -22,7 +22,7 @@ const Wrapper = styled.header<{
       : rgba(p.theme.headerBg, 0.95)};
   ${p => (p.isDefaultPosition ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
-  height: ${p => p.theme.space[5]}px;
+  height: ${p => p.theme.space[6]}px;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -31,7 +31,7 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.isDefaultPosition ? p.theme.space[6] : p.theme.space[5]}px;
+    height: ${p.isDefaultPosition ? p.theme.space[7] : p.theme.space[6]}px;
   `}
 `;
 
@@ -43,8 +43,8 @@ const Container = styled.div`
   padding: 0 ${p => p.theme.space[3]}px;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[4]}px;
-    padding-right: ${p.theme.space[4]}px;
+    padding-left: ${p.theme.space[5]}px;
+    padding-right: ${p.theme.space[5]}px;
   `}
 `;
 

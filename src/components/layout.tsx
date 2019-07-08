@@ -18,15 +18,10 @@ type LayoutProps = {
 
 const Main = styled.main`
   background: ${p => p.theme.bg};
-  padding: ${p => p.theme.space[5]}px ${p => p.theme.space[3]}px 0;
-
-  ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[4]}px;
-    padding-right: ${p.theme.space[4]}px;
-  `}
+  padding-top: ${p => p.theme.space[6]}px;
 
   ${p => p.theme.media.desktop`
-    padding-top: ${p.theme.space[6]}px;
+    padding-top: ${p.theme.space[7]}px;
   `}
 `;
 

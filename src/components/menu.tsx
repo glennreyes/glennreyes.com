@@ -34,7 +34,7 @@ const Wrapper = styled.nav`
   background: ${p => p.theme.bg};
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ${p => p.theme.space[5]}px);
+  height: calc(100vh - ${p => p.theme.space[6]}px);
   left: 0;
   overflow: auto;
   position: absolute;
@@ -70,8 +70,8 @@ const MenuLink = styled(Link)`
   }
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[4]}px;
-    padding-right: ${p.theme.space[4]}px;
+    padding-left: ${p.theme.space[5]}px;
+    padding-right: ${p.theme.space[5]}px;
   `}
 
   ${p => p.theme.media.desktop`
