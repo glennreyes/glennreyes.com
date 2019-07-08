@@ -2,9 +2,10 @@ import ms from 'ms';
 import React from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
+import { useMedia } from 'use-media';
 import Link from './link';
 import MenuToggleContext from './menu-toggle-context';
-import { system } from '../theme';
+import { breakpoints, system } from '../theme';
 
 const links = [
   {
@@ -29,7 +30,7 @@ const links = [
   },
 ];
 
-const Nav = styled.nav`
+const Wrapper = styled.nav`
   background: ${p => p.theme.headerBg};
   display: flex;
   flex-direction: column;
@@ -51,8 +52,9 @@ const Nav = styled.nav`
 `}
 `;
 
-const Wrapper = posed(Nav)({
+const PosedWrapper = posed(Wrapper)({
   close: { height: 0 },
+  default: { height: 'auto' },
   open: {
     height: `calc(100vh - ${system.space[5]}px)`,
   },
@@ -85,16 +87,31 @@ const MenuLink = styled(Link)`
 
 const Menu = () => {
   const { isOpen, close } = React.useContext(MenuToggleContext);
+  const isDesktop = useMedia({ minWidth: breakpoints.desktop });
+
+  if (isDesktop) {
+    return (
+      <Wrapper>
+        {links.map(({ label, path }) => (
+          <MenuLink key={label.toLowerCase()} to={path}>
+            {label}
+          </MenuLink>
+        ))}
+      </Wrapper>
+    );
+  }
+
+  // On mobile we use the wrapper that includes animation.
   const pose = isOpen ? 'open' : 'close';
 
   return (
-    <Wrapper duration={ms(system.transition)} pose={pose}>
+    <PosedWrapper duration={ms(system.transition)} pose={pose}>
       {links.map(({ label, path }) => (
         <MenuLink key={label.toLowerCase()} onClick={() => close()} to={path}>
           {label}
         </MenuLink>
       ))}
-    </Wrapper>
+    </PosedWrapper>
   );
 };
 
