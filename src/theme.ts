@@ -47,7 +47,7 @@ export const system = {
     mono: 'Menlo, monospace',
     sans: 'system-ui, sans-serif',
   },
-  lineHeights: [1, 1.25, 1.5],
+  lineHeights: [1, 1.2, 1.25, 1.5],
   media,
   radii: [0, 8, 16],
   space: [0, 4, 8, 16, 32, 64, 128],
@@ -60,6 +60,7 @@ export const light = {
   borderColor: system.colors.gray[1],
   headerBg: system.colors.white,
   textColor: system.colors.black,
+  textColor2: system.colors.gray[2],
 };
 
 export const dark = {
@@ -68,4 +69,5 @@ export const dark = {
   borderColor: system.colors.gray[2],
   headerBg: system.colors.gray[3],
   textColor: system.colors.white,
+  textColor2: system.colors.gray[1],
 };
