@@ -73,7 +73,6 @@ const Tagline = styled.p`
   color: ${p => p.theme.textColor2};
   font-size: ${p => p.theme.fontSizes[0]}px;
   font-weight: ${p => p.theme.fontWeights[1]};
-  line-height: ${p => p.theme.lineHeights[1]};
   margin: 0;
   max-width: 320px;
 

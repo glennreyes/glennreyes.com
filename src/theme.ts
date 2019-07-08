@@ -47,7 +47,7 @@ export const system = {
     mono: 'Menlo, monospace',
     sans: 'system-ui, sans-serif',
   },
-  lineHeights: [1, 1.2, 1.25, 1.5],
+  lineHeights: [1, 1.25, 1.5],
   media,
   radii: [0, 8, 16],
   space: [0, 4, 8, 16, 24, 32, 64, 128, 256],
