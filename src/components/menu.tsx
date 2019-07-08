@@ -65,6 +65,13 @@ const MenuLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[1]}px;
   padding: ${p => p.theme.space[3]}px;
   text-transform: lowercase;
+  transition: color ${p => p.theme.transition};
+
+  ${p => p.theme.media.desktop`
+    &:hover {
+      color: ${p.theme.activeTextColor};
+    }
+  `}
 
   &[aria-current='page'] {
     color: ${p => p.theme.activeTextColor};

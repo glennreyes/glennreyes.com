@@ -7,8 +7,9 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import Header from './header';
+import Footer from './footer';
 import GlobalStyle from './global-style';
+import Header from './header';
 import MenuToggleContext, { MenuToggleProvider } from './menu-toggle-context';
 import ThemeProvider from './theme-provider';
 
@@ -32,10 +33,7 @@ const Content = ({ children }: LayoutProps) => {
       <GlobalStyle isMenuOpen={isOpen} />
       <Header />
       <Main>{children}</Main>
-      <footer>
-        © {new Date().getFullYear()}, Built with{' '}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Footer />
     </>
   );
 };
