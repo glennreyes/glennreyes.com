@@ -20,7 +20,7 @@
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
     "@types/ms": "0.7.30",
-    "gatsby": "2.13.12",
+    "gatsby": "2.13.13",
     "gatsby-image": "2.2.4",
     "graphql": "14.4.2",
     "keyboardjs": "2.5.1",
