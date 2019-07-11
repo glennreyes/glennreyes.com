@@ -54,7 +54,7 @@ const Container = styled.div`
 
 const TitleLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[1]}px;
-  font-weight: ${p => p.theme.fontWeights[1]};
+  font-weight: ${p => p.theme.fontWeights[2]};
   line-height: ${p => p.theme.lineHeights[0]};
   text-align: center;
 

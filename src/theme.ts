@@ -42,7 +42,7 @@ export const system = {
     white: '#fff',
   },
   fontSizes: [16, 20, 24, 32, 48, 72],
-  fontWeights: ['normal', 'bold'],
+  fontWeights: [400, 700, 900],
   fonts: {
     mono: 'Menlo, monospace',
     sans: 'system-ui, sans-serif',
