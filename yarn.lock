@@ -3004,7 +3004,7 @@ chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.2, chalk@^2.4.
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-change-case@3.1.0:
+change-case@3.1.0, change-case@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/change-case/-/change-case-3.1.0.tgz#0e611b7edc9952df2e8513b27b42de72647dd17e"
   integrity sha512-2AZp7uJZbYEzRPsFoa+ijKdvp9zsrnnt6+yFokfwEpeJm0xuJDVoxiRCAaTzyJND8GJkofo2IcKWaUZ/OECVzw==
@@ -5859,15 +5859,16 @@ gatsby-plugin-manifest@2.2.2:
     semver "^5.6.0"
     sharp "^0.22.1"
 
-gatsby-plugin-mdx@1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.0.10.tgz#ae0e3afef7fa94ce0e12c31bac701d4ec75b045b"
-  integrity sha512-U9M9zYlghbP0qIJebi/3g2aCWaJnlnBDjpiN2YQmI59RYhFFZBZ+vwv5KPqy3JhIopysHqV9sb9upQcRe/LOzw==
+gatsby-plugin-mdx@1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-mdx/-/gatsby-plugin-mdx-1.0.11.tgz#e5ee4b163e7ba5722df8b5178a2e1570caa7bea6"
+  integrity sha512-yCY4aEQuntPcBK4lelkp/dhE3+K7U4BeYPyUedcPo/e46kykIG3PyO22Qc8fq7Mi1YQH3EgXPXb9TqwPcEPdsw==
   dependencies:
     "@babel/core" "^7.4.3"
     "@babel/plugin-proposal-object-rest-spread" "^7.4.3"
     "@babel/preset-env" "^7.4.3"
     "@babel/preset-react" "^7.0.0"
+    change-case "^3.1.0"
     core-js "2"
     dataloader "^1.4.0"
     debug "^4.0.1"
