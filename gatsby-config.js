@@ -31,6 +31,19 @@ module.exports = {
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: ['.md', '.mdx'],
+        gatsbyRemarkPlugins: [
+          'gatsby-remark-copy-linked-files',
+          'gatsby-remark-images',
+          'gatsby-remark-responsive-iframe',
+          'gatsby-remark-smartypants',
+          'gatsby-remark-unwrap-images',
+        ],
+      },
+    },
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-styled-components',
@@ -49,6 +62,13 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/src/posts`,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
