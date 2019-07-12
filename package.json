@@ -24,7 +24,7 @@
     "@mdx-js/tag": "0.20.3",
     "@svgr/webpack": "4.3.1",
     "@types/ms": "0.7.30",
-    "gatsby": "2.13.18",
+    "gatsby": "2.13.19",
     "gatsby-image": "2.2.6",
     "gatsby-plugin-eslint": "2.0.5",
     "gatsby-plugin-manifest": "2.2.3",
