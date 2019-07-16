@@ -49,7 +49,7 @@
     "react-dom": "16.8.6",
     "react-helmet": "5.2.1",
     "react-pose": "4.0.8",
-    "react-use": "9.11.1",
+    "react-use": "9.11.2",
     "rebound": "0.1.0",
     "styled-components": "4.3.2",
     "use-media": "1.3.0"
