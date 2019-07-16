@@ -11091,10 +11091,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-use@9.11.0:
-  version "9.11.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-9.11.0.tgz#fc045b7606a69ef4a9d7da5989ac7787141ab3a1"
-  integrity sha512-+YJDnQ+uiRZJ6Igs7FVyMAxvq/W/ZtYTssEAkydyvJF2Y2I8+Hk177/ZFmpPJYA9YO+pxE1tVJ+1mmwS4+Pxbg==
+react-use@9.11.1:
+  version "9.11.1"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-9.11.1.tgz#e79b1a959ab27aab295502d0d506c612f450f37f"
+  integrity sha512-6JBvIrXD9x8YQ7aYdRZD9cdqt9zVfoE+c7m5bNKkSgfUqoyccehT6bhHIkhki9A7lg+hs1paGXikhJsBTvmANQ==
   dependencies:
     copy-to-clipboard "^3.1.0"
     nano-css "^5.1.0"
