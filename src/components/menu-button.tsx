@@ -10,6 +10,10 @@ const Wrapper = styled(Button)`
   flex-direction: column;
   height: 24px;
   width: 24px;
+
+  ${p => p.theme.media.desktop`
+    display: none;
+  `}
 `;
 
 const Stroke = styled.span`

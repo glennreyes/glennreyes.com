@@ -3,13 +3,11 @@ import { rgba } from 'polished';
 import React from 'react';
 import { useWindowScroll } from 'react-use';
 import styled from 'styled-components';
-import { useMedia } from 'use-media';
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
 import Menu from './menu';
 import MenuButton from './menu-button';
 import MenuToggleContext from './menu-toggle-context';
-import { breakpoints } from '../theme';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header<{
@@ -75,13 +73,12 @@ const Header = () => {
   `);
   const title = (site && site.siteMetadata && site.siteMetadata.title) || null;
   const { isOpen, close } = React.useContext(MenuToggleContext);
-  const isDesktop = useMedia({ minWidth: breakpoints.desktop });
   const { y } = useWindowScroll();
 
   return (
     <Wrapper isDefaultPosition={y === 0} isMenuOpen={isOpen}>
       <Container>
-        {!isDesktop && <MenuButton />}
+        <MenuButton />
         {title && (
           <TitleLink onClick={() => close()} to="/">
             {title}
