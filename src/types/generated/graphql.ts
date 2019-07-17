@@ -585,6 +585,7 @@ export enum FileFieldsEnum {
   childMdx___fileAbsolutePath = 'childMdx___fileAbsolutePath',
   childMdx___frontmatter___title = 'childMdx___frontmatter___title',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
+  childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
   childMdx___body = 'childMdx___body',
   childMdx___excerpt = 'childMdx___excerpt',
   childMdx___headings = 'childMdx___headings',
@@ -1404,6 +1405,45 @@ export enum MdxFieldsEnum {
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter___title',
   frontmatter___date = 'frontmatter___date',
+  frontmatter___draft = 'frontmatter___draft',
+  frontmatter___cover___author___name = 'frontmatter___cover___author___name',
+  frontmatter___cover___author___url = 'frontmatter___cover___author___url',
+  frontmatter___cover___photo___birthtime = 'frontmatter___cover___photo___birthtime',
+  frontmatter___cover___photo___birthtimeMs = 'frontmatter___cover___photo___birthtimeMs',
+  frontmatter___cover___photo___sourceInstanceName = 'frontmatter___cover___photo___sourceInstanceName',
+  frontmatter___cover___photo___absolutePath = 'frontmatter___cover___photo___absolutePath',
+  frontmatter___cover___photo___relativePath = 'frontmatter___cover___photo___relativePath',
+  frontmatter___cover___photo___extension = 'frontmatter___cover___photo___extension',
+  frontmatter___cover___photo___size = 'frontmatter___cover___photo___size',
+  frontmatter___cover___photo___prettySize = 'frontmatter___cover___photo___prettySize',
+  frontmatter___cover___photo___modifiedTime = 'frontmatter___cover___photo___modifiedTime',
+  frontmatter___cover___photo___accessTime = 'frontmatter___cover___photo___accessTime',
+  frontmatter___cover___photo___changeTime = 'frontmatter___cover___photo___changeTime',
+  frontmatter___cover___photo___birthTime = 'frontmatter___cover___photo___birthTime',
+  frontmatter___cover___photo___root = 'frontmatter___cover___photo___root',
+  frontmatter___cover___photo___dir = 'frontmatter___cover___photo___dir',
+  frontmatter___cover___photo___base = 'frontmatter___cover___photo___base',
+  frontmatter___cover___photo___ext = 'frontmatter___cover___photo___ext',
+  frontmatter___cover___photo___name = 'frontmatter___cover___photo___name',
+  frontmatter___cover___photo___relativeDirectory = 'frontmatter___cover___photo___relativeDirectory',
+  frontmatter___cover___photo___dev = 'frontmatter___cover___photo___dev',
+  frontmatter___cover___photo___mode = 'frontmatter___cover___photo___mode',
+  frontmatter___cover___photo___nlink = 'frontmatter___cover___photo___nlink',
+  frontmatter___cover___photo___uid = 'frontmatter___cover___photo___uid',
+  frontmatter___cover___photo___gid = 'frontmatter___cover___photo___gid',
+  frontmatter___cover___photo___rdev = 'frontmatter___cover___photo___rdev',
+  frontmatter___cover___photo___blksize = 'frontmatter___cover___photo___blksize',
+  frontmatter___cover___photo___ino = 'frontmatter___cover___photo___ino',
+  frontmatter___cover___photo___blocks = 'frontmatter___cover___photo___blocks',
+  frontmatter___cover___photo___atimeMs = 'frontmatter___cover___photo___atimeMs',
+  frontmatter___cover___photo___mtimeMs = 'frontmatter___cover___photo___mtimeMs',
+  frontmatter___cover___photo___ctimeMs = 'frontmatter___cover___photo___ctimeMs',
+  frontmatter___cover___photo___atime = 'frontmatter___cover___photo___atime',
+  frontmatter___cover___photo___mtime = 'frontmatter___cover___photo___mtime',
+  frontmatter___cover___photo___ctime = 'frontmatter___cover___photo___ctime',
+  frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
+  frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
+  frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -1532,6 +1572,8 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
+  draft?: Maybe<Scalars['Boolean']>;
+  cover?: Maybe<MdxFrontmatterCover>;
 };
 
 export type MdxFrontmatterDateArgs = {
@@ -1541,9 +1583,33 @@ export type MdxFrontmatterDateArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
+export type MdxFrontmatterCover = {
+  __typename?: 'MdxFrontmatterCover';
+  author?: Maybe<MdxFrontmatterCoverAuthor>;
+  photo?: Maybe<File>;
+};
+
+export type MdxFrontmatterCoverAuthor = {
+  __typename?: 'MdxFrontmatterCoverAuthor';
+  name?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterCoverAuthorFilterInput = {
+  name?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
+export type MdxFrontmatterCoverFilterInput = {
+  author?: Maybe<MdxFrontmatterCoverAuthorFilterInput>;
+  photo?: Maybe<FileFilterInput>;
+};
+
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
+  draft?: Maybe<BooleanQueryOperatorInput>;
+  cover?: Maybe<MdxFrontmatterCoverFilterInput>;
 };
 
 export type MdxGroupConnection = {
@@ -2675,10 +2741,10 @@ export type HeaderQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export type Unnamed_1_QueryVariables = {};
+export type PhotoQueryVariables = {};
 
-export type Unnamed_1_Query = { __typename?: 'Query' } & {
-  placeholderImage: Maybe<
+export type PhotoQuery = { __typename?: 'Query' } & {
+  photo: Maybe<
     { __typename?: 'File' } & {
       childImageSharp: Maybe<
         { __typename?: 'ImageSharp' } & {

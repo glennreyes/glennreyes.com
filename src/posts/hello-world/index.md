@@ -1,6 +1,12 @@
 ---
-title: Hello World
-date: '2015-05-01T22:12:03.284Z'
+title: Drawing the line between third party and custom code
+date: 2015-05-21
+draft: true
+cover:
+  author:
+    name: Ricardo Gomez Angel
+    url: https://unsplash.com/@ripato
+  photo: ./cover.jpg
 ---
 
 This is my first post on my new fake blog! How exciting!
