@@ -1,6 +1,6 @@
 ---
 title: Drawing the line between third party and custom code
-date: 2015-05-21
+date: 2019-09-21
 draft: true
 cover:
   author:
