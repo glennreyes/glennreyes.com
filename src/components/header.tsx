@@ -11,14 +11,14 @@ import MenuToggleContext from './menu-toggle-context';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header<{
-  isDefaultPosition: boolean;
+  scrollThreshold: boolean;
   isMenuOpen: boolean;
 }>`
   background: ${p =>
-    p.isDefaultPosition || p.isMenuOpen
+    p.scrollThreshold || p.isMenuOpen
       ? p.theme.headerBg
       : rgba(p.theme.headerBg, 0.95)};
-  ${p => (p.isDefaultPosition ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
+  ${p => (p.scrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
   height: ${p => p.theme.space[6]}px;
   justify-content: space-between;
@@ -29,7 +29,7 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.isDefaultPosition ? p.theme.space[7] : p.theme.space[6]}px;
+    height: ${p.scrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
 
     &:hover {
       background: ${p.theme.headerBg};
@@ -76,7 +76,7 @@ const Header = () => {
   const { y } = useWindowScroll();
 
   return (
-    <Wrapper isDefaultPosition={y === 0} isMenuOpen={isOpen}>
+    <Wrapper scrollThreshold={y < 64} isMenuOpen={isOpen}>
       <Container>
         <MenuButton />
         {title && (
