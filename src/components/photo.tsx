@@ -26,7 +26,7 @@ const StyledImg = styled(Img)`
 const Photo = () => {
   const data = useStaticQuery(graphql`
     query Photo {
-      placeholderImage: file(relativePath: { eq: "photo.jpg" }) {
+      photo: file(relativePath: { eq: "photo.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 320) {
             ...GatsbyImageSharpFluid
@@ -36,7 +36,7 @@ const Photo = () => {
     }
   `);
 
-  return <StyledImg fluid={data.placeholderImage.childImageSharp.fluid} />;
+  return <StyledImg fluid={data.photo.childImageSharp.fluid} />;
 };
 
 export default Photo;
