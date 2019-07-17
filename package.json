@@ -13,9 +13,9 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "dev": "gatsby develop",
+    "clean": "gatsby clean",
     "generate": "graphql-codegen",
-    "serve": "gatsby serve"
+    "start": "gatsby develop"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
