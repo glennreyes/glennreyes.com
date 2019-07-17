@@ -1,4 +1,4 @@
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
@@ -23,23 +23,20 @@ const StyledImg = styled(Img)`
   `}
 `;
 
-const Photo = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        placeholderImage: file(relativePath: { eq: "photo.jpg" }) {
-          childImageSharp {
-            fluid(maxWidth: 320) {
-              ...GatsbyImageSharpFluid
-            }
+const Photo = () => {
+  const data = useStaticQuery(graphql`
+    query Photo {
+      placeholderImage: file(relativePath: { eq: "photo.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 320) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
-    `}
-    render={data => (
-      <StyledImg fluid={data.placeholderImage.childImageSharp.fluid} />
-    )}
-  />
-);
+    }
+  `);
+
+  return <StyledImg fluid={data.placeholderImage.childImageSharp.fluid} />;
+};
 
 export default Photo;
