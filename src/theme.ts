@@ -41,7 +41,8 @@ export const system = {
     gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
     white: '#fff',
   },
-  fontSizes: [16, 20, 24, 32, 48, 72],
+  contentWidths: [640, 1280],
+  fontSizes: [12, 16, 20, 24, 32, 48, 72],
   fontWeights: [400, 700, 900],
   fonts: {
     mono: 'Menlo, monospace',
