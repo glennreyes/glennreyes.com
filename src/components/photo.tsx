@@ -14,7 +14,7 @@ import styled from 'styled-components';
  * - `StaticQuery`: https://gatsby.dev/staticquery
  */
 
-const GatsbyImage = styled(Img)`
+const StyledImg = styled(Img)`
   border-radius: 50%;
   width: 128px;
 
@@ -23,7 +23,7 @@ const GatsbyImage = styled(Img)`
   `}
 `;
 
-const Image = () => (
+const Photo = () => (
   <StaticQuery
     query={graphql`
       query {
@@ -37,9 +37,9 @@ const Image = () => (
       }
     `}
     render={data => (
-      <GatsbyImage fluid={data.placeholderImage.childImageSharp.fluid} />
+      <StyledImg fluid={data.placeholderImage.childImageSharp.fluid} />
     )}
   />
 );
 
-export default Image;
+export default Photo;
