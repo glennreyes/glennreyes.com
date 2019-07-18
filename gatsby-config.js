@@ -40,7 +40,6 @@ module.exports = {
           'gatsby-remark-images',
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-smartypants',
-          'gatsby-remark-unwrap-images',
         ],
       },
     },
