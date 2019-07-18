@@ -1,7 +1,12 @@
 import React from 'react';
 
+const currentHours = new Date().getHours();
+
+// Between 6pm and 5:59am
+const isNight = currentHours >= 18 || currentHours < 6;
+
 const DarkModeContext = React.createContext({
-  darkMode: false,
+  darkMode: isNight,
   toggleDarkMode: () => {},
 });
 
@@ -10,11 +15,6 @@ type DarkModeProviderProps = {
 };
 
 export const DarkModeProvider = ({ children }: DarkModeProviderProps) => {
-  const currentHours = new Date().getHours();
-
-  // Between 6pm and 5:59am
-  const isNight = currentHours >= 18 || currentHours < 6;
-
   const [darkMode, setDarkMode] = React.useState(isNight);
 
   return (
