@@ -75,6 +75,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [`gatsby-remark-images`],
+      },
+    },
     'gatsby-transformer-sharp',
   ],
 };
