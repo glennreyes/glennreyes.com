@@ -334,8 +334,8 @@ export type DirectorySortInput = {
 };
 
 export type DuotoneGradient = {
-  highlight?: Maybe<Scalars['String']>;
-  shadow?: Maybe<Scalars['String']>;
+  highlight: Scalars['String'];
+  shadow: Scalars['String'];
   opacity?: Maybe<Scalars['Int']>;
 };
 
