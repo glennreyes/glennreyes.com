@@ -2,7 +2,7 @@ import Img from 'gatsby-image';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
-import DefaultHeading from '../../components/heading';
+import { H1 } from '../../components/heading';
 import Link from '../../components/link';
 import DefaultText from '../../components/text';
 
@@ -36,7 +36,7 @@ const HeaderContent = styled.div`
   max-width: ${p => p.theme.contentWidths[0]}px;
 `;
 
-const Heading = styled(DefaultHeading)`
+const Heading = styled(H1)`
   ${p => (p.hasCover ? `color: ${p.theme.coverHeading};` : '')}
 `;
 
