@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const component = path.resolve(`./src/templates/post.jsx`);
+  const component = path.resolve(`./src/templates/post/index.jsx`);
   const posts = result.data.allMdx.edges;
 
   posts.forEach((post, index) => {
