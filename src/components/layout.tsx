@@ -19,10 +19,10 @@ type LayoutProps = {
 
 const Main = styled.main`
   background: ${p => p.theme.bg};
-  padding-top: ${p => p.theme.space[6]}px;
+  padding-top: ${p => p.theme.space[7]}px;
 
   ${p => p.theme.media.desktop`
-    padding-top: ${p.theme.space[7]}px;
+    padding-top: ${p.theme.space[8]}px;
   `}
 `;
 

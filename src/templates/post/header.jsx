@@ -4,16 +4,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { H1 } from '../../components/heading';
 import Link from '../../components/link';
-import DefaultText from '../../components/text';
+import Text from '../../components/text';
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   align-items: stretch;
   ${p => (p.hasCover ? `background: ${p.theme.coverBg};` : '')}
   display: flex;
   flex-direction: column;
   height: 320px;
   justify-content: flex-end;
-  margin-bottom: ${p => p.theme.space[6]}px;
+  margin-bottom: ${p => p.theme.space[7]}px;
   position: relative;
   transition: background ${p => p.theme.transition};
 
@@ -31,19 +31,19 @@ const ContentWrapper = styled.div`
 `}
 `;
 
-const HeaderContent = styled.div`
+const Content = styled.div`
   margin: 0 auto;
   max-width: ${p => p.theme.contentWidths[0]}px;
 `;
 
 const Heading = styled(H1)`
   ${p => (p.hasCover ? `color: ${p.theme.coverHeading};` : '')}
+  margin-top: 0;
 `;
 
-const HeaderText = styled(DefaultText)`
+const Meta = styled(Text)`
   color: ${p => (p.hasCover ? p.theme.coverMeta : p.theme.textColor2)};
   font-size: ${p => p.theme.fontSizes[1]}px;
-  margin-top: ${p => p.theme.space[3]}px;
 `;
 
 const Cover = styled(Img)`
@@ -52,7 +52,7 @@ const Cover = styled(Img)`
   width: 100%;
 `;
 
-const CoverAuthor = styled(DefaultText)`
+const CoverAuthor = styled(Text)`
   color: ${p => p.theme.coverMeta};
   font-size: ${p => p.theme.fontSizes[0]}px;
   line-height: ${p => p.theme.lineHeights[1]};
@@ -84,12 +84,12 @@ const Header = ({ post }) => {
         />
       )}
       <ContentWrapper>
-        <HeaderContent>
+        <Content>
           <Heading hasCover={hasCover}>{post.frontmatter.title}</Heading>
-          <HeaderText hasCover={hasCover}>
+          <Meta hasCover={hasCover}>
             {post.frontmatter.date} •{' '}
             {ms(post.timeToRead * 1000 * 60, { long: true })} read
-          </HeaderText>
+          </Meta>
           {post.frontmatter.cover && post.frontmatter.cover.author && (
             <CoverAuthor>
               Photo by{' '}
@@ -101,7 +101,7 @@ const Header = ({ post }) => {
               </CoverAuthorLink>
             </CoverAuthor>
           )}
-        </HeaderContent>
+        </Content>
       </ContentWrapper>
     </Wrapper>
   );

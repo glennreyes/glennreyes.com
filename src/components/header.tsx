@@ -20,7 +20,7 @@ const Wrapper = styled.header<{
       : rgba(p.theme.headerBg, 0.95)};
   ${p => (p.scrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
-  height: ${p => p.theme.space[6]}px;
+  height: ${p => p.theme.space[7]}px;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -29,7 +29,7 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.scrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
+    height: ${p.scrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
 
     &:hover {
       background: ${p.theme.headerBg};

@@ -34,7 +34,7 @@ const Wrapper = styled.nav`
   background: ${p => p.theme.bg};
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ${p => p.theme.space[6]}px);
+  height: calc(100vh - ${p => p.theme.space[7]}px);
   left: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;

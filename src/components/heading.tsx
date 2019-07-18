@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Heading = styled.div`
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
-  margin: 0;
+  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[3]}px;
 `;
 
 export const H1 = styled(Heading).attrs({ as: 'h1' })`
@@ -12,15 +12,24 @@ export const H1 = styled(Heading).attrs({ as: 'h1' })`
 
   ${p => p.theme.media.tablet`
     font-size: ${p.theme.fontSizes[5]}px;
+    margin-top: ${p.theme.space[6]}px;
   `}
 `;
 
 export const H2 = styled(Heading).attrs({ as: 'h2' })`
   font-size: ${p => p.theme.fontSizes[4]}px;
+
+  ${p => p.theme.media.tablet`
+    margin-top: ${p.theme.space[6]}px;
+  `}
 `;
 
 export const H3 = styled(Heading).attrs({ as: 'h3' })`
   font-size: ${p => p.theme.fontSizes[3]}px;
+
+  ${p => p.theme.media.tablet`
+    margin-top: ${p.theme.space[6]}px;
+  `}
 `;
 
 export const H4 = styled(Heading).attrs({ as: 'h4' })`
