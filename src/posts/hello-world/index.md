@@ -17,9 +17,11 @@ If you are building **server-side rendered apps** in React with Code Splitting s
 
 If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
 
+![Chinese Salty Egg](./salty_egg.jpg)
+
 ## Hello H3
 
-If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
+If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it ~~builds everything for the client~~ and for the server for you.
 
 ## Hello H4
 
