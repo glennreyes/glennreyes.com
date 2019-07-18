@@ -37,7 +37,10 @@ module.exports = {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-images',
+          {
+            resolve: 'gatsby-remark-images',
+            options: { maxWidth: 640 },
+          },
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-smartypants',
         ],
