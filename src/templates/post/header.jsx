@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { H1 } from '../../components/heading';
 import Link from '../../components/link';
 import Text from '../../components/text';
+import { ReactComponent as Camera } from '../../icons/camera.svg';
 
 const Wrapper = styled.header`
   align-items: stretch;
@@ -52,8 +53,10 @@ const Cover = styled(Img)`
   width: 100%;
 `;
 
-const CoverAuthor = styled(Text)`
+const CoverAuthorLink = styled(Link)`
+  align-items: center;
   color: ${p => p.theme.coverMeta};
+  display: flex;
   font-size: ${p => p.theme.fontSizes[0]}px;
   line-height: ${p => p.theme.lineHeights[1]};
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
@@ -68,8 +71,10 @@ const CoverAuthor = styled(Text)`
 `}
 `;
 
-const CoverAuthorLink = styled(Link)`
-  color: inherit;
+const CameraIcon = styled(Camera)`
+  height: ${p => p.theme.space[3]}px;
+  margin-right: ${p => p.theme.space[1]}px;
+  width: ${p => p.theme.space[3]}px;
 `;
 
 const Header = ({ post }) => {
@@ -91,15 +96,13 @@ const Header = ({ post }) => {
             {ms(post.timeToRead * 1000 * 60, { long: true })} read
           </Meta>
           {post.frontmatter.cover && post.frontmatter.cover.author && (
-            <CoverAuthor>
-              Photo by{' '}
-              <CoverAuthorLink
-                target="_blank"
-                to={post.frontmatter.cover.author.url}
-              >
-                {post.frontmatter.cover.author.name}
-              </CoverAuthorLink>
-            </CoverAuthor>
+            <CoverAuthorLink
+              target="_blank"
+              to={post.frontmatter.cover.author.url}
+            >
+              <CameraIcon />
+              {post.frontmatter.cover.author.name}
+            </CoverAuthorLink>
           )}
         </Content>
       </ContentWrapper>

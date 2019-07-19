@@ -2321,6 +2321,8 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
   pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
+  pluginCreator___pluginOptions___svgoConfig___removeDimensions = 'pluginCreator___pluginOptions___svgoConfig___removeDimensions',
+  pluginCreator___pluginOptions___svgoConfig___removeViewBox = 'pluginCreator___pluginOptions___svgoConfig___removeViewBox',
   pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
@@ -2531,6 +2533,8 @@ export enum SitePluginFieldsEnum {
   pluginOptions___displayName = 'pluginOptions___displayName',
   pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
   pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
+  pluginOptions___svgoConfig___removeDimensions = 'pluginOptions___svgoConfig___removeDimensions',
+  pluginOptions___svgoConfig___removeViewBox = 'pluginOptions___svgoConfig___removeViewBox',
   pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
@@ -2666,6 +2670,7 @@ export type SitePluginPluginOptions = {
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   displayName?: Maybe<Scalars['Boolean']>;
   replaceAttrValues?: Maybe<SitePluginPluginOptionsReplaceAttrValues>;
+  svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfig>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgProps>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
@@ -2685,6 +2690,7 @@ export type SitePluginPluginOptionsFilterInput = {
   replaceAttrValues?: Maybe<
     SitePluginPluginOptionsReplaceAttrValuesFilterInput
   >;
+  svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgPropsFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
@@ -2724,6 +2730,17 @@ export type SitePluginPluginOptionsReplaceAttrValues = {
 export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
   _000?: Maybe<StringQueryOperatorInput>;
   _fff?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsSvgoConfig = {
+  __typename?: 'SitePluginPluginOptionsSvgoConfig';
+  removeDimensions?: Maybe<Scalars['Boolean']>;
+  removeViewBox?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsSvgoConfigFilterInput = {
+  removeDimensions?: Maybe<BooleanQueryOperatorInput>;
+  removeViewBox?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsSvgProps = {
