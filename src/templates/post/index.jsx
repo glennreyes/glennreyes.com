@@ -174,7 +174,7 @@ const Code = ({ children, className, metastring }) => {
               <Line
                 key={i}
                 {...getLineProps({ key: i, line })}
-                isHighlighted={linesToHighlight.includes(i)}
+                isHighlighted={linesToHighlight.includes(i + 1)}
               >
                 {line.map((token, key) => {
                   const { style, ...tokenProps } = getTokenProps({
