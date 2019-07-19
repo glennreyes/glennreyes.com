@@ -156,6 +156,9 @@ const calculateLinesToHighlight = metastring => {
 };
 
 const Code = ({ children, className, metastring }) => {
+  // Remove last empty line
+  const code = children.trim();
+
   // Take language-jsx and convert to just jsx
   const language = className ? className.split('language-').pop() : '';
 
@@ -163,12 +166,7 @@ const Code = ({ children, className, metastring }) => {
   const linesToHighlight = calculateLinesToHighlight(metastring);
 
   return (
-    <Highlight
-      {...defaultProps}
-      code={children}
-      language={language}
-      theme={theme}
-    >
+    <Highlight {...defaultProps} code={code} language={language} theme={theme}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <Pre css={style}>
           <Codeblock>
