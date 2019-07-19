@@ -10,6 +10,7 @@ import { system } from '../theme';
 
 const Wrapper = styled(Button)`
   height: 24px;
+  margin-left: auto;
   position: relative;
   width: 24px;
 `;

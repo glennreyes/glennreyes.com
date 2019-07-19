@@ -61,6 +61,12 @@ const TitleLink = styled(Link)`
   `}
 `;
 
+const FlexItem = styled.div`
+  ${p => p.theme.media.desktop`
+    flex: 1 1 0;
+  `}
+`;
+
 const Header = () => {
   const { site }: HeaderQuery = useStaticQuery(graphql`
     query Header {
@@ -80,12 +86,16 @@ const Header = () => {
       <Container>
         <MenuButton />
         {title && (
-          <TitleLink onClick={() => close()} to="/">
-            {title}
-          </TitleLink>
+          <FlexItem>
+            <TitleLink onClick={() => close()} to="/">
+              {title}
+            </TitleLink>
+          </FlexItem>
         )}
         <Menu />
-        <DarkModeButton />
+        <FlexItem>
+          <DarkModeButton />
+        </FlexItem>
       </Container>
     </Wrapper>
   );
