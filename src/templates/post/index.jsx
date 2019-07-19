@@ -1,6 +1,8 @@
 import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/oceanicNext';
 import React from 'react';
 import styled from 'styled-components';
 import Header from './header';
@@ -73,6 +75,45 @@ const Blockquote = styled.blockquote`
   padding-left: ${p => p.theme.space[4]}px;
 `;
 
+const Code = ({ children, className, metastring }) => {
+  // Take language-jsx and convert to just jsx
+  const language = className ? className.split('language-').pop() : '';
+
+  // TODO: From ```jsx {1,2,5-9} create an an array with [1, 2, 5, 6, 7, 9]
+  const highlightedLines = metastring
+    ? metastring.match(/{([\d,-]+)}/)[1].split(',')
+    : [];
+
+  return (
+    <Highlight
+      {...defaultProps}
+      code={children}
+      language={language}
+      theme={theme}
+    >
+      {({ style, tokens, getLineProps, getTokenProps }) => (
+        <pre style={style}>
+          {tokens.map((line, i) => (
+            <div
+              key={i}
+              {...getLineProps({ key: i, line })}
+              className={undefined}
+            >
+              {line.map((token, key) => (
+                <span
+                  key={key}
+                  {...getTokenProps({ key, token })}
+                  className={undefined}
+                />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
+  );
+};
+
 const Post = ({ data }) => {
   const post = data.mdx;
 
@@ -90,6 +131,7 @@ const Post = ({ data }) => {
             components={{
               a: Link,
               blockquote: Blockquote,
+              code: Code,
               h1: H1,
               h2: H2,
               h3: H3,

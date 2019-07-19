@@ -11,6 +11,44 @@ cover:
 
 ## Hello H2
 
+```
+Test
+```
+
+```jsx
+import React from 'react';
+import { render } from 'react-dom';
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  return <button onClick={() => setCount(state => state + 1)}>{count}</button>;
+};
+
+render(<App />, document.getElementById('root));
+```
+
+````jsx 1, 2, 3
+import React from 'react';
+import { render } from 'react-dom';
+
+const App = () => {
+  const [count, setCount] = React.useState(0);
+
+  return <button onClick={() => setCount(state => state + 1)}>{count}</button>;
+};
+
+render(<App />, document.getElementById('root));
+```
+
+```sh
+# Install graphpack
+yarn add graphpack
+
+# Run graphpack
+graphpack start
+````
+
 If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
 
 ![Chinese Salty Egg](./salty_egg.jpg)
@@ -46,27 +84,6 @@ graphpack start
 ```
 
 If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
-
-```js
-import React from 'react';
-import { render } from 'react-dom';
-
-const App = () => {
-  const [count, setCount] = React.useState(0);
-
-  return <button onClick={() => setCount(state => state + 1)}>{count}</button>;
-};
-
-render(<App />, document.getElementById('root));
-```
-
-```sh
-# Install graphpack
-yarn add graphpack
-
-# Run graphpack
-graphpack start
-```
 
 If you are building **server-side rendered apps** in React with Code Splitting support baked in, some might use _zero-configuration_ tools like `razzle`, which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
 
