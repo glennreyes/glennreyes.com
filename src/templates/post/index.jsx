@@ -64,6 +64,15 @@ const OrderedList = styled.ol`
   }
 `;
 
+const Blockquote = styled.blockquote`
+  border-left: ${p => p.theme.borders[3]}px solid ${p => p.theme.borderColor};
+  color: ${p => p.theme.textColor2};
+  font-style: italic;
+  line-height: ${p => p.theme.lineHeights[1]};
+  margin: ${p => p.theme.space[5]}px 0;
+  padding-left: ${p => p.theme.space[4]}px;
+`;
+
 const Post = ({ data }) => {
   const post = data.mdx;
 
@@ -80,6 +89,7 @@ const Post = ({ data }) => {
           <MDXProvider
             components={{
               a: Link,
+              blockquote: Blockquote,
               h1: H1,
               h2: H2,
               h3: H3,
