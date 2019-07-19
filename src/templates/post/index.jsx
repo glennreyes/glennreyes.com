@@ -2,7 +2,8 @@ import { MDXProvider } from '@mdx-js/react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/oceanicNext';
+import { rgba } from 'polished';
+import theme from 'prism-react-renderer/themes/nightOwl';
 import React from 'react';
 import styled from 'styled-components';
 import Header from './header';
@@ -75,14 +76,91 @@ const Blockquote = styled.blockquote`
   padding-left: ${p => p.theme.space[4]}px;
 `;
 
+const Pre = styled.pre`
+  border-radius: ${p => p.theme.radii[1]}px;
+  overflow: auto;
+  font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
+    ${p => p.theme.fonts.mono};
+  margin: ${p => p.theme.space[5]}px 0;
+
+  ${p => p.theme.media.tablet`
+    margin-left: -${p => p.theme.space[3]}px;
+    margin-right: -${p => p.theme.space[3]}px;
+  `}
+`;
+
+const Codeblock = styled.code`
+  display: block;
+  float: left;
+  min-width: 100%;
+  padding: ${p => p.theme.space[3]}px 0;
+
+  ${p => p.theme.media.tablet`
+    padding-left: ${p => p.theme.space[3]}px;
+    padding-right: ${p => p.theme.space[3]}px;
+  `}
+`;
+
+const Line = styled.span`
+  ${p =>
+    p.isHighlighted ? `background: ${rgba(p.theme.colors.white, 0.075)};` : ''}
+  ${p =>
+    p.isHighlighted
+      ? `border-left: ${p.theme.space[1]}px solid ${rgba(
+          p.theme.colors.white,
+          0.2,
+        )};`
+      : ''};
+  display: block;
+  padding: 0
+    ${p =>
+      p.isHighlighted
+        ? `${p.theme.space[3]}px 0 ${p.theme.space[3] - p.theme.space[1]}px`
+        : `${p.theme.space[3]}px`};
+
+  ${p => p.theme.media.tablet`
+    margin-left: -${p => p.theme.space[3]}px;
+    margin-right: -${p => p.theme.space[3]}px;
+  `}
+`;
+
+const calculateLinesToHighlight = metastring => {
+  const parsedLines = metastring ? metastring.match(/{([\d,-]+)}/) : null;
+
+  return parsedLines
+    ? parsedLines[1].split(',').reduce((acc, value) => {
+        if (value.includes('-')) {
+          const range = value
+            .split('-')
+            .filter(Boolean)
+            .map(Number);
+
+          if (range.length === 1) return [...acc, range];
+
+          range.sort((a, b) => a < b);
+          const [start, end] = range;
+          const lines = [
+            ...Array.from(
+              { length: end - start },
+              (value, index) => start + index,
+            ),
+            end,
+          ];
+
+          return [...acc, ...lines];
+        }
+
+        return [...acc, Number(value)];
+      }, [])
+    : [];
+};
+
 const Code = ({ children, className, metastring }) => {
   // Take language-jsx and convert to just jsx
   const language = className ? className.split('language-').pop() : '';
 
-  // TODO: From ```jsx {1,2,5-9} create an an array with [1, 2, 5, 6, 7, 9]
-  const highlightedLines = metastring
-    ? metastring.match(/{([\d,-]+)}/)[1].split(',')
-    : [];
+  // From ```jsx {1,2,5-9} create an an array with [1, 2, 5, 6, 7, 8, 9]
+  const linesToHighlight = calculateLinesToHighlight(metastring);
 
   return (
     <Highlight
@@ -92,23 +170,32 @@ const Code = ({ children, className, metastring }) => {
       theme={theme}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
-        <pre style={style}>
-          {tokens.map((line, i) => (
-            <div
-              key={i}
-              {...getLineProps({ key: i, line })}
-              className={undefined}
-            >
-              {line.map((token, key) => (
-                <span
-                  key={key}
-                  {...getTokenProps({ key, token })}
-                  className={undefined}
-                />
-              ))}
-            </div>
-          ))}
-        </pre>
+        <Pre css={style}>
+          <Codeblock>
+            {tokens.map((line, i) => (
+              <Line
+                key={i}
+                {...getLineProps({ key: i, line })}
+                isHighlighted={linesToHighlight.includes(i)}
+              >
+                {line.map((token, key) => {
+                  const { style, ...tokenProps } = getTokenProps({
+                    key,
+                    token,
+                  });
+                  return (
+                    <span
+                      key={key}
+                      {...tokenProps}
+                      className={undefined}
+                      css={style}
+                    />
+                  );
+                })}
+              </Line>
+            ))}
+          </Codeblock>
+        </Pre>
       )}
     </Highlight>
   );
@@ -142,6 +229,7 @@ const Post = ({ data }) => {
               li: ListItem,
               ol: OrderedList,
               p: Paragraph,
+              pre: ({ children }) => children,
               ul: UnorderedList,
             }}
           >

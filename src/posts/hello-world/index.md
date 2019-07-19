@@ -15,7 +15,7 @@ cover:
 Test
 ```
 
-```jsx
+```jsx {1,2,5-8}
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -28,7 +28,7 @@ const App = () => {
 render(<App />, document.getElementById('root));
 ```
 
-````jsx 1, 2, 3
+````jsx
 import React from 'react';
 import { render } from 'react-dom';
 
