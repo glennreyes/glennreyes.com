@@ -92,6 +92,7 @@ const Pre = styled.pre`
 const Codeblock = styled.code`
   display: block;
   float: left;
+  font-family: inherit;
   min-width: 100%;
   padding: ${p => p.theme.space[3]}px 0;
 
