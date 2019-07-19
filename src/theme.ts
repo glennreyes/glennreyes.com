@@ -38,6 +38,7 @@ export const system = {
   boxShadow: ['0px 4px 8px rgba(0, 0, 0, .05)'],
   colors: {
     black: '#000',
+    blue: ['#0d4bbf', '#9abbf9'],
     gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
     white: '#fff',
   },
@@ -65,6 +66,7 @@ export const light = {
   coverHeading: system.colors.white,
   coverMeta: system.colors.gray[1],
   headerBg: system.colors.white,
+  linkColor: system.colors.blue[0],
   textColor: system.colors.black,
   textColor2: system.colors.gray[2],
 };
@@ -79,6 +81,7 @@ export const dark = {
   coverHeading: system.colors.black,
   coverMeta: system.colors.gray[3],
   headerBg: system.colors.gray[3],
+  linkColor: system.colors.blue[1],
   textColor: system.colors.white,
   textColor2: system.colors.gray[1],
 };

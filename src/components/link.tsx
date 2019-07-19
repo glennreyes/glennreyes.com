@@ -27,7 +27,8 @@ const Link = styled(
     );
   },
 )`
-  color: ${p => p.theme.textColor};
+  color: ${p => p.theme.linkColor};
+  display: inline-block;
   text-decoration: none;
 `;
 

@@ -62,6 +62,7 @@ const PosedWrapper = posed(Wrapper)({
 
 const MenuLink = styled(Link)`
   border-bottom: ${p => p.theme.borders[2]}px solid ${p => p.theme.headerBg};
+  color: ${p => p.theme.textColor};
   font-size: ${p => p.theme.fontSizes[2]}px;
   padding: ${p => p.theme.space[3]}px;
   text-transform: lowercase;
