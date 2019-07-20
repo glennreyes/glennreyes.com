@@ -1,16 +1,11 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
+import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import styled from 'styled-components';
 import Footer from './footer';
 import GlobalStyle from './global-style';
 import Header from './header';
 import MenuToggleContext, { MenuToggleProvider } from './menu-toggle-context';
+import mdxComponents from './mdx';
 import ThemeProvider from './theme-provider';
 
 type LayoutProps = {
@@ -32,7 +27,9 @@ const Content = ({ children }: LayoutProps) => {
     <>
       <GlobalStyle isMenuOpen={isOpen} />
       <Header />
-      <Main>{children}</Main>
+      <MDXProvider components={mdxComponents}>
+        <Main>{children}</Main>
+      </MDXProvider>
       <Footer />
     </>
   );
