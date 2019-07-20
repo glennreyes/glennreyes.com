@@ -44,7 +44,7 @@ export const system = {
   },
   contentWidths: [640, 1280],
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
-  fontWeights: [400, 700, 900],
+  fontWeights: [400, 700, 800],
   fonts: {
     mono: 'Menlo, monospace',
     sans: 'system-ui, sans-serif',
