@@ -6,6 +6,7 @@ import Link from './link';
 import ListItem from './list-item';
 import OrderedList from './ordered-list';
 import Paragraph from './paragraph';
+import Table, { TableCell, TableHeader } from './table';
 import UnorderedList from './unordered-list';
 
 const mdxComponents = {
@@ -23,6 +24,9 @@ const mdxComponents = {
   ol: OrderedList,
   p: Paragraph,
   pre: ({ children }) => children,
+  table: Table,
+  th: TableHeader,
+  td: TableCell,
   ul: UnorderedList,
 };
 

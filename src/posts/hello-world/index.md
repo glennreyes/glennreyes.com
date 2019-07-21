@@ -11,6 +11,10 @@ cover:
 
 ## Hello H2
 
+| Package                                                                     | Type            | Update | Change                                                                                       |
+| --------------------------------------------------------------------------- | --------------- | ------ | -------------------------------------------------------------------------------------------- |
+| [eslint-plugin-import](https://togithub.com/benmosher/eslint-plugin-import) | devDependencies | patch  | [`2.18.1` -> `2.18.2`](https://renovatebot.com/diffs/npm/eslint-plugin-import/2.18.1/2.18.2) |
+
 ```
 Test
 ```
