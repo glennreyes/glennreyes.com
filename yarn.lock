@@ -1604,6 +1604,13 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
+"@types/react-wait@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-wait/-/react-wait-0.3.0.tgz#6f7ef17571a17e72c7864ede8cf7d3aa525a005e"
+  integrity sha512-5jIfDcHRjqeE7QfZG7kCqOpfrPSvOM1E3/nlKuJ/NZrG/WrhLo/AFr0i72jhTWzyNRo4ex0pshBaiCHksZXH3A==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@16.8.23", "@types/react@^16.8.12", "@types/react@^16.8.6":
   version "16.8.23"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.23.tgz#ec6be3ceed6353a20948169b6cb4c97b65b97ad2"
@@ -11259,11 +11266,12 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-use@9.12.0:
-  version "9.12.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-9.12.0.tgz#2c03fd9303f5ab50c406bbe76bf66b5d14576609"
-  integrity sha512-aqY+w2nzwZnyJEizW4mhWMUUC0HtCLuxZIN7UW5oTTbNzlinOn3cgQCApGqjtjP7g9TXMroHU9WA0rYwShAVJA==
+react-use@10.1.2:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-10.1.2.tgz#9d42cecce77531b2cf764bc013b2284ac7623b57"
+  integrity sha512-Y80ix2tqD5Fn0sTvJMOC8V03dMgiXzZeHxNl4ZXbVKC8ymtAL+zrEsxq5c+f82An6k8IaChjRai3fc4csDy+mQ==
   dependencies:
+    "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
     nano-css "^5.1.0"
     react-fast-compare "^2.0.4"
