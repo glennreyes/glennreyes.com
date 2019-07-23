@@ -23,6 +23,7 @@ const Main = styled.main`
 
 const Content = ({ children }: LayoutProps) => {
   const { isOpen } = React.useContext(MenuToggleContext);
+
   return (
     <>
       <GlobalStyle isMenuOpen={isOpen} />

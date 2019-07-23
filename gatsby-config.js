@@ -36,7 +36,6 @@ module.exports = {
       options: {
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
-          'gatsby-remark-autolink-headers',
           'gatsby-remark-copy-linked-files',
           {
             resolve: 'gatsby-remark-images',
