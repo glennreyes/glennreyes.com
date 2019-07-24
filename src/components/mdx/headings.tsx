@@ -82,6 +82,10 @@ export const H3 = styled(props => <Heading as="h3" {...props} />)`
 export const H4 = styled(props => <Heading as="h4" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
+
+  ${p => p.theme.media.tablet`
+    margin-top: ${p.theme.space[6]}px;
+  `}
 `;
 
 export const H5 = styled(props => <Heading as="h5" {...props} />)`
