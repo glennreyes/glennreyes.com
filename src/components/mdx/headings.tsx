@@ -2,10 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { inlineCodeStyles } from './code';
 import useAnchor from '../../hooks/useAnchor';
-import { ReactComponent as LinkSvg } from '../../icons/link.svg';
+import { ReactComponent as AnchorIcon } from '../../icons/link.svg';
 import { system } from '../../theme';
-
-const AnchorIcon = styled(LinkSvg)``;
 
 const Anchor = styled.a`
   color: ${p => p.theme.textColor2};
@@ -40,7 +38,11 @@ const Heading = ({ children, ...props }) => {
 
   return (
     <Wrapper {...props} id={slug} ref={ref}>
-      <Anchor aria-label={` permalink`} href={`#${slug}`} onClick={handleClick}>
+      <Anchor
+        aria-label={`${slug} permalink`}
+        href={`#${slug}`}
+        onClick={handleClick}
+      >
         <AnchorIcon />
       </Anchor>
       {children}
@@ -59,7 +61,7 @@ export const H1 = styled(props => <Heading as="h1" {...props} />)`
   `}
 `;
 
-export const H2 = styled(props => <Heading as="h2" {...props}></Heading>)`
+export const H2 = styled(props => <Heading as="h2" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[4]}px;
 

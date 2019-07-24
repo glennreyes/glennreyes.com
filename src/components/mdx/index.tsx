@@ -1,3 +1,4 @@
+import React from 'react';
 import Break from './break';
 import Blockquote from './blockquote';
 import Code from './code';
@@ -8,6 +9,8 @@ import OrderedList from './ordered-list';
 import Paragraph from './paragraph';
 import Table, { TableCell, TableHeader } from './table';
 import UnorderedList from './unordered-list';
+
+const Unwrap = ({ children }: { children: React.ReactNode }) => children;
 
 const mdxComponents = {
   a: Link,
@@ -23,11 +26,12 @@ const mdxComponents = {
   li: ListItem,
   ol: OrderedList,
   p: Paragraph,
-  pre: ({ children }) => children,
+  pre: Unwrap,
   table: Table,
-  th: TableHeader,
   td: TableCell,
+  th: TableHeader,
   ul: UnorderedList,
+  wrapper: Unwrap,
 };
 
 export default mdxComponents;
