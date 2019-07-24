@@ -46,8 +46,10 @@ export const system = {
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
   fontWeights: [400, 700, 800],
   fonts: {
-    mono: 'Menlo, monospace',
-    sans: 'system-ui, sans-serif',
+    mono:
+      "'SFMono-Medium', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Consolas, Courier, monospace",
+    sans:
+      "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
   },
   lineHeights: [1, 1.25, 1.5],
   media,
