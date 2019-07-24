@@ -2,7 +2,22 @@ import { rgba } from 'polished';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import Pre from './pre';
+
+// For use at other mdx components
+export const inlineCodeStyles = css`
+  > code {
+    background: ${p => p.theme.codeBg};
+    color: ${p => p.theme.codeColor};
+    font-family: ${p => p.theme.fonts.mono};
+
+    // Copied from github.com
+    border-radius: 4px;
+    font-size: 90%;
+    padding: 0.2em 0.4em;
+  }
+`;
 
 const calculateLinesToHighlight = metastring => {
   const parsedLines = metastring ? metastring.match(/{([\d,-]+)}/) : null;
@@ -34,19 +49,6 @@ const calculateLinesToHighlight = metastring => {
       }, [])
     : [];
 };
-
-const Pre = styled.pre`
-  border-radius: ${p => p.theme.radii[1]}px;
-  overflow: auto;
-  font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
-    ${p => p.theme.fonts.mono};
-  margin: ${p => p.theme.space[5]}px 0;
-
-  ${p => p.theme.media.tablet`
-    margin-left: -${p => p.theme.space[3]}px;
-    margin-right: -${p => p.theme.space[3]}px;
-  `}
-`;
 
 const Codeblock = styled.code`
   display: block;

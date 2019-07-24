@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import DefaultHeading from '../heading';
+import { inlineCodeStyles } from './code';
 import useAnchor from '../../hooks/useAnchor';
 import { ReactComponent as LinkSvg } from '../../icons/link.svg';
 import { system } from '../../theme';
@@ -20,31 +20,36 @@ const Anchor = styled.a`
   }
 `;
 
+const defaultHeadingStyles = css`
+  font-weight: ${p => p.theme.fontWeights[1]};
+  line-height: ${p => p.theme.lineHeights[1]};
+  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[3]}px;
+  ${inlineCodeStyles}
+
+  &:hover > ${Anchor} {
+    opacity: 1;
+  }
+`;
+
+const Wrapper = styled.div``;
+
 const Heading = ({ children, ...props }) => {
   const { handleClick, ref, slug } = useAnchor(children, {
     offset: system.space[7],
   });
 
   return (
-    <DefaultHeading
-      css={css`
-        &:hover > ${Anchor} {
-          opacity: 1;
-        }
-      `}
-      {...props}
-      id={slug}
-      ref={ref}
-    >
+    <Wrapper {...props} id={slug} ref={ref}>
       <Anchor aria-label={` permalink`} href={`#${slug}`} onClick={handleClick}>
         <AnchorIcon />
       </Anchor>
       {children}
-    </DefaultHeading>
+    </Wrapper>
   );
 };
 
 export const H1 = styled(props => <Heading as="h1" {...props} />)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[4]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
 
@@ -54,7 +59,8 @@ export const H1 = styled(props => <Heading as="h1" {...props} />)`
   `}
 `;
 
-export const H2 = styled(props => <Heading as="h2" {...props} />)`
+export const H2 = styled(props => <Heading as="h2" {...props}></Heading>)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[4]}px;
 
   ${p => p.theme.media.tablet`
@@ -62,9 +68,8 @@ export const H2 = styled(props => <Heading as="h2" {...props} />)`
   `}
 `;
 
-// export const H2 = props => <div>{props.children}</div>;
-
 export const H3 = styled(props => <Heading as="h3" {...props} />)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[3]}px;
 
   ${p => p.theme.media.tablet`
@@ -73,13 +78,16 @@ export const H3 = styled(props => <Heading as="h3" {...props} />)`
 `;
 
 export const H4 = styled(props => <Heading as="h4" {...props} />)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
 `;
 
 export const H5 = styled(props => <Heading as="h5" {...props} />)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
 `;
 
 export const H6 = styled(props => <Heading as="h6" {...props} />)`
+  ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
 `;
