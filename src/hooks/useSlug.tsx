@@ -1,7 +1,7 @@
 import React from 'react';
 import { slugify } from '../utils';
 
-const useSlug = node => {
+const useSlug = (node: React.ReactNode): string => {
   const [slug, setSlug] = React.useState();
 
   React.useEffect(() => {

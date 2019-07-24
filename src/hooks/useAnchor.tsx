@@ -1,12 +1,15 @@
 import React from 'react';
 import useSlug from './useSlug';
 
-const useAnchor = (node, { offset } = {}) => {
-  const ref = React.createRef();
+const useAnchor = (
+  node: React.ReactNode,
+  { offset = 0 }: { offset: number },
+) => {
+  const ref = React.createRef<HTMLHeadingElement>();
   const slug = useSlug(node);
 
   React.useEffect(() => {
-    if (!ref) return;
+    if (!(ref && ref.current)) return;
 
     const slug = decodeURI(window.location.hash.replace('#', ''));
 
@@ -15,7 +18,7 @@ const useAnchor = (node, { offset } = {}) => {
     }
   }, [offset, ref]);
 
-  const handleClick = event => {
+  const handleClick = (event: React.SyntheticEvent) => {
     event.preventDefault();
     const element = document.getElementById(slug);
 
@@ -26,7 +29,7 @@ const useAnchor = (node, { offset } = {}) => {
       top: element.offsetTop - offset,
     });
 
-    window.history.pushState(null, null, `#${slug}`);
+    window.history.pushState(null, '', `#${slug}`);
   };
 
   return { handleClick, ref, slug };

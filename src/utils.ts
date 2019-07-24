@@ -20,7 +20,7 @@ export const onlyText = (children: any): string =>
 
 export const slugger = githubSlugger();
 
-export const slugify = (node: React.ReactChildren) =>
+export const slugify = (node: React.ReactNode) =>
   compose(
     (text: string) => slugger.slug(text),
     deburr,
