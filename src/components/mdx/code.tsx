@@ -1,9 +1,8 @@
 import { rgba } from 'polished';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Pre from './pre';
 
 // For use at other mdx components
 export const inlineCodeStyles = css`
@@ -19,20 +18,20 @@ export const inlineCodeStyles = css`
   }
 `;
 
-const calculateLinesToHighlight = metastring => {
+const calculateLinesToHighlight = (metastring?: string): number[] => {
   const parsedLines = metastring ? metastring.match(/{([\d,-]+)}/) : null;
 
   return parsedLines
-    ? parsedLines[1].split(',').reduce((acc, value) => {
+    ? parsedLines[1].split(',').reduce((acc: number[], value: string) => {
         if (value.includes('-')) {
           const range = value
             .split('-')
             .filter(Boolean)
             .map(Number);
 
-          if (range.length === 1) return [...acc, range];
+          if (range.length === 1) return [...acc, ...range];
 
-          range.sort((a, b) => a < b);
+          range.sort((a, b) => a - b);
           const [start, end] = range;
           const lines = [
             ...Array.from(
@@ -50,6 +49,19 @@ const calculateLinesToHighlight = metastring => {
     : [];
 };
 
+const Pre = styled.pre`
+  border-radius: ${p => p.theme.radii[1]}px;
+  overflow: auto;
+  font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
+    ${p => p.theme.fonts.mono};
+  margin: ${p => p.theme.space[5]}px 0;
+
+  ${p => p.theme.media.tablet`
+    margin-left: -${p.theme.space[3]}px;
+    margin-right: -${p.theme.space[3]}px;
+  `}
+`;
+
 const Codeblock = styled.code`
   display: block;
   float: left;
@@ -58,12 +70,12 @@ const Codeblock = styled.code`
   padding: ${p => p.theme.space[3]}px 0;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p => p.theme.space[3]}px;
-    padding-right: ${p => p.theme.space[3]}px;
+    padding-left: ${p.theme.space[3]}px;
+    padding-right: ${p.theme.space[3]}px;
   `}
 `;
 
-const Line = styled.span`
+const Line = styled.span<{ isHighlighted: boolean }>`
   ${p =>
     p.isHighlighted ? `background: ${rgba(p.theme.colors.white, 0.075)};` : ''}
   ${p =>
@@ -81,17 +93,23 @@ const Line = styled.span`
         : `${p.theme.space[3]}px`};
 
   ${p => p.theme.media.tablet`
-    margin-left: -${p => p.theme.space[3]}px;
-    margin-right: -${p => p.theme.space[3]}px;
+    margin-left: -${p.theme.space[3]}px;
+    margin-right: -${p.theme.space[3]}px;
   `}
 `;
 
-const Code = ({ children, className, metastring }) => {
+type CodeProps = {
+  children: string;
+  className: string;
+  metastring?: string;
+};
+
+const Code = ({ children, className = '', metastring }: CodeProps) => {
   // Remove last empty line
   const code = children.trim();
 
   // Take language-jsx and convert to just jsx
-  const language = className ? className.split('language-').pop() : '';
+  const language = className.replace(/^language-(.+)/, '$1') as Language;
 
   // From ```jsx {1,2,5-9} create an an array with [1, 2, 5, 6, 7, 8, 9]
   const linesToHighlight = calculateLinesToHighlight(metastring);

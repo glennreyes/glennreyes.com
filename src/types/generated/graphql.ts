@@ -3242,6 +3242,50 @@ export type HomeQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type PostQueryVariables = {
+  id: Scalars['String'];
+};
+
+export type PostQuery = { __typename?: 'Query' } & {
+  mdx: Maybe<
+    { __typename?: 'Mdx' } & Pick<
+      Mdx,
+      'body' | 'excerpt' | 'id' | 'timeToRead'
+    > & {
+        frontmatter: Maybe<
+          { __typename?: 'MdxFrontmatter' } & Pick<
+            MdxFrontmatter,
+            'date' | 'draft' | 'title'
+          > & {
+              cover: Maybe<
+                { __typename?: 'MdxFrontmatterCover' } & {
+                  photo: Maybe<
+                    { __typename?: 'File' } & {
+                      childImageSharp: Maybe<
+                        { __typename?: 'ImageSharp' } & {
+                          fluid: Maybe<
+                            {
+                              __typename?: 'ImageSharpFluid';
+                            } & GatsbyImageSharpFluidFragment
+                          >;
+                        }
+                      >;
+                    }
+                  >;
+                  author: Maybe<
+                    { __typename?: 'MdxFrontmatterCoverAuthor' } & Pick<
+                      MdxFrontmatterCoverAuthor,
+                      'name' | 'url'
+                    >
+                  >;
+                }
+              >;
+            }
+        >;
+      }
+  >;
+};
+
 export type GatsbyImageSharpFixedFragment = {
   __typename?: 'ImageSharpFixed';
 } & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

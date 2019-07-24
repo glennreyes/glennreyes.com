@@ -25,7 +25,7 @@ const mdxComponents = {
   li: ListItem,
   ol: OrderedList,
   p: Paragraph,
-  pre: Unwrap,
+  pre: ({ children }: { children: React.ReactNode }) => children,
   table: Table,
   td: TableCell,
   th: TableHeader,
