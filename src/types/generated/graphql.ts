@@ -2251,8 +2251,8 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   buildTime?: Maybe<DateQueryOperatorInput>;
 };
 
@@ -2344,8 +2344,8 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>;
   port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
-  pathPrefix?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
   buildTime?: Maybe<Scalars['Date']>;
 };
 
@@ -2475,8 +2475,8 @@ export enum SiteFieldsEnum {
   siteMetadata___title = 'siteMetadata___title',
   port = 'port',
   host = 'host',
-  pathPrefix = 'pathPrefix',
   polyfill = 'polyfill',
+  pathPrefix = 'pathPrefix',
   buildTime = 'buildTime',
 }
 
@@ -2488,8 +2488,8 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
   port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
   buildTime?: Maybe<DateQueryOperatorInput>;
 };
 
