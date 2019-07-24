@@ -57,8 +57,8 @@ const Pre = styled.pre`
   margin: ${p => p.theme.space[5]}px 0;
 
   ${p => p.theme.media.tablet`
-    margin-left: -${p.theme.space[3]}px;
-    margin-right: -${p.theme.space[3]}px;
+    margin-left: -${p.theme.space[4]}px;
+    margin-right: -${p.theme.space[4]}px;
   `}
 `;
 
@@ -67,11 +67,11 @@ const Codeblock = styled.code`
   float: left;
   font-family: inherit;
   min-width: 100%;
-  padding: ${p => p.theme.space[3]}px 0;
+  padding: ${p => p.theme.space[4]}px 0;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[3]}px;
-    padding-right: ${p.theme.space[3]}px;
+    padding-left: ${p.theme.space[4]}px;
+    padding-right: ${p.theme.space[4]}px;
   `}
 `;
 
@@ -89,12 +89,12 @@ const Line = styled.span<{ isHighlighted: boolean }>`
   padding: 0
     ${p =>
       p.isHighlighted
-        ? `${p.theme.space[3]}px 0 ${p.theme.space[3] - p.theme.space[1]}px`
-        : `${p.theme.space[3]}px`};
+        ? `${p.theme.space[4]}px 0 ${p.theme.space[4] - p.theme.space[1]}px`
+        : `${p.theme.space[4]}px`};
 
   ${p => p.theme.media.tablet`
-    margin-left: -${p.theme.space[3]}px;
-    margin-right: -${p.theme.space[3]}px;
+    margin-left: -${p.theme.space[4]}px;
+    margin-right: -${p.theme.space[4]}px;
   `}
 `;
 
