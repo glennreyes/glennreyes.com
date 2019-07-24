@@ -2,7 +2,7 @@ import Img from 'gatsby-image';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
-import { H1 } from '../../components/heading';
+import { H1 } from '../../components/mdx/headings';
 import Link from '../../components/link';
 import Text from '../../components/text';
 import { ReactComponent as Camera } from '../../icons/camera.svg';
