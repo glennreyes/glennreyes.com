@@ -22,7 +22,7 @@ const Anchor = styled.a`
 
 const Heading = ({ children, ...props }) => {
   const { handleClick, ref, slug } = useAnchor(children, {
-    offset: system.space[7] + system.space[3],
+    offset: system.space[7],
   });
 
   return (
