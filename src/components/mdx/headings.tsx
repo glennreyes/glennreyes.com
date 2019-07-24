@@ -2,11 +2,15 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { inlineCodeStyles } from './code';
 import useAnchor from '../../hooks/useAnchor';
-import { ReactComponent as AnchorIcon } from '../../icons/link.svg';
+import { ReactComponent as LinkSvg } from '../../icons/link.svg';
 import { system } from '../../theme';
 
 const Anchor = styled.a`
+  align-items: center;
   color: ${p => p.theme.textColor2};
+  display: flex;
+  // Matches font-size + line-height of the header
+  height: calc(1em * ${p => p.theme.lineHeights[1]});
   opacity: 0;
   transition: opacity ${p => p.theme.transition};
 
@@ -16,6 +20,11 @@ const Anchor = styled.a`
   &:focus {
     opacity: 1;
   }
+`;
+
+const AnchorIcon = styled(LinkSvg)`
+  // height: 20px;
+  // width: 20px;
 `;
 
 const defaultHeadingStyles = css`
@@ -31,7 +40,11 @@ const defaultHeadingStyles = css`
 
 const Wrapper = styled.div``;
 
-const Heading = ({ children, ...props }) => {
+type HeadingProps = {
+  children: React.ReactNode;
+};
+
+const Heading = ({ children, ...props }: HeadingProps) => {
   const { handleClick, ref, slug } = useAnchor(children, {
     offset: system.space[7],
   });
