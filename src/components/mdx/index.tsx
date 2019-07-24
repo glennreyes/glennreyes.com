@@ -9,8 +9,7 @@ import OrderedList from './ordered-list';
 import Paragraph from './paragraph';
 import Table, { TableCell, TableHeader } from './table';
 import UnorderedList from './unordered-list';
-
-const Unwrap = ({ children }: { children: React.ReactNode }) => children;
+import Wrapper from './wrapper';
 
 const mdxComponents = {
   a: Link,
@@ -31,7 +30,7 @@ const mdxComponents = {
   td: TableCell,
   th: TableHeader,
   ul: UnorderedList,
-  wrapper: Unwrap,
+  wrapper: Wrapper,
 };
 
 export default mdxComponents;
