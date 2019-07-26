@@ -11395,10 +11395,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-use@10.2.0:
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-10.2.0.tgz#1854402983b3f00796d4f4ba21e506d89c7ec4c1"
-  integrity sha512-tAjDZxXMgvsb3G0m4lg4lWMFbo0KPV1cmdM6oZN2CSMenLdJAvlwBu3A8Tog7rF+LEwT12QgongaWo3K0FWjtQ==
+react-use@10.3.0:
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-10.3.0.tgz#51eb6aeebb88c066b91ccd59f49004b4c6410108"
+  integrity sha512-wsPivRxg5x2q9RvW7hQyHgUs24syxx/9kZd9uonlLpbXftsd6rjpecEMDq6oE8anROzyArlv1cO9Pcb4muIEOA==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
