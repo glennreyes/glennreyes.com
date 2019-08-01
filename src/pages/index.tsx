@@ -2,41 +2,42 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../components/layout';
+import Link from '../components/link';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
 import { HomeQuery } from '../types/generated/graphql';
 
 const Section = styled.section`
-  padding: 0 ${p => p.theme.space[3]}px;
+  margin: 0 ${p => p.theme.space[3]}px;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[5]}px;
-    padding-right: ${p.theme.space[5]}px;
+    margin-left: ${p.theme.space[5]}px;
+    margin-right: ${p.theme.space[5]}px;
   `}
 `;
 
 const IntroSection = styled(Section)`
-  padding-bottom: ${p => p.theme.space[6]}px;
-  padding-top: ${p => p.theme.space[6]}px;
+  padding: ${p => p.theme.space[6]}px 0;
 
   ${p => p.theme.media.tablet`
-    padding-bottom: ${p.theme.space[7]}px;
-    padding-top: ${p.theme.space[7]}px;
+    padding: ${p.theme.space[7]}px 0;
   `}
 
   ${p => p.theme.media.desktop`
-    padding-bottom: ${p.theme.space[8]}px;
-    padding-top: ${p.theme.space[8]}px;
+    padding: ${p.theme.space[8]}px 0;
   `}
 `;
 
 const Content = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
   max-width: 1280px;
+`;
+
+const IntroContent = styled(Content)`
+  align-items: center;
+  justify-content: center;
   text-align: center;
 
   ${p => p.theme.media.tablet`
@@ -95,13 +96,14 @@ const Home = () => {
       query Home {
         allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
           nodes {
+            excerpt
             fields {
               slug
             }
             frontmatter {
               title
             }
-            excerpt
+            id
           }
         }
         site {
@@ -113,24 +115,44 @@ const Home = () => {
     `,
   );
 
-  const tagline =
-    (site && site.siteMetadata && site.siteMetadata.description) || null;
+  const tagline = site && site.siteMetadata && site.siteMetadata.description;
 
-  console.log(allMdx);
+  const posts =
+    (allMdx &&
+      allMdx.nodes &&
+      allMdx.nodes.map(({ fields, frontmatter, ...node }) => ({
+        slug: fields && fields.slug,
+        title: frontmatter && frontmatter.title,
+        ...node,
+      }))) ||
+    [];
 
   return (
     <Layout>
       <SEO title="Home" />
       <IntroSection>
-        <Content>
+        <IntroContent>
           <Photo />
           <Intro>
             <Greeting>Hey there, I’m Glenn.</Greeting>
             {tagline && <Tagline>{tagline}</Tagline>}
           </Intro>
-        </Content>
+        </IntroContent>
       </IntroSection>
-      <Section>Blog.</Section>
+      <Section>
+        <Content>
+          <h2>Blog.</h2>
+          {posts.map(({ excerpt, id, slug, title }) => (
+            <article key={id}>
+              <Link to={slug}>
+                <h3>{title}</h3>
+                <p>{excerpt}</p>
+              </Link>
+            </article>
+          ))}
+          <Link to="/blog">View all posts</Link>
+        </Content>
+      </Section>
     </Layout>
   );
 };
