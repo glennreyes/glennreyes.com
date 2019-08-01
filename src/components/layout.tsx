@@ -2,11 +2,8 @@ import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import styled from 'styled-components';
 import Footer from './footer';
-import GlobalStyle from './global-style';
 import Header from './header';
-import MenuToggleContext, { MenuToggleProvider } from './menu-toggle-context';
 import mdxComponents from './mdx';
-import ThemeProvider from './theme-provider';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -21,27 +18,14 @@ const Main = styled.main`
   `}
 `;
 
-const Content = ({ children }: LayoutProps) => {
-  const { isOpen } = React.useContext(MenuToggleContext);
-
-  return (
-    <>
-      <GlobalStyle isMenuOpen={isOpen} />
-      <Header />
-      <MDXProvider components={mdxComponents}>
-        <Main>{children}</Main>
-      </MDXProvider>
-      <Footer />
-    </>
-  );
-};
-
 const Layout = (props: LayoutProps) => (
-  <ThemeProvider>
-    <MenuToggleProvider>
-      <Content {...props} />
-    </MenuToggleProvider>
-  </ThemeProvider>
+  <>
+    <Header />
+    <MDXProvider components={mdxComponents}>
+      <Main {...props} />
+    </MDXProvider>
+    <Footer />
+  </>
 );
 
 export default Layout;

@@ -2,10 +2,10 @@ import ms from 'ms';
 import React from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
-import { useMedia } from 'use-media';
+import BreakpointContext from './breakpoint-context';
 import Link from './link';
 import MenuToggleContext from './menu-toggle-context';
-import { breakpoints, system } from '../theme';
+import { system } from '../theme';
 
 const links = [
   {
@@ -92,8 +92,8 @@ const MenuLink = styled(Link)`
 `;
 
 const Menu = () => {
+  const { isDesktop } = React.useContext(BreakpointContext);
   const { isOpen, close } = React.useContext(MenuToggleContext);
-  const isDesktop = useMedia({ minWidth: breakpoints.desktop });
 
   if (isDesktop) {
     return (

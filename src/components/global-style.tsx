@@ -1,6 +1,8 @@
+import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import MenuToggleContext from './menu-toggle-context';
 
-const GlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
+const StyledGlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
   html {
     box-sizing: border-box;
     font-family: ${p => p.theme.fonts.sans};
@@ -26,5 +28,11 @@ const GlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
       color ${p => p.theme.transition};
   }
 `;
+
+const GlobalStyle = () => {
+  const { isOpen } = React.useContext(MenuToggleContext);
+
+  return <StyledGlobalStyle isMenuOpen={isOpen} />;
+};
 
 export default GlobalStyle;
