@@ -5,38 +5,33 @@ import Layout from '../components/layout';
 import Link from '../components/link';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
+import Text from '../components/text';
 import { HomeQuery } from '../types/generated/graphql';
 
 const Section = styled.section`
-  margin: 0 ${p => p.theme.space[3]}px;
+  margin: ${p => p.theme.space[7]}px ${p => p.theme.space[3]}px;
 
   ${p => p.theme.media.tablet`
-    margin-left: ${p.theme.space[5]}px;
-    margin-right: ${p.theme.space[5]}px;
+    margin: ${p.theme.space[5] + p.theme.space[7]}px ${p.theme.space[5]}px;
   `}
 `;
 
 const IntroSection = styled(Section)`
-  padding: ${p => p.theme.space[6]}px 0;
-
-  ${p => p.theme.media.tablet`
-    padding: ${p.theme.space[7]}px 0;
-  `}
-
   ${p => p.theme.media.desktop`
-    padding: ${p.theme.space[8]}px 0;
+    margin-bottom: ${p.theme.space[9]}px;
+    margin-top: ${p.theme.space[9]}px;
   `}
 `;
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   max-width: 1280px;
 `;
 
 const IntroContent = styled(Content)`
   align-items: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 
@@ -90,13 +85,37 @@ const Tagline = styled.p`
   `}
 `;
 
+const Heading = styled.h2`
+  color: ${p => p.theme.textColor2};
+  font-size: ${p => p.theme.fontSizes[4]}px;
+  font-weight: ${p => p.theme.fontWeights[2]};
+  line-height: ${p => p.theme.lineHeights[1]};
+  margin: ${p => p.theme.space[5]}px 0;
+
+  ${p => p.theme.media.tablet`
+    font-size: ${p.theme.fontSizes[5]}px;
+  `}
+`;
+
+const Post = styled.article`
+  margin: ${p => p.theme.space[4]}px 0;
+  max-width: 768px;
+`;
+
+const PostTitle = styled.h3`
+  font-size: ${p => p.theme.fontSizes[3]}px;
+  font-weight: ${p => p.theme.fontWeights[1]};
+  line-height: ${p => p.theme.lineHeights[1]};
+  margin: 0 0 ${p => p.theme.space[2]}px;
+`;
+
 const Home = () => {
   const { allMdx, site }: HomeQuery = useStaticQuery(
     graphql`
       query Home {
         allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
           nodes {
-            excerpt
+            excerpt(pruneLength: 280)
             fields {
               slug
             }
@@ -141,14 +160,14 @@ const Home = () => {
       </IntroSection>
       <Section>
         <Content>
-          <h2>Blog.</h2>
+          <Heading>Blog.</Heading>
           {posts.map(({ excerpt, id, slug, title }) => (
-            <article key={id}>
+            <Post key={id}>
               <Link to={slug}>
-                <h3>{title}</h3>
-                <p>{excerpt}</p>
+                <PostTitle>{title}</PostTitle>
+                <Text>{excerpt}</Text>
               </Link>
-            </article>
+            </Post>
           ))}
           <Link to="/blog">View all posts</Link>
         </Content>
