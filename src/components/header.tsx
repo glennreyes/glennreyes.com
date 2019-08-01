@@ -1,24 +1,24 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { rgba } from 'polished';
 import React from 'react';
-import { useWindowScroll } from 'react-use';
 import styled from 'styled-components';
 import DarkModeButton from './dark-mode-button';
 import Link from './link';
 import Menu from './menu';
 import MenuButton from './menu-button';
 import MenuToggleContext from './menu-toggle-context';
+import useScrollThreshold from '../hooks/useScrollThreshold';
 import { HeaderQuery } from '../types/generated/graphql';
 
 const Wrapper = styled.header<{
-  scrollThreshold: boolean;
+  isScrollThreshold: boolean;
   isMenuOpen: boolean;
 }>`
   background: ${p =>
-    p.scrollThreshold || p.isMenuOpen
+    p.isScrollThreshold || p.isMenuOpen
       ? p.theme.headerBg
       : rgba(p.theme.headerBg, 0.95)};
-  ${p => (p.scrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
+  ${p => (p.isScrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
   display: flex;
   height: ${p => p.theme.space[7]}px;
   justify-content: space-between;
@@ -29,7 +29,7 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.scrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
+    height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
 
     &:hover {
       background: ${p.theme.headerBg};
@@ -80,10 +80,10 @@ const Header = () => {
   `);
   const title = (site && site.siteMetadata && site.siteMetadata.title) || null;
   const { isOpen, close } = React.useContext(MenuToggleContext);
-  const { y } = useWindowScroll();
+  const isScrollThreshold = useScrollThreshold(64);
 
   return (
-    <Wrapper scrollThreshold={y < 64} isMenuOpen={isOpen}>
+    <Wrapper isScrollThreshold={isScrollThreshold} isMenuOpen={isOpen}>
       <Container>
         <MenuButton />
         {title && (
