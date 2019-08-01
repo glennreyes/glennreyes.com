@@ -3230,6 +3230,20 @@ export type SeoQuery = { __typename?: 'Query' } & {
 export type HomeQueryVariables = {};
 
 export type HomeQuery = { __typename?: 'Query' } & {
+  allMdx: Maybe<
+    { __typename?: 'MdxConnection' } & {
+      nodes: Array<
+        { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt'> & {
+            fields: Maybe<
+              { __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>
+            >;
+            frontmatter: Maybe<
+              { __typename?: 'MdxFrontmatter' } & Pick<MdxFrontmatter, 'title'>
+            >;
+          }
+      >;
+    }
+  >;
   site: Maybe<
     { __typename?: 'Site' } & {
       siteMetadata: Maybe<

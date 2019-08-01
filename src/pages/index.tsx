@@ -90,9 +90,20 @@ const Tagline = styled.p`
 `;
 
 const Home = () => {
-  const { site }: HomeQuery = useStaticQuery(
+  const { allMdx, site }: HomeQuery = useStaticQuery(
     graphql`
       query Home {
+        allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
+          nodes {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+            excerpt
+          }
+        }
         site {
           siteMetadata {
             description
@@ -104,6 +115,8 @@ const Home = () => {
 
   const tagline =
     (site && site.siteMetadata && site.siteMetadata.description) || null;
+
+  console.log(allMdx);
 
   return (
     <Layout>
@@ -117,6 +130,7 @@ const Home = () => {
           </Intro>
         </Content>
       </IntroSection>
+      <Section>Blog.</Section>
     </Layout>
   );
 };
