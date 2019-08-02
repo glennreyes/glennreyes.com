@@ -61,7 +61,9 @@ module.exports = {
           '#fff': 'currentColor',
         },
         svgoConfig: {
-          removeViewBox: false,
+          plugins: {
+            removeViewBox: false,
+          },
         },
         svgProps: { fill: 'currentColor' },
       },
