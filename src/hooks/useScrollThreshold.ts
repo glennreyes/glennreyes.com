@@ -4,7 +4,7 @@ import React from 'react';
 // inside and outside of the given threshold.
 const useScrollThreshold = (threshold = 0, axis = 'y') => {
   const frame = React.useRef(0);
-  const [isScrollThreshold, setScrollThreshold] = React.useState(false);
+  const [isScrollThreshold, setScrollThreshold] = React.useState(true);
 
   React.useEffect(() => {
     const handler = () => {
