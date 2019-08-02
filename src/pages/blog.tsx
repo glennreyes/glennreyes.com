@@ -36,7 +36,7 @@ const Home = () => {
   const { allMdx }: BlogQuery = useStaticQuery(
     graphql`
       query Blog {
-        allMdx(limit: 10, sort: { fields: frontmatter___date, order: DESC }) {
+        allMdx(sort: { fields: frontmatter___date, order: DESC }) {
           nodes {
             excerpt(pruneLength: 280)
             fields {
