@@ -3299,6 +3299,25 @@ export type SeoQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type BlogQueryVariables = {};
+
+export type BlogQuery = { __typename?: 'Query' } & {
+  allMdx: Maybe<
+    { __typename?: 'MdxConnection' } & {
+      nodes: Array<
+        { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id'> & {
+            fields: Maybe<
+              { __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>
+            >;
+            frontmatter: Maybe<
+              { __typename?: 'MdxFrontmatter' } & Pick<MdxFrontmatter, 'title'>
+            >;
+          }
+      >;
+    }
+  >;
+};
+
 export type HomeQueryVariables = {};
 
 export type HomeQuery = { __typename?: 'Query' } & {
