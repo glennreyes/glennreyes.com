@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import ArrowLink from '../components/arrow-link';
 import Layout from '../components/layout';
 import Link from '../components/link';
 import Photo from '../components/photo';
@@ -169,7 +170,7 @@ const Home = () => {
               </Link>
             </Post>
           ))}
-          <Link to="/blog">View all posts</Link>
+          <ArrowLink to="/blog">View all posts</ArrowLink>
         </Content>
       </Section>
     </Layout>
