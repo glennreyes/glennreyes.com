@@ -40,11 +40,11 @@ const defaultHeadingStyles = css`
 
 const Wrapper = styled.div``;
 
-type HeadingProps = {
-  children: React.ReactNode;
+type HeadingWithAnchorProps = {
+  children?: React.ReactNode;
 };
 
-const Heading = ({ children, ...props }: HeadingProps) => {
+const HeadingWithAnchor = ({ children, ...props }: HeadingWithAnchorProps) => {
   const { handleClick, ref, slug } = useAnchor(children, {
     offset: system.space[7],
   });
@@ -61,6 +61,19 @@ const Heading = ({ children, ...props }: HeadingProps) => {
       {children}
     </Wrapper>
   );
+};
+
+type HeadingProps = {
+  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  noAnchor: boolean;
+};
+
+const Heading = ({ as: As, noAnchor, ...props }: HeadingProps) => {
+  if (noAnchor) {
+    return <As {...props} />;
+  }
+
+  return <HeadingWithAnchor {...props} />;
 };
 
 export const H1 = styled(props => <Heading as="h1" {...props} />)`

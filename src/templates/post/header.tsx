@@ -1,4 +1,4 @@
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
@@ -84,38 +84,38 @@ type HeaderProps = {
 
 const Header = ({ data }: HeaderProps) => {
   const post = data.mdx;
-  const hasCover = !!(post && post.frontmatter && post.frontmatter.cover);
 
   if (!(post && post.frontmatter)) {
     return null;
   }
 
+  const { cover, date, title } = post.frontmatter;
+  const hasCover = !!cover;
+
+  const fluid =
+    post.frontmatter.cover &&
+    post.frontmatter.cover.photo &&
+    post.frontmatter.cover.photo.childImageSharp &&
+    (post.frontmatter.cover.photo.childImageSharp.fluid as FluidObject);
+
   return (
     <Wrapper hasCover={hasCover}>
-      {post.frontmatter.cover &&
-        post.frontmatter.cover.photo &&
-        post.frontmatter.cover.photo.childImageSharp && (
-          <Cover
-            fluid={post.frontmatter.cover.photo.childImageSharp.fluid}
-            style={{ position: 'absolute' }}
-          />
-        )}
+      {fluid && <Cover fluid={fluid} style={{ position: 'absolute' }} />}
       <ContentWrapper>
         <Content>
-          <Heading hasCover={hasCover}>{post.frontmatter.title}</Heading>
+          <Heading hasCover={hasCover} noAnchor>
+            {title}
+          </Heading>
           <Meta hasCover={hasCover}>
-            {post.frontmatter.date}
+            {date}
             {post.timeToRead
               ? ` • ${ms(post.timeToRead * 1000 * 60, { long: true })} read`
               : ''}
           </Meta>
-          {post.frontmatter.cover && post.frontmatter.cover.author && (
-            <CoverAuthorLink
-              target="_blank"
-              to={post.frontmatter.cover.author.url}
-            >
+          {cover && cover.author && (
+            <CoverAuthorLink target="_blank" to={cover.author.url}>
               <CameraIcon />
-              {post.frontmatter.cover.author.name}
+              {cover.author.name}
             </CoverAuthorLink>
           )}
         </Content>
