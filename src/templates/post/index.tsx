@@ -1,5 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
-// Open issue for typings https://github.com/gatsbyjs/gatsby/issues/15924
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import Header from './header';
