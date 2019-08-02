@@ -47,6 +47,7 @@ const Wrapper = styled.nav`
   flex-direction: row;
   height: auto;
   left: auto;
+  overflow: visible;
   position: static;
   top: auto;
   width: auto;
