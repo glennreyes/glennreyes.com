@@ -1,37 +1,34 @@
-import { graphql } from 'gatsby';
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import { graphql, useStaticQuery } from 'gatsby';
+// Open issue for typings https://github.com/gatsbyjs/gatsby/issues/15924
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
-import styled from 'styled-components';
 import Header from './header';
+import Content from '../../components/content';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import { PostQuery } from '../../types/generated/graphql';
-
-const Content = styled.div`
-  margin: 0 auto;
-  max-width: ${p => p.theme.contentWidths[0] + p.theme.space[3] * 2}px;
-  padding: 0 ${p => p.theme.space[3]}px;
-`;
 
 type PostProps = {
   data: PostQuery;
 };
 
-const Post = ({ data }: PostQuery) => {
-  const post = data.mdx;
+const Post = ({ data }: PostProps) => {
+  const description = (data.mdx && data.mdx.excerpt) || undefined;
+  const title =
+    (data.mdx && data.mdx.frontmatter && data.mdx.frontmatter.title) ||
+    'Blog post';
+  const body = data.mdx && data.mdx.body;
 
   return (
     <Layout>
-      <SEO description={post.excerpt} title={post.frontmatter.title} />
+      <SEO description={description} title={title} />
       <article
         itemProp="blogPosts"
         itemScope
         itemType="http://schema.org/BlogPosting"
       >
-        <Header post={post} />
-        <Content>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </Content>
+        <Header data={data} />
+        <Content>{body && <MDXRenderer>{body}</MDXRenderer>}</Content>
       </article>
     </Layout>
   );

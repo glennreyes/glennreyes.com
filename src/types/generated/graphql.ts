@@ -2791,12 +2791,13 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___display = 'pluginCreator___pluginOptions___display',
   pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
-  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
   pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
+  pluginCreator___pluginOptions___svgoConfig___removeViewBox = 'pluginCreator___pluginOptions___svgoConfig___removeViewBox',
   pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
   pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
@@ -3001,12 +3002,13 @@ export enum SitePluginFieldsEnum {
   pluginOptions___display = 'pluginOptions___display',
   pluginOptions___icon = 'pluginOptions___icon',
   pluginOptions___extensions = 'pluginOptions___extensions',
-  pluginOptions___displayName = 'pluginOptions___displayName',
   pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
   pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
+  pluginOptions___svgoConfig___removeViewBox = 'pluginOptions___svgoConfig___removeViewBox',
   pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
+  pluginOptions___displayName = 'pluginOptions___displayName',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
   ssrAPIs = 'ssrAPIs',
@@ -3137,11 +3139,12 @@ export type SitePluginPluginOptions = {
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  displayName?: Maybe<Scalars['Boolean']>;
   replaceAttrValues?: Maybe<SitePluginPluginOptionsReplaceAttrValues>;
+  svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfig>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgProps>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  displayName?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -3154,13 +3157,14 @@ export type SitePluginPluginOptionsFilterInput = {
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
-  displayName?: Maybe<BooleanQueryOperatorInput>;
   replaceAttrValues?: Maybe<
     SitePluginPluginOptionsReplaceAttrValuesFilterInput
   >;
+  svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgPropsFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  displayName?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -3197,6 +3201,15 @@ export type SitePluginPluginOptionsReplaceAttrValues = {
 export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
   _000?: Maybe<StringQueryOperatorInput>;
   _fff?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePluginPluginOptionsSvgoConfig = {
+  __typename?: 'SitePluginPluginOptionsSvgoConfig';
+  removeViewBox?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsSvgoConfigFilterInput = {
+  removeViewBox?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsSvgProps = {

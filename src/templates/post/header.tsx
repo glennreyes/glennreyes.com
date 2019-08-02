@@ -6,7 +6,7 @@ import { H1 } from '../../components/mdx/headings';
 import Link from '../../components/link';
 import Text from '../../components/text';
 import { ReactComponent as Camera } from '../../icons/camera.svg';
-import { Mdx } from '../../types/generated/graphql';
+import { PostQuery } from '../../types/generated/graphql';
 
 const Wrapper = styled.header<{ hasCover: boolean }>`
   align-items: stretch;
@@ -79,10 +79,11 @@ const CameraIcon = styled(Camera)`
 `;
 
 type HeaderProps = {
-  post: Mdx;
+  data: PostQuery;
 };
 
-const Header = ({ post }: HeaderProps) => {
+const Header = ({ data }: HeaderProps) => {
+  const post = data.mdx;
   const hasCover = !!(post && post.frontmatter && post.frontmatter.cover);
 
   if (!(post && post.frontmatter)) {
