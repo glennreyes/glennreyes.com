@@ -3,6 +3,7 @@ declare module 'github-slugger' {
     reset: () => void;
     slug: (text: string) => string;
   }
+
   const GitHubSlugger: () => Slugger;
 
   export default GitHubSlugger;
