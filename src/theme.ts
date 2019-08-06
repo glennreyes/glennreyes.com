@@ -35,7 +35,7 @@ const media: Media = {
 
 export const system = {
   borders: [0, 1, 2, 4],
-  boxShadow: ['0px 4px 8px rgba(0, 0, 0, .05)'],
+  boxShadow: ['0px 0px 16px rgba(0, 0, 0, .1)'],
   colors: {
     black: '#000',
     blue: ['#0d4bbf', '#9abbf9'],
@@ -62,6 +62,7 @@ export const light = {
   activeTextColor: system.colors.gray[2],
   bg: system.colors.gray[0],
   borderColor: system.colors.gray[1],
+  cardBg: system.colors.white,
   codeBg: system.colors.white,
   codeColor: system.colors.gray[2],
   coverBg: system.colors.black,
@@ -77,6 +78,7 @@ export const dark = {
   activeTextColor: system.colors.gray[1],
   bg: system.colors.black,
   borderColor: system.colors.gray[2],
+  cardBg: system.colors.gray[3],
   codeBg: system.colors.gray[3],
   codeColor: system.colors.gray[1],
   coverBg: system.colors.white,

@@ -55,7 +55,6 @@ export const pageQuery = graphql`
           }
         }
         date(formatString: "MMM DD, YYYY")
-        draft
         title
       }
       id

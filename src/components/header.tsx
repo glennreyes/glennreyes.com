@@ -18,17 +18,19 @@ const Wrapper = styled.header<{
     p.isScrollThreshold || p.isMenuOpen
       ? p.theme.headerBg
       : rgba(p.theme.headerBg, 0.95)};
-  ${p => (p.isScrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)}
+  ${p => (p.isScrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)};
   display: flex;
   height: ${p => p.theme.space[7]}px;
   justify-content: space-between;
   position: fixed;
   top: 0;
+  transition: box-shadow ${p => p.theme.transition},
+    height ${p => p.theme.transition};
   width: 100%;
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-    height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
+  height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
 
     &:hover {
       background: ${p.theme.headerBg};
