@@ -34,7 +34,9 @@ const Wrapper = styled.nav`
   background: ${p => p.theme.bg};
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ${p => p.theme.space[7]}px);
+  // Height is managed by react-pose, setting it to zero prevents menu from
+  // flashing on initial render.
+  height: 0;
   left: 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
