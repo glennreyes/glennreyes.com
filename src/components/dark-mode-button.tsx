@@ -36,6 +36,8 @@ const transition = {
 
 const Moon = posed(styled.span`
   ${iconStyles}
+  // Set opacity to zero in order to remove flash at initial render in prod build.
+  opacity: 0;
 `)({
   dark: {
     opacity: 1,
