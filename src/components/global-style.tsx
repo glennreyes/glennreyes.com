@@ -6,6 +6,7 @@ const StyledGlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
   html {
     box-sizing: border-box;
     font-family: ${p => p.theme.fonts.sans};
+    height: 100%;
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
   }
@@ -21,11 +22,9 @@ const StyledGlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
   body {
     background: ${p => p.theme.headerBg};
     color: ${p => p.theme.textColor};
+    height: 100%;
     margin: ${p => p.theme.space[0]};
     ${p => (p.isMenuOpen ? 'overflow: hidden;' : '')}
-    transition:
-      background ${p => p.theme.transition},
-      color ${p => p.theme.transition};
   }
 `;
 

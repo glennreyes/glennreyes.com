@@ -21,14 +21,10 @@ const iconStyles = css`
   left: 0;
   position: absolute;
   top: 0;
-  transition: color ${p => p.theme.transition};
   width: 100%;
 `;
 
 const transition = {
-  opacity: {
-    duration: ms(system.transition) / 2,
-  },
   rotate: {
     duration: ms(system.transition) * 2,
   },

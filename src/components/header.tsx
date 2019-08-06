@@ -24,7 +24,6 @@ const Wrapper = styled.header<{
   justify-content: space-between;
   position: fixed;
   top: 0;
-  transition: ${p => p.theme.transition};
   width: 100%;
   z-index: 10;
 
