@@ -2793,7 +2793,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
   pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
   pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
-  pluginCreator___pluginOptions___svgoConfig___removeViewBox = 'pluginCreator___pluginOptions___svgoConfig___removeViewBox',
   pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
@@ -3004,7 +3003,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___extensions = 'pluginOptions___extensions',
   pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
   pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
-  pluginOptions___svgoConfig___removeViewBox = 'pluginOptions___svgoConfig___removeViewBox',
+  pluginOptions___svgoConfig___plugins___removeViewBox = 'pluginOptions___svgoConfig___plugins___removeViewBox',
   pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
@@ -3205,10 +3204,19 @@ export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
 
 export type SitePluginPluginOptionsSvgoConfig = {
   __typename?: 'SitePluginPluginOptionsSvgoConfig';
-  removeViewBox?: Maybe<Scalars['Boolean']>;
+  plugins?: Maybe<SitePluginPluginOptionsSvgoConfigPlugins>;
 };
 
 export type SitePluginPluginOptionsSvgoConfigFilterInput = {
+  plugins?: Maybe<SitePluginPluginOptionsSvgoConfigPluginsFilterInput>;
+};
+
+export type SitePluginPluginOptionsSvgoConfigPlugins = {
+  __typename?: 'SitePluginPluginOptionsSvgoConfigPlugins';
+  removeViewBox?: Maybe<Scalars['Boolean']>;
+};
+
+export type SitePluginPluginOptionsSvgoConfigPluginsFilterInput = {
   removeViewBox?: Maybe<BooleanQueryOperatorInput>;
 };
 
