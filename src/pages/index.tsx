@@ -111,11 +111,15 @@ const Post = styled.article`
   max-width: 768px;
 `;
 
-const PostTitle = styled.h3`
+const Title = styled.h3`
   font-size: ${p => p.theme.fontSizes[3]}px;
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
   margin: 0 0 ${p => p.theme.space[2]}px;
+`;
+
+const Excerpt = styled(Text)`
+  color: ${p => p.theme.textColor2};
 `;
 
 const Home = () => {
@@ -173,8 +177,8 @@ const Home = () => {
           {posts.map(({ excerpt, id, slug, title }) => (
             <Post key={id}>
               <Link to={slug}>
-                <PostTitle>{title}</PostTitle>
-                <Text>{excerpt}</Text>
+                <Title>{title}</Title>
+                <Excerpt>{excerpt}</Excerpt>
               </Link>
             </Post>
           ))}
