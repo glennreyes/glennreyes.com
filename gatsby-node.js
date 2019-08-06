@@ -5,10 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       query Posts {
-        allMdx(
-          limit: 1000
-          sort: { fields: [frontmatter___date], order: DESC }
-        ) {
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {

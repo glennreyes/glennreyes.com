@@ -126,7 +126,11 @@ const Home = () => {
   const { allMdx, site }: HomeQuery = useStaticQuery(
     graphql`
       query Home {
-        allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
+        allMdx(
+          filter: { frontmatter: { draft: { ne: true } } }
+          limit: 3
+          sort: { fields: frontmatter___date, order: DESC }
+        ) {
           nodes {
             excerpt(pruneLength: 280)
             fields {

@@ -1,7 +1,7 @@
 ---
 title: Drawing the line between third party and custom code
 date: 2019-09-21
-draft: true
+draft: false
 cover:
   author:
     name: Ricardo Gomez Angel

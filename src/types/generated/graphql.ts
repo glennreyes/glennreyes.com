@@ -2556,76 +2556,10 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   __typename?: 'SitePageContext';
   id?: Maybe<Scalars['String']>;
-  next?: Maybe<SitePageContextNext>;
-  previous?: Maybe<SitePageContextPrevious>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
-  next?: Maybe<SitePageContextNextFilterInput>;
-  previous?: Maybe<SitePageContextPreviousFilterInput>;
-};
-
-export type SitePageContextNext = {
-  __typename?: 'SitePageContextNext';
-  fields?: Maybe<SitePageContextNextFields>;
-  frontmatter?: Maybe<SitePageContextNextFrontmatter>;
-  id?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextFields = {
-  __typename?: 'SitePageContextNextFields';
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextFilterInput = {
-  fields?: Maybe<SitePageContextNextFieldsFilterInput>;
-  frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextFrontmatter = {
-  __typename?: 'SitePageContextNextFrontmatter';
-  title?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextFrontmatterFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPrevious = {
-  __typename?: 'SitePageContextPrevious';
-  fields?: Maybe<SitePageContextPreviousFields>;
-  frontmatter?: Maybe<SitePageContextPreviousFrontmatter>;
-  id?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousFields = {
-  __typename?: 'SitePageContextPreviousFields';
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPreviousFilterInput = {
-  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>;
-  frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPreviousFrontmatter = {
-  __typename?: 'SitePageContextPreviousFrontmatter';
-  title?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousFrontmatterFilterInput = {
-  title?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2728,12 +2662,6 @@ export enum SitePageFieldsEnum {
   componentChunkName = 'componentChunkName',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
-  context___next___fields___slug = 'context___next___fields___slug',
-  context___next___frontmatter___title = 'context___next___frontmatter___title',
-  context___next___id = 'context___next___id',
-  context___previous___fields___slug = 'context___previous___fields___slug',
-  context___previous___frontmatter___title = 'context___previous___frontmatter___title',
-  context___previous___id = 'context___previous___id',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
