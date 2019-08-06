@@ -10,23 +10,23 @@ import { system } from '../theme';
 const links = [
   {
     label: 'About',
-    path: '/about',
+    path: '/about/',
   },
   {
     label: 'Blog',
-    path: '/blog',
+    path: '/blog/',
   },
   {
     label: 'Talks',
-    path: '/talks',
+    path: '/talks/',
   },
   {
     label: 'Workshops',
-    path: '/workshops',
+    path: '/workshops/',
   },
   {
     label: 'Contact',
-    path: '/contact',
+    path: '/contact/',
   },
 ];
 

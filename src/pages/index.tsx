@@ -182,7 +182,7 @@ const Home = () => {
               </Link>
             </Post>
           ))}
-          <ArrowLink to="/blog">View all posts</ArrowLink>
+          <ArrowLink to="/blog/">View all posts</ArrowLink>
         </Content>
       </Section>
     </Layout>
