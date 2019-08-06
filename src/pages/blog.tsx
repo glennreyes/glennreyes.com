@@ -2,7 +2,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
-import ArrowLink from '../components/arrow-link';
 import Content from '../components/content';
 import Layout from '../components/layout';
 import Link from '../components/link';
