@@ -34,6 +34,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        defaultLayouts: {
+          default: require.resolve('./src/templates/default.tsx'),
+        },
         extensions: ['.md', '.mdx'],
         gatsbyRemarkPlugins: [
           'gatsby-remark-copy-linked-files',
@@ -72,15 +75,22 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'posts',
-        path: `${__dirname}/src/posts`,
+        name: 'images',
+        path: `${__dirname}/src/images`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        name: 'pages',
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'posts',
+        path: `${__dirname}/src/posts`,
       },
     },
     {

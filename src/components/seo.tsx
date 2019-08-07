@@ -18,7 +18,7 @@ const defaultProps = {
 
 type SEOProps = typeof defaultProps & {
   meta: [{ content: string; name?: string; property?: string }];
-  title: string;
+  title?: string;
 };
 
 const SEO = ({ description, lang, meta, title }: SEOProps) => {
@@ -40,6 +40,18 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
     description ||
     (site && site.siteMetadata && site.siteMetadata.description) ||
     '';
+
+  const author =
+    (site && site.siteMetadata && site.siteMetadata.author) || 'Glenn Reyes';
+  const metaTitle =
+    (site && site.siteMetadata && site.siteMetadata.title) || author;
+
+  const siteTitle =
+    title === 'Home'
+      ? metaTitle
+      : title
+      ? `${title} | ${metaTitle}`
+      : metaTitle;
 
   return (
     <Helmet
@@ -66,11 +78,11 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           name: 'twitter:card',
         },
         {
-          content: site.siteMetadata.author,
+          content: author,
           name: 'twitter:creator',
         },
         {
-          content: title,
+          content: siteTitle,
           name: 'twitter:title',
         },
         {
@@ -79,12 +91,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
         },
         ...meta,
       ]}
-      title={title}
-      titleTemplate={
-        title === 'Home'
-          ? site.siteMetadata.title
-          : `%s | ${site.siteMetadata.title}`
-      }
+      title={siteTitle}
     />
   );
 };
