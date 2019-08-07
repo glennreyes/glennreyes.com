@@ -38,7 +38,7 @@ const Content = styled.div`
   max-width: ${p => p.theme.contentWidths[0]}px;
 `;
 
-const Heading = styled(H1)`
+const Heading = styled(({ hasCover, ...props }) => <H1 {...props} />)`
   ${p => (p.hasCover ? `color: ${p.theme.coverHeading};` : '')}
   margin-top: 0;
 `;
