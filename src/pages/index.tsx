@@ -123,11 +123,14 @@ const Excerpt = styled(Text)`
 `;
 
 const Home = () => {
-  const { allMdx, site }: HomeQuery = useStaticQuery(
+  const data: HomeQuery = useStaticQuery(
     graphql`
       query Home {
-        allMdx(
-          filter: { frontmatter: { draft: { ne: true } } }
+        posts: allMdx(
+          filter: {
+            fileAbsolutePath: { glob: "**/src/posts/**" }
+            frontmatter: { draft: { ne: true } }
+          }
           limit: 3
           sort: { fields: frontmatter___date, order: DESC }
         ) {
@@ -151,12 +154,13 @@ const Home = () => {
     `,
   );
 
-  const tagline = site && site.siteMetadata && site.siteMetadata.description;
+  const tagline =
+    data.site && data.site.siteMetadata && data.site.siteMetadata.description;
 
   const posts =
-    (allMdx &&
-      allMdx.nodes &&
-      allMdx.nodes.map(({ fields, frontmatter, ...node }) => ({
+    (data.posts &&
+      data.posts.nodes &&
+      data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
         slug: fields && fields.slug,
         title: frontmatter && frontmatter.title,
         ...node,

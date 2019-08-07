@@ -1,21 +1,18 @@
-const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       query Posts {
-        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-              id
+        posts: allMdx(
+          filter: { fileAbsolutePath: { glob: "**/src/posts/**" } }
+          sort: { fields: [frontmatter___date], order: DESC }
+        ) {
+          nodes {
+            fields {
+              slug
             }
+            id
           }
         }
       }
@@ -26,9 +23,8 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const component = path.resolve(`./src/templates/post/index.tsx`);
-  const posts = result.data.allMdx.edges;
-
+  const component = require.resolve('./src/templates/post/index.tsx');
+  const posts = result.data.posts.nodes;
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
@@ -36,11 +32,11 @@ exports.createPages = async ({ graphql, actions }) => {
     actions.createPage({
       component,
       context: {
-        id: post.node.id,
+        id: post.id,
         next,
         previous,
       },
-      path: post.node.fields.slug,
+      path: post.fields.slug,
     });
   });
 
