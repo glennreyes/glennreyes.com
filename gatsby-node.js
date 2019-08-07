@@ -50,10 +50,18 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ actions, getNode, node }) => {
   // On all mdx nodes, create a slug field with the given file path as a value
   if (node.internal.type === 'Mdx') {
+    const filePath = createFilePath({ node, getNode });
+
+    // Prepend `/blog` to the slug if the MDX file is under src/posts
+    // By default the filepath of an MDX file is just /[filename]/
+    const slug = node.fileAbsolutePath.includes(`${__dirname}/src/posts`)
+      ? `/blog${filePath}`
+      : filePath;
+
     actions.createNodeField({
       name: 'slug',
       node,
-      value: path.join('/', 'blog', createFilePath({ node, getNode })),
+      value: slug,
     });
   }
 };
