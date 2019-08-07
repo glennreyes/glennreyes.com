@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
+import { PhotoQuery } from '../types/generated/graphql';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -24,7 +25,7 @@ const StyledImg = styled(Img)`
 `;
 
 const Photo = () => {
-  const data = useStaticQuery(graphql`
+  const data: PhotoQuery = useStaticQuery(graphql`
     query Photo {
       photo: file(relativePath: { eq: "photo.jpg" }) {
         childImageSharp {
@@ -36,7 +37,13 @@ const Photo = () => {
     }
   `);
 
-  return <StyledImg fluid={data.photo.childImageSharp.fluid} />;
+  const fluid =
+    (data.photo &&
+      data.photo.childImageSharp &&
+      (data.photo.childImageSharp.fluid as FluidObject)) ||
+    undefined;
+
+  return <StyledImg fluid={fluid} />;
 };
 
 export default Photo;
