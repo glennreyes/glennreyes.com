@@ -65,11 +65,10 @@ const HeadingWithAnchor = ({ children, ...props }: HeadingWithAnchorProps) => {
 
 type HeadingProps = {
   as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  noAnchor: boolean;
 };
 
-const Heading = ({ as: As, noAnchor, ...props }: HeadingProps) => {
-  if (noAnchor) {
+const Heading = ({ as: As, ...props }: HeadingProps) => {
+  if (As === 'h1') {
     return <As {...props} />;
   }
 

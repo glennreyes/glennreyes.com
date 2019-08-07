@@ -103,9 +103,7 @@ const Header = ({ data }: HeaderProps) => {
       {fluid && <Cover fluid={fluid} style={{ position: 'absolute' }} />}
       <ContentWrapper>
         <Content>
-          <Heading hasCover={hasCover} noAnchor>
-            {title}
-          </Heading>
+          <Heading hasCover={hasCover}>{title}</Heading>
           <Meta hasCover={hasCover}>
             {date}
             {post.timeToRead
