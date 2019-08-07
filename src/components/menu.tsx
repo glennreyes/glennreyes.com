@@ -45,15 +45,15 @@ const Wrapper = styled.nav`
   width: 100%;
 
   ${p => p.theme.media.desktop`
-  background: none;
-  flex-direction: row;
-  height: auto;
-  left: auto;
-  overflow: visible;
-  position: static;
-  top: auto;
-  width: auto;
-`}
+    background: none;
+    flex-direction: row;
+    height: auto;
+    left: auto;
+    overflow: visible;
+    position: static;
+    top: auto;
+    width: auto;
+  `}
 `;
 
 const PosedWrapper = posed(Wrapper)({
@@ -69,7 +69,6 @@ const MenuLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[2]}px;
   padding: ${p => p.theme.space[3]}px;
   text-transform: lowercase;
-  transition: color ${p => p.theme.transition};
 
   ${p => p.theme.media.desktop`
     &:hover {

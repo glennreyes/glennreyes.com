@@ -34,6 +34,7 @@ const Wrapper = styled.header<{
 
     &:hover {
       background: ${p.theme.headerBg};
+      transition: background ${p.theme.transition};
     }
   `}
 `;
