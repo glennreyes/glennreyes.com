@@ -20,7 +20,7 @@ const StyledGlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
   }
 
   body {
-    background: ${p => p.theme.headerBg};
+    background: ${p => p.theme.bg};
     color: ${p => p.theme.textColor};
     height: 100%;
     margin: ${p => p.theme.space[0]};
