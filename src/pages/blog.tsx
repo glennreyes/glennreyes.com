@@ -103,7 +103,7 @@ const Home = () => {
                 <Title>{title}</Title>
                 <Meta>
                   {date}
-                  {timeToRead ? ` • ${ms(timeToRead * 1000 * 60)} read` : ''}
+                  {timeToRead ? ` · ${ms(timeToRead * 1000 * 60)} read` : ''}
                 </Meta>
                 <Excerpt>{excerpt}</Excerpt>
               </PostLink>

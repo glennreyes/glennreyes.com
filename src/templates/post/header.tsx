@@ -107,7 +107,7 @@ const Header = ({ data }: HeaderProps) => {
           <Meta hasCover={hasCover}>
             {date}
             {post.timeToRead
-              ? ` • ${ms(post.timeToRead * 1000 * 60, { long: true })} read`
+              ? ` · ${ms(post.timeToRead * 1000 * 60, { long: true })} read`
               : ''}
           </Meta>
           {cover && cover.author && (
