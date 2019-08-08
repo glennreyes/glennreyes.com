@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import { AboutHeaderQuery } from '../types/generated/graphql';
+import { PhotoHeaderQuery } from '../types/generated/graphql';
 
 const StyledImg = styled(Img)`
   height: ${p => p.theme.space[9]}px;
@@ -14,9 +14,9 @@ const StyledImg = styled(Img)`
   `}
 `;
 
-const AboutHeader = () => {
-  const data: AboutHeaderQuery = useStaticQuery(graphql`
-    query AboutHeader {
+const PhotoHeader = () => {
+  const data: PhotoHeaderQuery = useStaticQuery(graphql`
+    query PhotoHeader {
       photo: file(relativePath: { eq: "photo-full.jpg" }) {
         childImageSharp {
           fluid {
@@ -36,4 +36,4 @@ const AboutHeader = () => {
   return <StyledImg fluid={fluid} />;
 };
 
-export default AboutHeader;
+export default PhotoHeader;
