@@ -1494,7 +1494,6 @@ export enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter___title',
   frontmatter___date = 'frontmatter___date',
-  frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
   frontmatter___cover___author___url = 'frontmatter___cover___author___url',
   frontmatter___cover___photo___birthtime = 'frontmatter___cover___photo___birthtime',
@@ -1533,6 +1532,7 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
+  frontmatter___draft = 'frontmatter___draft',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
@@ -1656,8 +1656,8 @@ export type MarkdownRemarkFrontmatter = {
   __typename?: 'MarkdownRemarkFrontmatter';
   title?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
-  draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MarkdownRemarkFrontmatterCover>;
+  draft?: Maybe<Scalars['Boolean']>;
 };
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1692,8 +1692,8 @@ export type MarkdownRemarkFrontmatterCoverFilterInput = {
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
-  draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MarkdownRemarkFrontmatterCoverFilterInput>;
+  draft?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1793,7 +1793,6 @@ export enum MdxFieldsEnum {
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter___title',
   frontmatter___date = 'frontmatter___date',
-  frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
   frontmatter___cover___author___url = 'frontmatter___cover___author___url',
   frontmatter___cover___photo___birthtime = 'frontmatter___cover___photo___birthtime',
@@ -1832,6 +1831,7 @@ export enum MdxFieldsEnum {
   frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
+  frontmatter___draft = 'frontmatter___draft',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -1960,8 +1960,8 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   title: Scalars['String'];
   date?: Maybe<Scalars['Date']>;
-  draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
+  draft?: Maybe<Scalars['Boolean']>;
 };
 
 export type MdxFrontmatterDateArgs = {
@@ -1996,8 +1996,8 @@ export type MdxFrontmatterCoverFilterInput = {
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
-  draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
+  draft?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -3218,6 +3218,22 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+export type AboutHeaderQueryVariables = {};
+
+export type AboutHeaderQuery = { __typename?: 'Query' } & {
+  photo: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >;
+        }
+      >;
+    }
+  >;
+};
+
 export type FooterQueryVariables = {};
 
 export type FooterQuery = { __typename?: 'Query' } & {
