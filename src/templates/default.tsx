@@ -6,13 +6,15 @@ import SEO from '../components/seo';
 
 type DefaultProps = PageRendererProps & {
   children: React.ReactNode;
-  frontmatter: {
-    title?: string;
-    description?: string;
+  pageContext: {
+    frontmatter?: {
+      title?: string;
+      description?: string;
+    };
   };
 };
 
-const Default = ({ children, frontmatter }: DefaultProps) => {
+const Default = ({ children, pageContext: { frontmatter } }: DefaultProps) => {
   const description = (frontmatter && frontmatter.description) || undefined;
   const title = (frontmatter && frontmatter.title) || undefined;
 
