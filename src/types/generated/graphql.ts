@@ -2556,10 +2556,21 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   __typename?: 'SitePageContext';
   id?: Maybe<Scalars['String']>;
+  frontmatter?: Maybe<SitePageContextFrontmatter>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
+  frontmatter?: Maybe<SitePageContextFrontmatterFilterInput>;
+};
+
+export type SitePageContextFrontmatter = {
+  __typename?: 'SitePageContextFrontmatter';
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2662,6 +2673,7 @@ export enum SitePageFieldsEnum {
   componentChunkName = 'componentChunkName',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
+  context___frontmatter___title = 'context___frontmatter___title',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
   pluginCreator___parent___parent___id = 'pluginCreator___parent___parent___id',
@@ -3206,6 +3218,22 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+export type AboutHeaderQueryVariables = {};
+
+export type AboutHeaderQuery = { __typename?: 'Query' } & {
+  photo: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >;
+        }
+      >;
+    }
+  >;
+};
+
 export type FooterQueryVariables = {};
 
 export type FooterQuery = { __typename?: 'Query' } & {
