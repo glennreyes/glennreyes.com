@@ -30,12 +30,7 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
-  height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
-
-    &:hover {
-      background: ${p.theme.headerBg};
-      transition: background ${p.theme.transition};
-    }
+    height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
   `}
 `;
 
