@@ -30,7 +30,7 @@ const AnchorIcon = styled(LinkSvg)`
 const defaultHeadingStyles = css`
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
-  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[4]}px;
+  margin: ${p => p.theme.space[4]}px 0;
   ${inlineCodeStyles}
 
   &:hover > ${Anchor} {
@@ -91,26 +91,19 @@ export const H2 = styled(props => <Heading as="h2" {...props} />)`
   font-size: ${p => p.theme.fontSizes[4]}px;
 
   ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[6]}px;
+    margin-top: ${p.theme.space[5]}px;
   `}
 `;
 
 export const H3 = styled(props => <Heading as="h3" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[3]}px;
-
-  ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[6]}px;
-  `}
 `;
 
 export const H4 = styled(props => <Heading as="h4" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
-
-  ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[6]}px;
-  `}
+  margin-bottom: ${p => p.theme.space[3]}px;
 `;
 
 export const H5 = styled(props => <Heading as="h5" {...props} />)`
