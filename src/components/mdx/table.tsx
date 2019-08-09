@@ -4,6 +4,7 @@ const Table = styled.table`
   border-collapse: collapse;
   border-spacing: 0;
   display: block;
+  margin: ${p => p.theme.space[4]}px 0;
   overflow: auto;
   width: 100%;
 `;

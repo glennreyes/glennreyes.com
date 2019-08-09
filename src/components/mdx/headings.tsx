@@ -30,7 +30,7 @@ const AnchorIcon = styled(LinkSvg)`
 const defaultHeadingStyles = css`
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
-  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[3]}px;
+  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[4]}px;
   ${inlineCodeStyles}
 
   &:hover > ${Anchor} {

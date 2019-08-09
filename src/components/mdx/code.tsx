@@ -54,7 +54,7 @@ const Pre = styled.pre`
   overflow: auto;
   font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
     ${p => p.theme.fonts.mono};
-  margin: ${p => p.theme.space[5]}px 0;
+  margin: ${p => p.theme.space[4]}px 0;
 
   ${p => p.theme.media.tablet`
     margin-left: -${p.theme.space[4]}px;
