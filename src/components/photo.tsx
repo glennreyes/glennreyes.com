@@ -8,7 +8,7 @@ import { PhotoQuery } from '../types/generated/graphql';
 
 const StyledImg = styled(Img)`
   border-radius: 50%;
-  box-shadow: 0 0 32px ${p => rgba(p.theme.colors.black, 0.5)};
+  box-shadow: 0 0 32px ${p => rgba(p.theme.colors.black, 0.25)};
   width: 128px;
 
   ${p => p.theme.media.desktop`
