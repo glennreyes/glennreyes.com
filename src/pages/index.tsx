@@ -1,22 +1,22 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import Content from './content';
-import Excerpt from './excerpt';
-import Greeting from './greeting';
-import Heading from './heading';
-import Intro from './intro';
-import IntroContent from './intro-content';
-import IntroSection from './intro-section';
-import Post from './post';
-import Section from './section';
-import Tagline from './tagline';
-import Title from './title';
-import ArrowLink from '../../components/arrow-link';
-import Layout from '../../components/layout';
-import Link from '../../components/link';
-import Photo from '../../components/photo';
-import SEO from '../../components/seo';
-import { HomeQuery } from '../../types/generated/graphql';
+import Content from './home/content';
+import Excerpt from './home/excerpt';
+import Greeting from './home/greeting';
+import Heading from './home/heading';
+import Intro from './home/intro';
+import IntroContent from './home/intro-content';
+import IntroSection from './home/intro-section';
+import Post from './home/post';
+import Section from './home/section';
+import Tagline from './home/tagline';
+import Title from './home/title';
+import ArrowLink from '../components/arrow-link';
+import Layout from '../components/layout';
+import Link from '../components/link';
+import Photo from '../components/photo';
+import SEO from '../components/seo';
+import { HomeQuery } from '../types/generated/graphql';
 
 const Home = () => {
   const data: HomeQuery = useStaticQuery(
