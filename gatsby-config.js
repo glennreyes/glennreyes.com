@@ -32,7 +32,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           default: require.resolve('./src/templates/default.tsx'),
@@ -49,6 +49,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-netlify',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-styled-components',
