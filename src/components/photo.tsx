@@ -1,11 +1,14 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
+import { rgba } from 'polished';
 import React from 'react';
+import Tilt from 'react-tilt';
 import styled from 'styled-components';
 import { PhotoQuery } from '../types/generated/graphql';
 
 const StyledImg = styled(Img)`
   border-radius: 50%;
+  box-shadow: 0 0 32px ${p => rgba(p.theme.colors.black, 0.5)};
   width: 128px;
 
   ${p => p.theme.media.desktop`
@@ -32,7 +35,11 @@ const Photo = () => {
       (data.photo.childImageSharp.fluid as FluidObject)) ||
     undefined;
 
-  return <StyledImg fluid={fluid} />;
+  return (
+    <Tilt options={{ max: 20, scale: 1 }}>
+      <StyledImg fluid={fluid} />
+    </Tilt>
+  );
 };
 
 export default Photo;
