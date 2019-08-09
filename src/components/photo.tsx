@@ -19,7 +19,7 @@ const StyledImg = styled(Img)`
 const Photo = () => {
   const data: PhotoQuery = useStaticQuery(graphql`
     query Photo {
-      photo: file(relativePath: { eq: "photo.jpg" }) {
+      photo: file(relativePath: { eq: "portrait.jpg" }) {
         childImageSharp {
           fluid(maxHeight: 640, maxWidth: 640) {
             ...GatsbyImageSharpFluid
