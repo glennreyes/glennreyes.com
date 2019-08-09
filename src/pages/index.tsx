@@ -7,6 +7,8 @@ import Heading from './home/heading';
 import Intro from './home/intro';
 import IntroContent from './home/intro-content';
 import IntroSection from './home/intro-section';
+import MoreLink from './home/more-link';
+import MoreLinks from './home/more-links';
 import Post from './home/post';
 import Section from './home/section';
 import Tagline from './home/tagline';
@@ -16,6 +18,12 @@ import Layout from '../components/layout';
 import Link from '../components/link';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
+import { ReactComponent as Book } from '../icons/book.svg';
+import { ReactComponent as Film } from '../icons/film.svg';
+import { ReactComponent as Headphones } from '../icons/headphones.svg';
+import { ReactComponent as Heart } from '../icons/heart.svg';
+import { ReactComponent as PaperPlane } from '../icons/paper-plane.svg';
+import { ReactComponent as Person } from '../icons/person.svg';
 import { HomeQuery } from '../types/generated/graphql';
 
 const Home = () => {
@@ -63,6 +71,39 @@ const Home = () => {
       }))) ||
     [];
 
+  const moreLinks = [
+    {
+      icon: Film,
+      label: 'Speaking',
+      url: '/talks/',
+    },
+    {
+      icon: Book,
+      label: 'Reading',
+      url: '/reading/',
+    },
+    {
+      icon: Heart,
+      label: 'OSS',
+      url: '/oss/',
+    },
+    {
+      icon: Headphones,
+      label: 'Uses',
+      url: '/uses/',
+    },
+    {
+      icon: Person,
+      label: 'About',
+      url: '/about/',
+    },
+    {
+      icon: PaperPlane,
+      label: 'Contact',
+      url: '/contact/',
+    },
+  ];
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -89,6 +130,18 @@ const Home = () => {
           {posts.length > 3 && (
             <ArrowLink to="/blog/">View all posts</ArrowLink>
           )}
+        </Content>
+      </Section>
+      <Section>
+        <Content>
+          <Heading>More.</Heading>
+          <MoreLinks>
+            {moreLinks.map(({ icon, label, url }) => (
+              <MoreLink icon={icon} key={label.toLowerCase()} to={url}>
+                {label}
+              </MoreLink>
+            ))}
+          </MoreLinks>
         </Content>
       </Section>
     </Layout>
