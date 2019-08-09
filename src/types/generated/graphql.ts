@@ -3222,6 +3222,22 @@ export type StringQueryOperatorInput = {
   regex?: Maybe<Scalars['String']>;
   glob?: Maybe<Scalars['String']>;
 };
+export type AboutHeaderQueryVariables = {};
+
+export type AboutHeaderQuery = { __typename?: 'Query' } & {
+  photo: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fluid: Maybe<
+            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
+          >;
+        }
+      >;
+    }
+  >;
+};
+
 export type FooterQueryVariables = {};
 
 export type FooterQuery = { __typename?: 'Query' } & {
@@ -3280,22 +3296,6 @@ export type SeoQuery = { __typename?: 'Query' } & {
 export type SpeakerHeaderQueryVariables = {};
 
 export type SpeakerHeaderQuery = { __typename?: 'Query' } & {
-  photo: Maybe<
-    { __typename?: 'File' } & {
-      childImageSharp: Maybe<
-        { __typename?: 'ImageSharp' } & {
-          fluid: Maybe<
-            { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
-          >;
-        }
-      >;
-    }
-  >;
-};
-
-export type AboutHeaderQueryVariables = {};
-
-export type AboutHeaderQuery = { __typename?: 'Query' } & {
   photo: Maybe<
     { __typename?: 'File' } & {
       childImageSharp: Maybe<

@@ -1,7 +1,7 @@
 import { GatsbyLinkProps } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Link from '../../components/link';
+import Link from '../link';
 
 const Wrapper = styled(Link)`
   align-items: center;
@@ -31,7 +31,7 @@ type MoreLinkProps = GatsbyLinkProps<{}> & {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
 };
 
-const MoreLink = ({ children, icon, ...props }: MoreLinkProps) => {
+const MoreLink = ({ children, icon, ref, ...props }: MoreLinkProps) => {
   const Icon = styled(icon)`
     margin-bottom: 8px;
   `;
