@@ -53,7 +53,7 @@ const Excerpt = styled(Text)`
   margin-top: ${p => p.theme.space[3]}px;
 `;
 
-const Home = () => {
+const Blog = () => {
   const data: BlogQuery = useStaticQuery(
     graphql`
       query Blog {
@@ -115,4 +115,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Blog;
