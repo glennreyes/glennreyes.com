@@ -9,6 +9,12 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
 const Main = styled.main`
   background: ${p => p.theme.bg};
   padding: ${p => p.theme.space[7]}px 0;
@@ -19,13 +25,13 @@ const Main = styled.main`
 `;
 
 const Layout = (props: LayoutProps) => (
-  <>
+  <Wrapper>
     <Header />
     <MDXProvider components={mdxComponents}>
       <Main {...props} />
     </MDXProvider>
     <Footer />
-  </>
+  </Wrapper>
 );
 
 export default Layout;

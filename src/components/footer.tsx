@@ -27,16 +27,21 @@ const links = [
 
 const Wrapper = styled.footer`
   background: ${p => p.theme.bg};
-  padding: ${p => p.theme.space[3]}px;
+  margin-top: auto;
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[4]}px;
+    padding: ${p.theme.space[4]}px;
   `}
 `;
 
 const Socials = styled.nav``;
 
 const SocialLink = styled(Link)`
+  &:hover {
+    color: ${p => p.theme.textColor2};
+  }
+
   & + & {
     margin-left: ${p => p.theme.space[4]}px;
   }
