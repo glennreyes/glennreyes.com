@@ -19,7 +19,7 @@ const PhotoHeader = () => {
     query PhotoHeader {
       photo: file(relativePath: { eq: "photo-full.jpg" }) {
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 1920) {
             ...GatsbyImageSharpFluid
           }
         }
