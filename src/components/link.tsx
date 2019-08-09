@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Link = styled(
-  ({ children, to, activeClassName, partiallyActive, ...other }) => {
+  ({ activeClassName, children, partiallyActive, target, to, ...other }) => {
     const isInternal = /^\/(?!\/)/.test(to);
 
     // Use Gatsby Link for internal links, and <a> for others
@@ -21,7 +21,7 @@ const Link = styled(
     }
 
     return (
-      <a href={to} {...other}>
+      <a href={to} target={target} {...other}>
         {children}
       </a>
     );
