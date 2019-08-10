@@ -2100,21 +2100,21 @@ export enum PotraceTurnPolicy {
 export type Query = {
   __typename?: 'Query';
   mdx?: Maybe<Mdx>;
-  allMdx?: Maybe<MdxConnection>;
+  allMdx: MdxConnection;
   file?: Maybe<File>;
-  allFile?: Maybe<FileConnection>;
+  allFile: FileConnection;
   imageSharp?: Maybe<ImageSharp>;
-  allImageSharp?: Maybe<ImageSharpConnection>;
+  allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
-  allMarkdownRemark?: Maybe<MarkdownRemarkConnection>;
+  allMarkdownRemark: MarkdownRemarkConnection;
   sitePage?: Maybe<SitePage>;
-  allSitePage?: Maybe<SitePageConnection>;
+  allSitePage: SitePageConnection;
   sitePlugin?: Maybe<SitePlugin>;
-  allSitePlugin?: Maybe<SitePluginConnection>;
+  allSitePlugin: SitePluginConnection;
   site?: Maybe<Site>;
-  allSite?: Maybe<SiteConnection>;
+  allSite: SiteConnection;
   directory?: Maybe<Directory>;
-  allDirectory?: Maybe<DirectoryConnection>;
+  allDirectory: DirectoryConnection;
 };
 
 export type QueryMdxArgs = {
@@ -2570,10 +2570,12 @@ export type SitePageContextFilterInput = {
 
 export type SitePageContextFrontmatter = {
   __typename?: 'SitePageContextFrontmatter';
+  title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFrontmatterFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2677,6 +2679,7 @@ export enum SitePageFieldsEnum {
   componentChunkName = 'componentChunkName',
   isCreatedByStatefulCreatePages = 'isCreatedByStatefulCreatePages',
   context___id = 'context___id',
+  context___frontmatter___title = 'context___frontmatter___title',
   context___frontmatter___description = 'context___frontmatter___description',
   pluginCreator___id = 'pluginCreator___id',
   pluginCreator___parent___id = 'pluginCreator___parent___id',
@@ -3312,42 +3315,34 @@ export type SpeakerHeaderQuery = { __typename?: 'Query' } & {
 export type BlogQueryVariables = {};
 
 export type BlogQuery = { __typename?: 'Query' } & {
-  posts: Maybe<
-    { __typename?: 'MdxConnection' } & {
-      nodes: Array<
-        { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'> & {
-            fields: Maybe<
-              { __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>
-            >;
-            frontmatter: Maybe<
-              { __typename?: 'MdxFrontmatter' } & Pick<
-                MdxFrontmatter,
-                'date' | 'title'
-              >
-            >;
-          }
-      >;
-    }
-  >;
+  posts: { __typename?: 'MdxConnection' } & {
+    nodes: Array<
+      { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'> & {
+          fields: Maybe<{ __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>>;
+          frontmatter: Maybe<
+            { __typename?: 'MdxFrontmatter' } & Pick<
+              MdxFrontmatter,
+              'date' | 'title'
+            >
+          >;
+        }
+    >;
+  };
 };
 
 export type HomeQueryVariables = {};
 
 export type HomeQuery = { __typename?: 'Query' } & {
-  posts: Maybe<
-    { __typename?: 'MdxConnection' } & {
-      nodes: Array<
-        { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id'> & {
-            fields: Maybe<
-              { __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>
-            >;
-            frontmatter: Maybe<
-              { __typename?: 'MdxFrontmatter' } & Pick<MdxFrontmatter, 'title'>
-            >;
-          }
-      >;
-    }
-  >;
+  posts: { __typename?: 'MdxConnection' } & {
+    nodes: Array<
+      { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id'> & {
+          fields: Maybe<{ __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>>;
+          frontmatter: Maybe<
+            { __typename?: 'MdxFrontmatter' } & Pick<MdxFrontmatter, 'title'>
+          >;
+        }
+    >;
+  };
   site: Maybe<
     { __typename?: 'Site' } & {
       siteMetadata: Maybe<
