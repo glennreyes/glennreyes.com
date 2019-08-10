@@ -9,6 +9,7 @@ module.exports = {
     author: 'Glenn Reyes',
     description:
       'I help people create beautiful products through web technologies.',
+    siteUrl: 'https://glennreyes.com',
     title: 'Glenn Reyes',
   },
   plugins: [
