@@ -11,33 +11,33 @@ cover:
 
 With Code Splitting we are able to reduce kilobytes sent over the wire and potentially improve page speed. Code Splitting is a such an easy-to-use feature that every single page app should consider to add (if haven’t yet).
 
-### So why disable Code Splitting?
+## So why disable Code Splitting?
 
 Well, of course we shouldn’t!
 
 If you are building server-side rendered apps in React with [Code Splitting](https://webpack.js.org/guides/code-splitting/) support baked in, some might use zero-configuration tools like [Razzle](https://github.com/jaredpalmer/razzle), which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
 
-#### So let’s just build some app with Code Splitting!
+## Let’s build an app with Code Splitting
 
 After defining some major split points in your app, you want to build and see how the chunks are doing so far:
 
-![](./1__RUaSpLjHtlil4gC9XS0XRA.png)
+![](./build.png)
 
 And in the file explorer:
 
-![](./1__wptGHrZQEsikUyz3u4QWdw.png)
+![](./file-explorer.png)
 
 But wait?
 
-![](./1__XtUp3MIvqfU1kSeUbPADWQ.png)
+![](./server-files.png)
 
-#### What is happening here?
+## What is happening here?
 
 Because our app is splitting bundles both on the client and server, multiple bundles are created for the server too, which we don’t really want/need. So we end up having multiple split up _\[number\]_._server.js._ What we want is:
 
 📝 One single server.js.
 
-### Let’s fix it!
+## Let’s fix it
 
 One way would be to create another build step to delete all \[number\].server.js, but that would be the last (or not an) option.
 
@@ -81,6 +81,6 @@ Some people encountered type or runtime errors with this approach. So alternativ
 
 Both solutions solve the same issue:
 
-![](./1__Jx__R7wwWw7sRaou1FJOUyA.png)
+![](./server-file.png)
 
 ✅ One single server.js

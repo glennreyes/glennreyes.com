@@ -94,7 +94,7 @@ export const H2 = styled(props => <Heading as="h2" {...props} />)`
   font-size: ${p => p.theme.fontSizes[4]}px;
 
   ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[5]}px;
+    margin-top: ${p.theme.space[6]}px;
   `}
 `;
 
