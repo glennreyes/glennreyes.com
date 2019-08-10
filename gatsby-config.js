@@ -18,7 +18,6 @@ module.exports = {
         test: /\.tsx?$/,
       },
     },
-    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -50,6 +49,8 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-robots-txt',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-styled-components',
