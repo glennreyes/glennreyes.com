@@ -38,15 +38,15 @@ const Wrapper = styled.footer`
   `}
 `;
 
-const Socials = styled.nav``;
+const Socials = styled.nav`
+  margin: -${p => p.theme.space[3]}px;
+`;
 
 const SocialLink = styled(Link)`
+  padding: ${p => p.theme.space[3]}px;
+
   &:hover {
     color: ${p => p.theme.textColor2};
-  }
-
-  & + & {
-    margin-left: ${p => p.theme.space[4]}px;
   }
 `;
 
