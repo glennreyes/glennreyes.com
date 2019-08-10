@@ -53,6 +53,8 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       ? `${title} | ${metaTitle}`
       : metaTitle;
 
+  const ogTitle = title === 'Home' ? metaTitle : title;
+
   return (
     <Helmet
       htmlAttributes={{ lang }}
@@ -62,7 +64,7 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
           name: 'description',
         },
         {
-          content: title,
+          content: ogTitle,
           property: 'og:title',
         },
         {
