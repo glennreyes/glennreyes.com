@@ -89,7 +89,7 @@ const Header = ({ data }: HeaderProps) => {
     return null;
   }
 
-  const { cover, date, title } = post.frontmatter;
+  const { cover, date, dateFormatted, title } = post.frontmatter;
   const hasCover = !!cover;
 
   const fluid =
@@ -100,6 +100,7 @@ const Header = ({ data }: HeaderProps) => {
 
   const authorName = cover && cover.author && cover.author.name;
   const authorUrl = cover && cover.author && cover.author.url;
+  const timeToRead = post.timeToRead ? post.timeToRead * 1000 * 60 : null;
 
   return (
     <Wrapper hasCover={hasCover}>
@@ -108,10 +109,16 @@ const Header = ({ data }: HeaderProps) => {
         <Content>
           <Heading hasCover={hasCover}>{title}</Heading>
           <Meta hasCover={hasCover}>
-            {date}
-            {post.timeToRead
-              ? ` · ${ms(post.timeToRead * 1000 * 60, { long: true })} read`
-              : ''}
+            <time dateTime={date}>{dateFormatted}</time>
+            {timeToRead && (
+              <>
+                {' · '}
+                <time dateTime={ms(timeToRead)}>
+                  {ms(timeToRead, { long: true })}
+                </time>
+                {' read'}
+              </>
+            )}
           </Meta>
           {authorName && authorUrl ? (
             <CoverAuthorLink target="_blank" to={authorUrl}>

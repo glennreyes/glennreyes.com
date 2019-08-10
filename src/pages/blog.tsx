@@ -70,7 +70,8 @@ const Blog = () => {
               slug
             }
             frontmatter {
-              date(formatString: "MMM DD, YYYY")
+              date(formatString: "YYYY-MM-DD")
+              dateFormatted: date(formatString: "MMM DD, YYYY")
               title
             }
             id
@@ -86,6 +87,7 @@ const Blog = () => {
       data.posts.nodes &&
       data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
         date: frontmatter && frontmatter.date,
+        dateFormatted: frontmatter && frontmatter.dateFormatted,
         slug: fields && fields.slug,
         title: frontmatter && frontmatter.title,
         ...node,
@@ -97,18 +99,34 @@ const Blog = () => {
       <SEO title="Blog" />
       <Section>
         <Content>
-          {posts.map(({ date, excerpt, id, slug, timeToRead, title }) => (
-            <Post key={id}>
-              <PostLink to={slug}>
-                <Title>{title}</Title>
-                <Meta>
-                  {date}
-                  {timeToRead ? ` · ${ms(timeToRead * 1000 * 60)} read` : ''}
-                </Meta>
-                <Excerpt>{excerpt}</Excerpt>
-              </PostLink>
-            </Post>
-          ))}
+          {posts.map(
+            ({ date, dateFormatted, excerpt, id, slug, title, ...post }) => {
+              const timeToRead = post.timeToRead
+                ? post.timeToRead * 1000 * 60
+                : null;
+
+              return (
+                <Post key={id}>
+                  <PostLink to={slug}>
+                    <Title>{title}</Title>
+                    <Meta>
+                      <time dateTime={date}>{dateFormatted}</time>
+                      {timeToRead && (
+                        <>
+                          {' · '}
+                          <time dateTime={ms(timeToRead)}>
+                            {ms(timeToRead, { long: true })}
+                          </time>
+                          {' read'}
+                        </>
+                      )}
+                    </Meta>
+                    <Excerpt>{excerpt}</Excerpt>
+                  </PostLink>
+                </Post>
+              );
+            },
+          )}
         </Content>
       </Section>
     </Layout>

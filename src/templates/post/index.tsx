@@ -54,7 +54,8 @@ export const pageQuery = graphql`
             url
           }
         }
-        date(formatString: "MMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
+        dateFormatted: date(formatString: "MMM DD, YYYY")
         title
       }
       id

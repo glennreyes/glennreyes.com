@@ -2731,6 +2731,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___browserAPIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   pluginCreator___pluginOptions___plugins___ssrAPIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
+  pluginCreator___pluginOptions___siteUrl = 'pluginCreator___pluginOptions___siteUrl',
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
   pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
@@ -2741,8 +2742,6 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___defaultLayouts___default = 'pluginCreator___pluginOptions___defaultLayouts___default',
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
   pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
-  pluginCreator___pluginOptions___replaceAttrValues____000 = 'pluginCreator___pluginOptions___replaceAttrValues____000',
-  pluginCreator___pluginOptions___replaceAttrValues____fff = 'pluginCreator___pluginOptions___replaceAttrValues____fff',
   pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
@@ -2942,6 +2941,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___plugins___browserAPIs = 'pluginOptions___plugins___browserAPIs',
   pluginOptions___plugins___ssrAPIs = 'pluginOptions___plugins___ssrAPIs',
   pluginOptions___plugins___pluginFilepath = 'pluginOptions___plugins___pluginFilepath',
+  pluginOptions___siteUrl = 'pluginOptions___siteUrl',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___short_name = 'pluginOptions___short_name',
   pluginOptions___start_url = 'pluginOptions___start_url',
@@ -2952,8 +2952,6 @@ export enum SitePluginFieldsEnum {
   pluginOptions___defaultLayouts___default = 'pluginOptions___defaultLayouts___default',
   pluginOptions___extensions = 'pluginOptions___extensions',
   pluginOptions___displayName = 'pluginOptions___displayName',
-  pluginOptions___replaceAttrValues____000 = 'pluginOptions___replaceAttrValues____000',
-  pluginOptions___replaceAttrValues____fff = 'pluginOptions___replaceAttrValues____fff',
   pluginOptions___svgoConfig___plugins___removeViewBox = 'pluginOptions___svgoConfig___plugins___removeViewBox',
   pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
@@ -3080,6 +3078,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
+  siteUrl?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -3090,7 +3089,6 @@ export type SitePluginPluginOptions = {
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   displayName?: Maybe<Scalars['Boolean']>;
-  replaceAttrValues?: Maybe<SitePluginPluginOptionsReplaceAttrValues>;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfig>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgProps>;
   path?: Maybe<Scalars['String']>;
@@ -3108,6 +3106,7 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
@@ -3118,9 +3117,6 @@ export type SitePluginPluginOptionsFilterInput = {
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
   displayName?: Maybe<BooleanQueryOperatorInput>;
-  replaceAttrValues?: Maybe<
-    SitePluginPluginOptionsReplaceAttrValuesFilterInput
-  >;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgPropsFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
@@ -3150,17 +3146,6 @@ export type SitePluginPluginOptionsPluginsFilterInput = {
 
 export type SitePluginPluginOptionsPluginsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
-};
-
-export type SitePluginPluginOptionsReplaceAttrValues = {
-  __typename?: 'SitePluginPluginOptionsReplaceAttrValues';
-  _000?: Maybe<Scalars['String']>;
-  _fff?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsReplaceAttrValuesFilterInput = {
-  _000?: Maybe<StringQueryOperatorInput>;
-  _fff?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsSvgoConfig = {
@@ -3326,7 +3311,7 @@ export type BlogQuery = { __typename?: 'Query' } & {
             { __typename?: 'MdxFrontmatter' } & Pick<
               MdxFrontmatter,
               'date' | 'title'
-            >
+            > & { dateFormatted: MdxFrontmatter['date'] }
           >;
         }
     >;
@@ -3372,7 +3357,7 @@ export type PostQuery = { __typename?: 'Query' } & {
           { __typename?: 'MdxFrontmatter' } & Pick<
             MdxFrontmatter,
             'date' | 'title'
-          > & {
+          > & { dateFormatted: MdxFrontmatter['date'] } & {
               cover: Maybe<
                 { __typename?: 'MdxFrontmatterCover' } & {
                   photo: Maybe<
