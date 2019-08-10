@@ -35,7 +35,9 @@ const Link = styled(
     }
 
     return (
-      <a ref={ref} href={to} target={target} {...other}>
+      // rel="noopener" to prevent the new page from being able to access window.opener property
+      // https://developers.google.com/web/tools/lighthouse/audits/noopener
+      <a ref={ref} href={to} rel="noopener" target={target} {...other}>
         {children}
       </a>
     );
