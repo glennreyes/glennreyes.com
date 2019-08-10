@@ -56,7 +56,7 @@ const Cover = styled(Img)`
 
 const CoverAuthorLink = styled(Link)`
   align-items: center;
-  color: ${p => p.theme.coverMeta};
+  color: ${p => p.theme.textColor2};
   display: flex;
   font-size: ${p => p.theme.fontSizes[0]}px;
   line-height: ${p => p.theme.lineHeights[1]};
@@ -64,10 +64,10 @@ const CoverAuthorLink = styled(Link)`
   position: absolute;
   right: 0;
   top: 100%;
-  transition: color ${p => p.theme.transition};
 
   ${p => p.theme.media.tablet`
     bottom: 0;
+    color: ${p.theme.coverMeta};
     top: auto;
   `}
 `;
