@@ -23,6 +23,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        anonymize: true,
+        respectDNT: true,
+        trackingId: 'UA-72115430-1',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Glenn Reyes',
