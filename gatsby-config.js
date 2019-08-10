@@ -1,16 +1,21 @@
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 const IS_DEV = process.env.NODE_ENV === 'development';
+const siteUrl = 'https://glennreyes.com';
 
 module.exports = {
   siteMetadata: {
     author: 'Glenn Reyes',
     description:
       'I help people create beautiful products through web technologies.',
-    siteUrl: 'https://glennreyes.com',
+    siteUrl,
     title: 'Glenn Reyes',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: { siteUrl },
+    },
     {
       resolve: 'gatsby-plugin-eslint',
       options: {
