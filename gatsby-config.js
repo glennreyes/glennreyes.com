@@ -1,6 +1,4 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 
@@ -63,10 +61,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-svgr',
       options: {
-        replaceAttrValues: {
-          '#000': 'currentColor',
-          '#fff': 'currentColor',
-        },
         svgoConfig: {
           plugins: {
             removeViewBox: false,
