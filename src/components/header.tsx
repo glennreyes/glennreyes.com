@@ -14,11 +14,8 @@ const Wrapper = styled.header<{
   isScrollThreshold: boolean;
   isMenuOpen: boolean;
 }>`
-  background: ${p =>
-    p.isScrollThreshold || p.isMenuOpen
-      ? p.theme.headerBg
-      : rgba(p.theme.headerBg, 0.95)};
-  ${p => (p.isScrollThreshold ? '' : `box-shadow: ${p.theme.boxShadow[0]};`)};
+  background: ${p => rgba(p.theme.headerBg, 0.95)};
+  box-shadow: ${p => p.theme.boxShadow[0]};
   display: flex;
   height: ${p => p.theme.space[7]}px;
   justify-content: space-between;
@@ -30,6 +27,12 @@ const Wrapper = styled.header<{
   z-index: 10;
 
   ${p => p.theme.media.desktop`
+    background: ${
+      p.isScrollThreshold || p.isMenuOpen
+        ? p.theme.headerBg
+        : rgba(p.theme.headerBg, 0.95)
+    };
+    box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.boxShadow[0]}`};
     height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
   `}
 `;
