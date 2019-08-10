@@ -2489,6 +2489,7 @@ export enum SiteFieldsEnum {
   internal___type = 'internal___type',
   siteMetadata___author = 'siteMetadata___author',
   siteMetadata___description = 'siteMetadata___description',
+  siteMetadata___siteUrl = 'siteMetadata___siteUrl',
   siteMetadata___title = 'siteMetadata___title',
   port = 'port',
   host = 'host',
@@ -3198,12 +3199,14 @@ export type SiteSiteMetadata = {
   __typename?: 'SiteSiteMetadata';
   author?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   author?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
 };
 
