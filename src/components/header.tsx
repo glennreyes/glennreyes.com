@@ -47,12 +47,14 @@ const Container = styled.div`
 `;
 
 const TitleLink = styled(Link)`
+  align-items: center;
   color: ${p => p.theme.textColor};
+  display: flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
+  height: ${p => p.theme.space[6]}px;
   line-height: ${p => p.theme.lineHeights[2]};
-  padding: ${p => p.theme.space[3]}px
-    ${p => p.theme.space[1] + p.theme.space[2]}px;
+  padding: 0 ${p => p.theme.space[1] + p.theme.space[2]}px;
   text-align: center;
 
   ${p => p.theme.media.desktop`
