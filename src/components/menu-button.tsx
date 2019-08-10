@@ -58,9 +58,14 @@ const BottomStroke = posed(Stroke)({
 const MenuButton = () => {
   const { isOpen, toggle } = React.useContext(MenuToggleContext);
   const pose = isOpen ? 'open' : 'closed';
+  const title = isOpen ? 'Close' : 'Open';
 
   return (
-    <Wrapper onClick={() => toggle()}>
+    <Wrapper
+      aria-label={`${title} menu`}
+      onClick={() => toggle()}
+      title={title}
+    >
       <TopStroke pose={pose} />
       <BottomStroke pose={pose} />
     </Wrapper>

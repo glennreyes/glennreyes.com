@@ -10,17 +10,20 @@ import { FooterQuery } from '../types/generated/graphql';
 const links = [
   {
     icon: Twitter,
-    label: 'Twitter',
+    label: 'Visit @glnnrys on Twitter',
+    title: 'Twitter',
     url: 'https://twitter.com/glnnrys',
   },
   {
     icon: GitHub,
-    label: 'GitHub',
+    label: 'Visit glennreyes on GitHub',
+    title: 'GitHub',
     url: 'https://github.com/glennreyes',
   },
   {
     icon: Instagram,
-    label: 'Instagram',
+    label: 'Visit @glnnrys on Instagram',
+    title: 'Instagram',
     url: 'https://instagram.com/glnnrys',
   },
 ];
@@ -73,8 +76,13 @@ const Footer = () => {
   return (
     <Wrapper>
       <Socials>
-        {links.map(({ icon: Icon, label, url }) => (
-          <SocialLink key={label.toLowerCase()} target="_blank" to={url}>
+        {links.map(({ icon: Icon, label, title, url }) => (
+          <SocialLink
+            aria-label={label}
+            key={title.toLowerCase()}
+            target="_blank"
+            to={url}
+          >
             <Icon />
           </SocialLink>
         ))}

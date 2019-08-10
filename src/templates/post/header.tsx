@@ -93,10 +93,13 @@ const Header = ({ data }: HeaderProps) => {
   const hasCover = !!cover;
 
   const fluid =
-    post.frontmatter.cover &&
-    post.frontmatter.cover.photo &&
-    post.frontmatter.cover.photo.childImageSharp &&
-    (post.frontmatter.cover.photo.childImageSharp.fluid as FluidObject);
+    cover &&
+    cover.photo &&
+    cover.photo.childImageSharp &&
+    (cover.photo.childImageSharp.fluid as FluidObject);
+
+  const authorName = cover && cover.author && cover.author.name;
+  const authorUrl = cover && cover.author && cover.author.url;
 
   return (
     <Wrapper hasCover={hasCover}>
@@ -110,12 +113,17 @@ const Header = ({ data }: HeaderProps) => {
               ? ` · ${ms(post.timeToRead * 1000 * 60, { long: true })} read`
               : ''}
           </Meta>
-          {cover && cover.author && (
-            <CoverAuthorLink target="_blank" to={cover.author.url}>
+          {authorName && authorUrl ? (
+            <CoverAuthorLink target="_blank" to={authorUrl}>
               <CameraIcon />
-              {cover.author.name}
+              {authorName}
             </CoverAuthorLink>
-          )}
+          ) : authorName ? (
+            <>
+              <CameraIcon />
+              {authorName}
+            </>
+          ) : null}
         </Content>
       </ContentWrapper>
     </Wrapper>

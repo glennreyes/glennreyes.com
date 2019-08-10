@@ -65,9 +65,14 @@ const Sun = posed(styled.span`
 const DarkModeButton = () => {
   const { darkMode, toggleDarkMode } = React.useContext(DarkModeContext);
   const pose = darkMode ? 'dark' : 'light';
+  const title = darkMode ? 'Light mode' : 'Dark mode';
 
   return (
-    <Wrapper onClick={() => toggleDarkMode()}>
+    <Wrapper
+      aria-label={`Switch to ${title.toLowerCase()}`}
+      onClick={() => toggleDarkMode()}
+      title={title}
+    >
       <Moon pose={pose}>
         <MoonSvg />
       </Moon>

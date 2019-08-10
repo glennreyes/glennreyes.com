@@ -39,7 +39,7 @@ export const system = {
   colors: {
     black: '#000',
     blue: ['#0d4bbf', '#9abbf9'],
-    gray: ['#f9f9f9', '#c4c4c4', '#767676', '#2e2e2e'],
+    gray: ['#f9f9f9', '#c4c4c4', '#555555', '#2e2e2e'],
     white: '#fff',
   },
   contentWidths: [640, 1280],
@@ -67,7 +67,7 @@ export const light = {
   codeColor: system.colors.gray[2],
   coverBg: system.colors.black,
   coverHeading: system.colors.white,
-  coverMeta: system.colors.gray[1],
+  coverMeta: system.colors.gray[0],
   headerBg: system.colors.white,
   linkColor: system.colors.blue[0],
   textColor: system.colors.black,
