@@ -8,8 +8,8 @@ import { system } from '../theme';
 
 const Wrapper = styled(Button)`
   flex-direction: column;
-  height: 24px;
-  width: 24px;
+  height: 56px;
+  width: 56px;
 
   ${p => p.theme.media.desktop`
     display: none;

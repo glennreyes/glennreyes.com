@@ -39,11 +39,9 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  padding: 0 ${p => p.theme.space[3]}px;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[5]}px;
-    padding-right: ${p.theme.space[5]}px;
+    padding: 0 ${p.theme.space[3]}px;
   `}
 `;
 
@@ -51,7 +49,8 @@ const TitleLink = styled(Link)`
   color: ${p => p.theme.textColor};
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
-  line-height: ${p => p.theme.lineHeights[0]};
+  line-height: ${p => p.theme.lineHeights[2]};
+  padding: ${p => p.theme.space[3]}px;
   text-align: center;
 
   ${p => p.theme.media.desktop`

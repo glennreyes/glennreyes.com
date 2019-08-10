@@ -9,25 +9,31 @@ import { ReactComponent as SunSvg } from '../icons/sun.svg';
 import { system } from '../theme';
 
 const Wrapper = styled(Button)`
-  height: 24px;
+  height: 56px;
   margin-left: auto;
   position: relative;
-  width: 24px;
+  width: 56px;
 `;
 
 const iconStyles = css`
   color: ${p => p.theme.textColor};
-  height: 100%;
-  left: 0;
+  height: 24px;
+  left: 50%;
   position: absolute;
-  top: 0;
-  width: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
 `;
 
 const transition = {
   rotate: {
     duration: ms(system.transition) * 2,
   },
+};
+
+const init = {
+  x: '-50%',
+  y: '-50%',
 };
 
 const Moon = posed(styled.span`
@@ -40,6 +46,7 @@ const Moon = posed(styled.span`
     rotate: '0deg',
     transition,
   },
+  init,
   light: {
     opacity: 0,
     rotate: '-135deg',
@@ -55,6 +62,7 @@ const Sun = posed(styled.span`
     rotate: '0deg',
     transition,
   },
+  init,
   light: {
     opacity: 1,
     rotate: '-90deg',
