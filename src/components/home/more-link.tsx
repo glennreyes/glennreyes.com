@@ -33,8 +33,12 @@ type MoreLinkProps = GatsbyLinkProps<{}> & {
 
 const MoreLink = ({ children, icon, ref, ...props }: MoreLinkProps) => {
   const Icon = styled(icon)`
+    color: ${p => p.theme.iconColor};
+    height: 64px;
     margin-bottom: 8px;
+    width: 64px;
   `;
+
   return (
     <Wrapper {...props}>
       <Icon />

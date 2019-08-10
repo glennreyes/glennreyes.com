@@ -2732,6 +2732,9 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___ssrAPIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
   pluginCreator___pluginOptions___siteUrl = 'pluginCreator___pluginOptions___siteUrl',
+  pluginCreator___pluginOptions___anonymize = 'pluginCreator___pluginOptions___anonymize',
+  pluginCreator___pluginOptions___respectDNT = 'pluginCreator___pluginOptions___respectDNT',
+  pluginCreator___pluginOptions___trackingId = 'pluginCreator___pluginOptions___trackingId',
   pluginCreator___pluginOptions___name = 'pluginCreator___pluginOptions___name',
   pluginCreator___pluginOptions___short_name = 'pluginCreator___pluginOptions___short_name',
   pluginCreator___pluginOptions___start_url = 'pluginCreator___pluginOptions___start_url',
@@ -2942,6 +2945,9 @@ export enum SitePluginFieldsEnum {
   pluginOptions___plugins___ssrAPIs = 'pluginOptions___plugins___ssrAPIs',
   pluginOptions___plugins___pluginFilepath = 'pluginOptions___plugins___pluginFilepath',
   pluginOptions___siteUrl = 'pluginOptions___siteUrl',
+  pluginOptions___anonymize = 'pluginOptions___anonymize',
+  pluginOptions___respectDNT = 'pluginOptions___respectDNT',
+  pluginOptions___trackingId = 'pluginOptions___trackingId',
   pluginOptions___name = 'pluginOptions___name',
   pluginOptions___short_name = 'pluginOptions___short_name',
   pluginOptions___start_url = 'pluginOptions___start_url',
@@ -3079,6 +3085,9 @@ export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
   siteUrl?: Maybe<Scalars['String']>;
+  anonymize?: Maybe<Scalars['Boolean']>;
+  respectDNT?: Maybe<Scalars['Boolean']>;
+  trackingId?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
@@ -3107,6 +3116,9 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
+  anonymize?: Maybe<BooleanQueryOperatorInput>;
+  respectDNT?: Maybe<BooleanQueryOperatorInput>;
+  trackingId?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;

@@ -119,14 +119,17 @@ const Home = () => {
       <Section>
         <Content>
           <Heading>Blog.</Heading>
-          {posts.map(({ excerpt, id, slug, title }) => (
-            <Post key={id}>
-              <Link to={slug}>
-                <Title>{title}</Title>
-                <Excerpt>{excerpt}</Excerpt>
-              </Link>
-            </Post>
-          ))}
+          {posts.map(
+            ({ excerpt, id, slug, title }) =>
+              slug && (
+                <Post key={id}>
+                  <Link to={slug}>
+                    <Title>{title}</Title>
+                    <Excerpt>{excerpt}</Excerpt>
+                  </Link>
+                </Post>
+              ),
+          )}
           {posts.length > 3 && (
             <ArrowLink to="/blog/">View all posts</ArrowLink>
           )}
