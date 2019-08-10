@@ -31,7 +31,11 @@ const links = [
 const Wrapper = styled.footer`
   background: ${p => p.theme.bg};
   margin-top: auto;
-  padding: ${p => p.theme.space[4]}px;
+  padding: ${p => p.theme.space[5]}px ${p => p.theme.space[3]}px;
+
+  ${p => p.theme.media.tablet`
+    padding: ${p.theme.space[5]}px;
+  `}
 `;
 
 const Socials = styled.nav`
