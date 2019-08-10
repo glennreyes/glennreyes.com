@@ -39,10 +39,11 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
+  padding: 0 ${p => p.theme.space[1]}px;
 
   ${p => p.theme.media.tablet`
-    padding: 0 ${p.theme.space[3]}px;
-  `}
+    padding: 0 ${p.theme.space[3] + p.theme.space[1]}px;
+  `};
 `;
 
 const TitleLink = styled(Link)`
@@ -50,7 +51,8 @@ const TitleLink = styled(Link)`
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
   line-height: ${p => p.theme.lineHeights[2]};
-  padding: ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[3]}px
+    ${p => p.theme.space[1] + p.theme.space[2]}px;
   text-align: center;
 
   ${p => p.theme.media.desktop`
