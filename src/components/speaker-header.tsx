@@ -10,7 +10,7 @@ const StyledImg = styled(Img)`
   width: 100vw;
 
   ${p => p.theme.media.tablet`
-    height: 400px;
+    height: 640px;
   `}
 `;
 
