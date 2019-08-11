@@ -15,8 +15,8 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
-    "serve": "gatsby serve --host 0.0.0.0 --open",
-    "start": "gatsby develop --host 0.0.0.0 --open"
+    "serve": "gatsby serve --open",
+    "start": "gatsby develop --open"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
