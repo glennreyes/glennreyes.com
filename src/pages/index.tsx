@@ -11,11 +11,11 @@ import IntroSection from '../components/home/intro-section';
 import MoreLink from '../components/home/more-link';
 import MoreLinks from '../components/home/more-links';
 import Post from '../components/home/post';
+import PostLink from '../components/home/post-link';
 import Section from '../components/home/section';
 import Tagline from '../components/home/tagline';
 import Title from '../components/home/title';
 import Layout from '../components/layout';
-import Link from '../components/link';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
 import { ReactComponent as Book } from '../icons/book.svg';
@@ -39,7 +39,7 @@ const Home = () => {
           sort: { fields: frontmatter___date, order: DESC }
         ) {
           nodes {
-            excerpt(pruneLength: 280)
+            excerpt(pruneLength: 140)
             fields {
               slug
             }
@@ -123,10 +123,10 @@ const Home = () => {
             ({ excerpt, id, slug, title }) =>
               slug && (
                 <Post key={id}>
-                  <Link to={slug}>
+                  <PostLink to={slug}>
                     <Title>{title}</Title>
                     <Excerpt>{excerpt}</Excerpt>
-                  </Link>
+                  </PostLink>
                 </Post>
               ),
           )}

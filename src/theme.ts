@@ -1,3 +1,4 @@
+import { rgba } from 'polished';
 import {
   CSSObject,
   FlattenSimpleInterpolation,
@@ -33,15 +34,20 @@ const media: Media = {
   `,
 };
 
+const colors = {
+  black: '#000',
+  blue: ['#0d4bbf', '#9abbf9'],
+  gray: ['#f9f9f9', '#c4c4c4', '#555555', '#2e2e2e'],
+  white: '#fff',
+};
+
 export const system = {
   borders: [1, 2, 4],
-  boxShadow: ['0px 0px 16px rgba(0, 0, 0, .1)'],
-  colors: {
-    black: '#000',
-    blue: ['#0d4bbf', '#9abbf9'],
-    gray: ['#f9f9f9', '#c4c4c4', '#555555', '#2e2e2e'],
-    white: '#fff',
-  },
+  boxShadow: [
+    `0px 0px 16px ${rgba(colors.black, 0.1)}`,
+    `0px 0px 16px ${rgba(colors.white, 0.25)}`,
+  ],
+  colors,
   contentWidths: [640, 1280],
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
   fontWeights: [400, 700, 800],
@@ -69,6 +75,7 @@ export const light = {
   coverHeading: system.colors.white,
   coverMeta: system.colors.gray[0],
   headerBg: system.colors.white,
+  hoverShadow: system.boxShadow[0],
   iconColor: system.colors.gray[1],
   linkColor: system.colors.blue[0],
   textColor: system.colors.black,
@@ -86,6 +93,7 @@ export const dark = {
   coverHeading: system.colors.black,
   coverMeta: system.colors.gray[3],
   headerBg: system.colors.gray[3],
+  hoverShadow: system.boxShadow[1],
   iconColor: system.colors.gray[2],
   linkColor: system.colors.blue[1],
   textColor: system.colors.white,

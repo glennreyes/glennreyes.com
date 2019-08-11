@@ -12,19 +12,20 @@ import { BlogQuery } from '../types/generated/graphql';
 const Section = styled.section``;
 
 const Post = styled.article`
-  background: ${p => p.theme.cardBg};
-  border-radius: ${p => p.theme.radii[1]}px;
   margin: ${p => p.theme.space[5]}px 0;
   max-width: 768px;
-  transition: box-shadow ${p => p.theme.transition};
-
-  &:hover {
-    box-shadow: ${p => p.theme.boxShadow[0]};
-  }
 `;
 
 const PostLink = styled(Link)`
+  background: ${p => p.theme.cardBg};
+  border-radius: ${p => p.theme.radii[1]}px;
   padding: ${p => p.theme.space[3]}px;
+  transition: box-shadow ${p => p.theme.transition};
+
+  &:hover {
+    box-shadow: ${p => p.theme.hoverShadow};
+    color: ${p => p.theme.textColor2};
+  }
 
   ${p => p.theme.media.tablet`
     padding: ${p.theme.space[5]}px;

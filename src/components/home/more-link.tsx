@@ -17,7 +17,8 @@ const Wrapper = styled(Link)`
   transition: box-shadow ${p => p.theme.transition};
 
   &:hover {
-    box-shadow: ${p => p.theme.boxShadow[0]};
+    box-shadow: ${p => p.theme.hoverShadow};
+    color: ${p => p.theme.textColor2};
   }
 
   ${p => p.theme.media.tablet`
