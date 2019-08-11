@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Blockquote = styled.blockquote`
-  border-left: ${p => p.theme.borders[3]}px solid ${p => p.theme.borderColor};
+  border-left: ${p => p.theme.borders[2]}px solid ${p => p.theme.borderColor};
   color: ${p => p.theme.textColor2};
   font-style: italic;
   line-height: ${p => p.theme.lineHeights[1]};

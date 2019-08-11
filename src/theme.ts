@@ -34,7 +34,7 @@ const media: Media = {
 };
 
 export const system = {
-  borders: [0, 1, 2, 4],
+  borders: [1, 2, 4],
   boxShadow: ['0px 0px 16px rgba(0, 0, 0, .1)'],
   colors: {
     black: '#000',

@@ -10,13 +10,13 @@ const Table = styled.table`
 `;
 
 export const TableHeader = styled.th`
-  border: 1px solid ${p => p.theme.borderColor};
+  border: ${p => p.theme.borders[0]}px solid ${p => p.theme.borderColor};
   font-weight: ${p => p.theme.fontWeights[1]};
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
 `;
 
 export const TableCell = styled.td`
-  border: 1px solid ${p => p.theme.borderColor};
+  border: ${p => p.theme.borders[0]}px solid ${p => p.theme.borderColor};
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
 `;
 
