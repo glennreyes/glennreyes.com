@@ -19,7 +19,7 @@ const Section = styled.section`
 
 const Post = styled.article`
   background: ${p => p.theme.cardBg};
-  border-radius: ${p => p.theme.radii[2]}px;
+  border-radius: ${p => p.theme.radii[1]}px;
   margin: ${p => p.theme.space[5]}px 0;
   max-width: 768px;
   transition: box-shadow ${p => p.theme.transition};

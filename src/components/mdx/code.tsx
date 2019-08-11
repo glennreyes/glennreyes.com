@@ -50,7 +50,7 @@ const calculateLinesToHighlight = (metastring?: string): number[] => {
 };
 
 const Pre = styled.pre`
-  border-radius: ${p => p.theme.radii[1]}px;
+  border-radius: ${p => p.theme.radii[0]}px;
   overflow: auto;
   font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
     ${p => p.theme.fonts.mono};

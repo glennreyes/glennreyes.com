@@ -53,7 +53,7 @@ export const system = {
   },
   lineHeights: [1, 1.25, 1.5],
   media,
-  radii: [0, 8, 16],
+  radii: [8, 16],
   space: [0, 4, 8, 16, 24, 32, 48, 64, 128, 256],
   transition: '0.4s',
 };
