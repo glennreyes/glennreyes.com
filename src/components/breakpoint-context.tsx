@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMedia } from 'use-media';
+import { useMedia } from 'react-use';
 import { breakpoints } from '../theme';
 
 type BreakpointContextProps = {
@@ -21,8 +21,8 @@ type BreakpointProps = {
 };
 
 export const BreakpointProvider = ({ children }: BreakpointProps) => {
-  const isDesktop = useMedia({ minWidth: breakpoints.desktop });
-  const isTablet = useMedia({ minWidth: breakpoints.tablet });
+  const isDesktop = useMedia(`(min-width: ${breakpoints.desktop}px)`);
+  const isTablet = useMedia(`(min-width: ${breakpoints.tablet}px)`);
   const isMobile = !isTablet && !isDesktop;
   const current = isDesktop
     ? 'desktop'

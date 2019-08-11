@@ -57,8 +57,8 @@
     "react-helmet": "5.2.1",
     "react-pose": "4.0.8",
     "react-tilt": "0.1.4",
-    "styled-components": "4.3.2",
-    "use-media": "1.4.0"
+    "react-use": "10.5.0",
+    "styled-components": "4.3.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.4.0",
