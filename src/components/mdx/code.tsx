@@ -2,7 +2,7 @@ import { rgba } from 'polished';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled, { CSSProp, css } from 'styled-components';
 
 // For use at other mdx components
 export const inlineCodeStyles = css`
@@ -49,7 +49,7 @@ const calculateLinesToHighlight = (metastring?: string): number[] => {
     : [];
 };
 
-const Pre = styled.pre`
+const Pre = styled.pre<{ css: CSSProp }>`
   border-radius: ${p => p.theme.radii[0]}px;
   overflow: auto;
   font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
@@ -75,7 +75,7 @@ const Codeblock = styled.code`
   `}
 `;
 
-const Line = styled.span<{ isHighlighted: boolean }>`
+const Line = styled.span<{ css: CSSProp; isHighlighted: boolean }>`
   ${p =>
     p.isHighlighted ? `background: ${rgba(p.theme.colors.white, 0.075)};` : ''}
   ${p =>
@@ -98,6 +98,8 @@ const Line = styled.span<{ isHighlighted: boolean }>`
   `}
 `;
 
+const Token = styled.span<{ css: CSSProp }>``;
+
 type CodeProps = {
   children: string;
   className: string;
@@ -117,7 +119,7 @@ const Code = ({ children, className = '', metastring }: CodeProps) => {
   return (
     <Highlight {...defaultProps} code={code} language={language} theme={theme}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
-        <Pre css={style}>
+        <Pre css={style as CSSProp}>
           <Codeblock>
             {tokens.map((line, index) => {
               const { className, style, ...lineProps } = getLineProps({ line });
@@ -125,7 +127,7 @@ const Code = ({ children, className = '', metastring }: CodeProps) => {
               return (
                 <Line
                   {...lineProps}
-                  css={style}
+                  css={style as CSSProp}
                   isHighlighted={linesToHighlight.includes(index + 1)}
                   key={index}
                 >
@@ -134,7 +136,9 @@ const Code = ({ children, className = '', metastring }: CodeProps) => {
                       token,
                     });
 
-                    return <span {...tokenProps} css={style} key={key} />;
+                    return (
+                      <Token {...tokenProps} css={style as CSSProp} key={key} />
+                    );
                   })}
                 </Line>
               );
