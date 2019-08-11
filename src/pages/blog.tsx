@@ -54,7 +54,7 @@ const Blog = () => {
       query Blog {
         posts: allMdx(
           filter: {
-            fileAbsolutePath: { glob: "**/src/posts/**" }
+            fileAbsolutePath: { glob: "**/content/posts/**" }
             frontmatter: { draft: { ne: true } }
           }
           sort: { fields: frontmatter___date, order: DESC }

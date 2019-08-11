@@ -679,6 +679,7 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___description = 'childMdx___frontmatter___description',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
+  childMdx___frontmatter___id = 'childMdx___frontmatter___id',
   childMdx___body = 'childMdx___body',
   childMdx___excerpt = 'childMdx___excerpt',
   childMdx___headings = 'childMdx___headings',
@@ -734,6 +735,7 @@ export enum FileFieldsEnum {
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
   childMarkdownRemark___frontmatter___draft = 'childMarkdownRemark___frontmatter___draft',
+  childMarkdownRemark___frontmatter___id = 'childMarkdownRemark___frontmatter___id',
   childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
   childMarkdownRemark___fileAbsolutePath = 'childMarkdownRemark___fileAbsolutePath',
@@ -1534,6 +1536,7 @@ export enum MarkdownRemarkFieldsEnum {
   frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
+  frontmatter___id = 'frontmatter___id',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
   fileAbsolutePath = 'fileAbsolutePath',
@@ -1659,6 +1662,7 @@ export type MarkdownRemarkFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MarkdownRemarkFrontmatterCover>;
+  id?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1695,6 +1699,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MarkdownRemarkFrontmatterCoverFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1834,6 +1839,7 @@ export enum MdxFieldsEnum {
   frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
+  frontmatter___id = 'frontmatter___id',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -1965,6 +1971,7 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
+  id?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterDateArgs = {
@@ -2002,6 +2009,7 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
+  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {

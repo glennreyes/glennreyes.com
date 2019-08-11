@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
       query Posts {
         posts: allMdx(
-          filter: { fileAbsolutePath: { glob: "**/src/posts/**" } }
+          filter: { fileAbsolutePath: { glob: "**/content/posts/**" } }
           sort: { fields: [frontmatter___date], order: DESC }
         ) {
           nodes {

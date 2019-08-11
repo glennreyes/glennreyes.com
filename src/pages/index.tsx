@@ -32,7 +32,7 @@ const Home = () => {
       query Home {
         posts: allMdx(
           filter: {
-            fileAbsolutePath: { glob: "**/src/posts/**" }
+            fileAbsolutePath: { glob: "**/content/posts/**" }
             frontmatter: { draft: { ne: true } }
           }
           limit: 3
