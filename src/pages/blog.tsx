@@ -80,8 +80,8 @@ const Blog = () => {
     (data.posts &&
       data.posts.nodes &&
       data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
-        date: frontmatter && frontmatter.date,
-        dateFormatted: frontmatter && frontmatter.dateFormatted,
+        date: frontmatter && (frontmatter.date as string),
+        dateFormatted: frontmatter && (frontmatter.dateFormatted as string),
         slug: fields && fields.slug,
         title: frontmatter && frontmatter.title,
         ...node,
@@ -99,15 +99,19 @@ const Blog = () => {
                 ? post.timeToRead * 1000 * 60
                 : null;
 
+              if (!slug) return null;
+
               return (
                 <Post key={id}>
                   <PostLink to={slug}>
                     <Title>{title}</Title>
                     <Meta>
-                      <time dateTime={date}>{dateFormatted}</time>
+                      {date && dateFormatted && (
+                        <time dateTime={date}>{dateFormatted}</time>
+                      )}
                       {timeToRead && (
                         <>
-                          {' · '}
+                          {date && dateFormatted && ' · '}
                           <time dateTime={ms(timeToRead)}>
                             {ms(timeToRead, { long: true })}
                           </time>

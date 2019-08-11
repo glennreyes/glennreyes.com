@@ -109,10 +109,12 @@ const Header = ({ data }: HeaderProps) => {
         <Content>
           <Heading hasCover={hasCover}>{title}</Heading>
           <Meta hasCover={hasCover}>
-            <time dateTime={date}>{dateFormatted}</time>
+            {date && dateFormatted && (
+              <time dateTime={date}>{dateFormatted}</time>
+            )}
             {timeToRead && (
               <>
-                {' · '}
+                {date && dateFormatted && ' · '}
                 <time dateTime={ms(timeToRead)}>
                   {ms(timeToRead, { long: true })}
                 </time>
