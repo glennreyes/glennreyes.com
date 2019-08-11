@@ -9,10 +9,10 @@ import { ReactComponent as SunSvg } from '../icons/sun.svg';
 import { system } from '../theme';
 
 const Wrapper = styled(Button)`
-  height: ${p => p.theme.space[6]}px;
+  height: ${p => p.theme.space[5]}px;
   margin-left: auto;
   position: relative;
-  width: ${p => p.theme.space[6]}px;
+  width: ${p => p.theme.space[5]}px;
 `;
 
 const iconStyles = css`

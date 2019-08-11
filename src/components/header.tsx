@@ -17,7 +17,7 @@ const Wrapper = styled.header<{
   background: ${p => rgba(p.theme.headerBg, 0.95)};
   box-shadow: ${p => p.theme.boxShadow[0]};
   display: flex;
-  height: ${p => p.theme.space[7]}px;
+  height: ${p => p.theme.space[6]}px;
   justify-content: space-between;
   position: fixed;
   top: 0;
@@ -33,7 +33,7 @@ const Wrapper = styled.header<{
         : rgba(p.theme.headerBg, 0.95)
     };
     box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.boxShadow[0]}`};
-    height: ${p.isScrollThreshold ? p.theme.space[8] : p.theme.space[7]}px;
+    height: ${p.isScrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
   `}
 `;
 
@@ -42,10 +42,10 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  padding: 0 ${p => p.theme.space[1]}px;
+  padding: 0 ${p => p.theme.space[0]}px;
 
   ${p => p.theme.media.tablet`
-    padding: 0 ${p.theme.space[3] + p.theme.space[1]}px;
+    padding: 0 ${p.theme.space[2] + p.theme.space[0]}px;
   `};
 `;
 
@@ -55,9 +55,9 @@ const TitleLink = styled(Link)`
   display: flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
-  height: ${p => p.theme.space[6]}px;
+  height: ${p => p.theme.space[5]}px;
   line-height: ${p => p.theme.lineHeights[2]};
-  padding: 0 ${p => p.theme.space[1] + p.theme.space[2]}px;
+  padding: 0 ${p => p.theme.space[0] + p.theme.space[1]}px;
   text-align: center;
 
   ${p => p.theme.media.desktop`

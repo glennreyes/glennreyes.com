@@ -31,25 +31,25 @@ const links = [
 const Wrapper = styled.footer`
   background: ${p => p.theme.bg};
   margin-top: auto;
-  padding: ${p => p.theme.space[5]}px ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[4]}px ${p => p.theme.space[2]}px;
 
   ${p => p.theme.media.tablet`
-    padding: ${p.theme.space[5]}px;
+    padding: ${p.theme.space[4]}px;
   `}
 `;
 
 const Socials = styled.nav`
   display: flex;
-  margin: 0 -${p => p.theme.space[3]}px;
+  margin: 0 -${p => p.theme.space[2]}px;
 `;
 
 const SocialLink = styled(Link)`
   align-items: center;
   display: flex;
-  height: ${p => p.theme.space[6]}px;
+  height: ${p => p.theme.space[5]}px;
   justify-content: center;
-  margin: 0 ${p => p.theme.space[1]}px;
-  width: ${p => p.theme.space[6]}px;
+  margin: 0 ${p => p.theme.space[0]}px;
+  width: ${p => p.theme.space[5]}px;
 
   &:hover {
     color: ${p => p.theme.textColor2};
@@ -58,10 +58,10 @@ const SocialLink = styled(Link)`
 
 const Text = styled.p`
   color: ${p => p.theme.textColor2};
-  margin: ${p => p.theme.space[3]}px 0 0;
+  margin: ${p => p.theme.space[2]}px 0 0;
 
   ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[4]}px;
+    margin-top: ${p.theme.space[3]}px;
   `}
 `;
 

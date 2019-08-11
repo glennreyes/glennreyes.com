@@ -20,7 +20,7 @@ const ArrowLink = styled(({ children, ...props }) => (
   line-height: ${p => p.theme.lineHeights[2]};
 
   &:hover > ${ArrowRight} {
-    transform: translateX(${p => p.theme.space[1]}px);
+    transform: translateX(${p => p.theme.space[0]}px);
   }
 `;
 

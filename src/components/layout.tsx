@@ -17,10 +17,10 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   background: ${p => p.theme.bg};
-  padding: ${p => p.theme.space[7]}px 0;
+  padding: ${p => p.theme.space[6]}px 0;
 
   ${p => p.theme.media.desktop`
-    padding-top: ${p.theme.space[8]}px;
+    padding-top: ${p.theme.space[7]}px;
   `}
 `;
 

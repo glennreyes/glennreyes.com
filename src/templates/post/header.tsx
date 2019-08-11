@@ -15,7 +15,7 @@ const Wrapper = styled.header<{ hasCover: boolean }>`
   flex-direction: column;
   height: 320px;
   justify-content: flex-end;
-  margin-bottom: ${p => p.theme.space[7]}px;
+  margin-bottom: ${p => p.theme.space[6]}px;
   position: relative;
   transition: background ${p => p.theme.transition};
 
@@ -26,10 +26,10 @@ const Wrapper = styled.header<{ hasCover: boolean }>`
 
 const ContentWrapper = styled.div`
   position: relative;
-  padding: ${p => p.theme.space[4]}px ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[2]}px;
 
   ${p => p.theme.media.tablet`
-    padding: ${p.theme.space[5]}px 0;
+    padding: ${p.theme.space[4]}px 0;
   `}
 `;
 
@@ -60,7 +60,7 @@ const CoverAuthorLink = styled(Link)`
   display: flex;
   font-size: ${p => p.theme.fontSizes[0]}px;
   line-height: ${p => p.theme.lineHeights[1]};
-  padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
   position: absolute;
   right: 0;
   top: 100%;
@@ -73,9 +73,9 @@ const CoverAuthorLink = styled(Link)`
 `;
 
 const CameraIcon = styled(Camera)`
-  height: ${p => p.theme.space[3]}px;
-  margin-right: ${p => p.theme.space[1]}px;
-  width: ${p => p.theme.space[3]}px;
+  height: ${p => p.theme.space[2]}px;
+  margin-right: ${p => p.theme.space[0]}px;
+  width: ${p => p.theme.space[2]}px;
 `;
 
 type HeaderProps = {

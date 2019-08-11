@@ -59,7 +59,7 @@ const Wrapper = styled.nav`
 const PosedWrapper = posed(Wrapper)({
   close: { height: 0 },
   open: {
-    height: `calc(100vh - ${system.space[5]}px)`,
+    height: `calc(100vh - ${system.space[4]}px)`,
   },
 });
 
@@ -67,7 +67,7 @@ const MenuLink = styled(Link)`
   border-bottom: ${p => p.theme.borders[1]}px solid ${p => p.theme.headerBg};
   color: ${p => p.theme.textColor};
   font-size: ${p => p.theme.fontSizes[2]}px;
-  padding: ${p => p.theme.space[3]}px;
+  padding: ${p => p.theme.space[2]}px;
   text-transform: lowercase;
 
   ${p => p.theme.media.desktop`
@@ -81,15 +81,15 @@ const MenuLink = styled(Link)`
   }
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[5]}px;
-    padding-right: ${p.theme.space[5]}px;
+    padding-left: ${p.theme.space[4]}px;
+    padding-right: ${p.theme.space[4]}px;
   `}
 
   ${p => p.theme.media.desktop`
     border-bottom: none;
-    margin: 0 ${p.theme.space[2]}px;
-    padding-left: ${p.theme.space[3]}px;
-    padding-right: ${p.theme.space[3]}px;
+    margin: 0 ${p.theme.space[1]}px;
+    padding-left: ${p.theme.space[2]}px;
+    padding-right: ${p.theme.space[2]}px;
   `}
 `;
 

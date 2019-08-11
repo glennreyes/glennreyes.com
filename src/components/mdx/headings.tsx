@@ -15,7 +15,7 @@ const Anchor = styled.a`
   transition: opacity ${p => p.theme.transition};
 
   float: left;
-  margin-left: -${p => p.theme.space[5]}px;
+  margin-left: -${p => p.theme.space[4]}px;
 
   &:focus {
     opacity: 1;
@@ -30,7 +30,7 @@ const AnchorIcon = styled(LinkSvg)`
 const defaultHeadingStyles = css`
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
-  margin: ${p => p.theme.space[5]}px 0 ${p => p.theme.space[4]}px;
+  margin: ${p => p.theme.space[4]}px 0 ${p => p.theme.space[3]}px;
   ${inlineCodeStyles}
 
   &:hover > ${Anchor} {
@@ -49,7 +49,7 @@ type HeadingWithAnchorProps = {
 
 const HeadingWithAnchor = ({ children, ...props }: HeadingWithAnchorProps) => {
   const { handleClick, ref, slug } = useAnchor(children, {
-    offset: system.space[7],
+    offset: system.space[6],
   });
 
   return (
@@ -85,7 +85,7 @@ export const H1 = styled(props => <Heading as="h1" {...props} />)`
 
   ${p => p.theme.media.tablet`
     font-size: ${p.theme.fontSizes[5]}px;
-    margin-top: ${p.theme.space[6]}px;
+    margin-top: ${p.theme.space[5]}px;
   `}
 `;
 
@@ -94,7 +94,7 @@ export const H2 = styled(props => <Heading as="h2" {...props} />)`
   font-size: ${p => p.theme.fontSizes[4]}px;
 
   ${p => p.theme.media.tablet`
-    margin-top: ${p.theme.space[6]}px;
+    margin-top: ${p.theme.space[5]}px;
   `}
 `;
 
@@ -106,7 +106,7 @@ export const H3 = styled(props => <Heading as="h3" {...props} />)`
 export const H4 = styled(props => <Heading as="h4" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[2]}px;
-  margin-bottom: ${p => p.theme.space[3]}px;
+  margin-bottom: ${p => p.theme.space[2]}px;
 `;
 
 export const H5 = styled(props => <Heading as="h5" {...props} />)`

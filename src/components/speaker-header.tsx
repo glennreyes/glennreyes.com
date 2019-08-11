@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { SpeakerHeaderQuery } from '../types/generated/graphql';
 
 const StyledImg = styled(Img)`
-  height: ${p => p.theme.space[9]}px;
-  margin: 0 calc(50% - 50vw) ${p => p.theme.space[4]}px;
+  height: ${p => p.theme.space[8]}px;
+  margin: 0 calc(50% - 50vw) ${p => p.theme.space[3]}px;
   width: 100vw;
 
   ${p => p.theme.media.tablet`

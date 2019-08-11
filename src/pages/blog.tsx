@@ -9,13 +9,7 @@ import SEO from '../components/seo';
 import Text from '../components/text';
 import { BlogQuery } from '../types/generated/graphql';
 
-const Section = styled.section`
-  margin: ${p => p.theme.space[7]}px 0;
-
-  ${p => p.theme.media.tablet`
-    margin: ${p.theme.space[5] + p.theme.space[7]}px 0;
-  `}
-`;
+const Section = styled.section``;
 
 const Post = styled.article`
   background: ${p => p.theme.cardBg};

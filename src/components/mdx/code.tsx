@@ -54,11 +54,11 @@ const Pre = styled.pre`
   overflow: auto;
   font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights[2]}
     ${p => p.theme.fonts.mono};
-  margin: ${p => p.theme.space[4]}px 0;
+  margin: ${p => p.theme.space[3]}px 0;
 
   ${p => p.theme.media.tablet`
-    margin-left: -${p.theme.space[4]}px;
-    margin-right: -${p.theme.space[4]}px;
+    margin-left: -${p.theme.space[3]}px;
+    margin-right: -${p.theme.space[3]}px;
   `}
 `;
 
@@ -67,11 +67,11 @@ const Codeblock = styled.code`
   float: left;
   font-family: inherit;
   min-width: 100%;
-  padding: ${p => p.theme.space[4]}px 0;
+  padding: ${p => p.theme.space[3]}px 0;
 
   ${p => p.theme.media.tablet`
-    padding-left: ${p.theme.space[4]}px;
-    padding-right: ${p.theme.space[4]}px;
+    padding-left: ${p.theme.space[3]}px;
+    padding-right: ${p.theme.space[3]}px;
   `}
 `;
 
@@ -80,7 +80,7 @@ const Line = styled.span<{ isHighlighted: boolean }>`
     p.isHighlighted ? `background: ${rgba(p.theme.colors.white, 0.075)};` : ''}
   ${p =>
     p.isHighlighted
-      ? `border-left: ${p.theme.space[1]}px solid ${rgba(
+      ? `border-left: ${p.theme.space[0]}px solid ${rgba(
           p.theme.colors.white,
           0.2,
         )};`
@@ -89,12 +89,12 @@ const Line = styled.span<{ isHighlighted: boolean }>`
   padding: 0
     ${p =>
       p.isHighlighted
-        ? `${p.theme.space[4]}px 0 ${p.theme.space[4] - p.theme.space[1]}px`
-        : `${p.theme.space[4]}px`};
+        ? `${p.theme.space[3]}px 0 ${p.theme.space[3] - p.theme.space[0]}px`
+        : `${p.theme.space[3]}px`};
 
   ${p => p.theme.media.tablet`
-    margin-left: -${p.theme.space[4]}px;
-    margin-right: -${p.theme.space[4]}px;
+    margin-left: -${p.theme.space[3]}px;
+    margin-right: -${p.theme.space[3]}px;
   `}
 `;
 

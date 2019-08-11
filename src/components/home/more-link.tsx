@@ -12,7 +12,7 @@ const Wrapper = styled(Link)`
   font-size: ${p => p.theme.fontSizes[3]}px;
   font-weight: ${p => p.theme.fontWeights[1]};
   line-height: ${p => p.theme.lineHeights[1]};
-  padding: ${p => p.theme.space[3]}px ${p => p.theme.space[4]}px;
+  padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
   text-align: center;
   transition: box-shadow ${p => p.theme.transition};
 
@@ -22,7 +22,7 @@ const Wrapper = styled(Link)`
 
   ${p => p.theme.media.tablet`
     font-size: ${p.theme.fontSizes[4]}px;
-    padding: ${p.theme.space[4]}px ${p.theme.space[5]}px;
+    padding: ${p.theme.space[3]}px ${p.theme.space[4]}px;
   `}
 `;
 
