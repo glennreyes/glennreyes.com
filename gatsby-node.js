@@ -48,9 +48,9 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
   if (node.internal.type === 'Mdx') {
     const filePath = createFilePath({ node, getNode });
 
-    // Prepend `/blog` to the slug if the MDX file is under src/posts
+    // Prepend `/blog` to the slug if the MDX file is under content/posts
     // By default the filepath of an MDX file is just /[filename]/
-    const slug = node.fileAbsolutePath.includes(`${__dirname}/src/posts`)
+    const slug = node.fileAbsolutePath.includes(`${__dirname}/content/posts`)
       ? `/blog${filePath}`
       : filePath;
 
