@@ -9,7 +9,6 @@ location:
 slidesUrl: null
 startDate: 2019-11-26
 title: Frontend Con
-# Put talk id here to link to the talk
 talk: modern-react
 url: https://frontend-con.io/
 videoUrl: null
