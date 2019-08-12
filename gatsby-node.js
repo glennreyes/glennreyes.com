@@ -105,7 +105,7 @@ exports.createResolvers = async ({
 
   const createEventNodes = type => {
     const allMdxEvent = allMdx.filter(mdx =>
-      mdx.fileAbsolutePath.includes('/content/events'),
+      mdx.fileAbsolutePath.startsWith(`${__dirname}/content/events/`),
     );
 
     return allMdxEvent.map(
@@ -148,7 +148,7 @@ exports.createResolvers = async ({
 
   const createTalkNodes = () => {
     const allMdxTalk = allMdx.filter(mdx =>
-      mdx.fileAbsolutePath.includes('/content/talks'),
+      mdx.fileAbsolutePath.startsWith(`${__dirname}/content/talks/`),
     );
 
     return allMdxTalk.map(
@@ -178,7 +178,7 @@ exports.createResolvers = async ({
 
   const createWorkshopNodes = () => {
     const allMdxWorkshop = allMdx.filter(mdx =>
-      mdx.fileAbsolutePath.includes(`${__dirname}/content/workshops`),
+      mdx.fileAbsolutePath.startsWith(`${__dirname}/content/workshops/`),
     );
 
     return allMdxWorkshop.map(
@@ -222,8 +222,8 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'TalkEvent' })
             .filter(event =>
-              source.fileAbsolutePath.includes(
-                `${__dirname}/content/events/${event.talk}.md`,
+              source.fileAbsolutePath.startsWith(
+                `${__dirname}/content/talks/${event.talk}.md`,
               ),
             ),
       },
@@ -235,7 +235,7 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'Talk' })
             .find(talk =>
-              talk.fileAbsolutePath.includes(
+              talk.fileAbsolutePath.startsWith(
                 `${__dirname}/content/talks/${source.talk}.md`,
               ),
             ),
@@ -248,8 +248,8 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'WorkshopEvent' })
             .filter(event =>
-              source.fileAbsolutePath.includes(
-                `${__dirname}/content/events/${event.workshop}.md`,
+              source.fileAbsolutePath.startsWith(
+                `${__dirname}/content/workshops/${event.workshop}.md`,
               ),
             ),
       },
@@ -261,7 +261,7 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'Workshop' })
             .find(workshop =>
-              workshop.fileAbsolutePath.includes(
+              workshop.fileAbsolutePath.startsWith(
                 `${__dirname}/content/workshops/${source.workshop}.md`,
               ),
             ),
@@ -274,9 +274,11 @@ exports.createResolvers = async ({
 exports.onCreateNode = ({ actions, getNode, node }) => {
   if (node.internal.type === 'Mdx') {
     // On all blog posts, create a slug field with the given file path as a value
-    if (node.fileAbsolutePath.includes(`${__dirname}/content/posts`)) {
+    if (node.fileAbsolutePath.startsWith(`${__dirname}/content/posts/`)) {
       const filePath = createFilePath({ node, getNode });
-      const slug = node.fileAbsolutePath.includes(`${__dirname}/content/posts`)
+      const slug = node.fileAbsolutePath.startsWith(
+        `${__dirname}/content/posts/`,
+      )
         ? `/blog${filePath}`
         : filePath;
 
