@@ -1,4 +1,7 @@
 # Redirect default Netlify subdomain to primary domain
 http://glennreyes.netlify.com/* http://glennreyes.com/:splat 301!
 
+/gear     /uses
+/reading  /books
+/speaking /talks
 /teaching /workshops
