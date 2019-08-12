@@ -23,14 +23,15 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const component = require.resolve('./src/templates/post/index.tsx');
+  // Create blog post pages
+  const postComponent = require.resolve('./src/templates/post/index.tsx');
   const posts = result.data.posts.nodes;
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
 
     actions.createPage({
-      component,
+      component: postComponent,
       context: {
         id: post.id,
         next,
