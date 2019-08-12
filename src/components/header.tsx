@@ -52,7 +52,7 @@ const Container = styled.div`
 const TitleLink = styled(Link)`
   align-items: center;
   color: ${p => p.theme.textColor};
-  display: flex;
+  display: inline-flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights[2]};
   height: ${p => p.theme.space[5]}px;

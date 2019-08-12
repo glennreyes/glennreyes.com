@@ -677,6 +677,16 @@ export enum FileFieldsEnum {
   childMdx___fileAbsolutePath = 'childMdx___fileAbsolutePath',
   childMdx___frontmatter___title = 'childMdx___frontmatter___title',
   childMdx___frontmatter___description = 'childMdx___frontmatter___description',
+  childMdx___frontmatter___endDate = 'childMdx___frontmatter___endDate',
+  childMdx___frontmatter___event = 'childMdx___frontmatter___event',
+  childMdx___frontmatter___eventUrl = 'childMdx___frontmatter___eventUrl',
+  childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
+  childMdx___frontmatter___location___address = 'childMdx___frontmatter___location___address',
+  childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
+  childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
+  childMdx___frontmatter___startDate = 'childMdx___frontmatter___startDate',
+  childMdx___frontmatter___talkId = 'childMdx___frontmatter___talkId',
+  childMdx___frontmatter___venue = 'childMdx___frontmatter___venue',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
   childMdx___frontmatter___id = 'childMdx___frontmatter___id',
@@ -733,6 +743,16 @@ export enum FileFieldsEnum {
   childMdx___internal___type = 'childMdx___internal___type',
   childMarkdownRemark___id = 'childMarkdownRemark___id',
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
+  childMarkdownRemark___frontmatter___endDate = 'childMarkdownRemark___frontmatter___endDate',
+  childMarkdownRemark___frontmatter___event = 'childMarkdownRemark___frontmatter___event',
+  childMarkdownRemark___frontmatter___eventUrl = 'childMarkdownRemark___frontmatter___eventUrl',
+  childMarkdownRemark___frontmatter___isLightning = 'childMarkdownRemark___frontmatter___isLightning',
+  childMarkdownRemark___frontmatter___location___address = 'childMarkdownRemark___frontmatter___location___address',
+  childMarkdownRemark___frontmatter___location___city = 'childMarkdownRemark___frontmatter___location___city',
+  childMarkdownRemark___frontmatter___location___country = 'childMarkdownRemark___frontmatter___location___country',
+  childMarkdownRemark___frontmatter___startDate = 'childMarkdownRemark___frontmatter___startDate',
+  childMarkdownRemark___frontmatter___talkId = 'childMarkdownRemark___frontmatter___talkId',
+  childMarkdownRemark___frontmatter___venue = 'childMarkdownRemark___frontmatter___venue',
   childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
   childMarkdownRemark___frontmatter___draft = 'childMarkdownRemark___frontmatter___draft',
   childMarkdownRemark___frontmatter___id = 'childMarkdownRemark___frontmatter___id',
@@ -1496,6 +1516,16 @@ export type MarkdownRemarkEdge = {
 export enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter___title',
+  frontmatter___endDate = 'frontmatter___endDate',
+  frontmatter___event = 'frontmatter___event',
+  frontmatter___eventUrl = 'frontmatter___eventUrl',
+  frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___location___address = 'frontmatter___location___address',
+  frontmatter___location___city = 'frontmatter___location___city',
+  frontmatter___location___country = 'frontmatter___location___country',
+  frontmatter___startDate = 'frontmatter___startDate',
+  frontmatter___talkId = 'frontmatter___talkId',
+  frontmatter___venue = 'frontmatter___venue',
   frontmatter___date = 'frontmatter___date',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
@@ -1659,10 +1689,32 @@ export type MarkdownRemarkFilterInput = {
 export type MarkdownRemarkFrontmatter = {
   __typename?: 'MarkdownRemarkFrontmatter';
   title?: Maybe<Scalars['String']>;
+  endDate?: Maybe<Scalars['Date']>;
+  event?: Maybe<Scalars['String']>;
+  eventUrl?: Maybe<Scalars['String']>;
+  isLightning?: Maybe<Scalars['Boolean']>;
+  location?: Maybe<MarkdownRemarkFrontmatterLocation>;
+  startDate?: Maybe<Scalars['Date']>;
+  talkId?: Maybe<Scalars['String']>;
+  venue?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MarkdownRemarkFrontmatterCover>;
   id?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkFrontmatterEndDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkFrontmatterStartDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownRemarkFrontmatterDateArgs = {
@@ -1696,10 +1748,31 @@ export type MarkdownRemarkFrontmatterCoverFilterInput = {
 
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
+  endDate?: Maybe<DateQueryOperatorInput>;
+  event?: Maybe<StringQueryOperatorInput>;
+  eventUrl?: Maybe<StringQueryOperatorInput>;
+  isLightning?: Maybe<BooleanQueryOperatorInput>;
+  location?: Maybe<MarkdownRemarkFrontmatterLocationFilterInput>;
+  startDate?: Maybe<DateQueryOperatorInput>;
+  talkId?: Maybe<StringQueryOperatorInput>;
+  venue?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MarkdownRemarkFrontmatterCoverFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type MarkdownRemarkFrontmatterLocation = {
+  __typename?: 'MarkdownRemarkFrontmatterLocation';
+  address?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  country?: Maybe<Scalars['String']>;
+};
+
+export type MarkdownRemarkFrontmatterLocationFilterInput = {
+  address?: Maybe<StringQueryOperatorInput>;
+  city?: Maybe<StringQueryOperatorInput>;
+  country?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1799,6 +1872,16 @@ export enum MdxFieldsEnum {
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter___title',
   frontmatter___description = 'frontmatter___description',
+  frontmatter___endDate = 'frontmatter___endDate',
+  frontmatter___event = 'frontmatter___event',
+  frontmatter___eventUrl = 'frontmatter___eventUrl',
+  frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___location___address = 'frontmatter___location___address',
+  frontmatter___location___city = 'frontmatter___location___city',
+  frontmatter___location___country = 'frontmatter___location___country',
+  frontmatter___startDate = 'frontmatter___startDate',
+  frontmatter___talkId = 'frontmatter___talkId',
+  frontmatter___venue = 'frontmatter___venue',
   frontmatter___date = 'frontmatter___date',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
@@ -1968,10 +2051,32 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   title: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  endDate?: Maybe<Scalars['Date']>;
+  event?: Maybe<Scalars['String']>;
+  eventUrl?: Maybe<Scalars['String']>;
+  isLightning?: Maybe<Scalars['Boolean']>;
+  location?: Maybe<MdxFrontmatterLocation>;
+  startDate?: Maybe<Scalars['Date']>;
+  talkId?: Maybe<Scalars['String']>;
+  venue?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
   id?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterEndDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterStartDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterDateArgs = {
@@ -2006,10 +2111,31 @@ export type MdxFrontmatterCoverFilterInput = {
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  endDate?: Maybe<DateQueryOperatorInput>;
+  event?: Maybe<StringQueryOperatorInput>;
+  eventUrl?: Maybe<StringQueryOperatorInput>;
+  isLightning?: Maybe<BooleanQueryOperatorInput>;
+  location?: Maybe<MdxFrontmatterLocationFilterInput>;
+  startDate?: Maybe<DateQueryOperatorInput>;
+  talkId?: Maybe<StringQueryOperatorInput>;
+  venue?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
+};
+
+export type MdxFrontmatterLocation = {
+  __typename?: 'MdxFrontmatterLocation';
+  address?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  country?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterLocationFilterInput = {
+  address?: Maybe<StringQueryOperatorInput>;
+  city?: Maybe<StringQueryOperatorInput>;
+  country?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -2752,10 +2878,10 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___icon = 'pluginCreator___pluginOptions___icon',
   pluginCreator___pluginOptions___defaultLayouts___default = 'pluginCreator___pluginOptions___defaultLayouts___default',
   pluginCreator___pluginOptions___extensions = 'pluginCreator___pluginOptions___extensions',
-  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___pluginOptions___svgProps___fill = 'pluginCreator___pluginOptions___svgProps___fill',
   pluginCreator___pluginOptions___path = 'pluginCreator___pluginOptions___path',
   pluginCreator___pluginOptions___pathCheck = 'pluginCreator___pluginOptions___pathCheck',
+  pluginCreator___pluginOptions___displayName = 'pluginCreator___pluginOptions___displayName',
   pluginCreator___nodeAPIs = 'pluginCreator___nodeAPIs',
   pluginCreator___browserAPIs = 'pluginCreator___browserAPIs',
   pluginCreator___ssrAPIs = 'pluginCreator___ssrAPIs',
@@ -2965,11 +3091,11 @@ export enum SitePluginFieldsEnum {
   pluginOptions___icon = 'pluginOptions___icon',
   pluginOptions___defaultLayouts___default = 'pluginOptions___defaultLayouts___default',
   pluginOptions___extensions = 'pluginOptions___extensions',
-  pluginOptions___displayName = 'pluginOptions___displayName',
   pluginOptions___svgoConfig___plugins___removeViewBox = 'pluginOptions___svgoConfig___plugins___removeViewBox',
   pluginOptions___svgProps___fill = 'pluginOptions___svgProps___fill',
   pluginOptions___path = 'pluginOptions___path',
   pluginOptions___pathCheck = 'pluginOptions___pathCheck',
+  pluginOptions___displayName = 'pluginOptions___displayName',
   nodeAPIs = 'nodeAPIs',
   browserAPIs = 'browserAPIs',
   ssrAPIs = 'ssrAPIs',
@@ -3105,11 +3231,11 @@ export type SitePluginPluginOptions = {
   icon?: Maybe<Scalars['String']>;
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayouts>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  displayName?: Maybe<Scalars['Boolean']>;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfig>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgProps>;
   path?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  displayName?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsDefaultLayouts = {
@@ -3136,11 +3262,11 @@ export type SitePluginPluginOptionsFilterInput = {
   icon?: Maybe<StringQueryOperatorInput>;
   defaultLayouts?: Maybe<SitePluginPluginOptionsDefaultLayoutsFilterInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
-  displayName?: Maybe<BooleanQueryOperatorInput>;
   svgoConfig?: Maybe<SitePluginPluginOptionsSvgoConfigFilterInput>;
   svgProps?: Maybe<SitePluginPluginOptionsSvgPropsFilterInput>;
   path?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  displayName?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
