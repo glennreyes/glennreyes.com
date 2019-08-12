@@ -37,7 +37,7 @@ const Photo = () => {
 
   return (
     <Tilt options={{ max: 20, scale: 1 }}>
-      <StyledImg fluid={fluid} />
+      <StyledImg loading="eager" fluid={fluid} />
     </Tilt>
   );
 };

@@ -33,7 +33,7 @@ const SpeakerHeader = () => {
       (data.photo.childImageSharp.fluid as FluidObject)) ||
     undefined;
 
-  return <StyledImg fluid={fluid} />;
+  return <StyledImg loading="eager" fluid={fluid} />;
 };
 
 export default SpeakerHeader;
