@@ -26,6 +26,39 @@ import { ReactComponent as PaperPlane } from '../icons/paper-plane.svg';
 import { ReactComponent as Person } from '../icons/person.svg';
 import { HomeQuery } from '../types/generated/graphql';
 
+const moreLinks = [
+  {
+    icon: Film,
+    label: 'Speaking',
+    url: '/talks/',
+  },
+  {
+    icon: Book,
+    label: 'Reading',
+    url: '/books/',
+  },
+  {
+    icon: Heart,
+    label: 'OSS',
+    url: '/oss/',
+  },
+  {
+    icon: Headphones,
+    label: 'Uses',
+    url: '/uses/',
+  },
+  {
+    icon: Person,
+    label: 'About',
+    url: '/about/',
+  },
+  {
+    icon: PaperPlane,
+    label: 'Contact',
+    url: '/contact/',
+  },
+];
+
 const Home = () => {
   const data: HomeQuery = useStaticQuery(
     graphql`
@@ -70,39 +103,6 @@ const Home = () => {
         ...node,
       }))) ||
     [];
-
-  const moreLinks = [
-    {
-      icon: Film,
-      label: 'Speaking',
-      url: '/talks/',
-    },
-    {
-      icon: Book,
-      label: 'Reading',
-      url: '/reading/',
-    },
-    {
-      icon: Heart,
-      label: 'OSS',
-      url: '/oss/',
-    },
-    {
-      icon: Headphones,
-      label: 'Uses',
-      url: '/uses/',
-    },
-    {
-      icon: Person,
-      label: 'About',
-      url: '/about/',
-    },
-    {
-      icon: PaperPlane,
-      label: 'Contact',
-      url: '/contact/',
-    },
-  ];
 
   return (
     <Layout>
