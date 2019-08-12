@@ -15,7 +15,8 @@ const Link = styled(
     to,
     ...other
   }: GatsbyLinkProps<{}>) => {
-    const isInternal = /^\/(?!\/)/.test(to);
+    const isPathToStaticFolder = to.startsWith('/static');
+    const isInternal = /^\/(?!\/)/.test(to) && !isPathToStaticFolder;
 
     // Use Gatsby Link for internal links, and <a> for others
     if (isInternal) {
