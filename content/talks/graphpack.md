@@ -1,5 +1,4 @@
 ---
-id: graphpack
 title: Building zero-config tools for GraphQL
 ---
 

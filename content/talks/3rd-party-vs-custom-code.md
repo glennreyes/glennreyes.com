@@ -1,5 +1,4 @@
 ---
-id: 3rd-party-vs-custom-code
 title: Drawing the line between 3rd party and handcrafted code
 ---
 

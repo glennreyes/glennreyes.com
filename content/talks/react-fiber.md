@@ -1,5 +1,4 @@
 ---
-id: react-fiber
 title: React Fiber
 ---
 

@@ -1,5 +1,4 @@
 ---
-id: modern-react
 title: Building modern React Applications
 ---
 

@@ -1,5 +1,4 @@
 ---
-id: code-splitting
 title: Optimizing apps with Code Splitting
 ---
 

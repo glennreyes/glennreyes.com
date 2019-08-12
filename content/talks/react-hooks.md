@@ -1,5 +1,4 @@
 ---
-id: react-hooks
 title: With great power comes great React Hooks!
 ---
 

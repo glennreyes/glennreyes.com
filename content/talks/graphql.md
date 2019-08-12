@@ -1,5 +1,4 @@
 ---
-id: graphql
 title: From learning to thinking in GraphQL
 ---
 
