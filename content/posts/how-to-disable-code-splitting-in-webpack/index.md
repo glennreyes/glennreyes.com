@@ -21,15 +21,15 @@ If you are building server-side rendered apps in React with [Code Splitting](htt
 
 After defining some major split points in your app, you want to build and see how the chunks are doing so far:
 
-![](./build.png)
+![Webpack build](./build.png 'Webpack build')
 
 And in the file explorer:
 
-![](./file-explorer.png)
+![File explorer](./file-explorer.png 'File explorer')
 
 But wait?
 
-![](./server-files.png)
+![Server files](./server-files.png 'Server files')
 
 ## What is happening here?
 
@@ -81,6 +81,6 @@ Some people encountered type or runtime errors with this approach. So alternativ
 
 Both solutions solve the same issue:
 
-![](./server-file.png)
+![Server file](./server-file.png 'Server file')
 
 ✅ One single server.js
