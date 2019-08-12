@@ -178,7 +178,7 @@ exports.createResolvers = async ({
 
   const createWorkshopNodes = () => {
     const allMdxWorkshop = allMdx.filter(mdx =>
-      mdx.fileAbsolutePath.includes('/content/workshops'),
+      mdx.fileAbsolutePath.includes(`${__dirname}/content/workshops`),
     );
 
     return allMdxWorkshop.map(
@@ -222,7 +222,9 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'TalkEvent' })
             .filter(event =>
-              source.fileAbsolutePath.endsWith(`/${event.talk}.md`),
+              source.fileAbsolutePath.includes(
+                `${__dirname}/content/events/${event.talk}.md`,
+              ),
             ),
       },
     },
@@ -232,7 +234,11 @@ exports.createResolvers = async ({
         resolve: (source, args, context) =>
           context.nodeModel
             .getAllNodes({ type: 'Talk' })
-            .find(talk => talk.fileAbsolutePath.endsWith(`/${source.talk}.md`)),
+            .find(talk =>
+              talk.fileAbsolutePath.includes(
+                `${__dirname}/content/talks/${source.talk}.md`,
+              ),
+            ),
       },
     },
     Workshop: {
@@ -242,7 +248,9 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'WorkshopEvent' })
             .filter(event =>
-              source.fileAbsolutePath.endsWith(`/${event.workshop}.md`),
+              source.fileAbsolutePath.includes(
+                `${__dirname}/content/events/${event.workshop}.md`,
+              ),
             ),
       },
     },
@@ -253,7 +261,9 @@ exports.createResolvers = async ({
           context.nodeModel
             .getAllNodes({ type: 'Workshop' })
             .find(workshop =>
-              workshop.fileAbsolutePath.endsWith(`/${source.workshop}.md`),
+              workshop.fileAbsolutePath.includes(
+                `${__dirname}/content/workshops/${source.workshop}.md`,
+              ),
             ),
       },
     },
