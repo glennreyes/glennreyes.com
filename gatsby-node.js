@@ -81,11 +81,13 @@ exports.createSchemaCustomization = async ({
     }
 
     type Talk implements Node {
+      body: String
       description: String
       title: String!
     }
 
     type Workshop implements Node {
+      body: String
       description: String
       title: String!
     }
@@ -160,6 +162,7 @@ exports.createResolvers = async ({
         rawBody,
       }) =>
         createNode({
+          body: rawBody,
           children: [],
           description: rawBody || frontmatter.description,
           id: createNodeId(id),
@@ -190,8 +193,9 @@ exports.createResolvers = async ({
         rawBody,
       }) =>
         createNode({
+          body: rawBody,
           children: [],
-          description: rawBody || frontmatter.description,
+          description: frontmatter.description,
           fileAbsolutePath,
           id: createNodeId(id),
           internal: {
