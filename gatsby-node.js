@@ -44,169 +44,221 @@ exports.createPages = async ({ graphql, actions }) => {
   return result;
 };
 
-exports.createSchemaCustomization = ({ actions, schema }) => {
-  const typeDefs = [
-    `
-      type Location implements Node {
-        address: String
-        latitude: Float
-        longitude: Float
-        name: String
-        city: String!
-        country: String!
-      }
+exports.createSchemaCustomization = async ({
+  actions: { createTypes },
+  schema,
+  ...options
+}) => {
+  const typeDefs = `
+    type Location {
+      address: String
+      latitude: Float
+      longitude: Float
+      name: String
+      city: String!
+      country: String!
+    }
 
-      type TalkEvent implements Node {
-        endDate: Date
-        id: ID!
-        isLightning: Boolean
-        location: Location
-        presentationDate: Date
-        startDate: Date
-        title: String!
-        url: String
-        video: String
-      }
+    type TalkEvent implements Node {
+      date: Date
+      endDate: Date
+      isLightning: Boolean
+      location: Location
+      startDate: Date
+      title: String!
+      url: String
+      video: String
+    }
 
-      type Talk implements Node {
-        description: String
-        title: String!
-      }
+    type WorkshopEvent implements Node {
+      date: Date
+      endDate: Date
+      location: Location
+      startDate: Date
+      title: String!
+      url: String
+      video: String
+    }
 
-      type Workshop implements Node {
-        description: String
-        title: String!
-      }
-    `,
-    // schema.buildObjectType({
-    //   name: 'Query',
-    //   fields: {
-    //     allTalk: {
-    //       type: ['Talk'],
-    //       resolve: (source, args, context) => {
-    //         console.log('here');
-    //         const talks = context.nodeModel
-    //           .getAllNodes({ type: 'Mdx' })
-    //           .filter(mdx =>
-    //             mdx.fileAbsolutePath.includes('/content/events/talks'),
-    //           )
-    //           .map(mdx => ({
-    //             ...mdx.frontmatter,
-    //             children: mdx.children,
-    //             description: mdx.body,
-    //             id: mdx.id,
-    //             internal: mdx.internal,
-    //             parent: mdx.parent,
-    //           }));
+    type Talk implements Node {
+      description: String
+      title: String!
+    }
 
-    //         console.log(talks);
+    type Workshop implements Node {
+      description: String
+      title: String!
+    }
+  `;
 
-    //         return talks;
-    //       },
-    //     },
-    //     allTalks: {
-    //       type: ['Talk'],
-    //       resolve: (source, args, context) => {
-    //         console.log('here');
-    //         const talks = context.nodeModel
-    //           .getAllNodes({ type: 'Mdx' })
-    //           .filter(mdx =>
-    //             mdx.fileAbsolutePath.includes('/content/events/talks'),
-    //           )
-    //           .map(mdx => ({
-    //             ...mdx.frontmatter,
-    //             children: mdx.children,
-    //             description: mdx.body,
-    //             id: mdx.id,
-    //             internal: mdx.internal,
-    //             parent: mdx.parent,
-    //           }));
-
-    //         console.log(talks);
-
-    //         return talks;
-    //       },
-    //     },
-    //   },
-    // }),
-    // schema.buildObjectType({
-    //   name: 'MdxFrontmatter',
-    //   fields: {
-    //     events: {
-    //       type: '[Node!]!',
-    //       resolve: (source, args, context) =>
-    //         context.nodeModel
-    //           .getAllNodes({ type: 'Mdx' })
-    //           .filter(
-    //             mdx =>
-    //               mdx.fileAbsolutePath.includes('/content/events/talks') &&
-    //               mdx.frontmatter.talk === source.id,
-    //           )
-    //           .map(mdx => mdx.frontmatter),
-    //     },
-    //     talk: {
-    //       type: 'Talk',
-    //       resolve: (source, args, context) => {
-    //         const mdx = context.nodeModel
-    //           .getAllNodes({ type: 'Mdx' })
-    //           .find(mdx =>
-    //             mdx.fileAbsolutePath.includes('/content/events/talks'),
-    //           );
-
-    //         return (
-    //           {
-    //             ...mdx.frontmatter,
-    //             children: mdx.children,
-    //             description: mdx.body,
-    //             id: mdx.id,
-    //             internal: mdx.internal,
-    //             parent: mdx.parent,
-    //           } || null
-    //         );
-    //       },
-    //     },
-    //     workshop: {
-    //       type: 'Workshop',
-    //       resolve: (source, args, context) => {
-    //         const mdx = context.nodeModel
-    //           .getAllNodes({ type: 'Mdx' })
-    //           .find(mdx =>
-    //             mdx.fileAbsolutePath.includes('/content/events/workshops'),
-    //           );
-
-    //         return (
-    //           {
-    //             ...mdx.frontmatter,
-    //             children: mdx.children,
-    //             description: mdx.body,
-    //             id: mdx.id,
-    //             internal: mdx.internal,
-    //             parent: mdx.parent,
-    //           } || null
-    //         );
-    //       },
-    //     },
-    //   },
-    // }),
-  ];
-  actions.createTypes(typeDefs);
+  await createTypes(typeDefs);
 };
 
-exports.createResolvers = ({ actions, createResolvers, getNodes }) => {
-  console.log(actions);
-  //   const resolvers = {
-  //     Query: {
-  //       allTalks: {
-  //         type: ['Talk'],
-  //         resolve: () => {
-  //           console.log('override');
-  //           return [{ id: '1' }];
-  //         },
-  //       },
-  //     },
-  //   };
+exports.createResolvers = async ({
+  actions: { createNode },
+  createContentDigest,
+  createNodeId,
+  createResolvers,
+  getNodesByType,
+}) => {
+  const allMdx = await getNodesByType('Mdx');
 
-  //   actions.createResolvers(resolvers);
+  const createEventNodes = type => {
+    const allMdxEvent = allMdx.filter(mdx =>
+      mdx.fileAbsolutePath.includes('/content/events'),
+    );
+
+    return allMdxEvent.map(
+      ({
+        fileAbsolutePath,
+        frontmatter,
+        id,
+        internal: { owner, ...internal },
+        rawBody,
+      }) =>
+        createNode({
+          children: [],
+          date: frontmatter.date,
+          endDate: frontmatter.endDate,
+          fileAbsolutePath,
+          id: createNodeId(id),
+          internal: {
+            ...internal,
+            content: rawBody,
+            contentDigest: createContentDigest(rawBody),
+            type: `${type}Event`,
+          },
+          isLightning: frontmatter.isLightning,
+          location: frontmatter.location,
+          address: frontmatter.address,
+          city: frontmatter.city,
+          country: frontmatter.country,
+          name: frontmatter.name,
+          parent: null,
+          slidesUrl: frontmatter.slidesUrl,
+          startDate: frontmatter.startDate,
+          talk: frontmatter.talk,
+          title: frontmatter.title,
+          url: frontmatter.url,
+          videoUrl: frontmatter.videoUrl,
+          workshop: frontmatter.workshop,
+        }),
+    );
+  };
+
+  const createTalkNodes = () => {
+    const allMdxTalk = allMdx.filter(mdx =>
+      mdx.fileAbsolutePath.includes('/content/talks'),
+    );
+
+    return allMdxTalk.map(
+      ({
+        fileAbsolutePath,
+        frontmatter,
+        id,
+        internal: { owner, ...internal },
+        rawBody,
+      }) =>
+        createNode({
+          children: [],
+          description: rawBody || frontmatter.description,
+          id: createNodeId(id),
+          fileAbsolutePath,
+          internal: {
+            ...internal,
+            content: rawBody,
+            contentDigest: createContentDigest(rawBody),
+            type: 'Talk',
+          },
+          parent: null,
+          title: frontmatter.title,
+        }),
+    );
+  };
+
+  const createWorkshopNodes = () => {
+    const allMdxWorkshop = allMdx.filter(mdx =>
+      mdx.fileAbsolutePath.includes('/content/workshops'),
+    );
+
+    return allMdxWorkshop.map(
+      ({
+        fileAbsolutePath,
+        frontmatter,
+        id,
+        internal: { owner, ...internal },
+        rawBody,
+      }) =>
+        createNode({
+          children: [],
+          description: rawBody || frontmatter.description,
+          fileAbsolutePath,
+          id: createNodeId(id),
+          internal: {
+            ...internal,
+            content: rawBody,
+            contentDigest: createContentDigest(rawBody),
+            id,
+            type: 'Workshop',
+          },
+          parent: null,
+          title: frontmatter.title,
+        }),
+    );
+  };
+
+  await Promise.all([
+    ...createEventNodes('Talk'),
+    ...createEventNodes('Workshop'),
+    ...createTalkNodes(),
+    ...createWorkshopNodes(),
+  ]);
+
+  const resolvers = {
+    Talk: {
+      events: {
+        type: '[TalkEvent!]!',
+        resolve: (source, args, context) =>
+          context.nodeModel
+            .getAllNodes({ type: 'TalkEvent' })
+            .filter(event =>
+              source.fileAbsolutePath.endsWith(`/${event.talk}.md`),
+            ),
+      },
+    },
+    TalkEvent: {
+      talk: {
+        type: 'Talk',
+        resolve: (source, args, context) =>
+          context.nodeModel
+            .getAllNodes({ type: 'Talk' })
+            .find(talk => talk.fileAbsolutePath.endsWith(`/${source.talk}.md`)),
+      },
+    },
+    Workshop: {
+      events: {
+        type: '[WorkshopEvent!]!',
+        resolve: (source, args, context) =>
+          context.nodeModel
+            .getAllNodes({ type: 'WorkshopEvent' })
+            .filter(event =>
+              source.fileAbsolutePath.endsWith(`/${event.workshop}.md`),
+            ),
+      },
+    },
+    WorkshopEvent: {
+      workshop: {
+        type: 'Workshop',
+        resolve: (source, args, context) =>
+          context.nodeModel
+            .getAllNodes({ type: 'Workshop' })
+            .find(workshop =>
+              workshop.fileAbsolutePath.endsWith(`/${source.workshop}.md`),
+            ),
+      },
+    },
+  };
+  createResolvers(resolvers);
 };
 
 exports.onCreateNode = ({ actions, getNode, node }) => {
@@ -225,11 +277,4 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
       });
     }
   }
-};
-
-exports.sourceNodes = ({ actions }) => {
-  // console.log(actions);
-  // actions.createNode({
-  //   allTalks,
-  // });
 };
