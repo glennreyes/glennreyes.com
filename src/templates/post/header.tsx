@@ -104,7 +104,9 @@ const Header = ({ data }: HeaderProps) => {
 
   return (
     <Wrapper hasCover={hasCover}>
-      {fluid && <Cover fluid={fluid} style={{ position: 'absolute' }} />}
+      {fluid && (
+        <Cover fluid={fluid} loading="eager" style={{ position: 'absolute' }} />
+      )}
       <ContentWrapper>
         <Content>
           <Heading hasCover={hasCover}>{title}</Heading>
