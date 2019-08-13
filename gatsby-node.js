@@ -1,4 +1,6 @@
 const { createFilePath } = require('gatsby-source-filesystem');
+const defaultOptions = require('gatsby-plugin-mdx/utils/default-options');
+const genMDX = require('gatsby-plugin-mdx/utils/gen-mdx');
 
 exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
@@ -64,6 +66,7 @@ exports.createSchemaCustomization = async ({
       endDate: Date
       isLightning: Boolean
       location: Location
+      rawBody: String
       startDate: Date
       title: String!
       url: String
@@ -74,6 +77,7 @@ exports.createSchemaCustomization = async ({
       date: Date
       endDate: Date
       location: Location
+      rawBody: String
       startDate: Date
       title: String!
       url: String
@@ -83,12 +87,14 @@ exports.createSchemaCustomization = async ({
     type Talk implements Node {
       body: String
       description: String
+      rawBody: String
       title: String!
     }
 
     type Workshop implements Node {
       body: String
       description: String
+      rawBody: String
       title: String!
     }
   `;
@@ -98,10 +104,15 @@ exports.createSchemaCustomization = async ({
 
 exports.createResolvers = async ({
   actions: { createNode },
+  cache,
   createContentDigest,
   createNodeId,
   createResolvers,
+  getNode,
+  getNodes,
   getNodesByType,
+  pathPrefix,
+  reporter,
 }) => {
   const allMdx = await getNodesByType('Mdx');
 
@@ -137,6 +148,7 @@ exports.createResolvers = async ({
           country: frontmatter.country,
           name: frontmatter.name,
           parent: null,
+          rawBody,
           slidesUrl: frontmatter.slidesUrl,
           startDate: frontmatter.startDate,
           talk: frontmatter.talk,
@@ -162,7 +174,6 @@ exports.createResolvers = async ({
         rawBody,
       }) =>
         createNode({
-          body: rawBody,
           children: [],
           description: rawBody || frontmatter.description,
           id: createNodeId(id),
@@ -174,6 +185,7 @@ exports.createResolvers = async ({
             type: 'Talk',
           },
           parent: null,
+          rawBody,
           title: frontmatter.title,
         }),
     );
@@ -193,7 +205,6 @@ exports.createResolvers = async ({
         rawBody,
       }) =>
         createNode({
-          body: rawBody,
           children: [],
           description: frontmatter.description,
           fileAbsolutePath,
@@ -206,6 +217,7 @@ exports.createResolvers = async ({
             type: 'Workshop',
           },
           parent: null,
+          rawBody,
           title: frontmatter.title,
         }),
     );
@@ -220,6 +232,24 @@ exports.createResolvers = async ({
 
   const resolvers = {
     Talk: {
+      body: {
+        type: 'String',
+        resolve: async source => {
+          const { body } = await genMDX({
+            node: source,
+            getNode,
+            getNodes,
+            reporter,
+            cache,
+            // Passing bare minimum of mdx options as there won't be any fancy
+            // mark up in the description
+            options: defaultOptions({ gatsbyRemarkPlugins: [] }),
+            pathPrefix,
+          });
+
+          return body;
+        },
+      },
       events: {
         type: '[TalkEvent!]!',
         resolve: (source, args, context) =>
