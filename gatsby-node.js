@@ -46,11 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
   return result;
 };
 
-exports.createSchemaCustomization = async ({
-  actions: { createTypes },
-  schema,
-  ...options
-}) => {
+exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
   const typeDefs = `
     type Location {
       address: String
@@ -66,7 +62,6 @@ exports.createSchemaCustomization = async ({
       endDate: Date
       isLightning: Boolean
       location: Location
-      rawBody: String
       startDate: Date
       title: String!
       url: String
@@ -77,7 +72,6 @@ exports.createSchemaCustomization = async ({
       date: Date
       endDate: Date
       location: Location
-      rawBody: String
       startDate: Date
       title: String!
       url: String
@@ -87,14 +81,12 @@ exports.createSchemaCustomization = async ({
     type Talk implements Node {
       body: String
       description: String
-      rawBody: String
       title: String!
     }
 
     type Workshop implements Node {
       body: String
       description: String
-      rawBody: String
       title: String!
     }
   `;
