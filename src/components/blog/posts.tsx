@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
+import Cards from '../cards';
 import CardBody from '../card-body';
 import CardLink from '../card-link';
 import CardTitle from '../card-title';
@@ -9,7 +10,8 @@ import Text from '../text';
 import { BlogQuery } from '../../types/generated/graphql';
 
 const Post = styled.article`
-  margin: ${p => p.theme.space[5]}px 0;
+  display: flex;
+  margin: ${p => p.theme.space[2]}px 0;
 `;
 
 const Meta = styled(Text)`
@@ -58,37 +60,43 @@ const Blog = () => {
       }))) ||
     [];
 
-  return posts.map(
-    ({ date, dateFormatted, excerpt, id, slug, title, ...post }) => {
-      const timeToRead = post.timeToRead ? post.timeToRead * 1000 * 60 : null;
+  return (
+    <Cards>
+      {posts.map(
+        ({ date, dateFormatted, excerpt, id, slug, title, ...post }) => {
+          const timeToRead = post.timeToRead
+            ? post.timeToRead * 1000 * 60
+            : null;
 
-      if (!slug) return null;
+          if (!slug) return null;
 
-      return (
-        <Post key={id}>
-          <CardLink to={slug}>
-            {title && <CardTitle>{title}</CardTitle>}
-            {(date || timeToRead) && (
-              <Meta>
-                {date && dateFormatted && (
-                  <time dateTime={date}>{dateFormatted}</time>
+          return (
+            <Post key={id}>
+              <CardLink to={slug}>
+                {title && <CardTitle>{title}</CardTitle>}
+                {(date || timeToRead) && (
+                  <Meta>
+                    {date && dateFormatted && (
+                      <time dateTime={date}>{dateFormatted}</time>
+                    )}
+                    {timeToRead && (
+                      <>
+                        {date && dateFormatted && ' · '}
+                        <time dateTime={ms(timeToRead)}>
+                          {ms(timeToRead, { long: true })}
+                        </time>
+                        {' read'}
+                      </>
+                    )}
+                  </Meta>
                 )}
-                {timeToRead && (
-                  <>
-                    {date && dateFormatted && ' · '}
-                    <time dateTime={ms(timeToRead)}>
-                      {ms(timeToRead, { long: true })}
-                    </time>
-                    {' read'}
-                  </>
-                )}
-              </Meta>
-            )}
-            {excerpt && <CardBody>{excerpt}</CardBody>}
-          </CardLink>
-        </Post>
-      );
-    },
+                {excerpt && <CardBody>{excerpt}</CardBody>}
+              </CardLink>
+            </Post>
+          );
+        },
+      )}
+    </Cards>
   );
 };
 

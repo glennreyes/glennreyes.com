@@ -2,13 +2,15 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
+import Cards from '../cards';
 import CardBody from '../card-body';
 import CardLink from '../card-link';
 import CardTitle from '../card-title';
 import { TalksQuery } from '../../types/generated/graphql';
 
 const Talk = styled.article`
-  margin: ${p => p.theme.space[5]}px 0;
+  display: flex;
+  margin: ${p => p.theme.space[2]}px 0;
 `;
 
 const Talks = () => {
@@ -28,18 +30,22 @@ const Talks = () => {
 
   const talks = (data.talks && data.talks.nodes) || [];
 
-  return talks.map(({ body, id, title }) => (
-    <Talk key={id}>
-      <CardLink to="/">
-        {title && <CardTitle>{title}</CardTitle>}
-        {body && (
-          <CardBody>
-            <MDXRenderer>{body}</MDXRenderer>
-          </CardBody>
-        )}
-      </CardLink>
-    </Talk>
-  ));
+  return (
+    <Cards>
+      {talks.map(({ body, id, title }) => (
+        <Talk key={id}>
+          <CardLink to="/">
+            {title && <CardTitle>{title}</CardTitle>}
+            {body && (
+              <CardBody>
+                <MDXRenderer>{body}</MDXRenderer>
+              </CardBody>
+            )}
+          </CardLink>
+        </Talk>
+      ))}
+    </Cards>
+  );
 };
 
 export default Talks;
