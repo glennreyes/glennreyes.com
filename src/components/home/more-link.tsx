@@ -10,8 +10,8 @@ const Wrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   font-size: ${p => p.theme.fontSizes[3]}px;
-  font-weight: ${p => p.theme.fontWeights[1]};
-  line-height: ${p => p.theme.lineHeights[1]};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  line-height: ${p => p.theme.lineHeights.body};
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
   text-align: center;
   transition: box-shadow ${p => p.theme.transition};

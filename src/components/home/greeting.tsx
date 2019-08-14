@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Greeting = styled.p`
   font-size: ${p => p.theme.fontSizes[4]}px;
-  font-weight: ${p => p.theme.fontWeights[2]};
+  font-weight: ${p => p.theme.fontWeights.bolder};
   margin: ${p => p.theme.space[1]}px 0 0;
 
   ${p => p.theme.media.tablet`

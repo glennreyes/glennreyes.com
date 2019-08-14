@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Tagline = styled.p`
   color: ${p => p.theme.textColor2};
   font-size: ${p => p.theme.fontSizes[1]}px;
-  font-weight: ${p => p.theme.fontWeights[1]};
+  font-weight: ${p => p.theme.fontWeights.bold};
   margin: 0;
   max-width: 320px;
 

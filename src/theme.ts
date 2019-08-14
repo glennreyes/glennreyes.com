@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash';
 import { rgba } from 'polished';
 import {
   CSSObject,
@@ -43,23 +44,24 @@ const colors = {
 
 export const system = {
   borders: [1, 2, 4],
-  boxShadow: [
-    `0px 0px 16px ${rgba(colors.black, 0.1)}`,
-    `0px 0px 16px ${rgba(colors.white, 0.25)}`,
-  ],
+  breakpoints: sortBy(Object.values(breakpoints).map(value => `${value}px`)),
   colors,
   contentWidths: [640, 1280],
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
-  fontWeights: [400, 700, 800],
+  fontWeights: { bold: 700, bolder: 800, normal: 400 },
   fonts: {
     mono:
       "'SFMono-Medium', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Consolas, Courier, monospace",
     sans:
       "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
   },
-  lineHeights: [1, 1.25, 1.5],
+  lineHeights: { body: 1.5, heading: 1.25 },
   media,
   radii: [8, 16],
+  shadows: {
+    dark: `0px 0px 16px ${rgba(colors.black, 0.1)}`,
+    light: `0px 0px 16px ${rgba(colors.white, 0.25)}`,
+  },
   space: [4, 8, 16, 24, 32, 48, 64, 128, 256],
   transition: '0.4s',
 };
@@ -75,7 +77,7 @@ export const light = {
   coverHeading: system.colors.white,
   coverMeta: system.colors.gray[0],
   headerBg: system.colors.white,
-  hoverShadow: system.boxShadow[0],
+  hoverShadow: system.shadows.dark,
   iconColor: system.colors.gray[1],
   linkColor: system.colors.blue[0],
   textColor: system.colors.black,
@@ -93,9 +95,11 @@ export const dark = {
   coverHeading: system.colors.black,
   coverMeta: system.colors.gray[3],
   headerBg: system.colors.gray[3],
-  hoverShadow: system.boxShadow[1],
+  hoverShadow: system.shadows.light,
   iconColor: system.colors.gray[2],
   linkColor: system.colors.blue[1],
   textColor: system.colors.white,
   textColor2: system.colors.gray[1],
 };
+
+export default { ...system, media };

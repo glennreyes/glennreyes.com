@@ -16,8 +16,8 @@ const ArrowLink = styled(({ children, ...props }) => (
   align-items: center;
   display: inline-flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
-  font-weight: ${p => p.theme.fontWeights[1]};
-  line-height: ${p => p.theme.lineHeights[2]};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  line-height: ${p => p.theme.lineHeights.body};
 
   &:hover > ${ArrowRight} {
     transform: translateX(${p => p.theme.space[0]}px);

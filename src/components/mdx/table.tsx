@@ -11,7 +11,7 @@ const Table = styled.table`
 
 export const TableHeader = styled.th`
   border: ${p => p.theme.borders[0]}px solid ${p => p.theme.borderColor};
-  font-weight: ${p => p.theme.fontWeights[1]};
+  font-weight: ${p => p.theme.fontWeights.bold};
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
 `;
 

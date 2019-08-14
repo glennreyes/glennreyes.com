@@ -27,8 +27,8 @@ const PostLink = styled(Link)`
 
 const Title = styled.h2`
   font-size: ${p => p.theme.fontSizes[4]}px;
-  font-weight: ${p => p.theme.fontWeights[2]};
-  line-height: ${p => p.theme.lineHeights[1]};
+  font-weight: ${p => p.theme.fontWeights.bolder};
+  line-height: ${p => p.theme.lineHeights.heading};
   margin: 0 0 ${p => p.theme.space[2]}px;
 
   ${PostLink}:hover & {

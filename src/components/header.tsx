@@ -15,7 +15,7 @@ const Wrapper = styled.header<{
   isMenuOpen: boolean;
 }>`
   background: ${p => rgba(p.theme.headerBg, 0.95)};
-  box-shadow: ${p => p.theme.boxShadow[0]};
+  box-shadow: ${p => p.theme.shadows.dark};
   display: flex;
   height: ${p => p.theme.space[6]}px;
   justify-content: space-between;
@@ -32,7 +32,7 @@ const Wrapper = styled.header<{
         ? p.theme.headerBg
         : rgba(p.theme.headerBg, 0.95)
     };
-    box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.boxShadow[0]}`};
+    box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.shadows.dark}`};
     height: ${p.isScrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
   `}
 `;
@@ -54,9 +54,9 @@ const TitleLink = styled(Link)`
   color: ${p => p.theme.textColor};
   display: inline-flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
-  font-weight: ${p => p.theme.fontWeights[2]};
+  font-weight: ${p => p.theme.fontWeights.bolder};
   height: ${p => p.theme.space[5]}px;
-  line-height: ${p => p.theme.lineHeights[2]};
+  line-height: ${p => p.theme.lineHeights.heading};
   padding: 0 ${p => p.theme.space[0] + p.theme.space[1]}px;
   text-align: center;
 

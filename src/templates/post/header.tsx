@@ -59,7 +59,6 @@ const CoverAuthorLink = styled(Link)`
   color: ${p => p.theme.textColor2};
   display: flex;
   font-size: ${p => p.theme.fontSizes[0]}px;
-  line-height: ${p => p.theme.lineHeights[1]};
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
   position: absolute;
   right: 0;

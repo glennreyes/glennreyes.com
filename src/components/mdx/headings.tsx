@@ -10,7 +10,7 @@ const Anchor = styled.a`
   color: ${p => p.theme.textColor2};
   display: flex;
   // Matches font-size + line-height of the header
-  height: calc(1em * ${p => p.theme.lineHeights[1]});
+  height: calc(1em * ${p => p.theme.lineHeights.heading});
   opacity: 0;
   transition: opacity ${p => p.theme.transition};
 
@@ -28,8 +28,8 @@ const AnchorIcon = styled(LinkSvg)`
 `;
 
 const defaultHeadingStyles = css`
-  font-weight: ${p => p.theme.fontWeights[1]};
-  line-height: ${p => p.theme.lineHeights[1]};
+  font-weight: ${p => p.theme.fontWeights.bold};
+  line-height: ${p => p.theme.lineHeights.heading};
   margin: ${p => p.theme.space[4]}px 0 ${p => p.theme.space[3]}px;
   ${inlineCodeStyles}
 
@@ -81,7 +81,7 @@ const Heading = ({ as: As, ...props }: HeadingProps) => {
 export const H1 = styled(props => <Heading as="h1" {...props} />)`
   ${defaultHeadingStyles}
   font-size: ${p => p.theme.fontSizes[4]}px;
-  font-weight: ${p => p.theme.fontWeights[2]};
+  font-weight: ${p => p.theme.fontWeights.bolder};
 
   ${p => p.theme.media.tablet`
     font-size: ${p.theme.fontSizes[5]}px;
