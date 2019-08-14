@@ -48,6 +48,7 @@ const Link = styled(
 )`
   color: ${p => p.theme.colors.text};
   display: inline-block;
+  outline: none;
   text-decoration: none;
 `;
 
