@@ -8,7 +8,6 @@ import { BlogQuery } from '../../types/generated/graphql';
 
 const Post = styled.article`
   margin: ${p => p.theme.space[5]}px 0;
-  max-width: 768px;
 `;
 
 const PostLink = styled(Link)`
@@ -19,7 +18,6 @@ const PostLink = styled(Link)`
 
   &:hover {
     box-shadow: ${p => p.theme.hoverShadow};
-    color: ${p => p.theme.textColor2};
   }
 
   ${p => p.theme.media.tablet`
@@ -32,6 +30,10 @@ const Title = styled.h2`
   font-weight: ${p => p.theme.fontWeights[2]};
   line-height: ${p => p.theme.lineHeights[1]};
   margin: 0 0 ${p => p.theme.space[2]}px;
+
+  ${PostLink}:hover & {
+    color: ${p => p.theme.textColor2};
+  }
 `;
 
 const Meta = styled(Text)`
