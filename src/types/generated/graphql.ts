@@ -688,6 +688,7 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
+  childMdx___frontmatter___createdAt = 'childMdx___frontmatter___createdAt',
   childMdx___body = 'childMdx___body',
   childMdx___excerpt = 'childMdx___excerpt',
   childMdx___headings = 'childMdx___headings',
@@ -741,17 +742,6 @@ export enum FileFieldsEnum {
   childMdx___internal___type = 'childMdx___internal___type',
   childMarkdownRemark___id = 'childMarkdownRemark___id',
   childMarkdownRemark___frontmatter___title = 'childMarkdownRemark___frontmatter___title',
-  childMarkdownRemark___frontmatter___endDate = 'childMarkdownRemark___frontmatter___endDate',
-  childMarkdownRemark___frontmatter___isLightning = 'childMarkdownRemark___frontmatter___isLightning',
-  childMarkdownRemark___frontmatter___location___address = 'childMarkdownRemark___frontmatter___location___address',
-  childMarkdownRemark___frontmatter___location___city = 'childMarkdownRemark___frontmatter___location___city',
-  childMarkdownRemark___frontmatter___location___country = 'childMarkdownRemark___frontmatter___location___country',
-  childMarkdownRemark___frontmatter___location___name = 'childMarkdownRemark___frontmatter___location___name',
-  childMarkdownRemark___frontmatter___startDate = 'childMarkdownRemark___frontmatter___startDate',
-  childMarkdownRemark___frontmatter___talk = 'childMarkdownRemark___frontmatter___talk',
-  childMarkdownRemark___frontmatter___url = 'childMarkdownRemark___frontmatter___url',
-  childMarkdownRemark___frontmatter___date = 'childMarkdownRemark___frontmatter___date',
-  childMarkdownRemark___frontmatter___draft = 'childMarkdownRemark___frontmatter___draft',
   childMarkdownRemark___frontmatter___description = 'childMarkdownRemark___frontmatter___description',
   childMarkdownRemark___excerpt = 'childMarkdownRemark___excerpt',
   childMarkdownRemark___rawMarkdownBody = 'childMarkdownRemark___rawMarkdownBody',
@@ -1532,55 +1522,6 @@ export type MarkdownRemarkEdge = {
 export enum MarkdownRemarkFieldsEnum {
   id = 'id',
   frontmatter___title = 'frontmatter___title',
-  frontmatter___endDate = 'frontmatter___endDate',
-  frontmatter___isLightning = 'frontmatter___isLightning',
-  frontmatter___location___address = 'frontmatter___location___address',
-  frontmatter___location___city = 'frontmatter___location___city',
-  frontmatter___location___country = 'frontmatter___location___country',
-  frontmatter___location___name = 'frontmatter___location___name',
-  frontmatter___startDate = 'frontmatter___startDate',
-  frontmatter___talk = 'frontmatter___talk',
-  frontmatter___url = 'frontmatter___url',
-  frontmatter___date = 'frontmatter___date',
-  frontmatter___draft = 'frontmatter___draft',
-  frontmatter___cover___author___name = 'frontmatter___cover___author___name',
-  frontmatter___cover___author___url = 'frontmatter___cover___author___url',
-  frontmatter___cover___photo___birthtime = 'frontmatter___cover___photo___birthtime',
-  frontmatter___cover___photo___birthtimeMs = 'frontmatter___cover___photo___birthtimeMs',
-  frontmatter___cover___photo___sourceInstanceName = 'frontmatter___cover___photo___sourceInstanceName',
-  frontmatter___cover___photo___absolutePath = 'frontmatter___cover___photo___absolutePath',
-  frontmatter___cover___photo___relativePath = 'frontmatter___cover___photo___relativePath',
-  frontmatter___cover___photo___extension = 'frontmatter___cover___photo___extension',
-  frontmatter___cover___photo___size = 'frontmatter___cover___photo___size',
-  frontmatter___cover___photo___prettySize = 'frontmatter___cover___photo___prettySize',
-  frontmatter___cover___photo___modifiedTime = 'frontmatter___cover___photo___modifiedTime',
-  frontmatter___cover___photo___accessTime = 'frontmatter___cover___photo___accessTime',
-  frontmatter___cover___photo___changeTime = 'frontmatter___cover___photo___changeTime',
-  frontmatter___cover___photo___birthTime = 'frontmatter___cover___photo___birthTime',
-  frontmatter___cover___photo___root = 'frontmatter___cover___photo___root',
-  frontmatter___cover___photo___dir = 'frontmatter___cover___photo___dir',
-  frontmatter___cover___photo___base = 'frontmatter___cover___photo___base',
-  frontmatter___cover___photo___ext = 'frontmatter___cover___photo___ext',
-  frontmatter___cover___photo___name = 'frontmatter___cover___photo___name',
-  frontmatter___cover___photo___relativeDirectory = 'frontmatter___cover___photo___relativeDirectory',
-  frontmatter___cover___photo___dev = 'frontmatter___cover___photo___dev',
-  frontmatter___cover___photo___mode = 'frontmatter___cover___photo___mode',
-  frontmatter___cover___photo___nlink = 'frontmatter___cover___photo___nlink',
-  frontmatter___cover___photo___uid = 'frontmatter___cover___photo___uid',
-  frontmatter___cover___photo___gid = 'frontmatter___cover___photo___gid',
-  frontmatter___cover___photo___rdev = 'frontmatter___cover___photo___rdev',
-  frontmatter___cover___photo___blksize = 'frontmatter___cover___photo___blksize',
-  frontmatter___cover___photo___ino = 'frontmatter___cover___photo___ino',
-  frontmatter___cover___photo___blocks = 'frontmatter___cover___photo___blocks',
-  frontmatter___cover___photo___atimeMs = 'frontmatter___cover___photo___atimeMs',
-  frontmatter___cover___photo___mtimeMs = 'frontmatter___cover___photo___mtimeMs',
-  frontmatter___cover___photo___ctimeMs = 'frontmatter___cover___photo___ctimeMs',
-  frontmatter___cover___photo___atime = 'frontmatter___cover___photo___atime',
-  frontmatter___cover___photo___mtime = 'frontmatter___cover___photo___mtime',
-  frontmatter___cover___photo___ctime = 'frontmatter___cover___photo___ctime',
-  frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
-  frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
-  frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
   frontmatter___description = 'frontmatter___description',
   excerpt = 'excerpt',
   rawMarkdownBody = 'rawMarkdownBody',
@@ -1704,88 +1645,12 @@ export type MarkdownRemarkFilterInput = {
 export type MarkdownRemarkFrontmatter = {
   __typename?: 'MarkdownRemarkFrontmatter';
   title?: Maybe<Scalars['String']>;
-  endDate?: Maybe<Scalars['Date']>;
-  isLightning?: Maybe<Scalars['Boolean']>;
-  location?: Maybe<MarkdownRemarkFrontmatterLocation>;
-  startDate?: Maybe<Scalars['Date']>;
-  talk?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  draft?: Maybe<Scalars['Boolean']>;
-  cover?: Maybe<MarkdownRemarkFrontmatterCover>;
   description?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterEndDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterStartDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterCover = {
-  __typename?: 'MarkdownRemarkFrontmatterCover';
-  author?: Maybe<MarkdownRemarkFrontmatterCoverAuthor>;
-  photo?: Maybe<File>;
-};
-
-export type MarkdownRemarkFrontmatterCoverAuthor = {
-  __typename?: 'MarkdownRemarkFrontmatterCoverAuthor';
-  name?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterCoverAuthorFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-};
-
-export type MarkdownRemarkFrontmatterCoverFilterInput = {
-  author?: Maybe<MarkdownRemarkFrontmatterCoverAuthorFilterInput>;
-  photo?: Maybe<FileFilterInput>;
 };
 
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
-  endDate?: Maybe<DateQueryOperatorInput>;
-  isLightning?: Maybe<BooleanQueryOperatorInput>;
-  location?: Maybe<MarkdownRemarkFrontmatterLocationFilterInput>;
-  startDate?: Maybe<DateQueryOperatorInput>;
-  talk?: Maybe<StringQueryOperatorInput>;
-  url?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  draft?: Maybe<BooleanQueryOperatorInput>;
-  cover?: Maybe<MarkdownRemarkFrontmatterCoverFilterInput>;
   description?: Maybe<StringQueryOperatorInput>;
-};
-
-export type MarkdownRemarkFrontmatterLocation = {
-  __typename?: 'MarkdownRemarkFrontmatterLocation';
-  address?: Maybe<Scalars['String']>;
-  city?: Maybe<Scalars['String']>;
-  country?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-export type MarkdownRemarkFrontmatterLocationFilterInput = {
-  address?: Maybe<StringQueryOperatorInput>;
-  city?: Maybe<StringQueryOperatorInput>;
-  country?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1934,6 +1799,7 @@ export enum MdxFieldsEnum {
   frontmatter___cover___photo___publicURL = 'frontmatter___cover___photo___publicURL',
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
+  frontmatter___createdAt = 'frontmatter___createdAt',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -2071,6 +1937,7 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
+  createdAt?: Maybe<Scalars['Date']>;
 };
 
 export type MdxFrontmatterEndDateArgs = {
@@ -2088,6 +1955,13 @@ export type MdxFrontmatterStartDateArgs = {
 };
 
 export type MdxFrontmatterDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type MdxFrontmatterCreatedAtArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2128,6 +2002,7 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
 };
 
 export type MdxFrontmatterLocation = {
@@ -2433,7 +2308,7 @@ export type QueryAllWorkshopEventArgs = {
 
 export type QueryTalkArgs = {
   body?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2450,7 +2325,7 @@ export type QueryAllTalkArgs = {
 
 export type QueryWorkshopArgs = {
   body?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3455,7 +3330,7 @@ export type StringQueryOperatorInput = {
 export type Talk = Node & {
   __typename?: 'Talk';
   body?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -3669,7 +3544,7 @@ export type TalkEventSortInput = {
 
 export enum TalkFieldsEnum {
   body = 'body',
-  description = 'description',
+  createdAt = 'createdAt',
   title = 'title',
   id = 'id',
   parent___id = 'parent___id',
@@ -3761,7 +3636,7 @@ export enum TalkFieldsEnum {
 
 export type TalkFilterInput = {
   body?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3787,7 +3662,7 @@ export type TalkSortInput = {
 export type Workshop = Node & {
   __typename?: 'Workshop';
   body?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -3998,7 +3873,7 @@ export type WorkshopEventSortInput = {
 
 export enum WorkshopFieldsEnum {
   body = 'body',
-  description = 'description',
+  createdAt = 'createdAt',
   title = 'title',
   id = 'id',
   parent___id = 'parent___id',
@@ -4090,7 +3965,7 @@ export enum WorkshopFieldsEnum {
 
 export type WorkshopFilterInput = {
   body?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -4236,6 +4111,14 @@ export type SpeakerHeaderQuery = { __typename?: 'Query' } & {
       >;
     }
   >;
+};
+
+export type TalksQueryVariables = {};
+
+export type TalksQuery = { __typename?: 'Query' } & {
+  talks: { __typename?: 'TalkConnection' } & {
+    nodes: Array<{ __typename?: 'Talk' } & Pick<Talk, 'body' | 'id' | 'title'>>;
+  };
 };
 
 export type HomeQueryVariables = {};

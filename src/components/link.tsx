@@ -2,6 +2,8 @@ import { Link as GatsbyLink, GatsbyLinkProps } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
+type LinkProps = GatsbyLinkProps<{}>;
+
 const Link = styled(
   ({
     activeClassName,
@@ -14,7 +16,7 @@ const Link = styled(
     target,
     to,
     ...other
-  }: GatsbyLinkProps<{}>) => {
+  }: LinkProps) => {
     const isPathToStaticFolder = to.startsWith('/static');
     const isInternal = /^\/(?!\/)/.test(to) && !isPathToStaticFolder;
 
