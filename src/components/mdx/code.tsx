@@ -13,7 +13,7 @@ export const inlineCodeStyles = css`
     font-family: ${p => p.theme.fonts.mono};
 
     // Copied from github.com
-    border-radius: 4px;
+    border-radius: ${p => p.theme.radii[0]}px;
     font-size: 90%;
     padding: 0.2em 0.4em;
   }
@@ -52,7 +52,7 @@ const calculateLinesToHighlight = (metastring?: string): number[] => {
 };
 
 const Pre = styled.pre<{ css: CSSProp }>`
-  border-radius: ${p => p.theme.radii[0]}px;
+  border-radius: ${p => p.theme.radii[1]}px;
   overflow: auto;
   font: ${p => p.theme.fontSizes[1]}px / ${p => p.theme.lineHeights.body}
     ${p => p.theme.fonts.mono};

@@ -6,7 +6,7 @@ import Link from '../link';
 const Wrapper = styled(Link)`
   align-items: center;
   background: ${p => p.theme.colors.cardBg};
-  border-radius: ${p => p.theme.radii[1]}px;
+  border-radius: ${p => p.theme.radii[2]}px;
   display: flex;
   flex-direction: column;
   font-size: ${p => p.theme.fontSizes[3]}px;

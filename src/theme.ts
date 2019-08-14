@@ -57,7 +57,7 @@ export const system = {
   },
   lineHeights: { body: 1.5, heading: 1.25 },
   media,
-  radii: [8, 16],
+  radii: [4, 8, 16],
   shadows: {
     dark: `0px 0px 16px ${rgba(colors.black, 0.1)}`,
     light: `0px 0px 16px ${rgba(colors.white, 0.25)}`,
