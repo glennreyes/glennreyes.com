@@ -167,6 +167,7 @@ exports.createResolvers = async ({
       }) =>
         createNode({
           children: [],
+          createdAt: frontmatter.createdAt,
           description: rawBody || frontmatter.description,
           id: createNodeId(id),
           fileAbsolutePath,
@@ -198,6 +199,7 @@ exports.createResolvers = async ({
       }) =>
         createNode({
           children: [],
+          createdAt: frontmatter.createdAt,
           description: frontmatter.description,
           fileAbsolutePath,
           id: createNodeId(id),
