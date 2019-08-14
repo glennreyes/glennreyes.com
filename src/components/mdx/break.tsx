@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Break = styled.hr`
-  background: ${p => p.theme.borderColor};
+  background: ${p => p.theme.colors.border};
   border: none;
   height: ${p => p.theme.space[0]}px;
   margin: ${p => p.theme.space[4]}px 0;

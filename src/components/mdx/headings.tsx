@@ -7,7 +7,7 @@ import { system } from '../../theme';
 
 const Anchor = styled.a`
   align-items: center;
-  color: ${p => p.theme.textColor2};
+  color: ${p => p.theme.colors.textSecondary};
   display: flex;
   // Matches font-size + line-height of the header
   height: calc(1em * ${p => p.theme.lineHeights.heading});

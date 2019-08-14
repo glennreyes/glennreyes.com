@@ -5,7 +5,7 @@ import Link from '../link';
 
 const Wrapper = styled(Link)`
   align-items: center;
-  background: ${p => p.theme.cardBg};
+  background: ${p => p.theme.colors.cardBg};
   border-radius: ${p => p.theme.radii[1]}px;
   display: flex;
   flex-direction: column;
@@ -17,8 +17,8 @@ const Wrapper = styled(Link)`
   transition: box-shadow ${p => p.theme.transition};
 
   &:hover {
-    box-shadow: ${p => p.theme.hoverShadow};
-    color: ${p => p.theme.textColor2};
+    box-shadow: ${p => p.theme.colors.hoverShadow};
+    color: ${p => p.theme.colors.textSecondary};
   }
 
   ${p => p.theme.media.tablet`
@@ -34,7 +34,7 @@ type MoreLinkProps = GatsbyLinkProps<{}> & {
 
 const MoreLink = ({ children, icon, ref, ...props }: MoreLinkProps) => {
   const Icon = styled(icon)`
-    color: ${p => p.theme.iconColor};
+    color: ${p => p.theme.colors.icon};
     height: 64px;
     margin-bottom: 8px;
     width: 64px;

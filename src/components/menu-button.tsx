@@ -17,7 +17,7 @@ const Wrapper = styled(Button)`
 `;
 
 const Stroke = styled.span`
-  background: ${p => p.theme.textColor};
+  background: ${p => p.theme.colors.text};
   border-radius: 1px;
   display: block;
   height: 2px;

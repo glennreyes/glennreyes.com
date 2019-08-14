@@ -8,8 +8,8 @@ import styled, { CSSProp, css } from 'styled-components';
 // For use at other mdx components
 export const inlineCodeStyles = css`
   > code {
-    background: ${p => p.theme.codeBg};
-    color: ${p => p.theme.codeColor};
+    background: ${p => p.theme.colors.codeBg};
+    color: ${p => p.theme.colors.code};
     font-family: ${p => p.theme.fonts.mono};
 
     // Copied from github.com

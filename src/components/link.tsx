@@ -44,7 +44,7 @@ const Link = styled(
     );
   },
 )`
-  color: ${p => p.theme.textColor};
+  color: ${p => p.theme.colors.text};
   display: inline-block;
   text-decoration: none;
 `;

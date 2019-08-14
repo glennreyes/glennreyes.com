@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Tagline = styled.p`
-  color: ${p => p.theme.textColor2};
+  color: ${p => p.theme.colors.textSecondary};
   font-size: ${p => p.theme.fontSizes[1]}px;
   font-weight: ${p => p.theme.fontWeights.bold};
   margin: 0;

@@ -16,7 +16,7 @@ const Wrapper = styled(Button)`
 `;
 
 const iconStyles = css`
-  color: ${p => p.theme.textColor};
+  color: ${p => p.theme.colors.text};
   height: 24px;
   left: 50%;
   position: absolute;

@@ -11,13 +11,13 @@ const Post = styled.article`
 `;
 
 const PostLink = styled(Link)`
-  background: ${p => p.theme.cardBg};
+  background: ${p => p.theme.colors.cardBg};
   border-radius: ${p => p.theme.radii[1]}px;
   padding: ${p => p.theme.space[3]}px;
   transition: box-shadow ${p => p.theme.transition};
 
   &:hover {
-    box-shadow: ${p => p.theme.hoverShadow};
+    box-shadow: ${p => p.theme.colors.hoverShadow};
   }
 
   ${p => p.theme.media.tablet`
@@ -32,12 +32,12 @@ const Title = styled.h2`
   margin: 0 0 ${p => p.theme.space[2]}px;
 
   ${PostLink}:hover & {
-    color: ${p => p.theme.textColor2};
+    color: ${p => p.theme.colors.textSecondary};
   }
 `;
 
 const Meta = styled(Text)`
-  color: ${p => p.theme.textColor2};
+  color: ${p => p.theme.colors.textSecondary};
   font-size: ${p => p.theme.fontSizes[1]}px;
 `;
 

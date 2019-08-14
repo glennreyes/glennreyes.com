@@ -29,7 +29,7 @@ const links = [
 ];
 
 const Wrapper = styled.footer`
-  background: ${p => p.theme.bg};
+  background: ${p => p.theme.colors.bg};
   margin-top: auto;
   padding: ${p => p.theme.space[4]}px ${p => p.theme.space[2]}px;
 
@@ -52,12 +52,12 @@ const SocialLink = styled(Link)`
   width: ${p => p.theme.space[5]}px;
 
   &:hover {
-    color: ${p => p.theme.textColor2};
+    color: ${p => p.theme.colors.textSecondary};
   }
 `;
 
 const Text = styled.p`
-  color: ${p => p.theme.textColor2};
+  color: ${p => p.theme.colors.textSecondary};
   margin: ${p => p.theme.space[2]}px 0 0;
 
   ${p => p.theme.media.tablet`

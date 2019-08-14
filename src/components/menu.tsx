@@ -31,7 +31,7 @@ const links = [
 ];
 
 const Wrapper = styled.nav`
-  background: ${p => p.theme.bg};
+  background: ${p => p.theme.colors.bg};
   display: flex;
   flex-direction: column;
   // Height is managed by react-pose, setting it to zero prevents menu from
@@ -64,20 +64,21 @@ const PosedWrapper = posed(Wrapper)({
 });
 
 const MenuLink = styled(Link)`
-  border-bottom: ${p => p.theme.borders[1]}px solid ${p => p.theme.headerBg};
-  color: ${p => p.theme.textColor};
+  border-bottom: ${p => p.theme.borders[1]}px solid
+    ${p => p.theme.colors.headerBg};
+  color: ${p => p.theme.colors.text};
   font-size: ${p => p.theme.fontSizes[2]}px;
   padding: ${p => p.theme.space[2]}px;
   text-transform: lowercase;
 
   ${p => p.theme.media.desktop`
     &:hover {
-      color: ${p.theme.activeTextColor};
+      color: ${p.theme.colors.activeText};
     }
   `}
 
   &[aria-current='page'] {
-    color: ${p => p.theme.activeTextColor};
+    color: ${p => p.theme.colors.activeText};
   }
 
   ${p => p.theme.media.tablet`

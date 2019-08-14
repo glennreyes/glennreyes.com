@@ -6,7 +6,7 @@ import DefaultLink from '../link';
 const Link = styled(({ href, ...props }) => (
   <DefaultLink target="_blank" to={href} {...props} />
 ))`
-  color: ${p => p.theme.linkColor};
+  color: ${p => p.theme.colors.link};
   ${inlineCodeStyles}
 `;
 

@@ -10,7 +10,7 @@ import { PostQuery } from '../../types/generated/graphql';
 
 const Wrapper = styled.header<{ hasCover: boolean }>`
   align-items: stretch;
-  ${p => (p.hasCover ? `background: ${p.theme.coverBg};` : '')}
+  ${p => (p.hasCover ? `background: ${p.theme.colors.coverBg};` : '')}
   display: flex;
   flex-direction: column;
   height: 320px;
@@ -39,12 +39,13 @@ const Content = styled.div`
 `;
 
 const Heading = styled(({ hasCover, ...props }) => <H1 {...props} />)`
-  ${p => (p.hasCover ? `color: ${p.theme.coverHeading};` : '')}
+  ${p => (p.hasCover ? `color: ${p.theme.colors.coverHeading};` : '')}
   margin-top: 0;
 `;
 
 const Meta = styled(Text)<{ hasCover: boolean }>`
-  color: ${p => (p.hasCover ? p.theme.coverMeta : p.theme.textColor2)};
+  color: ${p =>
+    p.hasCover ? p.theme.colors.cover : p.theme.colors.textSecondary};
   font-size: ${p => p.theme.fontSizes[1]}px;
 `;
 
@@ -56,7 +57,7 @@ const Cover = styled(Img)`
 
 const CoverAuthorLink = styled(Link)`
   align-items: center;
-  color: ${p => p.theme.textColor2};
+  color: ${p => p.theme.colors.textSecondary};
   display: flex;
   font-size: ${p => p.theme.fontSizes[0]}px;
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[2]}px;
@@ -66,7 +67,7 @@ const CoverAuthorLink = styled(Link)`
 
   ${p => p.theme.media.tablet`
     bottom: 0;
-    color: ${p.theme.coverMeta};
+    color: ${p.theme.colors.cover};
     top: auto;
   `}
 `;

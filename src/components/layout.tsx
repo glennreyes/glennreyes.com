@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 const Main = styled.main`
-  background: ${p => p.theme.bg};
+  background: ${p => p.theme.colors.bg};
   padding: ${p => p.theme.space[6]}px 0;
 
   ${p => p.theme.media.desktop`

@@ -14,7 +14,7 @@ const Wrapper = styled.header<{
   isScrollThreshold: boolean;
   isMenuOpen: boolean;
 }>`
-  background: ${p => rgba(p.theme.headerBg, 0.95)};
+  background: ${p => rgba(p.theme.colors.headerBg, 0.95)};
   box-shadow: ${p => p.theme.shadows.dark};
   display: flex;
   height: ${p => p.theme.space[6]}px;
@@ -29,8 +29,8 @@ const Wrapper = styled.header<{
   ${p => p.theme.media.desktop`
     background: ${
       p.isScrollThreshold || p.isMenuOpen
-        ? p.theme.headerBg
-        : rgba(p.theme.headerBg, 0.95)
+        ? p.theme.colors.headerBg
+        : rgba(p.theme.colors.headerBg, 0.95)
     };
     box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.shadows.dark}`};
     height: ${p.isScrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
@@ -51,7 +51,7 @@ const Container = styled.div`
 
 const TitleLink = styled(Link)`
   align-items: center;
-  color: ${p => p.theme.textColor};
+  color: ${p => p.theme.colors.text};
   display: inline-flex;
   font-size: ${p => p.theme.fontSizes[2]}px;
   font-weight: ${p => p.theme.fontWeights.bolder};

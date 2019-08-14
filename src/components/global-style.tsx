@@ -19,8 +19,8 @@ const StyledGlobalStyle = createGlobalStyle<{ isMenuOpen: boolean }>`
   }
 
   body {
-    background: ${p => p.theme.bg};
-    color: ${p => p.theme.textColor};
+    background: ${p => p.theme.colors.bg};
+    color: ${p => p.theme.colors.text};
     margin: 0;
     ${p => (p.isMenuOpen ? 'overflow: hidden;' : '')}
   }
