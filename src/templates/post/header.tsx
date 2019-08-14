@@ -1,9 +1,10 @@
-import Img, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
-import { H1 } from '../../components/mdx/headings';
+import Image from '../../components/image';
 import Link from '../../components/link';
+import { H1 } from '../../components/mdx/headings';
 import Text from '../../components/text';
 import { ReactComponent as Camera } from '../../icons/camera.svg';
 import { PostQuery } from '../../types/generated/graphql';
@@ -49,7 +50,7 @@ const Meta = styled(Text)<{ hasCover: boolean }>`
   font-size: ${p => p.theme.fontSizes[1]}px;
 `;
 
-const Cover = styled(Img)`
+const Cover = styled(Image)`
   height: 100%;
   opacity: 0.5;
   width: 100%;
@@ -105,7 +106,12 @@ const Header = ({ data }: HeaderProps) => {
   return (
     <Wrapper hasCover={hasCover}>
       {fluid && (
-        <Cover fluid={fluid} loading="eager" style={{ position: 'absolute' }} />
+        <Cover
+          fluid={fluid}
+          loading="eager"
+          style={{ position: 'absolute' }}
+          title={title}
+        />
       )}
       <ContentWrapper>
         <Content>

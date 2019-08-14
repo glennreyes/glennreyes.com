@@ -1,12 +1,13 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 import { rgba } from 'polished';
 import React from 'react';
 import Tilt from 'react-tilt';
 import styled from 'styled-components';
+import DefaultImage from './image';
 import { PhotoQuery } from '../types/generated/graphql';
 
-const StyledImg = styled(Img)`
+const Image = styled(DefaultImage)`
   border-radius: 50%;
   box-shadow: 0 0 32px ${p => rgba(p.theme.colors.black, 0.25)};
   width: 128px;
@@ -26,6 +27,11 @@ const Photo = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          author
+        }
+      }
     }
   `);
 
@@ -35,9 +41,13 @@ const Photo = () => {
       (data.photo.childImageSharp.fluid as FluidObject)) ||
     undefined;
 
+  const author =
+    (data.site && data.site.siteMetadata && data.site.siteMetadata.author) ||
+    undefined;
+
   return (
     <Tilt options={{ max: 20, scale: 1 }}>
-      <StyledImg loading="eager" fluid={fluid} />
+      <Image loading="eager" fluid={fluid} title={author} />
     </Tilt>
   );
 };

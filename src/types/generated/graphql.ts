@@ -4126,6 +4126,13 @@ export type AboutHeaderQuery = { __typename?: 'Query' } & {
       >;
     }
   >;
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'author'>
+      >;
+    }
+  >;
 };
 
 export type BlogQueryVariables = {};
@@ -4184,6 +4191,13 @@ export type PhotoQuery = { __typename?: 'Query' } & {
       >;
     }
   >;
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'author'>
+      >;
+    }
+  >;
 };
 
 export type SeoQueryVariables = {};
@@ -4212,6 +4226,13 @@ export type SpeakerHeaderQuery = { __typename?: 'Query' } & {
             { __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment
           >;
         }
+      >;
+    }
+  >;
+  site: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'author'>
       >;
     }
   >;

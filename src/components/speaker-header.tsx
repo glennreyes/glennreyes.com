@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
+import DefaultImage from './image';
 import { SpeakerHeaderQuery } from '../types/generated/graphql';
 
-const StyledImg = styled(Img)`
+const Image = styled(DefaultImage)`
   height: ${p => p.theme.space[8]}px;
   margin: 0 calc(50% - 50vw) ${p => p.theme.space[3]}px;
   width: 100vw;
@@ -24,6 +25,11 @@ const SpeakerHeader = () => {
           }
         }
       }
+      site {
+        siteMetadata {
+          author
+        }
+      }
     }
   `);
 
@@ -33,7 +39,11 @@ const SpeakerHeader = () => {
       (data.photo.childImageSharp.fluid as FluidObject)) ||
     undefined;
 
-  return <StyledImg loading="eager" fluid={fluid} />;
+  const author =
+    (data.site && data.site.siteMetadata && data.site.siteMetadata.author) ||
+    undefined;
+
+  return <Image fluid={fluid} loading="eager" title={author} />;
 };
 
 export default SpeakerHeader;
