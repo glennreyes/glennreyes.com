@@ -2,18 +2,18 @@ import styled from 'styled-components';
 import DefaultLink from './link';
 
 const CardLink = styled(DefaultLink)`
-  background: ${p => p.theme.colors.cardBg};
-  border-radius: ${p => p.theme.radii[1]}px;
-  padding: ${p => p.theme.space[3]}px;
-  transition: box-shadow ${p => p.theme.transition};
-
   &:hover {
-    box-shadow: ${p => p.theme.colors.hoverShadow};
+    color: ${p => p.theme.colors.textSecondary};
   }
 
-  ${p => p.theme.media.tablet`
-    padding: ${p.theme.space[5]}px;
-  `}
+  &::before {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 `;
 
 export default CardLink;

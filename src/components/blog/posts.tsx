@@ -2,17 +2,13 @@ import { graphql, useStaticQuery } from 'gatsby';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
+import Card from '../card';
 import Cards from '../cards';
 import CardBody from '../card-body';
 import CardLink from '../card-link';
 import CardTitle from '../card-title';
 import Text from '../text';
 import { BlogQuery } from '../../types/generated/graphql';
-
-const Post = styled.article`
-  display: flex;
-  margin: ${p => p.theme.space[2]}px 0;
-`;
 
 const Meta = styled(Text)`
   color: ${p => p.theme.colors.textSecondary};
@@ -68,12 +64,15 @@ const Blog = () => {
             ? post.timeToRead * 1000 * 60
             : null;
 
-          if (!slug) return null;
-
           return (
-            <Post key={id}>
-              <CardLink to={slug}>
-                {title && <CardTitle>{title}</CardTitle>}
+            slug &&
+            title && (
+              <Card as="article" key={id}>
+                {title && (
+                  <CardTitle>
+                    <CardLink to={slug}>{title}</CardLink>
+                  </CardTitle>
+                )}
                 {(date || timeToRead) && (
                   <Meta>
                     {date && dateFormatted && (
@@ -91,8 +90,8 @@ const Blog = () => {
                   </Meta>
                 )}
                 {excerpt && <CardBody>{excerpt}</CardBody>}
-              </CardLink>
-            </Post>
+              </Card>
+            )
           );
         },
       )}
