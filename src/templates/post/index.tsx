@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { PageRendererProps, graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import Header from './header';
@@ -7,7 +7,7 @@ import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 import { PostQuery } from '../../types/generated/graphql';
 
-type PostProps = {
+type PostProps = PageRendererProps & {
   data: PostQuery;
 };
 

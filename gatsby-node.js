@@ -8,13 +8,18 @@ exports.createPages = async ({ graphql, actions }) => {
       query Posts {
         posts: allMdx(
           filter: { fileAbsolutePath: { glob: "**/content/posts/**" } }
-          sort: { fields: [frontmatter___date], order: DESC }
         ) {
           nodes {
             fields {
               slug
             }
             id
+          }
+        }
+        talks: allTalk {
+          nodes {
+            id
+            slug
           }
         }
       }
@@ -40,6 +45,17 @@ exports.createPages = async ({ graphql, actions }) => {
         previous,
       },
       path: post.fields.slug,
+    });
+  });
+
+  // Create talk pages
+  const talkComponent = require.resolve('./src/templates/talk.tsx');
+  const talks = result.data.talks.nodes;
+  talks.forEach(talk => {
+    actions.createPage({
+      component: talkComponent,
+      context: { id: talk.id },
+      path: talk.slug,
     });
   });
 
@@ -135,10 +151,6 @@ exports.createResolvers = async ({
           },
           isLightning: frontmatter.isLightning,
           location: frontmatter.location,
-          address: frontmatter.address,
-          city: frontmatter.city,
-          country: frontmatter.country,
-          name: frontmatter.name,
           parent: null,
           rawBody,
           slidesUrl: frontmatter.slidesUrl,
@@ -255,6 +267,14 @@ exports.createResolvers = async ({
               ),
             ),
       },
+      slug: {
+        type: 'String!',
+        resolve: source =>
+          source.fileAbsolutePath.replace(
+            new RegExp(`^${__dirname}/content(.*)(index|.mdx?)$`),
+            '$1',
+          ),
+      },
     },
     TalkEvent: {
       talk: {
@@ -281,6 +301,14 @@ exports.createResolvers = async ({
               ),
             ),
       },
+      slug: {
+        type: 'String!',
+        resolve: source =>
+          source.fileAbsolutePath.replace(
+            new RegExp(`^${__dirname}/content(.*)(index|.mdx?)$`),
+            '$1',
+          ),
+      },
     },
     WorkshopEvent: {
       workshop: {
@@ -303,17 +331,10 @@ exports.onCreateNode = ({ actions, getNode, node }) => {
   if (node.internal.type === 'Mdx') {
     // On all blog posts, create a slug field with the given file path as a value
     if (node.fileAbsolutePath.startsWith(`${__dirname}/content/posts/`)) {
-      const filePath = createFilePath({ node, getNode });
-      const slug = node.fileAbsolutePath.startsWith(
-        `${__dirname}/content/posts/`,
-      )
-        ? `/blog${filePath}`
-        : filePath;
-
       actions.createNodeField({
         name: 'slug',
         node,
-        value: slug,
+        value: `/blog${createFilePath({ node, getNode })}`,
       });
     }
   }

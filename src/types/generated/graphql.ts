@@ -3337,6 +3337,7 @@ export type Talk = Node & {
   children: Array<Node>;
   internal: Internal;
   events: Array<TalkEvent>;
+  slug: Scalars['String'];
 };
 
 export type TalkConnection = {
@@ -3669,6 +3670,7 @@ export type Workshop = Node & {
   children: Array<Node>;
   internal: Internal;
   events: Array<WorkshopEvent>;
+  slug: Scalars['String'];
 };
 
 export type WorkshopConnection = {
@@ -4117,7 +4119,9 @@ export type TalksQueryVariables = {};
 
 export type TalksQuery = { __typename?: 'Query' } & {
   talks: { __typename?: 'TalkConnection' } & {
-    nodes: Array<{ __typename?: 'Talk' } & Pick<Talk, 'body' | 'id' | 'title'>>;
+    nodes: Array<
+      { __typename?: 'Talk' } & Pick<Talk, 'body' | 'id' | 'slug' | 'title'>
+    >;
   };
 };
 
@@ -4188,6 +4192,14 @@ export type PostQuery = { __typename?: 'Query' } & {
         >;
       }
   >;
+};
+
+export type TalkQueryVariables = {
+  id: Scalars['String'];
+};
+
+export type TalkQuery = { __typename?: 'Query' } & {
+  talk: Maybe<{ __typename?: 'Talk' } & Pick<Talk, 'body' | 'title'>>;
 };
 
 export type GatsbyImageSharpFixedFragment = {

@@ -21,6 +21,7 @@ const Talks = () => {
           nodes {
             body
             id
+            slug
             title
           }
         }
@@ -32,18 +33,21 @@ const Talks = () => {
 
   return (
     <Cards>
-      {talks.map(({ body, id, title }) => (
-        <Talk key={id}>
-          <CardLink to="/">
-            {title && <CardTitle>{title}</CardTitle>}
-            {body && (
-              <CardBody>
-                <MDXRenderer>{body}</MDXRenderer>
-              </CardBody>
-            )}
-          </CardLink>
-        </Talk>
-      ))}
+      {talks.map(
+        ({ body, id, slug, title }) =>
+          slug && (
+            <Talk key={id}>
+              <CardLink to={slug}>
+                {title && <CardTitle>{title}</CardTitle>}
+                {body && (
+                  <CardBody>
+                    <MDXRenderer>{body}</MDXRenderer>
+                  </CardBody>
+                )}
+              </CardLink>
+            </Talk>
+          ),
+      )}
     </Cards>
   );
 };
