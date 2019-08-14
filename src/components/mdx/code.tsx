@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash';
 import { rgba } from 'polished';
 import Highlight, { Language, defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
@@ -24,14 +25,15 @@ const calculateLinesToHighlight = (metastring?: string): number[] => {
   return parsedLines
     ? parsedLines[1].split(',').reduce((acc: number[], value: string) => {
         if (value.includes('-')) {
-          const range = value
-            .split('-')
-            .filter(Boolean)
-            .map(Number);
+          const range = sortBy(
+            value
+              .split('-')
+              .filter(Boolean)
+              .map(Number),
+          );
 
           if (range.length === 1) return [...acc, ...range];
 
-          range.sort((a, b) => a - b);
           const [start, end] = range;
           const lines = [
             ...Array.from(
