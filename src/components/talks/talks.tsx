@@ -13,6 +13,25 @@ const Talk = styled.article`
   margin: ${p => p.theme.space[2]}px 0;
 `;
 
+const LineHeading = styled.h3`
+  align-items: baseline;
+  color: ${p => p.theme.colors.textSecondary};
+  display: flex;
+  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-weight: ${p => p.theme.fontWeights.normal};
+  line-height: ${p => p.theme.lineHeights.heading};
+  text-transform: uppercase;
+
+  &::after {
+    background: ${p => p.theme.colors.border};
+    content: '';
+    display: block;
+    height: 4px;
+    margin-left: ${p => p.theme.space[1]}px;
+    width: 100%;
+  }
+`;
+
 const Talks = () => {
   const data: TalksQuery = useStaticQuery(
     graphql`
@@ -44,6 +63,7 @@ const Talks = () => {
                     <MDXRenderer>{body}</MDXRenderer>
                   </CardBody>
                 )}
+                <LineHeading>Events</LineHeading>
               </CardLink>
             </Talk>
           ),
