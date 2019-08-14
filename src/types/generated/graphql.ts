@@ -2393,7 +2393,6 @@ export type QueryTalkEventArgs = {
   endDate?: Maybe<DateQueryOperatorInput>;
   isLightning?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
@@ -2415,7 +2414,6 @@ export type QueryWorkshopEventArgs = {
   date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
@@ -2436,7 +2434,6 @@ export type QueryAllWorkshopEventArgs = {
 export type QueryTalkArgs = {
   body?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2454,7 +2451,6 @@ export type QueryAllTalkArgs = {
 export type QueryWorkshopArgs = {
   body?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3460,7 +3456,6 @@ export type Talk = Node & {
   __typename?: 'Talk';
   body?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  rawBody?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -3502,7 +3497,6 @@ export type TalkEvent = Node & {
   endDate?: Maybe<Scalars['Date']>;
   isLightning?: Maybe<Scalars['Boolean']>;
   location?: Maybe<Location>;
-  rawBody?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
@@ -3551,7 +3545,6 @@ export enum TalkEventFieldsEnum {
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
-  rawBody = 'rawBody',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
@@ -3649,7 +3642,6 @@ export type TalkEventFilterInput = {
   endDate?: Maybe<DateQueryOperatorInput>;
   isLightning?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
@@ -3678,7 +3670,6 @@ export type TalkEventSortInput = {
 export enum TalkFieldsEnum {
   body = 'body',
   description = 'description',
-  rawBody = 'rawBody',
   title = 'title',
   id = 'id',
   parent___id = 'parent___id',
@@ -3771,7 +3762,6 @@ export enum TalkFieldsEnum {
 export type TalkFilterInput = {
   body?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3798,7 +3788,6 @@ export type Workshop = Node & {
   __typename?: 'Workshop';
   body?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
-  rawBody?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -3839,7 +3828,6 @@ export type WorkshopEvent = Node & {
   date?: Maybe<Scalars['Date']>;
   endDate?: Maybe<Scalars['Date']>;
   location?: Maybe<Location>;
-  rawBody?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
@@ -3887,7 +3875,6 @@ export enum WorkshopEventFieldsEnum {
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
-  rawBody = 'rawBody',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
@@ -3984,7 +3971,6 @@ export type WorkshopEventFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
@@ -4013,7 +3999,6 @@ export type WorkshopEventSortInput = {
 export enum WorkshopFieldsEnum {
   body = 'body',
   description = 'description',
-  rawBody = 'rawBody',
   title = 'title',
   id = 'id',
   parent___id = 'parent___id',
@@ -4106,7 +4091,6 @@ export enum WorkshopFieldsEnum {
 export type WorkshopFilterInput = {
   body?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-  rawBody?: Maybe<StringQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -4142,6 +4126,24 @@ export type AboutHeaderQuery = { __typename?: 'Query' } & {
       >;
     }
   >;
+};
+
+export type BlogQueryVariables = {};
+
+export type BlogQuery = { __typename?: 'Query' } & {
+  posts: { __typename?: 'MdxConnection' } & {
+    nodes: Array<
+      { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'> & {
+          fields: Maybe<{ __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>>;
+          frontmatter: Maybe<
+            { __typename?: 'MdxFrontmatter' } & Pick<
+              MdxFrontmatter,
+              'date' | 'title'
+            > & { dateFormatted: MdxFrontmatter['date'] }
+          >;
+        }
+    >;
+  };
 };
 
 export type FooterQueryVariables = {};
@@ -4213,24 +4215,6 @@ export type SpeakerHeaderQuery = { __typename?: 'Query' } & {
       >;
     }
   >;
-};
-
-export type BlogQueryVariables = {};
-
-export type BlogQuery = { __typename?: 'Query' } & {
-  posts: { __typename?: 'MdxConnection' } & {
-    nodes: Array<
-      { __typename?: 'Mdx' } & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'> & {
-          fields: Maybe<{ __typename?: 'MdxFields' } & Pick<MdxFields, 'slug'>>;
-          frontmatter: Maybe<
-            { __typename?: 'MdxFrontmatter' } & Pick<
-              MdxFrontmatter,
-              'date' | 'title'
-            > & { dateFormatted: MdxFrontmatter['date'] }
-          >;
-        }
-    >;
-  };
 };
 
 export type HomeQueryVariables = {};
