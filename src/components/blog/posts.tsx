@@ -2,14 +2,9 @@ import { graphql, useStaticQuery } from 'gatsby';
 import ms from 'ms';
 import React from 'react';
 import styled from 'styled-components';
-import Content from '../components/content';
-import Layout from '../components/layout';
-import Link from '../components/link';
-import SEO from '../components/seo';
-import Text from '../components/text';
-import { BlogQuery } from '../types/generated/graphql';
-
-const Section = styled.section``;
+import Link from '../link';
+import Text from '../text';
+import { BlogQuery } from '../../types/generated/graphql';
 
 const Post = styled.article`
   margin: ${p => p.theme.space[5]}px 0;
@@ -89,46 +84,35 @@ const Blog = () => {
       }))) ||
     [];
 
-  return (
-    <Layout>
-      <SEO title="Blog" />
-      <Section>
-        <Content>
-          {posts.map(
-            ({ date, dateFormatted, excerpt, id, slug, title, ...post }) => {
-              const timeToRead = post.timeToRead
-                ? post.timeToRead * 1000 * 60
-                : null;
+  return posts.map(
+    ({ date, dateFormatted, excerpt, id, slug, title, ...post }) => {
+      const timeToRead = post.timeToRead ? post.timeToRead * 1000 * 60 : null;
 
-              if (!slug) return null;
+      if (!slug) return null;
 
-              return (
-                <Post key={id}>
-                  <PostLink to={slug}>
-                    <Title>{title}</Title>
-                    <Meta>
-                      {date && dateFormatted && (
-                        <time dateTime={date}>{dateFormatted}</time>
-                      )}
-                      {timeToRead && (
-                        <>
-                          {date && dateFormatted && ' · '}
-                          <time dateTime={ms(timeToRead)}>
-                            {ms(timeToRead, { long: true })}
-                          </time>
-                          {' read'}
-                        </>
-                      )}
-                    </Meta>
-                    <Excerpt>{excerpt}</Excerpt>
-                  </PostLink>
-                </Post>
-              );
-            },
-          )}
-        </Content>
-      </Section>
-    </Layout>
+      return (
+        <Post key={id}>
+          <PostLink to={slug}>
+            <Title>{title}</Title>
+            <Meta>
+              {date && dateFormatted && (
+                <time dateTime={date}>{dateFormatted}</time>
+              )}
+              {timeToRead && (
+                <>
+                  {date && dateFormatted && ' · '}
+                  <time dateTime={ms(timeToRead)}>
+                    {ms(timeToRead, { long: true })}
+                  </time>
+                  {' read'}
+                </>
+              )}
+            </Meta>
+            <Excerpt>{excerpt}</Excerpt>
+          </PostLink>
+        </Post>
+      );
+    },
   );
 };
 
