@@ -1,4 +1,5 @@
 ---
+createdAt: 2017-05-01
 title: Optimizing apps with Code Splitting
 ---
 

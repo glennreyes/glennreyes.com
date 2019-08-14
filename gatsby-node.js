@@ -80,13 +80,13 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
 
     type Talk implements Node {
       body: String
-      description: String
+      createdAt: Date
       title: String!
     }
 
     type Workshop implements Node {
       body: String
-      description: String
+      createdAt: Date
       title: String!
     }
   `;

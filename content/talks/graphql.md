@@ -1,4 +1,5 @@
 ---
+createdAt: 2018-11-01
 title: From learning to thinking in GraphQL
 ---
 

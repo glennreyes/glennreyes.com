@@ -1,4 +1,5 @@
 ---
+createdAt: 2018-10-01
 title: Building zero-config tools for GraphQL
 ---
 
