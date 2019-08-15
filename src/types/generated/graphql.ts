@@ -3340,6 +3340,13 @@ export type Talk = Node & {
   slug: Scalars['String'];
 };
 
+export type TalkCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
 export type TalkConnection = {
   __typename?: 'TalkConnection';
   totalCount: Scalars['Int'];
@@ -3382,6 +3389,27 @@ export type TalkEvent = Node & {
   children: Array<Node>;
   internal: Internal;
   talk?: Maybe<Talk>;
+};
+
+export type TalkEventDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type TalkEventEndDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type TalkEventStartDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type TalkEventConnection = {
@@ -3673,6 +3701,13 @@ export type Workshop = Node & {
   slug: Scalars['String'];
 };
 
+export type WorkshopCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
 export type WorkshopConnection = {
   __typename?: 'WorkshopConnection';
   totalCount: Scalars['Int'];
@@ -3714,6 +3749,27 @@ export type WorkshopEvent = Node & {
   children: Array<Node>;
   internal: Internal;
   workshop?: Maybe<Workshop>;
+};
+
+export type WorkshopEventDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type WorkshopEventEndDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type WorkshopEventStartDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type WorkshopEventConnection = {
@@ -4126,6 +4182,9 @@ export type TalksQuery = { __typename?: 'Query' } & {
               TalkEvent,
               'date' | 'id' | 'startDate' | 'title'
             > & {
+                dateFormatted: TalkEvent['date'];
+                startDateFormatted: TalkEvent['startDate'];
+              } & {
                 location: Maybe<
                   { __typename?: 'Location' } & Pick<
                     Location,
