@@ -4120,7 +4120,21 @@ export type TalksQueryVariables = {};
 export type TalksQuery = { __typename?: 'Query' } & {
   talks: { __typename?: 'TalkConnection' } & {
     nodes: Array<
-      { __typename?: 'Talk' } & Pick<Talk, 'body' | 'id' | 'slug' | 'title'>
+      { __typename?: 'Talk' } & Pick<Talk, 'body' | 'id' | 'slug' | 'title'> & {
+          events: Array<
+            { __typename?: 'TalkEvent' } & Pick<
+              TalkEvent,
+              'date' | 'id' | 'startDate' | 'title'
+            > & {
+                location: Maybe<
+                  { __typename?: 'Location' } & Pick<
+                    Location,
+                    'city' | 'country'
+                  >
+                >;
+              }
+          >;
+        }
     >;
   };
 };
