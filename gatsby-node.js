@@ -74,11 +74,26 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
     }
 
     type TalkEvent implements Node {
-      date: Date
-      endDate: Date
+      date(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
+      endDate(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       isLightning: Boolean
       location: Location
-      startDate: Date
+      startDate(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       title: String!
       url: String
       video: String
