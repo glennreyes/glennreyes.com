@@ -62,7 +62,10 @@ exports.createPages = async ({ graphql, actions }) => {
   return result;
 };
 
-exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
+exports.createSchemaCustomization = async ({
+  actions: { createTypes },
+  schema,
+}) => {
   const typeDefs = `
     type Location {
       address: String
@@ -74,51 +77,21 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
     }
 
     type TalkEvent implements Node {
-      date(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
-      endDate(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      date: Date @dateformat
+      endDate: Date @dateformat
       isLightning: Boolean
       location: Location
-      startDate(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      startDate: Date @dateformat
       title: String!
       url: String
       video: String
     }
 
     type WorkshopEvent implements Node {
-      date(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
-      endDate(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      date: Date @dateformat
+      endDate: Date @dateformat
       location: Location
-      startDate(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      startDate: Date @dateformat
       title: String!
       url: String
       video: String
@@ -126,23 +99,13 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
 
     type Talk implements Node {
       body: String
-      createdAt(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      createdAt: Date @dateformat
       title: String!
     }
 
     type Workshop implements Node {
       body: String
-      createdAt(
-        formatString: String
-        fromNow: Boolean
-        difference: String
-        locale: String
-        ): Date
+      createdAt: Date @dateformat
       title: String!
     }
   `;
