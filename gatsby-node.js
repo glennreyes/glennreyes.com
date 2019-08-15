@@ -85,10 +85,25 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
     }
 
     type WorkshopEvent implements Node {
-      date: Date
-      endDate: Date
+      date(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
+      endDate(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       location: Location
-      startDate: Date
+      startDate(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       title: String!
       url: String
       video: String
@@ -96,13 +111,23 @@ exports.createSchemaCustomization = async ({ actions: { createTypes } }) => {
 
     type Talk implements Node {
       body: String
-      createdAt: Date
+      createdAt(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       title: String!
     }
 
     type Workshop implements Node {
       body: String
-      createdAt: Date
+      createdAt(
+        formatString: String
+        fromNow: Boolean
+        difference: String
+        locale: String
+        ): Date
       title: String!
     }
   `;
