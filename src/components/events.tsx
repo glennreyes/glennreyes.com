@@ -2,6 +2,10 @@ import dayjs from 'dayjs';
 import React from 'react';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  margin: ${p => p.theme.space[4]}px 0 0;
+`;
+
 const LineHeading = styled.h3`
   align-items: baseline;
   color: ${p => p.theme.colors.textSecondary};
@@ -23,7 +27,7 @@ const LineHeading = styled.h3`
   }
 `;
 
-const Wrapper = styled.ul`
+const List = styled.ul`
   list-style: none;
   margin: ${p => p.theme.space[1]}px 0 0;
   padding: 0;
@@ -31,8 +35,15 @@ const Wrapper = styled.ul`
 
 const Event = styled.li`
   color: ${p => p.theme.colors.textSecondary};
+  display: flex;
   font-size: ${p => p.theme.fontSizes[1]}px;
   line-height: ${p => p.theme.lineHeights.body};
+`;
+
+const Time = styled.time`
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 80px;
 `;
 
 type EventsProps = {
@@ -63,62 +74,60 @@ const Events = ({ events }: EventsProps) => {
     : [];
 
   return (
-    <>
+    <Wrapper>
       {upcomingEvents.length > 0 && (
         <>
           <LineHeading>Upcoming Events</LineHeading>
-          <Wrapper>
+          <List>
             {upcomingEvents.map(event => (
               <Event key={event.id}>
                 {(event.date || event.startDate) &&
                   (event.dateFormatted || event.startDateFormatted) && (
-                    <time dateTime={event.date || event.startDate}>
+                    <Time dateTime={event.date || event.startDate}>
                       {event.dateFormatted || event.startDateFormatted}
-                    </time>
+                    </Time>
                   )}
-                {event.title && (
-                  <>
-                    {' · '}
-                    <strong>{event.title}</strong>
-                  </>
+                {(event.title || event.location) && (
+                  <span>
+                    {event.title && <strong>{event.title}</strong>}
+                    {event.location &&
+                      event.location.city &&
+                      event.location.country &&
+                      ` · ${event.location.city}, ${event.location.country}`}
+                  </span>
                 )}
-                {event.location &&
-                  event.location.city &&
-                  event.location.country &&
-                  ` · ${event.location.city}, ${event.location.country}`}
               </Event>
             ))}
-          </Wrapper>
+          </List>
         </>
       )}
       {pastEvents.length > 0 && (
         <>
           <LineHeading>Past Events</LineHeading>
-          <Wrapper>
+          <List>
             {pastEvents.map(event => (
               <Event key={event.id}>
                 {(event.date || event.startDate) &&
                   (event.dateFormatted || event.startDateFormatted) && (
-                    <time dateTime={event.date || event.startDate}>
+                    <Time dateTime={event.date || event.startDate}>
                       {event.dateFormatted || event.startDateFormatted}
-                    </time>
+                    </Time>
                   )}
-                {event.title && (
-                  <>
-                    {' · '}
-                    <strong>{event.title}</strong>
-                  </>
+                {(event.title || event.location) && (
+                  <span>
+                    {event.title && <strong>{event.title}</strong>}
+                    {event.location &&
+                      event.location.city &&
+                      event.location.country &&
+                      ` · ${event.location.city}, ${event.location.country}`}
+                  </span>
                 )}
-                {event.location &&
-                  event.location.city &&
-                  event.location.country &&
-                  ` · ${event.location.city}, ${event.location.country}`}
               </Event>
             ))}
-          </Wrapper>
+          </List>
         </>
       )}
-    </>
+    </Wrapper>
   );
 };
 
