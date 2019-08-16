@@ -32,6 +32,7 @@ const Wrapper = styled.ul`
 const Event = styled.li`
   color: ${p => p.theme.colors.textSecondary};
   font-size: ${p => p.theme.fontSizes[1]}px;
+  line-height: ${p => p.theme.lineHeights.body};
 `;
 
 type EventsProps = {
