@@ -81,6 +81,7 @@ exports.createSchemaCustomization = async ({
       date: Date @dateformat
       endDate: Date @dateformat
       isLightning: Boolean
+      isKeynote: Boolean
       location: Location
       startDate: Date @dateformat
       title: String!
