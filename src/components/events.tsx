@@ -9,7 +9,7 @@ const LineHeading = styled.h3`
   font-size: ${p => p.theme.fontSizes[0]}px;
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.heading};
-  margin: ${p => p.theme.space[4]}px 0 0;
+  margin: ${p => p.theme.space[3]}px 0 0;
   text-transform: uppercase;
   white-space: nowrap;
 
@@ -25,7 +25,7 @@ const LineHeading = styled.h3`
 
 const Wrapper = styled.ul`
   list-style: none;
-  margin: ${p => p.theme.space[2]}px 0 0;
+  margin: ${p => p.theme.space[1]}px 0 0;
   padding: 0;
 `;
 
