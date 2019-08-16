@@ -74,6 +74,7 @@ exports.createSchemaCustomization = async ({
       name: String
       city: String!
       country: String!
+      zip: Int
     }
 
     type TalkEvent implements Node {
