@@ -678,17 +678,20 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___title = 'childMdx___frontmatter___title',
   childMdx___frontmatter___description = 'childMdx___frontmatter___description',
   childMdx___frontmatter___endDate = 'childMdx___frontmatter___endDate',
-  childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
+  childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
   childMdx___frontmatter___location___address = 'childMdx___frontmatter___location___address',
   childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
   childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
   childMdx___frontmatter___location___name = 'childMdx___frontmatter___location___name',
+  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___startDate = 'childMdx___frontmatter___startDate',
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
+  childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
   childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
   childMdx___frontmatter___createdAt = 'childMdx___frontmatter___createdAt',
+  childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
   childMdx___body = 'childMdx___body',
   childMdx___excerpt = 'childMdx___excerpt',
   childMdx___headings = 'childMdx___headings',
@@ -1411,6 +1414,7 @@ export type Location = {
   name?: Maybe<Scalars['String']>;
   city: Scalars['String'];
   country: Scalars['String'];
+  zip?: Maybe<Scalars['String']>;
 };
 
 export type LocationFilterInput = {
@@ -1420,6 +1424,7 @@ export type LocationFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   city?: Maybe<StringQueryOperatorInput>;
   country?: Maybe<StringQueryOperatorInput>;
+  zip?: Maybe<StringQueryOperatorInput>;
 };
 
 export enum MarkdownExcerptFormats {
@@ -1751,14 +1756,16 @@ export enum MdxFieldsEnum {
   frontmatter___title = 'frontmatter___title',
   frontmatter___description = 'frontmatter___description',
   frontmatter___endDate = 'frontmatter___endDate',
-  frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___isKeynote = 'frontmatter___isKeynote',
   frontmatter___location___address = 'frontmatter___location___address',
   frontmatter___location___city = 'frontmatter___location___city',
   frontmatter___location___country = 'frontmatter___location___country',
   frontmatter___location___name = 'frontmatter___location___name',
+  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___startDate = 'frontmatter___startDate',
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
+  frontmatter___videoUrl = 'frontmatter___videoUrl',
   frontmatter___date = 'frontmatter___date',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
@@ -1800,6 +1807,7 @@ export enum MdxFieldsEnum {
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
   frontmatter___createdAt = 'frontmatter___createdAt',
+  frontmatter___isLightning = 'frontmatter___isLightning',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -1929,15 +1937,18 @@ export type MdxFrontmatter = {
   title: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   endDate?: Maybe<Scalars['Date']>;
-  isLightning?: Maybe<Scalars['Boolean']>;
+  isKeynote?: Maybe<Scalars['Boolean']>;
   location?: Maybe<MdxFrontmatterLocation>;
+  slidesUrl?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   talk?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
+  videoUrl?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
   createdAt?: Maybe<Scalars['Date']>;
+  isLightning?: Maybe<Scalars['Boolean']>;
 };
 
 export type MdxFrontmatterEndDateArgs = {
@@ -1994,15 +2005,18 @@ export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
-  isLightning?: Maybe<BooleanQueryOperatorInput>;
+  isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<MdxFrontmatterLocationFilterInput>;
+  slidesUrl?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   talk?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
+  videoUrl?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
+  isLightning?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxFrontmatterLocation = {
@@ -2267,6 +2281,7 @@ export type QueryTalkEventArgs = {
   date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
   isLightning?: Maybe<BooleanQueryOperatorInput>;
+  isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
@@ -3379,6 +3394,7 @@ export type TalkEvent = Node & {
   date?: Maybe<Scalars['Date']>;
   endDate?: Maybe<Scalars['Date']>;
   isLightning?: Maybe<Scalars['Boolean']>;
+  isKeynote?: Maybe<Scalars['Boolean']>;
   location?: Maybe<Location>;
   startDate?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
@@ -3443,12 +3459,14 @@ export enum TalkEventFieldsEnum {
   date = 'date',
   endDate = 'endDate',
   isLightning = 'isLightning',
+  isKeynote = 'isKeynote',
   location___address = 'location___address',
   location___latitude = 'location___latitude',
   location___longitude = 'location___longitude',
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
+  location___zip = 'location___zip',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
@@ -3545,6 +3563,7 @@ export type TalkEventFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
   isLightning?: Maybe<BooleanQueryOperatorInput>;
+  isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
@@ -3808,6 +3827,7 @@ export enum WorkshopEventFieldsEnum {
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
+  location___zip = 'location___zip',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
