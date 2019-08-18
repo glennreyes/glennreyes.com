@@ -58,7 +58,7 @@
     "react-helmet": "5.2.1",
     "react-pose": "4.0.8",
     "react-tilt": "0.1.4",
-    "react-use": "10.6.1",
+    "react-use": "10.6.2",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
