@@ -677,8 +677,8 @@ export enum FileFieldsEnum {
   childMdx___fileAbsolutePath = 'childMdx___fileAbsolutePath',
   childMdx___frontmatter___title = 'childMdx___frontmatter___title',
   childMdx___frontmatter___description = 'childMdx___frontmatter___description',
+  childMdx___frontmatter___date = 'childMdx___frontmatter___date',
   childMdx___frontmatter___endDate = 'childMdx___frontmatter___endDate',
-  childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
   childMdx___frontmatter___location___address = 'childMdx___frontmatter___location___address',
   childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
   childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
@@ -688,10 +688,10 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
-  childMdx___frontmatter___date = 'childMdx___frontmatter___date',
+  childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
+  childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
   childMdx___frontmatter___createdAt = 'childMdx___frontmatter___createdAt',
-  childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
   childMdx___body = 'childMdx___body',
   childMdx___excerpt = 'childMdx___excerpt',
   childMdx___headings = 'childMdx___headings',
@@ -1755,8 +1755,8 @@ export enum MdxFieldsEnum {
   fileAbsolutePath = 'fileAbsolutePath',
   frontmatter___title = 'frontmatter___title',
   frontmatter___description = 'frontmatter___description',
+  frontmatter___date = 'frontmatter___date',
   frontmatter___endDate = 'frontmatter___endDate',
-  frontmatter___isKeynote = 'frontmatter___isKeynote',
   frontmatter___location___address = 'frontmatter___location___address',
   frontmatter___location___city = 'frontmatter___location___city',
   frontmatter___location___country = 'frontmatter___location___country',
@@ -1766,7 +1766,8 @@ export enum MdxFieldsEnum {
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
   frontmatter___videoUrl = 'frontmatter___videoUrl',
-  frontmatter___date = 'frontmatter___date',
+  frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___isKeynote = 'frontmatter___isKeynote',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
   frontmatter___cover___author___url = 'frontmatter___cover___author___url',
@@ -1807,7 +1808,6 @@ export enum MdxFieldsEnum {
   frontmatter___cover___photo___id = 'frontmatter___cover___photo___id',
   frontmatter___cover___photo___children = 'frontmatter___cover___photo___children',
   frontmatter___createdAt = 'frontmatter___createdAt',
-  frontmatter___isLightning = 'frontmatter___isLightning',
   body = 'body',
   excerpt = 'excerpt',
   headings = 'headings',
@@ -1936,19 +1936,26 @@ export type MdxFrontmatter = {
   __typename?: 'MdxFrontmatter';
   title: Scalars['String'];
   description?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['Date']>;
   endDate?: Maybe<Scalars['Date']>;
-  isKeynote?: Maybe<Scalars['Boolean']>;
   location?: Maybe<MdxFrontmatterLocation>;
   slidesUrl?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   talk?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   videoUrl?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
+  isLightning?: Maybe<Scalars['Boolean']>;
+  isKeynote?: Maybe<Scalars['Boolean']>;
   draft?: Maybe<Scalars['Boolean']>;
   cover?: Maybe<MdxFrontmatterCover>;
   createdAt?: Maybe<Scalars['Date']>;
-  isLightning?: Maybe<Scalars['Boolean']>;
+};
+
+export type MdxFrontmatterDateArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterEndDateArgs = {
@@ -1959,13 +1966,6 @@ export type MdxFrontmatterEndDateArgs = {
 };
 
 export type MdxFrontmatterStartDateArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-export type MdxFrontmatterDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2004,19 +2004,19 @@ export type MdxFrontmatterCoverFilterInput = {
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
-  isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<MdxFrontmatterLocationFilterInput>;
   slidesUrl?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   talk?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
   videoUrl?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
+  isLightning?: Maybe<BooleanQueryOperatorInput>;
+  isKeynote?: Maybe<BooleanQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
   cover?: Maybe<MdxFrontmatterCoverFilterInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
-  isLightning?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxFrontmatterLocation = {
