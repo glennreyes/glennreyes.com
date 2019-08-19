@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -94,7 +95,7 @@ const Footer = () => {
         ))}
       </Socials>
       <Text>
-        {`© ${new Date().getFullYear()} ${title}`.trim()}. View{' '}
+        {`© ${dayjs().year()} ${title}`.trim()}. View{' '}
         <Link target="_blank" to="https://github.com/glennreyes/glennreyes.com">
           source
         </Link>{' '}
