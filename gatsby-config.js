@@ -1,7 +1,7 @@
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 const IS_DEV = process.env.NODE_ENV === 'development';
-const siteUrl = 'https://glennreyes.com';
+const siteUrl = IS_DEV ? 'http://localhost:8000' : 'https://glennreyes.com';
 
 module.exports = {
   siteMetadata: {
