@@ -683,11 +683,11 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
   childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
   childMdx___frontmatter___location___name = 'childMdx___frontmatter___location___name',
-  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___startDate = 'childMdx___frontmatter___startDate',
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
+  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
   childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
@@ -1409,8 +1409,6 @@ export type JsonQueryOperatorInput = {
 export type Location = {
   __typename?: 'Location';
   address?: Maybe<Scalars['String']>;
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
   name?: Maybe<Scalars['String']>;
   city: Scalars['String'];
   country: Scalars['String'];
@@ -1419,8 +1417,6 @@ export type Location = {
 
 export type LocationFilterInput = {
   address?: Maybe<StringQueryOperatorInput>;
-  latitude?: Maybe<FloatQueryOperatorInput>;
-  longitude?: Maybe<FloatQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   city?: Maybe<StringQueryOperatorInput>;
   country?: Maybe<StringQueryOperatorInput>;
@@ -1761,11 +1757,11 @@ export enum MdxFieldsEnum {
   frontmatter___location___city = 'frontmatter___location___city',
   frontmatter___location___country = 'frontmatter___location___country',
   frontmatter___location___name = 'frontmatter___location___name',
-  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___startDate = 'frontmatter___startDate',
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
   frontmatter___videoUrl = 'frontmatter___videoUrl',
+  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___isLightning = 'frontmatter___isLightning',
   frontmatter___isKeynote = 'frontmatter___isKeynote',
   frontmatter___draft = 'frontmatter___draft',
@@ -1939,11 +1935,11 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   endDate?: Maybe<Scalars['Date']>;
   location?: Maybe<MdxFrontmatterLocation>;
-  slidesUrl?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   talk?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   videoUrl?: Maybe<Scalars['String']>;
+  slidesUrl?: Maybe<Scalars['String']>;
   isLightning?: Maybe<Scalars['Boolean']>;
   isKeynote?: Maybe<Scalars['Boolean']>;
   draft?: Maybe<Scalars['Boolean']>;
@@ -2007,11 +2003,11 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   endDate?: Maybe<DateQueryOperatorInput>;
   location?: Maybe<MdxFrontmatterLocationFilterInput>;
-  slidesUrl?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   talk?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
   videoUrl?: Maybe<StringQueryOperatorInput>;
+  slidesUrl?: Maybe<StringQueryOperatorInput>;
   isLightning?: Maybe<BooleanQueryOperatorInput>;
   isKeynote?: Maybe<BooleanQueryOperatorInput>;
   draft?: Maybe<BooleanQueryOperatorInput>;
@@ -2283,10 +2279,11 @@ export type QueryTalkEventArgs = {
   isLightning?: Maybe<BooleanQueryOperatorInput>;
   isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
+  slidesUrl?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
-  video?: Maybe<StringQueryOperatorInput>;
+  videoUrl?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2307,7 +2304,7 @@ export type QueryWorkshopEventArgs = {
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
-  video?: Maybe<StringQueryOperatorInput>;
+  videoUrl?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3395,11 +3392,12 @@ export type TalkEvent = Node & {
   endDate?: Maybe<Scalars['Date']>;
   isLightning?: Maybe<Scalars['Boolean']>;
   isKeynote?: Maybe<Scalars['Boolean']>;
-  location?: Maybe<Location>;
+  location: Location;
+  slidesUrl?: Maybe<Scalars['String']>;
   startDate?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
-  video?: Maybe<Scalars['String']>;
+  videoUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -3461,16 +3459,15 @@ export enum TalkEventFieldsEnum {
   isLightning = 'isLightning',
   isKeynote = 'isKeynote',
   location___address = 'location___address',
-  location___latitude = 'location___latitude',
-  location___longitude = 'location___longitude',
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
   location___zip = 'location___zip',
+  slidesUrl = 'slidesUrl',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
-  video = 'video',
+  videoUrl = 'videoUrl',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -3565,10 +3562,11 @@ export type TalkEventFilterInput = {
   isLightning?: Maybe<BooleanQueryOperatorInput>;
   isKeynote?: Maybe<BooleanQueryOperatorInput>;
   location?: Maybe<LocationFilterInput>;
+  slidesUrl?: Maybe<StringQueryOperatorInput>;
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
-  video?: Maybe<StringQueryOperatorInput>;
+  videoUrl?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -3762,7 +3760,7 @@ export type WorkshopEvent = Node & {
   startDate?: Maybe<Scalars['Date']>;
   title: Scalars['String'];
   url?: Maybe<Scalars['String']>;
-  video?: Maybe<Scalars['String']>;
+  videoUrl?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -3822,8 +3820,6 @@ export enum WorkshopEventFieldsEnum {
   date = 'date',
   endDate = 'endDate',
   location___address = 'location___address',
-  location___latitude = 'location___latitude',
-  location___longitude = 'location___longitude',
   location___name = 'location___name',
   location___city = 'location___city',
   location___country = 'location___country',
@@ -3831,7 +3827,7 @@ export enum WorkshopEventFieldsEnum {
   startDate = 'startDate',
   title = 'title',
   url = 'url',
-  video = 'video',
+  videoUrl = 'videoUrl',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -3927,7 +3923,7 @@ export type WorkshopEventFilterInput = {
   startDate?: Maybe<DateQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
-  video?: Maybe<StringQueryOperatorInput>;
+  videoUrl?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -4205,11 +4201,9 @@ export type TalksQuery = { __typename?: 'Query' } & {
                 dateFormatted: TalkEvent['date'];
                 startDateFormatted: TalkEvent['startDate'];
               } & {
-                location: Maybe<
-                  { __typename?: 'Location' } & Pick<
-                    Location,
-                    'city' | 'country'
-                  >
+                location: { __typename?: 'Location' } & Pick<
+                  Location,
+                  'city' | 'country'
                 >;
               }
           >;
@@ -4292,7 +4286,28 @@ export type TalkQueryVariables = {
 };
 
 export type TalkQuery = { __typename?: 'Query' } & {
-  talk: Maybe<{ __typename?: 'Talk' } & Pick<Talk, 'body' | 'title'>>;
+  talk: Maybe<
+    { __typename?: 'Talk' } & Pick<Talk, 'body' | 'title'> & {
+        events: Array<
+          { __typename?: 'TalkEvent' } & Pick<
+            TalkEvent,
+            'id' | 'isLightning' | 'slidesUrl' | 'title' | 'url' | 'videoUrl'
+          > & {
+              date: TalkEvent['date'];
+              dateFormatted: TalkEvent['date'];
+              endDate: TalkEvent['endDate'];
+              endDateFormatted: TalkEvent['endDate'];
+              startDate: TalkEvent['startDate'];
+              startDateFormatted: TalkEvent['startDate'];
+            } & {
+              location: { __typename?: 'Location' } & Pick<
+                Location,
+                'address' | 'city' | 'country' | 'name' | 'zip'
+              >;
+            }
+        >;
+      }
+  >;
 };
 
 export type GatsbyImageSharpFixedFragment = {
