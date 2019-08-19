@@ -4286,28 +4286,7 @@ export type TalkQueryVariables = {
 };
 
 export type TalkQuery = { __typename?: 'Query' } & {
-  talk: Maybe<
-    { __typename?: 'Talk' } & Pick<Talk, 'body' | 'title'> & {
-        events: Array<
-          { __typename?: 'TalkEvent' } & Pick<
-            TalkEvent,
-            'id' | 'isLightning' | 'slidesUrl' | 'title' | 'url' | 'videoUrl'
-          > & {
-              date: TalkEvent['date'];
-              dateFormatted: TalkEvent['date'];
-              endDate: TalkEvent['endDate'];
-              endDateFormatted: TalkEvent['endDate'];
-              startDate: TalkEvent['startDate'];
-              startDateFormatted: TalkEvent['startDate'];
-            } & {
-              location: { __typename?: 'Location' } & Pick<
-                Location,
-                'address' | 'city' | 'country' | 'name' | 'zip'
-              >;
-            }
-        >;
-      }
-  >;
+  talk: Maybe<{ __typename?: 'Talk' } & Pick<Talk, 'body' | 'title'>>;
 };
 
 export type GatsbyImageSharpFixedFragment = {

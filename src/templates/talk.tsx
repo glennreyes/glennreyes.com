@@ -99,6 +99,7 @@ const Flash = styled(FlashSvg)`
 
 const Media = styled.div`
   display: grid;
+  flex: 0 0 auto;
   gap: ${p => p.theme.space[2]}px;
   grid-template-columns: repeat(2, ${p => p.theme.space[5]}px);
   justify-content: end;
@@ -109,7 +110,7 @@ const IconLink = styled(Link)`
   align-items: center;
   background: ${p => p.theme.colors.bg};
   border-radius: 50%;
-  color: ${p => p.theme.colors.text};
+  color: ${p => p.theme.colors.invertedCardBg};
   display: flex;
   height: ${p => p.theme.space[5]}px;
   justify-content: center;
@@ -120,8 +121,16 @@ const IconLink = styled(Link)`
   }
 `;
 
-const IconWrapper = styled(props => <IconLink as="div" {...props} />)`
+const IconWrapper = styled.div`
+  align-items: center;
+  background: ${p => p.theme.colors.bg};
+  border-radius: 50%;
+  color: ${p => p.theme.colors.invertedCardBg};
+  display: flex;
+  height: ${p => p.theme.space[5]}px;
+  justify-content: center;
   opacity: 0.25;
+  width: ${p => p.theme.space[5]}px;
 `;
 
 const Talk = ({ data }: TalkProps) => {
@@ -208,28 +217,26 @@ const Talk = ({ data }: TalkProps) => {
               {date}
             </Date>
           )}
-          {(event.slidesUrl || event.videoUrl) && (
-            <Media>
-              {event.slidesUrl ? (
-                <IconLink target="_blank" title="Slides" to={event.slidesUrl}>
-                  <Film />
-                </IconLink>
-              ) : (
-                <IconWrapper>
-                  <Film />
-                </IconWrapper>
-              )}
-              {event.videoUrl ? (
-                <IconLink target="_blank" title="Video" to={event.videoUrl}>
-                  <Play />
-                </IconLink>
-              ) : (
-                <IconWrapper>
-                  <Play />
-                </IconWrapper>
-              )}
-            </Media>
-          )}
+          <Media>
+            {event.slidesUrl ? (
+              <IconLink target="_blank" title="Slides" to={event.slidesUrl}>
+                <Film />
+              </IconLink>
+            ) : (
+              <IconWrapper>
+                <Film />
+              </IconWrapper>
+            )}
+            {event.videoUrl ? (
+              <IconLink target="_blank" title="Video" to={event.videoUrl}>
+                <Play />
+              </IconLink>
+            ) : (
+              <IconWrapper>
+                <Play />
+              </IconWrapper>
+            )}
+          </Media>
         </Footer>
       </Card>
     );
