@@ -81,10 +81,11 @@ exports.createSchemaCustomization = async ({
       isLightning: Boolean
       isKeynote: Boolean
       location: Location!
+      slidesUrl: String
       startDate: Date @dateformat
       title: String!
       url: String
-      video: String
+      videoUrl: String
     }
 
     type WorkshopEvent implements Node {
@@ -94,7 +95,7 @@ exports.createSchemaCustomization = async ({
       startDate: Date @dateformat
       title: String!
       url: String
-      video: String
+      videoUrl: String
     }
 
     type Talk implements Node {
