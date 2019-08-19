@@ -69,8 +69,6 @@ exports.createSchemaCustomization = async ({
   const typeDefs = `
     type Location {
       address: String
-      latitude: Float
-      longitude: Float
       name: String
       city: String!
       country: String!
@@ -82,7 +80,7 @@ exports.createSchemaCustomization = async ({
       endDate: Date @dateformat
       isLightning: Boolean
       isKeynote: Boolean
-      location: Location
+      location: Location!
       startDate: Date @dateformat
       title: String!
       url: String
