@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { orderBy } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -63,13 +64,23 @@ type EventsProps = {
 
 const Events = ({ events }: EventsProps) => {
   const upcomingEvents = Array.isArray(events)
-    ? events.filter(event =>
-        dayjs(event.date || event.startDate).isAfter(dayjs()),
+    ? orderBy(
+        events.filter(event =>
+          dayjs(event.date || event.startDate).isAfter(dayjs()),
+        ),
+        [({ date, startDate }) => dayjs(date).unix() || dayjs(startDate)],
       )
     : [];
   const pastEvents = Array.isArray(events)
-    ? events.filter(event =>
-        dayjs(event.date || event.startDate).isBefore(dayjs()),
+    ? orderBy(
+        events.filter(event =>
+          dayjs(event.date || event.startDate).isBefore(dayjs()),
+        ),
+        [
+          ({ date, startDate }) =>
+            dayjs(date).unix() || dayjs(startDate).unix(),
+        ],
+        ['desc'],
       )
     : [];
 
