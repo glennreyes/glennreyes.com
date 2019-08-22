@@ -72,7 +72,7 @@ const Date = styled.p`
   flex: 0 1 auto;
   font-size: ${p => p.theme.fontSizes[1]}px;
   line-height: ${p => p.theme.lineHeights.body};
-  margin: 0 ${p => p.theme.space[1]}px 0 0;
+  margin: 0 auto 0 0;
 `;
 
 const MapLink = styled(Link)`
@@ -105,7 +105,7 @@ const Media = styled.div`
   gap: ${p => p.theme.space[2]}px;
   grid-template-columns: repeat(2, ${p => p.theme.space[5]}px);
   justify-content: end;
-  margin-left: auto;
+  margin-left: ${p => p.theme.space[1]}px;
 `;
 
 const IconLink = styled(Link)`
@@ -219,26 +219,28 @@ const Talk = ({ data }: TalkProps) => {
               {date}
             </Date>
           )}
-          <Media>
-            {event.slidesUrl ? (
-              <IconLink target="_blank" title="Slides" to={event.slidesUrl}>
-                <Film />
-              </IconLink>
-            ) : (
-              <IconWrapper>
-                <Film />
-              </IconWrapper>
-            )}
-            {event.videoUrl ? (
-              <IconLink target="_blank" title="Video" to={event.videoUrl}>
-                <Play />
-              </IconLink>
-            ) : (
-              <IconWrapper>
-                <Play />
-              </IconWrapper>
-            )}
-          </Media>
+          {pastEvents.some(({ id }) => id === event.id) && (
+            <Media>
+              {event.slidesUrl ? (
+                <IconLink target="_blank" title="Slides" to={event.slidesUrl}>
+                  <Film />
+                </IconLink>
+              ) : (
+                <IconWrapper>
+                  <Film />
+                </IconWrapper>
+              )}
+              {event.videoUrl ? (
+                <IconLink target="_blank" title="Video" to={event.videoUrl}>
+                  <Play />
+                </IconLink>
+              ) : (
+                <IconWrapper>
+                  <Play />
+                </IconWrapper>
+              )}
+            </Media>
+          )}
         </Footer>
       </Card>
     );
