@@ -4,6 +4,7 @@ import React from 'react';
 import Content from '../components/content';
 import Events from '../components/events';
 import Layout from '../components/layout';
+import TalkUpsell from '../components/talk-upsell';
 import { H1 } from '../components/mdx/headings';
 import SEO from '../components/seo';
 import { TalkQuery } from '../types/generated/graphql';
@@ -25,6 +26,7 @@ const Talk = ({ data }: TalkProps) => {
           {title && <H1>{title}</H1>}
           {body && <MDXRenderer>{body}</MDXRenderer>}
           <Events events={events} />
+          <TalkUpsell />
         </Content>
       )}
     </Layout>
