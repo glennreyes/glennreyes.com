@@ -81,6 +81,7 @@ exports.createSchemaCustomization = async ({
       isLightning: Boolean
       isKeynote: Boolean
       location: Location!
+      repoUrl: String
       slidesUrl: String
       startDate: Date @dateformat
       title: String!
@@ -92,6 +93,7 @@ exports.createSchemaCustomization = async ({
       date: Date @dateformat
       endDate: Date @dateformat
       location: Location
+      repoUrl: String
       startDate: Date @dateformat
       title: String!
       url: String
@@ -130,8 +132,10 @@ exports.createResolvers = async ({
   const allMdx = await getNodesByType('Mdx');
 
   const createEventNodes = type => {
-    const allMdxEvent = allMdx.filter(mdx =>
-      mdx.fileAbsolutePath.startsWith(`${__dirname}/content/events/`),
+    const allMdxEvent = allMdx.filter(
+      mdx =>
+        mdx.fileAbsolutePath.startsWith(`${__dirname}/content/events/`) &&
+        !!mdx.frontmatter[type.toLowerCase()],
     );
 
     return allMdxEvent.map(
@@ -158,6 +162,7 @@ exports.createResolvers = async ({
           location: frontmatter.location,
           parent: null,
           rawBody,
+          repoUrl: frontmatter.repoUrl,
           slidesUrl: frontmatter.slidesUrl,
           startDate: frontmatter.startDate,
           talk: frontmatter.talk,
