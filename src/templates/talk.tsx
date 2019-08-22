@@ -24,6 +24,7 @@ const Card = styled.div`
   background: ${p => p.theme.colors.invertedCardBg};
   border-radius: ${p => p.theme.radii[2]}px;
   margin: ${p => p.theme.space[2]}px 0;
+  overflow: hidden;
   padding: ${p => p.theme.space[2]}px;
 
   ${p => p.theme.media.tablet`
@@ -68,10 +69,10 @@ const Date = styled.p`
   align-items: center;
   color: ${p => p.theme.colors.invertedTextSecondary};
   display: inline-flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   font-size: ${p => p.theme.fontSizes[1]}px;
   line-height: ${p => p.theme.lineHeights.body};
-  margin: 0 auto 0 0;
+  margin: 0 ${p => p.theme.space[1]}px 0 0;
 `;
 
 const MapLink = styled(Link)`
@@ -89,6 +90,7 @@ const Pin = styled(PinSvg)`
 `;
 
 const Calendar = styled(CalendarSvg)`
+  flex: 0 0 auto;
   margin-right: ${p => p.theme.space[0]}px;
 `;
 
@@ -129,7 +131,7 @@ const IconWrapper = styled.div`
   display: flex;
   height: ${p => p.theme.space[5]}px;
   justify-content: center;
-  opacity: 0.25;
+  opacity: 0.1;
   width: ${p => p.theme.space[5]}px;
 `;
 
