@@ -48,7 +48,7 @@
     "gatsby-transformer-remark": "2.6.18",
     "gatsby-transformer-sharp": "2.2.10",
     "github-slugger": "1.2.1",
-    "graphql": "14.4.2",
+    "graphql": "14.5.0",
     "lodash": "4.17.15",
     "ms": "2.1.2",
     "polished": "3.4.1",
