@@ -9,10 +9,6 @@ import { system } from '../theme';
 
 const links = [
   {
-    label: 'About',
-    path: '/about/',
-  },
-  {
     label: 'Blog',
     path: '/blog/',
   },
@@ -23,6 +19,10 @@ const links = [
   {
     label: 'Workshops',
     path: '/workshops/',
+  },
+  {
+    label: 'About',
+    path: '/about/',
   },
   {
     label: 'Contact',
