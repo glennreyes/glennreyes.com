@@ -26,3 +26,6 @@ export const slugify = (node: React.ReactNode) =>
     deburr,
     onlyText,
   )(node);
+
+export const shortenUrl = (url: string) =>
+  url.replace(/^(https?:\/\/)(www\.)?(.*)/, '$3');

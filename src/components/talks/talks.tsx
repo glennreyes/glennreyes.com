@@ -4,9 +4,9 @@ import React from 'react';
 import Card from '../card';
 import Cards from '../cards';
 import CardBody from '../card-body';
+import CardEvents from '../card-events';
 import CardLink from '../card-link';
 import CardTitle from '../card-title';
-import Events from '../events';
 import { TalksQuery } from '../../types/generated/graphql';
 
 const Talks = () => {
@@ -56,7 +56,7 @@ const Talks = () => {
                   <MDXRenderer>{body}</MDXRenderer>
                 </CardBody>
               )}
-              <Events events={events} />
+              <CardEvents events={events} />
             </Card>
           ),
       )}
