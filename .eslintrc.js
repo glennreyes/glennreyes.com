@@ -224,6 +224,7 @@ module.exports = {
     'react/jsx-uses-vars': 'warn',
     'react/no-danger-with-children': 'warn',
     'react/no-direct-mutation-state': 'warn',
+    'react/no-unescaped-entities': 'off',
     'react/no-is-mounted': 'warn',
     'react/no-typos': 'warn',
     'react/prop-types': 'off',
