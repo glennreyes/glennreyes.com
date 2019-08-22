@@ -37,6 +37,14 @@ const Link = styled(
       );
     }
 
+    if (to.startsWith('mailto:')) {
+      return (
+        <a ref={ref} href={to} {...other}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       // rel="noopener" to prevent the new page from being able to access window.opener property
       // https://developers.google.com/web/tools/lighthouse/audits/noopener
