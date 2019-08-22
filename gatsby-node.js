@@ -106,6 +106,7 @@ exports.createSchemaCustomization = async ({
 
     type Workshop implements Node {
       body: String
+      description: String
       createdAt: Date @dateformat
       title: String!
     }
