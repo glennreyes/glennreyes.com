@@ -720,6 +720,8 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
   childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
+  childMdx___frontmatter___repoUrl = 'childMdx___frontmatter___repoUrl',
+  childMdx___frontmatter___workshop = 'childMdx___frontmatter___workshop',
   childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
   childMdx___frontmatter___draft = 'childMdx___frontmatter___draft',
   childMdx___frontmatter___createdAt = 'childMdx___frontmatter___createdAt',
@@ -1813,6 +1815,8 @@ export enum MdxFieldsEnum {
   frontmatter___videoUrl = 'frontmatter___videoUrl',
   frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___repoUrl = 'frontmatter___repoUrl',
+  frontmatter___workshop = 'frontmatter___workshop',
   frontmatter___isKeynote = 'frontmatter___isKeynote',
   frontmatter___draft = 'frontmatter___draft',
   frontmatter___cover___author___name = 'frontmatter___cover___author___name',
@@ -1991,6 +1995,8 @@ export type MdxFrontmatter = {
   videoUrl?: Maybe<Scalars['String']>,
   slidesUrl?: Maybe<Scalars['String']>,
   isLightning?: Maybe<Scalars['Boolean']>,
+  repoUrl?: Maybe<Scalars['String']>,
+  workshop?: Maybe<Scalars['String']>,
   isKeynote?: Maybe<Scalars['Boolean']>,
   draft?: Maybe<Scalars['Boolean']>,
   cover?: Maybe<MdxFrontmatterCover>,
@@ -2063,6 +2069,8 @@ export type MdxFrontmatterFilterInput = {
   videoUrl?: Maybe<StringQueryOperatorInput>,
   slidesUrl?: Maybe<StringQueryOperatorInput>,
   isLightning?: Maybe<BooleanQueryOperatorInput>,
+  repoUrl?: Maybe<StringQueryOperatorInput>,
+  workshop?: Maybe<StringQueryOperatorInput>,
   isKeynote?: Maybe<BooleanQueryOperatorInput>,
   draft?: Maybe<BooleanQueryOperatorInput>,
   cover?: Maybe<MdxFrontmatterCoverFilterInput>,
@@ -2342,6 +2350,7 @@ export type QueryTalkEventArgs = {
   isLightning?: Maybe<BooleanQueryOperatorInput>,
   isKeynote?: Maybe<BooleanQueryOperatorInput>,
   location?: Maybe<LocationFilterInput>,
+  repoUrl?: Maybe<StringQueryOperatorInput>,
   slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   title?: Maybe<StringQueryOperatorInput>,
@@ -2366,10 +2375,11 @@ export type QueryWorkshopEventArgs = {
   date?: Maybe<DateQueryOperatorInput>,
   endDate?: Maybe<DateQueryOperatorInput>,
   location?: Maybe<LocationFilterInput>,
+  repoUrl?: Maybe<StringQueryOperatorInput>,
+  slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   title?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
-  videoUrl?: Maybe<StringQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -3480,6 +3490,7 @@ export type TalkEvent = Node & {
   isLightning?: Maybe<Scalars['Boolean']>,
   isKeynote?: Maybe<Scalars['Boolean']>,
   location: Location,
+  repoUrl?: Maybe<Scalars['String']>,
   slidesUrl?: Maybe<Scalars['String']>,
   startDate?: Maybe<Scalars['Date']>,
   title: Scalars['String'],
@@ -3555,6 +3566,7 @@ export enum TalkEventFieldsEnum {
   location___city = 'location___city',
   location___country = 'location___country',
   location___zip = 'location___zip',
+  repoUrl = 'repoUrl',
   slidesUrl = 'slidesUrl',
   startDate = 'startDate',
   title = 'title',
@@ -3654,6 +3666,7 @@ export type TalkEventFilterInput = {
   isLightning?: Maybe<BooleanQueryOperatorInput>,
   isKeynote?: Maybe<BooleanQueryOperatorInput>,
   location?: Maybe<LocationFilterInput>,
+  repoUrl?: Maybe<StringQueryOperatorInput>,
   slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   title?: Maybe<StringQueryOperatorInput>,
@@ -3852,11 +3865,12 @@ export type WorkshopEvent = Node & {
   __typename?: 'WorkshopEvent',
   date?: Maybe<Scalars['Date']>,
   endDate?: Maybe<Scalars['Date']>,
-  location?: Maybe<Location>,
+  location: Location,
+  repoUrl?: Maybe<Scalars['String']>,
+  slidesUrl?: Maybe<Scalars['String']>,
   startDate?: Maybe<Scalars['Date']>,
   title: Scalars['String'],
   url?: Maybe<Scalars['String']>,
-  videoUrl?: Maybe<Scalars['String']>,
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -3925,10 +3939,11 @@ export enum WorkshopEventFieldsEnum {
   location___city = 'location___city',
   location___country = 'location___country',
   location___zip = 'location___zip',
+  repoUrl = 'repoUrl',
+  slidesUrl = 'slidesUrl',
   startDate = 'startDate',
   title = 'title',
   url = 'url',
-  videoUrl = 'videoUrl',
   id = 'id',
   parent___id = 'parent___id',
   parent___parent___id = 'parent___parent___id',
@@ -4021,10 +4036,11 @@ export type WorkshopEventFilterInput = {
   date?: Maybe<DateQueryOperatorInput>,
   endDate?: Maybe<DateQueryOperatorInput>,
   location?: Maybe<LocationFilterInput>,
+  repoUrl?: Maybe<StringQueryOperatorInput>,
+  slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   title?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
-  videoUrl?: Maybe<StringQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -4451,10 +4467,10 @@ export type WorkshopsQuery = (
         { __typename?: 'WorkshopEvent' }
         & Pick<WorkshopEvent, 'date' | 'id' | 'startDate' | 'title'>
         & { dateFormatted: WorkshopEvent['date'], startDateFormatted: WorkshopEvent['startDate'] }
-        & { location: Maybe<(
+        & { location: (
           { __typename?: 'Location' }
           & Pick<Location, 'city' | 'country'>
-        )> }
+        ) }
       )> }
     )> }
   ) }
@@ -4534,6 +4550,28 @@ export type TalkQuery = (
       { __typename?: 'TalkEvent' }
       & Pick<TalkEvent, 'id' | 'isLightning' | 'slidesUrl' | 'title' | 'url' | 'videoUrl'>
       & { date: TalkEvent['date'], dateFormatted: TalkEvent['date'], endDate: TalkEvent['endDate'], endDateFormatted: TalkEvent['endDate'], startDate: TalkEvent['startDate'], startDateFormatted: TalkEvent['startDate'] }
+      & { location: (
+        { __typename?: 'Location' }
+        & Pick<Location, 'address' | 'city' | 'country' | 'name' | 'zip'>
+      ) }
+    )> }
+  )> }
+);
+
+export type WorkshopQueryVariables = {
+  id: Scalars['String']
+};
+
+
+export type WorkshopQuery = (
+  { __typename?: 'Query' }
+  & { workshop: Maybe<(
+    { __typename?: 'Workshop' }
+    & Pick<Workshop, 'body' | 'title'>
+    & { events: Array<(
+      { __typename?: 'WorkshopEvent' }
+      & Pick<WorkshopEvent, 'id' | 'slidesUrl' | 'title' | 'url'>
+      & { date: WorkshopEvent['date'], dateFormatted: WorkshopEvent['date'], endDate: WorkshopEvent['endDate'], endDateFormatted: WorkshopEvent['endDate'], startDate: WorkshopEvent['startDate'], startDateFormatted: WorkshopEvent['startDate'] }
       & { location: (
         { __typename?: 'Location' }
         & Pick<Location, 'address' | 'city' | 'country' | 'name' | 'zip'>

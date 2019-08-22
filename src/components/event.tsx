@@ -24,6 +24,7 @@ const Card = styled.div`
 `;
 
 const Title = styled.h3`
+  color: ${p => p.theme.colors.invertedText};
   font-size: ${p => p.theme.fontSizes[4]}px;
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.heading};

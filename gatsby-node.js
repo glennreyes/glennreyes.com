@@ -22,6 +22,12 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
           }
         }
+        workshops: allWorkshop {
+          nodes {
+            id
+            slug
+          }
+        }
       }
     `,
   );
@@ -59,6 +65,17 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+  // Create workshop pages
+  const workshopComponent = require.resolve('./src/templates/workshop.tsx');
+  const workshops = result.data.workshops.nodes;
+  workshops.forEach(workshop => {
+    actions.createPage({
+      component: workshopComponent,
+      context: { id: workshop.id },
+      path: workshop.slug,
+    });
+  });
+
   return result;
 };
 
@@ -92,12 +109,12 @@ exports.createSchemaCustomization = async ({
     type WorkshopEvent implements Node {
       date: Date @dateformat
       endDate: Date @dateformat
-      location: Location
+      location: Location!
       repoUrl: String
+      slidesUrl: String
       startDate: Date @dateformat
       title: String!
       url: String
-      videoUrl: String
     }
 
     type Talk implements Node {
@@ -246,25 +263,27 @@ exports.createResolvers = async ({
     ...createWorkshopNodes(),
   ]);
 
+  const bodyResolver = async source => {
+    const { body } = await genMDX({
+      node: source,
+      getNode,
+      getNodes,
+      reporter,
+      cache,
+      // Passing bare minimum of mdx options as there won't be any fancy
+      // mark up in the description
+      options: defaultOptions({ gatsbyRemarkPlugins: [] }),
+      pathPrefix,
+    });
+
+    return body;
+  };
+
   const resolvers = {
     Talk: {
       body: {
         type: 'String',
-        resolve: async source => {
-          const { body } = await genMDX({
-            node: source,
-            getNode,
-            getNodes,
-            reporter,
-            cache,
-            // Passing bare minimum of mdx options as there won't be any fancy
-            // mark up in the description
-            options: defaultOptions({ gatsbyRemarkPlugins: [] }),
-            pathPrefix,
-          });
-
-          return body;
-        },
+        resolve: bodyResolver,
       },
       events: {
         type: '[TalkEvent!]!',
@@ -300,6 +319,10 @@ exports.createResolvers = async ({
       },
     },
     Workshop: {
+      body: {
+        type: 'String',
+        resolve: bodyResolver,
+      },
       events: {
         type: '[WorkshopEvent!]!',
         resolve: (source, args, context) =>
