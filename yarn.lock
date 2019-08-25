@@ -11783,10 +11783,10 @@ react-tilt@0.1.4:
   resolved "https://registry.yarnpkg.com/react-tilt/-/react-tilt-0.1.4.tgz#0ac1f33674a3fff6c617cf411002d7ecdd2ebcb1"
   integrity sha512-bVeRumg+RIn6QN8S92UmubGqX/BG6/QeQISBeAcrS/70dpo/jVj+sjikIawDl5wTuPdubFH8zH0EMulWIctsnw==
 
-react-use@11.0.2:
-  version "11.0.2"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-11.0.2.tgz#d227f0401640e3c970e946c05bf0ee7a1e245565"
-  integrity sha512-6mr3SdimTdAOw9kZbNre8GfH8RrS8hjOkyjKprSf+nKnXSXD16Bc1TzK0OtePuLpZWVBmcX1777mD7NPeUd1cg==
+react-use@11.1.1:
+  version "11.1.1"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-11.1.1.tgz#6012a753319f8b4e681f274b55f42beed695f480"
+  integrity sha512-dpl9UDtfBPb0YhTUEwsclbrMMIW+NwFnkyNrI6pwqO0B0KaHGIePruNGx7n/i6Kxz/kNp3LHxEWT9kvGssy25Q==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
@@ -11794,6 +11794,7 @@ react-use@11.0.2:
     react-fast-compare "^2.0.4"
     react-wait "^0.3.0"
     screenfull "^4.1.0"
+    set-harmonic-interval "^1.0.0"
     throttle-debounce "^2.0.1"
     ts-easing "^0.2.0"
 
@@ -12725,6 +12726,11 @@ set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
+
+set-harmonic-interval@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/set-harmonic-interval/-/set-harmonic-interval-1.0.0.tgz#2759658395579fc336b9cd026eefe1ad9e742f9b"
+  integrity sha512-RJtrhB5G10e5A1auBv/jHGq0KWfHH8PAb4ln4+kjiHS46aAP12rSdarSj9GDlxQ3QULA2pefEDpm9Y1Xnz+eng==
 
 set-value@^2.0.0, set-value@^2.0.1:
   version "2.0.1"
