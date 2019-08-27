@@ -1,3 +1,4 @@
 {
-  "extends": [":automergeMinor", "config:js-app"]
+  "extends": [":automergeMinor", "config:js-app"],
+  "ignoreDeps": ["gatsby-image"]
 }
