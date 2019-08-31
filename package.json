@@ -62,9 +62,9 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "1.6.1",
-    "@graphql-codegen/typescript": "1.6.1",
-    "@graphql-codegen/typescript-operations": "1.6.1",
+    "@graphql-codegen/cli": "1.7.0",
+    "@graphql-codegen/typescript": "1.7.0",
+    "@graphql-codegen/typescript-operations": "1.7.0",
     "@types/lodash": "4.14.138",
     "@types/ms": "0.7.30",
     "@types/node": "12.7.3",
