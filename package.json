@@ -78,7 +78,7 @@
     "confusing-browser-globals": "1.0.8",
     "dotenv": "8.1.0",
     "eslint": "6.3.0",
-    "eslint-config-prettier": "6.1.0",
+    "eslint-config-prettier": "6.2.0",
     "eslint-loader": "3.0.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
