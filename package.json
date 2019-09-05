@@ -64,7 +64,7 @@
     "react-helmet": "5.2.1",
     "react-pose": "4.0.8",
     "react-tilt": "0.1.4",
-    "react-use": "11.3.2",
+    "react-use": "12.2.0",
     "styled-components": "4.3.2",
     "xml2js": "0.4.22"
   },
