@@ -45,7 +45,7 @@ export type DateQueryOperatorInput = {
 };
 
 export type Directory = Node & {
-  __typename?: 'Directory',
+   __typename?: 'Directory',
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -150,7 +150,7 @@ export type DirectoryBirthtimeArgs = {
 };
 
 export type DirectoryConnection = {
-  __typename?: 'DirectoryConnection',
+   __typename?: 'DirectoryConnection',
   totalCount: Scalars['Int'],
   edges: Array<DirectoryEdge>,
   nodes: Array<Directory>,
@@ -172,7 +172,7 @@ export type DirectoryConnectionGroupArgs = {
 };
 
 export type DirectoryEdge = {
-  __typename?: 'DirectoryEdge',
+   __typename?: 'DirectoryEdge',
   next?: Maybe<Directory>,
   node: Directory,
   previous?: Maybe<Directory>,
@@ -341,7 +341,7 @@ export type DirectoryFilterInput = {
 };
 
 export type DirectoryGroupConnection = {
-  __typename?: 'DirectoryGroupConnection',
+   __typename?: 'DirectoryGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<DirectoryEdge>,
   nodes: Array<Directory>,
@@ -362,7 +362,7 @@ export type DuotoneGradient = {
 };
 
 export type File = Node & {
-  __typename?: 'File',
+   __typename?: 'File',
   birthtime?: Maybe<Scalars['Date']>,
   birthtimeMs?: Maybe<Scalars['Float']>,
   sourceInstanceName?: Maybe<Scalars['String']>,
@@ -464,7 +464,7 @@ export type FileCtimeArgs = {
 };
 
 export type FileConnection = {
-  __typename?: 'FileConnection',
+   __typename?: 'FileConnection',
   totalCount: Scalars['Int'],
   edges: Array<FileEdge>,
   nodes: Array<File>,
@@ -486,7 +486,7 @@ export type FileConnectionGroupArgs = {
 };
 
 export type FileEdge = {
-  __typename?: 'FileEdge',
+   __typename?: 'FileEdge',
   next?: Maybe<File>,
   node: File,
   previous?: Maybe<File>,
@@ -718,8 +718,8 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
-  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
+  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___repoUrl = 'childMdx___frontmatter___repoUrl',
   childMdx___frontmatter___workshop = 'childMdx___frontmatter___workshop',
   childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
@@ -877,7 +877,7 @@ export type FileFilterInput = {
 };
 
 export type FileGroupConnection = {
-  __typename?: 'FileGroupConnection',
+   __typename?: 'FileGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<FileEdge>,
   nodes: Array<File>,
@@ -939,7 +939,7 @@ export enum ImageFormat {
 }
 
 export type ImageSharp = Node & {
-  __typename?: 'ImageSharp',
+   __typename?: 'ImageSharp',
   id: Scalars['ID'],
   fixed?: Maybe<ImageSharpFixed>,
   resolutions?: Maybe<ImageSharpResolutions>,
@@ -1057,7 +1057,7 @@ export type ImageSharpResizeArgs = {
 };
 
 export type ImageSharpConnection = {
-  __typename?: 'ImageSharpConnection',
+   __typename?: 'ImageSharpConnection',
   totalCount: Scalars['Int'],
   edges: Array<ImageSharpEdge>,
   nodes: Array<ImageSharp>,
@@ -1079,7 +1079,7 @@ export type ImageSharpConnectionGroupArgs = {
 };
 
 export type ImageSharpEdge = {
-  __typename?: 'ImageSharpEdge',
+   __typename?: 'ImageSharpEdge',
   next?: Maybe<ImageSharp>,
   node: ImageSharp,
   previous?: Maybe<ImageSharp>,
@@ -1241,7 +1241,7 @@ export type ImageSharpFilterInput = {
 };
 
 export type ImageSharpFixed = {
-  __typename?: 'ImageSharpFixed',
+   __typename?: 'ImageSharpFixed',
   base64?: Maybe<Scalars['String']>,
   tracedSVG?: Maybe<Scalars['String']>,
   aspectRatio?: Maybe<Scalars['Float']>,
@@ -1268,7 +1268,7 @@ export type ImageSharpFixedFilterInput = {
 };
 
 export type ImageSharpFluid = {
-  __typename?: 'ImageSharpFluid',
+   __typename?: 'ImageSharpFluid',
   base64?: Maybe<Scalars['String']>,
   tracedSVG?: Maybe<Scalars['String']>,
   aspectRatio?: Maybe<Scalars['Float']>,
@@ -1299,7 +1299,7 @@ export type ImageSharpFluidFilterInput = {
 };
 
 export type ImageSharpGroupConnection = {
-  __typename?: 'ImageSharpGroupConnection',
+   __typename?: 'ImageSharpGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<ImageSharpEdge>,
   nodes: Array<ImageSharp>,
@@ -1309,7 +1309,7 @@ export type ImageSharpGroupConnection = {
 };
 
 export type ImageSharpOriginal = {
-  __typename?: 'ImageSharpOriginal',
+   __typename?: 'ImageSharpOriginal',
   width?: Maybe<Scalars['Float']>,
   height?: Maybe<Scalars['Float']>,
   src?: Maybe<Scalars['String']>,
@@ -1322,7 +1322,7 @@ export type ImageSharpOriginalFilterInput = {
 };
 
 export type ImageSharpResize = {
-  __typename?: 'ImageSharpResize',
+   __typename?: 'ImageSharpResize',
   src?: Maybe<Scalars['String']>,
   tracedSVG?: Maybe<Scalars['String']>,
   width?: Maybe<Scalars['Int']>,
@@ -1341,7 +1341,7 @@ export type ImageSharpResizeFilterInput = {
 };
 
 export type ImageSharpResolutions = {
-  __typename?: 'ImageSharpResolutions',
+   __typename?: 'ImageSharpResolutions',
   base64?: Maybe<Scalars['String']>,
   tracedSVG?: Maybe<Scalars['String']>,
   aspectRatio?: Maybe<Scalars['Float']>,
@@ -1368,7 +1368,7 @@ export type ImageSharpResolutionsFilterInput = {
 };
 
 export type ImageSharpSizes = {
-  __typename?: 'ImageSharpSizes',
+   __typename?: 'ImageSharpSizes',
   base64?: Maybe<Scalars['String']>,
   tracedSVG?: Maybe<Scalars['String']>,
   aspectRatio?: Maybe<Scalars['Float']>,
@@ -1404,7 +1404,7 @@ export type ImageSharpSortInput = {
 };
 
 export type Internal = {
-  __typename?: 'Internal',
+   __typename?: 'Internal',
   content?: Maybe<Scalars['String']>,
   contentDigest: Scalars['String'],
   description?: Maybe<Scalars['String']>,
@@ -1448,7 +1448,7 @@ export type JsonQueryOperatorInput = {
 };
 
 export type Location = {
-  __typename?: 'Location',
+   __typename?: 'Location',
   address?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
   city: Scalars['String'],
@@ -1471,7 +1471,7 @@ export enum MarkdownExcerptFormats {
 }
 
 export type MarkdownHeading = {
-  __typename?: 'MarkdownHeading',
+   __typename?: 'MarkdownHeading',
   value?: Maybe<Scalars['String']>,
   depth?: Maybe<Scalars['Int']>,
 };
@@ -1495,7 +1495,7 @@ export enum MarkdownHeadingLevels {
 }
 
 export type MarkdownRemark = Node & {
-  __typename?: 'MarkdownRemark',
+   __typename?: 'MarkdownRemark',
   id: Scalars['ID'],
   frontmatter?: Maybe<MarkdownRemarkFrontmatter>,
   excerpt?: Maybe<Scalars['String']>,
@@ -1539,7 +1539,7 @@ export type MarkdownRemarkTableOfContentsArgs = {
 };
 
 export type MarkdownRemarkConnection = {
-  __typename?: 'MarkdownRemarkConnection',
+   __typename?: 'MarkdownRemarkConnection',
   totalCount: Scalars['Int'],
   edges: Array<MarkdownRemarkEdge>,
   nodes: Array<MarkdownRemark>,
@@ -1561,7 +1561,7 @@ export type MarkdownRemarkConnectionGroupArgs = {
 };
 
 export type MarkdownRemarkEdge = {
-  __typename?: 'MarkdownRemarkEdge',
+   __typename?: 'MarkdownRemarkEdge',
   next?: Maybe<MarkdownRemark>,
   node: MarkdownRemark,
   previous?: Maybe<MarkdownRemark>,
@@ -1691,7 +1691,7 @@ export type MarkdownRemarkFilterInput = {
 };
 
 export type MarkdownRemarkFrontmatter = {
-  __typename?: 'MarkdownRemarkFrontmatter',
+   __typename?: 'MarkdownRemarkFrontmatter',
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
 };
@@ -1702,7 +1702,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
 };
 
 export type MarkdownRemarkGroupConnection = {
-  __typename?: 'MarkdownRemarkGroupConnection',
+   __typename?: 'MarkdownRemarkGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<MarkdownRemarkEdge>,
   nodes: Array<MarkdownRemark>,
@@ -1717,7 +1717,7 @@ export type MarkdownRemarkSortInput = {
 };
 
 export type MarkdownWordCount = {
-  __typename?: 'MarkdownWordCount',
+   __typename?: 'MarkdownWordCount',
   paragraphs?: Maybe<Scalars['Int']>,
   sentences?: Maybe<Scalars['Int']>,
   words?: Maybe<Scalars['Int']>,
@@ -1730,7 +1730,7 @@ export type MarkdownWordCountFilterInput = {
 };
 
 export type Mdx = Node & {
-  __typename?: 'Mdx',
+   __typename?: 'Mdx',
   rawBody: Scalars['String'],
   fileAbsolutePath: Scalars['String'],
   frontmatter?: Maybe<MdxFrontmatter>,
@@ -1765,7 +1765,7 @@ export type MdxTableOfContentsArgs = {
 };
 
 export type MdxConnection = {
-  __typename?: 'MdxConnection',
+   __typename?: 'MdxConnection',
   totalCount: Scalars['Int'],
   edges: Array<MdxEdge>,
   nodes: Array<Mdx>,
@@ -1787,14 +1787,14 @@ export type MdxConnectionGroupArgs = {
 };
 
 export type MdxEdge = {
-  __typename?: 'MdxEdge',
+   __typename?: 'MdxEdge',
   next?: Maybe<Mdx>,
   node: Mdx,
   previous?: Maybe<Mdx>,
 };
 
 export type MdxFields = {
-  __typename?: 'MdxFields',
+   __typename?: 'MdxFields',
   slug?: Maybe<Scalars['String']>,
 };
 
@@ -1813,8 +1813,8 @@ export enum MdxFieldsEnum {
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
   frontmatter___videoUrl = 'frontmatter___videoUrl',
-  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___isLightning = 'frontmatter___isLightning',
+  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___repoUrl = 'frontmatter___repoUrl',
   frontmatter___workshop = 'frontmatter___workshop',
   frontmatter___isKeynote = 'frontmatter___isKeynote',
@@ -1983,7 +1983,7 @@ export type MdxFilterInput = {
 };
 
 export type MdxFrontmatter = {
-  __typename?: 'MdxFrontmatter',
+   __typename?: 'MdxFrontmatter',
   title: Scalars['String'],
   description?: Maybe<Scalars['String']>,
   date?: Maybe<Scalars['Date']>,
@@ -1993,8 +1993,8 @@ export type MdxFrontmatter = {
   talk?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
   videoUrl?: Maybe<Scalars['String']>,
-  slidesUrl?: Maybe<Scalars['String']>,
   isLightning?: Maybe<Scalars['Boolean']>,
+  slidesUrl?: Maybe<Scalars['String']>,
   repoUrl?: Maybe<Scalars['String']>,
   workshop?: Maybe<Scalars['String']>,
   isKeynote?: Maybe<Scalars['Boolean']>,
@@ -2036,13 +2036,13 @@ export type MdxFrontmatterCreatedAtArgs = {
 };
 
 export type MdxFrontmatterCover = {
-  __typename?: 'MdxFrontmatterCover',
+   __typename?: 'MdxFrontmatterCover',
   author?: Maybe<MdxFrontmatterCoverAuthor>,
   photo?: Maybe<File>,
 };
 
 export type MdxFrontmatterCoverAuthor = {
-  __typename?: 'MdxFrontmatterCoverAuthor',
+   __typename?: 'MdxFrontmatterCoverAuthor',
   name?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
 };
@@ -2067,8 +2067,8 @@ export type MdxFrontmatterFilterInput = {
   talk?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
   videoUrl?: Maybe<StringQueryOperatorInput>,
-  slidesUrl?: Maybe<StringQueryOperatorInput>,
   isLightning?: Maybe<BooleanQueryOperatorInput>,
+  slidesUrl?: Maybe<StringQueryOperatorInput>,
   repoUrl?: Maybe<StringQueryOperatorInput>,
   workshop?: Maybe<StringQueryOperatorInput>,
   isKeynote?: Maybe<BooleanQueryOperatorInput>,
@@ -2078,7 +2078,7 @@ export type MdxFrontmatterFilterInput = {
 };
 
 export type MdxFrontmatterLocation = {
-  __typename?: 'MdxFrontmatterLocation',
+   __typename?: 'MdxFrontmatterLocation',
   address?: Maybe<Scalars['String']>,
   city?: Maybe<Scalars['String']>,
   country?: Maybe<Scalars['String']>,
@@ -2093,7 +2093,7 @@ export type MdxFrontmatterLocationFilterInput = {
 };
 
 export type MdxGroupConnection = {
-  __typename?: 'MdxGroupConnection',
+   __typename?: 'MdxGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<MdxEdge>,
   nodes: Array<Mdx>,
@@ -2103,7 +2103,7 @@ export type MdxGroupConnection = {
 };
 
 export type MdxHeadingMdx = {
-  __typename?: 'MdxHeadingMdx',
+   __typename?: 'MdxHeadingMdx',
   value?: Maybe<Scalars['String']>,
   depth?: Maybe<Scalars['Int']>,
 };
@@ -2123,7 +2123,7 @@ export type MdxSortInput = {
 };
 
 export type MdxWordCount = {
-  __typename?: 'MdxWordCount',
+   __typename?: 'MdxWordCount',
   paragraphs?: Maybe<Scalars['Int']>,
   sentences?: Maybe<Scalars['Int']>,
   words?: Maybe<Scalars['Int']>,
@@ -2155,7 +2155,7 @@ export type NodeFilterListInput = {
 };
 
 export type PageInfo = {
-  __typename?: 'PageInfo',
+   __typename?: 'PageInfo',
   currentPage: Scalars['Int'],
   hasPreviousPage: Scalars['Boolean'],
   hasNextPage: Scalars['Boolean'],
@@ -2186,7 +2186,7 @@ export enum PotraceTurnPolicy {
 }
 
 export type Query = {
-  __typename?: 'Query',
+   __typename?: 'Query',
   mdx?: Maybe<Mdx>,
   allMdx: MdxConnection,
   file?: Maybe<File>,
@@ -2555,7 +2555,7 @@ export type QueryAllDirectoryArgs = {
 };
 
 export type Site = Node & {
-  __typename?: 'Site',
+   __typename?: 'Site',
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -2577,7 +2577,7 @@ export type SiteBuildTimeArgs = {
 };
 
 export type SiteConnection = {
-  __typename?: 'SiteConnection',
+   __typename?: 'SiteConnection',
   totalCount: Scalars['Int'],
   edges: Array<SiteEdge>,
   nodes: Array<Site>,
@@ -2599,7 +2599,7 @@ export type SiteConnectionGroupArgs = {
 };
 
 export type SiteEdge = {
-  __typename?: 'SiteEdge',
+   __typename?: 'SiteEdge',
   next?: Maybe<Site>,
   node: Site,
   previous?: Maybe<Site>,
@@ -2717,7 +2717,7 @@ export type SiteFilterInput = {
 };
 
 export type SiteGroupConnection = {
-  __typename?: 'SiteGroupConnection',
+   __typename?: 'SiteGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<SiteEdge>,
   nodes: Array<Site>,
@@ -2727,7 +2727,7 @@ export type SiteGroupConnection = {
 };
 
 export type SitePage = Node & {
-  __typename?: 'SitePage',
+   __typename?: 'SitePage',
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -2744,7 +2744,7 @@ export type SitePage = Node & {
 };
 
 export type SitePageConnection = {
-  __typename?: 'SitePageConnection',
+   __typename?: 'SitePageConnection',
   totalCount: Scalars['Int'],
   edges: Array<SitePageEdge>,
   nodes: Array<SitePage>,
@@ -2766,7 +2766,7 @@ export type SitePageConnectionGroupArgs = {
 };
 
 export type SitePageContext = {
-  __typename?: 'SitePageContext',
+   __typename?: 'SitePageContext',
   id?: Maybe<Scalars['String']>,
   frontmatter?: Maybe<SitePageContextFrontmatter>,
 };
@@ -2777,7 +2777,7 @@ export type SitePageContextFilterInput = {
 };
 
 export type SitePageContextFrontmatter = {
-  __typename?: 'SitePageContextFrontmatter',
+   __typename?: 'SitePageContextFrontmatter',
   title?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
 };
@@ -2788,7 +2788,7 @@ export type SitePageContextFrontmatterFilterInput = {
 };
 
 export type SitePageEdge = {
-  __typename?: 'SitePageEdge',
+   __typename?: 'SitePageEdge',
   next?: Maybe<SitePage>,
   node: SitePage,
   previous?: Maybe<SitePage>,
@@ -2995,7 +2995,7 @@ export type SitePageFilterInput = {
 };
 
 export type SitePageGroupConnection = {
-  __typename?: 'SitePageGroupConnection',
+   __typename?: 'SitePageGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<SitePageEdge>,
   nodes: Array<SitePage>,
@@ -3010,7 +3010,7 @@ export type SitePageSortInput = {
 };
 
 export type SitePlugin = Node & {
-  __typename?: 'SitePlugin',
+   __typename?: 'SitePlugin',
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -3027,7 +3027,7 @@ export type SitePlugin = Node & {
 };
 
 export type SitePluginConnection = {
-  __typename?: 'SitePluginConnection',
+   __typename?: 'SitePluginConnection',
   totalCount: Scalars['Int'],
   edges: Array<SitePluginEdge>,
   nodes: Array<SitePlugin>,
@@ -3049,7 +3049,7 @@ export type SitePluginConnectionGroupArgs = {
 };
 
 export type SitePluginEdge = {
-  __typename?: 'SitePluginEdge',
+   __typename?: 'SitePluginEdge',
   next?: Maybe<SitePlugin>,
   node: SitePlugin,
   previous?: Maybe<SitePlugin>,
@@ -3209,7 +3209,7 @@ export type SitePluginFilterInput = {
 };
 
 export type SitePluginGroupConnection = {
-  __typename?: 'SitePluginGroupConnection',
+   __typename?: 'SitePluginGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<SitePluginEdge>,
   nodes: Array<SitePlugin>,
@@ -3219,7 +3219,7 @@ export type SitePluginGroupConnection = {
 };
 
 export type SitePluginPackageJson = {
-  __typename?: 'SitePluginPackageJson',
+   __typename?: 'SitePluginPackageJson',
   name?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
@@ -3232,7 +3232,7 @@ export type SitePluginPackageJson = {
 };
 
 export type SitePluginPackageJsonDependencies = {
-  __typename?: 'SitePluginPackageJsonDependencies',
+   __typename?: 'SitePluginPackageJsonDependencies',
   name?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
 };
@@ -3247,7 +3247,7 @@ export type SitePluginPackageJsonDependenciesFilterListInput = {
 };
 
 export type SitePluginPackageJsonDevDependencies = {
-  __typename?: 'SitePluginPackageJsonDevDependencies',
+   __typename?: 'SitePluginPackageJsonDevDependencies',
   name?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
 };
@@ -3274,7 +3274,7 @@ export type SitePluginPackageJsonFilterInput = {
 };
 
 export type SitePluginPackageJsonPeerDependencies = {
-  __typename?: 'SitePluginPackageJsonPeerDependencies',
+   __typename?: 'SitePluginPackageJsonPeerDependencies',
   name?: Maybe<Scalars['String']>,
   version?: Maybe<Scalars['String']>,
 };
@@ -3289,7 +3289,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  __typename?: 'SitePluginPluginOptions',
+   __typename?: 'SitePluginPluginOptions',
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
   siteUrl?: Maybe<Scalars['String']>,
   anonymize?: Maybe<Scalars['Boolean']>,
@@ -3312,7 +3312,7 @@ export type SitePluginPluginOptions = {
 };
 
 export type SitePluginPluginOptionsDefaultLayouts = {
-  __typename?: 'SitePluginPluginOptionsDefaultLayouts',
+   __typename?: 'SitePluginPluginOptionsDefaultLayouts',
   default?: Maybe<Scalars['String']>,
 };
 
@@ -3343,7 +3343,7 @@ export type SitePluginPluginOptionsFilterInput = {
 };
 
 export type SitePluginPluginOptionsPlugins = {
-  __typename?: 'SitePluginPluginOptionsPlugins',
+   __typename?: 'SitePluginPluginOptionsPlugins',
   resolve?: Maybe<Scalars['String']>,
   id?: Maybe<Scalars['String']>,
   name?: Maybe<Scalars['String']>,
@@ -3368,7 +3368,7 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 };
 
 export type SitePluginPluginOptionsSvgoConfig = {
-  __typename?: 'SitePluginPluginOptionsSvgoConfig',
+   __typename?: 'SitePluginPluginOptionsSvgoConfig',
   plugins?: Maybe<SitePluginPluginOptionsSvgoConfigPlugins>,
 };
 
@@ -3377,7 +3377,7 @@ export type SitePluginPluginOptionsSvgoConfigFilterInput = {
 };
 
 export type SitePluginPluginOptionsSvgoConfigPlugins = {
-  __typename?: 'SitePluginPluginOptionsSvgoConfigPlugins',
+   __typename?: 'SitePluginPluginOptionsSvgoConfigPlugins',
   removeViewBox?: Maybe<Scalars['Boolean']>,
 };
 
@@ -3386,7 +3386,7 @@ export type SitePluginPluginOptionsSvgoConfigPluginsFilterInput = {
 };
 
 export type SitePluginPluginOptionsSvgProps = {
-  __typename?: 'SitePluginPluginOptionsSvgProps',
+   __typename?: 'SitePluginPluginOptionsSvgProps',
   fill?: Maybe<Scalars['String']>,
 };
 
@@ -3400,7 +3400,7 @@ export type SitePluginSortInput = {
 };
 
 export type SiteSiteMetadata = {
-  __typename?: 'SiteSiteMetadata',
+   __typename?: 'SiteSiteMetadata',
   author?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   siteUrl?: Maybe<Scalars['String']>,
@@ -3434,7 +3434,7 @@ export type StringQueryOperatorInput = {
 };
 
 export type Talk = Node & {
-  __typename?: 'Talk',
+   __typename?: 'Talk',
   body?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
   title: Scalars['String'],
@@ -3455,7 +3455,7 @@ export type TalkCreatedAtArgs = {
 };
 
 export type TalkConnection = {
-  __typename?: 'TalkConnection',
+   __typename?: 'TalkConnection',
   totalCount: Scalars['Int'],
   edges: Array<TalkEdge>,
   nodes: Array<Talk>,
@@ -3477,14 +3477,14 @@ export type TalkConnectionGroupArgs = {
 };
 
 export type TalkEdge = {
-  __typename?: 'TalkEdge',
+   __typename?: 'TalkEdge',
   next?: Maybe<Talk>,
   node: Talk,
   previous?: Maybe<Talk>,
 };
 
 export type TalkEvent = Node & {
-  __typename?: 'TalkEvent',
+   __typename?: 'TalkEvent',
   date?: Maybe<Scalars['Date']>,
   endDate?: Maybe<Scalars['Date']>,
   isLightning?: Maybe<Scalars['Boolean']>,
@@ -3528,7 +3528,7 @@ export type TalkEventStartDateArgs = {
 };
 
 export type TalkEventConnection = {
-  __typename?: 'TalkEventConnection',
+   __typename?: 'TalkEventConnection',
   totalCount: Scalars['Int'],
   edges: Array<TalkEventEdge>,
   nodes: Array<TalkEvent>,
@@ -3550,7 +3550,7 @@ export type TalkEventConnectionGroupArgs = {
 };
 
 export type TalkEventEdge = {
-  __typename?: 'TalkEventEdge',
+   __typename?: 'TalkEventEdge',
   next?: Maybe<TalkEvent>,
   node: TalkEvent,
   previous?: Maybe<TalkEvent>,
@@ -3679,7 +3679,7 @@ export type TalkEventFilterInput = {
 };
 
 export type TalkEventGroupConnection = {
-  __typename?: 'TalkEventGroupConnection',
+   __typename?: 'TalkEventGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<TalkEventEdge>,
   nodes: Array<TalkEvent>,
@@ -3796,7 +3796,7 @@ export type TalkFilterInput = {
 };
 
 export type TalkGroupConnection = {
-  __typename?: 'TalkGroupConnection',
+   __typename?: 'TalkGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<TalkEdge>,
   nodes: Array<Talk>,
@@ -3811,7 +3811,7 @@ export type TalkSortInput = {
 };
 
 export type Workshop = Node & {
-  __typename?: 'Workshop',
+   __typename?: 'Workshop',
   body?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
@@ -3833,7 +3833,7 @@ export type WorkshopCreatedAtArgs = {
 };
 
 export type WorkshopConnection = {
-  __typename?: 'WorkshopConnection',
+   __typename?: 'WorkshopConnection',
   totalCount: Scalars['Int'],
   edges: Array<WorkshopEdge>,
   nodes: Array<Workshop>,
@@ -3855,14 +3855,14 @@ export type WorkshopConnectionGroupArgs = {
 };
 
 export type WorkshopEdge = {
-  __typename?: 'WorkshopEdge',
+   __typename?: 'WorkshopEdge',
   next?: Maybe<Workshop>,
   node: Workshop,
   previous?: Maybe<Workshop>,
 };
 
 export type WorkshopEvent = Node & {
-  __typename?: 'WorkshopEvent',
+   __typename?: 'WorkshopEvent',
   date?: Maybe<Scalars['Date']>,
   endDate?: Maybe<Scalars['Date']>,
   location: Location,
@@ -3903,7 +3903,7 @@ export type WorkshopEventStartDateArgs = {
 };
 
 export type WorkshopEventConnection = {
-  __typename?: 'WorkshopEventConnection',
+   __typename?: 'WorkshopEventConnection',
   totalCount: Scalars['Int'],
   edges: Array<WorkshopEventEdge>,
   nodes: Array<WorkshopEvent>,
@@ -3925,7 +3925,7 @@ export type WorkshopEventConnectionGroupArgs = {
 };
 
 export type WorkshopEventEdge = {
-  __typename?: 'WorkshopEventEdge',
+   __typename?: 'WorkshopEventEdge',
   next?: Maybe<WorkshopEvent>,
   node: WorkshopEvent,
   previous?: Maybe<WorkshopEvent>,
@@ -4048,7 +4048,7 @@ export type WorkshopEventFilterInput = {
 };
 
 export type WorkshopEventGroupConnection = {
-  __typename?: 'WorkshopEventGroupConnection',
+   __typename?: 'WorkshopEventGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<WorkshopEventEdge>,
   nodes: Array<WorkshopEvent>,
@@ -4167,7 +4167,7 @@ export type WorkshopFilterInput = {
 };
 
 export type WorkshopGroupConnection = {
-  __typename?: 'WorkshopGroupConnection',
+   __typename?: 'WorkshopGroupConnection',
   totalCount: Scalars['Int'],
   edges: Array<WorkshopEdge>,
   nodes: Array<Workshop>,
@@ -4300,50 +4300,6 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
 );
 
-export type AboutHeaderQueryVariables = {};
-
-
-export type AboutHeaderQuery = (
-  { __typename?: 'Query' }
-  & { photo: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fluid: Maybe<{ __typename?: 'ImageSharpFluid' }
-        & GatsbyImageSharpFluidFragment
-      > }
-    )> }
-  )>, site: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'author'>
-    )> }
-  )> }
-);
-
-export type BlogQueryVariables = {};
-
-
-export type BlogQuery = (
-  { __typename?: 'Query' }
-  & { posts: (
-    { __typename?: 'MdxConnection' }
-    & { nodes: Array<(
-      { __typename?: 'Mdx' }
-      & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'>
-      & { fields: Maybe<(
-        { __typename?: 'MdxFields' }
-        & Pick<MdxFields, 'slug'>
-      )>, frontmatter: Maybe<(
-        { __typename?: 'MdxFrontmatter' }
-        & Pick<MdxFrontmatter, 'date' | 'title'>
-        & { dateFormatted: MdxFrontmatter['date'] }
-      )> }
-    )> }
-  ) }
-);
-
 export type FooterQueryVariables = {};
 
 
@@ -4430,52 +4386,6 @@ export type SpeakerHeaderQuery = (
   )> }
 );
 
-export type TalksQueryVariables = {};
-
-
-export type TalksQuery = (
-  { __typename?: 'Query' }
-  & { talks: (
-    { __typename?: 'TalkConnection' }
-    & { nodes: Array<(
-      { __typename?: 'Talk' }
-      & Pick<Talk, 'body' | 'id' | 'slug' | 'title'>
-      & { events: Array<(
-        { __typename?: 'TalkEvent' }
-        & Pick<TalkEvent, 'date' | 'id' | 'startDate' | 'title'>
-        & { dateFormatted: TalkEvent['date'], startDateFormatted: TalkEvent['startDate'] }
-        & { location: (
-          { __typename?: 'Location' }
-          & Pick<Location, 'city' | 'country'>
-        ) }
-      )> }
-    )> }
-  ) }
-);
-
-export type WorkshopsQueryVariables = {};
-
-
-export type WorkshopsQuery = (
-  { __typename?: 'Query' }
-  & { workshops: (
-    { __typename?: 'WorkshopConnection' }
-    & { nodes: Array<(
-      { __typename?: 'Workshop' }
-      & Pick<Workshop, 'body' | 'description' | 'id' | 'slug' | 'title'>
-      & { events: Array<(
-        { __typename?: 'WorkshopEvent' }
-        & Pick<WorkshopEvent, 'date' | 'id' | 'startDate' | 'title'>
-        & { dateFormatted: WorkshopEvent['date'], startDateFormatted: WorkshopEvent['startDate'] }
-        & { location: (
-          { __typename?: 'Location' }
-          & Pick<Location, 'city' | 'country'>
-        ) }
-      )> }
-    )> }
-  ) }
-);
-
 export type HomeQueryVariables = {};
 
 
@@ -4499,39 +4409,6 @@ export type HomeQuery = (
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'description'>
-    )> }
-  )> }
-);
-
-export type PostQueryVariables = {
-  id: Scalars['String']
-};
-
-
-export type PostQuery = (
-  { __typename?: 'Query' }
-  & { mdx: Maybe<(
-    { __typename?: 'Mdx' }
-    & Pick<Mdx, 'body' | 'excerpt' | 'id' | 'timeToRead'>
-    & { frontmatter: Maybe<(
-      { __typename?: 'MdxFrontmatter' }
-      & Pick<MdxFrontmatter, 'date' | 'title'>
-      & { dateFormatted: MdxFrontmatter['date'] }
-      & { cover: Maybe<(
-        { __typename?: 'MdxFrontmatterCover' }
-        & { photo: Maybe<(
-          { __typename?: 'File' }
-          & { childImageSharp: Maybe<(
-            { __typename?: 'ImageSharp' }
-            & { fluid: Maybe<{ __typename?: 'ImageSharpFluid' }
-              & GatsbyImageSharpFluidFragment
-            > }
-          )> }
-        )>, author: Maybe<(
-          { __typename?: 'MdxFrontmatterCoverAuthor' }
-          & Pick<MdxFrontmatterCoverAuthor, 'name' | 'url'>
-        )> }
-      )> }
     )> }
   )> }
 );

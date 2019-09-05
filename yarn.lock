@@ -766,7 +766,7 @@
     "@babel/plugin-transform-react-jsx-self" "^7.0.0"
     "@babel/plugin-transform-react-jsx-source" "^7.0.0"
 
-"@babel/preset-typescript@^7.3.3":
+"@babel/preset-typescript@7.3.3", "@babel/preset-typescript@^7.3.3":
   version "7.3.3"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.3.3.tgz#88669911053fa16b2b276ea2ede2ca603b3f307a"
   integrity sha512-mzMVuIP4lqtn4du2ynEfdO0+RYcslwrZiJHXu4MGaC1ctJiW2fyaeDrtjJGs7R/KebZ1sgowcIoWf4uRpEfKEg==
@@ -931,6 +931,16 @@
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-operations/-/typescript-operations-1.7.0.tgz#e57c6f7bc4ce34d47432a1cbb67348d7690bda1c"
   integrity sha512-x6WjtTKoVQmR2sAupmDZHQj3TDE1WRrMWhrQiMQwfJmsTuTdzmbUF5DtAN1Lubs4tGoUCBx0+tzlUIzn6WfGZw==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.7.0"
+    "@graphql-codegen/typescript" "1.7.0"
+    "@graphql-codegen/visitor-plugin-common" "1.7.0"
+    tslib "1.10.0"
+
+"@graphql-codegen/typescript-resolvers@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-resolvers/-/typescript-resolvers-1.7.0.tgz#4e86c9c7be211b7054039497e302f9bc4c0b750f"
+  integrity sha512-vsI5Osmm2m9fknu7lcaGtYYURhVPJECg07DxMtkA0T56a4EzzY6rcS2BEOimuM0xmRSug8IORquzRWKF1lUcIA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "1.7.0"
     "@graphql-codegen/typescript" "1.7.0"
@@ -1542,7 +1552,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/aws-lambda@^8.10.31":
+"@types/aws-lambda@8.10.31", "@types/aws-lambda@^8.10.31":
   version "8.10.31"
   resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.31.tgz#f34c42412e59824efa21717c71024f7d04405b51"
   integrity sha512-xcmOvzVILQoex1oR+vjKnBP3OJn+g92r3yVzeTSmRgLQwBvSOghRPRSx3rVMQivLzAIR6atxlVu3AV9bxc/hQw==
@@ -2903,7 +2913,7 @@ babel-preset-fbjs@^3.1.2:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-gatsby@^0.2.12:
+babel-preset-gatsby@0.2.12, babel-preset-gatsby@^0.2.12:
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.2.12.tgz#fea151dec66dd925b406e5d1d3507b4d3298cbea"
   integrity sha512-vw7eeVh5XqyWsNlni1ZpCsh0tHJp+9yzocVcoZ5eDjZqvNZLuY1O0KptJPcU3we15F8m4tQU0FSO5MFOx7ys1w==
@@ -9656,6 +9666,11 @@ map-cache@^0.2.2:
   resolved "https://registry.yarnpkg.com/map-cache/-/map-cache-0.2.2.tgz#c32abd0bd6525d9b051645bb4f26ac5dc98a0dbf"
   integrity sha1-wyq9C9ZSXZsFFkW7TyasXcmKDb8=
 
+map-keys-deep@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/map-keys-deep/-/map-keys-deep-0.0.2.tgz#4a30d89caf49956d90a34692084330a7bc7433e0"
+  integrity sha512-2O0AzQOr6GV/X73JwLmL0Qq6O3CC8JjsoNaP+kqsQufHwNAEuhaBFA/dkDmE4aqwBGBkYK5OUWCAaRfMnGkdMg==
+
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
@@ -15245,6 +15260,11 @@ webpack-merge@^4.1.4, webpack-merge@^4.2.2:
   dependencies:
     lodash "^4.17.15"
 
+webpack-node-externals@1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.7.2.tgz#6e1ee79ac67c070402ba700ef033a9b8d52ac4e3"
+  integrity sha512-ajerHZ+BJKeCLviLUUmnyd5B4RavLF76uv3cs6KNuO8W+HuQaEs0y0L7o40NQxdPy5w0pcv8Ew7yPUAQG0UdCg==
+
 webpack-sources@^0.2.0:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-0.2.3.tgz#17c62bfaf13c707f9d02c479e0dcdde8380697fb"
@@ -15486,6 +15506,15 @@ xml-parse-from-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/xml-parse-from-string/-/xml-parse-from-string-1.0.1.tgz#a9029e929d3dbcded169f3c6e28238d95a5d5a28"
   integrity sha1-qQKekp09vN7RafPG4oI42VpdWig=
 
+xml2js@0.4.22:
+  version "0.4.22"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.22.tgz#4fa2d846ec803237de86f30aa9b5f70b6600de02"
+  integrity sha512-MWTbxAQqclRSTnehWWe5nMKzI3VmJ8ltiJEco8akcC6j3miOhjjfzKum5sId+CWhfxdOs/1xauYr8/ZDBtQiRw==
+  dependencies:
+    sax ">=0.6.0"
+    util.promisify "~1.0.0"
+    xmlbuilder "~11.0.0"
+
 xml2js@^0.4.5:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
@@ -15493,6 +15522,11 @@ xml2js@^0.4.5:
   dependencies:
     sax ">=0.6.0"
     xmlbuilder "~9.0.1"
+
+xmlbuilder@~11.0.0:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
+  integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
 xmlbuilder@~9.0.1:
   version "9.0.7"

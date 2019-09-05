@@ -1,4 +1,4 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+require('dotenv').config();
 const proxy = require('http-proxy-middleware');
 
 const IS_DEV = process.env.NODE_ENV === 'development';

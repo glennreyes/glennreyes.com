@@ -1,12 +1,20 @@
-schema: http://localhost:8000/___graphql
-documents:
-  - ./src/**/*.{ts,tsx}
-  - ./node_modules/gatsby-*/**/*.js
 generates:
   ./src/types/generated/graphql.ts:
+    documents:
+      - ./src/**/*.{ts,tsx}
+      - ./node_modules/gatsby-*/**/*.js
+    schema: http://localhost:8000/___graphql
     plugins:
       - typescript
       - typescript-operations
+  # ./src/types/generated/lambda/graphql.ts:
+  #   documents:
+  #     - ./src/lambda/**/*.{ts,tsx}
+  #   schema: http://localhost:8000/.netlify/functions/graphql
+  #   plugins:
+  #     - typescript
+  #     - typescript-operations
+  #     - typescript-resolvers
 config:
   namingConvention:
     enumValues: keep

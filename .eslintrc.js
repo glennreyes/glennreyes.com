@@ -12,6 +12,7 @@ const restrictedGlobals = require('confusing-browser-globals');
 module.exports = {
   env: {
     browser: true,
+    node: true,
     jest: true,
   },
 

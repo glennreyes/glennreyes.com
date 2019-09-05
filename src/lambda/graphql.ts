@@ -1,25 +1,55 @@
-import { ApolloServer, gql } from 'apollo-server-lambda';
+import { ApolloError, ApolloServer, gql } from 'apollo-server-lambda';
+import { fetchBooks } from './utils';
 
-const typeDefs = gql`
+const IS_DEV = process.env.NODE_ENV === 'development';
+
+export const typeDefs = gql`
+  enum BookType {
+    currentlyReading
+    read
+    wantToRead
+  }
+
+  type Book {
+    author: String!
+    averageRating: String!
+    id: ID!
+    imageUrl: String!
+    link: String!
+    readAt: String!
+    startedAt: String!
+    title: String!
+  }
+
   type Query {
-    hello: String
+    books(type: BookType): [Book!]!
   }
 `;
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello, world!',
+    books: async (obj, { type }) => {
+      const books = await fetchBooks().catch(error => {
+        throw new ApolloError(error);
+      });
+
+      switch (type) {
+        case 'currentlyReading':
+          return books.filter(book => !!book.startedAt && !book.readAt);
+        case 'read':
+          return books.filter(book => !!book.readAt);
+        case 'wantToRead':
+          return books.filter(book => !book.readAt && !book.startedAt);
+        default:
+          return books;
+      }
+    },
   },
 };
 
 const server = new ApolloServer({
-  // By default, the GraphQL Playground interface and GraphQL introspection
-  // is disabled in "production" (i.e. when `process.env.NODE_ENV` is `production`).
-  //
-  // If you'd like to have GraphQL Playground and introspection enabled in production,
-  // the `playground` and `introspection` options must be set explicitly to `true`.
-  introspection: true,
-  playground: true,
+  introspection: IS_DEV,
+  playground: IS_DEV,
   resolvers,
   typeDefs,
 });

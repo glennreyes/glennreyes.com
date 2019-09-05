@@ -13,12 +13,12 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:lambda": "netlify-lambda build src/lambda",
+    "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js",
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
     "serve": "gatsby serve --open",
     "start": "gatsby develop --open",
-    "start:lambda": "netlify-lambda serve src/lambda"
+    "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
@@ -54,6 +54,7 @@
     "graphql": "14.5.4",
     "http-proxy-middleware": "0.20.0",
     "lodash": "4.17.15",
+    "map-keys-deep": "0.0.2",
     "ms": "2.1.2",
     "netlify-lambda": "1.6.3",
     "polished": "3.4.1",
@@ -64,12 +65,16 @@
     "react-pose": "4.0.8",
     "react-tilt": "0.1.4",
     "react-use": "11.3.2",
-    "styled-components": "4.3.2"
+    "styled-components": "4.3.2",
+    "xml2js": "0.4.22"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "7.3.3",
     "@graphql-codegen/cli": "1.7.0",
     "@graphql-codegen/typescript": "1.7.0",
     "@graphql-codegen/typescript-operations": "1.7.0",
+    "@graphql-codegen/typescript-resolvers": "1.7.0",
+    "@types/aws-lambda": "8.10.31",
     "@types/lodash": "4.14.138",
     "@types/ms": "0.7.31",
     "@types/node": "12.7.4",
@@ -80,6 +85,7 @@
     "@typescript-eslint/eslint-plugin": "2.1.0",
     "@typescript-eslint/parser": "2.1.0",
     "babel-plugin-styled-components": "1.10.6",
+    "babel-preset-gatsby": "0.2.12",
     "confusing-browser-globals": "1.0.8",
     "dotenv": "8.1.0",
     "eslint": "6.3.0",
@@ -94,6 +100,7 @@
     "husky": "3.0.5",
     "lint-staged": "9.2.5",
     "prettier": "1.18.2",
-    "typescript": "3.6.2"
+    "typescript": "3.6.2",
+    "webpack-node-externals": "1.7.2"
   }
 }
