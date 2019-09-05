@@ -1,9 +1,19 @@
 require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+const proxy = require('http-proxy-middleware');
 
 const IS_DEV = process.env.NODE_ENV === 'development';
 const siteUrl = IS_DEV ? 'http://localhost:8000' : 'https://glennreyes.com';
 
 module.exports = {
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: { '/.netlify/functions/': '' },
+      }),
+    );
+  },
   siteMetadata: {
     author: 'Glenn Reyes',
     description:

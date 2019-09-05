@@ -1,0 +1,5 @@
+[build]
+  functions = "lambda"
+[build.environment]
+  NODE_VERSION = "12.9.1"
+  YARN_VERSION = "1.17.3"

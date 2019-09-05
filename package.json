@@ -13,10 +13,12 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "build:lambda": "netlify-lambda build src/lambda",
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
     "serve": "gatsby serve --open",
-    "start": "gatsby develop --open"
+    "start": "gatsby develop --open",
+    "start:lambda": "netlify-lambda serve src/lambda"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
   "dependencies": {
@@ -24,6 +26,7 @@
     "@mdx-js/react": "1.4.4",
     "@mdx-js/tag": "0.20.3",
     "@svgr/webpack": "4.3.2",
+    "apollo-server-lambda": "2.9.3",
     "dayjs": "1.8.16",
     "gatsby": "2.15.8",
     "gatsby-image": "2.2.17",
@@ -49,8 +52,10 @@
     "gatsby-transformer-sharp": "2.2.13",
     "github-slugger": "1.2.1",
     "graphql": "14.5.4",
+    "http-proxy-middleware": "0.20.0",
     "lodash": "4.17.15",
     "ms": "2.1.2",
+    "netlify-lambda": "1.6.3",
     "polished": "3.4.1",
     "prism-react-renderer": "0.1.7",
     "react": "16.9.0",
