@@ -23,6 +23,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: `${siteUrl}/.netlify/functions/graphql`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: { siteUrl },
     },
