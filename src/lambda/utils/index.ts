@@ -50,10 +50,10 @@ export const fetchBooks = async ({ first = 200 } = {}) => {
         /^(.*_)S(Y|X).*(_.*)$/,
         '$1SY640$3',
       ),
-      link: review.book.link,
       readAt: review.readAt,
       startedAt: review.startedAt,
       title: review.book.title,
+      url: review.book.link,
     }));
   } catch (error) {
     console.error(error);

@@ -1,4 +1,6 @@
+import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 export type Maybe<T> = T | null;
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string,
@@ -25,12 +27,36 @@ export type Scalars = {
 
 
 
+
+export type Book = {
+   __typename?: 'Book',
+  author: Scalars['String'],
+  averageRating: Scalars['String'],
+  id: Scalars['ID'],
+  imageUrl: Scalars['String'],
+  readAt: Scalars['String'],
+  startedAt: Scalars['String'],
+  title: Scalars['String'],
+  url: Scalars['String'],
+};
+
+export enum BookType {
+  currentlyReading = 'currentlyReading',
+  read = 'read',
+  wantToRead = 'wantToRead'
+}
+
 export type BooleanQueryOperatorInput = {
   eq?: Maybe<Scalars['Boolean']>,
   ne?: Maybe<Scalars['Boolean']>,
   in?: Maybe<Array<Maybe<Scalars['Boolean']>>>,
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>,
 };
+
+export enum CacheControlScope {
+  PUBLIC = 'PUBLIC',
+  PRIVATE = 'PRIVATE'
+}
 
 
 export type DateQueryOperatorInput = {
@@ -714,12 +740,12 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
   childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
   childMdx___frontmatter___location___name = 'childMdx___frontmatter___location___name',
+  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___startDate = 'childMdx___frontmatter___startDate',
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
   childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
-  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___repoUrl = 'childMdx___frontmatter___repoUrl',
   childMdx___frontmatter___workshop = 'childMdx___frontmatter___workshop',
   childMdx___frontmatter___isKeynote = 'childMdx___frontmatter___isKeynote',
@@ -1809,12 +1835,12 @@ export enum MdxFieldsEnum {
   frontmatter___location___city = 'frontmatter___location___city',
   frontmatter___location___country = 'frontmatter___location___country',
   frontmatter___location___name = 'frontmatter___location___name',
+  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___startDate = 'frontmatter___startDate',
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
   frontmatter___videoUrl = 'frontmatter___videoUrl',
   frontmatter___isLightning = 'frontmatter___isLightning',
-  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___repoUrl = 'frontmatter___repoUrl',
   frontmatter___workshop = 'frontmatter___workshop',
   frontmatter___isKeynote = 'frontmatter___isKeynote',
@@ -1989,12 +2015,12 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>,
   endDate?: Maybe<Scalars['Date']>,
   location?: Maybe<MdxFrontmatterLocation>,
+  slidesUrl?: Maybe<Scalars['String']>,
   startDate?: Maybe<Scalars['Date']>,
   talk?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
   videoUrl?: Maybe<Scalars['String']>,
   isLightning?: Maybe<Scalars['Boolean']>,
-  slidesUrl?: Maybe<Scalars['String']>,
   repoUrl?: Maybe<Scalars['String']>,
   workshop?: Maybe<Scalars['String']>,
   isKeynote?: Maybe<Scalars['Boolean']>,
@@ -2063,12 +2089,12 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>,
   endDate?: Maybe<DateQueryOperatorInput>,
   location?: Maybe<MdxFrontmatterLocationFilterInput>,
+  slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   talk?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
   videoUrl?: Maybe<StringQueryOperatorInput>,
   isLightning?: Maybe<BooleanQueryOperatorInput>,
-  slidesUrl?: Maybe<StringQueryOperatorInput>,
   repoUrl?: Maybe<StringQueryOperatorInput>,
   workshop?: Maybe<StringQueryOperatorInput>,
   isKeynote?: Maybe<BooleanQueryOperatorInput>,
@@ -2211,6 +2237,7 @@ export type Query = {
   allSite: SiteConnection,
   directory?: Maybe<Directory>,
   allDirectory: DirectoryConnection,
+  books: Array<Book>,
 };
 
 
@@ -2552,6 +2579,11 @@ export type QueryAllDirectoryArgs = {
   sort?: Maybe<DirectorySortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryBooksArgs = {
+  type?: Maybe<BookType>
 };
 
 export type Site = Node & {
@@ -2938,6 +2970,7 @@ export enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___browserAPIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   pluginCreator___pluginOptions___plugins___ssrAPIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   pluginCreator___pluginOptions___plugins___pluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
+  pluginCreator___pluginOptions___uri = 'pluginCreator___pluginOptions___uri',
   pluginCreator___pluginOptions___siteUrl = 'pluginCreator___pluginOptions___siteUrl',
   pluginCreator___pluginOptions___anonymize = 'pluginCreator___pluginOptions___anonymize',
   pluginCreator___pluginOptions___respectDNT = 'pluginCreator___pluginOptions___respectDNT',
@@ -3153,6 +3186,7 @@ export enum SitePluginFieldsEnum {
   pluginOptions___plugins___browserAPIs = 'pluginOptions___plugins___browserAPIs',
   pluginOptions___plugins___ssrAPIs = 'pluginOptions___plugins___ssrAPIs',
   pluginOptions___plugins___pluginFilepath = 'pluginOptions___plugins___pluginFilepath',
+  pluginOptions___uri = 'pluginOptions___uri',
   pluginOptions___siteUrl = 'pluginOptions___siteUrl',
   pluginOptions___anonymize = 'pluginOptions___anonymize',
   pluginOptions___respectDNT = 'pluginOptions___respectDNT',
@@ -3291,6 +3325,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
    __typename?: 'SitePluginPluginOptions',
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
+  uri?: Maybe<Scalars['String']>,
   siteUrl?: Maybe<Scalars['String']>,
   anonymize?: Maybe<Scalars['Boolean']>,
   respectDNT?: Maybe<Scalars['Boolean']>,
@@ -3322,6 +3357,7 @@ export type SitePluginPluginOptionsDefaultLayoutsFilterInput = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>,
+  uri?: Maybe<StringQueryOperatorInput>,
   siteUrl?: Maybe<StringQueryOperatorInput>,
   anonymize?: Maybe<BooleanQueryOperatorInput>,
   respectDNT?: Maybe<BooleanQueryOperatorInput>,
@@ -4300,6 +4336,69 @@ export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
   & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
 );
 
+export type AboutHeaderQueryVariables = {};
+
+
+export type AboutHeaderQuery = (
+  { __typename?: 'Query' }
+  & { photo: Maybe<(
+    { __typename?: 'File' }
+    & { childImageSharp: Maybe<(
+      { __typename?: 'ImageSharp' }
+      & { fluid: Maybe<{ __typename?: 'ImageSharpFluid' }
+        & GatsbyImageSharpFluidFragment
+      > }
+    )> }
+  )>, site: Maybe<(
+    { __typename?: 'Site' }
+    & { siteMetadata: Maybe<(
+      { __typename?: 'SiteSiteMetadata' }
+      & Pick<SiteSiteMetadata, 'author'>
+    )> }
+  )> }
+);
+
+export type BlogQueryVariables = {};
+
+
+export type BlogQuery = (
+  { __typename?: 'Query' }
+  & { posts: (
+    { __typename?: 'MdxConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Mdx' }
+      & Pick<Mdx, 'excerpt' | 'id' | 'timeToRead'>
+      & { fields: Maybe<(
+        { __typename?: 'MdxFields' }
+        & Pick<MdxFields, 'slug'>
+      )>, frontmatter: Maybe<(
+        { __typename?: 'MdxFrontmatter' }
+        & Pick<MdxFrontmatter, 'date' | 'title'>
+        & { dateFormatted: MdxFrontmatter['date'] }
+      )> }
+    )> }
+  ) }
+);
+
+export type BookInfoFragment = (
+  { __typename?: 'Book' }
+  & Pick<Book, 'id' | 'imageUrl' | 'title' | 'url'>
+);
+
+export type BooksQueryVariables = {};
+
+
+export type BooksQuery = (
+  { __typename?: 'Query' }
+  & { read: Array<{ __typename?: 'Book' }
+    & BookInfoFragment
+  >, currentlyReading: Array<{ __typename?: 'Book' }
+    & BookInfoFragment
+  >, wantToRead: Array<{ __typename?: 'Book' }
+    & BookInfoFragment
+  > }
+);
+
 export type FooterQueryVariables = {};
 
 
@@ -4386,6 +4485,52 @@ export type SpeakerHeaderQuery = (
   )> }
 );
 
+export type TalksQueryVariables = {};
+
+
+export type TalksQuery = (
+  { __typename?: 'Query' }
+  & { talks: (
+    { __typename?: 'TalkConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Talk' }
+      & Pick<Talk, 'body' | 'id' | 'slug' | 'title'>
+      & { events: Array<(
+        { __typename?: 'TalkEvent' }
+        & Pick<TalkEvent, 'date' | 'id' | 'startDate' | 'title'>
+        & { dateFormatted: TalkEvent['date'], startDateFormatted: TalkEvent['startDate'] }
+        & { location: (
+          { __typename?: 'Location' }
+          & Pick<Location, 'city' | 'country'>
+        ) }
+      )> }
+    )> }
+  ) }
+);
+
+export type WorkshopsQueryVariables = {};
+
+
+export type WorkshopsQuery = (
+  { __typename?: 'Query' }
+  & { workshops: (
+    { __typename?: 'WorkshopConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Workshop' }
+      & Pick<Workshop, 'body' | 'description' | 'id' | 'slug' | 'title'>
+      & { events: Array<(
+        { __typename?: 'WorkshopEvent' }
+        & Pick<WorkshopEvent, 'date' | 'id' | 'startDate' | 'title'>
+        & { dateFormatted: WorkshopEvent['date'], startDateFormatted: WorkshopEvent['startDate'] }
+        & { location: (
+          { __typename?: 'Location' }
+          & Pick<Location, 'city' | 'country'>
+        ) }
+      )> }
+    )> }
+  ) }
+);
+
 export type HomeQueryVariables = {};
 
 
@@ -4409,6 +4554,39 @@ export type HomeQuery = (
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'description'>
+    )> }
+  )> }
+);
+
+export type PostQueryVariables = {
+  id: Scalars['String']
+};
+
+
+export type PostQuery = (
+  { __typename?: 'Query' }
+  & { mdx: Maybe<(
+    { __typename?: 'Mdx' }
+    & Pick<Mdx, 'body' | 'excerpt' | 'id' | 'timeToRead'>
+    & { frontmatter: Maybe<(
+      { __typename?: 'MdxFrontmatter' }
+      & Pick<MdxFrontmatter, 'date' | 'title'>
+      & { dateFormatted: MdxFrontmatter['date'] }
+      & { cover: Maybe<(
+        { __typename?: 'MdxFrontmatterCover' }
+        & { photo: Maybe<(
+          { __typename?: 'File' }
+          & { childImageSharp: Maybe<(
+            { __typename?: 'ImageSharp' }
+            & { fluid: Maybe<{ __typename?: 'ImageSharpFluid' }
+              & GatsbyImageSharpFluidFragment
+            > }
+          )> }
+        )>, author: Maybe<(
+          { __typename?: 'MdxFrontmatterCoverAuthor' }
+          & Pick<MdxFrontmatterCoverAuthor, 'name' | 'url'>
+        )> }
+      )> }
     )> }
   )> }
 );
@@ -4456,3 +4634,1433 @@ export type WorkshopQuery = (
     )> }
   )> }
 );
+
+
+export type ResolverTypeWrapper<T> = Promise<T> | T;
+
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<TResult> | TResult;
+
+
+export type StitchingResolver<TResult, TParent, TContext, TArgs> = {
+  fragment: string;
+  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
+};
+
+export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
+  | ResolverFn<TResult, TParent, TContext, TArgs>
+  | StitchingResolver<TResult, TParent, TContext, TArgs>;
+
+export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => AsyncIterator<TResult> | Promise<AsyncIterator<TResult>>;
+
+export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => TResult | Promise<TResult>;
+
+export interface SubscriptionSubscriberObject<TResult, TKey extends string, TParent, TContext, TArgs> {
+  subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>;
+  resolve?: SubscriptionResolveFn<TResult, { [key in TKey]: TResult }, TContext, TArgs>;
+}
+
+export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
+  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
+  resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
+}
+
+export type SubscriptionObject<TResult, TKey extends string, TParent, TContext, TArgs> =
+  | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
+  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>;
+
+export type SubscriptionResolver<TResult, TKey extends string, TParent = {}, TContext = {}, TArgs = {}> =
+  | ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
+  | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>;
+
+export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
+  parent: TParent,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Maybe<TTypes>;
+
+export type NextResolverFn<T> = () => Promise<T>;
+
+export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs = {}> = (
+  next: NextResolverFn<TResult>,
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => TResult | Promise<TResult>;
+
+/** Mapping between all available schema types and the resolvers types */
+export type ResolversTypes = {
+  Query: ResolverTypeWrapper<{}>,
+  StringQueryOperatorInput: StringQueryOperatorInput,
+  String: ResolverTypeWrapper<Scalars['String']>,
+  MdxFrontmatterFilterInput: MdxFrontmatterFilterInput,
+  DateQueryOperatorInput: DateQueryOperatorInput,
+  Date: ResolverTypeWrapper<Scalars['Date']>,
+  MdxFrontmatterLocationFilterInput: MdxFrontmatterLocationFilterInput,
+  BooleanQueryOperatorInput: BooleanQueryOperatorInput,
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  MdxFrontmatterCoverFilterInput: MdxFrontmatterCoverFilterInput,
+  MdxFrontmatterCoverAuthorFilterInput: MdxFrontmatterCoverAuthorFilterInput,
+  FileFilterInput: FileFilterInput,
+  FloatQueryOperatorInput: FloatQueryOperatorInput,
+  Float: ResolverTypeWrapper<Scalars['Float']>,
+  IntQueryOperatorInput: IntQueryOperatorInput,
+  Int: ResolverTypeWrapper<Scalars['Int']>,
+  NodeFilterInput: NodeFilterInput,
+  NodeFilterListInput: NodeFilterListInput,
+  InternalFilterInput: InternalFilterInput,
+  ImageSharpFilterInput: ImageSharpFilterInput,
+  ImageSharpFixedFilterInput: ImageSharpFixedFilterInput,
+  ImageSharpResolutionsFilterInput: ImageSharpResolutionsFilterInput,
+  ImageSharpFluidFilterInput: ImageSharpFluidFilterInput,
+  ImageSharpSizesFilterInput: ImageSharpSizesFilterInput,
+  ImageSharpOriginalFilterInput: ImageSharpOriginalFilterInput,
+  ImageSharpResizeFilterInput: ImageSharpResizeFilterInput,
+  MdxFilterInput: MdxFilterInput,
+  MdxHeadingMdxFilterListInput: MdxHeadingMdxFilterListInput,
+  MdxHeadingMdxFilterInput: MdxHeadingMdxFilterInput,
+  JSONQueryOperatorInput: JsonQueryOperatorInput,
+  JSON: ResolverTypeWrapper<Scalars['JSON']>,
+  MdxWordCountFilterInput: MdxWordCountFilterInput,
+  MdxFieldsFilterInput: MdxFieldsFilterInput,
+  MarkdownRemarkFilterInput: MarkdownRemarkFilterInput,
+  MarkdownRemarkFrontmatterFilterInput: MarkdownRemarkFrontmatterFilterInput,
+  MarkdownHeadingFilterListInput: MarkdownHeadingFilterListInput,
+  MarkdownHeadingFilterInput: MarkdownHeadingFilterInput,
+  MarkdownWordCountFilterInput: MarkdownWordCountFilterInput,
+  Mdx: ResolverTypeWrapper<Mdx>,
+  Node: ResolverTypeWrapper<Node>,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
+  Internal: ResolverTypeWrapper<Internal>,
+  MdxFrontmatter: ResolverTypeWrapper<MdxFrontmatter>,
+  MdxFrontmatterLocation: ResolverTypeWrapper<MdxFrontmatterLocation>,
+  MdxFrontmatterCover: ResolverTypeWrapper<MdxFrontmatterCover>,
+  MdxFrontmatterCoverAuthor: ResolverTypeWrapper<MdxFrontmatterCoverAuthor>,
+  File: ResolverTypeWrapper<File>,
+  ImageSharp: ResolverTypeWrapper<ImageSharp>,
+  DuotoneGradient: DuotoneGradient,
+  Potrace: Potrace,
+  PotraceTurnPolicy: PotraceTurnPolicy,
+  ImageFormat: ImageFormat,
+  ImageCropFocus: ImageCropFocus,
+  ImageFit: ImageFit,
+  ImageSharpFixed: ResolverTypeWrapper<ImageSharpFixed>,
+  ImageSharpResolutions: ResolverTypeWrapper<ImageSharpResolutions>,
+  ImageSharpFluid: ResolverTypeWrapper<ImageSharpFluid>,
+  ImageSharpSizes: ResolverTypeWrapper<ImageSharpSizes>,
+  ImageSharpOriginal: ResolverTypeWrapper<ImageSharpOriginal>,
+  ImageSharpResize: ResolverTypeWrapper<ImageSharpResize>,
+  MarkdownRemark: ResolverTypeWrapper<MarkdownRemark>,
+  MarkdownRemarkFrontmatter: ResolverTypeWrapper<MarkdownRemarkFrontmatter>,
+  MarkdownExcerptFormats: MarkdownExcerptFormats,
+  MarkdownHeadingLevels: MarkdownHeadingLevels,
+  MarkdownHeading: ResolverTypeWrapper<MarkdownHeading>,
+  MarkdownWordCount: ResolverTypeWrapper<MarkdownWordCount>,
+  HeadingsMdx: HeadingsMdx,
+  MdxHeadingMdx: ResolverTypeWrapper<MdxHeadingMdx>,
+  MdxWordCount: ResolverTypeWrapper<MdxWordCount>,
+  MdxFields: ResolverTypeWrapper<MdxFields>,
+  MdxSortInput: MdxSortInput,
+  MdxFieldsEnum: MdxFieldsEnum,
+  SortOrderEnum: SortOrderEnum,
+  MdxConnection: ResolverTypeWrapper<MdxConnection>,
+  MdxEdge: ResolverTypeWrapper<MdxEdge>,
+  PageInfo: ResolverTypeWrapper<PageInfo>,
+  MdxGroupConnection: ResolverTypeWrapper<MdxGroupConnection>,
+  FileSortInput: FileSortInput,
+  FileFieldsEnum: FileFieldsEnum,
+  FileConnection: ResolverTypeWrapper<FileConnection>,
+  FileEdge: ResolverTypeWrapper<FileEdge>,
+  FileGroupConnection: ResolverTypeWrapper<FileGroupConnection>,
+  ImageSharpSortInput: ImageSharpSortInput,
+  ImageSharpFieldsEnum: ImageSharpFieldsEnum,
+  ImageSharpConnection: ResolverTypeWrapper<ImageSharpConnection>,
+  ImageSharpEdge: ResolverTypeWrapper<ImageSharpEdge>,
+  ImageSharpGroupConnection: ResolverTypeWrapper<ImageSharpGroupConnection>,
+  MarkdownRemarkSortInput: MarkdownRemarkSortInput,
+  MarkdownRemarkFieldsEnum: MarkdownRemarkFieldsEnum,
+  MarkdownRemarkConnection: ResolverTypeWrapper<MarkdownRemarkConnection>,
+  MarkdownRemarkEdge: ResolverTypeWrapper<MarkdownRemarkEdge>,
+  MarkdownRemarkGroupConnection: ResolverTypeWrapper<MarkdownRemarkGroupConnection>,
+  LocationFilterInput: LocationFilterInput,
+  TalkEvent: ResolverTypeWrapper<TalkEvent>,
+  Location: ResolverTypeWrapper<Location>,
+  Talk: ResolverTypeWrapper<Talk>,
+  TalkEventFilterInput: TalkEventFilterInput,
+  TalkEventSortInput: TalkEventSortInput,
+  TalkEventFieldsEnum: TalkEventFieldsEnum,
+  TalkEventConnection: ResolverTypeWrapper<TalkEventConnection>,
+  TalkEventEdge: ResolverTypeWrapper<TalkEventEdge>,
+  TalkEventGroupConnection: ResolverTypeWrapper<TalkEventGroupConnection>,
+  WorkshopEvent: ResolverTypeWrapper<WorkshopEvent>,
+  Workshop: ResolverTypeWrapper<Workshop>,
+  WorkshopEventFilterInput: WorkshopEventFilterInput,
+  WorkshopEventSortInput: WorkshopEventSortInput,
+  WorkshopEventFieldsEnum: WorkshopEventFieldsEnum,
+  WorkshopEventConnection: ResolverTypeWrapper<WorkshopEventConnection>,
+  WorkshopEventEdge: ResolverTypeWrapper<WorkshopEventEdge>,
+  WorkshopEventGroupConnection: ResolverTypeWrapper<WorkshopEventGroupConnection>,
+  TalkFilterInput: TalkFilterInput,
+  TalkSortInput: TalkSortInput,
+  TalkFieldsEnum: TalkFieldsEnum,
+  TalkConnection: ResolverTypeWrapper<TalkConnection>,
+  TalkEdge: ResolverTypeWrapper<TalkEdge>,
+  TalkGroupConnection: ResolverTypeWrapper<TalkGroupConnection>,
+  WorkshopFilterInput: WorkshopFilterInput,
+  WorkshopSortInput: WorkshopSortInput,
+  WorkshopFieldsEnum: WorkshopFieldsEnum,
+  WorkshopConnection: ResolverTypeWrapper<WorkshopConnection>,
+  WorkshopEdge: ResolverTypeWrapper<WorkshopEdge>,
+  WorkshopGroupConnection: ResolverTypeWrapper<WorkshopGroupConnection>,
+  SitePageContextFilterInput: SitePageContextFilterInput,
+  SitePageContextFrontmatterFilterInput: SitePageContextFrontmatterFilterInput,
+  SitePluginFilterInput: SitePluginFilterInput,
+  SitePluginPluginOptionsFilterInput: SitePluginPluginOptionsFilterInput,
+  SitePluginPluginOptionsPluginsFilterListInput: SitePluginPluginOptionsPluginsFilterListInput,
+  SitePluginPluginOptionsPluginsFilterInput: SitePluginPluginOptionsPluginsFilterInput,
+  SitePluginPluginOptionsDefaultLayoutsFilterInput: SitePluginPluginOptionsDefaultLayoutsFilterInput,
+  SitePluginPluginOptionsSvgoConfigFilterInput: SitePluginPluginOptionsSvgoConfigFilterInput,
+  SitePluginPluginOptionsSvgoConfigPluginsFilterInput: SitePluginPluginOptionsSvgoConfigPluginsFilterInput,
+  SitePluginPluginOptionsSvgPropsFilterInput: SitePluginPluginOptionsSvgPropsFilterInput,
+  SitePluginPackageJsonFilterInput: SitePluginPackageJsonFilterInput,
+  SitePluginPackageJsonDependenciesFilterListInput: SitePluginPackageJsonDependenciesFilterListInput,
+  SitePluginPackageJsonDependenciesFilterInput: SitePluginPackageJsonDependenciesFilterInput,
+  SitePluginPackageJsonDevDependenciesFilterListInput: SitePluginPackageJsonDevDependenciesFilterListInput,
+  SitePluginPackageJsonDevDependenciesFilterInput: SitePluginPackageJsonDevDependenciesFilterInput,
+  SitePluginPackageJsonPeerDependenciesFilterListInput: SitePluginPackageJsonPeerDependenciesFilterListInput,
+  SitePluginPackageJsonPeerDependenciesFilterInput: SitePluginPackageJsonPeerDependenciesFilterInput,
+  SitePage: ResolverTypeWrapper<SitePage>,
+  SitePageContext: ResolverTypeWrapper<SitePageContext>,
+  SitePageContextFrontmatter: ResolverTypeWrapper<SitePageContextFrontmatter>,
+  SitePlugin: ResolverTypeWrapper<SitePlugin>,
+  SitePluginPluginOptions: ResolverTypeWrapper<SitePluginPluginOptions>,
+  SitePluginPluginOptionsPlugins: ResolverTypeWrapper<SitePluginPluginOptionsPlugins>,
+  SitePluginPluginOptionsDefaultLayouts: ResolverTypeWrapper<SitePluginPluginOptionsDefaultLayouts>,
+  SitePluginPluginOptionsSvgoConfig: ResolverTypeWrapper<SitePluginPluginOptionsSvgoConfig>,
+  SitePluginPluginOptionsSvgoConfigPlugins: ResolverTypeWrapper<SitePluginPluginOptionsSvgoConfigPlugins>,
+  SitePluginPluginOptionsSvgProps: ResolverTypeWrapper<SitePluginPluginOptionsSvgProps>,
+  SitePluginPackageJson: ResolverTypeWrapper<SitePluginPackageJson>,
+  SitePluginPackageJsonDependencies: ResolverTypeWrapper<SitePluginPackageJsonDependencies>,
+  SitePluginPackageJsonDevDependencies: ResolverTypeWrapper<SitePluginPackageJsonDevDependencies>,
+  SitePluginPackageJsonPeerDependencies: ResolverTypeWrapper<SitePluginPackageJsonPeerDependencies>,
+  SitePageFilterInput: SitePageFilterInput,
+  SitePageSortInput: SitePageSortInput,
+  SitePageFieldsEnum: SitePageFieldsEnum,
+  SitePageConnection: ResolverTypeWrapper<SitePageConnection>,
+  SitePageEdge: ResolverTypeWrapper<SitePageEdge>,
+  SitePageGroupConnection: ResolverTypeWrapper<SitePageGroupConnection>,
+  SitePluginSortInput: SitePluginSortInput,
+  SitePluginFieldsEnum: SitePluginFieldsEnum,
+  SitePluginConnection: ResolverTypeWrapper<SitePluginConnection>,
+  SitePluginEdge: ResolverTypeWrapper<SitePluginEdge>,
+  SitePluginGroupConnection: ResolverTypeWrapper<SitePluginGroupConnection>,
+  SiteSiteMetadataFilterInput: SiteSiteMetadataFilterInput,
+  Site: ResolverTypeWrapper<Site>,
+  SiteSiteMetadata: ResolverTypeWrapper<SiteSiteMetadata>,
+  SiteFilterInput: SiteFilterInput,
+  SiteSortInput: SiteSortInput,
+  SiteFieldsEnum: SiteFieldsEnum,
+  SiteConnection: ResolverTypeWrapper<SiteConnection>,
+  SiteEdge: ResolverTypeWrapper<SiteEdge>,
+  SiteGroupConnection: ResolverTypeWrapper<SiteGroupConnection>,
+  Directory: ResolverTypeWrapper<Directory>,
+  DirectoryFilterInput: DirectoryFilterInput,
+  DirectorySortInput: DirectorySortInput,
+  DirectoryFieldsEnum: DirectoryFieldsEnum,
+  DirectoryConnection: ResolverTypeWrapper<DirectoryConnection>,
+  DirectoryEdge: ResolverTypeWrapper<DirectoryEdge>,
+  DirectoryGroupConnection: ResolverTypeWrapper<DirectoryGroupConnection>,
+  BookType: BookType,
+  Book: ResolverTypeWrapper<Book>,
+  CacheControlScope: CacheControlScope,
+};
+
+/** Mapping between all available schema types and the resolvers parents */
+export type ResolversParentTypes = {
+  Query: {},
+  StringQueryOperatorInput: StringQueryOperatorInput,
+  String: Scalars['String'],
+  MdxFrontmatterFilterInput: MdxFrontmatterFilterInput,
+  DateQueryOperatorInput: DateQueryOperatorInput,
+  Date: Scalars['Date'],
+  MdxFrontmatterLocationFilterInput: MdxFrontmatterLocationFilterInput,
+  BooleanQueryOperatorInput: BooleanQueryOperatorInput,
+  Boolean: Scalars['Boolean'],
+  MdxFrontmatterCoverFilterInput: MdxFrontmatterCoverFilterInput,
+  MdxFrontmatterCoverAuthorFilterInput: MdxFrontmatterCoverAuthorFilterInput,
+  FileFilterInput: FileFilterInput,
+  FloatQueryOperatorInput: FloatQueryOperatorInput,
+  Float: Scalars['Float'],
+  IntQueryOperatorInput: IntQueryOperatorInput,
+  Int: Scalars['Int'],
+  NodeFilterInput: NodeFilterInput,
+  NodeFilterListInput: NodeFilterListInput,
+  InternalFilterInput: InternalFilterInput,
+  ImageSharpFilterInput: ImageSharpFilterInput,
+  ImageSharpFixedFilterInput: ImageSharpFixedFilterInput,
+  ImageSharpResolutionsFilterInput: ImageSharpResolutionsFilterInput,
+  ImageSharpFluidFilterInput: ImageSharpFluidFilterInput,
+  ImageSharpSizesFilterInput: ImageSharpSizesFilterInput,
+  ImageSharpOriginalFilterInput: ImageSharpOriginalFilterInput,
+  ImageSharpResizeFilterInput: ImageSharpResizeFilterInput,
+  MdxFilterInput: MdxFilterInput,
+  MdxHeadingMdxFilterListInput: MdxHeadingMdxFilterListInput,
+  MdxHeadingMdxFilterInput: MdxHeadingMdxFilterInput,
+  JSONQueryOperatorInput: JsonQueryOperatorInput,
+  JSON: Scalars['JSON'],
+  MdxWordCountFilterInput: MdxWordCountFilterInput,
+  MdxFieldsFilterInput: MdxFieldsFilterInput,
+  MarkdownRemarkFilterInput: MarkdownRemarkFilterInput,
+  MarkdownRemarkFrontmatterFilterInput: MarkdownRemarkFrontmatterFilterInput,
+  MarkdownHeadingFilterListInput: MarkdownHeadingFilterListInput,
+  MarkdownHeadingFilterInput: MarkdownHeadingFilterInput,
+  MarkdownWordCountFilterInput: MarkdownWordCountFilterInput,
+  Mdx: Mdx,
+  Node: Node,
+  ID: Scalars['ID'],
+  Internal: Internal,
+  MdxFrontmatter: MdxFrontmatter,
+  MdxFrontmatterLocation: MdxFrontmatterLocation,
+  MdxFrontmatterCover: MdxFrontmatterCover,
+  MdxFrontmatterCoverAuthor: MdxFrontmatterCoverAuthor,
+  File: File,
+  ImageSharp: ImageSharp,
+  DuotoneGradient: DuotoneGradient,
+  Potrace: Potrace,
+  PotraceTurnPolicy: PotraceTurnPolicy,
+  ImageFormat: ImageFormat,
+  ImageCropFocus: ImageCropFocus,
+  ImageFit: ImageFit,
+  ImageSharpFixed: ImageSharpFixed,
+  ImageSharpResolutions: ImageSharpResolutions,
+  ImageSharpFluid: ImageSharpFluid,
+  ImageSharpSizes: ImageSharpSizes,
+  ImageSharpOriginal: ImageSharpOriginal,
+  ImageSharpResize: ImageSharpResize,
+  MarkdownRemark: MarkdownRemark,
+  MarkdownRemarkFrontmatter: MarkdownRemarkFrontmatter,
+  MarkdownExcerptFormats: MarkdownExcerptFormats,
+  MarkdownHeadingLevels: MarkdownHeadingLevels,
+  MarkdownHeading: MarkdownHeading,
+  MarkdownWordCount: MarkdownWordCount,
+  HeadingsMdx: HeadingsMdx,
+  MdxHeadingMdx: MdxHeadingMdx,
+  MdxWordCount: MdxWordCount,
+  MdxFields: MdxFields,
+  MdxSortInput: MdxSortInput,
+  MdxFieldsEnum: MdxFieldsEnum,
+  SortOrderEnum: SortOrderEnum,
+  MdxConnection: MdxConnection,
+  MdxEdge: MdxEdge,
+  PageInfo: PageInfo,
+  MdxGroupConnection: MdxGroupConnection,
+  FileSortInput: FileSortInput,
+  FileFieldsEnum: FileFieldsEnum,
+  FileConnection: FileConnection,
+  FileEdge: FileEdge,
+  FileGroupConnection: FileGroupConnection,
+  ImageSharpSortInput: ImageSharpSortInput,
+  ImageSharpFieldsEnum: ImageSharpFieldsEnum,
+  ImageSharpConnection: ImageSharpConnection,
+  ImageSharpEdge: ImageSharpEdge,
+  ImageSharpGroupConnection: ImageSharpGroupConnection,
+  MarkdownRemarkSortInput: MarkdownRemarkSortInput,
+  MarkdownRemarkFieldsEnum: MarkdownRemarkFieldsEnum,
+  MarkdownRemarkConnection: MarkdownRemarkConnection,
+  MarkdownRemarkEdge: MarkdownRemarkEdge,
+  MarkdownRemarkGroupConnection: MarkdownRemarkGroupConnection,
+  LocationFilterInput: LocationFilterInput,
+  TalkEvent: TalkEvent,
+  Location: Location,
+  Talk: Talk,
+  TalkEventFilterInput: TalkEventFilterInput,
+  TalkEventSortInput: TalkEventSortInput,
+  TalkEventFieldsEnum: TalkEventFieldsEnum,
+  TalkEventConnection: TalkEventConnection,
+  TalkEventEdge: TalkEventEdge,
+  TalkEventGroupConnection: TalkEventGroupConnection,
+  WorkshopEvent: WorkshopEvent,
+  Workshop: Workshop,
+  WorkshopEventFilterInput: WorkshopEventFilterInput,
+  WorkshopEventSortInput: WorkshopEventSortInput,
+  WorkshopEventFieldsEnum: WorkshopEventFieldsEnum,
+  WorkshopEventConnection: WorkshopEventConnection,
+  WorkshopEventEdge: WorkshopEventEdge,
+  WorkshopEventGroupConnection: WorkshopEventGroupConnection,
+  TalkFilterInput: TalkFilterInput,
+  TalkSortInput: TalkSortInput,
+  TalkFieldsEnum: TalkFieldsEnum,
+  TalkConnection: TalkConnection,
+  TalkEdge: TalkEdge,
+  TalkGroupConnection: TalkGroupConnection,
+  WorkshopFilterInput: WorkshopFilterInput,
+  WorkshopSortInput: WorkshopSortInput,
+  WorkshopFieldsEnum: WorkshopFieldsEnum,
+  WorkshopConnection: WorkshopConnection,
+  WorkshopEdge: WorkshopEdge,
+  WorkshopGroupConnection: WorkshopGroupConnection,
+  SitePageContextFilterInput: SitePageContextFilterInput,
+  SitePageContextFrontmatterFilterInput: SitePageContextFrontmatterFilterInput,
+  SitePluginFilterInput: SitePluginFilterInput,
+  SitePluginPluginOptionsFilterInput: SitePluginPluginOptionsFilterInput,
+  SitePluginPluginOptionsPluginsFilterListInput: SitePluginPluginOptionsPluginsFilterListInput,
+  SitePluginPluginOptionsPluginsFilterInput: SitePluginPluginOptionsPluginsFilterInput,
+  SitePluginPluginOptionsDefaultLayoutsFilterInput: SitePluginPluginOptionsDefaultLayoutsFilterInput,
+  SitePluginPluginOptionsSvgoConfigFilterInput: SitePluginPluginOptionsSvgoConfigFilterInput,
+  SitePluginPluginOptionsSvgoConfigPluginsFilterInput: SitePluginPluginOptionsSvgoConfigPluginsFilterInput,
+  SitePluginPluginOptionsSvgPropsFilterInput: SitePluginPluginOptionsSvgPropsFilterInput,
+  SitePluginPackageJsonFilterInput: SitePluginPackageJsonFilterInput,
+  SitePluginPackageJsonDependenciesFilterListInput: SitePluginPackageJsonDependenciesFilterListInput,
+  SitePluginPackageJsonDependenciesFilterInput: SitePluginPackageJsonDependenciesFilterInput,
+  SitePluginPackageJsonDevDependenciesFilterListInput: SitePluginPackageJsonDevDependenciesFilterListInput,
+  SitePluginPackageJsonDevDependenciesFilterInput: SitePluginPackageJsonDevDependenciesFilterInput,
+  SitePluginPackageJsonPeerDependenciesFilterListInput: SitePluginPackageJsonPeerDependenciesFilterListInput,
+  SitePluginPackageJsonPeerDependenciesFilterInput: SitePluginPackageJsonPeerDependenciesFilterInput,
+  SitePage: SitePage,
+  SitePageContext: SitePageContext,
+  SitePageContextFrontmatter: SitePageContextFrontmatter,
+  SitePlugin: SitePlugin,
+  SitePluginPluginOptions: SitePluginPluginOptions,
+  SitePluginPluginOptionsPlugins: SitePluginPluginOptionsPlugins,
+  SitePluginPluginOptionsDefaultLayouts: SitePluginPluginOptionsDefaultLayouts,
+  SitePluginPluginOptionsSvgoConfig: SitePluginPluginOptionsSvgoConfig,
+  SitePluginPluginOptionsSvgoConfigPlugins: SitePluginPluginOptionsSvgoConfigPlugins,
+  SitePluginPluginOptionsSvgProps: SitePluginPluginOptionsSvgProps,
+  SitePluginPackageJson: SitePluginPackageJson,
+  SitePluginPackageJsonDependencies: SitePluginPackageJsonDependencies,
+  SitePluginPackageJsonDevDependencies: SitePluginPackageJsonDevDependencies,
+  SitePluginPackageJsonPeerDependencies: SitePluginPackageJsonPeerDependencies,
+  SitePageFilterInput: SitePageFilterInput,
+  SitePageSortInput: SitePageSortInput,
+  SitePageFieldsEnum: SitePageFieldsEnum,
+  SitePageConnection: SitePageConnection,
+  SitePageEdge: SitePageEdge,
+  SitePageGroupConnection: SitePageGroupConnection,
+  SitePluginSortInput: SitePluginSortInput,
+  SitePluginFieldsEnum: SitePluginFieldsEnum,
+  SitePluginConnection: SitePluginConnection,
+  SitePluginEdge: SitePluginEdge,
+  SitePluginGroupConnection: SitePluginGroupConnection,
+  SiteSiteMetadataFilterInput: SiteSiteMetadataFilterInput,
+  Site: Site,
+  SiteSiteMetadata: SiteSiteMetadata,
+  SiteFilterInput: SiteFilterInput,
+  SiteSortInput: SiteSortInput,
+  SiteFieldsEnum: SiteFieldsEnum,
+  SiteConnection: SiteConnection,
+  SiteEdge: SiteEdge,
+  SiteGroupConnection: SiteGroupConnection,
+  Directory: Directory,
+  DirectoryFilterInput: DirectoryFilterInput,
+  DirectorySortInput: DirectorySortInput,
+  DirectoryFieldsEnum: DirectoryFieldsEnum,
+  DirectoryConnection: DirectoryConnection,
+  DirectoryEdge: DirectoryEdge,
+  DirectoryGroupConnection: DirectoryGroupConnection,
+  BookType: BookType,
+  Book: Book,
+  CacheControlScope: CacheControlScope,
+};
+
+export type DefaultDirectiveResolver<Result, Parent, ContextType = any, Args = {   value?: Maybe<Scalars['JSON']> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type DateformatDirectiveResolver<Result, Parent, ContextType = any, Args = {   formatString?: Maybe<Maybe<Scalars['String']>>,
+  locale?: Maybe<Maybe<Scalars['String']>>,
+  fromNow?: Maybe<Maybe<Scalars['Boolean']>>,
+  difference?: Maybe<Maybe<Scalars['String']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type LinkDirectiveResolver<Result, Parent, ContextType = any, Args = {   by?: Maybe<Scalars['String']>,
+  from?: Maybe<Maybe<Scalars['String']>>,
+  on?: Maybe<Maybe<Scalars['String']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type FileByRelativePathDirectiveResolver<Result, Parent, ContextType = any, Args = {   from?: Maybe<Maybe<Scalars['String']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type ProxyDirectiveResolver<Result, Parent, ContextType = any, Args = {   from?: Maybe<Scalars['String']>,
+  fromNode?: Maybe<Scalars['Boolean']> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type InferDirectiveResolver<Result, Parent, ContextType = any, Args = {   noDefaultResolvers?: Maybe<Maybe<Scalars['Boolean']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type DontInferDirectiveResolver<Result, Parent, ContextType = any, Args = {   noDefaultResolvers?: Maybe<Maybe<Scalars['Boolean']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type MimeTypesDirectiveResolver<Result, Parent, ContextType = any, Args = {   types?: Maybe<Array<Scalars['String']>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type ChildOfDirectiveResolver<Result, Parent, ContextType = any, Args = {   mimeTypes?: Maybe<Array<Scalars['String']>>,
+  types?: Maybe<Array<Scalars['String']>>,
+  many?: Maybe<Scalars['Boolean']> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type NodeInterfaceDirectiveResolver<Result, Parent, ContextType = any, Args = {  }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type CacheControlDirectiveResolver<Result, Parent, ContextType = any, Args = {   maxAge?: Maybe<Maybe<Scalars['Int']>>,
+  scope?: Maybe<Maybe<CacheControlScope>> }> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
+export type BookResolvers<ContextType = any, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = {
+  author?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  averageRating?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  imageUrl?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  readAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  startedAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
+export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {
+  name: 'Date'
+}
+
+export type DirectoryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Directory'] = ResolversParentTypes['Directory']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  sourceInstanceName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  absolutePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  relativePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  extension?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  size?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  prettySize?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  modifiedTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryModifiedTimeArgs>,
+  accessTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryAccessTimeArgs>,
+  changeTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryChangeTimeArgs>,
+  birthTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryBirthTimeArgs>,
+  root?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  dir?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  base?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  ext?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  relativeDirectory?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  dev?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  mode?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  nlink?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  uid?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  gid?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  rdev?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  blksize?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  ino?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  blocks?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  atimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  mtimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  ctimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  birthtimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  atime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryAtimeArgs>,
+  mtime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryMtimeArgs>,
+  ctime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryCtimeArgs>,
+  birthtime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, DirectoryBirthtimeArgs>,
+};
+
+export type DirectoryConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['DirectoryConnection'] = ResolversParentTypes['DirectoryConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['DirectoryEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Directory']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<DirectoryConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['DirectoryGroupConnection']>, ParentType, ContextType, RequireFields<DirectoryConnectionGroupArgs, 'field'>>,
+};
+
+export type DirectoryEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['DirectoryEdge'] = ResolversParentTypes['DirectoryEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['Directory']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['Directory'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['Directory']>, ParentType, ContextType>,
+};
+
+export type DirectoryGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['DirectoryGroupConnection'] = ResolversParentTypes['DirectoryGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['DirectoryEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Directory']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type FileResolvers<ContextType = any, ParentType extends ResolversParentTypes['File'] = ResolversParentTypes['File']> = {
+  birthtime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType>,
+  birthtimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  sourceInstanceName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  absolutePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  relativePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  extension?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  size?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  prettySize?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  modifiedTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileModifiedTimeArgs>,
+  accessTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileAccessTimeArgs>,
+  changeTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileChangeTimeArgs>,
+  birthTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileBirthTimeArgs>,
+  root?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  dir?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  base?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  ext?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  relativeDirectory?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  dev?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  mode?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  nlink?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  uid?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  gid?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  rdev?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  blksize?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  ino?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  blocks?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  atimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  mtimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  ctimeMs?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  atime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileAtimeArgs>,
+  mtime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileMtimeArgs>,
+  ctime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, FileCtimeArgs>,
+  publicURL?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  childImageSharp?: Resolver<Maybe<ResolversTypes['ImageSharp']>, ParentType, ContextType>,
+  childMdx?: Resolver<Maybe<ResolversTypes['Mdx']>, ParentType, ContextType>,
+  childMarkdownRemark?: Resolver<Maybe<ResolversTypes['MarkdownRemark']>, ParentType, ContextType>,
+};
+
+export type FileConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['FileConnection'] = ResolversParentTypes['FileConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['FileEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['File']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<FileConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['FileGroupConnection']>, ParentType, ContextType, RequireFields<FileConnectionGroupArgs, 'field'>>,
+};
+
+export type FileEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['FileEdge'] = ResolversParentTypes['FileEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['File'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType>,
+};
+
+export type FileGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['FileGroupConnection'] = ResolversParentTypes['FileGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['FileEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['File']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharp'] = ResolversParentTypes['ImageSharp']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  fixed?: Resolver<Maybe<ResolversTypes['ImageSharpFixed']>, ParentType, ContextType, RequireFields<ImageSharpFixedArgs, 'jpegProgressive' | 'pngCompressionSpeed' | 'grayscale' | 'toFormat' | 'toFormatBase64' | 'cropFocus' | 'fit' | 'background' | 'rotate' | 'trim'>>,
+  resolutions?: Resolver<Maybe<ResolversTypes['ImageSharpResolutions']>, ParentType, ContextType, RequireFields<ImageSharpResolutionsArgs, 'jpegProgressive' | 'pngCompressionSpeed' | 'grayscale' | 'toFormat' | 'toFormatBase64' | 'cropFocus' | 'fit' | 'background' | 'rotate' | 'trim'>>,
+  fluid?: Resolver<Maybe<ResolversTypes['ImageSharpFluid']>, ParentType, ContextType, RequireFields<ImageSharpFluidArgs, 'grayscale' | 'jpegProgressive' | 'pngCompressionSpeed' | 'toFormat' | 'toFormatBase64' | 'cropFocus' | 'fit' | 'background' | 'rotate' | 'trim' | 'sizes' | 'srcSetBreakpoints'>>,
+  sizes?: Resolver<Maybe<ResolversTypes['ImageSharpSizes']>, ParentType, ContextType, RequireFields<ImageSharpSizesArgs, 'grayscale' | 'jpegProgressive' | 'pngCompressionSpeed' | 'toFormat' | 'toFormatBase64' | 'cropFocus' | 'fit' | 'background' | 'rotate' | 'trim' | 'sizes' | 'srcSetBreakpoints'>>,
+  original?: Resolver<Maybe<ResolversTypes['ImageSharpOriginal']>, ParentType, ContextType>,
+  resize?: Resolver<Maybe<ResolversTypes['ImageSharpResize']>, ParentType, ContextType, RequireFields<ImageSharpResizeArgs, 'jpegProgressive' | 'pngCompressionLevel' | 'pngCompressionSpeed' | 'grayscale' | 'base64' | 'toFormat' | 'cropFocus' | 'fit' | 'background' | 'rotate' | 'trim'>>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+};
+
+export type ImageSharpConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpConnection'] = ResolversParentTypes['ImageSharpConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['ImageSharpEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['ImageSharp']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<ImageSharpConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['ImageSharpGroupConnection']>, ParentType, ContextType, RequireFields<ImageSharpConnectionGroupArgs, 'field'>>,
+};
+
+export type ImageSharpEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpEdge'] = ResolversParentTypes['ImageSharpEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['ImageSharp']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['ImageSharp'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['ImageSharp']>, ParentType, ContextType>,
+};
+
+export type ImageSharpFixedResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpFixed'] = ResolversParentTypes['ImageSharpFixed']> = {
+  base64?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  tracedSVG?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  aspectRatio?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  width?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  height?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSet?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSetWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpFluidResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpFluid'] = ResolversParentTypes['ImageSharpFluid']> = {
+  base64?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  tracedSVG?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  aspectRatio?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSet?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSetWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  sizes?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalImg?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  presentationWidth?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  presentationHeight?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type ImageSharpGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpGroupConnection'] = ResolversParentTypes['ImageSharpGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['ImageSharpEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['ImageSharp']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpOriginalResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpOriginal'] = ResolversParentTypes['ImageSharpOriginal']> = {
+  width?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  height?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpResizeResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpResize'] = ResolversParentTypes['ImageSharpResize']> = {
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  tracedSVG?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  width?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  height?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  aspectRatio?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  originalName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpResolutionsResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpResolutions'] = ResolversParentTypes['ImageSharpResolutions']> = {
+  base64?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  tracedSVG?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  aspectRatio?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  width?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  height?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSet?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSetWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type ImageSharpSizesResolvers<ContextType = any, ParentType extends ResolversParentTypes['ImageSharpSizes'] = ResolversParentTypes['ImageSharpSizes']> = {
+  base64?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  tracedSVG?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  aspectRatio?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>,
+  src?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSet?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  srcSetWebp?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  sizes?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalImg?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  originalName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  presentationWidth?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  presentationHeight?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type InternalResolvers<ContextType = any, ParentType extends ResolversParentTypes['Internal'] = ResolversParentTypes['Internal']> = {
+  content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  contentDigest?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  fieldOwners?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  ignoreType?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  mediaType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  owner?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  type?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
+export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['JSON'], any> {
+  name: 'JSON'
+}
+
+export type LocationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Location'] = ResolversParentTypes['Location']> = {
+  address?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  city?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  country?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  zip?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MarkdownHeadingResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownHeading'] = ResolversParentTypes['MarkdownHeading']> = {
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  depth?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type MarkdownRemarkResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownRemark'] = ResolversParentTypes['MarkdownRemark']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  frontmatter?: Resolver<Maybe<ResolversTypes['MarkdownRemarkFrontmatter']>, ParentType, ContextType>,
+  excerpt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MarkdownRemarkExcerptArgs, 'pruneLength' | 'truncate' | 'format'>>,
+  rawMarkdownBody?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  fileAbsolutePath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  html?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  htmlAst?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>,
+  excerptAst?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType, RequireFields<MarkdownRemarkExcerptAstArgs, 'pruneLength' | 'truncate'>>,
+  headings?: Resolver<Maybe<Array<Maybe<ResolversTypes['MarkdownHeading']>>>, ParentType, ContextType, MarkdownRemarkHeadingsArgs>,
+  timeToRead?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  tableOfContents?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MarkdownRemarkTableOfContentsArgs, 'pathToSlugField'>>,
+  wordCount?: Resolver<Maybe<ResolversTypes['MarkdownWordCount']>, ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+};
+
+export type MarkdownRemarkConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownRemarkConnection'] = ResolversParentTypes['MarkdownRemarkConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['MarkdownRemarkEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['MarkdownRemark']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MarkdownRemarkConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['MarkdownRemarkGroupConnection']>, ParentType, ContextType, RequireFields<MarkdownRemarkConnectionGroupArgs, 'field'>>,
+};
+
+export type MarkdownRemarkEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownRemarkEdge'] = ResolversParentTypes['MarkdownRemarkEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['MarkdownRemark']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['MarkdownRemark'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['MarkdownRemark']>, ParentType, ContextType>,
+};
+
+export type MarkdownRemarkFrontmatterResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownRemarkFrontmatter'] = ResolversParentTypes['MarkdownRemarkFrontmatter']> = {
+  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MarkdownRemarkGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownRemarkGroupConnection'] = ResolversParentTypes['MarkdownRemarkGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['MarkdownRemarkEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['MarkdownRemark']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MarkdownWordCountResolvers<ContextType = any, ParentType extends ResolversParentTypes['MarkdownWordCount'] = ResolversParentTypes['MarkdownWordCount']> = {
+  paragraphs?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  sentences?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  words?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type MdxResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mdx'] = ResolversParentTypes['Mdx']> = {
+  rawBody?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fileAbsolutePath?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  frontmatter?: Resolver<Maybe<ResolversTypes['MdxFrontmatter']>, ParentType, ContextType>,
+  body?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  excerpt?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<MdxExcerptArgs, 'pruneLength'>>,
+  headings?: Resolver<Maybe<Array<Maybe<ResolversTypes['MdxHeadingMdx']>>>, ParentType, ContextType, MdxHeadingsArgs>,
+  html?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  mdxAST?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType>,
+  tableOfContents?: Resolver<Maybe<ResolversTypes['JSON']>, ParentType, ContextType, MdxTableOfContentsArgs>,
+  timeToRead?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  wordCount?: Resolver<Maybe<ResolversTypes['MdxWordCount']>, ParentType, ContextType>,
+  fields?: Resolver<Maybe<ResolversTypes['MdxFields']>, ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+};
+
+export type MdxConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxConnection'] = ResolversParentTypes['MdxConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['MdxEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Mdx']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MdxConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['MdxGroupConnection']>, ParentType, ContextType, RequireFields<MdxConnectionGroupArgs, 'field'>>,
+};
+
+export type MdxEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxEdge'] = ResolversParentTypes['MdxEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['Mdx']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['Mdx'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['Mdx']>, ParentType, ContextType>,
+};
+
+export type MdxFieldsResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxFields'] = ResolversParentTypes['MdxFields']> = {
+  slug?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MdxFrontmatterResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxFrontmatter'] = ResolversParentTypes['MdxFrontmatter']> = {
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  date?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterDateArgs>,
+  endDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterEndDateArgs>,
+  location?: Resolver<Maybe<ResolversTypes['MdxFrontmatterLocation']>, ParentType, ContextType>,
+  slidesUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  startDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterStartDateArgs>,
+  talk?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  videoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  isLightning?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  repoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  workshop?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  isKeynote?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  draft?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  cover?: Resolver<Maybe<ResolversTypes['MdxFrontmatterCover']>, ParentType, ContextType>,
+  createdAt?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterCreatedAtArgs>,
+};
+
+export type MdxFrontmatterCoverResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxFrontmatterCover'] = ResolversParentTypes['MdxFrontmatterCover']> = {
+  author?: Resolver<Maybe<ResolversTypes['MdxFrontmatterCoverAuthor']>, ParentType, ContextType>,
+  photo?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType>,
+};
+
+export type MdxFrontmatterCoverAuthorResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxFrontmatterCoverAuthor'] = ResolversParentTypes['MdxFrontmatterCoverAuthor']> = {
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MdxFrontmatterLocationResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxFrontmatterLocation'] = ResolversParentTypes['MdxFrontmatterLocation']> = {
+  address?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  city?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  country?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MdxGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxGroupConnection'] = ResolversParentTypes['MdxGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['MdxEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Mdx']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type MdxHeadingMdxResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxHeadingMdx'] = ResolversParentTypes['MdxHeadingMdx']> = {
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  depth?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type MdxWordCountResolvers<ContextType = any, ParentType extends ResolversParentTypes['MdxWordCount'] = ResolversParentTypes['MdxWordCount']> = {
+  paragraphs?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  sentences?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  words?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type NodeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Node'] = ResolversParentTypes['Node']> = {
+  __resolveType: TypeResolveFn<'Mdx' | 'File' | 'ImageSharp' | 'MarkdownRemark' | 'TalkEvent' | 'Talk' | 'WorkshopEvent' | 'Workshop' | 'SitePage' | 'SitePlugin' | 'Site' | 'Directory', ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+};
+
+export type PageInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']> = {
+  currentPage?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  hasPreviousPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>,
+  hasNextPage?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>,
+  itemCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  pageCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  perPage?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+};
+
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  mdx?: Resolver<Maybe<ResolversTypes['Mdx']>, ParentType, ContextType, QueryMdxArgs>,
+  allMdx?: Resolver<ResolversTypes['MdxConnection'], ParentType, ContextType, QueryAllMdxArgs>,
+  file?: Resolver<Maybe<ResolversTypes['File']>, ParentType, ContextType, QueryFileArgs>,
+  allFile?: Resolver<ResolversTypes['FileConnection'], ParentType, ContextType, QueryAllFileArgs>,
+  imageSharp?: Resolver<Maybe<ResolversTypes['ImageSharp']>, ParentType, ContextType, QueryImageSharpArgs>,
+  allImageSharp?: Resolver<ResolversTypes['ImageSharpConnection'], ParentType, ContextType, QueryAllImageSharpArgs>,
+  markdownRemark?: Resolver<Maybe<ResolversTypes['MarkdownRemark']>, ParentType, ContextType, QueryMarkdownRemarkArgs>,
+  allMarkdownRemark?: Resolver<ResolversTypes['MarkdownRemarkConnection'], ParentType, ContextType, QueryAllMarkdownRemarkArgs>,
+  talkEvent?: Resolver<Maybe<ResolversTypes['TalkEvent']>, ParentType, ContextType, QueryTalkEventArgs>,
+  allTalkEvent?: Resolver<ResolversTypes['TalkEventConnection'], ParentType, ContextType, QueryAllTalkEventArgs>,
+  workshopEvent?: Resolver<Maybe<ResolversTypes['WorkshopEvent']>, ParentType, ContextType, QueryWorkshopEventArgs>,
+  allWorkshopEvent?: Resolver<ResolversTypes['WorkshopEventConnection'], ParentType, ContextType, QueryAllWorkshopEventArgs>,
+  talk?: Resolver<Maybe<ResolversTypes['Talk']>, ParentType, ContextType, QueryTalkArgs>,
+  allTalk?: Resolver<ResolversTypes['TalkConnection'], ParentType, ContextType, QueryAllTalkArgs>,
+  workshop?: Resolver<Maybe<ResolversTypes['Workshop']>, ParentType, ContextType, QueryWorkshopArgs>,
+  allWorkshop?: Resolver<ResolversTypes['WorkshopConnection'], ParentType, ContextType, QueryAllWorkshopArgs>,
+  sitePage?: Resolver<Maybe<ResolversTypes['SitePage']>, ParentType, ContextType, QuerySitePageArgs>,
+  allSitePage?: Resolver<ResolversTypes['SitePageConnection'], ParentType, ContextType, QueryAllSitePageArgs>,
+  sitePlugin?: Resolver<Maybe<ResolversTypes['SitePlugin']>, ParentType, ContextType, QuerySitePluginArgs>,
+  allSitePlugin?: Resolver<ResolversTypes['SitePluginConnection'], ParentType, ContextType, QueryAllSitePluginArgs>,
+  site?: Resolver<Maybe<ResolversTypes['Site']>, ParentType, ContextType, QuerySiteArgs>,
+  allSite?: Resolver<ResolversTypes['SiteConnection'], ParentType, ContextType, QueryAllSiteArgs>,
+  directory?: Resolver<Maybe<ResolversTypes['Directory']>, ParentType, ContextType, QueryDirectoryArgs>,
+  allDirectory?: Resolver<ResolversTypes['DirectoryConnection'], ParentType, ContextType, QueryAllDirectoryArgs>,
+  books?: Resolver<Array<ResolversTypes['Book']>, ParentType, ContextType, QueryBooksArgs>,
+};
+
+export type SiteResolvers<ContextType = any, ParentType extends ResolversParentTypes['Site'] = ResolversParentTypes['Site']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  siteMetadata?: Resolver<Maybe<ResolversTypes['SiteSiteMetadata']>, ParentType, ContextType>,
+  port?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  host?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  polyfill?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  pathPrefix?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  buildTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, SiteBuildTimeArgs>,
+};
+
+export type SiteConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SiteConnection'] = ResolversParentTypes['SiteConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SiteEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Site']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<SiteConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['SiteGroupConnection']>, ParentType, ContextType, RequireFields<SiteConnectionGroupArgs, 'field'>>,
+};
+
+export type SiteEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['SiteEdge'] = ResolversParentTypes['SiteEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['Site']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['Site'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['Site']>, ParentType, ContextType>,
+};
+
+export type SiteGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SiteGroupConnection'] = ResolversParentTypes['SiteGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SiteEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Site']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePageResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePage'] = ResolversParentTypes['SitePage']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  internalComponentName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  component?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  componentChunkName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  isCreatedByStatefulCreatePages?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  context?: Resolver<Maybe<ResolversTypes['SitePageContext']>, ParentType, ContextType>,
+  pluginCreator?: Resolver<Maybe<ResolversTypes['SitePlugin']>, ParentType, ContextType>,
+  pluginCreatorId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  componentPath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePageConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePageConnection'] = ResolversParentTypes['SitePageConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SitePageEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['SitePage']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<SitePageConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['SitePageGroupConnection']>, ParentType, ContextType, RequireFields<SitePageConnectionGroupArgs, 'field'>>,
+};
+
+export type SitePageContextResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePageContext'] = ResolversParentTypes['SitePageContext']> = {
+  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  frontmatter?: Resolver<Maybe<ResolversTypes['SitePageContextFrontmatter']>, ParentType, ContextType>,
+};
+
+export type SitePageContextFrontmatterResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePageContextFrontmatter'] = ResolversParentTypes['SitePageContextFrontmatter']> = {
+  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePageEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePageEdge'] = ResolversParentTypes['SitePageEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['SitePage']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['SitePage'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['SitePage']>, ParentType, ContextType>,
+};
+
+export type SitePageGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePageGroupConnection'] = ResolversParentTypes['SitePageGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SitePageEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['SitePage']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePlugin'] = ResolversParentTypes['SitePlugin']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  resolve?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  pluginOptions?: Resolver<Maybe<ResolversTypes['SitePluginPluginOptions']>, ParentType, ContextType>,
+  nodeAPIs?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  browserAPIs?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  ssrAPIs?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  pluginFilepath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  packageJson?: Resolver<Maybe<ResolversTypes['SitePluginPackageJson']>, ParentType, ContextType>,
+};
+
+export type SitePluginConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginConnection'] = ResolversParentTypes['SitePluginConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SitePluginEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['SitePlugin']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<SitePluginConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['SitePluginGroupConnection']>, ParentType, ContextType, RequireFields<SitePluginConnectionGroupArgs, 'field'>>,
+};
+
+export type SitePluginEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginEdge'] = ResolversParentTypes['SitePluginEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['SitePlugin']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['SitePlugin'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['SitePlugin']>, ParentType, ContextType>,
+};
+
+export type SitePluginGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginGroupConnection'] = ResolversParentTypes['SitePluginGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['SitePluginEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['SitePlugin']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPackageJsonResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPackageJson'] = ResolversParentTypes['SitePluginPackageJson']> = {
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  main?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  license?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  dependencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['SitePluginPackageJsonDependencies']>>>, ParentType, ContextType>,
+  devDependencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['SitePluginPackageJsonDevDependencies']>>>, ParentType, ContextType>,
+  peerDependencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['SitePluginPackageJsonPeerDependencies']>>>, ParentType, ContextType>,
+  keywords?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+};
+
+export type SitePluginPackageJsonDependenciesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPackageJsonDependencies'] = ResolversParentTypes['SitePluginPackageJsonDependencies']> = {
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPackageJsonDevDependenciesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPackageJsonDevDependencies'] = ResolversParentTypes['SitePluginPackageJsonDevDependencies']> = {
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPackageJsonPeerDependenciesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPackageJsonPeerDependencies'] = ResolversParentTypes['SitePluginPackageJsonPeerDependencies']> = {
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptions'] = ResolversParentTypes['SitePluginPluginOptions']> = {
+  plugins?: Resolver<Maybe<Array<Maybe<ResolversTypes['SitePluginPluginOptionsPlugins']>>>, ParentType, ContextType>,
+  uri?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  anonymize?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  respectDNT?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  trackingId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  short_name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  start_url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  background_color?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  theme_color?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  display?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  icon?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  defaultLayouts?: Resolver<Maybe<ResolversTypes['SitePluginPluginOptionsDefaultLayouts']>, ParentType, ContextType>,
+  extensions?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  displayName?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  svgoConfig?: Resolver<Maybe<ResolversTypes['SitePluginPluginOptionsSvgoConfig']>, ParentType, ContextType>,
+  svgProps?: Resolver<Maybe<ResolversTypes['SitePluginPluginOptionsSvgProps']>, ParentType, ContextType>,
+  path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  pathCheck?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsDefaultLayoutsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptionsDefaultLayouts'] = ResolversParentTypes['SitePluginPluginOptionsDefaultLayouts']> = {
+  default?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsPluginsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptionsPlugins'] = ResolversParentTypes['SitePluginPluginOptionsPlugins']> = {
+  resolve?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  version?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  browserAPIs?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  ssrAPIs?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  pluginFilepath?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsSvgoConfigResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptionsSvgoConfig'] = ResolversParentTypes['SitePluginPluginOptionsSvgoConfig']> = {
+  plugins?: Resolver<Maybe<ResolversTypes['SitePluginPluginOptionsSvgoConfigPlugins']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsSvgoConfigPluginsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptionsSvgoConfigPlugins'] = ResolversParentTypes['SitePluginPluginOptionsSvgoConfigPlugins']> = {
+  removeViewBox?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+};
+
+export type SitePluginPluginOptionsSvgPropsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SitePluginPluginOptionsSvgProps'] = ResolversParentTypes['SitePluginPluginOptionsSvgProps']> = {
+  fill?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type SiteSiteMetadataResolvers<ContextType = any, ParentType extends ResolversParentTypes['SiteSiteMetadata'] = ResolversParentTypes['SiteSiteMetadata']> = {
+  author?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type TalkResolvers<ContextType = any, ParentType extends ResolversParentTypes['Talk'] = ResolversParentTypes['Talk']> = {
+  body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  createdAt?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, TalkCreatedAtArgs>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  events?: Resolver<Array<ResolversTypes['TalkEvent']>, ParentType, ContextType>,
+  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
+export type TalkConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkConnection'] = ResolversParentTypes['TalkConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['TalkEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Talk']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<TalkConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['TalkGroupConnection']>, ParentType, ContextType, RequireFields<TalkConnectionGroupArgs, 'field'>>,
+};
+
+export type TalkEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkEdge'] = ResolversParentTypes['TalkEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['Talk']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['Talk'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['Talk']>, ParentType, ContextType>,
+};
+
+export type TalkEventResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkEvent'] = ResolversParentTypes['TalkEvent']> = {
+  date?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, TalkEventDateArgs>,
+  endDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, TalkEventEndDateArgs>,
+  isLightning?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  isKeynote?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  location?: Resolver<ResolversTypes['Location'], ParentType, ContextType>,
+  repoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  slidesUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  startDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, TalkEventStartDateArgs>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  videoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  talk?: Resolver<Maybe<ResolversTypes['Talk']>, ParentType, ContextType>,
+};
+
+export type TalkEventConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkEventConnection'] = ResolversParentTypes['TalkEventConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['TalkEventEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['TalkEvent']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<TalkEventConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['TalkEventGroupConnection']>, ParentType, ContextType, RequireFields<TalkEventConnectionGroupArgs, 'field'>>,
+};
+
+export type TalkEventEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkEventEdge'] = ResolversParentTypes['TalkEventEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['TalkEvent']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['TalkEvent'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['TalkEvent']>, ParentType, ContextType>,
+};
+
+export type TalkEventGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkEventGroupConnection'] = ResolversParentTypes['TalkEventGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['TalkEventEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['TalkEvent']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type TalkGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['TalkGroupConnection'] = ResolversParentTypes['TalkGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['TalkEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Talk']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type WorkshopResolvers<ContextType = any, ParentType extends ResolversParentTypes['Workshop'] = ResolversParentTypes['Workshop']> = {
+  body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  createdAt?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, WorkshopCreatedAtArgs>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  events?: Resolver<Array<ResolversTypes['WorkshopEvent']>, ParentType, ContextType>,
+  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
+export type WorkshopConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopConnection'] = ResolversParentTypes['WorkshopConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['WorkshopEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Workshop']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<WorkshopConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['WorkshopGroupConnection']>, ParentType, ContextType, RequireFields<WorkshopConnectionGroupArgs, 'field'>>,
+};
+
+export type WorkshopEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopEdge'] = ResolversParentTypes['WorkshopEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['Workshop']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['Workshop'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['Workshop']>, ParentType, ContextType>,
+};
+
+export type WorkshopEventResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopEvent'] = ResolversParentTypes['WorkshopEvent']> = {
+  date?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, WorkshopEventDateArgs>,
+  endDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, WorkshopEventEndDateArgs>,
+  location?: Resolver<ResolversTypes['Location'], ParentType, ContextType>,
+  repoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  slidesUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  startDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, WorkshopEventStartDateArgs>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  parent?: Resolver<Maybe<ResolversTypes['Node']>, ParentType, ContextType>,
+  children?: Resolver<Array<ResolversTypes['Node']>, ParentType, ContextType>,
+  internal?: Resolver<ResolversTypes['Internal'], ParentType, ContextType>,
+  workshop?: Resolver<Maybe<ResolversTypes['Workshop']>, ParentType, ContextType>,
+};
+
+export type WorkshopEventConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopEventConnection'] = ResolversParentTypes['WorkshopEventConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['WorkshopEventEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['WorkshopEvent']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  distinct?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<WorkshopEventConnectionDistinctArgs, 'field'>>,
+  group?: Resolver<Array<ResolversTypes['WorkshopEventGroupConnection']>, ParentType, ContextType, RequireFields<WorkshopEventConnectionGroupArgs, 'field'>>,
+};
+
+export type WorkshopEventEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopEventEdge'] = ResolversParentTypes['WorkshopEventEdge']> = {
+  next?: Resolver<Maybe<ResolversTypes['WorkshopEvent']>, ParentType, ContextType>,
+  node?: Resolver<ResolversTypes['WorkshopEvent'], ParentType, ContextType>,
+  previous?: Resolver<Maybe<ResolversTypes['WorkshopEvent']>, ParentType, ContextType>,
+};
+
+export type WorkshopEventGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopEventGroupConnection'] = ResolversParentTypes['WorkshopEventGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['WorkshopEventEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['WorkshopEvent']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type WorkshopGroupConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkshopGroupConnection'] = ResolversParentTypes['WorkshopGroupConnection']> = {
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  edges?: Resolver<Array<ResolversTypes['WorkshopEdge']>, ParentType, ContextType>,
+  nodes?: Resolver<Array<ResolversTypes['Workshop']>, ParentType, ContextType>,
+  pageInfo?: Resolver<ResolversTypes['PageInfo'], ParentType, ContextType>,
+  field?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  fieldValue?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+};
+
+export type Resolvers<ContextType = any> = {
+  Book?: BookResolvers<ContextType>,
+  Date?: GraphQLScalarType,
+  Directory?: DirectoryResolvers<ContextType>,
+  DirectoryConnection?: DirectoryConnectionResolvers<ContextType>,
+  DirectoryEdge?: DirectoryEdgeResolvers<ContextType>,
+  DirectoryGroupConnection?: DirectoryGroupConnectionResolvers<ContextType>,
+  File?: FileResolvers<ContextType>,
+  FileConnection?: FileConnectionResolvers<ContextType>,
+  FileEdge?: FileEdgeResolvers<ContextType>,
+  FileGroupConnection?: FileGroupConnectionResolvers<ContextType>,
+  ImageSharp?: ImageSharpResolvers<ContextType>,
+  ImageSharpConnection?: ImageSharpConnectionResolvers<ContextType>,
+  ImageSharpEdge?: ImageSharpEdgeResolvers<ContextType>,
+  ImageSharpFixed?: ImageSharpFixedResolvers<ContextType>,
+  ImageSharpFluid?: ImageSharpFluidResolvers<ContextType>,
+  ImageSharpGroupConnection?: ImageSharpGroupConnectionResolvers<ContextType>,
+  ImageSharpOriginal?: ImageSharpOriginalResolvers<ContextType>,
+  ImageSharpResize?: ImageSharpResizeResolvers<ContextType>,
+  ImageSharpResolutions?: ImageSharpResolutionsResolvers<ContextType>,
+  ImageSharpSizes?: ImageSharpSizesResolvers<ContextType>,
+  Internal?: InternalResolvers<ContextType>,
+  JSON?: GraphQLScalarType,
+  Location?: LocationResolvers<ContextType>,
+  MarkdownHeading?: MarkdownHeadingResolvers<ContextType>,
+  MarkdownRemark?: MarkdownRemarkResolvers<ContextType>,
+  MarkdownRemarkConnection?: MarkdownRemarkConnectionResolvers<ContextType>,
+  MarkdownRemarkEdge?: MarkdownRemarkEdgeResolvers<ContextType>,
+  MarkdownRemarkFrontmatter?: MarkdownRemarkFrontmatterResolvers<ContextType>,
+  MarkdownRemarkGroupConnection?: MarkdownRemarkGroupConnectionResolvers<ContextType>,
+  MarkdownWordCount?: MarkdownWordCountResolvers<ContextType>,
+  Mdx?: MdxResolvers<ContextType>,
+  MdxConnection?: MdxConnectionResolvers<ContextType>,
+  MdxEdge?: MdxEdgeResolvers<ContextType>,
+  MdxFields?: MdxFieldsResolvers<ContextType>,
+  MdxFrontmatter?: MdxFrontmatterResolvers<ContextType>,
+  MdxFrontmatterCover?: MdxFrontmatterCoverResolvers<ContextType>,
+  MdxFrontmatterCoverAuthor?: MdxFrontmatterCoverAuthorResolvers<ContextType>,
+  MdxFrontmatterLocation?: MdxFrontmatterLocationResolvers<ContextType>,
+  MdxGroupConnection?: MdxGroupConnectionResolvers<ContextType>,
+  MdxHeadingMdx?: MdxHeadingMdxResolvers<ContextType>,
+  MdxWordCount?: MdxWordCountResolvers<ContextType>,
+  Node?: NodeResolvers,
+  PageInfo?: PageInfoResolvers<ContextType>,
+  Query?: QueryResolvers<ContextType>,
+  Site?: SiteResolvers<ContextType>,
+  SiteConnection?: SiteConnectionResolvers<ContextType>,
+  SiteEdge?: SiteEdgeResolvers<ContextType>,
+  SiteGroupConnection?: SiteGroupConnectionResolvers<ContextType>,
+  SitePage?: SitePageResolvers<ContextType>,
+  SitePageConnection?: SitePageConnectionResolvers<ContextType>,
+  SitePageContext?: SitePageContextResolvers<ContextType>,
+  SitePageContextFrontmatter?: SitePageContextFrontmatterResolvers<ContextType>,
+  SitePageEdge?: SitePageEdgeResolvers<ContextType>,
+  SitePageGroupConnection?: SitePageGroupConnectionResolvers<ContextType>,
+  SitePlugin?: SitePluginResolvers<ContextType>,
+  SitePluginConnection?: SitePluginConnectionResolvers<ContextType>,
+  SitePluginEdge?: SitePluginEdgeResolvers<ContextType>,
+  SitePluginGroupConnection?: SitePluginGroupConnectionResolvers<ContextType>,
+  SitePluginPackageJson?: SitePluginPackageJsonResolvers<ContextType>,
+  SitePluginPackageJsonDependencies?: SitePluginPackageJsonDependenciesResolvers<ContextType>,
+  SitePluginPackageJsonDevDependencies?: SitePluginPackageJsonDevDependenciesResolvers<ContextType>,
+  SitePluginPackageJsonPeerDependencies?: SitePluginPackageJsonPeerDependenciesResolvers<ContextType>,
+  SitePluginPluginOptions?: SitePluginPluginOptionsResolvers<ContextType>,
+  SitePluginPluginOptionsDefaultLayouts?: SitePluginPluginOptionsDefaultLayoutsResolvers<ContextType>,
+  SitePluginPluginOptionsPlugins?: SitePluginPluginOptionsPluginsResolvers<ContextType>,
+  SitePluginPluginOptionsSvgoConfig?: SitePluginPluginOptionsSvgoConfigResolvers<ContextType>,
+  SitePluginPluginOptionsSvgoConfigPlugins?: SitePluginPluginOptionsSvgoConfigPluginsResolvers<ContextType>,
+  SitePluginPluginOptionsSvgProps?: SitePluginPluginOptionsSvgPropsResolvers<ContextType>,
+  SiteSiteMetadata?: SiteSiteMetadataResolvers<ContextType>,
+  Talk?: TalkResolvers<ContextType>,
+  TalkConnection?: TalkConnectionResolvers<ContextType>,
+  TalkEdge?: TalkEdgeResolvers<ContextType>,
+  TalkEvent?: TalkEventResolvers<ContextType>,
+  TalkEventConnection?: TalkEventConnectionResolvers<ContextType>,
+  TalkEventEdge?: TalkEventEdgeResolvers<ContextType>,
+  TalkEventGroupConnection?: TalkEventGroupConnectionResolvers<ContextType>,
+  TalkGroupConnection?: TalkGroupConnectionResolvers<ContextType>,
+  Workshop?: WorkshopResolvers<ContextType>,
+  WorkshopConnection?: WorkshopConnectionResolvers<ContextType>,
+  WorkshopEdge?: WorkshopEdgeResolvers<ContextType>,
+  WorkshopEvent?: WorkshopEventResolvers<ContextType>,
+  WorkshopEventConnection?: WorkshopEventConnectionResolvers<ContextType>,
+  WorkshopEventEdge?: WorkshopEventEdgeResolvers<ContextType>,
+  WorkshopEventGroupConnection?: WorkshopEventGroupConnectionResolvers<ContextType>,
+  WorkshopGroupConnection?: WorkshopGroupConnectionResolvers<ContextType>,
+};
+
+
+/**
+ * @deprecated
+ * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
+*/
+export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+export type DirectiveResolvers<ContextType = any> = {
+  default?: DefaultDirectiveResolver<any, any, ContextType>,
+  dateformat?: DateformatDirectiveResolver<any, any, ContextType>,
+  link?: LinkDirectiveResolver<any, any, ContextType>,
+  fileByRelativePath?: FileByRelativePathDirectiveResolver<any, any, ContextType>,
+  proxy?: ProxyDirectiveResolver<any, any, ContextType>,
+  infer?: InferDirectiveResolver<any, any, ContextType>,
+  dontInfer?: DontInferDirectiveResolver<any, any, ContextType>,
+  mimeTypes?: MimeTypesDirectiveResolver<any, any, ContextType>,
+  childOf?: ChildOfDirectiveResolver<any, any, ContextType>,
+  nodeInterface?: NodeInterfaceDirectiveResolver<any, any, ContextType>,
+  cacheControl?: CacheControlDirectiveResolver<any, any, ContextType>,
+};
+
+
+/**
+* @deprecated
+* Use "DirectiveResolvers" root object instead. If you wish to get "IDirectiveResolvers", add "typesPrefix: I" to your config.
+*/
+export type IDirectiveResolvers<ContextType = any> = DirectiveResolvers<ContextType>;

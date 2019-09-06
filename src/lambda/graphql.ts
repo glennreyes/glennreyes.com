@@ -15,10 +15,10 @@ export const typeDefs = gql`
     averageRating: String!
     id: ID!
     imageUrl: String!
-    link: String!
     readAt: String!
     startedAt: String!
     title: String!
+    url: String!
   }
 
   type Query {

@@ -56,6 +56,7 @@
     "gatsby-transformer-sharp": "2.2.13",
     "github-slugger": "1.2.1",
     "graphql": "14.5.4",
+    "graphql-tag": "^2.10.1",
     "http-proxy-middleware": "0.20.0",
     "lodash": "4.17.15",
     "map-keys-deep": "0.0.2",
