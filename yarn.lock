@@ -6653,7 +6653,7 @@ gatsby-page-utils@^0.0.16:
     micromatch "^3.1.10"
     slash "^3.0.0"
 
-gatsby-plugin-apollo@^0.1.1:
+gatsby-plugin-apollo@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-apollo/-/gatsby-plugin-apollo-0.1.1.tgz#66d87982f2cf6940943a51f72e6377332e048b61"
   integrity sha512-Wvj6ydoHJeLbRxZ3HwYMVCIVOp4uI2cPvr4vlJuDPWHoqD4D05YcT6KBrJ8GBUmqwZ5kWglzivpftBThm9X+BA==
