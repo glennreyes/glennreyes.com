@@ -792,6 +792,13 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-typescript" "^7.3.2"
 
+"@babel/runtime@7.3.4":
+  version "7.3.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.3.4.tgz#73d12ba819e365fcf7fd152aed56d6df97d21c83"
+  integrity sha512-IvfvnMdSaLBateu0jfsYIpZTxAc2cKEXEMiezGGN75QcBcecDUKd3PgLAncT0oOgxKy8dd8hrJKj9MfzgfZd6g==
+  dependencies:
+    regenerator-runtime "^0.12.0"
+
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.1", "@babel/runtime@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
@@ -1448,6 +1455,11 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@rhysforyou/gatsby-plugin-react-helmet-async@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@rhysforyou/gatsby-plugin-react-helmet-async/-/gatsby-plugin-react-helmet-async-0.1.1.tgz#fa68d0ccb24f0c396bc37d796f5f51095d4e4e18"
+  integrity sha512-KRBugE92yH3t4yUZG/htgvGGhkupn0TJFFAqH2zE2IzNOrXqqgSmAWBTXquIxoavMeyZADL8V3fYrdQGJPrmYw==
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -1828,7 +1840,15 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-helmet@5.0.9":
+"@types/react-helmet-async@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-helmet-async/-/react-helmet-async-1.0.0.tgz#9fbf82382a95807506f2c43e89ff47f97ddca7cf"
+  integrity sha512-7q+2sDPNNYkX5rtwj56OCT7OPOlM8aayWZ5JXILDdStV7Bi2Lp7nkxwHpP7dVojYTsUx//iWQiOdSFSP2+QzlQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-helmet" "*"
+
+"@types/react-helmet@*", "@types/react-helmet@5.0.9":
   version "5.0.9"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.9.tgz#60ab5accce74b168ca1d274671522f6b2cf2c98f"
   integrity sha512-0UVaMQk/Xvq6rFaGyepSBnRApy5RE+YH0XAXlbOBhtez5D9y1/jxKaKODofPzNnJLoLQ+sATTsWQIvrw1Dtiag==
@@ -5907,11 +5927,6 @@ executable@^4.1.0:
   dependencies:
     pify "^2.2.0"
 
-exenv@^1.2.1:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
-
 exif-parser@^0.1.12:
   version "0.1.12"
   resolved "https://registry.yarnpkg.com/exif-parser/-/exif-parser-0.1.12.tgz#58a9d2d72c02c1f6f02a0ef4a9166272b7760922"
@@ -6754,13 +6769,6 @@ gatsby-plugin-page-creator@^2.1.16:
     glob "^7.1.4"
     lodash "^4.17.15"
     micromatch "^3.1.10"
-
-gatsby-plugin-react-helmet@3.1.6:
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.1.6.tgz#de50a71e687472c72341f587ae6339ebf7f3667c"
-  integrity sha512-tagYfzPSLb22BKdEKkPFaShPHNEqOgyMpDLj+cRrpxJNTooL45s/UJufiX58vqbG1GxgIbQfkpkpEix6N8f7aA==
-  dependencies:
-    "@babel/runtime" "^7.5.5"
 
 gatsby-plugin-robots-txt@1.5.0:
   version "1.5.0"
@@ -8402,7 +8410,7 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -12036,7 +12044,7 @@ prompts@^2.2.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -12326,20 +12334,21 @@ react-error-overlay@^3.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
   integrity sha512-XzgvowFrwDo6TWcpJ/WTiarb9UI6lhA4PMzS7n1joK3sHfBBBOQHUc0U4u57D6DWO9vHv6lVSWx2Q/Ymfyv4hw==
 
-react-fast-compare@^2.0.2, react-fast-compare@^2.0.4:
+react-fast-compare@2.0.4, react-fast-compare@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-helmet@5.2.1:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
-  integrity sha512-CnwD822LU8NDBnjCpZ4ySh8L6HYyngViTZLfBBb3NjtrpN8m49clH8hidHouq20I51Y6TpCTISCBbqiY5GamwA==
+react-helmet-async@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.2.tgz#bb55dd8268f7b15aac69c6b22e2f950abda8cc44"
+  integrity sha512-qzzchrM/ibHuPS/60ief8jaibPunuRdeta4iBDQV+ri2SFKwOV+X2NlEpvevZOauhmHrH/I6dI4E90EPVfJBBg==
   dependencies:
-    object-assign "^4.1.1"
-    prop-types "^15.5.4"
-    react-fast-compare "^2.0.2"
-    react-side-effect "^1.1.0"
+    "@babel/runtime" "7.3.4"
+    invariant "2.2.4"
+    prop-types "15.7.2"
+    react-fast-compare "2.0.4"
+    shallowequal "1.1.0"
 
 react-hot-loader@^4.12.12:
   version "4.12.12"
@@ -12384,14 +12393,6 @@ react-reconciler@^0.20.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
-
-react-side-effect@^1.1.0:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
-  integrity sha512-Z2ZJE4p/jIfvUpiUMRydEVpQRf2f8GMHczT6qLcARmX7QRb28JDBTpnM2g/i5y/p7ZDEXYGHWg0RbhikE+hJRw==
-  dependencies:
-    exenv "^1.2.1"
-    shallowequal "^1.0.1"
 
 react-tilt@0.1.4:
   version "0.1.4"
@@ -12603,6 +12604,11 @@ regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
+
+regenerator-runtime@^0.12.0:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
+  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
 regenerator-runtime@^0.13.2:
   version "0.13.2"
@@ -13410,7 +13416,7 @@ shallow-compare@^1.2.2:
   resolved "https://registry.yarnpkg.com/shallow-compare/-/shallow-compare-1.2.2.tgz#fa4794627bf455a47c4f56881d8a6132d581ffdb"
   integrity sha512-LUMFi+RppPlrHzbqmFnINTrazo0lPNwhcgzuAXVVcfy/mqPDrQmHAyz5bvV0gDAuRFrk804V0HpQ6u9sZ0tBeg==
 
-shallowequal@^1.0.1, shallowequal@^1.1.0:
+shallowequal@1.1.0, shallowequal@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==

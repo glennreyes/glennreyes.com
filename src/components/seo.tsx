@@ -7,7 +7,7 @@
 
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { SeoQuery } from '../types/generated/graphql';
 
 const defaultProps = {
@@ -54,47 +54,50 @@ const SEO = ({ description, lang, meta, title }: SEOProps) => {
       : metaTitle;
 
   const ogTitle = title === 'Home' ? metaTitle : title;
+  const metas = [
+    {
+      content: metaDescription,
+      name: 'description',
+    },
+    {
+      content: ogTitle,
+      property: 'og:title',
+    },
+    {
+      content: metaDescription,
+      property: 'og:description',
+    },
+    {
+      content: 'website',
+      property: 'og:type',
+    },
+    {
+      content: 'summary',
+      name: 'twitter:card',
+    },
+    {
+      content: author,
+      name: 'twitter:creator',
+    },
+    {
+      content: siteTitle,
+      name: 'twitter:title',
+    },
+    {
+      content: metaDescription,
+      name: 'twitter:description',
+    },
+    ...meta,
+  ];
 
   return (
-    <Helmet
-      htmlAttributes={{ lang }}
-      meta={[
-        {
-          content: metaDescription,
-          name: 'description',
-        },
-        {
-          content: ogTitle,
-          property: 'og:title',
-        },
-        {
-          content: metaDescription,
-          property: 'og:description',
-        },
-        {
-          content: 'website',
-          property: 'og:type',
-        },
-        {
-          content: 'summary',
-          name: 'twitter:card',
-        },
-        {
-          content: author,
-          name: 'twitter:creator',
-        },
-        {
-          content: siteTitle,
-          name: 'twitter:title',
-        },
-        {
-          content: metaDescription,
-          name: 'twitter:description',
-        },
-        ...meta,
-      ]}
-      title={siteTitle}
-    />
+    <Helmet>
+      <html lang={lang} />
+      <title>{siteTitle}</title>
+      {metas.map((props, index) => (
+        <meta key={index} {...props} />
+      ))}
+    </Helmet>
   );
 };
 

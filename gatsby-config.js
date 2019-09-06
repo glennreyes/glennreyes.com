@@ -77,7 +77,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-netlify',
-    'gatsby-plugin-react-helmet',
+    '@rhysforyou/gatsby-plugin-react-helmet-async',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
