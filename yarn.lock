@@ -1455,7 +1455,7 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@rhysforyou/gatsby-plugin-react-helmet-async@^0.1.1":
+"@rhysforyou/gatsby-plugin-react-helmet-async@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@rhysforyou/gatsby-plugin-react-helmet-async/-/gatsby-plugin-react-helmet-async-0.1.1.tgz#fa68d0ccb24f0c396bc37d796f5f51095d4e4e18"
   integrity sha512-KRBugE92yH3t4yUZG/htgvGGhkupn0TJFFAqH2zE2IzNOrXqqgSmAWBTXquIxoavMeyZADL8V3fYrdQGJPrmYw==
