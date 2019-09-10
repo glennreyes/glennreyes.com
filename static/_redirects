@@ -1,9 +1,10 @@
 # Redirect default Netlify subdomain to primary domain
 http://glennreyes.netlify.com/* http://glennreyes.com/:splat 301!
 
-/avatar   /photo.jpg
-/gear     /uses
-/photo    /photo.jpg
-/reading  /books
-/speaking /talks
-/teaching /workshops
+/avatar             /photo.jpg
+/gear               /uses
+/photo              /photo.jpg
+/reading            /books
+/speaking           /talks
+/teaching           /workshops
+/workshops/feedback https://docs.google.com/forms/d/e/1FAIpQLSfqgeDV9J96s_XzO1qZrKJXW0cxwfqS5e-5qjDREg9nydemjw/viewform?usp=pp_url&entry.1524828154=GraphQL+for+everyone
