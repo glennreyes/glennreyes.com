@@ -246,7 +246,6 @@ exports.createResolvers = async ({
             ...internal,
             content: rawBody,
             contentDigest: createContentDigest(rawBody),
-            id,
             type: 'Workshop',
           },
           parent: null,
