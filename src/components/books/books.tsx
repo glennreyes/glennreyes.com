@@ -1,7 +1,6 @@
 import gql from 'graphql-tag';
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import Book from './book';
 import Grid from './grid';
 import { H2 } from '../mdx/headings';
 import { BooksQuery } from '../../types/generated/graphql';
