@@ -65,8 +65,10 @@ type EventsProps = {
 const CardEvents = ({ events }: EventsProps) => {
   const upcomingEvents = Array.isArray(events)
     ? orderBy(
-        events.filter(event =>
-          dayjs(event.date || event.startDate).isAfter(dayjs()),
+        events.filter(
+          event =>
+            dayjs(event.date || event.startDate).isAfter(dayjs(), 'day') ||
+            dayjs(event.date || event.startDate).isSame(dayjs(), 'day'),
         ),
         [({ date, startDate }) => dayjs(date).unix() || dayjs(startDate)],
       )
@@ -74,7 +76,7 @@ const CardEvents = ({ events }: EventsProps) => {
   const pastEvents = Array.isArray(events)
     ? orderBy(
         events.filter(event =>
-          dayjs(event.date || event.startDate).isBefore(dayjs()),
+          dayjs(event.date || event.startDate).isBefore(dayjs(), 'day'),
         ),
         [
           ({ date, startDate }) =>
