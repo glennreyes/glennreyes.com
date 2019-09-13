@@ -1,8 +1,42 @@
+import { rgba } from 'polished';
 import React from 'react';
-import styled from 'styled-components';
+import Tilt from 'react-tilt';
+import styled, { keyframes } from 'styled-components';
 import Book from './book';
 import Paragraph from '../mdx/paragraph';
 import { Book as BookType } from '../../types/generated/graphql';
+
+const shimmer = keyframes`
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+`;
+
+const LoadingIndicator = styled.div`
+  background: ${p => p.theme.colors.bg};
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    animation: 1s ${shimmer} linear infinite;
+    background: linear-gradient(
+      to right,
+      transparent 25%,
+      ${p => rgba(p.theme.colors.cardBg, 0.75)} 50%,
+      transparent 75%
+    );
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 200%;
+    z-index: 1;
+  }
+`;
 
 const LoadingWrapper = styled.div`
   background: ${p => p.theme.colors.cardBg};
@@ -22,34 +56,31 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const Cover = styled.div`
-  background: ${p => p.theme.colors.bg};
-  border-radius: ${p => p.theme.radii[1]}px;
+const Cover = styled(LoadingIndicator)`
   min-height: ${p => p.theme.space[6]}px;
   margin: ${p => p.theme.space[2]}px;
 
   &::before {
     content: '';
-    display: block;
     padding-bottom: 50%;
   }
 `;
 
-const Bar = styled.div`
-  background: ${p => p.theme.colors.bg};
-  border-radius: ${p => p.theme.radii[1]}px;
+const Bar = styled(LoadingIndicator)`
   height: ${p => p.theme.space[2]}px;
   margin: ${p => p.theme.space[2]}px ${p => p.theme.space[2]}px 0;
 `;
 
 const Loading = () => (
-  <LoadingWrapper>
-    <Content>
-      <Cover />
-      <Bar />
-      <Bar />
-    </Content>
-  </LoadingWrapper>
+  <Tilt options={{ max: 10, scale: 1.02 }}>
+    <LoadingWrapper>
+      <Content>
+        <Cover />
+        <Bar />
+        <Bar />
+      </Content>
+    </LoadingWrapper>
+  </Tilt>
 );
 
 const Wrapper = styled.div`
@@ -66,12 +97,15 @@ type GridProps = {
   books: Pick<BookType, 'title' | 'id' | 'imageUrl' | 'url'>[];
   emptyText?: string;
   loading: boolean;
-  loadingAmount: number;
+  loadingAmount?: number;
 };
 
 const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) => (
   <Wrapper>
-    {loading ? (
+    {Array.from({ length: loadingAmount }, (_, index) => (
+      <Loading key={index} />
+    ))}
+    {/* {loading ? (
       Array.from({ length: loadingAmount }, (_, index) => (
         <Loading key={index} />
       ))
@@ -79,7 +113,7 @@ const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) => (
       books.map(props => <Book key={props.id} {...props} />)
     ) : (
       <Paragraph>{emptyText || 'None'}</Paragraph>
-    )}
+    )} */}
   </Wrapper>
 );
 
