@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 import ArrowLink from '../components/arrow-link';
 import Content from '../components/home/content';
@@ -59,7 +60,9 @@ const moreLinks = [
   },
 ];
 
-const Home = () => {
+type HomeProps = RouteComponentProps;
+
+const Home = ({ path }: HomeProps) => {
   const data: HomeQuery = useStaticQuery(
     graphql`
       query Home {
@@ -105,7 +108,7 @@ const Home = () => {
     [];
 
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO title="Home" />
       <IntroSection>
         <IntroContent>

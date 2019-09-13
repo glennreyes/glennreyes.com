@@ -71,7 +71,11 @@ const FlexItem = styled.div`
   `}
 `;
 
-const Header = () => {
+type HeaderProps = {
+  path?: string;
+};
+
+const Header = ({ path }: HeaderProps) => {
   const { site }: HeaderQuery = useStaticQuery(graphql`
     query Header {
       site {
@@ -85,13 +89,22 @@ const Header = () => {
   const { isOpen, close } = React.useContext(MenuToggleContext);
   const isScrollThreshold = useScrollThreshold(64);
 
+  const handleTitleLinkClick = (event: React.MouseEvent) => {
+    if (path === '/') {
+      event.preventDefault();
+      window.scrollTo({ behavior: 'smooth', top: 0 });
+    }
+
+    close();
+  };
+
   return (
     <Wrapper isScrollThreshold={isScrollThreshold} isMenuOpen={isOpen}>
       <Container>
         <MenuButton />
         {title && (
           <FlexItem>
-            <TitleLink onClick={() => close()} to="/">
+            <TitleLink onClick={handleTitleLinkClick} to="/">
               {title}
             </TitleLink>
           </FlexItem>

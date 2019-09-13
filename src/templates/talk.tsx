@@ -1,4 +1,5 @@
-import { PageRendererProps, graphql } from 'gatsby';
+import { RouteComponentProps } from '@reach/router';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import Content from '../components/content';
@@ -9,7 +10,7 @@ import { H1 } from '../components/mdx/headings';
 import SEO from '../components/seo';
 import { TalkQuery } from '../types/generated/graphql';
 
-type TalkProps = PageRendererProps & {
+type TalkProps = RouteComponentProps & {
   data: TalkQuery;
 };
 

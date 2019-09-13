@@ -1,10 +1,10 @@
-import { PageRendererProps } from 'gatsby';
+import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 import Content from '../components/content';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-type DefaultProps = PageRendererProps & {
+type DefaultProps = RouteComponentProps & {
   children: React.ReactNode;
   pageContext: {
     frontmatter?: {
@@ -14,12 +14,16 @@ type DefaultProps = PageRendererProps & {
   };
 };
 
-const Default = ({ children, pageContext: { frontmatter } }: DefaultProps) => {
+const Default = ({
+  children,
+  pageContext: { frontmatter },
+  path,
+}: DefaultProps) => {
   const description = (frontmatter && frontmatter.description) || undefined;
   const title = (frontmatter && frontmatter.title) || undefined;
 
   return (
-    <Layout>
+    <Layout path={path}>
       <SEO description={description} title={title} />
       <Content>{children}</Content>
     </Layout>

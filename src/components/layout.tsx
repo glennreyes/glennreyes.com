@@ -7,6 +7,7 @@ import mdxComponents from './mdx';
 
 type LayoutProps = {
   children: React.ReactNode;
+  path?: string;
 };
 
 const Wrapper = styled.div`
@@ -24,9 +25,9 @@ const Main = styled.main`
   `}
 `;
 
-const Layout = (props: LayoutProps) => (
+const Layout = ({ path, ...props }: LayoutProps) => (
   <Wrapper>
-    <Header />
+    <Header path={path} />
     <MDXProvider components={mdxComponents}>
       <Main {...props} />
     </MDXProvider>

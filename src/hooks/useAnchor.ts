@@ -18,7 +18,7 @@ const useAnchor = (
     }
   }, [offset, ref]);
 
-  const handleClick = (event: React.SyntheticEvent) => {
+  const handleClick = (event: React.MouseEvent) => {
     event.preventDefault();
     const element = document.getElementById(slug);
 
