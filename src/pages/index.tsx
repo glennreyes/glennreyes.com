@@ -1,12 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
-import styled from 'styled-components';
 import ArrowLink from '../components/arrow-link';
 import Card from '../components/card';
 import CardBody from '../components/card-body';
 import CardLink from '../components/card-link';
 import CardTitle from '../components/card-title';
+import CardGrid from '../components/home/card-grid';
 import Content from '../components/home/content';
 import Excerpt from '../components/home/excerpt';
 import Greeting from '../components/home/greeting';
@@ -65,14 +65,6 @@ const moreLinks = [
     url: '/contact/',
   },
 ];
-
-const CardGrid = styled.div`
-  ${p => p.theme.media.tablet`
-    display: grid;
-    gap: ${p.theme.space[3]}px;
-    grid-template-columns: repeat(2, 1fr);
-  `}
-`;
 
 type HomeProps = RouteComponentProps;
 
