@@ -135,7 +135,7 @@ const Home = ({ path }: HomeProps) => {
       </IntroSection>
       <Section>
         <Content>
-          <Heading>Blog.</Heading>
+          <Heading to="/blog/">Blog</Heading>
           {posts.map(
             ({ excerpt, id, slug, title }) =>
               slug && (
@@ -152,7 +152,7 @@ const Home = ({ path }: HomeProps) => {
       </Section>
       <Section>
         <Content>
-          <Heading>Workshops.</Heading>
+          <Heading to="/workshops/">Workshops</Heading>
           <CardGrid>
             {data.workshops.nodes.map(({ description, id, slug, title }) => (
               <Card as="article" key={id}>
@@ -174,7 +174,7 @@ const Home = ({ path }: HomeProps) => {
       </Section>
       <Section>
         <Content>
-          <Heading>More.</Heading>
+          <Heading>More</Heading>
           <MoreLinks>
             {moreLinks.map(({ icon, label, url }) => (
               <MoreLink icon={icon} key={label.toLowerCase()} to={url}>
