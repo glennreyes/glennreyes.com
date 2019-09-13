@@ -32,6 +32,7 @@ const Books = () => {
         books={(data && data.currentlyReading) || []}
         emptyText="None yet. What should I read next?"
         loading={loading}
+        loadingAmount={1}
       />
       <H2>Books I've read in the past</H2>
       <Grid books={(data && data.read) || []} loading={loading} />
