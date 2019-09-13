@@ -17,6 +17,7 @@ const shimmer = keyframes`
 
 const LoadingIndicator = styled.div`
   background: ${p => p.theme.colors.bg};
+  border-radius: ${p => p.theme.radii[1]}px;
   overflow: hidden;
   position: relative;
 
@@ -102,10 +103,7 @@ type GridProps = {
 
 const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) => (
   <Wrapper>
-    {Array.from({ length: loadingAmount }, (_, index) => (
-      <Loading key={index} />
-    ))}
-    {/* {loading ? (
+    {loading ? (
       Array.from({ length: loadingAmount }, (_, index) => (
         <Loading key={index} />
       ))
@@ -113,7 +111,7 @@ const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) => (
       books.map(props => <Book key={props.id} {...props} />)
     ) : (
       <Paragraph>{emptyText || 'None'}</Paragraph>
-    )} */}
+    )}
   </Wrapper>
 );
 

@@ -34,7 +34,7 @@ const Link = styled(DefaultLink)`
 const Book = ({ imageUrl, title, url }: BookProps) => (
   <Tilt options={{ max: 10, scale: 1.02 }}>
     <Link target="_blank" title={title} to={url}>
-      <Image src={imageUrl} alt={title} title={title} />
+      <Image alt={title} loading="lazy" src={imageUrl} title={title} />
     </Link>
   </Tilt>
 );
