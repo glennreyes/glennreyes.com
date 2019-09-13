@@ -25,6 +25,7 @@ const Books = () => {
       }
     }
   `);
+
   return (
     <div>
       <H2>Currently reading</H2>

@@ -740,11 +740,11 @@ export enum FileFieldsEnum {
   childMdx___frontmatter___location___city = 'childMdx___frontmatter___location___city',
   childMdx___frontmatter___location___country = 'childMdx___frontmatter___location___country',
   childMdx___frontmatter___location___name = 'childMdx___frontmatter___location___name',
-  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___startDate = 'childMdx___frontmatter___startDate',
   childMdx___frontmatter___talk = 'childMdx___frontmatter___talk',
   childMdx___frontmatter___url = 'childMdx___frontmatter___url',
   childMdx___frontmatter___videoUrl = 'childMdx___frontmatter___videoUrl',
+  childMdx___frontmatter___slidesUrl = 'childMdx___frontmatter___slidesUrl',
   childMdx___frontmatter___isLightning = 'childMdx___frontmatter___isLightning',
   childMdx___frontmatter___repoUrl = 'childMdx___frontmatter___repoUrl',
   childMdx___frontmatter___workshop = 'childMdx___frontmatter___workshop',
@@ -1835,11 +1835,11 @@ export enum MdxFieldsEnum {
   frontmatter___location___city = 'frontmatter___location___city',
   frontmatter___location___country = 'frontmatter___location___country',
   frontmatter___location___name = 'frontmatter___location___name',
-  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___startDate = 'frontmatter___startDate',
   frontmatter___talk = 'frontmatter___talk',
   frontmatter___url = 'frontmatter___url',
   frontmatter___videoUrl = 'frontmatter___videoUrl',
+  frontmatter___slidesUrl = 'frontmatter___slidesUrl',
   frontmatter___isLightning = 'frontmatter___isLightning',
   frontmatter___repoUrl = 'frontmatter___repoUrl',
   frontmatter___workshop = 'frontmatter___workshop',
@@ -2015,11 +2015,11 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>,
   endDate?: Maybe<Scalars['Date']>,
   location?: Maybe<MdxFrontmatterLocation>,
-  slidesUrl?: Maybe<Scalars['String']>,
   startDate?: Maybe<Scalars['Date']>,
   talk?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
   videoUrl?: Maybe<Scalars['String']>,
+  slidesUrl?: Maybe<Scalars['String']>,
   isLightning?: Maybe<Scalars['Boolean']>,
   repoUrl?: Maybe<Scalars['String']>,
   workshop?: Maybe<Scalars['String']>,
@@ -2089,11 +2089,11 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>,
   endDate?: Maybe<DateQueryOperatorInput>,
   location?: Maybe<MdxFrontmatterLocationFilterInput>,
-  slidesUrl?: Maybe<StringQueryOperatorInput>,
   startDate?: Maybe<DateQueryOperatorInput>,
   talk?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
   videoUrl?: Maybe<StringQueryOperatorInput>,
+  slidesUrl?: Maybe<StringQueryOperatorInput>,
   isLightning?: Maybe<BooleanQueryOperatorInput>,
   repoUrl?: Maybe<StringQueryOperatorInput>,
   workshop?: Maybe<StringQueryOperatorInput>,
@@ -4555,7 +4555,13 @@ export type HomeQuery = (
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'description'>
     )> }
-  )> }
+  )>, workshops: (
+    { __typename?: 'WorkshopConnection' }
+    & { nodes: Array<(
+      { __typename?: 'Workshop' }
+      & Pick<Workshop, 'body' | 'description' | 'id' | 'slug' | 'title'>
+    )> }
+  ) }
 );
 
 export type PostQueryVariables = {
@@ -5488,11 +5494,11 @@ export type MdxFrontmatterResolvers<ContextType = any, ParentType extends Resolv
   date?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterDateArgs>,
   endDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterEndDateArgs>,
   location?: Resolver<Maybe<ResolversTypes['MdxFrontmatterLocation']>, ParentType, ContextType>,
-  slidesUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   startDate?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, MdxFrontmatterStartDateArgs>,
   talk?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   videoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  slidesUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   isLightning?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
   repoUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   workshop?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,

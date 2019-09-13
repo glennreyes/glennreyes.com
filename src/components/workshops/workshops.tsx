@@ -38,11 +38,9 @@ const Workshops = () => {
     `,
   );
 
-  const workshops = (data.workshops && data.workshops.nodes) || [];
-
   return (
     <Cards>
-      {workshops.map(
+      {data.workshops.nodes.map(
         ({ description, events, id, slug, title }) =>
           slug &&
           title && (

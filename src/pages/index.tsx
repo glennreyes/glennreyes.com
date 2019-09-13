@@ -1,7 +1,12 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
+import styled from 'styled-components';
 import ArrowLink from '../components/arrow-link';
+import Card from '../components/card';
+import CardBody from '../components/card-body';
+import CardLink from '../components/card-link';
+import CardTitle from '../components/card-title';
 import Content from '../components/home/content';
 import Excerpt from '../components/home/excerpt';
 import Greeting from '../components/home/greeting';
@@ -17,6 +22,7 @@ import Section from '../components/home/section';
 import Tagline from '../components/home/tagline';
 import Title from '../components/home/title';
 import Layout from '../components/layout';
+import Paragraph from '../components/mdx/paragraph';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
 import { ReactComponent as Book } from '../icons/book.svg';
@@ -60,6 +66,14 @@ const moreLinks = [
   },
 ];
 
+const CardGrid = styled.div`
+  ${p => p.theme.media.tablet`
+    display: grid;
+    gap: ${p.theme.space[3]}px;
+    grid-template-columns: repeat(2, 1fr);
+  `}
+`;
+
 type HomeProps = RouteComponentProps;
 
 const Home = ({ path }: HomeProps) => {
@@ -90,6 +104,15 @@ const Home = ({ path }: HomeProps) => {
             description
           }
         }
+        workshops: allWorkshop(sort: { fields: createdAt, order: DESC }) {
+          nodes {
+            body
+            description
+            id
+            slug
+            title
+          }
+        }
       }
     `,
   );
@@ -98,8 +121,7 @@ const Home = ({ path }: HomeProps) => {
     data.site && data.site.siteMetadata && data.site.siteMetadata.description;
 
   const posts =
-    (data.posts &&
-      data.posts.nodes &&
+    (data.posts.nodes &&
       data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
         slug: fields && fields.slug,
         title: frontmatter && frontmatter.title,
@@ -133,9 +155,29 @@ const Home = ({ path }: HomeProps) => {
                 </Post>
               ),
           )}
-          {posts.length > 3 && (
-            <ArrowLink to="/blog/">View all posts</ArrowLink>
-          )}
+          <ArrowLink to="/blog/">View all posts</ArrowLink>
+        </Content>
+      </Section>
+      <Section>
+        <Content>
+          <Heading>Workshops.</Heading>
+          <CardGrid>
+            {data.workshops.nodes.map(({ description, id, slug, title }) => (
+              <Card as="article" key={id}>
+                {title && (
+                  <CardTitle>
+                    <CardLink to={slug}>{title}</CardLink>
+                  </CardTitle>
+                )}
+                {description && (
+                  <CardBody as="div">
+                    <Paragraph>{description}</Paragraph>
+                  </CardBody>
+                )}
+              </Card>
+            ))}
+          </CardGrid>
+          <ArrowLink to="/workshops/">View all workshops</ArrowLink>
         </Content>
       </Section>
       <Section>

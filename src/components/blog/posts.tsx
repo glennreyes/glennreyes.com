@@ -44,17 +44,13 @@ const Blog = () => {
     `,
   );
 
-  const posts =
-    (data.posts &&
-      data.posts.nodes &&
-      data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
-        date: frontmatter && (frontmatter.date as string),
-        dateFormatted: frontmatter && (frontmatter.dateFormatted as string),
-        slug: fields && fields.slug,
-        title: frontmatter && frontmatter.title,
-        ...node,
-      }))) ||
-    [];
+  const posts = data.posts.nodes.map(({ fields, frontmatter, ...node }) => ({
+    date: frontmatter && (frontmatter.date as string),
+    dateFormatted: frontmatter && (frontmatter.dateFormatted as string),
+    slug: fields && fields.slug,
+    title: frontmatter && frontmatter.title,
+    ...node,
+  }));
 
   return (
     <Cards>

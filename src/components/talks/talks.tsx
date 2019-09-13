@@ -37,11 +37,9 @@ const Talks = () => {
     `,
   );
 
-  const talks = (data.talks && data.talks.nodes) || [];
-
   return (
     <Cards>
-      {talks.map(
+      {data.talks.nodes.map(
         ({ body, events, id, slug, title }) =>
           slug &&
           title && (
