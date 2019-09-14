@@ -12,7 +12,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "run-p --print-label build:*",
+    "build": "run-s --print-label build:*",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js",
     "clean": "gatsby clean",
