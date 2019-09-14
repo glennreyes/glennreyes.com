@@ -12,7 +12,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "run-p build:**",
+    "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js",
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
