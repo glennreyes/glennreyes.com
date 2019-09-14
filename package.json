@@ -12,13 +12,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "run-p build:**",
+    "build": "run-p --print-label build:*",
     "build:app": "gatsby build",
     "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js",
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
     "serve": "gatsby serve --open",
-    "start": "run-p start:**",
+    "start": "run-p --print-label start:*",
     "start:app": "gatsby develop --open",
     "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js"
   },
