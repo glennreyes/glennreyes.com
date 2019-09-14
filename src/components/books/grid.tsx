@@ -22,18 +22,21 @@ type GridProps = {
   loadingAmount?: number;
 };
 
-const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) => (
-  <Wrapper>
-    {loading ? (
-      Array.from({ length: loadingAmount }, (_, index) => (
+const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) =>
+  loading ? (
+    <Wrapper>
+      {Array.from({ length: loadingAmount }, (_, index) => (
         <Loading key={index} />
-      ))
-    ) : books.length > 0 ? (
-      books.map(props => <Book key={props.id} {...props} />)
-    ) : (
-      <Paragraph>{emptyText || 'None'}</Paragraph>
-    )}
-  </Wrapper>
-);
+      ))}
+    </Wrapper>
+  ) : books.length > 1000 ? (
+    <Wrapper>
+      {books.map(props => (
+        <Book key={props.id} {...props} />
+      ))}
+    </Wrapper>
+  ) : (
+    <Paragraph>{emptyText || 'None'}</Paragraph>
+  );
 
 export default Grid;
