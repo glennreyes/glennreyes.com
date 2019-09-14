@@ -6,5 +6,7 @@ http://glennreyes.netlify.com/* http://glennreyes.com/:splat 301!
 /photo              /photo.jpg
 /reading            /books
 /speaking           /talks
+/talk               /talks
 /teaching           /workshops
-/workshops/feedback https://docs.google.com/forms/d/e/1FAIpQLSfqgeDV9J96s_XzO1qZrKJXW0cxwfqS5e-5qjDREg9nydemjw/viewform?usp=pp_url&entry.1524828154=GraphQL+for+everyone
+/workshop           /workshops
+/workshops/feedback https://docs.google.com/forms/d/1ZWG0D_2V0kDpiKJ2GDHcu_2JQtKfwl55SX4p_xO1gX0
