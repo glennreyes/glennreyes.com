@@ -17,7 +17,8 @@
     "clean": "gatsby clean",
     "generate": "graphql-codegen",
     "serve": "gatsby serve --open",
-    "start": "gatsby develop --open",
+    "start": "run-p start:**",
+    "start:app": "gatsby develop --open",
     "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js"
   },
   "repository": "https://github.com/glennreyes/glennreyes.com",
