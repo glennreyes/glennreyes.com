@@ -3,5 +3,5 @@
   functions = "lambda"
   publish = "public"
 [build.environment]
-  NODE_VERSION = "12.9.1"
+  NODE_VERSION = "12.10.0"
   YARN_VERSION = "1.17.3"
