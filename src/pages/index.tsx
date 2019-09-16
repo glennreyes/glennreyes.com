@@ -22,6 +22,7 @@ import Section from '../components/home/section';
 import Tagline from '../components/home/tagline';
 import Title from '../components/home/title';
 import Layout from '../components/layout';
+import Link from '../components/link';
 import Paragraph from '../components/mdx/paragraph';
 import Photo from '../components/photo';
 import SEO from '../components/seo';
@@ -126,11 +127,15 @@ const Home = ({ path }: HomeProps) => {
       <SEO title="Home" />
       <IntroSection>
         <IntroContent>
-          <Photo />
-          <Intro>
-            <Greeting>Hey there, I’m Glenn.</Greeting>
-            {tagline && <Tagline>{tagline}</Tagline>}
-          </Intro>
+          <Link to="/about/">
+            <Photo />
+          </Link>
+          <Link to="/about/">
+            <Intro>
+              <Greeting>Hey there, I’m Glenn.</Greeting>
+              {tagline && <Tagline>{tagline}</Tagline>}
+            </Intro>
+          </Link>
         </IntroContent>
       </IntroSection>
       <Section>
