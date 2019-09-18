@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import { rgba } from 'polished';
 import React from 'react';
-import Tilt from 'react-tilt';
+import DefaultTilt from 'react-tilt';
 import styled from 'styled-components';
 import DefaultImage from './image';
 import { PhotoQuery } from '../types/generated/graphql';
@@ -15,6 +15,10 @@ const Image = styled(DefaultImage)`
   ${p => p.theme.media.desktop`
     width: 160px;
   `}
+`;
+
+const Tilt = styled(DefaultTilt)`
+  display: inline-flex;
 `;
 
 const Photo = () => {
