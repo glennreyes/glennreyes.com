@@ -35,6 +35,10 @@ const Wrapper = styled.header<{
     box-shadow: ${p.isScrollThreshold ? 'none' : `${p.theme.shadows.dark}`};
     height: ${p.isScrollThreshold ? p.theme.space[7] : p.theme.space[6]}px;
   `}
+
+  ${p => p.theme.media.print`
+    display: none;
+  `}
 `;
 
 const Container = styled.div`

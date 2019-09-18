@@ -37,6 +37,10 @@ const Wrapper = styled.footer`
   ${p => p.theme.media.tablet`
     padding: ${p.theme.space[4]}px;
   `}
+
+  ${p => p.theme.media.print`
+    display: none;
+  `}
 `;
 
 const Socials = styled.nav`

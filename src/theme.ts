@@ -14,6 +14,7 @@ type MediaQueryCssFunction = (
 
 interface Media {
   desktop: MediaQueryCssFunction;
+  print: MediaQueryCssFunction;
   tablet: MediaQueryCssFunction;
 }
 
@@ -25,6 +26,11 @@ export const breakpoints = {
 const media: Media = {
   desktop: (...args) => css`
     @media (min-width: ${breakpoints.desktop}px) {
+      ${css(...args)}
+    }
+  `,
+  print: (...args) => css`
+    @media print {
       ${css(...args)}
     }
   `,
