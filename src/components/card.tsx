@@ -18,6 +18,10 @@ const Card = styled.div`
   ${p => p.theme.media.tablet`
     padding: ${p.theme.space[5]}px;
   `}
+
+  ${p => p.theme.media.print`
+    padding: 0;
+  `}
 `;
 
 export default Card;
