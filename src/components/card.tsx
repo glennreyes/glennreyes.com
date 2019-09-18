@@ -7,20 +7,13 @@ const Card = styled.div`
   position: relative;
   transition: box-shadow ${p => p.theme.transition};
 
-  &:focus-within {
-    box-shadow: ${p => p.theme.colors.hoverShadow};
-  }
-
+  &:focus-within,
   &:hover {
     box-shadow: ${p => p.theme.colors.hoverShadow};
   }
 
   ${p => p.theme.media.tablet`
     padding: ${p.theme.space[5]}px;
-  `}
-
-  ${p => p.theme.media.print`
-    padding: 0;
   `}
 `;
 
