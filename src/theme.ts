@@ -54,7 +54,7 @@ export const system = {
   colors,
   contentWidths: [640, 1280],
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
-  fontWeights: { bold: 700, bolder: 800, normal: 400 },
+  fontWeights: { bold: 700, bolder: 800, normal: 400, semi: 500 },
   fonts: {
     mono:
       "'SFMono-Medium', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Consolas, Courier, monospace",

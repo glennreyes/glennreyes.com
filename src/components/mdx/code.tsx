@@ -11,6 +11,7 @@ export const inlineCodeStyles = css`
     background: ${p => p.theme.colors.codeBg};
     color: ${p => p.theme.colors.code};
     font-family: ${p => p.theme.fonts.mono};
+    font-weight: ${p => p.theme.fontWeights.semi};
 
     // Copied from github.com
     border-radius: ${p => p.theme.radii[0]}px;
