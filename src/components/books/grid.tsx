@@ -29,7 +29,7 @@ const Grid = ({ books, emptyText, loading, loadingAmount = 4 }: GridProps) =>
         <Loading key={index} />
       ))}
     </Wrapper>
-  ) : books.length > 1000 ? (
+  ) : books.length > 0 ? (
     <Wrapper>
       {books.map(props => (
         <Book key={props.id} {...props} />
