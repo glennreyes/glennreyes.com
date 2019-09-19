@@ -94,7 +94,7 @@
     "@typescript-eslint/parser": "2.3.0",
     "babel-plugin-styled-components": "1.10.6",
     "babel-preset-gatsby": "0.2.13",
-    "confusing-browser-globals": "1.0.8",
+    "confusing-browser-globals": "1.0.9",
     "dotenv": "8.1.0",
     "eslint": "6.4.0",
     "eslint-config-prettier": "6.3.0",
