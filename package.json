@@ -81,7 +81,7 @@
     "@graphql-codegen/typescript": "1.7.0",
     "@graphql-codegen/typescript-operations": "1.7.0",
     "@graphql-codegen/typescript-resolvers": "1.7.0",
-    "@types/aws-lambda": "8.10.32",
+    "@types/aws-lambda": "8.10.33",
     "@types/lodash": "4.14.139",
     "@types/ms": "0.7.31",
     "@types/node": "12.7.7",
