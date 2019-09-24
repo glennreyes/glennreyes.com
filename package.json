@@ -29,7 +29,7 @@
     "@mdx-js/react": "1.5.0",
     "@mdx-js/tag": "0.20.3",
     "@rhysforyou/gatsby-plugin-react-helmet-async": "0.1.1",
-    "@svgr/webpack": "4.3.2",
+    "@svgr/webpack": "4.3.3",
     "@types/react-helmet-async": "1.0.0",
     "apollo-boost": "0.4.4",
     "apollo-server-lambda": "2.9.3",
