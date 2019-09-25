@@ -3262,10 +3262,10 @@ babel-preset-fbjs@^3.1.2:
     "@babel/plugin-transform-template-literals" "^7.0.0"
     babel-plugin-syntax-trailing-function-commas "^7.0.0-beta.0"
 
-babel-preset-gatsby@0.2.14, babel-preset-gatsby@^0.2.14:
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.2.14.tgz#2712a7dacf73d0b2f18d380180614c5587701c98"
-  integrity sha512-D/zj3RNm52j6k2mzmoF2YxTKGaDs0lhp6v1l3WCDne1kmv9PIb/R8GovcsFvqXVF1FJ0ajNZvyhsJK/eqyGfHQ==
+babel-preset-gatsby@0.2.15, babel-preset-gatsby@^0.2.15:
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/babel-preset-gatsby/-/babel-preset-gatsby-0.2.15.tgz#1f300e30829461da8ddc9414ae077b15a44634de"
+  integrity sha512-B4kH7BIS6Qh/R/kO14eZpfLZ+fEk3YnEm2F9A/bZhstcAmFZf9WXFOVbLCEZVv/R8De5LwGVt/FXgoPYKVBUrw==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.5.5"
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
@@ -7245,10 +7245,10 @@ gatsby-transformer-sharp@2.2.17:
     semver "^5.7.1"
     sharp "^0.23.0"
 
-gatsby@2.15.24:
-  version "2.15.24"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.15.24.tgz#2cb7d545208fd8bea8bcba5916e809bd85e1bfb7"
-  integrity sha512-c5DJmK/kRgxWxswL0cFaxbscKCy+SdSh830cyOaHkIrT7Qg9qU6bu9hRIl+MXpXW5m0WbAuOfzDB33aw7UBsRw==
+gatsby@2.15.25:
+  version "2.15.25"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.15.25.tgz#6bc7613d59ef0a7c962abef61906c6a9e51854aa"
+  integrity sha512-D0lim5I8c1o8poaxDTjbDgkkLoifItmqMOgh2rfxYI3N09TTqCJc7nY6iUTqt/QsRemw7GAqg2WoqWahDOagsQ==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.6.0"
@@ -7272,7 +7272,7 @@ gatsby@2.15.24:
     babel-plugin-add-module-exports "^0.3.3"
     babel-plugin-dynamic-import-node "^1.2.0"
     babel-plugin-remove-graphql-queries "^2.7.8"
-    babel-preset-gatsby "^0.2.14"
+    babel-preset-gatsby "^0.2.15"
     better-opn "1.0.0"
     better-queue "^3.8.10"
     bluebird "^3.5.5"
@@ -7319,7 +7319,7 @@ gatsby@2.15.24:
     gatsby-telemetry "^1.1.25"
     glob "^7.1.4"
     got "8.3.2"
-    graphql "^14.5.7"
+    graphql "^14.5.8"
     graphql-compose "^6.3.5"
     graphql-playground-middleware-express "^1.7.12"
     invariant "^2.2.4"
@@ -7817,7 +7817,7 @@ graphql-upload@^8.0.2:
     http-errors "^1.7.2"
     object-path "^0.11.4"
 
-graphql@14.5.8:
+graphql@14.5.8, graphql@^14.5.8:
   version "14.5.8"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.8.tgz#504f3d3114cb9a0a3f359bbbcf38d9e5bf6a6b3c"
   integrity sha512-MMwmi0zlVLQKLdGiMfWkgQD7dY/TUKt4L+zgJ/aR0Howebod3aNgP5JkgvAULiR2HPVZaP2VEElqtdidHweLkg==
@@ -7828,13 +7828,6 @@ graphql@^14.5.3:
   version "14.5.4"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.4.tgz#b33fe957854e90c10d4c07c7d26b6c8e9f159a13"
   integrity sha512-dPLvHoxy5m9FrkqWczPPRnH0X80CyvRE6e7Fa5AWEqEAzg9LpxHvKh24po/482E6VWHigOkAmb4xCp6P9yT9gw==
-  dependencies:
-    iterall "^1.2.2"
-
-graphql@^14.5.7:
-  version "14.5.7"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.5.7.tgz#8646a3fcc07922319cc3967eba4a64b32929f77f"
-  integrity sha512-as410RMJSUFqF8RcH2QWxZ5ioqHzsH9VWnWbaU+UnDXJ/6azMDIYPrtXCBPXd8rlunEVb7W8z6fuUnNHMbFu9A==
   dependencies:
     iterall "^1.2.2"
 
