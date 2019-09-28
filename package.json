@@ -65,7 +65,7 @@
     "ms": "2.1.2",
     "netlify-lambda": "1.6.3",
     "polished": "3.4.1",
-    "prism-react-renderer": "0.1.7",
+    "prism-react-renderer": "0.2.0",
     "react": "16.10.1",
     "react-dom": "16.10.1",
     "react-helmet-async": "1.0.3",
