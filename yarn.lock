@@ -2175,13 +2175,6 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react-wait@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@types/react-wait/-/react-wait-0.3.0.tgz#6f7ef17571a17e72c7864ede8cf7d3aa525a005e"
-  integrity sha512-5jIfDcHRjqeE7QfZG7kCqOpfrPSvOM1E3/nlKuJ/NZrG/WrhLo/AFr0i72jhTWzyNRo4ex0pshBaiCHksZXH3A==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react@*", "@types/react@^16.8.12", "@types/react@^16.8.6":
   version "16.8.23"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.23.tgz#ec6be3ceed6353a20948169b6cb4c97b65b97ad2"
@@ -12888,12 +12881,11 @@ react-tilt@0.1.4:
   resolved "https://registry.yarnpkg.com/react-tilt/-/react-tilt-0.1.4.tgz#0ac1f33674a3fff6c617cf411002d7ecdd2ebcb1"
   integrity sha512-bVeRumg+RIn6QN8S92UmubGqX/BG6/QeQISBeAcrS/70dpo/jVj+sjikIawDl5wTuPdubFH8zH0EMulWIctsnw==
 
-react-use@12.2.2:
-  version "12.2.2"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.2.2.tgz#633e6260af187e7e92b661e00154c9fab8767da1"
-  integrity sha512-JcQly3mpj0JhJZtjdjwp+57ciOaU50NFX/2STTZhCPBlkBiHDDWMT2r0QdTUlYh3CNg84TILoYWSEr1ZsLDDTA==
+react-use@12.2.3:
+  version "12.2.3"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.2.3.tgz#cfadc5645f227a944cc438ac1c7c6ed775ba748f"
+  integrity sha512-dOLN0s2m4e2VjkSMzdZgrYfsVHeTq2bnPO84L9/7pWQ7ao7qjRwrV0UZRTprlwvTA3zFd6LZ41EHqGNNnbtIXw==
   dependencies:
-    "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
     nano-css "^5.1.0"
     react-fast-compare "^2.0.4"
