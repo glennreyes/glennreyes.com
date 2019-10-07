@@ -12826,17 +12826,17 @@ react-tilt@0.1.4:
   resolved "https://registry.yarnpkg.com/react-tilt/-/react-tilt-0.1.4.tgz#0ac1f33674a3fff6c617cf411002d7ecdd2ebcb1"
   integrity sha512-bVeRumg+RIn6QN8S92UmubGqX/BG6/QeQISBeAcrS/70dpo/jVj+sjikIawDl5wTuPdubFH8zH0EMulWIctsnw==
 
-react-use@12.2.3:
-  version "12.2.3"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.2.3.tgz#cfadc5645f227a944cc438ac1c7c6ed775ba748f"
-  integrity sha512-dOLN0s2m4e2VjkSMzdZgrYfsVHeTq2bnPO84L9/7pWQ7ao7qjRwrV0UZRTprlwvTA3zFd6LZ41EHqGNNnbtIXw==
+react-use@12.3.0:
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.3.0.tgz#4b7249059da2ab0bfc5f2ac773141150d4f16984"
+  integrity sha512-x2WyX6ZurupfJClc+bEGD8qD6EE7qtDrbw0azCTfxpeg+ErOkD7psccyeprk88IilWRzuf9B7/BM7oBRcbvMjQ==
   dependencies:
     copy-to-clipboard "^3.1.0"
     nano-css "^5.1.0"
     react-fast-compare "^2.0.4"
     react-wait "^0.3.0"
     resize-observer-polyfill "^1.5.1"
-    screenfull "^4.1.0"
+    screenfull "^5.0.0"
     set-harmonic-interval "^1.0.0"
     throttle-debounce "^2.0.1"
     ts-easing "^0.2.0"
@@ -13695,10 +13695,10 @@ schema-utils@^2.2.0:
     ajv "^6.10.2"
     ajv-keywords "^3.4.1"
 
-screenfull@^4.1.0:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-4.2.1.tgz#3245b7bc73d2b7c9a15bd8caaf6965db7cbc7f04"
-  integrity sha512-PLSp6f5XdhvjCCCO8OjavRfzkSGL3Qmdm7P82bxyU8HDDDBhDV3UckRaYcRa/NDNTYt8YBpzjoLWHUAejmOjLg==
+screenfull@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.0.0.tgz#5c2010c0e84fd4157bf852877698f90b8cbe96f6"
+  integrity sha512-yShzhaIoE9OtOhWVyBBffA6V98CDCoyHTsp8228blmqYy1Z5bddzE/4FPiJKlr8DVR4VBiiUyfPzIQPIYDkeMA==
 
 scroll-behavior@^0.9.10:
   version "0.9.10"
