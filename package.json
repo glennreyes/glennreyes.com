@@ -84,7 +84,7 @@
     "@types/aws-lambda": "8.10.33",
     "@types/lodash": "4.14.142",
     "@types/ms": "0.7.31",
-    "@types/node": "12.7.11",
+    "@types/node": "12.7.12",
     "@types/reach__router": "1.2.5",
     "@types/react": "16.9.5",
     "@types/react-dom": "16.9.1",
