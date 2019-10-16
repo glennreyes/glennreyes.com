@@ -12850,10 +12850,10 @@ react-tilt@0.1.4:
   resolved "https://registry.yarnpkg.com/react-tilt/-/react-tilt-0.1.4.tgz#0ac1f33674a3fff6c617cf411002d7ecdd2ebcb1"
   integrity sha512-bVeRumg+RIn6QN8S92UmubGqX/BG6/QeQISBeAcrS/70dpo/jVj+sjikIawDl5wTuPdubFH8zH0EMulWIctsnw==
 
-react-use@12.5.0:
-  version "12.5.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.5.0.tgz#92dcb5f5c9477ab769bbfb88a35c86553c9ed74a"
-  integrity sha512-C7ccCfP40QsbdoxNmleprc1wp+8wUYd5xSkDXMQEDpIeQRYlgnUIf+l+kC75fJ1kEY8AHoTw9Ihw6MG4ufsCHA==
+react-use@12.6.0:
+  version "12.6.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.6.0.tgz#5851a900b15bd8e83aca930be74b0604d7a78cdd"
+  integrity sha512-d3xaq9avvkc4FpjVpLVABl0ciH95D7bBhpAPNqyRm3rZJh4uF48pRF3j8GrZpsCG0MhT1VO3IUz4RUO6YnUrtQ==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
@@ -12865,6 +12865,7 @@ react-use@12.5.0:
     set-harmonic-interval "^1.0.0"
     throttle-debounce "^2.0.1"
     ts-easing "^0.2.0"
+    tslib "^1.10.0"
 
 react-wait@^0.3.0:
   version "0.3.0"
