@@ -12875,10 +12875,10 @@ react-tilt@0.1.4:
   resolved "https://registry.yarnpkg.com/react-tilt/-/react-tilt-0.1.4.tgz#0ac1f33674a3fff6c617cf411002d7ecdd2ebcb1"
   integrity sha512-bVeRumg+RIn6QN8S92UmubGqX/BG6/QeQISBeAcrS/70dpo/jVj+sjikIawDl5wTuPdubFH8zH0EMulWIctsnw==
 
-react-use@12.9.1:
-  version "12.9.1"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.9.1.tgz#56b745a72ecec816d13f6c44c0d8c3038ec4525d"
-  integrity sha512-BTOifl9wUMKtCdWRe5IKQP7kIwj7XXWLRqpmG03GPK+lG86vTLYehMVeL/F+NJ/XoxwI229jJhCwKbFSot1hNQ==
+react-use@12.10.0:
+  version "12.10.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-12.10.0.tgz#ff66d78a14e60dc14624e632ff4acc25fd324298"
+  integrity sha512-wADpIjDwJgQDRObXlFhFmn3IcYuQKfbeVWpXwv0e81BgrhymogHKhXRT6jE2OKX7YPTAar9l554Xace1nsITLw==
   dependencies:
     "@types/react-wait" "^0.3.0"
     copy-to-clipboard "^3.1.0"
