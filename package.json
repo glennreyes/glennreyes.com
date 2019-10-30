@@ -72,7 +72,7 @@
     "react-pose": "4.0.9",
     "react-tilt": "0.1.4",
     "react-use": "12.10.0",
-    "styled-components": "4.4.0",
+    "styled-components": "4.4.1",
     "xml2js": "0.4.22"
   },
   "devDependencies": {
