@@ -3207,6 +3207,15 @@ array-unique@^0.3.2:
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
+array.prototype.flatmap@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/array.prototype.flatmap/-/array.prototype.flatmap-1.2.2.tgz#28d621d351c19a62b84331b01669395ef6cef4c4"
+  integrity sha512-ZZtPLE74KNE+0XcPv/vQmcivxN+8FhwOLvt2udHauO0aDEpsXDQrmd5HuJGpgPVyaV8HvkDPWnJ2iaem0oCKtA==
+  dependencies:
+    define-properties "^1.1.3"
+    es-abstract "^1.15.0"
+    function-bind "^1.1.1"
+
 arraybuffer.slice@~0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/arraybuffer.slice/-/arraybuffer.slice-0.0.7.tgz#3bbc4275dd584cc1b10809b89d4e8b63a69e7675"
@@ -6045,6 +6054,22 @@ es-abstract@^1.11.0, es-abstract@^1.12.0, es-abstract@^1.5.0, es-abstract@^1.5.1
     is-regex "^1.0.4"
     object-keys "^1.0.12"
 
+es-abstract@^1.15.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.16.0.tgz#d3a26dc9c3283ac9750dca569586e976d9dcc06d"
+  integrity sha512-xdQnfykZ9JMEiasTAJZJdMWCQ1Vm00NBw79/AWi7ELfZuuPCSOMDZbT9mkOfSctVtfhb+sAAzrm+j//GjjLHLg==
+  dependencies:
+    es-to-primitive "^1.2.0"
+    function-bind "^1.1.1"
+    has "^1.0.3"
+    has-symbols "^1.0.0"
+    is-callable "^1.1.4"
+    is-regex "^1.0.4"
+    object-inspect "^1.6.0"
+    object-keys "^1.1.1"
+    string.prototype.trimleft "^2.1.0"
+    string.prototype.trimright "^2.1.0"
+
 es-abstract@^1.4.3:
   version "1.14.2"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.14.2.tgz#7ce108fad83068c8783c3cdf62e504e084d8c497"
@@ -7245,10 +7270,10 @@ gatsby-plugin-eslint@2.0.7:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.7.tgz#3634057a74987b876b468c96619912b4f56c7d67"
   integrity sha512-a4Jepxto7uZb5HDA7AOiIwyjc7MU0CNxGDGZ4TJqrlWmlWvKuOOEUrRPlCXCBo/StQtAzIMNT3hvAsWuIRx5Sw==
 
-gatsby-plugin-google-analytics@2.1.23:
-  version "2.1.23"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.1.23.tgz#7bad5dc36787a5b2317f3c8043ff2febe7c0932e"
-  integrity sha512-pVGGYRnx6zIDvKPmhWaK7U2coec1F1ZIGe8326hV5E/2EtgVaVsRXAiCnGrLfHs/lEVs03t6DaemomtktM57gg==
+gatsby-plugin-google-analytics@2.1.24:
+  version "2.1.24"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-2.1.24.tgz#ab1aa59503d236d61873a1b14205976d89ddabb3"
+  integrity sha512-2kvz7KJr/Kp3ViC6BWpPT8lZAgT/5F6sfZ9UkoOKoGv3YBwEWbZxxBX1WAiLcpjFGbmaWrX8QhD7HXdaTMHCOg==
   dependencies:
     "@babel/runtime" "^7.6.3"
 
@@ -7414,10 +7439,10 @@ gatsby-remark-copy-linked-files@2.1.28:
     probe-image-size "^4.1.1"
     unist-util-visit "^1.4.1"
 
-gatsby-remark-images@3.1.28:
-  version "3.1.28"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.28.tgz#717a2a2e1d27ff271e5763b43b32c143c40d9f9c"
-  integrity sha512-RWV4JlNHBZsVnESWAMSxVra0RKJ8K97I8R/pU/jRxmLD83wHVgksZzCUBSuYyXtxO+33Nfz2AvKW7E24KbZa7g==
+gatsby-remark-images@3.1.29:
+  version "3.1.29"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.29.tgz#b40c641b7a62fc776149a6dbcb8940f76dbc6749"
+  integrity sha512-VUnuR7ZUSkfA5l/j9Ez8U0J4jx0bdqzeiiI8ftlwjhDjuvoPU1eOFLLULjnwod3p8mX8PIVo5vcdQGL+TtcAwQ==
   dependencies:
     "@babel/runtime" "^7.6.3"
     chalk "^2.4.2"
@@ -7536,10 +7561,10 @@ gatsby-transformer-sharp@2.3.2:
     semver "^5.7.1"
     sharp "^0.23.2"
 
-gatsby@2.17.7:
-  version "2.17.7"
-  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.17.7.tgz#8aa71868044a42e27dc0314f5c99bac8777e0ff5"
-  integrity sha512-gAqV+ZIdF2Tj55Rpt1Vmm0tTUsvdN+TgcA2R1MdsoAZ9VdALKpCNFJWe1EDB761qmjp8PGpHg9X2RMmxwrsq7Q==
+gatsby@2.17.8:
+  version "2.17.8"
+  resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-2.17.8.tgz#81d21e4e79faaca657efa6f038cfc298fcf6e526"
+  integrity sha512-qO+NJtIeywFxk6viv1ZfRl3c7tRu2LG5Hq9jr1uEsqzqs2c6GNRwm4kOXPx6c1WCfLKWH1l9zG2jeMzFGz9SOw==
   dependencies:
     "@babel/code-frame" "^7.5.5"
     "@babel/core" "^7.6.4"
@@ -7555,6 +7580,7 @@ gatsby@2.17.7:
     "@typescript-eslint/eslint-plugin" "^2.6.0"
     "@typescript-eslint/parser" "^2.6.0"
     address "1.1.2"
+    array.prototype.flatmap "^1.2.2"
     autoprefixer "^9.7.0"
     axios "^0.19.0"
     babel-core "7.0.0-bridge.0"
@@ -14805,7 +14831,7 @@ string.prototype.trim@^1.1.2:
     es-abstract "^1.5.0"
     function-bind "^1.0.2"
 
-string.prototype.trimleft@^2.0.0:
+string.prototype.trimleft@^2.0.0, string.prototype.trimleft@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/string.prototype.trimleft/-/string.prototype.trimleft-2.1.0.tgz#6cc47f0d7eb8d62b0f3701611715a3954591d634"
   integrity sha512-FJ6b7EgdKxxbDxc79cOlok6Afd++TTs5szo+zJTUyow3ycrRfJVE2pq3vcN53XexvKZu/DJMDfeI/qMiZTrjTw==
@@ -14813,7 +14839,7 @@ string.prototype.trimleft@^2.0.0:
     define-properties "^1.1.3"
     function-bind "^1.1.1"
 
-string.prototype.trimright@^2.0.0:
+string.prototype.trimright@^2.0.0, string.prototype.trimright@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/string.prototype.trimright/-/string.prototype.trimright-2.1.0.tgz#669d164be9df9b6f7559fa8e89945b168a5a6c58"
   integrity sha512-fXZTSV55dNBwv16uw+hh5jkghxSnc5oHq+5K/gXgizHwAvMetdAJlHqqoFC1FSDVPYWLkAKl2cxpUT41sV7nSg==
