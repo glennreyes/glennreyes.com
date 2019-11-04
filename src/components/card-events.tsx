@@ -96,8 +96,8 @@ const CardEvents = ({ events }: EventsProps) => {
               <Event key={event.id}>
                 {(event.date || event.startDate) &&
                   (event.dateFormatted || event.startDateFormatted) && (
-                    <Time dateTime={event.date || event.startDate}>
-                      {event.dateFormatted || event.startDateFormatted}
+                    <Time dateTime={event.startDate || event.date}>
+                      {event.startDateFormatted || event.dateFormatted}
                     </Time>
                   )}
                 {(event.title || event.location) && (
