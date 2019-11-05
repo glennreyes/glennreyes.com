@@ -7265,10 +7265,10 @@ gatsby-plugin-canonical-urls@2.1.13:
   dependencies:
     "@babel/runtime" "^7.6.3"
 
-gatsby-plugin-eslint@2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.7.tgz#3634057a74987b876b468c96619912b4f56c7d67"
-  integrity sha512-a4Jepxto7uZb5HDA7AOiIwyjc7MU0CNxGDGZ4TJqrlWmlWvKuOOEUrRPlCXCBo/StQtAzIMNT3hvAsWuIRx5Sw==
+gatsby-plugin-eslint@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.8.tgz#1ff7f546a427d274dc2de3932ba29822aae330c3"
+  integrity sha512-vAMy37povmQJNg6ZxY78fkWR3pKwG8MNMhO3u+4vXj2MYT5avhFvHPJTAb126ZCuygf30gAWlpwbV50zP894Jw==
 
 gatsby-plugin-google-analytics@2.1.24:
   version "2.1.24"
