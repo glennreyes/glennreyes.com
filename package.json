@@ -76,7 +76,7 @@
     "xml2js": "0.4.22"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.6.0",
+    "@babel/preset-typescript": "7.7.0",
     "@graphql-codegen/cli": "1.8.3",
     "@graphql-codegen/typescript": "1.8.3",
     "@graphql-codegen/typescript-operations": "1.8.3",
