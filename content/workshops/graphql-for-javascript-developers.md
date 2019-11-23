@@ -14,7 +14,6 @@ In this workshop we will dive into GraphQL, build a complete GraphQL server and 
 - Authentication & Access control patterns
 - Fragments
 - Optimistic UI
-- Efficiently caching data sources
 - Real-time events with GraphQL Subscriptions
 
 ## Goals
