@@ -1,9 +1,9 @@
 ---
 title: GraphQL for JavaScript developers
-description: This workshop is targeted to engineers who are familiar with GraphQL concepts and who want to leverage some of the more advanced features.
+description: This workshop is targeted to people who want to learn the GraphQL core concepts and leverage advanced features.
 ---
 
-In this workshop we will dive into GraphQL and build a complete GraphQL server to solve common real-life problems. This workshop is targeted to engineers who are familiar with GraphQL concepts and who want to leverage some of the more advanced features.
+In this workshop we will dive into GraphQL, build a complete GraphQL server and solve common real-life problems. This workshop is targeted to people who want to learn the GraphQL core concepts and leverage advanced features.
 
 ## Agenda
 
