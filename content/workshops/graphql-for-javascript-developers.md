@@ -11,9 +11,9 @@ In this workshop we will dive into GraphQL and build a complete GraphQL server t
 - Setting up the GraphQL Server
 - Exploring the GraphQL API
 - Working with the SDL (Schema Defintion Language)
-- GraphQL Fragments
 - GraphQL Queries & Mutations
 - Authentication & Access control patterns
+- GraphQL Fragments
 - Efficiently caching data sources
 - Real-time events with GraphQL Subscriptions
 - Improving network performance through automatic persisted queries
