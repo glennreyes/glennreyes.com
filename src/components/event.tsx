@@ -3,11 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from '../components/link';
 import { ReactComponent as CalendarSvg } from '../icons/calendar.svg';
-import { ReactComponent as Film } from '../icons/film.svg';
 import { ReactComponent as FlashSvg } from '../icons/flash.svg';
 import { ReactComponent as GlobeSvg } from '../icons/globe.svg';
 import { ReactComponent as PinSvg } from '../icons/pin.svg';
-import { ReactComponent as Play } from '../icons/play.svg';
 import { Maybe } from '../types/generated/graphql';
 import { shortenUrl } from '../utils';
 
@@ -93,42 +91,6 @@ const Calendar = styled(CalendarSvg)`
 const Flash = styled(FlashSvg)`
   color: ${p => p.theme.colors.invertedTextSecondary};
   margin-left: ${p => p.theme.space[0]}px;
-`;
-
-const Media = styled.div`
-  display: grid;
-  flex: 0 0 auto;
-  gap: ${p => p.theme.space[2]}px;
-  grid-template-columns: repeat(2, ${p => p.theme.space[5]}px);
-  justify-content: end;
-  margin-left: ${p => p.theme.space[1]}px;
-`;
-
-const IconLink = styled(Link)`
-  align-items: center;
-  background: ${p => p.theme.colors.bg};
-  border-radius: 50%;
-  color: ${p => p.theme.colors.invertedCardBg};
-  display: flex;
-  height: ${p => p.theme.space[5]}px;
-  justify-content: center;
-  width: ${p => p.theme.space[5]}px;
-
-  &:hover {
-    color: ${p => p.theme.colors.textSecondary};
-  }
-`;
-
-const IconWrapper = styled.div`
-  align-items: center;
-  background: ${p => p.theme.colors.bg};
-  border-radius: 50%;
-  color: ${p => p.theme.colors.invertedCardBg};
-  display: flex;
-  height: ${p => p.theme.space[5]}px;
-  justify-content: center;
-  opacity: 0.1;
-  width: ${p => p.theme.space[5]}px;
 `;
 
 const Text = styled.span`
@@ -228,28 +190,6 @@ const Event = ({ event: { location, ...event } }: EventProps) => {
           <Calendar />
           <Text>{date}</Text>
         </Date>
-        {dayjs(event.date || event.startDate).isBefore(dayjs()) && (
-          <Media>
-            {event.slidesUrl ? (
-              <IconLink target="_blank" title="Slides" to={event.slidesUrl}>
-                <Film />
-              </IconLink>
-            ) : (
-              <IconWrapper>
-                <Film />
-              </IconWrapper>
-            )}
-            {event.videoUrl ? (
-              <IconLink target="_blank" title="Video" to={event.videoUrl}>
-                <Play />
-              </IconLink>
-            ) : (
-              <IconWrapper>
-                <Play />
-              </IconWrapper>
-            )}
-          </Media>
-        )}
       </Footer>
     </Card>
   );
