@@ -33,7 +33,7 @@
     "@types/react-helmet-async": "1.0.1",
     "apollo-boost": "0.4.7",
     "apollo-server-lambda": "2.9.14",
-    "dayjs": "1.8.17",
+    "dayjs": "1.8.18",
     "gatsby": "2.18.13",
     "gatsby-image": "2.2.37",
     "gatsby-plugin-apollo": "0.1.1",
