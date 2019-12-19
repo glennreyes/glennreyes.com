@@ -73,7 +73,7 @@
     "react-tilt": "0.1.4",
     "react-use": "13.12.2",
     "styled-components": "4.4.1",
-    "xml2js": "0.4.22"
+    "xml2js": "0.4.23"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.7.4",
