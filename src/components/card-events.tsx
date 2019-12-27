@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { orderBy } from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
+import Text from './text';
 
 const Wrapper = styled.div`
   margin: ${p => p.theme.space[4]}px 0 0;
@@ -39,6 +40,12 @@ const Event = styled.li`
   display: flex;
   font-size: ${p => p.theme.fontSizes[1]}px;
   line-height: ${p => p.theme.lineHeights.body};
+`;
+
+const EmptyEvents = styled(Text)`
+  color: ${p => p.theme.colors.textSecondary};
+  font-size: ${p => p.theme.fontSizes[1]}px;
+  font-style: italic;
 `;
 
 const Time = styled.time`
@@ -88,6 +95,9 @@ const CardEvents = ({ events }: EventsProps) => {
 
   return (
     <Wrapper>
+      {upcomingEvents.length === 0 && pastEvents.length === 0 && (
+        <EmptyEvents>No events yet</EmptyEvents>
+      )}
       {upcomingEvents.length > 0 && (
         <>
           <LineHeading>Upcoming Events</LineHeading>
