@@ -1,5 +1,5 @@
 ---
-title: GraphQL for JavaScript developers
+title: GraphQL
 description: This workshop is targeted to people who want to learn the GraphQL core concepts and leverage advanced features.
 ---
 
