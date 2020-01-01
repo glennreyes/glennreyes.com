@@ -21,11 +21,7 @@ export const onlyText = (children: any): string =>
 export const slugger = githubSlugger();
 
 export const slugify = (node: React.ReactNode) =>
-  compose(
-    (text: string) => slugger.slug(text),
-    deburr,
-    onlyText,
-  )(node);
+  compose((text: string) => slugger.slug(text), deburr, onlyText)(node);
 
 export const shortenUrl = (url: string) =>
   url.replace(/^(https?:\/\/)(www\.)?(.*)/, '$3');
