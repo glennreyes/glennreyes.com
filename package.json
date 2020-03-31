@@ -91,7 +91,7 @@
     "@types/react-helmet": "5.0.14",
     "@types/styled-components": "4.4.1",
     "@typescript-eslint/eslint-plugin": "2.14.0",
-    "@typescript-eslint/parser": "2.14.0",
+    "@typescript-eslint/parser": "2.26.0",
     "babel-plugin-styled-components": "1.10.6",
     "babel-preset-gatsby": "0.2.26",
     "confusing-browser-globals": "1.0.9",
