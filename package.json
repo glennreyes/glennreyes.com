@@ -88,7 +88,7 @@
     "@types/reach__router": "1.2.6",
     "@types/react": "16.9.17",
     "@types/react-dom": "16.9.4",
-    "@types/react-helmet": "5.0.14",
+    "@types/react-helmet": "5.0.15",
     "@types/styled-components": "4.4.1",
     "@typescript-eslint/eslint-plugin": "2.23.0",
     "@typescript-eslint/parser": "2.23.0",
