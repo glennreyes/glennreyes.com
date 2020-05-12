@@ -50,7 +50,7 @@ const colors = {
 
 export const system = {
   borders: [1, 2, 4],
-  breakpoints: sortBy(Object.values(breakpoints).map(value => `${value}px`)),
+  breakpoints: sortBy(Object.values(breakpoints).map((value) => `${value}px`)),
   colors,
   contentWidths: [640, 1280],
   fontSizes: [12, 16, 20, 24, 32, 48, 72],
@@ -59,7 +59,7 @@ export const system = {
     mono:
       "'SFMono-Medium', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Consolas, Courier, monospace",
     sans:
-      "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
+      "Inter, '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
   },
   lineHeights: { body: 1.5, heading: 1.25 },
   media,

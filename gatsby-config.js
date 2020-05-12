@@ -5,7 +5,7 @@ const IS_DEV = process.env.NODE_ENV === 'development';
 const siteUrl = IS_DEV ? 'http://localhost:8000' : 'https://glennreyes.com';
 
 module.exports = {
-  developMiddleware: app => {
+  developMiddleware: (app) => {
     app.use(
       '/.netlify/functions/',
       proxy({
@@ -44,6 +44,13 @@ module.exports = {
         anonymize: true,
         respectDNT: true,
         trackingId: 'UA-72115430-1',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: ['Inter:400,500,700,800'],
+        display: 'swap',
       },
     },
     {

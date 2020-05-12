@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Link from './link';
+import DefaultLink from './link';
 import { ReactComponent as GitHub } from '../icons/github.svg';
 import { ReactComponent as Instagram } from '../icons/instagram.svg';
 import { ReactComponent as Twitter } from '../icons/twitter.svg';
@@ -30,44 +30,48 @@ const links = [
 ];
 
 const Wrapper = styled.footer`
-  background: ${p => p.theme.colors.bg};
+  background: ${(p) => p.theme.colors.bg};
   margin-top: auto;
-  padding: ${p => p.theme.space[4]}px ${p => p.theme.space[2]}px;
+  padding: ${(p) => p.theme.space[4]}px ${(p) => p.theme.space[2]}px;
 
-  ${p => p.theme.media.tablet`
+  ${(p) => p.theme.media.tablet`
     padding: ${p.theme.space[4]}px;
   `}
 
-  ${p => p.theme.media.print`
+  ${(p) => p.theme.media.print`
     display: none;
   `}
 `;
 
 const Socials = styled.nav`
   display: flex;
-  margin: 0 -${p => p.theme.space[2]}px;
+  margin: 0 -${(p) => p.theme.space[2]}px;
 `;
 
-const SocialLink = styled(Link)`
+const SocialLink = styled(DefaultLink)`
   align-items: center;
   display: flex;
-  height: ${p => p.theme.space[5]}px;
+  height: ${(p) => p.theme.space[5]}px;
   justify-content: center;
-  margin: 0 ${p => p.theme.space[0]}px;
-  width: ${p => p.theme.space[5]}px;
+  margin: 0 ${(p) => p.theme.space[0]}px;
+  width: ${(p) => p.theme.space[5]}px;
 
   &:hover {
-    color: ${p => p.theme.colors.textSecondary};
+    color: ${(p) => p.theme.colors.textSecondary};
   }
 `;
 
 const Text = styled.p`
-  color: ${p => p.theme.colors.textSecondary};
-  margin: ${p => p.theme.space[2]}px 0 0;
+  color: ${(p) => p.theme.colors.textSecondary};
+  margin: ${(p) => p.theme.space[2]}px 0 0;
 
-  ${p => p.theme.media.tablet`
+  ${(p) => p.theme.media.tablet`
     margin-top: ${p.theme.space[3]}px;
   `}
+`;
+
+const Link = styled(DefaultLink)`
+  color: inherit;
 `;
 
 const Footer = () => {
@@ -99,11 +103,8 @@ const Footer = () => {
         ))}
       </Socials>
       <Text>
-        {`© ${dayjs().year()} ${title}`.trim()}. View{' '}
-        <Link target="_blank" to="https://github.com/glennreyes/glennreyes.com">
-          source
-        </Link>{' '}
-        on GitHub.
+        {`© ${dayjs().year()} ${title}`.trim()}. All Rights Reserved ·{' '}
+        <Link to="/legal-notice">Legal Notice</Link>
       </Text>
     </Wrapper>
   );
