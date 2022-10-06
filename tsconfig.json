@@ -3,5 +3,5 @@
     "types": ["@remix-run/dev", "@remix-run/node"]
   },
   "extends": "@tsconfig/remix/tsconfig",
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx"]
 }
