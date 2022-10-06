@@ -13,7 +13,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   '@vercel/node': ^2.4.4
   eslint: ^8.23.1
-  eslint-config-banana: 1.1.0-alpha.1
+  eslint-config-banana: 1.1.0-alpha.2
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -36,7 +36,7 @@ devDependencies:
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   eslint: 8.24.0
-  eslint-config-banana: 1.1.0-alpha.1_zfgi6nsqzjqeshkv3sytq57lbm
+  eslint-config-banana: 1.1.0-alpha.2_zfgi6nsqzjqeshkv3sytq57lbm
   prettier: 2.7.1
   typescript: 4.8.4
 
@@ -4211,8 +4211,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-banana/1.1.0-alpha.1_zfgi6nsqzjqeshkv3sytq57lbm:
-    resolution: {integrity: sha512-pKMy0EjPV0XZD0wLeidcRikTFeoX71TcWr2MyQ57OVP1uv1skj+fCU7PqmpF3C8ePad1YNwy6Mr9ZP1GO8WlIA==}
+  /eslint-config-banana/1.1.0-alpha.2_zfgi6nsqzjqeshkv3sytq57lbm:
+    resolution: {integrity: sha512-h+Ia0aJzPR8UDqIqW0ZyXNmz1lNtdwdf4csApxkMIyuwEAtRRzBiwtF9zzK0DBUrKjFY6SqRGJOSOrJ9tb3Llw==}
     dependencies:
       '@graphql-eslint/eslint-plugin': 3.11.2_uhhuyzfihrudb4hzhirhzkf33e
       '@react-native-community/eslint-config': 3.1.0_wnl3crvimwlqvw446nuriguqe4
