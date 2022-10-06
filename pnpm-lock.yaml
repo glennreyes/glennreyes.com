@@ -7,6 +7,7 @@ specifiers:
   '@remix-run/react': ^1.7.2
   '@remix-run/serve': ^1.7.2
   '@remix-run/vercel': ^1.7.2
+  '@tsconfig/remix': ^1.0.2
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
   '@vercel/node': ^2.4.4
@@ -27,6 +28,7 @@ devDependencies:
   '@remix-run/dev': 1.7.2_63cxfdg5f5bb4xpkk3vcjfcl3q
   '@remix-run/eslint-config': 1.7.2_2arap3zrpdsgaavggmaateumgu
   '@remix-run/serve': 1.7.2_biqbaboplfbrettd7655fr4n2y
+  '@tsconfig/remix': 1.0.2
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   eslint: 8.24.0
@@ -1786,6 +1788,10 @@ packages:
       mkdirp: 1.0.4
       path-browserify: 1.0.1
     dev: false
+
+  /@tsconfig/remix/1.0.2:
+    resolution: {integrity: sha512-AxJ9HrthcecUuWlcM97QSj121JwiR9NJu21Izv25LvRmb9wAVYo2w+GKnp9/SdvvZSphAMaghqki2TMUZRWEHg==}
+    dev: true
 
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}

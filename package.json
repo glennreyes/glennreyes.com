@@ -3,7 +3,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "remix build",
-    "dev": "remix dev"
+    "dev": "remix dev",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@remix-run/node": "^1.7.2",
@@ -17,12 +18,10 @@
     "@remix-run/dev": "^1.7.2",
     "@remix-run/eslint-config": "^1.7.2",
     "@remix-run/serve": "^1.7.2",
+    "@tsconfig/remix": "^1.0.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "eslint": "^8.23.1",
     "typescript": "^4.7.4"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }
