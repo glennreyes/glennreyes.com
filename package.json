@@ -4,6 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
+    "format": "prettier --write .",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -18,6 +19,7 @@
     "@remix-run/dev": "^1.7.2",
     "@remix-run/eslint-config": "^1.7.2",
     "@remix-run/serve": "^1.7.2",
+    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@tsconfig/remix": "^1.0.2",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
