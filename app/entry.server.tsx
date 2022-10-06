@@ -14,8 +14,8 @@ export default function handleRequest(
 
   responseHeaders.set('Content-Type', 'text/html');
 
-  return new Response('<!DOCTYPE html>' + markup, {
-    status: responseStatusCode,
+  return new Response(`<!DOCTYPE html>${markup}`, {
     headers: responseHeaders,
+    status: responseStatusCode,
   });
 }
