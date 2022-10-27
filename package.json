@@ -20,7 +20,7 @@
     "@types/node": "18.11.7",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
-    "autoprefixer": "^10.4.12",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.26.0",
     "eslint-config-banana": "1.1.0-alpha.3",
     "eslint-config-next": "^13.0.0",
