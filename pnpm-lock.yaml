@@ -2,6 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@next/font': ^13.0.0
+  '@tailwindcss/container-queries': ^0.1.0
+  '@tailwindcss/forms': ^0.5.3
+  '@tailwindcss/line-clamp': ^0.4.2
+  '@tailwindcss/typography': ^0.5.7
   '@trivago/prettier-plugin-sort-imports': ^3.3.0
   '@tsconfig/next': ^1.0.3
   '@types/node': 18.11.7
@@ -26,6 +30,10 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
+  '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.1
+  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.1
+  '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.1
+  '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.1
   '@trivago/prettier-plugin-sort-imports': 3.4.0_prettier@2.7.1
   '@tsconfig/next': 1.0.3
   '@types/node': 18.11.7
@@ -851,6 +859,43 @@ packages:
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@tailwindcss/container-queries/0.1.0_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-t1GeJ9P8ual160BvKy6Y1sG7bjChArMaK6iRXm3ZYjZGN2FTzmqb5ztsTDb9AsTSJD4NMHtsnaI2ielrXEk+hw==}
+    peerDependencies:
+      tailwindcss: '>=3.2.0'
+    dependencies:
+      tailwindcss: 3.2.1_neo3lunb2qpadwxplzw7r2isgm
+    dev: true
+
+  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.2.1_neo3lunb2qpadwxplzw7r2isgm
+    dev: true
+
+  /@tailwindcss/line-clamp/0.4.2_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-HFzAQuqYCjyy/SX9sLGB1lroPzmcnWv1FHkIpmypte10hptf4oPUfucryMKovZh2u0uiS9U5Ty3GghWfEJGwVw==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.2.1_neo3lunb2qpadwxplzw7r2isgm
+    dev: true
+
+  /@tailwindcss/typography/0.5.7_tailwindcss@3.2.1:
+    resolution: {integrity: sha512-JTTSTrgZfp6Ki4svhPA4mkd9nmQ/j9EfE7SbHJ1cLtthKkpW2OxsFXzSmxbhYbEkfNIyAyhle5p4SYyKRbz/jg==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      postcss-selector-parser: 6.0.10
+      tailwindcss: 3.2.1_neo3lunb2qpadwxplzw7r2isgm
+    dev: true
 
   /@trivago/prettier-plugin-sort-imports/3.4.0_prettier@2.7.1:
     resolution: {integrity: sha512-485Iailw8X5f7KetzRka20RF1kPBEINR5LJMNwlBZWY1gRAlVnv5dZzyNPnLxSP0Qcia8HETa9Cdd8LlX9o+pg==}
@@ -2701,6 +2746,14 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.castarray/4.4.0:
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
+    dev: true
+
+  /lodash.isplainobject/4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+    dev: true
+
   /lodash.lowercase/4.3.0:
     resolution: {integrity: sha512-UcvP1IZYyDKyEL64mmrwoA1AbFu5ahojhTtkOUr1K9dbuxzS9ev8i4TxMMGCqRC9TE8uDaSoufNAXxRPNTseVA==}
     dev: true
@@ -2759,6 +2812,11 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /mini-svg-data-uri/1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
     dev: true
 
   /minimatch/3.1.2:
