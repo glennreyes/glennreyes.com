@@ -1,7 +1,25 @@
 {
   "compilerOptions": {
-    "types": ["@remix-run/dev", "@remix-run/node"]
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "importsNotUsedAsValues": "error",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "plugins": [{ "name": "next" }],
+    "strict": true
   },
-  "extends": "@tsconfig/remix/tsconfig",
-  "include": ["*.cjs", "**/*.ts", "**/*.tsx"]
+  "extends": "@tsconfig/next/tsconfig",
+  "include": [
+    "next-env.d.ts",
+    "*.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }
