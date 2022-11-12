@@ -24,6 +24,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
     'Segoe UI Symbol',
     'Noto Color Emoji',
   ],
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
 });
 interface RootLayoutProps {
   children: ReactNode;
