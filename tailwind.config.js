@@ -9,6 +9,11 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   theme: {
+    extend: {
+      fontSize: {
+        base: ['1.063rem', '1.563rem'],
+      },
+    },
     fontFamily: { sans: [] },
   },
 };
