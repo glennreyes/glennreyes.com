@@ -9,8 +9,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@next/font": "^13.0.0",
-    "next": "^13.0.0",
+    "@next/font": "^13.0.3",
+    "next": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -18,19 +18,18 @@
     "@tailwindcss/container-queries": "^0.1.0",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.7",
-    "@trivago/prettier-plugin-sort-imports": "^3.3.0",
-    "@tsconfig/next": "^1.0.3",
-    "@types/node": "18.11.8",
-    "@types/react": "^18.0.24",
+    "@tailwindcss/typography": "^0.5.8",
+    "@tsconfig/next": "^1.0.4",
+    "@types/node": "18.11.9",
+    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "autoprefixer": "^10.4.13",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "eslint-config-banana": "1.1.0-alpha.3",
-    "eslint-config-next": "^13.0.0",
-    "postcss": "^8.4.18",
+    "eslint-config-next": "^13.0.3",
+    "postcss": "^8.4.19",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.2.1",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.8.4"
   },
   "eslintConfig": {
@@ -43,9 +42,6 @@
     }
   },
   "prettier": {
-    "plugins": [
-      "@trivago/prettier-plugin-sort-imports"
-    ],
     "singleQuote": true,
     "trailingComma": "all"
   }

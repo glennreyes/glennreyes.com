@@ -8,5 +8,7 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
   ],
-  theme: {},
+  theme: {
+    fontFamily: { sans: [] },
+  },
 };
