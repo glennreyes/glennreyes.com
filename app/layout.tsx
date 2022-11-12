@@ -48,7 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       </head>
       <body>
         <Navbar />
-        {children}
+        <main>{children}</main>
       </body>
     </html>
   );

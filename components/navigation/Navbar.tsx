@@ -9,6 +9,7 @@ export function Navbar() {
       <NavLink href="/articles">Articles</NavLink>
       <NavLink href="/speaking">Speaking</NavLink>
       <NavLink href="/workshops">Workshops</NavLink>
+      <NavLink href="/journal">Journal</NavLink>
     </NavbarBase>
   );
 }
