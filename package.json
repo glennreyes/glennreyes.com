@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^13.0.3",
+    "clsx": "^1.2.1",
     "next": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -37,11 +38,18 @@
       "next/core-web-vitals",
       "banana/react"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.js"
+        ],
+        "rules": {
+          "@typescript-eslint/no-var-requires": "off"
+        }
+      }
+    ],
     "parserOptions": {
       "project": "./tsconfig.json"
-    },
-    "rules": {
-      "react/no-unescaped-entities": "off"
     }
   },
   "prettier": {

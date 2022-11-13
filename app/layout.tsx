@@ -8,23 +8,8 @@ import type { ReactNode } from 'react';
 import { Navbar } from '../components/navigation/Navbar';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-  fallback: [
-    'ui-sans-serif',
-    'system-ui',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Helvetica Neue',
-    'Arial',
-    'Noto Sans',
-    'sans-serif',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji',
-  ],
   subsets: ['latin'],
+  variable: '--font-plus-jakarta-sans',
   weight: ['400', '500', '600', '700', '800'],
 });
 interface RootLayoutProps {
@@ -33,7 +18,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html className={plusJakartaSans.className} lang="en">
+    <html className={plusJakartaSans.variable} lang="en">
       <head>
         <title>
           Glenn Reyes - Software engineer, tech speaker and workshop instructor

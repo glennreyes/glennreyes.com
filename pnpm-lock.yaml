@@ -11,6 +11,7 @@ specifiers:
   '@types/react': ^18.0.25
   '@types/react-dom': ^18.0.8
   autoprefixer: ^10.4.13
+  clsx: ^1.2.1
   eslint: ^8.27.0
   eslint-config-banana: 1.1.0-alpha.3
   eslint-config-next: ^13.0.3
@@ -24,6 +25,7 @@ specifiers:
 
 dependencies:
   '@next/font': 13.0.3
+  clsx: 1.2.1
   next: 13.0.3_qtpcxnaaarbm4ws7ughq6oxfve
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1384,6 +1386,11 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/1.9.3:

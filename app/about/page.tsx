@@ -6,7 +6,7 @@ export default function AboutPage() {
       <h1>About me</h1>
       <div>
         <h2>
-          I'm Glenn Reyes, a software engineer, tech speaker and workshop
+          {`I'm`} Glenn Reyes, a software engineer, tech speaker and workshop
           instructor based in Vienna.
         </h2>
         <p>
@@ -14,10 +14,10 @@ export default function AboutPage() {
           using cutting edge web technologies.
         </p>
         <p>
-          I'm currently building{' '}
+          {`I'm`} currently building{' '}
           <Link href="https://app.enzyme.finance">Enzyme</Link> at{' '}
-          <Link href="https://avantgarde.finance">Avantgarde</Link>
-          – a tool for managing assets on the Ethereum blockchain.
+          <Link href="https://avantgarde.finance">Avantgarde</Link>- a tool for
+          managing assets on the Ethereum blockchain.
         </p>
         <p>
           I am addicted to constantly learn new things and enjoy sharing my
