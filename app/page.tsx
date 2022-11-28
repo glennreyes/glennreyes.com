@@ -18,7 +18,7 @@ export default async function HomePage() {
     <>
       <HeroSection>
         <div>
-          <p className="text-sm font-medium text-yellow-700 sm:text-base md:text-xl">Hello, I'm</p>
+          <p className="text-sm font-medium text-orange-600 sm:text-base md:text-xl">Hello, I'm</p>
           <div className="flex justify-between gap-4">
             <div className="grid gap-4 md:max-w-4xl">
               <h1 className="text-4xl font-bold text-zinc-800 sm:text-6xl md:text-8xl">Glenn Reyes</h1>
@@ -63,11 +63,18 @@ export default async function HomePage() {
           </HeroSectionSocialList.Item>
         </HeroSectionSocialList>
       </HeroSection>
-      <div className="flex gap-8">
-        {photos.map((image, index) => (
-          <Image alt={`Photo ${index}`} height={100} key={image.id} src={image.url} width={100} />
+      <section className="flex justify-center overflow-hidden">
+        {photos.map((image) => (
+          <Image
+            alt=""
+            className="aspect-[7/8] w-[480px] object-cover"
+            height={288}
+            key={image.id}
+            src={image.url}
+            width={240}
+          />
         ))}
-      </div>
+      </section>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi laboriosam commodi praesentium facilis
         tempora repudiandae excepturi asperiores iste iure tempore similique, possimus soluta. Officiis exercitationem

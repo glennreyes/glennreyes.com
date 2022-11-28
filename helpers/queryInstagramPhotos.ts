@@ -2,6 +2,8 @@ import { z } from 'zod';
 import type { Truthy } from '../utils/isTruthy';
 import { isTruthy } from '../utils/isTruthy';
 
+const amount = 5;
+
 async function getAccessToken() {
   const longLivedUserToken = z.string().parse(process.env.INSTAGRAM_LONG_LIVED_USER_TOKEN);
   const response = await (
@@ -62,7 +64,7 @@ async function getMedia(accessToken: string, mediaId: string) {
   return { id: result.data.id, type: result.data.media_type, url: result.data.media_url };
 }
 
-async function getLatestPhotos(accessToken: string, amount = 6) {
+async function getLatestPhotos(accessToken: string) {
   const user = await getMediaIds(accessToken);
 
   if (!user) {
@@ -76,6 +78,13 @@ async function getLatestPhotos(accessToken: string, amount = 6) {
 }
 
 export async function queryInstagramPhotos() {
+  if (process.env.NODE_ENV !== 'production') {
+    return Array.from({ length: amount }, (_, index) => ({
+      id: `${index}`,
+      url: `https://picsum.photos/seed/${index}/720/720`,
+    }));
+  }
+
   const accessToken = await getAccessToken();
 
   if (!accessToken) {

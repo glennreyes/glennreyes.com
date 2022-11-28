@@ -7,5 +7,5 @@ interface HeroSectionSocialLinkProps extends Omit<LinkProps, 'className'> {
 }
 
 export function HeroSectionSocialLink(props: HeroSectionSocialLinkProps) {
-  return <Link className="group" {...props} />;
+  return <Link className="group rounded-full p-2" {...props} />;
 }

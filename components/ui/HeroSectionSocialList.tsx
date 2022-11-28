@@ -3,13 +3,17 @@ import type { ComponentProps } from 'react';
 type HeroSectionSocialListProps = Omit<ComponentProps<'ul'>, 'className'>;
 
 export function HeroSectionSocialList(props: HeroSectionSocialListProps) {
-  return <ul className="flex gap-4 sm:gap-6 md:gap-8" {...props} />;
+  return (
+    <nav className="overflow-hidden">
+      <ul className="-mx-3 flex gap-2 md:gap-6" {...props} />
+    </nav>
+  );
 }
 
 type HeroSectionSocialListItemProps = Omit<ComponentProps<'li'>, 'className'>;
 
 function HeroSectionSocialListItem(props: HeroSectionSocialListItemProps) {
-  return <li {...props} />;
+  return <li className="flex" {...props} />;
 }
 
 HeroSectionSocialList.Item = HeroSectionSocialListItem;

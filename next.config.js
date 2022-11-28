@@ -11,6 +11,14 @@ const nextConfig = {
         hostname: '**.cdninstagram.com',
         protocol: 'https',
       },
+      ...(process.env.NODE_ENV === 'production'
+        ? []
+        : [
+            {
+              hostname: 'picsum.photos',
+              protocol: 'https',
+            },
+          ]),
     ],
   },
 };
