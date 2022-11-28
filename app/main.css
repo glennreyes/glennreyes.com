@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply text-base;
-  }
-
   a {
     @apply text-inherit no-underline;
   }
