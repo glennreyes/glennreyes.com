@@ -1,10 +1,10 @@
 import { z } from 'zod';
-import type { Truthy } from '../utils/isTruthy';
-import { isTruthy } from '../utils/isTruthy';
+import type { Truthy } from './isTruthy';
+import { isTruthy } from './isTruthy';
 
 const amount = 5;
 
-async function getAccessToken() {
+export async function getAccessToken() {
   const longLivedUserToken = z.string().parse(process.env.INSTAGRAM_LONG_LIVED_USER_TOKEN);
   const response = await (
     await fetch(
@@ -41,10 +41,10 @@ async function getMediaIds(accessToken: string) {
     return undefined;
   }
 
-  return result.data;
+  return result.data.media.data.map((media) => media.id);
 }
 
-async function getMedia(accessToken: string, mediaId: string) {
+export async function getMedia(accessToken: string, mediaId: string) {
   const response = await (
     await fetch(`https://graph.instagram.com/${mediaId}?fields=media_type,media_url&access_token=${accessToken}`)
   ).json();
@@ -65,13 +65,9 @@ async function getMedia(accessToken: string, mediaId: string) {
 }
 
 async function getLatestPhotos(accessToken: string) {
-  const user = await getMediaIds(accessToken);
+  const mediaIds = (await getMediaIds(accessToken)) ?? [];
 
-  if (!user) {
-    return [];
-  }
-
-  return (await Promise.all(user.media.data.map((media) => getMedia(accessToken, media.id))))
+  return (await Promise.all(mediaIds.map((id) => getMedia(accessToken, id))))
     .filter((media): media is Truthy<typeof media> => isTruthy(media) && media.type === 'IMAGE')
     .slice(0, amount)
     .map((photo) => ({ id: photo.id, url: photo.url }));
@@ -81,7 +77,7 @@ export async function queryInstagramPhotos() {
   if (process.env.NODE_ENV !== 'production') {
     return Array.from({ length: amount }, (_, index) => ({
       id: `${index}`,
-      url: `https://picsum.photos/seed/${index}/720/720`,
+      url: `https://picsum.photos/seed/${index}/1280/1280`,
     }));
   }
 
