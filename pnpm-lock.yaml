@@ -8,6 +8,7 @@ specifiers:
   '@tailwindcss/typography': ^0.5.8
   '@trivago/prettier-plugin-sort-imports': ^4.0.0
   '@tsconfig/next': ^1.0.4
+  '@types/eslint': ^8.4.10
   '@types/node': 18.11.11
   '@types/prettier': ^2.7.1
   '@types/react': ^18.0.26
@@ -42,6 +43,7 @@ devDependencies:
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@trivago/prettier-plugin-sort-imports': 4.0.0_7zqtgii6vqdecs66xtnni6wksu
   '@tsconfig/next': 1.0.4
+  '@types/eslint': 8.4.10
   '@types/node': 18.11.11
   '@types/prettier': 2.7.1
   '@types/react': 18.0.26
@@ -1111,6 +1113,17 @@ packages:
 
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
+    dev: true
+
+  /@types/eslint/8.4.10:
+    resolution: {integrity: sha512-Sl/HOqN8NKPmhWo2VBEPm0nvHnu2LL3v9vKo8MEq0EtbJ4eVzGPl41VNPvn5E1i5poMk4/XD8UriLHpJvEP/Nw==}
+    dependencies:
+      '@types/estree': 1.0.0
+      '@types/json-schema': 7.0.11
+    dev: true
+
+  /@types/estree/1.0.0:
+    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
   /@types/json-schema/7.0.11:
