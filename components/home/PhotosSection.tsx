@@ -1,5 +1,5 @@
-import { PhotosSectionPhoto } from '../ui/PhotosSectionPhoto';
 import { PhotosSection as PhotosSectionBase } from '../ui/PhotosSection';
+import { PhotosSectionPhoto } from '../ui/PhotosSectionPhoto';
 
 interface Photo {
   id: string;

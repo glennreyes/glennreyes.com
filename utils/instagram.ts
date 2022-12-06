@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import type { Truthy } from './isTruthy';
 import { isTruthy } from './isTruthy';
 

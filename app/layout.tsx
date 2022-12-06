@@ -1,11 +1,12 @@
 'use client';
 
-import { Navbar } from '../components/navigation/Navbar';
-import { Main } from '../components/ui/Main';
-import './main.css';
 import { Plus_Jakarta_Sans } from '@next/font/google';
 import type { ReactNode } from 'react';
+
+import { Navbar } from '../components/navigation/Navbar';
 import { Body } from '../components/ui/Body';
+import { Main } from '../components/ui/Main';
+import './main.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
