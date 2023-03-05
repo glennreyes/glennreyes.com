@@ -1,12 +1,9 @@
-import { useIsScrollTop } from '../../hooks/useIsScrollTop';
-import { Navbar as NavbarBase } from '../ui/Navbar';
-import { NavbarLink } from '../ui/NavbarLink';
+import { Navbar as NavbarBase } from '../ui/navbar/Navbar';
+import { NavbarLink } from '../ui/navbar/NavbarLink';
 
 export function Navbar() {
-  const isScrollTop = useIsScrollTop();
-
   return (
-    <NavbarBase isScrollTop={isScrollTop}>
+    <NavbarBase>
       <NavbarLink href="/posts">Posts</NavbarLink>
       <NavbarLink href="/speaking">Speaking</NavbarLink>
       <NavbarLink href="/workshops">Workshops</NavbarLink>

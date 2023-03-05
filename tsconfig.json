@@ -13,5 +13,5 @@
   },
   "exclude": ["node_modules"],
   "extends": "@tsconfig/next/tsconfig",
-  "include": ["next-env.d.ts", "*.js", ".*.js", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+  "include": ["next-env.d.ts", "*.js", ".*.js", "tsconfig.json", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }
