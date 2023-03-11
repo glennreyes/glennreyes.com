@@ -23,5 +23,5 @@ const data = {
 };
 
 export function GET() {
-  return Response.json(data, { headers: { 'Content-Type': 'application/manifest+json' } });
+  return NextResponse.json(data, { headers: { 'Content-Type': 'application/manifest+json' } });
 }
