@@ -1,5 +1,16 @@
-import { Posts } from '../ui/home/Posts';
+import { Post } from '~/components/ui/home/Post';
+import { Posts } from '~/components/ui/home/Posts';
+import { getAllPosts } from '~/utils/post';
 
-export function PostsSection() {
-  return <Posts title="Posts" />;
+export async function PostsSection() {
+  const allPosts = await getAllPosts();
+  const posts = allPosts.slice(0, 3);
+
+  return (
+    <Posts title="Posts">
+      {posts.map((post) => (
+        <Post key={post.slug} post={post} />
+      ))}
+    </Posts>
+  );
 }
