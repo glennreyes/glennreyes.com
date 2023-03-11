@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import '~/app/globals.css';
 import appleTouchIcon from '~/assets/favicon/apple-touch-icon.png';
 import faviconIco from '~/assets/favicon/favicon.ico';
@@ -7,7 +8,6 @@ import { Footer } from '~/components/footer/Footer';
 import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
-import type { MainProps } from '~/components/ui/layout/Main';
 import { Main } from '~/components/ui/layout/Main';
 import { description, name, tagline } from '~/utils/constants';
 
@@ -21,7 +21,9 @@ export const metadata: Metadata = {
   title: `${name} - ${tagline}`,
 };
 
-type RootLayoutProps = MainProps;
+interface RootLayoutProps {
+  children: ReactNode;
+}
 
 export default function RootLayout(props: RootLayoutProps) {
   return (
