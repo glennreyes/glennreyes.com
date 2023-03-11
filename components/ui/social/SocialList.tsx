@@ -1,6 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type SocialListProps = Omit<ComponentProps<'ul'>, 'className'>;
+type SocialListProps = Omit<ComponentPropsWithoutRef<'ul'>, 'className'>;
 
 export function SocialList(props: SocialListProps) {
   return (
@@ -10,7 +10,7 @@ export function SocialList(props: SocialListProps) {
   );
 }
 
-type SocialListItemProps = Omit<ComponentProps<'li'>, 'className'>;
+type SocialListItemProps = Omit<ComponentPropsWithoutRef<'li'>, 'className'>;
 
 function SocialListItem(props: SocialListItemProps) {
   return <li className="flex" {...props} />;
