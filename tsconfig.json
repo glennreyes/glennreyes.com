@@ -8,6 +8,9 @@
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
+    "paths": {
+      "~/*": ["./*"]
+    },
     "plugins": [{ "name": "next" }],
     "strict": true
   },
