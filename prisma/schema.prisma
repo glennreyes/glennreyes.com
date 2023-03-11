@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Event {
+  id         String       @id @default(cuid())
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  startDate  DateTime
+  endDate    DateTime
+  name       String
+  slug       String       @unique @default(cuid())
+  type       EventType    @default(CONFERENCE)
+  url        String
+  Appearance Appearance[]
+  Location   Location     @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  locationId String
+
+  @@unique([name, startDate, endDate])
+}
+
+model Appearance {
+  id         String           @id @default(cuid())
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  date       DateTime
+  length     AppearanceLength @default(MEDIUM)
+  recording  String?
+  slug       String           @unique @default(cuid())
+  Event      Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  eventId    String
+  Talk       Talk?            @relation(fields: [talkId], references: [id])
+  talkId     String?
+  Workshop   Workshop?        @relation(fields: [workshopId], references: [id])
+  workshopId String?
+}
+
+model Location {
+  id        String       @id @default(cuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  name      String
+  address   String
+  city      String
+  state     String?
+  country   String
+  zip       String
+  type      LocationType @default(EVENT_HALL)
+  Events    Event[]
+
+  @@unique([name, address, city, zip, country])
+}
+
+model Talk {
+  id         String       @id @default(cuid())
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  title      String
+  abstract   String
+  slides     String?
+  slug       String       @unique @default(cuid())
+  status     Status       @default(ACTIVE)
+  tags       String[]
+  Appearance Appearance[]
+}
+
+model Workshop {
+  id         String       @id @default(cuid())
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  title      String
+  abstract   String
+  repository String?
+  slides     String?
+  slug       String       @unique @default(cuid())
+  status     Status       @default(ACTIVE)
+  Appearance Appearance[]
+}
+
+enum AppearanceLength {
+  SHORT
+  MEDIUM
+  LONG
+}
+
+enum EventType {
+  CLASS
+  CONFERENCE
+  MEETUP
+}
+
+enum LocationType {
+  CAFE
+  COWORKING_SPACE
+  COMPANY_OFFICE
+  EVENT_HALL
+  THEATER
+  UNIVERSITY
+}
+
+enum Status {
+  ACTIVE
+  INACTIVE
+}
