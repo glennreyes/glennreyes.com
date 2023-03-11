@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
-import appleTouchIcon from '../assets/favicon/apple-touch-icon.png';
-import faviconIco from '../assets/favicon/favicon.ico';
-import faviconPng from '../assets/favicon/favicon.png';
-import { Footer } from '../components/footer/Footer';
-import { Navbar } from '../components/navigation/Navbar';
-import { Body } from '../components/ui/layout/Body';
-import { Html } from '../components/ui/layout/Html';
-import { Main } from '../components/ui/layout/Main';
-import { description, name, tagline } from '../utils/constants';
-import './globals.css';
+import '~/app/globals.css';
+import appleTouchIcon from '~/assets/favicon/apple-touch-icon.png';
+import faviconIco from '~/assets/favicon/favicon.ico';
+import faviconPng from '~/assets/favicon/favicon.png';
+import { Footer } from '~/components/footer/Footer';
+import { Navbar } from '~/components/navigation/Navbar';
+import { Body } from '~/components/ui/layout/Body';
+import { Html } from '~/components/ui/layout/Html';
+import { Main } from '~/components/ui/layout/Main';
+import { description, name, tagline } from '~/utils/constants';
 
 export const metadata: Metadata = {
   description,

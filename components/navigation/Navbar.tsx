@@ -1,5 +1,5 @@
-import { Navbar as NavbarBase } from '../ui/navbar/Navbar';
-import { NavbarLink } from '../ui/navbar/NavbarLink';
+import { Navbar as NavbarBase } from '~/components/ui/navbar/Navbar';
+import { NavbarLink } from '~/components/ui/navbar/NavbarLink';
 
 export function Navbar() {
   return (

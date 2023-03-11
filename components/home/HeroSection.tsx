@@ -1,15 +1,15 @@
-import photo from '../../assets/images/photo.jpg';
-import { GitHub } from '../../icons/GitHub';
-import { Instagram } from '../../icons/Instagram';
-import { LinkedIn } from '../../icons/LinkedIn';
-import { Twitter } from '../../icons/Twitter';
-import { description, github, instagram, linkedin, name, twitter } from '../../utils/constants';
-import { Photo } from '../ui/elements/Photo';
-import { Hero } from '../ui/layout/Hero';
-import { SocialIcon } from '../ui/social/SocialIcon';
-import { SocialLink } from '../ui/social/SocialLink';
-import { SocialList } from '../ui/social/SocialList';
-import { ScreenReaderText } from '../ui/text/ScreenReaderText';
+import photo from '~/assets/images/photo.jpg';
+import { Photo } from '~/components/ui/elements/Photo';
+import { Hero } from '~/components/ui/layout/Hero';
+import { SocialIcon } from '~/components/ui/social/SocialIcon';
+import { SocialLink } from '~/components/ui/social/SocialLink';
+import { SocialList } from '~/components/ui/social/SocialList';
+import { ScreenReaderText } from '~/components/ui/text/ScreenReaderText';
+import { GitHub } from '~/icons/GitHub';
+import { Instagram } from '~/icons/Instagram';
+import { LinkedIn } from '~/icons/LinkedIn';
+import { Twitter } from '~/icons/Twitter';
+import { description, github, instagram, linkedin, name, twitter } from '~/utils/constants';
 
 export function HeroSection() {
   return (
