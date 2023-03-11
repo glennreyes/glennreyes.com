@@ -2,6 +2,7 @@ import { readFile, readdir } from 'fs/promises';
 import type { CompileMDXResult } from 'next-mdx-remote/rsc';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { join } from 'path';
+import * as components from '~/components/ui/mdx';
 
 const postsDirectory = join(process.cwd(), 'content/posts');
 
@@ -41,7 +42,11 @@ export async function getPostBySlug(slug: string): Promise<GetPostBySlugReturn> 
   }
 
   const source = await readFile(join(postsDirectory, `${slug}/index.mdx`), 'utf8');
-  const { content, frontmatter } = await compileMDX<Frontmatter>({ options: { parseFrontmatter: true }, source });
+  const { content, frontmatter } = await compileMDX<Frontmatter>({
+    components,
+    options: { parseFrontmatter: true },
+    source,
+  });
 
   return { content, frontmatter, slug };
 }

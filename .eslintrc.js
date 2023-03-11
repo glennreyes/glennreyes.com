@@ -3,4 +3,7 @@
 module.exports = {
   extends: ['next/core-web-vitals', 'banana/react'],
   parserOptions: { project: './tsconfig.json' },
+  rules: {
+    'jsx-a11y/heading-has-content': 'off',
+  },
 };
