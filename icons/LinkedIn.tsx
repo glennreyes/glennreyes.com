@@ -1,6 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type LinkedInProps = ComponentProps<'svg'>;
+type LinkedInProps = ComponentPropsWithoutRef<'svg'>;
 
 export function LinkedIn(props: LinkedInProps) {
   return (

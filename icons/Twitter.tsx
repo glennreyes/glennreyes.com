@@ -1,6 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type TwitterProps = ComponentProps<'svg'>;
+type TwitterProps = ComponentPropsWithoutRef<'svg'>;
 
 export function Twitter(props: TwitterProps) {
   return (

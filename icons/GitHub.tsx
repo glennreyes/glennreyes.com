@@ -1,6 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type GitHubProps = ComponentProps<'svg'>;
+type GitHubProps = ComponentPropsWithoutRef<'svg'>;
 
 export function GitHub(props: GitHubProps) {
   return (

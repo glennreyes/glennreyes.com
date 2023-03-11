@@ -1,6 +1,6 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type InstagramProps = ComponentProps<'svg'>;
+type InstagramProps = ComponentPropsWithoutRef<'svg'>;
 
 export function Instagram(props: InstagramProps) {
   return (
