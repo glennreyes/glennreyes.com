@@ -7,6 +7,7 @@ import { Footer } from '~/components/footer/Footer';
 import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
+import type { MainProps } from '~/components/ui/layout/Main';
 import { Main } from '~/components/ui/layout/Main';
 import { description, name, tagline } from '~/utils/constants';
 
@@ -20,13 +21,15 @@ export const metadata: Metadata = {
   title: `${name} - ${tagline}`,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+type RootLayoutProps = MainProps;
+
+export default function RootLayout(props: RootLayoutProps) {
   return (
     <Html>
       <head />
       <Body>
         <Navbar />
-        <Main>{children}</Main>
+        <Main {...props} />
         <Footer />
       </Body>
     </Html>
