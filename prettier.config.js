@@ -1,5 +1,4 @@
 /** @type {import('prettier').Config} */
-
 module.exports = {
   importOrder: ['^[./]'],
   pluginSearchDirs: false,
