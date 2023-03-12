@@ -1,10 +1,8 @@
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPostBySlug, getPostSlugs } from '~/utils/post';
+import { allPosts } from 'contentlayer/generated';
+import { notFound } from 'next/navigation';
 
 export async function generatStaticParams() {
-  const slugs = await getPostSlugs();
-
-  return slugs.map((slug) => ({ slug }));
+  return allPosts.map((post) => ({ slug: post.slug }));
 }
 
 interface PostPageParams {
@@ -15,9 +13,12 @@ interface PostPageProps {
   params: PostPageParams;
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const { source } = await getPostBySlug(params.slug);
+export default function PostPage({ params }: PostPageProps) {
+  const post = allPosts.find(({ slug }) => slug === params.slug);
 
-  // @ts-expect-error Server Component
-  return <MDXRemote source={source} />;
+  if (!post) {
+    notFound();
+  }
+
+  return <div dangerouslySetInnerHTML={{ __html: post.body.html }} />;
 }

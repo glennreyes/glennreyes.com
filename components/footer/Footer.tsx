@@ -1,12 +1,12 @@
 import Link from 'next/link';
+import { Footer as BaseFooter } from '~/components/ui/layout/Footer';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
-      © {currentYear} Glenn Reyes. All rights reserved.
-      <Link href="/legal-notice">Legal Notice</Link>
-    </footer>
+    <BaseFooter>
+      © {currentYear} Glenn Reyes. All rights reserved. <Link href="/legal-notice">Legal Notice</Link>
+    </BaseFooter>
   );
 }

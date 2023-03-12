@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Legal Notice",
+    "body": {
+      "raw": "\n# Legal Notice\n\nSoftware Development\n\nGlenn Reyes e.U.<br />\nWagramer Straße 151/10<br />\n1220 Vienna, Austria\n\nEmail: glenn@glennreyes.com<br />\nVAT: ATU71727526<br />\nMember of [WKO](https://www.wko.at)\n\nReg. no: FN 552052b<br />\nCourt: Handelsgericht Wien<br />\nApplicable legislation: Gewerbeordnung https://ris.bka.gv.at\n\nYou can submit complaints to the email above or to the online dispute resolution platform of the European Commission at http://ec.europa.eu/odr.\n",
+      "html": "<h1>Legal Notice</h1>\n<p>Software Development</p>\n<p>Glenn Reyes e.U.\nWagramer Straße 151/10\n1220 Vienna, Austria</p>\n<p>Email: glenn@glennreyes.com\nVAT: ATU71727526\nMember of <a href=\"https://www.wko.at\">WKO</a></p>\n<p>Reg. no: FN 552052b\nCourt: Handelsgericht Wien\nApplicable legislation: Gewerbeordnung https://ris.bka.gv.at</p>\n<p>You can submit complaints to the email above or to the online dispute resolution platform of the European Commission at http://ec.europa.eu/odr.</p>"
+    },
+    "_id": "legal-notice.mdx",
+    "_raw": {
+      "sourceFilePath": "legal-notice.mdx",
+      "sourceFileName": "legal-notice.mdx",
+      "sourceFileDir": ".",
+      "contentType": "mdx",
+      "flattenedPath": "legal-notice"
+    },
+    "type": "Page",
+    "slug": "legal-notice"
+  }
+]

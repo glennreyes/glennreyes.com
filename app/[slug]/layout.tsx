@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated';
+import { allPages } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Article } from '~/components/ui/layout/Article';
@@ -13,22 +13,26 @@ interface GenerateMetaDataConfig {
 }
 
 export async function generateMetaData({ params }: GenerateMetaDataConfig): Promise<Metadata> {
-  const post = allPosts.find(({ slug }) => slug === params.slug);
+  const page = allPages.find(({ slug }) => slug === params.slug);
 
   return {
-    title: getTitle(post?.title),
+    title: getTitle(page?.title),
   };
 }
 
-interface PostLayoutParams {
+interface LayoutParams {
   slug: string;
 }
 
-interface PostLayoutProps {
+interface LayoutProps {
   children: ReactNode;
-  params: PostLayoutParams;
+  params: LayoutParams;
 }
 
-export default function PostLayout({ params, ...props }: PostLayoutProps) {
-  return <Article {...props} />;
+export default function Layout({ params, ...props }: LayoutProps) {
+  return (
+    <div className="py-8 md:py-16 lg:py-24">
+      <Article {...props} />
+    </div>
+  );
 }

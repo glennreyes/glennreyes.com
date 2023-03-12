@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "baseUrl": ".",
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -9,6 +10,7 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
     "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"],
       "~/*": ["./*"]
     },
     "plugins": [{ "name": "next" }],
@@ -17,13 +19,15 @@
   "exclude": ["node_modules"],
   "extends": "@tsconfig/next/tsconfig",
   "include": [
-    "next-env.d.ts",
-    "*.js",
-    ".*.js",
-    "tsconfig.json",
     "**/*.ts",
     "**/*.tsx",
+    "*.js",
+    ".*.js",
+    ".contentlayer/generated",
     ".next/types/**/*.ts",
-    "next.config.mjs"
+    "contentlayer.config.ts",
+    "next.config.js",
+    "next-env.d.ts",
+    "tsconfig.json"
   ]
 }

@@ -24,9 +24,10 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: ReactNode;
+  params: Record<string, unknown>;
 }
 
-export default function RootLayout(props: RootLayoutProps) {
+export default function RootLayout({ params, ...props }: RootLayoutProps) {
   return (
     <Html>
       <head />

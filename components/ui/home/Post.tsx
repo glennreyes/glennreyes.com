@@ -1,15 +1,15 @@
-import type { GetPostBySlugReturn } from '~/utils/post';
+import type { Post } from 'contentlayer/generated';
 
 interface PostProps {
-  post: Awaited<GetPostBySlugReturn>;
+  post: Post;
 }
 
 export function Post(props: PostProps) {
   return (
     <div>
-      <h3>{props.post.frontmatter.title}</h3>
-      <p>{props.post.frontmatter.description}</p>
-      <p>{props.post.frontmatter.date}</p>
+      <h3>{props.post.title}</h3>
+      <p>{props.post.description}</p>
+      <p>{props.post.publishedAt}</p>
     </div>
   );
 }
