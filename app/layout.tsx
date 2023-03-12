@@ -9,7 +9,8 @@ import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
-import { description, name, tagline } from '~/utils/constants';
+import { description } from '~/utils/constants';
+import { getTitle } from '~/utils/metadata';
 
 export const metadata: Metadata = {
   description,
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     icon: [faviconIco.src, faviconPng.src],
   },
   manifest: '/manifest.webmanifest',
-  title: `${name} - ${tagline}`,
+  title: getTitle(),
 };
 
 interface RootLayoutProps {
