@@ -1,4 +1,11 @@
-import { getPostBySlug } from '~/utils/post';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { getPostBySlug, getPostSlugs } from '~/utils/post';
+
+export async function generatStaticParams() {
+  const slugs = await getPostSlugs();
+
+  return slugs.map((slug) => ({ slug }));
+}
 
 interface PostPageParams {
   slug: string;
@@ -9,7 +16,8 @@ interface PostPageProps {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { content } = await getPostBySlug(params.slug);
+  const { source } = await getPostBySlug(params.slug);
 
-  return content;
+  // @ts-expect-error Server Component
+  return <MDXRemote source={source} />;
 }

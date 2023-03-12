@@ -32,6 +32,7 @@ export interface Frontmatter {
 
 export interface GetPostBySlugReturn extends CompileMDXResult<Frontmatter> {
   slug: string;
+  source: string;
 }
 
 export async function getPostBySlug(slug: string): Promise<GetPostBySlugReturn> {
@@ -48,7 +49,7 @@ export async function getPostBySlug(slug: string): Promise<GetPostBySlugReturn> 
     source,
   });
 
-  return { content, frontmatter, slug };
+  return { content, frontmatter, slug, source };
 }
 
 export async function getAllPosts() {
