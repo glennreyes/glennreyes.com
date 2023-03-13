@@ -4,15 +4,15 @@ import { notFound } from 'next/navigation';
 import { useMDXComponent } from '~/hooks/useMDXComponent';
 import { getTitle } from '~/utils/metadata';
 
-interface GenerateMetaDataConfigParams {
+interface GenerateMetadataConfigParams {
   slug: string;
 }
 
-interface GenerateMetaDataConfig {
-  params: GenerateMetaDataConfigParams;
+interface GenerateMetadataConfig {
+  params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetaData({ params }: GenerateMetaDataConfig): Promise<Metadata> {
+export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
   return {
