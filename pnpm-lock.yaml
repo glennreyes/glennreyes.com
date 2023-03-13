@@ -10,6 +10,7 @@ specifiers:
   '@trivago/prettier-plugin-sort-imports': ^4.1.1
   '@tsconfig/next': ^1.0.5
   '@types/eslint': ^8.21.1
+  '@types/mdx': ^2.0.3
   '@types/node': ^18.15.1
   '@types/prettier': ^2.7.2
   '@types/react': ^18.0.28
@@ -47,6 +48,7 @@ devDependencies:
   '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
   '@tsconfig/next': 1.0.5
   '@types/eslint': 8.21.1
+  '@types/mdx': 2.0.3
   '@types/node': 18.15.1
   '@types/prettier': 2.7.2
   '@types/react': 18.0.28

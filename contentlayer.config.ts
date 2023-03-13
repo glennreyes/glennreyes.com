@@ -8,6 +8,7 @@ export const Page = defineDocumentType(() => ({
       type: 'string',
     },
   },
+  contentType: 'mdx',
   fields: {
     title: { required: true, type: 'string' },
   },
@@ -22,6 +23,7 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
     },
   },
+  contentType: 'mdx',
   fields: {
     cover: {
       of: defineNestedType(() => ({
