@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   };
 }
 
-export async function generatStaticParams() {
+export async function generateStaticParams() {
   return allPages.map((page) => ({ slug: page.slug }));
 }
 
