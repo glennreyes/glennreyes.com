@@ -1,7 +1,7 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from '~/hooks/useMDXComponent';
+import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { getTitle } from '~/utils/metadata';
 
 interface GenerateMetadataConfigParams {
@@ -34,11 +34,10 @@ interface PostPageProps {
 
 export default function PostPage({ params }: PostPageProps) {
   const post = allPosts.find(({ slug }) => slug === params.slug);
-  const MDXComponent = useMDXComponent(post?.body.code);
 
-  if (!MDXComponent) {
+  if (!post?.body.code) {
     notFound();
   }
 
-  return <MDXComponent />;
+  return <MDXContent code={post.body.code} />;
 }

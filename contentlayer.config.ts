@@ -1,4 +1,6 @@
 import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 export const Page = defineDocumentType(() => ({
@@ -56,6 +58,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Page, Post],
   mdx: {
+    rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { properties: {} }]],
     remarkPlugins: [remarkGfm],
   },
 });

@@ -1,43 +1,50 @@
 ---
-cover:
-  author:
-    name: Joana Kosinska
-    url: https://unsplash.com/@joannakosinska
-  photo: ./cover.jpg
-description: 'With Code Splitting we are able to reduce kilobytes sent over the wire and potentially improve page speed. Code Splitting is a such an easy-to-use feature that every single page app should consider to add (if haven’t yet).'
+description: 'With Code Splitting we are able to reduce kilobytes sent over the wire and potentially improve page speed. Code Splitting is a such an easy-to-use feature that every single page app should consider to add (if haven't yet).'
 publishedAt: 2017-10-21
 title: How to disable Code Splitting in webpack
 ---
 
-With Code Splitting we are able to reduce kilobytes sent over the wire and potentially improve page speed. Code Splitting is a such an easy-to-use feature that every single page app should consider to add (if haven’t yet).
+With Code Splitting we are able to reduce kilobytes sent over the wire and potentially improve page speed. Code Splitting is a such an easy-to-use feature that every single page app should consider to add (if haven't yet).
 
 ## So why disable Code Splitting?
 
-Well, of course we shouldn’t!
+Well, of course we shouldn't!
 
 If you are building server-side rendered apps in React with [Code Splitting](https://webpack.js.org/guides/code-splitting/) support baked in, some might use zero-configuration tools like [Razzle](https://github.com/jaredpalmer/razzle), which runs two webpack instances, one for the client and the other for the server, and it builds everything for the client and for the server for you.
 
-## Let’s build an app with Code Splitting
+## Let's build an app with Code Splitting
 
 After defining some major split points in your app, you want to build and see how the chunks are doing so far:
 
-![Webpack build](./build.png 'Webpack build')
+<Image src="/images/how-to-disable-code-splitting-in-webpack/build.png" width={800} height={619} alt="Webpack build" />
 
 And in the file explorer:
 
+<Image
+  src="/images/how-to-disable-code-splitting-in-webpack/file-explorer.png"
+  width={690}
+  height={1408}
+  alt="File explorer"
+/>
 ![File explorer](./file-explorer.png 'File explorer')
 
 But wait?
 
+<Image
+  src="/images/how-to-disable-code-splitting-in-webpack/server-files.png"
+  width={694}
+  height={1014}
+  alt="Server files"
+/>
 ![Server files](./server-files.png 'Server files')
 
 ## What is happening here?
 
-Because our app is splitting bundles both on the client and server, multiple bundles are created for the server too, which we don’t really want/need. So we end up having multiple split up _\[number\]_._server.js._ What we want is:
+Because our app is splitting bundles both on the client and server, multiple bundles are created for the server too, which we don't really want/need. So we end up having multiple split up _\[number\]_._server.js._ What we want is:
 
 📝 One single server.js.
 
-## Let’s fix it
+## Let's fix it
 
 One way would be to create another build step to delete all \[number\].server.js, but that would be the last (or not an) option.
 
@@ -81,6 +88,11 @@ Some people encountered type or runtime errors with this approach. So alternativ
 
 Both solutions solve the same issue:
 
-![Server file](./server-file.png 'Server file')
+<Image
+  src="/images/how-to-disable-code-splitting-in-webpack/server-file.png"
+  width={546}
+  height={258}
+  alt="Server file"
+/>
 
 ✅ One single server.js

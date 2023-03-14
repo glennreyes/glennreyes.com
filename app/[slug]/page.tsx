@@ -1,7 +1,7 @@
 import { allPages } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { useMDXComponent } from '~/hooks/useMDXComponent';
+import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { getTitle } from '~/utils/metadata';
 
 interface GenerateMetadataConfigParams {
@@ -34,11 +34,10 @@ interface PageProps {
 
 export default function Page({ params }: PageProps) {
   const page = allPages.find(({ slug }) => slug === params.slug);
-  const MDXComponent = useMDXComponent(page?.body.code);
 
-  if (!MDXComponent) {
+  if (!page?.body.code) {
     notFound();
   }
 
-  return <MDXComponent />;
+  return <MDXContent code={page.body.code} />;
 }
