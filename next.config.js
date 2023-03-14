@@ -5,7 +5,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
     // Rust-based MDX compiler turned off because it doesn't support remark plugins yet.
-    mdxRs: false,
+    mdxRs: true,
     newNextLinkBehavior: true,
     scrollRestoration: true,
   },
