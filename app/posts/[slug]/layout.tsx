@@ -11,5 +11,9 @@ interface PostLayoutProps {
 }
 
 export default function PostLayout({ children }: PostLayoutProps) {
-  return <Article>{children}</Article>;
+  return (
+    <div className="py-8 md:py-16 lg:py-24">
+      <Article>{children}</Article>
+    </div>
+  );
 }
