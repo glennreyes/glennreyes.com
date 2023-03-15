@@ -10,23 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Event {
-  id         String       @id @default(cuid())
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  startDate  DateTime
-  endDate    DateTime
-  name       String
-  slug       String       @unique @default(cuid())
-  type       EventType    @default(CONFERENCE)
-  url        String
-  Appearance Appearance[]
-  Location   Location     @relation(fields: [locationId], references: [id], onDelete: Cascade)
-  locationId String
-
-  @@unique([name, startDate, endDate])
-}
-
 model Appearance {
   id         String           @id @default(cuid())
   createdAt  DateTime         @default(now())
@@ -35,12 +18,31 @@ model Appearance {
   length     AppearanceLength @default(MEDIUM)
   recording  String?
   slug       String           @unique @default(cuid())
-  Event      Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  reactions  Reaction[]
+  views      View[]
+  event      Event            @relation(fields: [eventId], references: [id], onDelete: Cascade)
   eventId    String
-  Talk       Talk?            @relation(fields: [talkId], references: [id])
+  talk       Talk?            @relation(fields: [talkId], references: [id])
   talkId     String?
-  Workshop   Workshop?        @relation(fields: [workshopId], references: [id])
+  workshop   Workshop?        @relation(fields: [workshopId], references: [id])
   workshopId String?
+}
+
+model Event {
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  startDate   DateTime
+  endDate     DateTime
+  name        String
+  slug        String       @unique @default(cuid())
+  type        EventType    @default(CONFERENCE)
+  url         String
+  appearances Appearance[]
+  location    Location     @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  locationId  String
+
+  @@unique([name, startDate, endDate])
 }
 
 model Location {
@@ -54,35 +56,62 @@ model Location {
   country   String
   zip       String
   type      LocationType @default(EVENT_HALL)
-  Events    Event[]
+  events    Event[]
 
   @@unique([name, address, city, zip, country])
 }
 
+model Post {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  slug      String     @unique
+  reactions Reaction[]
+  views     View[]
+}
+
+model Reaction {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  appearance   Appearance? @relation(fields: [appearanceId], references: [id])
+  appearanceId String?
+  post         Post?       @relation(fields: [postId], references: [id])
+  postId       String?
+}
+
 model Talk {
-  id         String       @id @default(cuid())
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  title      String
-  abstract   String
-  slides     String?
-  slug       String       @unique @default(cuid())
-  status     Status       @default(ACTIVE)
-  tags       String[]
-  Appearance Appearance[]
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  title       String
+  abstract    String
+  slides      String?
+  slug        String       @unique @default(cuid())
+  status      Status       @default(ACTIVE)
+  tags        String[]
+  appearances Appearance[]
+}
+
+model View {
+  id           String      @id @default(cuid())
+  createdAt    DateTime    @default(now())
+  appearance   Appearance? @relation(fields: [appearanceId], references: [id])
+  appearanceId String?
+  post         Post?       @relation(fields: [postId], references: [id])
+  postId       String?
 }
 
 model Workshop {
-  id         String       @id @default(cuid())
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  title      String
-  abstract   String
-  repository String?
-  slides     String?
-  slug       String       @unique @default(cuid())
-  status     Status       @default(ACTIVE)
-  Appearance Appearance[]
+  id          String       @id @default(cuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  title       String
+  abstract    String
+  repository  String?
+  slides      String?
+  slug        String       @unique @default(cuid())
+  status      Status       @default(ACTIVE)
+  appearances Appearance[]
 }
 
 enum AppearanceLength {

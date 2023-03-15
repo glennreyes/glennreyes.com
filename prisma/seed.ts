@@ -488,9 +488,11 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
   // Seed appearances
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-01-18 19:45'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-01-18 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Siebenbrunnengasse 44',
@@ -501,28 +503,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-01-18 22:00'),
           name: 'React Vienna',
           startDate: new Date('2017-01-18 18:00'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/reactvienna/events/235961553',
         },
       },
-      Talk: {
+      recording: 'https://youtu.be/mbdX6xweKnc',
+      talk: {
         connect: {
           slug: 'react-fiber',
         },
       },
-      date: new Date('2017-01-18 19:45'),
-      recording: 'https://youtu.be/mbdX6xweKnc',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-01-25 20:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-01-25 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Förrlibuckstrasse 30',
@@ -533,27 +535,27 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-01-25 22:00'),
           name: 'React Zurich',
           startDate: new Date('2017-01-25 18:00'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/Zurich-ReactJS-Meetup/events/236791839',
         },
       },
-      Talk: {
+      talk: {
         connect: {
           slug: 'react-fiber',
         },
       },
-      date: new Date('2017-01-25 20:00'),
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-05-03 19:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-05-03 20:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Siebenbrunnengasse 44',
@@ -564,29 +566,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-05-03 20:00'),
           name: 'ViennaJS',
           startDate: new Date('2017-05-03 18:00'),
           type: EventType.MEETUP,
           url: 'https://viennajs.org/meetup/2017-04',
         },
       },
-      Talk: {
+      length: AppearanceLength.SHORT,
+      recording: 'https://pusher.com/sessions/meetup/viennajs/leveraging-code-splitting-in-react-apps',
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-05-03 19:00'),
-      length: AppearanceLength.SHORT,
-      recording: 'https://pusher.com/sessions/meetup/viennajs/leveraging-code-splitting-in-react-apps',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-05-19 12:15'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-05-19 19:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: '327 Rue de Charenton',
@@ -597,29 +599,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-05-19 19:00'),
           name: 'ReactEurope',
           startDate: new Date('2017-05-16 08:30'),
           type: EventType.CONFERENCE,
           url: 'https://2017.react-europe.org',
         },
       },
-      Talk: {
+      length: AppearanceLength.SHORT,
+      recording: 'https://youtu.be/lj1WTv1Qq1c',
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-05-19 12:15'),
-      length: AppearanceLength.SHORT,
-      recording: 'https://youtu.be/lj1WTv1Qq1c',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-09-22 12:45'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-09-23 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Prądzyńskiego 12',
@@ -630,29 +632,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-09-23 18:00'),
           name: 'Frontend Con',
           startDate: new Date('2017-09-23 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://frontend-con.io/front-end-con-2017',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/8jS6gS2aa_c',
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-09-22 12:45'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/8jS6gS2aa_c',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-09-30 13:20'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-09-30 19:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: "Avinguda d'Elx 3",
@@ -663,28 +665,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-09-30 19:00'),
           name: 'React Alicante',
           startDate: new Date('2017-09-29 10:00'),
           type: EventType.CONFERENCE,
           url: 'https://reactalicante.es/talks-2017',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-09-30 13:20'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-11-25 17:20'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-11-25 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Gußhausstraße 27-29',
@@ -695,28 +697,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-11-25 18:00'),
           name: 'DevFest Vienna',
           startDate: new Date('2017-11-25 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://devfest.at',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-11-25 17:20'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2017-11-29 20:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2017-11-29 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Gumpendorfer Straße 65',
@@ -727,29 +729,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2017-11-29 22:00'),
           name: 'ViennaJS',
           startDate: new Date('2017-11-29 19:00'),
           type: EventType.MEETUP,
           url: 'https://viennajs.org/meetup/2017-11',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/iSit-m6kjFI',
+      talk: {
         connect: {
           slug: 'optimizing-apps-with-code-splitting',
         },
       },
-      date: new Date('2017-11-29 20:00'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/iSit-m6kjFI',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2018-10-11 19:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2018-10-11 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Pater-Schwartz-Gasse 11A',
@@ -760,28 +762,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2018-10-11 22:00'),
           name: 'React Vienna',
           startDate: new Date('2018-10-11 18:00'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/ReactVienna/events/254355551',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'building-zero-config-tools-for-graphql',
         },
       },
-      date: new Date('2018-10-11 19:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2018-10-19 13:30'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2018-10-19 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Paasivuorenkatu 5 A',
@@ -792,28 +794,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2018-10-19 18:00'),
           name: 'GraphQL Finland',
           startDate: new Date('2018-10-19 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://graphql-finland.fi/2018',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'building-zero-config-tools-for-graphql',
         },
       },
-      date: new Date('2018-10-19 13:30'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2018-11-18 17:20'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2018-11-18 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Złote Tarasy, Złota 59',
@@ -824,28 +826,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2018-11-18 18:00'),
           name: 'JS Poland',
           startDate: new Date('2018-11-18 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://previous.editions.js-poland.pl/2018',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'from-learning-to-thinking-in-graphql',
         },
       },
-      date: new Date('2018-11-18 17:20'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2018-12-05 16:25'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2018-12-05 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Plac Defilad 1',
@@ -856,28 +858,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2018-12-05 18:00'),
           name: 'Frontend Con',
           startDate: new Date('2018-12-04 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://frontend-con.io/front-end-con-2018',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'from-learning-to-thinking-in-graphql',
         },
       },
-      date: new Date('2018-12-05 16:25'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2018-12-07 19:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2018-12-07 21:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Elsenheimerstraße 47A',
@@ -888,29 +890,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2018-12-07 21:00'),
           name: 'React Munich',
           startDate: new Date('2018-12-07 19:00'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/ReactJS-Meetup-Munich/events/256476059',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/r7qssDPLwYU',
+      talk: {
         connect: {
           slug: 'building-zero-config-tools-for-graphql',
         },
       },
-      date: new Date('2018-12-07 19:00'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/r7qssDPLwYU',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-02-06 15:25'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-02-07 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Im Mediapark 7',
@@ -921,28 +923,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-02-07 18:00'),
           name: "c't webdev",
           startDate: new Date('2019-02-06 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://ctwebdev.de',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'from-learning-to-thinking-in-graphql',
         },
       },
-      date: new Date('2019-02-06 15:25'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-02-25 18:30'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-02-25 20:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: '1301 Fannin St #2440',
@@ -953,28 +955,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-02-25 20:00'),
           name: 'HoustonJS',
           startDate: new Date('2019-02-25 18:30'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/houston-js/events/259084738',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'from-learning-to-thinking-in-graphql',
         },
       },
-      date: new Date('2019-02-25 18:30'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-02-26 19:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-02-26 20:30'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: '3100 Main St',
@@ -985,28 +987,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-02-26 20:30'),
           name: 'React Houston',
           startDate: new Date('2019-02-26 18:30'),
           type: EventType.MEETUP,
           url: 'https://www.meetup.com/Houston-React-Js-Group/events/257123502',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'building-zero-config-tools-for-graphql',
         },
       },
-      date: new Date('2019-02-26 19:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-04-05 15:35'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-04-06 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Vadyma Hetmana St 6',
@@ -1017,29 +1019,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-04-06 18:00'),
           name: 'JSFest',
           startDate: new Date('2019-04-05 09:00'),
           type: EventType.CONFERENCE,
           url: 'http://jsfest.com.ua/jsfest2019spring/indexe.html',
         },
       },
-      Talk: {
+      length: AppearanceLength.LONG,
+      recording: 'https://youtu.be/MtUjfIDCsOo',
+      talk: {
         connect: {
           slug: 'with-great-power-comes-great-react-hooks',
         },
       },
-      date: new Date('2019-04-05 15:35'),
-      length: AppearanceLength.LONG,
-      recording: 'https://youtu.be/MtUjfIDCsOo',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-04-24 09:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-04-26 20:30'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Paasivuorenkatu 5 A',
@@ -1050,26 +1052,25 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-04-26 20:30'),
           name: 'React Finland',
           startDate: new Date('2019-04-24 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://react-finland.fi/2019',
         },
       },
-      Workshop: {
+      length: AppearanceLength.LONG,
+      workshop: {
         connect: {
           slug: 'graphql-for-react-developers',
         },
       },
-      date: new Date('2019-04-24 09:00'),
-      length: AppearanceLength.LONG,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-04-25 15:15'),
+      event: {
         connect: {
           name_startDate_endDate: {
             endDate: new Date('2019-04-26 20:30'),
@@ -1078,21 +1079,22 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
           },
         },
       },
-      Talk: {
+      length: AppearanceLength.SHORT,
+      talk: {
         connect: {
           slug: '3rd-party-or-custom-code',
         },
       },
-      date: new Date('2019-04-25 15:15'),
-      length: AppearanceLength.SHORT,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-09-11 14:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-09-11 17:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Marxergasse 24',
@@ -1103,28 +1105,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-09-11 17:00'),
           name: 'UpLeveled',
           startDate: new Date('2019-09-11 14:00'),
           type: EventType.CLASS,
           url: 'https://upleveled.io',
         },
       },
-      Workshop: {
+      length: AppearanceLength.MEDIUM,
+      workshop: {
         connect: {
           slug: 'graphql-for-react-developers',
         },
       },
-      date: new Date('2019-09-11 14:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-09-26 09:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-09-28 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Plaza del Puerto 3',
@@ -1135,28 +1137,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-09-28 18:00'),
           name: 'React Alicante',
           startDate: new Date('2019-09-26 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://reactalicante.es',
         },
       },
-      Workshop: {
+      length: AppearanceLength.MEDIUM,
+      workshop: {
         connect: {
           slug: 'graphql-for-react-developers',
         },
       },
-      date: new Date('2019-09-26 09:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-10-05 10:45'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-10-06 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Konrad-Adenauer-Platz 3',
@@ -1167,29 +1169,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-10-06 18:00'),
           name: 'RuhrJS',
           startDate: new Date('2019-10-05 10:00'),
           type: EventType.CONFERENCE,
           url: 'https://ruhrjs.de',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/31gEpttp1FI',
+      talk: {
         connect: {
           slug: 'building-modern-react-applications',
         },
       },
-      date: new Date('2019-10-05 10:45'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/31gEpttp1FI',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-10-08 14:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-10-09 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Lubicz 48',
@@ -1200,28 +1202,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-10-09 18:00'),
           name: 'Sphere.it',
           startDate: new Date('2019-10-08 10:00'),
           type: EventType.CONFERENCE,
           url: 'https://sphere.it',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: '3rd-party-or-custom-code',
         },
       },
-      date: new Date('2019-10-08 14:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-10-10 09:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-10-12 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Slavonska avenija 6/2',
@@ -1232,26 +1234,25 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-10-12 18:00'),
           name: 'WebCamp Zagreb',
           startDate: new Date('2019-10-10 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://2019.webcampzg.org',
         },
       },
-      Workshop: {
+      length: AppearanceLength.LONG,
+      workshop: {
         connect: {
           slug: 'graphql-for-react-developers',
         },
       },
-      date: new Date('2019-10-10 09:00'),
-      length: AppearanceLength.LONG,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-10-11 11:35'),
+      event: {
         connect: {
           name_startDate_endDate: {
             endDate: new Date('2019-10-12 18:00'),
@@ -1260,22 +1261,23 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
           },
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/M368vYOp_hs',
+      talk: {
         connect: {
           slug: '3rd-party-or-custom-code',
         },
       },
-      date: new Date('2019-10-11 11:35'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/M368vYOp_hs',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-11-09 10:05'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-11-09 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Vadyma Hetmana St 6',
@@ -1286,29 +1288,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-11-09 18:00'),
           name: 'JSFest',
           startDate: new Date('2019-11-09 09:00'),
           type: EventType.CONFERENCE,
           url: 'http://jsfest.com.ua/indexe.html',
         },
       },
-      Talk: {
+      length: AppearanceLength.LONG,
+      recording: 'https://youtu.be/UN4mf9mlQ8E',
+      talk: {
         connect: {
           slug: 'building-modern-react-applications',
         },
       },
-      date: new Date('2019-11-09 10:05'),
-      length: AppearanceLength.LONG,
-      recording: 'https://youtu.be/UN4mf9mlQ8E',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-11-13 15:10'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-11-13 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Schönhauser Allee 36',
@@ -1319,29 +1321,29 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-11-13 18:00'),
           name: 'Codemotion Berlin',
           startDate: new Date('2019-11-12 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://events.codemotion.com/conferences/berlin/2019',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/e5Wqei-al0w',
+      talk: {
         connect: {
           slug: 'building-modern-react-applications',
         },
       },
-      date: new Date('2019-11-13 15:10'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/e5Wqei-al0w',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-11-25 09:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2019-11-27 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Plac Defilad 1',
@@ -1352,26 +1354,25 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2019-11-27 18:00'),
           name: 'Frontend Con',
           startDate: new Date('2019-11-25 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://frontend-con.io/front-end-con-2019',
         },
       },
-      Workshop: {
+      length: AppearanceLength.LONG,
+      workshop: {
         connect: {
           slug: 'advanced-graphql',
         },
       },
-      date: new Date('2019-11-25 09:00'),
-      length: AppearanceLength.LONG,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2019-11-27 12:55'),
+      event: {
         connect: {
           name_startDate_endDate: {
             endDate: new Date('2019-11-27 18:00'),
@@ -1380,21 +1381,22 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
           },
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'building-modern-react-applications',
         },
       },
-      date: new Date('2019-11-27 12:55'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2020-01-24 14:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2020-01-25 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Färbergasse 15',
@@ -1405,28 +1407,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2020-01-25 18:00'),
           name: 'AgentConf',
           startDate: new Date('2020-01-24 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://agent.sh',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: '3rd-party-or-custom-code',
         },
       },
-      date: new Date('2020-01-24 14:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2022-09-29 10:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2022-10-01 19:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Avinguda de Dénia 47',
@@ -1437,28 +1439,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2022-10-01 19:00'),
           name: 'React Alicante',
           startDate: new Date('2022-09-29 10:00'),
           type: EventType.CONFERENCE,
           url: 'https://reactalicante.es',
         },
       },
-      Workshop: {
+      length: AppearanceLength.MEDIUM,
+      workshop: {
         connect: {
           slug: 'building-web3-dapps-with-react',
         },
       },
-      date: new Date('2022-09-29 10:00'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2022-12-15 12:40'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2022-12-16 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Calle el Ejido 3',
@@ -1469,26 +1471,25 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2022-12-16 18:00'),
           name: 'Wey Wey Web',
           startDate: new Date('2022-12-15 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://weyweyweb.com',
         },
       },
-      Talk: {
+      length: AppearanceLength.MEDIUM,
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2022-12-15 12:40'),
-      length: AppearanceLength.MEDIUM,
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2022-12-16 14:30'),
+      event: {
         connect: {
           name_startDate_endDate: {
             endDate: new Date('2022-12-16 18:00'),
@@ -1497,22 +1498,23 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
           },
         },
       },
-      Workshop: {
+      length: AppearanceLength.MEDIUM,
+      recording: 'https://youtu.be/jAoqstUvjSs',
+      workshop: {
         connect: {
           slug: 'ui-ux-challenges-of-web3-and-dapps',
         },
       },
-      date: new Date('2022-12-16 14:30'),
-      length: AppearanceLength.MEDIUM,
-      recording: 'https://youtu.be/jAoqstUvjSs',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-01-13 20:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-01-13 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Mabuhay Tower, Abad St',
@@ -1523,27 +1525,27 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-01-13 22:00'),
           name: 'React Cebu',
           startDate: new Date('2023-01-13 19:00'),
           type: EventType.MEETUP,
           url: 'https://www.facebook.com/events/1390943205043835',
         },
       },
-      Talk: {
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-01-13 20:00'),
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-01-25 18:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-01-25 21:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: '0129 San Jose St',
@@ -1554,27 +1556,27 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-01-25 21:00'),
           name: 'Sprout Up Bohol',
           startDate: new Date('2023-01-25 18:00'),
           type: EventType.MEETUP,
           url: 'https://www.facebook.com/events/5767291316711816',
         },
       },
-      Talk: {
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-01-25 18:00'),
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-01-26 20:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-01-26 22:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Unit 3308 High St South Corporate Plaza Tower 2 11th Avenue & 26th St',
@@ -1585,28 +1587,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-01-26 22:00'),
           name: 'ReactJS Philippines',
           startDate: new Date('2023-01-26 18:00'),
           type: EventType.MEETUP,
           url: 'https://www.facebook.com/events/1868175543545317',
         },
       },
-      Talk: {
+      recording: 'https://fb.watch/jbMFHWdQmG',
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-01-26 20:00'),
-      recording: 'https://fb.watch/jbMFHWdQmG',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-01-26 17:53'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-02-10 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Danzigerkade 5',
@@ -1617,28 +1619,28 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-02-10 18:00'),
           name: 'JSWORLD Conference',
           startDate: new Date('2023-02-06 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://jsworldconference.com',
         },
       },
-      Talk: {
+      recording: 'https://youtu.be/O_jY3efqzxI',
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-01-26 17:53'),
-      recording: 'https://youtu.be/O_jY3efqzxI',
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-05-23 09:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-05-23 18:00'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Rue Bara 175',
@@ -1649,27 +1651,27 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-05-23 18:00'),
           name: 'Voxxed Days Brussels',
           startDate: new Date('2023-05-23 09:00'),
           type: EventType.CONFERENCE,
           url: 'https://brussels.voxxeddays.com',
         },
       },
-      Talk: {
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-05-23 09:00'),
     },
   });
 
   await prisma.appearance.create({
     data: {
-      Event: {
+      date: new Date('2023-05-24 15:00'),
+      event: {
         create: {
-          Location: {
+          endDate: new Date('2023-05-26 18:40'),
+          location: {
             connect: {
               name_address_city_zip_country: {
                 address: 'Sonja Henies plass 2',
@@ -1680,19 +1682,17 @@ const locations: Pick<Location, 'address' | 'city' | 'country' | 'name' | 'state
               },
             },
           },
-          endDate: new Date('2023-05-26 18:40'),
           name: 'NDC Oslo',
           startDate: new Date('2023-05-22 10:20'),
           type: EventType.CONFERENCE,
           url: 'https://ndcoslo.com',
         },
       },
-      Talk: {
+      talk: {
         connect: {
           slug: 'secrets-of-building-robust-ui-components',
         },
       },
-      date: new Date('2023-05-24 15:00'),
     },
   });
 })();
