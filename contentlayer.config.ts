@@ -1,4 +1,5 @@
-import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import readingTime from 'reading-time';
 import type { Options as RehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
@@ -23,6 +24,10 @@ export const Page = defineDocumentType(() => ({
 
 export const Post = defineDocumentType(() => ({
   computedFields: {
+    readingTime: {
+      resolve: (doc) => readingTime(doc.body.raw).text,
+      type: 'string',
+    },
     slug: {
       resolve: (doc) => doc._raw.flattenedPath.replace(/^posts\//, ''),
       type: 'string',
@@ -30,26 +35,7 @@ export const Post = defineDocumentType(() => ({
   },
   contentType: 'mdx',
   fields: {
-    cover: {
-      of: defineNestedType(() => ({
-        fields: {
-          photo: { type: 'string' },
-          title: {
-            of: defineNestedType(() => ({
-              fields: {
-                author: { required: true, type: 'string' },
-                url: { required: true, type: 'string' },
-              },
-              name: 'CoverAuthor',
-            })),
-            type: 'nested',
-          },
-        },
-        name: 'Cover',
-      })),
-      type: 'nested',
-    },
-    description: { required: true, type: 'string' },
+    excerpt: { required: true, type: 'string' },
     publishedAt: { type: 'date' },
     title: { required: true, type: 'string' },
   },

@@ -28,6 +28,7 @@ specifiers:
   prisma: ^4.11.0
   react: ^18.2.0
   react-dom: ^18.2.0
+  reading-time: ^1.5.0
   rehype-autolink-headings: ^6.1.1
   rehype-pretty-code: ^0.9.4
   rehype-slug: ^5.1.0
@@ -67,6 +68,7 @@ devDependencies:
   prettier: 2.8.4
   prettier-plugin-tailwindcss: 0.2.4_zmkqdpv3ldc45e6wei6qtrbrca
   prisma: 4.11.0
+  reading-time: 1.5.0
   rehype-autolink-headings: 6.1.1
   rehype-pretty-code: 0.9.4_shiki@0.14.1
   rehype-slug: 5.1.0
@@ -5586,6 +5588,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: true
+
+  /reading-time/1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
     dev: true
 
   /regenerator-runtime/0.13.11:
