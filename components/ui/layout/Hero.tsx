@@ -1,10 +1,8 @@
-import type { ImageProps } from 'next/image';
-import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 interface HeroProps extends Omit<ComponentPropsWithoutRef<'section'>, 'className'> {
   description: ReactNode;
   heading: ReactNode;
-  image: ReactElement<ImageProps>;
   subhead: ReactNode;
 }
 
