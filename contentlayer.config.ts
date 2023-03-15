@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
 import type { Options as RehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -25,8 +25,17 @@ export const Page = defineDocumentType(() => ({
 export const Post = defineDocumentType(() => ({
   computedFields: {
     readingTime: {
-      resolve: (doc) => readingTime(doc.body.raw).text,
-      type: 'string',
+      of: defineNestedType(() => ({
+        fields: {
+          minutes: { required: true, type: 'number' },
+          text: { required: true, type: 'string' },
+          time: { required: true, type: 'number' },
+          words: { required: true, type: 'number' },
+        },
+        name: 'ReadingTime',
+      })),
+      resolve: (doc) => readingTime(doc.body.raw),
+      type: 'nested',
     },
     slug: {
       resolve: (doc) => doc._raw.flattenedPath.replace(/^posts\//, ''),
