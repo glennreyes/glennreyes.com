@@ -1,15 +1,31 @@
+import type { IsoDateTimeString, Post as PostType } from 'contentlayer/generated';
+import { format, formatISODuration } from 'date-fns';
+import type { ReadTimeResults } from 'reading-time';
+
 interface PostProps {
-  post: ContentlayerGen['documentTypeMap']['Post'];
+  post: Pick<PostType, 'excerpt' | 'slug' | 'title'> & {
+    publishedAt: IsoDateTimeString;
+    readingTime: ReadTimeResults;
+  };
 }
 
-export function Post(props: PostProps) {
+export function Post({ post }: PostProps) {
+  const publishedDate = new Date(post.publishedAt);
+  const isThisYearPublished = publishedDate.getFullYear() === new Date().getFullYear();
+  const publishedAt = format(publishedDate, isThisYearPublished ? 'MMM dd' : 'MMM dd, yyyy');
+  const publishedAtValue = format(publishedDate, 'yyyy-MM-dd');
+  const readingTimeValue = formatISODuration({ minutes: post.readingTime.minutes });
+
   return (
-    <div>
+    <article className="grid gap-4 py-4">
       <div>
-        <time>{props.post.publishedAt}</time>
+        <h3 className="font-semibold">{post.title}</h3>
+        <div>
+          <time dateTime={publishedAtValue}>{publishedAt}</time> ·{' '}
+          <time dateTime={readingTimeValue}>{post.readingTime.text}</time>
+        </div>
       </div>
-      <h3>{props.post.title}</h3>
-      <p>{props.post.excerpt}</p>
-    </div>
+      <p>{post.excerpt}</p>
+    </article>
   );
 }
