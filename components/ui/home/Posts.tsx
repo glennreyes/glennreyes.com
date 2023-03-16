@@ -7,9 +7,9 @@ interface PostsProps {
 
 export function Posts({ children, title }: PostsProps) {
   return (
-    <section>
-      <h2 className="text-3xl font-extrabold tracking-tighter md:text-6xl">{title}</h2>
-      <div>{children}</div>
+    <section className="grid gap-4">
+      <h2 className="px-4 text-xl tracking-tight">{title}</h2>
+      <div className="grid gap-4">{children}</div>
     </section>
   );
 }

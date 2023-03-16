@@ -7,5 +7,5 @@ interface NavbarLinkProps extends Omit<LinkProps, 'className'> {
 }
 
 export function NavbarLink(props: NavbarLinkProps) {
-  return <Link className="rounded-full px-3 py-2 font-medium" {...props} />;
+  return <Link className="rounded-full px-3 py-2 text-sm" {...props} />;
 }

@@ -5,7 +5,7 @@ type SocialListProps = Omit<ComponentPropsWithoutRef<'ul'>, 'className'>;
 export function SocialList(props: SocialListProps) {
   return (
     <nav className="overflow-hidden">
-      <ul className="-mx-2 flex gap-2 md:gap-6" {...props} />
+      <ul className="-mx-2 flex gap-2" {...props} />
     </nav>
   );
 }

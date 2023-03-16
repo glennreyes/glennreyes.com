@@ -6,7 +6,7 @@ export function Footer() {
 
   return (
     <BaseFooter>
-      © {currentYear} Glenn Reyes. All rights reserved. <Link href="/legal-notice">Legal Notice</Link>
+      © {currentYear} Glenn Reyes · <Link href="/legal-notice">Legal Notice</Link>
     </BaseFooter>
   );
 }

@@ -1,14 +1,14 @@
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import type { ComponentPropsWithoutRef } from 'react';
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-plus-jakarta-sans',
+  variable: '--font-inter',
   weight: 'variable',
 });
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
 export function Html(props: HtmlProps) {
-  return <html className={plusJakartaSans.variable} lang="en" {...props} />;
+  return <html className={inter.variable} lang="en" {...props} />;
 }

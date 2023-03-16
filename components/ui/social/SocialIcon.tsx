@@ -5,5 +5,5 @@ interface SocialIconProps extends Omit<ComponentPropsWithoutRef<'svg'>, 'classNa
 }
 
 export function SocialIcon({ icon: Icon, ...props }: SocialIconProps) {
-  return <Icon className="h-8 w-8 md:h-12 md:w-12" {...props} />;
+  return <Icon className="h-8 w-8" {...props} />;
 }

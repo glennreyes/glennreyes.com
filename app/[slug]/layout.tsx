@@ -12,7 +12,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="py-8 md:py-16 lg:py-24">
+    <div className="px-4 py-8">
       <Article>{children}</Article>
     </div>
   );
