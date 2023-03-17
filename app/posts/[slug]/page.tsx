@@ -1,6 +1,8 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { ArticleBody } from '~/components/ui/layout/ArticleBody';
+import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { getTitle } from '~/utils/metadata';
 
@@ -35,9 +37,18 @@ interface PostPageProps {
 export default function PostPage({ params }: PostPageProps) {
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
-  if (!post?.body.code) {
+  if (!post?.body.code || !post.publishedAt) {
     notFound();
   }
 
-  return <MDXContent code={post.body.code} />;
+  return (
+    <>
+      <ArticleHeader publishedAt={post.publishedAt} readingTime={post.readingTime}>
+        {post.title}
+      </ArticleHeader>
+      <ArticleBody>
+        <MDXContent code={post.body.code} />
+      </ArticleBody>
+    </>
+  );
 }

@@ -11,9 +11,5 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  return (
-    <div className="px-4 py-8">
-      <Article>{children}</Article>
-    </div>
-  );
+  return <Article>{children}</Article>;
 }
