@@ -41,7 +41,7 @@
     "next-contentlayer": "^0.3.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
-    "prettier-plugin-tailwindcss": "^0.2.4",
+    "prettier-plugin-tailwindcss": "^0.2.5",
     "prisma": "^4.11.0",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
