@@ -1,3 +1,4 @@
+import photo from '~/assets/images/photo.jpg';
 import { Hero } from '~/components/ui/layout/Hero';
 import { SocialIcon } from '~/components/ui/social/SocialIcon';
 import { SocialLink } from '~/components/ui/social/SocialLink';
@@ -11,7 +12,7 @@ import { description, github, instagram, linkedin, name, twitter } from '~/utils
 
 export function HeroSection() {
   return (
-    <Hero description={description} heading={name} subhead="Hello, I'm">
+    <Hero description={description} heading={name} name={name} photo={photo} subhead="Hello, I'm">
       <SocialList>
         <SocialList.Item>
           <SocialLink href={`https://twitter.com/${twitter}`}>
