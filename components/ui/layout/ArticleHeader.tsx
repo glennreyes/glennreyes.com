@@ -17,7 +17,7 @@ export function ArticleHeader({ children, lead, publishedAt, readingTime, ...pro
 
   return (
     <header
-      className="prose prose-lg prose-slate mx-auto grid max-w-5xl gap-3 text-center prose-headings:m-0 prose-headings:tracking-tight"
+      className="prose prose-lg prose-slate mx-auto grid max-w-5xl gap-3 px-4 text-center prose-headings:m-0 prose-headings:tracking-tight"
       {...props}
     >
       <div className="text-gray-400">
