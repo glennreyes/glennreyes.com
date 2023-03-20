@@ -35,9 +35,14 @@ interface PageProps {
 export default function Page({ params }: PageProps) {
   const page = allPages.find(({ slug }) => slug === params.slug);
 
-  if (!page?.body.code) {
+  if (!page) {
     notFound();
   }
 
-  return <MDXContent code={page.body.code} />;
+  return (
+    <>
+      <h1>{page.title}</h1>
+      <MDXContent code={page.body.code} />
+    </>
+  );
 }
