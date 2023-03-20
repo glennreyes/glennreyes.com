@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArticleBody } from '~/components/ui/layout/ArticleBody';
 import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
-import { getTitle } from '~/utils/metadata';
+import { composeTitle } from '~/utils/metadata';
 
 interface GenerateMetadataConfigParams {
   slug: string;
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
   return {
-    title: getTitle(post?.title),
+    title: composeTitle(post?.title),
   };
 }
 

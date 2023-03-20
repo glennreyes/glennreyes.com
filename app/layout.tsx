@@ -10,7 +10,7 @@ import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
 import { description } from '~/utils/constants';
-import { getTitle } from '~/utils/metadata';
+import { composeTitle } from '~/utils/metadata';
 
 export const metadata: Metadata = {
   description,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     icon: [faviconIco.src, faviconPng.src],
   },
   manifest: '/manifest.webmanifest',
-  title: getTitle(),
+  title: composeTitle(),
 };
 
 interface RootLayoutProps {

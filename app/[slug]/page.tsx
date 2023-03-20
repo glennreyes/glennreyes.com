@@ -2,7 +2,7 @@ import { allPages } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
-import { getTitle } from '~/utils/metadata';
+import { composeTitle } from '~/utils/metadata';
 
 interface GenerateMetadataConfigParams {
   slug: string;
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   const page = allPages.find(({ slug }) => slug === params.slug);
 
   return {
-    title: getTitle(page?.title),
+    title: composeTitle(page?.title),
   };
 }
 
