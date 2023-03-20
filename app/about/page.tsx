@@ -8,11 +8,6 @@ export default function AboutPage() {
         <h2>I'm Glenn Reyes, a software engineer, tech speaker and workshop instructor based in Vienna.</h2>
         <p>I have passion for building innovative products and user interfaces using cutting edge web technologies.</p>
         <p>
-          I'm currently building <Link href="https://app.enzyme.finance">Enzyme</Link> at{' '}
-          <Link href="https://avantgarde.finance">Avantgarde</Link>- a tool for managing assets on the Ethereum
-          blockchain.
-        </p>
-        <p>
           I am addicted to constantly learn new things and enjoy sharing my thoughts and ideas about technologies I
           deeply care about.
         </p>

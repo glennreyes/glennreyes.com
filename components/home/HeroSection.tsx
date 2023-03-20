@@ -1,9 +1,9 @@
 import photo from '~/assets/images/photo.jpg';
+import { ScreenReaderText } from '~/components/ui/elements/ScreenReaderText';
 import { Hero } from '~/components/ui/layout/Hero';
 import { SocialIcon } from '~/components/ui/social/SocialIcon';
 import { SocialLink } from '~/components/ui/social/SocialLink';
 import { SocialList } from '~/components/ui/social/SocialList';
-import { ScreenReaderText } from '~/components/ui/text/ScreenReaderText';
 import { GitHub } from '~/icons/GitHub';
 import { Instagram } from '~/icons/Instagram';
 import { LinkedIn } from '~/icons/LinkedIn';
