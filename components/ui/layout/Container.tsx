@@ -11,7 +11,7 @@ const widths: Record<NonNullable<ContainerProps['width']>, string> = {
 };
 
 export function Container({ width = 'wide', ...props }: ContainerProps) {
-  const classes = clsx(widths[width], 'mx-auto grid gap-12 px-4');
+  const classes = clsx(widths[width], 'mx-auto flex flex-col gap-12 px-4');
 
   return <section className={classes} {...props} />;
 }
