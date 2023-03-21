@@ -7,8 +7,7 @@ export default function Home() {
     <>
       <HeroSection />
       <ContentSection>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-        {/* @ts-ignore-error Server Components */}
+        {/* @ts-expect-error Server Components */}
         <PostsSection />
       </ContentSection>
     </>
