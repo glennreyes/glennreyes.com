@@ -17,12 +17,19 @@ module.exports = {
     extend: {
       container: {
         screens: {
-          '2xl': '1024px',
-          xl: '1024px'
-        }
+          '2xl': '64rem',
+          xl: '64rem',
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '70ch',
+          },
+        },
       },
     },
   },
