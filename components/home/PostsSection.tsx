@@ -1,12 +1,11 @@
-import { allPosts } from 'contentlayer/generated';
-import type { Post } from 'contentlayer/generated';
 import { Section } from '~/components/ui/layout/Section';
 import { Post as PostItem } from '~/components/ui/post/Post';
 import { H2 } from '~/components/ui/typography/H2';
+import { allPosts } from '~/utils/posts';
 import { Feed } from '../ui/post/Feed';
 
 export async function PostsSection() {
-  const posts = allPosts.filter((post): post is Post & { publishedAt: string } => !!post.publishedAt).slice(0, 4);
+  const posts = allPosts.slice(0, 4);
 
   return (
     <Section>
