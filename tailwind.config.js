@@ -15,6 +15,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        screens: {
+          '2xl': '1024px',
+          xl: '1024px'
+        }
+      },
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
       },

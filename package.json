@@ -13,6 +13,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"commonjs\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.16",
     "@prisma/client": "^4.11.0",
     "clsx": "^1.2.1",
     "date-fns": "^2.29.3",

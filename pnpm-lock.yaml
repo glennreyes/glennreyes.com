@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@heroicons/react': ^2.0.16
   '@prisma/client': ^4.11.0
   '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/container-queries': ^0.1.0
@@ -41,6 +42,7 @@ specifiers:
   typescript: ^5.0.2
 
 dependencies:
+  '@heroicons/react': 2.0.16_react@18.2.0
   '@prisma/client': 4.11.0_prisma@4.11.0
   clsx: 1.2.1
   date-fns: 2.29.3
@@ -1171,6 +1173,14 @@ packages:
       protobufjs: 7.2.2
       yargs: 16.2.0
     dev: true
+
+  /@heroicons/react/2.0.16_react@18.2.0:
+    resolution: {integrity: sha512-x89rFxH3SRdYaA+JCXwfe+RkE1SFTo9GcOkZettHer71Y3T7V+ogKmfw5CjTazgS3d0ClJ7p1NA+SP7VQLQcLw==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
