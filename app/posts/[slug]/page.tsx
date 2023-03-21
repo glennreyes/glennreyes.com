@@ -44,7 +44,7 @@ export default function PostPage({ params }: PostPageProps) {
 
   return (
     <Article>
-      <ArticleHeader publishedAt={post.publishedAt} readingTime={post.readingTime}>
+      <ArticleHeader lead={post.lead} publishedAt={post.publishedAt} readingTime={post.readingTime}>
         {post.title}
       </ArticleHeader>
       <ArticleBody>
