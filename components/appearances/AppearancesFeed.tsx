@@ -1,4 +1,5 @@
 import { prisma } from '~/lib/prisma';
+import { DateDisplay } from '../ui/elements/DateDisplay';
 
 async function getAppearances() {
   const appearances = await prisma.appearance.findMany({
@@ -71,10 +72,11 @@ export async function AppearancesFeed() {
 
             return (
               <article className="grid gap-3" key={appearance.slug}>
-                <p className="text-stone-400">
+                <DateDisplay className="text-stone-400" value={appearance.date} />
+                <h3 className="text-lg font-semibold tracking-tight">
                   {appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : null} at {appearance.event.name}
-                </p>
-                {title && <h3 className="text-lg font-semibold tracking-tight">{title}</h3>}
+                </h3>
+                {title && <p className="text-stone-500">{title}</p>}
               </article>
             );
           })}
@@ -91,10 +93,11 @@ export async function AppearancesFeed() {
 
             return (
               <article className="grid gap-3" key={appearance.slug}>
-                <p className="text-stone-400">
+                <DateDisplay className="text-stone-400" value={appearance.date} />
+                <h3 className="text-lg font-semibold tracking-tight">
                   {appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : null} at {appearance.event.name}
-                </p>
-                {title && <h3 className="text-lg font-semibold tracking-tight">{title}</h3>}
+                </h3>
+                {title && <p className="text-stone-500">{title}</p>}
               </article>
             );
           })}

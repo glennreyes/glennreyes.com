@@ -1,7 +1,7 @@
 import type { IsoDateTimeString, Post as PostType } from 'contentlayer/generated';
 import Link from 'next/link';
 import type { ReadTimeResults } from 'reading-time';
-import { PublishedAt } from '~/components/ui/elements/PublishedAt';
+import { DateDisplay } from '~/components/ui/elements/DateDisplay';
 
 interface PostProps {
   post: Pick<PostType, 'excerpt' | 'slug' | 'title'> & {
@@ -13,7 +13,7 @@ interface PostProps {
 export function Post({ post }: PostProps) {
   return (
     <article className="group relative grid gap-3">
-      <PublishedAt className="relative z-10 text-stone-400" value={post.publishedAt} />
+      <DateDisplay className="relative z-10 text-stone-400" value={post.publishedAt} />
       <h3 className="text-lg font-semibold tracking-tight">
         <Link href={`/posts/${post.slug}`}>
           <span className="absolute -inset-4 z-20 md:-inset-6" />
