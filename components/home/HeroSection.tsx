@@ -1,5 +1,4 @@
 import photo from '~/assets/images/photo.jpg';
-import { ScreenReaderText } from '~/components/ui/elements/ScreenReaderText';
 import { Hero } from '~/components/ui/layout/Hero';
 import { SocialIcon } from '~/components/ui/social/SocialIcon';
 import { SocialLink } from '~/components/ui/social/SocialLink';
@@ -15,27 +14,23 @@ export function HeroSection() {
     <Hero description={description} heading={name} name={name} photo={photo} subhead="Hello, I'm">
       <SocialList>
         <SocialList.Item>
-          <SocialLink href={`https://twitter.com/${twitter}`}>
-            <SocialIcon icon={Twitter} />
-            <ScreenReaderText>Follow on Twitter</ScreenReaderText>
+          <SocialLink aria-label="Follow on Twitter" href={`https://twitter.com/${twitter}`}>
+            <SocialIcon aria-hidden icon={Twitter} />
           </SocialLink>
         </SocialList.Item>
         <SocialList.Item>
-          <SocialLink href={`https://instagram.com/${instagram}`}>
-            <SocialIcon icon={Instagram} />
-            <ScreenReaderText>Follow on Instagram</ScreenReaderText>
+          <SocialLink aria-label="Follow on Instagram" href={`https://instagram.com/${instagram}`}>
+            <SocialIcon aria-hidden icon={Instagram} />
           </SocialLink>
         </SocialList.Item>
         <SocialList.Item>
-          <SocialLink href={`https://github.com/${github}`}>
-            <SocialIcon icon={GitHub} />
-            <ScreenReaderText>Follow on GitHub</ScreenReaderText>
+          <SocialLink aria-label="Follow on GitHub" href={`https://github.com/${github}`}>
+            <SocialIcon aria-hidden icon={GitHub} />
           </SocialLink>
         </SocialList.Item>
         <SocialList.Item>
-          <SocialLink href={`https://linkedin.com/in/${linkedin}`}>
-            <SocialIcon icon={LinkedIn} />
-            <ScreenReaderText>Follow on LinkedIn</ScreenReaderText>
+          <SocialLink aria-label="Follow on LinkedIn" href={`https://linkedin.com/in/${linkedin}`}>
+            <SocialIcon aria-hidden icon={LinkedIn} />
           </SocialLink>
         </SocialList.Item>
       </SocialList>
