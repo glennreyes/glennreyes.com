@@ -6,8 +6,12 @@ interface ReadingTimeProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateT
   value: ReadTimeResults;
 }
 
-export function ReadingTime({ value }: ReadingTimeProps) {
+export function ReadingTime({ value, ...props }: ReadingTimeProps) {
   const dateTime = formatISODuration({ minutes: value.minutes });
 
-  return <time dateTime={dateTime}>{value.text}</time>;
+  return (
+    <time dateTime={dateTime} {...props}>
+      {value.text}
+    </time>
+  );
 }

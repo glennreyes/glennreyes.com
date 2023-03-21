@@ -5,7 +5,7 @@ interface PublishedAtProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateT
   value: string | undefined;
 }
 
-export function PublishedAt({ value }: PublishedAtProps) {
+export function PublishedAt({ value, ...props }: PublishedAtProps) {
   if (!value) {
     return <>Draft</>;
   }
@@ -14,5 +14,9 @@ export function PublishedAt({ value }: PublishedAtProps) {
   const dateTime = format(date, 'yyyy-MM-dd');
   const text = format(date, 'MMMM dd, yyyy');
 
-  return <time dateTime={dateTime}>{text}</time>;
+  return (
+    <time dateTime={dateTime} {...props}>
+      {text}
+    </time>
+  );
 }
