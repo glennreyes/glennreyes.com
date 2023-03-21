@@ -39,10 +39,5 @@ export default function Page({ params }: PageProps) {
     notFound();
   }
 
-  return (
-    <>
-      <h1>{page.title}</h1>
-      <MDXContent code={page.body.code} />
-    </>
-  );
+  return <MDXContent code={page.body.code} />;
 }
