@@ -1,17 +1,7 @@
-import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 
-interface ContainerProps extends Omit<ComponentPropsWithoutRef<'section'>, 'className'> {
-  width?: 'narrow' | 'wide';
-}
+type ContainerProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
-const widths: Record<NonNullable<ContainerProps['width']>, string> = {
-  narrow: 'max-w-screen-md',
-  wide: 'container',
-};
-
-export function Container({ width = 'wide', ...props }: ContainerProps) {
-  const classes = clsx(widths[width], 'mx-auto flex flex-col gap-12 px-4');
-
-  return <section className={classes} {...props} />;
+export function Container(props: ContainerProps) {
+  return <section className="container mx-auto flex flex-col gap-12 px-4" {...props} />;
 }
