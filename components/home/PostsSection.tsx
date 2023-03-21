@@ -1,7 +1,7 @@
 import { Section } from '~/components/ui/layout/Section';
 import { Post as PostItem } from '~/components/ui/post/Post';
 import { H2 } from '~/components/ui/typography/H2';
-import { allPosts } from '~/utils/posts';
+import { allPosts } from '~/lib/posts';
 import { Feed } from '../ui/post/Feed';
 
 export async function PostsSection() {

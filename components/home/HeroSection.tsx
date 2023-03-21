@@ -7,7 +7,7 @@ import { GitHub } from '~/icons/GitHub';
 import { Instagram } from '~/icons/Instagram';
 import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
-import { description, github, instagram, linkedin, name, twitter } from '~/utils/constants';
+import { description, github, instagram, linkedin, name, twitter } from '~/lib/constants';
 
 export function HeroSection() {
   return (

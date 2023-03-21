@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import androidChrome192 from '~/assets/favicon/android-chrome-192x192.png';
 import androidChrome512 from '~/assets/favicon/android-chrome-512x512.png';
-import { description, name } from '~/utils/constants';
+import { description, name } from '~/lib/constants';
 
 const data = {
   description,

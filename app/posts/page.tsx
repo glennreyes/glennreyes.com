@@ -3,7 +3,7 @@ import { PostsFeed } from '~/components/posts/PostsFeed';
 import { Container } from '~/components/ui/layout/Container';
 import { H1 } from '~/components/ui/typography/H1';
 import { Lead } from '~/components/ui/typography/Lead';
-import { composeTitle } from '~/utils/metadata';
+import { composeTitle } from '~/lib/metadata';
 
 export const metadata: Metadata = {
   title: composeTitle('Posts'),

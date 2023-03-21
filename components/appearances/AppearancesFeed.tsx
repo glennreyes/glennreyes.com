@@ -1,4 +1,4 @@
-import { prisma } from '~/utils/prisma';
+import { prisma } from '~/lib/prisma';
 
 async function getAppearances() {
   const appearances = await prisma.appearance.findMany({

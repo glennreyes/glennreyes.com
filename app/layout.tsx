@@ -9,8 +9,8 @@ import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
-import { description } from '~/utils/constants';
-import { composeTitle } from '~/utils/metadata';
+import { description } from '~/lib/constants';
+import { composeTitle } from '~/lib/metadata';
 
 export const metadata: Metadata = {
   description,

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import photo from '~/assets/images/photo.jpg';
-import { name } from '~/utils/constants';
+import { name } from '~/lib/constants';
 import { Container } from '../layout/Container';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'nav'>, 'className'>;

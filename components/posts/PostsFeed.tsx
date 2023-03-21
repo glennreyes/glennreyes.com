@@ -1,4 +1,4 @@
-import { allPosts } from '~/utils/posts';
+import { allPosts } from '~/lib/posts';
 import { Feed } from '../ui/post/Feed';
 import { Post as PostItem } from '../ui/post/Post';
 

@@ -5,7 +5,7 @@ import { Article } from '~/components/ui/layout/Article';
 import { ArticleBody } from '~/components/ui/layout/ArticleBody';
 import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
-import { composeTitle } from '~/utils/metadata';
+import { composeTitle } from '~/lib/metadata';
 
 interface GenerateMetadataConfigParams {
   slug: string;
