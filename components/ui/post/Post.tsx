@@ -19,7 +19,7 @@ export function Post({ post }: PostProps) {
 
   return (
     <article className="group relative grid gap-3">
-      <div className="relative z-10 text-gray-400">
+      <div className="relative z-10 text-stone-400">
         <time dateTime={publishedAtValue}>{publishedAt}</time> ·{' '}
         <time dateTime={readingTimeValue}>{post.readingTime.text}</time>
       </div>
