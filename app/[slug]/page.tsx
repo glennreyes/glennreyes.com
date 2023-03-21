@@ -1,6 +1,9 @@
 import { allPages } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Article } from '~/components/ui/layout/Article';
+import { ArticleBody } from '~/components/ui/layout/ArticleBody';
+import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { composeTitle } from '~/utils/metadata';
 
@@ -39,5 +42,12 @@ export default function Page({ params }: PageProps) {
     notFound();
   }
 
-  return <MDXContent code={page.body.code} />;
+  return (
+    <Article>
+      <ArticleHeader lead={page.lead}>{page.heading ?? page.title}</ArticleHeader>
+      <ArticleBody>
+        <MDXContent code={page.body.code} />
+      </ArticleBody>
+    </Article>
+  );
 }
