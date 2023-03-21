@@ -13,7 +13,7 @@ interface HeroProps extends Omit<ComponentPropsWithoutRef<'section'>, 'className
 export function Hero({ children, description, heading, photo, name, subhead, ...props }: HeroProps) {
   return (
     <section className="container mx-auto px-4 py-8" {...props}>
-      <div className="flex flex-col gap-8 lg:flex-row">
+      <div className="grid gap-8 lg:flex lg:flex-row">
         <Image alt={name} className="h-36 w-36 rounded-full border-4 border-stone-200" src={photo} />
         <div className="grid gap-8">
           <div>
