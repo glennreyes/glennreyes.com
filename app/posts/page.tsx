@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PostsPage() {
   return (
-    <Container width="narrow">
+    <Container>
       <header className="grid gap-4">
         <H1>Writing on code and life.</H1>
         <Lead>All my thoughts on code and life collected in a longer written form.</Lead>
