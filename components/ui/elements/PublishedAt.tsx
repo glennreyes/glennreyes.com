@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, isThisYear } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
 
 interface PublishedAtProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
@@ -12,7 +12,7 @@ export function PublishedAt({ value, ...props }: PublishedAtProps) {
 
   const date = new Date(value);
   const dateTime = format(date, 'yyyy-MM-dd');
-  const text = format(date, 'MMMM dd, yyyy');
+  const text = format(date, isThisYear(date) ? 'MMMM dd' : 'MMMM dd, yyyy');
 
   return (
     <time dateTime={dateTime} {...props}>
