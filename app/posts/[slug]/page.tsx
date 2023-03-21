@@ -38,7 +38,7 @@ interface PostPageProps {
 export default function PostPage({ params }: PostPageProps) {
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
-  if (!post?.body.code || !post.publishedAt) {
+  if (!post?.body.code) {
     notFound();
   }
 
