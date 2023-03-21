@@ -25,12 +25,12 @@ export function Post({ post }: PostProps) {
       </div>
       <h3 className="text-lg font-semibold tracking-tight">
         <Link href={`/posts/${post.slug}`}>
-          <span className="absolute -inset-4 inset-y-0 z-20 md:-inset-6" />
+          <span className="absolute -inset-4 z-20 md:-inset-6" />
           <span className="relative z-10">{post.title}</span>
         </Link>
       </h3>
       <p className="relative z-10 text-stone-500">{post.excerpt}</p>
-      <div className="absolute -inset-4 inset-y-0 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-2xl md:-inset-6" />
+      <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-2xl md:-inset-6" />
     </article>
   );
 }
