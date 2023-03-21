@@ -20,7 +20,7 @@ export function ArticleHeader({ children, lead, publishedAt, readingTime, ...pro
         <PublishedAt value={publishedAt} /> · <ReadingTime value={readingTime} />
       </div>
       <h1>{children}</h1>
-      {lead && <p className="font-medium text-stone-500">{lead}</p>}
+      {lead && <p className="lead font-medium text-stone-500">{lead}</p>}
     </header>
   );
 }
