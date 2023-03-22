@@ -1,6 +1,5 @@
 import { getAppearances } from '~/lib/appearances';
-import { Feed } from '../ui/feed/Feed';
-import { FeedCard } from '../ui/feed/FeedCard';
+import { Feed } from '../ui/layout/Feed';
 
 export async function AppearancesFeed() {
   const { upcoming, past } = await getAppearances();
@@ -9,7 +8,7 @@ export async function AppearancesFeed() {
     <>
       <Feed title="Upcoming">
         {upcoming.map((appearance) => (
-          <FeedCard
+          <Feed.Card
             date={appearance.date}
             description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
               appearance.talk?.title ?? appearance.workshop?.title ?? ''
@@ -22,7 +21,7 @@ export async function AppearancesFeed() {
       </Feed>
       <Feed title="Past">
         {past.map((appearance) => (
-          <FeedCard
+          <Feed.Card
             date={appearance.date}
             description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
               appearance.talk?.title ?? appearance.workshop?.title ?? ''

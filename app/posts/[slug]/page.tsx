@@ -1,9 +1,7 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Article } from '~/components/ui/article/Article';
-import { ArticleBody } from '~/components/ui/layout/ArticleBody';
-import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
+import { Article } from '~/components/ui/layout/Article';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { composeTitle } from '~/lib/metadata';
 
@@ -44,12 +42,12 @@ export default function PostPage({ params }: PostPageProps) {
 
   return (
     <Article>
-      <ArticleHeader lead={post.lead} publishedAt={post.publishedAt} readingTime={post.readingTime}>
+      <Article.Header lead={post.lead} publishedAt={post.publishedAt} readingTime={post.readingTime}>
         {post.title}
-      </ArticleHeader>
-      <ArticleBody>
+      </Article.Header>
+      <Article.Body>
         <MDXContent code={post.body.code} />
-      </ArticleBody>
+      </Article.Body>
     </Article>
   );
 }

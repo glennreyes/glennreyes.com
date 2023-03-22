@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 export default function AppearancesPage() {
   return (
     <Container>
-      <header className="grid gap-4">
+      <Container.Header>
         <H1>Where I'll be sharing knowledge.</H1>
         <Lead>One way of my favorite ways to share knowledge is by speaking and teaching at tech events.</Lead>
-      </header>
+      </Container.Header>
       {/* @ts-expect-error Server Components */}
       <AppearancesFeed />
     </Container>
