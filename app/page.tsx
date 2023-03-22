@@ -4,6 +4,8 @@ import { Newsletter } from '~/components/home/Newsletter';
 import { Posts } from '~/components/home/Posts';
 import { Content } from '~/components/ui/layout/Content';
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <>
@@ -13,6 +15,7 @@ export default function Home() {
           <Posts />
         </Content.Primary>
         <Content.Secondary>
+          {/* @ts-expect-error Server Components */}
           <Appearances />
           <Newsletter />
         </Content.Secondary>

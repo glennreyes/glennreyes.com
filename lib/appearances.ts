@@ -1,7 +1,7 @@
 import { prisma } from '~/lib/prisma';
 
-export async function getAppearances() {
-  const appearances = await prisma.appearance.findMany({
+export function getAppearances() {
+  return prisma.appearance.findMany({
     orderBy: { date: 'desc' },
     select: {
       date: true,
@@ -23,10 +23,4 @@ export async function getAppearances() {
       },
     },
   });
-
-  const today = new Date();
-  const upcoming = appearances.filter((appearance) => appearance.date > today);
-  const past = appearances.filter((appearance) => appearance.date <= today);
-
-  return { past, upcoming };
 }
