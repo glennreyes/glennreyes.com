@@ -7,5 +7,5 @@ type H3Props<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<T
 export function H3<TElementType extends ElementType>({ as, ...props }: H3Props<TElementType>) {
   const Component = as ?? 'h3';
 
-  return <Component className="text-xl font-semibold tracking-tight" {...props} />;
+  return <Component className="text-xl font-semibold" {...props} />;
 }

@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
-import { H3 } from '~/components/ui/typography/H3';
 
 interface FeedCardProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
   date: ComponentPropsWithoutRef<typeof DateDisplay>['value'];
@@ -19,7 +18,7 @@ export function FeedCard({ children, date, description, link, title, ...props }:
   return (
     <article className={articleClasses} {...props}>
       <DateDisplay className={dateDisplayClasses} value={date} />
-      <H3>
+      <h3 className="text-lg font-semibold tracking-tight">
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-4 z-20 md:-inset-6" />
@@ -28,7 +27,7 @@ export function FeedCard({ children, date, description, link, title, ...props }:
         ) : (
           title
         )}
-      </H3>
+      </h3>
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (

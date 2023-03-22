@@ -7,5 +7,5 @@ type H4Props<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<T
 export function H4<TElementType extends ElementType>({ as, ...props }: H4Props<TElementType>) {
   const Component = as ?? 'h4';
 
-  return <Component className="font-semibold tracking-tight" {...props} />;
+  return <Component className="font-semibold" {...props} />;
 }
