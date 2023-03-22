@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import photo from '~/assets/images/photo.jpg';
-import { SocialIcon } from '~/components/ui/social/SocialIcon';
-import { SocialLink } from '~/components/ui/social/SocialLink';
-import { SocialList } from '~/components/ui/social/SocialList';
-import { H1 } from '~/components/ui/typography/H1';
 import { GitHub } from '~/icons/GitHub';
 import { Instagram } from '~/icons/Instagram';
 import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
 import { description, github, instagram, linkedin, name, twitter } from '~/lib/constants';
+import { SocialLink } from '../ui/social/SocialLink';
+import { SocialList } from '../ui/social/SocialList';
+import { H1 } from '../ui/typography/H1';
 
 export function Hero() {
   return (
@@ -25,27 +24,26 @@ export function Hero() {
               </div>
             </div>
           </div>
-
           <SocialList>
             <SocialList.Item>
-              <SocialLink aria-label="Follow on Twitter" href={`https://twitter.com/${twitter}`}>
-                <SocialIcon aria-hidden icon={Twitter} />
-              </SocialLink>
+              <SocialLink aria-label="Follow on Twitter" href={`https://twitter.com/${twitter}`} icon={Twitter} />
             </SocialList.Item>
             <SocialList.Item>
-              <SocialLink aria-label="Follow on Instagram" href={`https://instagram.com/${instagram}`}>
-                <SocialIcon aria-hidden icon={Instagram} />
-              </SocialLink>
+              <SocialLink
+                aria-label="Follow on Instagram"
+                href={`https://instagram.com/${instagram}`}
+                icon={Instagram}
+              />
             </SocialList.Item>
             <SocialList.Item>
-              <SocialLink aria-label="Follow on GitHub" href={`https://github.com/${github}`}>
-                <SocialIcon aria-hidden icon={GitHub} />
-              </SocialLink>
+              <SocialLink aria-label="Follow on GitHub" href={`https://github.com/${github}`} icon={GitHub} />
             </SocialList.Item>
             <SocialList.Item>
-              <SocialLink aria-label="Follow on LinkedIn" href={`https://linkedin.com/in/${linkedin}`}>
-                <SocialIcon aria-hidden icon={LinkedIn} />
-              </SocialLink>
+              <SocialLink
+                aria-label="Follow on LinkedIn"
+                href={`https://linkedin.com/in/${linkedin}`}
+                icon={LinkedIn}
+              />
             </SocialList.Item>
           </SocialList>
         </div>

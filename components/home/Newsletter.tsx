@@ -1,6 +1,6 @@
-import { Card } from '~/components/ui/layout/Card';
-import { Section } from '~/components/ui/layout/Section';
-import { H4 } from '~/components/ui/typography/H4';
+import { Card } from '../ui/layout/Card';
+import { Section } from '../ui/layout/Section';
+import { H4 } from '../ui/typography/H4';
 
 export function Newsletter() {
   return (

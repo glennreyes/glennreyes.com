@@ -1,7 +1,7 @@
 import { allPages } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Article } from '~/components/ui/layout/Article';
+import { Article } from '~/components/ui/article/Article';
 import { ArticleBody } from '~/components/ui/layout/ArticleBody';
 import { ArticleHeader } from '~/components/ui/layout/ArticleHeader';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';

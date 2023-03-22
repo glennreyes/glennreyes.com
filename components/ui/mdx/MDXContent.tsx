@@ -1,7 +1,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
-import { H1 } from '~/components/ui/typography/H1';
-import { Lead } from '~/components/ui/typography/Lead';
+import { H1 } from '../typography/H1';
+import { Lead } from '../typography/Lead';
 
 interface MDXContentProps {
   code: string;

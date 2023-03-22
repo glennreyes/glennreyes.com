@@ -1,11 +1,15 @@
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
 interface SocialLinkProps extends Omit<LinkProps, 'className'> {
-  children: ReactNode;
+  icon: ComponentType<ComponentPropsWithoutRef<'svg'>>;
 }
 
-export function SocialLink(props: SocialLinkProps) {
-  return <Link className="rounded-full p-2" {...props} />;
+export function SocialLink({ icon: Icon, ...props }: SocialLinkProps) {
+  return (
+    <Link className="rounded-full p-2" {...props}>
+      <Icon aria-hidden className="h-8 w-8" />
+    </Link>
+  );
 }

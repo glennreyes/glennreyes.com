@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
-import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { DateDisplay } from '../elements/DateDisplay';
 
 interface FeedCardProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
   date: ComponentPropsWithoutRef<typeof DateDisplay>['value'];

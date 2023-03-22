@@ -1,10 +1,10 @@
 import type { IsoDateTimeString } from 'contentlayer/generated';
 import type { ComponentPropsWithoutRef } from 'react';
 import type { ReadTimeResults } from 'reading-time';
-import { DateDisplay } from '~/components/ui/elements/DateDisplay';
-import { ReadingTime } from '~/components/ui/elements/ReadingTime';
-import { H1 } from '~/components/ui/typography/H1';
-import { Lead } from '~/components/ui/typography/Lead';
+import { DateDisplay } from '../elements/DateDisplay';
+import { ReadingTime } from '../elements/ReadingTime';
+import { H1 } from '../typography/H1';
+import { Lead } from '../typography/Lead';
 
 interface ArticleHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead: string | undefined;

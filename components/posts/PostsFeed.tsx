@@ -1,6 +1,6 @@
-import { Feed } from '~/components/ui/feed/Feed';
-import { FeedCard } from '~/components/ui/feed/FeedCard';
 import { allPosts } from '~/lib/posts';
+import { Feed } from '../ui/feed/Feed';
+import { FeedCard } from '../ui/feed/FeedCard';
 
 export function PostsFeed() {
   return (

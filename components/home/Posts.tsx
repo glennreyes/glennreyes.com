@@ -1,7 +1,7 @@
-import { Feed } from '~/components/ui/feed/Feed';
-import { FeedCard } from '~/components/ui/feed/FeedCard';
-import { Section } from '~/components/ui/layout/Section';
 import { allPosts } from '~/lib/posts';
+import { Feed } from '../ui/feed/Feed';
+import { FeedCard } from '../ui/feed/FeedCard';
+import { Section } from '../ui/layout/Section';
 
 export function Posts() {
   const posts = allPosts.slice(0, 4);

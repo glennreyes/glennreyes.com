@@ -31,7 +31,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html>
       <head />
       <Body>
-        <Navbar />
+        <Navbar>
+          <Navbar.Link href="/about">About</Navbar.Link>
+          <Navbar.Link href="/posts">Posts</Navbar.Link>
+          <Navbar.Link href="/appearances">Appearances</Navbar.Link>
+        </Navbar>
         <Main>{children}</Main>
         <Footer />
       </Body>

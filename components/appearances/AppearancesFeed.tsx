@@ -1,6 +1,6 @@
-import { Feed } from '~/components/ui/feed/Feed';
-import { FeedCard } from '~/components/ui/feed/FeedCard';
 import { getAppearances } from '~/lib/appearances';
+import { Feed } from '../ui/feed/Feed';
+import { FeedCard } from '../ui/feed/FeedCard';
 
 export async function AppearancesFeed() {
   const { upcoming, past } = await getAppearances();
