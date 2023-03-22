@@ -25,7 +25,7 @@ specifiers:
   next: ^13.2.4
   next-contentlayer: ^0.3.0
   postcss: ^8.4.21
-  prettier: ^2.8.5
+  prettier: ^2.8.6
   prettier-plugin-tailwindcss: ^0.2.5
   prisma: ^4.11.0
   react: ^18.2.0
@@ -54,7 +54,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.7
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
-  '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.5
+  '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.6
   '@tsconfig/next': 1.0.5
   '@types/eslint': 8.21.3
   '@types/mdx': 2.0.3
@@ -65,12 +65,12 @@ devDependencies:
   autoprefixer: 10.4.14_postcss@8.4.21
   contentlayer: 0.3.0_esbuild@0.17.12
   eslint: 8.36.0
-  eslint-config-banana: 1.2.3_zjjsn6zvz2rjb5cly6i767wfoi
+  eslint-config-banana: 1.2.3_pujeigtq5ttcd2vah6rli5n4na
   eslint-config-next: 13.2.4_j4766f7ecgqbon3u7zlxn5zszu
   next-contentlayer: 0.3.0_rxyzbctjuznd6cmvogf5xnmehq
   postcss: 8.4.21
-  prettier: 2.8.5
-  prettier-plugin-tailwindcss: 0.2.5_wgxk27ud2vbqu6hanimyzzegte
+  prettier: 2.8.6
+  prettier-plugin-tailwindcss: 0.2.5_c5px7p3j4kcmt2ngqd44w4h7we
   prisma: 4.11.0
   reading-time: 1.5.0
   rehype-autolink-headings: 6.1.1
@@ -1688,7 +1688,7 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: true
 
-  /@react-native-community/eslint-config/3.2.0_5rct4wtm2e7zr7j2m4uopjgt4a:
+  /@react-native-community/eslint-config/3.2.0_ctxmzhq3xstovqjsllvgpoxqru:
     resolution: {integrity: sha512-ZjGvoeiBtCbd506hQqwjKmkWPgynGUoJspG8/MuV/EfKnkjCtBmeJvq2n+sWbWEvL9LWXDp2GJmPzmvU5RSvKQ==}
     peerDependencies:
       eslint: '>=8'
@@ -1704,11 +1704,11 @@ packages:
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.36.0
       eslint-plugin-ft-flow: 2.0.3_efmlyvcpqxwkqdoq3gpw47fsvq
       eslint-plugin-jest: 26.9.0_h7to3d3tpvgz6veezmqtirkbca
-      eslint-plugin-prettier: 4.2.1_e4jq4ivnnnwcsomlcyj2qoljy4
+      eslint-plugin-prettier: 4.2.1_w3shflqoegspmha2z74hzwkfbm
       eslint-plugin-react: 7.32.2_eslint@8.36.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.36.0
       eslint-plugin-react-native: 4.0.0_eslint@8.36.0
-      prettier: 2.8.5
+      prettier: 2.8.6
     transitivePeerDependencies:
       - jest
       - supports-color
@@ -1777,7 +1777,7 @@ packages:
       tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
     dev: true
 
-  /@trivago/prettier-plugin-sort-imports/4.1.1_prettier@2.8.5:
+  /@trivago/prettier-plugin-sort-imports/4.1.1_prettier@2.8.6:
     resolution: {integrity: sha512-dQ2r2uzNr1x6pJsuh/8x0IRA3CBUB+pWEW3J/7N98axqt7SQSm+2fy0FLNXvXGg77xEDC7KHxJlHfLYyi7PDcw==}
     peerDependencies:
       '@vue/compiler-sfc': 3.x
@@ -1792,7 +1792,7 @@ packages:
       '@babel/types': 7.17.0
       javascript-natural-sort: 0.7.1
       lodash: 4.17.21
-      prettier: 2.8.5
+      prettier: 2.8.6
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2856,11 +2856,11 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /eslint-config-banana/1.2.3_zjjsn6zvz2rjb5cly6i767wfoi:
+  /eslint-config-banana/1.2.3_pujeigtq5ttcd2vah6rli5n4na:
     resolution: {integrity: sha512-Wdec5fPqFEXKypYIEnSssvy3vBJs/WOAbpFbFqskL7xsDHggmyd+7F+k3bZR+QmVByXOR8KtvSVnCZmQwegfdg==}
     dependencies:
       '@graphql-eslint/eslint-plugin': 3.16.1_5xzqi23aikkn5q7ww4isr6moyu
-      '@react-native-community/eslint-config': 3.2.0_5rct4wtm2e7zr7j2m4uopjgt4a
+      '@react-native-community/eslint-config': 3.2.0_ctxmzhq3xstovqjsllvgpoxqru
       '@typescript-eslint/eslint-plugin': 5.54.1_k4rdtyz2uuo3tzblkqed7c56rq
       '@typescript-eslint/parser': 5.54.1_j4766f7ecgqbon3u7zlxn5zszu
       eslint-config-prettier: 8.7.0_eslint@8.36.0
@@ -3084,7 +3084,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_e4jq4ivnnnwcsomlcyj2qoljy4:
+  /eslint-plugin-prettier/4.2.1_w3shflqoegspmha2z74hzwkfbm:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -3097,7 +3097,7 @@ packages:
     dependencies:
       eslint: 8.36.0
       eslint-config-prettier: 8.7.0_eslint@8.36.0
-      prettier: 2.8.5
+      prettier: 2.8.6
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -5503,7 +5503,7 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.2.5_wgxk27ud2vbqu6hanimyzzegte:
+  /prettier-plugin-tailwindcss/0.2.5_c5px7p3j4kcmt2ngqd44w4h7we:
     resolution: {integrity: sha512-vZ/iKieyCx0WTxHbkf5E1rBlv/ybFk8WTT4hL5W2jlVxum2Zbe0jMUpuQdDrpa4z2vnPiJ5KIWCqL/kd16fKYg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -5555,12 +5555,12 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.5
-      prettier: 2.8.5
+      '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.6
+      prettier: 2.8.6
     dev: true
 
-  /prettier/2.8.5:
-    resolution: {integrity: sha512-3gzuxrHbKUePRBB4ZeU08VNkUcqEHaUaouNt0m7LGP4Hti/NuB07C7PPTM/LkWqXoJYJn2McEo5+kxPNrtQkLQ==}
+  /prettier/2.8.6:
+    resolution: {integrity: sha512-mtuzdiBbHwPEgl7NxWlqOkithPyp4VN93V7VeHVWBF+ad3I5avc0RVDT4oImXQy9H/AqxA2NSQH8pSxHW6FYbQ==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
