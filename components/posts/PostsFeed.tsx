@@ -1,12 +1,12 @@
+import { Feed } from '~/components/ui/feed/Feed';
+import { FeedCard } from '~/components/ui/feed/FeedCard';
 import { allPosts } from '~/lib/posts';
-import { Feed } from '../ui/post/Feed';
-import { Post as PostItem } from '../ui/post/Post';
 
 export function PostsFeed() {
   return (
     <Feed>
-      {allPosts.map(({ excerpt, publishedAt, readingTime, slug, title }) => (
-        <PostItem key={slug} post={{ excerpt, publishedAt, readingTime, slug, title }} />
+      {allPosts.map(({ excerpt, publishedAt, slug, title }) => (
+        <FeedCard date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
       ))}
     </Feed>
   );

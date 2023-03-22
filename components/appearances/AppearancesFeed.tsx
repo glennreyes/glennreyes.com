@@ -1,5 +1,6 @@
+import { Feed } from '~/components/ui/feed/Feed';
+import { FeedCard } from '~/components/ui/feed/FeedCard';
 import { prisma } from '~/lib/prisma';
-import { DateDisplay } from '../ui/elements/DateDisplay';
 
 async function getAppearances() {
   const appearances = await prisma.appearance.findMany({
@@ -62,47 +63,32 @@ export async function AppearancesFeed() {
 
   return (
     <>
-      <div className="grid grid-cols-4">
-        <div className="border-l border-stone-100 px-8">
-          <h2 className="sticky top-16 font-semibold text-emerald-700/90">Upcoming</h2>
-        </div>
-        <div className="col-span-3 grid gap-8 md:gap-12">
-          {upcoming.map((appearance) => {
-            const title = appearance.talk?.title ?? appearance.workshop?.title;
-
-            return (
-              <article className="grid gap-3" key={appearance.slug}>
-                <DateDisplay className="text-stone-400" value={appearance.date} />
-                <h3 className="text-lg font-semibold tracking-tight">
-                  {appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : null} at {appearance.event.name}
-                </h3>
-                {title && <p className="text-stone-500">{title}</p>}
-              </article>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-4">
-        <div className="border-l border-stone-100 px-8">
-          <h2 className="sticky top-16 font-semibold text-stone-500">Past</h2>
-        </div>
-        <div className="col-span-3 grid gap-8 md:gap-12">
-          {past.map((appearance) => {
-            const title = appearance.talk?.title ?? appearance.workshop?.title;
-
-            return (
-              <article className="grid gap-3" key={appearance.slug}>
-                <DateDisplay className="text-stone-400" value={appearance.date} />
-                <h3 className="text-lg font-semibold tracking-tight">
-                  {appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : null} at {appearance.event.name}
-                </h3>
-                {title && <p className="text-stone-500">{title}</p>}
-              </article>
-            );
-          })}
-        </div>
-      </div>
+      <Feed title="Upcoming">
+        {upcoming.map((appearance) => (
+          <FeedCard
+            date={appearance.date}
+            description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
+              appearance.talk?.title ?? appearance.workshop?.title ?? ''
+            }`}
+            key={appearance.slug}
+            link={`/appearances/${appearance.slug}`}
+            title={appearance.event.name}
+          />
+        ))}
+      </Feed>
+      <Feed title="Past">
+        {past.map((appearance) => (
+          <FeedCard
+            date={appearance.date}
+            description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
+              appearance.talk?.title ?? appearance.workshop?.title ?? ''
+            }`}
+            key={appearance.slug}
+            link={`/appearances/${appearance.slug}`}
+            title={appearance.event.name}
+          />
+        ))}
+      </Feed>
     </>
   );
 }

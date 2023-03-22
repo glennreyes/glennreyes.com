@@ -11,7 +11,7 @@ export function DateDisplay({ format: formatString, value, ...props }: DateDispl
     return <>Draft</>;
   }
 
-  const date = new Date(value);
+  const date = value instanceof Date ? value : new Date(value);
   const dateTime = format(date, 'yyyy-MM-dd');
   const text = format(date, formatString ?? (isThisYear(date) ? 'MMMM dd' : 'MMMM dd, yyyy'));
 
