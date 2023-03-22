@@ -9,43 +9,17 @@ async function getAppearances() {
       date: true,
       event: {
         select: {
-          location: {
-            select: {
-              address: true,
-              city: true,
-              country: true,
-              name: true,
-              state: true,
-              type: true,
-              zip: true,
-            },
-          },
           name: true,
-          slug: true,
-          type: true,
-          url: true,
         },
       },
-      length: true,
-      recording: true,
       slug: true,
       talk: {
         select: {
-          abstract: true,
-          slides: true,
-          slug: true,
-          status: true,
-          tags: true,
           title: true,
         },
       },
       workshop: {
         select: {
-          abstract: true,
-          repository: true,
-          slides: true,
-          slug: true,
-          status: true,
           title: true,
         },
       },

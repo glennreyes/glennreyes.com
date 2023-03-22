@@ -8,13 +8,15 @@ export async function PostsSection() {
   const posts = allPosts.slice(0, 4);
 
   return (
-    <Section>
-      <H2>Posts</H2>
-      <Feed>
-        {posts.map(({ excerpt, publishedAt, slug, title }) => (
-          <FeedCard date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
-        ))}
-      </Feed>
-    </Section>
+    <div className="lg:col-span-7">
+      <Section>
+        <H2>Posts</H2>
+        <Feed>
+          {posts.map(({ excerpt, publishedAt, slug, title }) => (
+            <FeedCard date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
+          ))}
+        </Feed>
+      </Section>
+    </div>
   );
 }
