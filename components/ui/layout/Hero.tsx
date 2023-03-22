@@ -21,7 +21,7 @@ export function Hero({ children, description, heading, photo, name, subhead, ...
             <div className="flex justify-between gap-4">
               <div className="grid gap-4">
                 <h1 className="text-5xl font-extrabold tracking-tight">{heading}</h1>
-                <p className="max-w-2xl leading-relaxed md:leading-relaxed">{description}</p>
+                <p className="max-w-2xl leading-relaxed">{description}</p>
               </div>
             </div>
           </div>
