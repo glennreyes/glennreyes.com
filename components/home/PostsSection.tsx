@@ -4,7 +4,7 @@ import { Section } from '~/components/ui/layout/Section';
 import { H2 } from '~/components/ui/typography/H2';
 import { allPosts } from '~/lib/posts';
 
-export async function PostsSection() {
+export function PostsSection() {
   const posts = allPosts.slice(0, 4);
 
   return (

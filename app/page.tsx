@@ -8,7 +8,6 @@ export default function Home() {
     <>
       <HeroSection />
       <ContentSection>
-        {/* @ts-expect-error Server Components */}
         <PostsSection />
         <AppearancesSection />
       </ContentSection>
