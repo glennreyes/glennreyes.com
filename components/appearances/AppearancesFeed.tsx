@@ -1,37 +1,6 @@
 import { Feed } from '~/components/ui/feed/Feed';
 import { FeedCard } from '~/components/ui/feed/FeedCard';
-import { prisma } from '~/lib/prisma';
-
-async function getAppearances() {
-  const appearances = await prisma.appearance.findMany({
-    orderBy: { date: 'desc' },
-    select: {
-      date: true,
-      event: {
-        select: {
-          name: true,
-        },
-      },
-      slug: true,
-      talk: {
-        select: {
-          title: true,
-        },
-      },
-      workshop: {
-        select: {
-          title: true,
-        },
-      },
-    },
-  });
-
-  const today = new Date();
-  const upcoming = appearances.filter((appearance) => appearance.date > today);
-  const past = appearances.filter((appearance) => appearance.date <= today);
-
-  return { past, upcoming };
-}
+import { getAppearances } from '~/lib/appearances';
 
 export async function AppearancesFeed() {
   const { upcoming, past } = await getAppearances();
