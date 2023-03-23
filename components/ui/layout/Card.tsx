@@ -64,7 +64,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       <h3 className="text-sm font-medium">
         {link ? (
           <Link href={link}>
-            <span className="absolute -inset-4 z-20 md:-inset-6" />
+            <span className="absolute -inset-y-2 -inset-x-6 z-20" />
             <span className="relative z-10">{title}</span>
           </Link>
         ) : (
@@ -74,7 +74,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-3xl md:-inset-6" />
+        <div className="absolute -inset-y-2 -inset-x-6 scale-95 bg-stone-50/50 opacity-0 group-hover:scale-100 group-hover:opacity-100" />
       )}
     </div>
   );

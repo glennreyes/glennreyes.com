@@ -46,6 +46,7 @@ export async function Appearances() {
                     description={`${appearance.event.location.city}, ${
                       appearance.event.location.state ?? appearance.event.location.country
                     }`}
+                    link={`/appearances/${appearance.slug}`}
                     title={appearance.event.name}
                   />
                 </List.Item>
@@ -62,6 +63,7 @@ export async function Appearances() {
                     description={`${appearance.event.location.city}, ${
                       appearance.event.location.state ?? appearance.event.location.country
                     }`}
+                    link={`/appearances/${appearance.slug}`}
                     title={appearance.event.name}
                   />
                 </List.Item>
