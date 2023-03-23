@@ -12,7 +12,7 @@ export function Posts() {
           <Feed.Card date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
         ))}
       </Feed>
-      <Link className="flex items-center gap-1 font-semibold text-stone-400" href="/posts">
+      <Link className="font-semibold text-stone-400" href="/posts">
         All Posts
       </Link>
     </div>

@@ -35,8 +35,8 @@ export async function Appearances() {
     <Section>
       <H4 as="h2">Appearances</H4>
       <Card>
-        <div className="grid gap-6">
-          <div className="grid gap-6">
+        <div className="grid gap-8">
+          <div className="grid gap-4">
             <h3 className="text-xs font-bold uppercase text-emerald-700/90">Upcoming</h3>
             <ol className="grid gap-6">
               {upcoming.map((appearance) => {
@@ -93,7 +93,10 @@ export async function Appearances() {
               })}
             </ol>
           </div>
-          <Link className="flex items-center gap-1 text-sm font-semibold text-stone-400" href="/appearances">
+          <Link
+            className="rounded-lg border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-500"
+            href="/appearances"
+          >
             All Appearances
           </Link>
         </div>
