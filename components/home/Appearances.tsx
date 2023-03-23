@@ -2,6 +2,7 @@ import { getTime } from 'date-fns';
 import Link from 'next/link';
 import { getAppearances } from '~/lib/appearances';
 import { DateDisplay } from '../ui/elements/DateDisplay';
+import { Divider } from '../ui/elements/Divider';
 import { Card } from '../ui/layout/Card';
 import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
@@ -62,7 +63,7 @@ export async function Appearances() {
               })}
             </ol>
           </div>
-          <hr className="border-t border-stone-100" />
+          <Divider />
           <div className="grid gap-4">
             <h3 className="text-xs font-bold uppercase text-emerald-700/90">Past</h3>
             <ol className="grid gap-6">
