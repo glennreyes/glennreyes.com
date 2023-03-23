@@ -9,7 +9,7 @@ export function Posts() {
     <div className="grid gap-12">
       <Feed>
         {posts.map(({ excerpt, publishedAt, slug, title }) => (
-          <Feed.Card date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
+          <Feed.Item date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
         ))}
       </Feed>
       <Link className="font-semibold text-stone-400" href="/posts">

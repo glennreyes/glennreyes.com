@@ -5,7 +5,7 @@ export function PostsFeed() {
   return (
     <Feed>
       {allPosts.map(({ excerpt, publishedAt, slug, title }) => (
-        <Feed.Card date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
+        <Feed.Item date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
       ))}
     </Feed>
   );

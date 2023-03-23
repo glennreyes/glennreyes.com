@@ -1,9 +1,9 @@
 import { getTime } from 'date-fns';
 import Link from 'next/link';
 import { getAppearances } from '~/lib/appearances';
-import { DateDisplay } from '../ui/elements/DateDisplay';
 import { Divider } from '../ui/elements/Divider';
 import { Card } from '../ui/layout/Card';
+import { List } from '../ui/layout/List';
 import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
 
@@ -37,61 +37,39 @@ export async function Appearances() {
       <H4 as="h2">Appearances</H4>
       <Card>
         <div className="grid gap-8">
-          <div className="grid gap-4">
-            <h3 className="text-xs font-bold uppercase text-emerald-700/90">Upcoming</h3>
-            <ol className="grid gap-6">
-              {upcoming.map((appearance) => {
-                const place = [
-                  appearance.event.location.city,
-                  appearance.event.location.state ?? appearance.event.location.country,
-                ].join(', ');
-
-                return (
-                  <li key={appearance.slug}>
-                    <dl className="grid gap-1">
-                      <dt className="sr-only">Date</dt>
-                      <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} />
-                      </dd>
-                      <dt className="sr-only">Event</dt>
-                      <dd className="text-sm font-medium">{appearance.event.name}</dd>
-                      <dt className="sr-only">Place</dt>
-                      <dd className="text-sm text-stone-500">{place}</dd>
-                    </dl>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+          <Card.Body title="Upcoming">
+            <List as="ol">
+              {upcoming.map((appearance) => (
+                <List.Item key={appearance.slug}>
+                  <Card.Item
+                    date={appearance.date}
+                    description={`${appearance.event.location.city}, ${
+                      appearance.event.location.state ?? appearance.event.location.country
+                    }`}
+                    title={appearance.event.name}
+                  />
+                </List.Item>
+              ))}
+            </List>
+          </Card.Body>
           <Divider />
-          <div className="grid gap-4">
-            <h3 className="text-xs font-bold uppercase text-emerald-700/90">Past</h3>
-            <ol className="grid gap-6">
-              {past.map((appearance) => {
-                const place = [
-                  appearance.event.location.city,
-                  appearance.event.location.state ?? appearance.event.location.country,
-                ].join(', ');
-
-                return (
-                  <li key={appearance.slug}>
-                    <dl className="grid gap-1">
-                      <dt className="sr-only">Date</dt>
-                      <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} />
-                      </dd>
-                      <dt className="sr-only">Event</dt>
-                      <dd className="text-sm font-medium">{appearance.event.name}</dd>
-                      <dt className="sr-only">Place</dt>
-                      <dd className="text-sm text-stone-500">{place}</dd>
-                    </dl>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+          <Card.Body title="Past">
+            <List as="ol">
+              {past.map((appearance) => (
+                <List.Item key={appearance.slug}>
+                  <Card.Item
+                    date={appearance.date}
+                    description={`${appearance.event.location.city}, ${
+                      appearance.event.location.state ?? appearance.event.location.country
+                    }`}
+                    title={appearance.event.name}
+                  />
+                </List.Item>
+              ))}
+            </List>
+          </Card.Body>
           <Link
-            className="rounded-lg border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-400"
+            className="rounded-2xl border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-400 transition hover:border-stone-300 hover:text-stone-600"
             href="/appearances"
           >
             All Appearances

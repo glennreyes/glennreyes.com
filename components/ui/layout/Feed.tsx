@@ -28,7 +28,7 @@ export function Feed({ children, title, ...props }: FeedProps) {
   );
 }
 
-type FeedCardWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
+type FeedItemWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
   children?: ReactNode;
   date: Date | string;
   description: string;
@@ -37,7 +37,7 @@ type FeedCardWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'classNam
   title: string;
 };
 
-type FeedCardWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
+type FeedItemWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
   children?: ReactNode;
   date?: undefined;
   description: string;
@@ -46,15 +46,15 @@ type FeedCardWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'classNam
   title: string;
 };
 
-type FeedCardProps = FeedCardWithDateProps | FeedCardWithMetaProps;
+type FeedItemProps = FeedItemWithDateProps | FeedItemWithMetaProps;
 
-function FeedCard({ children, description, link, title, ...rest }: FeedCardProps) {
+function FeedItem({ children, description, link, title, ...rest }: FeedItemProps) {
   const articleClasses = clsx(link && 'group relative', 'grid gap-2');
   const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
   const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const { date, meta, ...props } = {
-    date: 'date' in rest ? rest.date : undefined,
-    meta: 'meta' in rest ? rest.meta : undefined,
+    date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
+    meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
     ...rest,
   };
 
@@ -78,10 +78,10 @@ function FeedCard({ children, description, link, title, ...rest }: FeedCardProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-2xl md:-inset-6" />
+        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-3xl md:-inset-6" />
       )}
     </article>
   );
 }
 
-Feed.Card = FeedCard;
+Feed.Item = FeedItem;

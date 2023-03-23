@@ -19,7 +19,7 @@ export async function AppearancesFeed() {
             ].join(', ');
 
             return (
-              <Feed.Card
+              <Feed.Item
                 description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
                   appearance.talk?.title ?? appearance.workshop?.title ?? ''
                 }`}
@@ -45,7 +45,7 @@ export async function AppearancesFeed() {
             ].join(', ');
 
             return (
-              <Feed.Card
+              <Feed.Item
                 description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
                   appearance.talk?.title ?? appearance.workshop?.title ?? ''
                 }`}
