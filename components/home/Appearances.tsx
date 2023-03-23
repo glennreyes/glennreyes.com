@@ -1,7 +1,7 @@
 import { getTime } from 'date-fns';
-import Link from 'next/link';
 import { getAllEvents } from '~/lib/events';
 import { Divider } from '../ui/elements/Divider';
+import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
 import { List } from '../ui/layout/List';
 import { Section } from '../ui/layout/Section';
@@ -66,12 +66,9 @@ export async function Appearances() {
               ))}
             </List>
           </Card.Body>
-          <Link
-            className="rounded-2xl border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-400 transition hover:border-stone-300 hover:text-stone-600"
-            href="/appearances"
-          >
+          <Button appearance="secondary" as="link" href="/appearances">
             All Appearances
-          </Link>
+          </Button>
         </div>
       </Card>
     </Section>
