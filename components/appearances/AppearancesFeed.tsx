@@ -19,7 +19,7 @@ export async function AppearancesFeed() {
                 date={event.startDate}
                 description={place}
                 key={event.slug}
-                link={`/events/${event.slug}`}
+                link={`/appearances/${event.slug}`}
                 title={event.name}
               />
             );
@@ -36,7 +36,7 @@ export async function AppearancesFeed() {
                 date={event.startDate}
                 description={place}
                 key={event.slug}
-                link={`/events/${event.slug}`}
+                link={`/appearances/${event.slug}`}
                 title={event.name}
               />
             );

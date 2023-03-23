@@ -44,7 +44,7 @@ export async function Appearances() {
                   <Card.Item
                     date={event.startDate}
                     description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
-                    link={`/events/${event.slug}`}
+                    link={`/appearances/${event.slug}`}
                     title={event.name}
                   />
                 </List.Item>
@@ -59,7 +59,7 @@ export async function Appearances() {
                   <Card.Item
                     date={event.startDate}
                     description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
-                    link={`/events/${event.slug}`}
+                    link={`/appearances/${event.slug}`}
                     title={event.name}
                   />
                 </List.Item>
