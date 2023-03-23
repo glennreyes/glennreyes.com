@@ -42,13 +42,17 @@ export async function Appearances() {
               {upcoming.map((appearance) => {
                 const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
                 const title = appearance.talk?.title ?? appearance.workshop?.title;
+                const place = [
+                  appearance.event.location.city,
+                  appearance.event.location.state ?? appearance.event.location.country,
+                ].join(', ');
 
                 return (
                   <li key={appearance.slug}>
                     <dl className="grid gap-1">
                       <dt className="sr-only">Date</dt>
                       <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} />
+                        <DateDisplay value={appearance.date} /> · {place}
                       </dd>
                       <dt className="sr-only">Event</dt>
                       <dd className="text-sm font-medium">{appearance.event.name}</dd>
@@ -71,13 +75,17 @@ export async function Appearances() {
               {past.map((appearance) => {
                 const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
                 const title = appearance.talk?.title ?? appearance.workshop?.title;
+                const place = [
+                  appearance.event.location.city,
+                  appearance.event.location.state ?? appearance.event.location.country,
+                ].join(', ');
 
                 return (
                   <li key={appearance.slug}>
                     <dl className="grid gap-1">
                       <dt className="sr-only">Date</dt>
                       <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} />
+                        <DateDisplay value={appearance.date} /> · {place}
                       </dd>
                       <dt className="sr-only">Event</dt>
                       <dd className="text-sm font-medium">{appearance.event.name}</dd>
@@ -94,7 +102,7 @@ export async function Appearances() {
             </ol>
           </div>
           <Link
-            className="rounded-lg border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-500"
+            className="rounded-lg border border-stone-200 p-4 text-center text-sm font-medium leading-none text-stone-400"
             href="/appearances"
           >
             All Appearances

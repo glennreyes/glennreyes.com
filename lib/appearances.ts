@@ -7,6 +7,13 @@ export function getAppearances() {
       date: true,
       event: {
         select: {
+          location: {
+            select: {
+              city: true,
+              country: true,
+              state: true,
+            },
+          },
           name: true,
         },
       },
