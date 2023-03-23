@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 type ContentProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
 export function Content(props: ContentProps) {
-  return <section className="container mx-auto grid gap-12 px-4 lg:grid-cols-12" {...props} />;
+  return <section className="container mx-auto grid gap-16 px-4 lg:grid-cols-12" {...props} />;
 }
 
 type ContentPrimaryProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;

@@ -8,19 +8,21 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 }
 
 export function Feed({ children, title, ...props }: FeedProps) {
+  const wrapperClasses = 'grid gap-12 md:col-span-3 md:gap-16 lg:col-span-2';
+
   if (title) {
     return (
       <div className="grid gap-y-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-stone-100 md:px-8">
           <h2 className="font-semibold text-emerald-700/90 md:sticky md:top-20">{title}</h2>
         </div>
-        <div className="grid gap-8 md:col-span-3 md:gap-12 lg:col-span-2">{children}</div>
+        <div className={wrapperClasses}>{children}</div>
       </div>
     );
   }
 
   return (
-    <div className="grid gap-8 md:gap-12" {...props}>
+    <div className={wrapperClasses} {...props}>
       {children}
     </div>
   );
@@ -34,7 +36,7 @@ interface FeedCardProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 }
 
 function FeedCard({ children, date, description, link, title, ...props }: FeedCardProps) {
-  const articleClasses = clsx(link && 'group relative', 'grid gap-3');
+  const articleClasses = clsx(link && 'group relative', 'grid gap-2');
   const dateDisplayClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
 
