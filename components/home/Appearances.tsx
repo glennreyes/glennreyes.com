@@ -40,8 +40,6 @@ export async function Appearances() {
             <h3 className="text-xs font-bold uppercase text-emerald-700/90">Upcoming</h3>
             <ol className="grid gap-6">
               {upcoming.map((appearance) => {
-                const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
-                const title = appearance.talk?.title ?? appearance.workshop?.title;
                 const place = [
                   appearance.event.location.city,
                   appearance.event.location.state ?? appearance.event.location.country,
@@ -52,16 +50,12 @@ export async function Appearances() {
                     <dl className="grid gap-1">
                       <dt className="sr-only">Date</dt>
                       <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} /> · {place}
+                        <DateDisplay value={appearance.date} />
                       </dd>
                       <dt className="sr-only">Event</dt>
                       <dd className="text-sm font-medium">{appearance.event.name}</dd>
-                      {type && title && (
-                        <>
-                          <dt className="sr-only">{type}</dt>
-                          <dd className="text-sm text-stone-500">{title}</dd>
-                        </>
-                      )}
+                      <dt className="sr-only">Place</dt>
+                      <dd className="text-sm text-stone-500">{place}</dd>
                     </dl>
                   </li>
                 );
@@ -73,8 +67,6 @@ export async function Appearances() {
             <h3 className="text-xs font-bold uppercase text-emerald-700/90">Past</h3>
             <ol className="grid gap-6">
               {past.map((appearance) => {
-                const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
-                const title = appearance.talk?.title ?? appearance.workshop?.title;
                 const place = [
                   appearance.event.location.city,
                   appearance.event.location.state ?? appearance.event.location.country,
@@ -85,16 +77,12 @@ export async function Appearances() {
                     <dl className="grid gap-1">
                       <dt className="sr-only">Date</dt>
                       <dd className="text-sm text-stone-400">
-                        <DateDisplay value={appearance.date} /> · {place}
+                        <DateDisplay value={appearance.date} />
                       </dd>
                       <dt className="sr-only">Event</dt>
                       <dd className="text-sm font-medium">{appearance.event.name}</dd>
-                      {type && title && (
-                        <>
-                          <dt className="sr-only">{type}</dt>
-                          <dd className="text-sm text-stone-500">{title}</dd>
-                        </>
-                      )}
+                      <dt className="sr-only">Place</dt>
+                      <dd className="text-sm text-stone-500">{place}</dd>
                     </dl>
                   </li>
                 );
