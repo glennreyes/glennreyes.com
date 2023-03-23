@@ -31,7 +31,7 @@ export function Feed({ children, title, ...props }: FeedProps) {
 type FeedItemWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
   children?: ReactNode;
   date: Date | string;
-  description: string;
+  description?: string;
   link?: string;
   meta?: undefined;
   title: string;
@@ -40,7 +40,7 @@ type FeedItemWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'classNam
 type FeedItemWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
   children?: ReactNode;
   date?: undefined;
-  description: string;
+  description?: string;
   link?: string;
   meta: ReactNode;
   title: string;

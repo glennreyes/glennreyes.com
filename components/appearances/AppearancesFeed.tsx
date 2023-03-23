@@ -1,36 +1,26 @@
-import { getAppearances } from '~/lib/appearances';
-import { DateDisplay } from '../ui/elements/DateDisplay';
+import { getAllEvents } from '~/lib/events';
 import { Feed } from '../ui/layout/Feed';
 
 export async function AppearancesFeed() {
-  const appearances = await getAppearances();
+  const allEvents = await getAllEvents();
   const today = new Date();
-  const upcoming = appearances.filter((appearance) => appearance.date > today);
-  const past = appearances.filter((appearance) => appearance.date <= today);
+  const upcoming = allEvents.filter((event) => event.startDate > today);
+  const past = allEvents.filter((event) => event.startDate <= today);
 
   return (
     <>
       {upcoming.length && (
         <Feed title="Upcoming">
-          {upcoming.map((appearance) => {
-            const place = [
-              appearance.event.location.city,
-              appearance.event.location.state ?? appearance.event.location.country,
-            ].join(', ');
+          {upcoming.map((event) => {
+            const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
 
             return (
               <Feed.Item
-                description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
-                  appearance.talk?.title ?? appearance.workshop?.title ?? ''
-                }`}
-                key={appearance.slug}
-                link={`/appearances/${appearance.slug}`}
-                meta={
-                  <>
-                    <DateDisplay value={appearance.date} /> · {place}
-                  </>
-                }
-                title={appearance.event.name}
+                date={event.startDate}
+                description={place}
+                key={event.slug}
+                link={`/events/${event.slug}`}
+                title={event.name}
               />
             );
           })}
@@ -38,25 +28,16 @@ export async function AppearancesFeed() {
       )}
       {past.length && (
         <Feed title="Past">
-          {past.map((appearance) => {
-            const place = [
-              appearance.event.location.city,
-              appearance.event.location.state ?? appearance.event.location.country,
-            ].join(', ');
+          {past.map((event) => {
+            const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
 
             return (
               <Feed.Item
-                description={`${appearance.talk ? 'Talk: ' : appearance.workshop && 'Workshop: '}${
-                  appearance.talk?.title ?? appearance.workshop?.title ?? ''
-                }`}
-                key={appearance.slug}
-                link={`/appearances/${appearance.slug}`}
-                meta={
-                  <>
-                    <DateDisplay value={appearance.date} /> · {place}
-                  </>
-                }
-                title={appearance.event.name}
+                date={event.startDate}
+                description={place}
+                key={event.slug}
+                link={`/events/${event.slug}`}
+                title={event.name}
               />
             );
           })}

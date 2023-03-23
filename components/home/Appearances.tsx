@@ -1,6 +1,6 @@
 import { getTime } from 'date-fns';
 import Link from 'next/link';
-import { getAppearances } from '~/lib/appearances';
+import { getAllEvents } from '~/lib/events';
 import { Divider } from '../ui/elements/Divider';
 import { Card } from '../ui/layout/Card';
 import { List } from '../ui/layout/List';
@@ -8,17 +8,17 @@ import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
 
 export async function Appearances() {
-  const allAppearances = await getAppearances();
+  const allEvents = await getAllEvents();
   const today = new Date();
   const todayInMilliseconds = getTime(today);
   // Calculate the difference between each date and today's date
-  const dateDistances = allAppearances.map((appearance) => Math.abs(getTime(appearance.date) - todayInMilliseconds));
-  // Sort the appearances by their date distance to today's date and get the 5 closest ones
-  const appearances = allAppearances
+  const dateDistances = allEvents.map((appearance) => Math.abs(getTime(appearance.startDate) - todayInMilliseconds));
+  // Sort the events by their date distance to today's date and get the 5 closest ones
+  const events = allEvents
     .slice()
     .sort((a, b) => {
-      const aDistance = dateDistances[allAppearances.indexOf(a)];
-      const bDistance = dateDistances[allAppearances.indexOf(b)];
+      const aDistance = dateDistances[allEvents.indexOf(a)];
+      const bDistance = dateDistances[allEvents.indexOf(b)];
 
       if (aDistance === undefined || bDistance === undefined) {
         return 0;
@@ -27,10 +27,10 @@ export async function Appearances() {
       return aDistance - bDistance;
     })
     .slice(0, 5);
-  const upcoming = appearances
-    .filter((appearance) => appearance.date > today)
-    .sort((a, b) => getTime(b.date) - getTime(a.date));
-  const past = appearances.filter((appearance) => appearance.date <= today);
+  const upcoming = events
+    .filter((event) => event.startDate > today)
+    .sort((a, b) => getTime(b.startDate) - getTime(a.startDate));
+  const past = events.filter((event) => event.startDate <= today);
 
   return (
     <Section>
@@ -39,15 +39,13 @@ export async function Appearances() {
         <div className="grid gap-8">
           <Card.Body title="Upcoming">
             <List as="ol">
-              {upcoming.map((appearance) => (
-                <List.Item key={appearance.slug}>
+              {upcoming.map((event) => (
+                <List.Item key={event.slug}>
                   <Card.Item
-                    date={appearance.date}
-                    description={`${appearance.event.location.city}, ${
-                      appearance.event.location.state ?? appearance.event.location.country
-                    }`}
-                    link={`/appearances/${appearance.slug}`}
-                    title={appearance.event.name}
+                    date={event.startDate}
+                    description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                    link={`/events/${event.slug}`}
+                    title={event.name}
                   />
                 </List.Item>
               ))}
@@ -56,15 +54,13 @@ export async function Appearances() {
           <Divider />
           <Card.Body title="Past">
             <List as="ol">
-              {past.map((appearance) => (
-                <List.Item key={appearance.slug}>
+              {past.map((event) => (
+                <List.Item key={event.slug}>
                   <Card.Item
-                    date={appearance.date}
-                    description={`${appearance.event.location.city}, ${
-                      appearance.event.location.state ?? appearance.event.location.country
-                    }`}
-                    link={`/appearances/${appearance.slug}`}
-                    title={appearance.event.name}
+                    date={event.startDate}
+                    description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                    link={`/events/${event.slug}`}
+                    title={event.name}
                   />
                 </List.Item>
               ))}
