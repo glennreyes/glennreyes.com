@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
@@ -28,21 +28,43 @@ export function Feed({ children, title, ...props }: FeedProps) {
   );
 }
 
-interface FeedCardProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
-  date: ComponentPropsWithoutRef<typeof DateDisplay>['value'];
+type FeedCardWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
+  children?: ReactNode;
+  date: Date | string;
   description: string;
   link?: string;
+  meta?: undefined;
   title: string;
-}
+};
 
-function FeedCard({ children, date, description, link, title, ...props }: FeedCardProps) {
+type FeedCardWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
+  children?: ReactNode;
+  date?: undefined;
+  description: string;
+  link?: string;
+  meta: ReactNode;
+  title: string;
+};
+
+type FeedCardProps = FeedCardWithDateProps | FeedCardWithMetaProps;
+
+function FeedCard({ children, description, link, title, ...rest }: FeedCardProps) {
   const articleClasses = clsx(link && 'group relative', 'grid gap-2');
-  const dateDisplayClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
+  const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
+  const { date, meta, ...props } = {
+    date: 'date' in rest ? rest.date : undefined,
+    meta: 'meta' in rest ? rest.meta : undefined,
+    ...rest,
+  };
 
   return (
     <article className={articleClasses} {...props}>
-      <DateDisplay className={dateDisplayClasses} value={date} />
+      {date === undefined ? (
+        <div className={metaClasses}>{meta}</div>
+      ) : (
+        <DateDisplay className={metaClasses} value={date} />
+      )}
       <h3 className="text-lg font-semibold tracking-tight">
         {link ? (
           <Link href={link}>
