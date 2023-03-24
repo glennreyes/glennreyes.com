@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { Card } from '~/components/ui/layout/Card';
 import { Page } from '~/components/ui/layout/Page';
+import { H3 } from '~/components/ui/typography/H3';
 import { getAllEvents, getEventBySlug } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
 
@@ -51,10 +53,42 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
       >
         {event.name}
       </Page.Header>
-      <Page.Body>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque eos ab beatae quos magnam rem quaerat voluptate
-        eligendi, reprehenderit maiores aspernatur maxime ipsa impedit alias debitis sit quidem modi optio!
-      </Page.Body>
+      <div>
+        {event.appearances.map((appearance) => {
+          const title = appearance.talk?.title ?? appearance.workshop?.title;
+          const abstract = appearance.talk?.abstract ?? appearance.workshop?.abstract;
+          const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
+
+          return (
+            <Card key={appearance.slug}>
+              <Card.Body
+                title={
+                  type && (
+                    <div>
+                      <span className="rounded-full border border-teal-300 bg-teal-50 py-1.5 px-2.5 text-[0.625rem] font-semibold text-teal-500">
+                        {type}
+                      </span>
+                    </div>
+                  )
+                }
+              >
+                <div className="grid gap-8 lg:grid-cols-3">
+                  {(title || abstract) && (
+                    <div className="grid gap-4 lg:col-span-2">
+                      {title && <H3>{title}</H3>}
+                      {abstract && <p className="text-stone-500">{abstract}</p>}
+                    </div>
+                  )}
+                  <div className="grid gap-4 lg:col-span-1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo esse sit neque amet perspiciatis minus
+                    tempore quam, provident qui ad at optio, nihil accusamus ipsa voluptatum culpa a fugiat quisquam.
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          );
+        })}
+      </div>
     </Page>
   );
 }

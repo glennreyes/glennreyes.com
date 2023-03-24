@@ -37,13 +37,20 @@ export function getEventBySlug(slug: string) {
     select: {
       appearances: {
         select: {
+          date: true,
+          recording: true,
+          slug: true,
           talk: {
             select: {
+              abstract: true,
+              slides: true,
               title: true,
             },
           },
           workshop: {
             select: {
+              abstract: true,
+              repository: true,
               title: true,
             },
           },

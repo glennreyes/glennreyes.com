@@ -9,14 +9,14 @@ export function Card(props: CardProps) {
   return <div className="relative rounded-[1.75rem] border border-stone-100 p-6" {...props} />;
 }
 
-interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
-  title?: string;
+interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
+  title?: ReactNode;
 }
 
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && <h3 className="text-xs font-bold uppercase text-teal-700/90">{title}</h3>}
+      {typeof title === 'string' ? <h3 className="text-xs font-bold uppercase text-teal-700/90">{title}</h3> : title}
       {children}
     </div>
   );
