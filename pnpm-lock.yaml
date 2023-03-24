@@ -37,6 +37,7 @@ specifiers:
   rehype-slug: ^5.1.0
   remark-gfm: ^3.0.1
   shiki: ^0.14.1
+  tailwind-merge: ^1.10.0
   tailwindcss: ^3.2.7
   ts-node: ^10.9.1
   typescript: ^5.0.2
@@ -50,6 +51,7 @@ dependencies:
   next: 13.2.4_jzglnfsxer2pg4xkctzolekpve
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  tailwind-merge: 1.10.0
   zod: 3.21.4
 
 devDependencies:
@@ -6216,6 +6218,10 @@ packages:
       '@pkgr/utils': 2.3.1
       tslib: 2.5.0
     dev: true
+
+  /tailwind-merge/1.10.0:
+    resolution: {integrity: sha512-WFnDXSS4kFTZwjKg5/oZSGzBRU/l+qcbv5NVTzLUQvJ9yovDAP05h0F2+ZFW0Lw9EcgRoc2AfURUdZvnEFrXKg==}
+    dev: false
 
   /tailwindcss/3.2.7_aesdjsunmf4wiehhujt67my7tu:
     resolution: {integrity: sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==}

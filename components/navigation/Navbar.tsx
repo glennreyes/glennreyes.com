@@ -1,10 +1,10 @@
 import { SunIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import type { LinkProps } from 'next/link';
-import Link from 'next/link';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import photo from '~/assets/images/photo.jpg';
 import { name } from '~/lib/constants';
+import { Link } from '../ui/elements/Link';
 import { Container } from '../ui/layout/Container';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'nav'>, 'className'>;

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
+import { Link } from '../elements/Link';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   title?: string;

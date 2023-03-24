@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { allPosts } from '~/lib/posts';
+import { Link } from '../ui/elements/Link';
 import { Feed } from '../ui/layout/Feed';
 
 export function Posts() {
