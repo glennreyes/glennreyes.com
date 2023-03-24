@@ -9,8 +9,8 @@ import remarkGfm from 'remark-gfm';
 
 export const Page = defineDocumentType(() => ({
   computedFields: {
-    slug: {
-      resolve: (doc) => doc._raw.flattenedPath,
+    path: {
+      resolve: (doc) => doc._raw.flattenedPath.replace(/^pages\//, ''),
       type: 'string',
     },
   },
@@ -20,7 +20,7 @@ export const Page = defineDocumentType(() => ({
     lead: { type: 'string' },
     title: { required: true, type: 'string' },
   },
-  filePathPattern: '*.mdx',
+  filePathPattern: 'pages/**/*.mdx',
   name: 'Page',
 }));
 
