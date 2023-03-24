@@ -26,7 +26,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
           method: 'post',
         });
         setIsFetching(false);
-        startTransition(() => push('/subscribe/pending'));
+        startTransition(() => push('/subscribe/confirm'));
       } catch {
         setIsFetching(false);
         // TODO: Show error message
