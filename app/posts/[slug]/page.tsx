@@ -1,6 +1,8 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { ReadingTime } from '~/components/ui/elements/ReadingTime';
 import { Article } from '~/components/ui/layout/Article';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { composeTitle } from '~/lib/metadata';
@@ -42,7 +44,14 @@ export default function PostPage({ params }: PostPageProps) {
 
   return (
     <Article>
-      <Article.Header lead={post.lead} publishedAt={post.publishedAt} readingTime={post.readingTime}>
+      <Article.Header
+        lead={post.lead}
+        meta={
+          <>
+            <DateDisplay value={post.publishedAt} /> · <ReadingTime value={post.readingTime} />
+          </>
+        }
+      >
         {post.title}
       </Article.Header>
       <Article.Body>

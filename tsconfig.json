@@ -3,7 +3,6 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "baseUrl": ".",
-    "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,

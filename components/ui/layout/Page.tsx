@@ -1,8 +1,4 @@
-import type { IsoDateTimeString } from 'contentlayer/generated';
-import type { ComponentPropsWithoutRef } from 'react';
-import type { ReadTimeResults } from 'reading-time';
-import { DateDisplay } from '../elements/DateDisplay';
-import { ReadingTime } from '../elements/ReadingTime';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
 
@@ -13,21 +9,16 @@ export function Page(props: PageProps) {
 }
 
 interface PageHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
-  lead: string | undefined;
-  publishedAt?: IsoDateTimeString | undefined;
-  readingTime?: ReadTimeResults;
+  lead?: ReactNode;
+  meta?: ReactNode;
 }
 
-export function PageHeader({ children, lead, publishedAt, readingTime, ...props }: PageHeaderProps) {
+export function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   return (
     <header className="grid max-w-[70ch] gap-4" {...props}>
-      {readingTime && (
-        <p className="text-stone-400">
-          <DateDisplay value={publishedAt} /> · <ReadingTime value={readingTime} />
-        </p>
-      )}
+      {meta !== null && meta !== undefined && <div className="text-stone-400">{meta}</div>}
       <H1>{children}</H1>
-      {lead && <Lead>{lead}</Lead>}
+      {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
     </header>
   );
 }

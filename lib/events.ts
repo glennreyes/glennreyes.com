@@ -31,3 +31,36 @@ export function getAllEvents() {
     },
   });
 }
+
+export function getEventBySlug(slug: string) {
+  return prisma.event.findUniqueOrThrow({
+    select: {
+      appearances: {
+        select: {
+          talk: {
+            select: {
+              title: true,
+            },
+          },
+          workshop: {
+            select: {
+              title: true,
+            },
+          },
+        },
+      },
+      location: {
+        select: {
+          city: true,
+          country: true,
+          name: true,
+          state: true,
+        },
+      },
+      name: true,
+      slug: true,
+      startDate: true,
+    },
+    where: { slug },
+  });
+}

@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 interface DateDisplayProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
   format?: string;
-  value: Date | string | undefined;
+  value?: Date | string;
 }
 
 export function DateDisplay({ format: formatString, value, ...props }: DateDisplayProps) {
