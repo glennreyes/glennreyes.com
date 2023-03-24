@@ -17,11 +17,12 @@ export function NewsletterForm(props: NewsletterFormProps) {
     async (event) => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
+      const email = data.get('email');
 
       try {
         setIsFetching(true);
         await fetch('/subscribe', {
-          body: data,
+          body: JSON.stringify({ email }),
           headers: { 'Content-Type': 'application/json' },
           method: 'post',
         });
