@@ -40,14 +40,14 @@ export function NewsletterForm(props: NewsletterFormProps) {
       <div className="sm:flex-1">
         <Input
           aria-label="Email address"
-          className="peer relative z-10 w-full sm:border-none sm:focus:ring-0"
+          className="peer relative z-10 w-full sm:border-transparent sm:focus:border-transparent sm:focus:ring-0"
           disabled={isMutating}
           name="email"
           placeholder="Your email address"
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-stone-300 p-1 transition peer-focus:border-stone-400 peer-focus:ring-4 peer-focus:ring-teal-100 sm:block" />
+        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-stone-300 p-1 transition peer-focus:border-stone-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:bg-stone-50 sm:block" />
       </div>
       <div className="relative grid">
         <Button disabled={isMutating}>Subscribe</Button>

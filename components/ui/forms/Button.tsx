@@ -18,13 +18,14 @@ export type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
 
 export function Button({ appearance = 'primary', ...props }: ButtonProps) {
   const appearances = {
-    primary: 'bg-stone-800 text-stone-100 focus:bg-stone-700 focus:text-stone-100 hover:bg-stone-700',
+    primary:
+      'bg-stone-800 border border-stone-800 text-stone-100 focus:text-stone-100 hover:bg-stone-700 hover:border-stone-700',
     secondary:
       'border border-stone-300 text-stone-700 focus:text-stone-800 hover:border-stone-400 hover:text-stone-800',
   };
   const classes = clsx(
     appearances[appearance],
-    'rounded-2xl py-3 px-5 text-sm font-medium transition focus:border-stone-400 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-teal-300',
+    'rounded-2xl py-3 px-5 text-sm font-medium transition focus:border-stone-400 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-teal-300 disabled:opacity-75',
   );
 
   if (props.as === 'link') {
