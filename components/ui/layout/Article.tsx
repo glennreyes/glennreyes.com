@@ -37,7 +37,7 @@ Article.Header = ArticleHeader;
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function ArticleBody(props: ArticleBodyProps) {
-  return <div className="prose prose-stone mx-auto prose-h1:tracking-tight prose-pre:rounded-3xl" {...props} />;
+  return <div className="prose prose-stone mx-auto prose-h1:tracking-tight prose-pre:rounded-[1.75rem]" {...props} />;
 }
 
 Article.Body = ArticleBody;

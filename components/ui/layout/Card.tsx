@@ -6,7 +6,7 @@ import { DateDisplay } from '../elements/DateDisplay';
 type CardProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
 export function Card(props: CardProps) {
-  return <div className="relative rounded-3xl border border-stone-100 p-6" {...props} />;
+  return <div className="relative rounded-[1.75rem] border border-stone-100 p-6" {...props} />;
 }
 
 interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
@@ -16,7 +16,7 @@ interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && <h3 className="text-xs font-bold uppercase text-emerald-700/90">{title}</h3>}
+      {title && <h3 className="text-xs font-bold uppercase text-teal-700/90">{title}</h3>}
       {children}
     </div>
   );

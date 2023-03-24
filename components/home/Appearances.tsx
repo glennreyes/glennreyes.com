@@ -37,35 +37,37 @@ export async function Appearances() {
       <H4 as="h2">Appearances</H4>
       <Card>
         <div className="grid gap-8">
-          <Card.Body title="Upcoming">
-            <List as="ol">
-              {upcoming.map((event) => (
-                <List.Item key={event.slug}>
-                  <Card.Item
-                    date={event.startDate}
-                    description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
-                    link={`/appearances/${event.slug}`}
-                    title={event.name}
-                  />
-                </List.Item>
-              ))}
-            </List>
-          </Card.Body>
-          <Divider />
-          <Card.Body title="Past">
-            <List as="ol">
-              {past.map((event) => (
-                <List.Item key={event.slug}>
-                  <Card.Item
-                    date={event.startDate}
-                    description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
-                    link={`/appearances/${event.slug}`}
-                    title={event.name}
-                  />
-                </List.Item>
-              ))}
-            </List>
-          </Card.Body>
+          <div className="grid gap-6">
+            <Card.Body title="Upcoming">
+              <List as="ol">
+                {upcoming.map((event) => (
+                  <List.Item key={event.slug}>
+                    <Card.Item
+                      date={event.startDate}
+                      description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                      link={`/appearances/${event.slug}`}
+                      title={event.name}
+                    />
+                  </List.Item>
+                ))}
+              </List>
+            </Card.Body>
+            <Divider />
+            <Card.Body title="Past">
+              <List as="ol">
+                {past.map((event) => (
+                  <List.Item key={event.slug}>
+                    <Card.Item
+                      date={event.startDate}
+                      description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                      link={`/appearances/${event.slug}`}
+                      title={event.name}
+                    />
+                  </List.Item>
+                ))}
+              </List>
+            </Card.Body>
+          </div>
           <Button appearance="secondary" as="link" href="/appearances">
             All Appearances
           </Button>

@@ -14,7 +14,7 @@ export function Feed({ children, title, ...props }: FeedProps) {
     return (
       <div className="grid gap-y-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-stone-100 md:px-8">
-          <h2 className="font-semibold text-emerald-700/90 md:sticky md:top-20">{title}</h2>
+          <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
       </div>
@@ -78,7 +78,7 @@ function FeedItem({ children, description, link, title, ...rest }: FeedItemProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-3xl md:-inset-6" />
+        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-[1.75rem] md:-inset-6" />
       )}
     </article>
   );
