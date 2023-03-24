@@ -10,5 +10,5 @@ interface MDXContentProps {
 export function MDXContent({ code }: MDXContentProps) {
   const MDXComponent = useMDXComponent(code);
 
-  return <MDXComponent components={{ H1, Image, Lead }} />;
+  return <MDXComponent components={{ H1, Image, Lead, pre: (props) => <pre className="p-6" {...props} /> }} />;
 }
