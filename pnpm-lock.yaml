@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@heroicons/react': ^2.0.16
   '@prisma/client': ^4.11.0
-  '@tailwindcss/aspect-ratio': ^0.4.2
   '@tailwindcss/container-queries': ^0.1.0
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/line-clamp': ^0.4.2
@@ -55,7 +54,6 @@ dependencies:
   zod: 3.21.4
 
 devDependencies:
-  '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.7
   '@tailwindcss/container-queries': 0.1.0_tailwindcss@3.2.7
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.7
@@ -1707,14 +1705,6 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.5.0
-
-  /@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.2.7:
-    resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
-    dependencies:
-      tailwindcss: 3.2.7_aesdjsunmf4wiehhujt67my7tu
-    dev: true
 
   /@tailwindcss/container-queries/0.1.0_tailwindcss@3.2.7:
     resolution: {integrity: sha512-t1GeJ9P8ual160BvKy6Y1sG7bjChArMaK6iRXm3ZYjZGN2FTzmqb5ztsTDb9AsTSJD4NMHtsnaI2ielrXEk+hw==}

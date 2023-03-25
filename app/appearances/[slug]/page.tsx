@@ -5,7 +5,9 @@ import { formatISO } from 'date-fns';
 import type { Metadata } from 'next';
 import { Badge } from '~/components/ui/elements/Badge';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { Divider } from '~/components/ui/elements/Divider';
 import { Link } from '~/components/ui/elements/Link';
+import { YouTube } from '~/components/ui/elements/YouTube';
 import { Card } from '~/components/ui/layout/Card';
 import { Page } from '~/components/ui/layout/Page';
 import { H3 } from '~/components/ui/typography/H3';
@@ -87,77 +89,82 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
             },
           };
           const slides = appearance.talk?.slides ?? appearance.workshop?.slides;
+          const isYouTube = appearance.recording?.startsWith('https://youtu.be/');
 
           return (
             <Card key={appearance.slug}>
               <Card.Body title={type}>
-                <div className="grid gap-8 md:grid-cols-3">
-                  {(title || abstract) && (
-                    <div className="grid gap-4 md:col-span-2">
-                      {title && <H3>{title}</H3>}
-                      {abstract && <p className="text-stone-500">{abstract}</p>}
-                    </div>
-                  )}
-                  <div className="grid gap-4 md:col-span-1">
-                    <dl className="grid content-start gap-4">
-                      <div className="flex gap-2">
-                        <dt className="flex-none">
-                          <span className="sr-only">Date & Time</span>
-                          <CalendarDaysIcon aria-hidden className="h-5 w-5 text-stone-300" />
-                        </dt>
-                        <dd className="text-sm font-medium text-stone-500">
-                          <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={appearance.date} />
-                        </dd>
+                <div className="grid gap-6">
+                  <div className="grid gap-8 md:grid-cols-3">
+                    {(title || abstract) && (
+                      <div className="grid gap-4 md:col-span-2">
+                        {title && <H3>{title}</H3>}
+                        {abstract && <p className="text-stone-500">{abstract}</p>}
                       </div>
-                      {type && (
+                    )}
+                    <div className="grid gap-4 md:col-span-1">
+                      <dl className="grid content-start gap-4">
                         <div className="flex gap-2">
                           <dt className="flex-none">
-                            <span className="sr-only">Length</span>
-                            <ClockIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                            <span className="sr-only">Date & Time</span>
+                            <CalendarDaysIcon aria-hidden className="h-5 w-5 text-stone-300" />
                           </dt>
                           <dd className="text-sm font-medium text-stone-500">
-                            {lengths[type][appearance.length]} {type}
+                            <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={appearance.date} />
                           </dd>
                         </div>
-                      )}
-                      {slides && (
-                        <div className="flex gap-2">
-                          <dt className="flex-none">
-                            <span className="sr-only">Slides</span>
-                            <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
-                          </dt>
-                          <dd className="text-sm font-medium text-stone-500">
-                            <Link className="text-stone-900 underline" href={slides}>
-                              View Slides
-                            </Link>
-                          </dd>
-                        </div>
-                      )}
-                      {appearance.recording && (
-                        <div className="flex gap-2">
-                          <dt className="flex-none">
-                            <span className="sr-only">Slides</span>
-                            <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
-                          </dt>
-                          <dd className="text-sm font-medium text-stone-500">
-                            <Link className="text-stone-900 underline" href={appearance.recording}>
-                              Watch Recording
-                            </Link>
-                          </dd>
-                        </div>
-                      )}
-                      {tags && (
-                        <div>
-                          <dt className="sr-only">Tags</dt>
-                          <dd className="flex flex-wrap gap-2">
-                            {tags.map((tag, index) => (
-                              <Badge key={index}>{tag}</Badge>
-                            ))}
-                          </dd>
-                        </div>
-                      )}
-                    </dl>
+                        {type && (
+                          <div className="flex gap-2">
+                            <dt className="flex-none">
+                              <span className="sr-only">Length</span>
+                              <ClockIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                            </dt>
+                            <dd className="text-sm font-medium text-stone-500">
+                              {lengths[type][appearance.length]} {type}
+                            </dd>
+                          </div>
+                        )}
+                        {slides && (
+                          <div className="flex gap-2">
+                            <dt className="flex-none">
+                              <span className="sr-only">Slides</span>
+                              <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                            </dt>
+                            <dd className="text-sm font-medium text-stone-500">
+                              <Link className="text-stone-900 underline" href={slides}>
+                                View Slides
+                              </Link>
+                            </dd>
+                          </div>
+                        )}
+                        {appearance.recording && (
+                          <div className="flex gap-2">
+                            <dt className="flex-none">
+                              <span className="sr-only">Slides</span>
+                              <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                            </dt>
+                            <dd className="text-sm font-medium text-stone-500">
+                              <Link className="text-stone-900 underline" href={appearance.recording}>
+                                Watch Recording
+                              </Link>
+                            </dd>
+                          </div>
+                        )}
+                        {tags && (
+                          <div>
+                            <dt className="sr-only">Tags</dt>
+                            <dd className="flex flex-wrap gap-2">
+                              {tags.map((tag, index) => (
+                                <Badge key={index}>{tag}</Badge>
+                              ))}
+                            </dd>
+                          </div>
+                        )}
+                      </dl>
+                    </div>
                   </div>
+                  <Divider />
+                  {appearance.recording && title && isYouTube && <YouTube title={title} url={appearance.recording} />}
                 </div>
               </Card.Body>
             </Card>
