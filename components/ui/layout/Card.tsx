@@ -10,13 +10,13 @@ export function Card(props: CardProps) {
 }
 
 interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
-  title?: ReactNode;
+  title?: string;
 }
 
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {typeof title === 'string' ? <h3 className="text-xs font-bold uppercase text-teal-700/90">{title}</h3> : title}
+      {title && <h3 className="text-xs font-bold uppercase text-teal-700/90">{title}</h3>}
       {children}
     </div>
   );

@@ -38,12 +38,14 @@ export function getEventBySlug(slug: string) {
       appearances: {
         select: {
           date: true,
+          length: true,
           recording: true,
           slug: true,
           talk: {
             select: {
               abstract: true,
               slides: true,
+              tags: true,
               title: true,
             },
           },
@@ -51,6 +53,7 @@ export function getEventBySlug(slug: string) {
             select: {
               abstract: true,
               repository: true,
+              slides: true,
               title: true,
             },
           },

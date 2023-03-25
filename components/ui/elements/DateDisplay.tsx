@@ -1,7 +1,7 @@
 import { format, isThisYear } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
 
-interface DateDisplayProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
+interface DateDisplayProps extends ComponentPropsWithoutRef<'time'> {
   format?: string;
   value?: Date | string;
 }
@@ -12,7 +12,7 @@ export function DateDisplay({ format: formatString, value, ...props }: DateDispl
   }
 
   const date = value instanceof Date ? value : new Date(value);
-  const dateTime = format(date, 'yyyy-MM-dd');
+  const dateTime = props.dateTime ?? format(date, 'yyyy-MM-dd');
   const text = format(date, formatString ?? (isThisYear(date) ? 'MMMM dd' : 'MMMM dd, yyyy'));
 
   return (

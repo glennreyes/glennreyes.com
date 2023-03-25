@@ -1,5 +1,11 @@
+import { CalendarDaysIcon, ClockIcon, PresentationChartLineIcon, TvIcon } from '@heroicons/react/20/solid';
+import { MapPinIcon } from '@heroicons/react/24/solid';
+import { AppearanceLength } from '@prisma/client';
+import { formatISO } from 'date-fns';
 import type { Metadata } from 'next';
+import { Badge } from '~/components/ui/elements/Badge';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { Link } from '~/components/ui/elements/Link';
 import { Card } from '~/components/ui/layout/Card';
 import { Page } from '~/components/ui/layout/Page';
 import { H3 } from '~/components/ui/typography/H3';
@@ -45,43 +51,112 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
   return (
     <Page>
       <Page.Header
+        lead={
+          <span className="inline-flex items-center gap-2">
+            <MapPinIcon className="h-6 w-6 text-stone-300" />
+            <span>
+              {event.location.name} · {place}
+            </span>
+          </span>
+        }
         meta={
           <>
-            <DateDisplay value={event.startDate} /> · {event.location.name} · {place}
+            <DateDisplay value={event.startDate} />
           </>
         }
       >
-        {event.name}
+        {event.name} {event.startDate.getFullYear()}
       </Page.Header>
-      <div>
+      <div className="grid gap-8">
         {event.appearances.map((appearance) => {
           const title = appearance.talk?.title ?? appearance.workshop?.title;
           const abstract = appearance.talk?.abstract ?? appearance.workshop?.abstract;
           const type = appearance.talk ? 'Talk' : appearance.workshop ? 'Workshop' : undefined;
+          const dateTime = formatISO(appearance.date);
+          const tags = appearance.talk?.tags;
+          const lengths: Record<NonNullable<typeof type>, Record<AppearanceLength, string>> = {
+            Talk: {
+              [AppearanceLength.SHORT]: 'Lightning',
+              [AppearanceLength.MEDIUM]: 'Regular',
+              [AppearanceLength.LONG]: 'Extended',
+            },
+            Workshop: {
+              [AppearanceLength.SHORT]: '2-3 Hours',
+              [AppearanceLength.MEDIUM]: 'Half Day',
+              [AppearanceLength.LONG]: 'Full Day',
+            },
+          };
+          const slides = appearance.talk?.slides ?? appearance.workshop?.slides;
 
           return (
             <Card key={appearance.slug}>
-              <Card.Body
-                title={
-                  type && (
-                    <div>
-                      <span className="rounded-full border border-teal-300 bg-teal-50 py-1.5 px-2.5 text-[0.625rem] font-semibold text-teal-500">
-                        {type}
-                      </span>
-                    </div>
-                  )
-                }
-              >
-                <div className="grid gap-8 lg:grid-cols-3">
+              <Card.Body title={type}>
+                <div className="grid gap-8 md:grid-cols-3">
                   {(title || abstract) && (
-                    <div className="grid gap-4 lg:col-span-2">
+                    <div className="grid gap-4 md:col-span-2">
                       {title && <H3>{title}</H3>}
                       {abstract && <p className="text-stone-500">{abstract}</p>}
                     </div>
                   )}
-                  <div className="grid gap-4 lg:col-span-1">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo esse sit neque amet perspiciatis minus
-                    tempore quam, provident qui ad at optio, nihil accusamus ipsa voluptatum culpa a fugiat quisquam.
+                  <div className="grid gap-4 md:col-span-1">
+                    <dl className="grid content-start gap-4">
+                      <div className="flex gap-2">
+                        <dt className="flex-none">
+                          <span className="sr-only">Date & Time</span>
+                          <CalendarDaysIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                        </dt>
+                        <dd className="text-sm font-medium text-stone-500">
+                          <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={appearance.date} />
+                        </dd>
+                      </div>
+                      {type && (
+                        <div className="flex gap-2">
+                          <dt className="flex-none">
+                            <span className="sr-only">Length</span>
+                            <ClockIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                          </dt>
+                          <dd className="text-sm font-medium text-stone-500">
+                            {lengths[type][appearance.length]} {type}
+                          </dd>
+                        </div>
+                      )}
+                      {slides && (
+                        <div className="flex gap-2">
+                          <dt className="flex-none">
+                            <span className="sr-only">Slides</span>
+                            <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                          </dt>
+                          <dd className="text-sm font-medium text-stone-500">
+                            <Link className="text-stone-900 underline" href={slides}>
+                              View Slides
+                            </Link>
+                          </dd>
+                        </div>
+                      )}
+                      {appearance.recording && (
+                        <div className="flex gap-2">
+                          <dt className="flex-none">
+                            <span className="sr-only">Slides</span>
+                            <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                          </dt>
+                          <dd className="text-sm font-medium text-stone-500">
+                            <Link className="text-stone-900 underline" href={appearance.recording}>
+                              Watch Recording
+                            </Link>
+                          </dd>
+                        </div>
+                      )}
+                      {tags && (
+                        <div>
+                          <dt className="sr-only">Tags</dt>
+                          <dd className="flex flex-wrap gap-2">
+                            {tags.map((tag, index) => (
+                              <Badge key={index}>{tag}</Badge>
+                            ))}
+                          </dd>
+                        </div>
+                      )}
+                    </dl>
                   </div>
                 </div>
               </Card.Body>
