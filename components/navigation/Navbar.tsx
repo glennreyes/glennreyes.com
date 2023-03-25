@@ -11,7 +11,7 @@ type NavbarProps = Omit<ComponentPropsWithoutRef<'nav'>, 'className'>;
 
 export function Navbar(props: NavbarProps) {
   return (
-    <header className="sticky top-0 z-20 bg-white/75 supports-[backdrop-filter]:backdrop-blur-md">
+    <header className="sticky top-0 z-30 bg-white/75 supports-[backdrop-filter]:backdrop-blur-md">
       <Container>
         <div className="flex items-center gap-2 md:gap-4">
           <div className="flex flex-1">
