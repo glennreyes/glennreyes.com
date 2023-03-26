@@ -59,6 +59,7 @@ export function getEventBySlug(slug: string) {
           },
         },
       },
+      endDate: true,
       location: {
         select: {
           city: true,

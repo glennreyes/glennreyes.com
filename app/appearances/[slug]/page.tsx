@@ -1,7 +1,7 @@
 import { CalendarDaysIcon, ClockIcon, PresentationChartLineIcon, TvIcon } from '@heroicons/react/20/solid';
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import { AppearanceLength } from '@prisma/client';
-import { formatISO } from 'date-fns';
+import { formatISO, isSameDay } from 'date-fns';
 import type { Metadata } from 'next';
 import { Badge } from '~/components/ui/elements/Badge';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
@@ -49,6 +49,7 @@ interface AppearancePageProps {
 export default async function AppearancePage({ params }: AppearancePageProps) {
   const event = await getEventBySlug(params.slug);
   const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
+  const isOneDay = isSameDay(event.startDate, event.endDate);
 
   return (
     <Page>
@@ -63,7 +64,13 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
         }
         meta={
           <>
-            <DateDisplay value={event.startDate} />
+            <DateDisplay format={isOneDay ? 'MMMM dd, yyyy' : undefined} value={event.startDate} />
+            {!isOneDay && (
+              <>
+                {' '}
+                - <DateDisplay format="MMMM dd, yyyy" value={event.endDate} />
+              </>
+            )}
           </>
         }
       >
