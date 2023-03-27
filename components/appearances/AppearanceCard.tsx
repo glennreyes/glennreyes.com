@@ -2,10 +2,10 @@ import { CalendarDaysIcon, ClockIcon, PresentationChartLineIcon, TvIcon } from '
 import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
-import { Badge } from '../ui/elements/Badge';
 import { DateDisplay } from '../ui/elements/DateDisplay';
 import { Divider } from '../ui/elements/Divider';
 import { Link } from '../ui/elements/Link';
+import { TagCloud } from '../ui/elements/TagCloud';
 import { YouTube } from '../ui/elements/YouTube';
 import { Card } from '../ui/layout/Card';
 import { H3 } from '../ui/typography/H3';
@@ -100,17 +100,8 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                     </dd>
                   </div>
                 )}
-                {tags && (
-                  <div>
-                    <dt className="sr-only">Tags</dt>
-                    <dd className="flex flex-wrap gap-2">
-                      {tags.map((tag, index) => (
-                        <Badge key={index}>{tag}</Badge>
-                      ))}
-                    </dd>
-                  </div>
-                )}
               </dl>
+              {tags && <TagCloud tags={tags} />}
             </div>
           </div>
           {recording && title && isYouTube && (

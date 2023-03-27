@@ -1,12 +1,16 @@
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../elements/Link';
 
-type CardProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
+type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
+  as?: Extract<TElementType, 'article' | 'div'>;
+};
 
-export function Card(props: CardProps) {
-  return <div className="relative rounded-[1.75rem] border border-stone-100 p-6" {...props} />;
+export function Card<TElementType extends ElementType>({ as, ...props }: CardProps<TElementType>) {
+  const Component = as ?? 'div';
+
+  return <Component className="relative rounded-[1.75rem] border border-stone-100 p-6" {...props} />;
 }
 
 interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {

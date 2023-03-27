@@ -8,11 +8,11 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 }
 
 export function Feed({ children, title, ...props }: FeedProps) {
-  const wrapperClasses = 'grid gap-12 md:col-span-3 md:gap-16 lg:col-span-2';
+  const wrapperClasses = 'grid gap-12 md:col-span-3 md:gap-16';
 
   if (title) {
     return (
-      <div className="grid gap-y-8 md:grid-cols-4" {...props}>
+      <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-stone-100 md:px-8">
           <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>

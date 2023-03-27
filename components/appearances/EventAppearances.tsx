@@ -29,7 +29,7 @@ const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
 export function EventAppearances(props: EventAppearancesProps) {
-  return <div className="grid gap-12 md:gap-16" {...props} />;
+  return <section className="grid gap-12 md:gap-16" {...props} />;
 }
 
 interface EventAppearancesCardProps {
@@ -53,16 +53,16 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
   const isYouTube = recording?.startsWith('https://youtu.be/');
 
   return (
-    <Card>
+    <Card as="article">
       <Card.Body title={type}>
         <div className="grid gap-6">
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-y-16 gap-x-8 md:grid-cols-3">
             {(title || abstract) && slug && (
-              <div className="grid gap-4 md:col-span-2">
+              <div className="grid gap-12 md:col-span-2">
                 <div className="prose prose-stone">
                   {title && <H2>{title}</H2>}
                   {abstract && (
-                    <div className="text-stone-500">
+                    <div className="text-stone-500 line-clamp-6">
                       <MDXRemoteContent source={abstract} />
                     </div>
                   )}

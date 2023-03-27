@@ -1,12 +1,17 @@
-import { getAllEvents } from '~/lib/events';
+import type { Event, Location } from '@prisma/client';
 import { composePlaceByLocation } from '~/lib/place';
 import { Feed } from '../ui/layout/Feed';
 
-export async function AppearancesFeed() {
-  const allEvents = await getAllEvents();
+interface AppearancesFeedProps {
+  events: (Pick<Event, 'name' | 'slug' | 'startDate'> & {
+    location: Pick<Location, 'city' | 'country' | 'state'>;
+  })[];
+}
+
+export async function AppearancesFeed({ events }: AppearancesFeedProps) {
   const today = new Date();
-  const upcoming = allEvents.filter((event) => event.startDate > today);
-  const past = allEvents.filter((event) => event.startDate <= today);
+  const upcoming = events.filter((event) => event.startDate > today);
+  const past = events.filter((event) => event.startDate <= today);
 
   return (
     <>
@@ -23,7 +28,7 @@ export async function AppearancesFeed() {
           ))}
         </Feed>
       )}
-      {past.length && (
+      {past.length > 0 && (
         <Feed title="Past">
           {past.map((event) => (
             <Feed.Item
