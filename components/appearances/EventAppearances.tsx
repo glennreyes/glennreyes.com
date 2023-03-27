@@ -67,7 +67,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                     </div>
                   )}
                 </div>
-                <ActionLink href={`/talks/${slug}`}>View Talk Details</ActionLink>
+                <ActionLink href={`/talks/${slug}`}>View Details</ActionLink>
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">

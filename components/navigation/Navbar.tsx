@@ -21,7 +21,7 @@ export function Navbar(props: NavbarProps) {
           </div>
           <nav className="flex flex-1 gap-2 py-4 md:justify-center md:gap-4" {...props} />
           <div className="flex flex-1 justify-end">
-            <SunIcon className="h-6 w-6 text-stone-400" />
+            <SunIcon aria-hidden className="h-6 w-6 text-stone-400" />
           </div>
         </div>
       </Container>
