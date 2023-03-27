@@ -1,5 +1,6 @@
 import { getTime } from 'date-fns';
 import { getAllEvents } from '~/lib/events';
+import { getPlaceByLocation } from '~/lib/place';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
@@ -44,7 +45,7 @@ export async function Appearances() {
                   <List.Item key={event.slug}>
                     <Card.Item
                       date={event.startDate}
-                      description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                      description={getPlaceByLocation(event.location)}
                       link={`/appearances/${event.slug}`}
                       title={event.name}
                     />
@@ -59,7 +60,7 @@ export async function Appearances() {
                   <List.Item key={event.slug}>
                     <Card.Item
                       date={event.startDate}
-                      description={`${event.location.city}, ${event.location.state ?? event.location.country}`}
+                      description={getPlaceByLocation(event.location)}
                       link={`/appearances/${event.slug}`}
                       title={event.name}
                     />

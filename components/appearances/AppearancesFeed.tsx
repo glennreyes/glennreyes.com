@@ -1,4 +1,5 @@
 import { getAllEvents } from '~/lib/events';
+import { getPlaceByLocation } from '~/lib/place';
 import { Feed } from '../ui/layout/Feed';
 
 export async function AppearancesFeed() {
@@ -11,36 +12,28 @@ export async function AppearancesFeed() {
     <>
       {upcoming.length && (
         <Feed title="Upcoming">
-          {upcoming.map((event) => {
-            const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
-
-            return (
-              <Feed.Item
-                date={event.startDate}
-                description={place}
-                key={event.slug}
-                link={`/appearances/${event.slug}`}
-                title={event.name}
-              />
-            );
-          })}
+          {upcoming.map((event) => (
+            <Feed.Item
+              date={event.startDate}
+              description={getPlaceByLocation(event.location)}
+              key={event.slug}
+              link={`/appearances/${event.slug}`}
+              title={event.name}
+            />
+          ))}
         </Feed>
       )}
       {past.length && (
         <Feed title="Past">
-          {past.map((event) => {
-            const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
-
-            return (
-              <Feed.Item
-                date={event.startDate}
-                description={place}
-                key={event.slug}
-                link={`/appearances/${event.slug}`}
-                title={event.name}
-              />
-            );
-          })}
+          {past.map((event) => (
+            <Feed.Item
+              date={event.startDate}
+              description={getPlaceByLocation(event.location)}
+              key={event.slug}
+              link={`/appearances/${event.slug}`}
+              title={event.name}
+            />
+          ))}
         </Feed>
       )}
     </>

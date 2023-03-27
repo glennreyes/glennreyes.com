@@ -13,6 +13,7 @@ import { Page } from '~/components/ui/layout/Page';
 import { H3 } from '~/components/ui/typography/H3';
 import { getAllEvents, getEventBySlug } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
+import { getPlaceByLocation } from '~/lib/place';
 
 export const revalidate = 3600;
 
@@ -48,7 +49,6 @@ interface AppearancePageProps {
 
 export default async function AppearancePage({ params }: AppearancePageProps) {
   const event = await getEventBySlug(params.slug);
-  const place = [event.location.city, event.location.state ?? event.location.country].join(', ');
   const isOneDay = isSameDay(event.startDate, event.endDate);
 
   return (
@@ -58,7 +58,7 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
           <span className="inline-flex items-center gap-2">
             <MapPinIcon className="h-6 w-6 text-stone-300" />
             <span>
-              {event.location.name} · {place}
+              {event.location.name} · {getPlaceByLocation(event.location)}
             </span>
           </span>
         }
