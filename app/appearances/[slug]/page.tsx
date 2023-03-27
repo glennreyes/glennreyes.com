@@ -1,9 +1,5 @@
 import type { Metadata } from 'next';
-<<<<<<< Updated upstream
-import { AppearanceCard } from '~/components/appearances/AppearanceCard';
-=======
 import { EventAppearances } from '~/components/appearances/EventAppearances';
->>>>>>> Stashed changes
 import { EventDate } from '~/components/appearances/EventDate';
 import { EventLocation } from '~/components/appearances/EventLocation';
 import { Page } from '~/components/ui/layout/Page';
@@ -53,15 +49,9 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
       >
         {event.name} {event.startDate.getFullYear()}
       </Page.Header>
-<<<<<<< Updated upstream
-      <div className="grid gap-8">
-        {event.appearances.map(({ date, length, recording, slug, talk, workshop }) => (
-          <AppearanceCard
-=======
       <EventAppearances>
         {event.appearances.map(({ date, length, recording, slug, talk, workshop }) => (
           <EventAppearances.Card
->>>>>>> Stashed changes
             date={date}
             key={slug}
             length={length}
@@ -70,11 +60,7 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
             workshop={workshop ?? undefined}
           />
         ))}
-<<<<<<< Updated upstream
-      </div>
-=======
       </EventAppearances>
->>>>>>> Stashed changes
     </Page>
   );
 }
