@@ -1,5 +1,5 @@
 import { allPosts } from '~/lib/posts';
-import { Link } from '../ui/elements/Link';
+import { ActionLink } from '../ui/elements/ActionLink';
 import { Feed } from '../ui/layout/Feed';
 
 export function Posts() {
@@ -12,9 +12,7 @@ export function Posts() {
           <Feed.Item date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
         ))}
       </Feed>
-      <Link className="font-semibold text-stone-400" href="/posts">
-        All Posts
-      </Link>
+      <ActionLink href="/posts">All Posts</ActionLink>
     </div>
   );
 }

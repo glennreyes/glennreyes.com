@@ -45,6 +45,7 @@ export function getEventBySlug(slug: string) {
             select: {
               abstract: true,
               slides: true,
+              slug: true,
               tags: true,
               title: true,
             },
@@ -54,6 +55,7 @@ export function getEventBySlug(slug: string) {
               abstract: true,
               repository: true,
               slides: true,
+              slug: true,
               title: true,
             },
           },

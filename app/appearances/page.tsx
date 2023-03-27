@@ -15,7 +15,7 @@ export default function AppearancesPage() {
   return (
     <Container>
       <Container.Header>
-        <H1>Where I'll be sharing knowledge.</H1>
+        <H1>Where I'm speaking and teaching.</H1>
         <Lead>One way of my favorite ways to share knowledge is by speaking and teaching at tech events.</Lead>
       </Container.Header>
       {/* @ts-expect-error Server Components */}

@@ -4,12 +4,6 @@ interface YouTubeProps {
 }
 
 export function YouTube({ title, url }: YouTubeProps) {
-  const isYouTube = url.startsWith('https://youtu.be/');
-
-  if (!isYouTube) {
-    return null;
-  }
-
   const source = url.replace('https://youtu.be/', 'https://youtube.com/embed/');
 
   return (

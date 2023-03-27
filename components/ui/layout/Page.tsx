@@ -28,7 +28,7 @@ Page.Header = PageHeader;
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function PageBody(props: PageBodyProps) {
-  return <div className="prose prose-stone prose-h1:tracking-tight prose-pre:rounded-[1.75rem]" {...props} />;
+  return <div className="prose prose-stone" {...props} />;
 }
 
 Page.Body = PageBody;
