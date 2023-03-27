@@ -11,9 +11,9 @@ import { YouTube } from '~/components/ui/elements/YouTube';
 import { Card } from '~/components/ui/layout/Card';
 import { Page } from '~/components/ui/layout/Page';
 import { H3 } from '~/components/ui/typography/H3';
-import { queryAllEvents, queryEventBySlug } from '~/lib/events';
+import { getAllEvents, getEventBySlug } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
-import { getPlaceByLocation } from '~/lib/place';
+import { composePlaceByLocation } from '~/lib/place';
 
 export const revalidate = 3600;
 
@@ -26,7 +26,7 @@ interface GenerateMetadataConfig {
 }
 
 export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
-  const event = await queryEventBySlug(params.slug);
+  const event = await getEventBySlug(params.slug);
 
   return {
     title: composeTitle(event.name),
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
 }
 
 export async function generateStaticParams() {
-  const allEvents = await queryAllEvents();
+  const allEvents = await getAllEvents();
 
   return allEvents.map((event) => ({ slug: event.slug }));
 }
@@ -48,7 +48,7 @@ interface AppearancePageProps {
 }
 
 export default async function AppearancePage({ params }: AppearancePageProps) {
-  const event = await queryEventBySlug(params.slug);
+  const event = await getEventBySlug(params.slug);
   const isOneDay = isSameDay(event.startDate, event.endDate);
 
   return (
@@ -58,7 +58,7 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
           <span className="inline-flex items-center gap-2">
             <MapPinIcon className="h-6 w-6 text-stone-300" />
             <span>
-              {event.location.name} · {getPlaceByLocation(event.location)}
+              {event.location.name} · {composePlaceByLocation(event.location)}
             </span>
           </span>
         }

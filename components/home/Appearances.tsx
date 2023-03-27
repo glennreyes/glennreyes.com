@@ -1,6 +1,6 @@
 import { getTime } from 'date-fns';
-import { queryAllEvents } from '~/lib/events';
-import { getPlaceByLocation } from '~/lib/place';
+import { getAllEvents } from '~/lib/events';
+import { composePlaceByLocation } from '~/lib/place';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
@@ -9,7 +9,7 @@ import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
 
 export async function Appearances() {
-  const allEvents = await queryAllEvents();
+  const allEvents = await getAllEvents();
   const today = new Date();
   const todayInMilliseconds = getTime(today);
   // Calculate the difference between each date and today's date
@@ -45,7 +45,7 @@ export async function Appearances() {
                   <List.Item key={event.slug}>
                     <Card.Item
                       date={event.startDate}
-                      description={getPlaceByLocation(event.location)}
+                      description={composePlaceByLocation(event.location)}
                       link={`/appearances/${event.slug}`}
                       title={event.name}
                     />
@@ -60,7 +60,7 @@ export async function Appearances() {
                   <List.Item key={event.slug}>
                     <Card.Item
                       date={event.startDate}
-                      description={getPlaceByLocation(event.location)}
+                      description={composePlaceByLocation(event.location)}
                       link={`/appearances/${event.slug}`}
                       title={event.name}
                     />

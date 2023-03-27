@@ -1,9 +1,9 @@
-import { queryAllEvents } from '~/lib/events';
-import { getPlaceByLocation } from '~/lib/place';
+import { getAllEvents } from '~/lib/events';
+import { composePlaceByLocation } from '~/lib/place';
 import { Feed } from '../ui/layout/Feed';
 
 export async function AppearancesFeed() {
-  const allEvents = await queryAllEvents();
+  const allEvents = await getAllEvents();
   const today = new Date();
   const upcoming = allEvents.filter((event) => event.startDate > today);
   const past = allEvents.filter((event) => event.startDate <= today);
@@ -15,7 +15,7 @@ export async function AppearancesFeed() {
           {upcoming.map((event) => (
             <Feed.Item
               date={event.startDate}
-              description={getPlaceByLocation(event.location)}
+              description={composePlaceByLocation(event.location)}
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}
@@ -28,7 +28,7 @@ export async function AppearancesFeed() {
           {past.map((event) => (
             <Feed.Item
               date={event.startDate}
-              description={getPlaceByLocation(event.location)}
+              description={composePlaceByLocation(event.location)}
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}
