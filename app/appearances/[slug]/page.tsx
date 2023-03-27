@@ -11,7 +11,7 @@ import { YouTube } from '~/components/ui/elements/YouTube';
 import { Card } from '~/components/ui/layout/Card';
 import { Page } from '~/components/ui/layout/Page';
 import { H3 } from '~/components/ui/typography/H3';
-import { getAllEvents, getEventBySlug } from '~/lib/events';
+import { queryAllEvents, queryEventBySlug } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
 import { getPlaceByLocation } from '~/lib/place';
 
@@ -26,7 +26,7 @@ interface GenerateMetadataConfig {
 }
 
 export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
-  const event = await getEventBySlug(params.slug);
+  const event = await queryEventBySlug(params.slug);
 
   return {
     title: composeTitle(event.name),
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
 }
 
 export async function generateStaticParams() {
-  const allEvents = await getAllEvents();
+  const allEvents = await queryAllEvents();
 
   return allEvents.map((event) => ({ slug: event.slug }));
 }
@@ -48,7 +48,7 @@ interface AppearancePageProps {
 }
 
 export default async function AppearancePage({ params }: AppearancePageProps) {
-  const event = await getEventBySlug(params.slug);
+  const event = await queryEventBySlug(params.slug);
   const isOneDay = isSameDay(event.startDate, event.endDate);
 
   return (

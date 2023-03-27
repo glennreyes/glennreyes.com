@@ -1,5 +1,5 @@
 import { getTime } from 'date-fns';
-import { getAllEvents } from '~/lib/events';
+import { queryAllEvents } from '~/lib/events';
 import { getPlaceByLocation } from '~/lib/place';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
@@ -9,7 +9,7 @@ import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
 
 export async function Appearances() {
-  const allEvents = await getAllEvents();
+  const allEvents = await queryAllEvents();
   const today = new Date();
   const todayInMilliseconds = getTime(today);
   // Calculate the difference between each date and today's date

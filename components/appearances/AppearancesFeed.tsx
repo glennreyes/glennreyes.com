@@ -1,16 +1,16 @@
-import { getAllEvents } from '~/lib/events';
+import { queryAllEvents } from '~/lib/events';
 import { getPlaceByLocation } from '~/lib/place';
 import { Feed } from '../ui/layout/Feed';
 
 export async function AppearancesFeed() {
-  const allEvents = await getAllEvents();
+  const allEvents = await queryAllEvents();
   const today = new Date();
   const upcoming = allEvents.filter((event) => event.startDate > today);
   const past = allEvents.filter((event) => event.startDate <= today);
 
   return (
     <>
-      {upcoming.length && (
+      {upcoming.length > 0 && (
         <Feed title="Upcoming">
           {upcoming.map((event) => (
             <Feed.Item

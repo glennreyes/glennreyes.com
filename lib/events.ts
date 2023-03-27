@@ -1,6 +1,6 @@
 import { prisma } from '~/lib/prisma';
 
-export function getAllEvents() {
+export function queryAllEvents() {
   return prisma.event.findMany({
     orderBy: { startDate: 'desc' },
     select: {
@@ -32,7 +32,7 @@ export function getAllEvents() {
   });
 }
 
-export function getEventBySlug(slug: string) {
+export function queryEventBySlug(slug: string) {
   return prisma.event.findUniqueOrThrow({
     select: {
       appearances: {
