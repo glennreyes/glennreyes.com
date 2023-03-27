@@ -35,6 +35,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Navbar.Link href="/about">About</Navbar.Link>
           <Navbar.Link href="/posts">Posts</Navbar.Link>
           <Navbar.Link href="/appearances">Appearances</Navbar.Link>
+          <Navbar.Link href="/talks">Speaking</Navbar.Link>
+          <Navbar.Link href="/workshops">Teaching</Navbar.Link>
         </Navbar>
         <Main>{children}</Main>
         <Footer />

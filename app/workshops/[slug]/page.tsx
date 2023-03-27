@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
 import { ActionLink } from '~/components/ui/elements/ActionLink';
-import { TagCloud } from '~/components/ui/elements/TagCloud';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { H2 } from '~/components/ui/typography/H2';
+import { getAllEvents } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
-import { getAllTalks, getTalkBySlug } from '~/lib/talks';
+import { getWorkshopBySlug } from '~/lib/workshops';
 
 export const revalidate = 3600;
 
@@ -19,38 +19,36 @@ interface GenerateMetadataConfig {
 }
 
 export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
-  const talk = await getTalkBySlug(params.slug);
+  const workshop = await getWorkshopBySlug(params.slug);
 
   return {
-    title: composeTitle(talk.title),
+    title: composeTitle(workshop.title),
   };
 }
 
 export async function generateStaticParams() {
-  const allTalks = await getAllTalks();
+  const allEvents = await getAllEvents();
 
-  return allTalks.map((talk) => ({ slug: talk.slug }));
+  return allEvents.map((event) => ({ slug: event.slug }));
 }
 
-interface TalkPageParams {
+interface WorkshopPageParams {
   slug: string;
 }
 
-interface TalkPageProps {
-  params: TalkPageParams;
+interface WorkshopPageProps {
+  params: WorkshopPageParams;
 }
 
-export default async function TalkPage({ params }: TalkPageProps) {
-  const talk = await getTalkBySlug(params.slug);
-  const events = talk.appearances.map((appearance) => appearance.event);
+export default async function WorkshopPage({ params }: WorkshopPageProps) {
+  const workshop = await getWorkshopBySlug(params.slug);
+  const events = workshop.appearances.map((appearance) => appearance.event);
 
   return (
     <Page>
-      <Page.Header lead={<TagCloud tags={talk.tags} />} meta="Talk">
-        {talk.title}
-      </Page.Header>
+      <Page.Header meta="Workshop">{workshop.title}</Page.Header>
       <Page.Body>
-        <MDXRemoteContent source={talk.abstract} />
+        <MDXRemoteContent source={workshop.abstract} />
         {events.length > 0 && (
           <>
             <H2>Appearances</H2>

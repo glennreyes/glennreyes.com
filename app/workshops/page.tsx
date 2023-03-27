@@ -3,26 +3,28 @@ import { Feed } from '~/components/ui/layout/Feed';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { composeTitle } from '~/lib/metadata';
-import { getAllTalks } from '~/lib/talks';
+import { getAllWorkshops } from '~/lib/workshops';
 
 export const metadata: Metadata = {
   title: composeTitle('Posts'),
 };
 
 export default async function PostsPage() {
-  const allTalks = await getAllTalks();
+  const allWorkshops = await getAllWorkshops();
 
   return (
     <Page>
-      <Page.Header lead="All talks that I gave at conferences and meetups.">Speaking.</Page.Header>
+      <Page.Header lead="I've been teaching hundreds of engineers to enhance their skills and knowledge in web development.">
+        Teaching.
+      </Page.Header>
       <Page.Body>
         <Feed>
-          {allTalks.map(({ slug, title, abstract }) => (
+          {allWorkshops.map(({ slug, title, abstract }) => (
             <Feed.Item
-              action="Talk Details"
+              action="Workshop Details"
               description={<MDXRemoteContent source={abstract} />}
               key={slug}
-              link={`/talks/${slug}`}
+              link={`/workshops/${slug}`}
               title={title}
             />
           ))}
