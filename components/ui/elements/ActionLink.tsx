@@ -8,7 +8,7 @@ export function ActionLink({ children, ...props }: ActionLinkProps) {
   return (
     <Link className="inline-flex items-center gap-1 font-semibold text-stone-400" {...props}>
       {children}
-      <ChevronRightIcon className="h-5 w-5" />
+      <ChevronRightIcon aria-hidden className="h-5 w-5" />
     </Link>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PostsFeed } from '~/components/posts/PostsFeed';
+import { TalksFeed } from '~/components/talks/TalksFeed';
 import { Page } from '~/components/ui/layout/Page';
 import { composeTitle } from '~/lib/metadata';
 
@@ -10,11 +10,10 @@ export const metadata: Metadata = {
 export default function PostsPage() {
   return (
     <Page>
-      <Page.Header lead="All my thoughts on code and life collected in a longer written form.">
-        Writing on code and life.
-      </Page.Header>
+      <Page.Header lead="All talks that I gave at conferences and meetups.">Talks.</Page.Header>
       <Page.Body>
-        <PostsFeed />
+        {/* @ts-expect-error Server Components */}
+        <TalksFeed />
       </Page.Body>
     </Page>
   );

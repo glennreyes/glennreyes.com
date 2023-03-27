@@ -3,12 +3,10 @@ import { Feed } from '../ui/layout/Feed';
 
 export function PostsFeed() {
   return (
-    <div className="max-w-[70ch]">
-      <Feed>
-        {allPosts.map(({ excerpt, publishedAt, slug, title }) => (
-          <Feed.Item date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
-        ))}
-      </Feed>
-    </div>
+    <Feed>
+      {allPosts.map(({ excerpt, publishedAt, slug, title }) => (
+        <Feed.Item date={publishedAt} description={excerpt} key={slug} link={`/posts/${slug}`} title={title} />
+      ))}
+    </Feed>
   );
 }

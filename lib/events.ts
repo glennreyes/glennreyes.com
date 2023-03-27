@@ -64,15 +64,18 @@ export function getEventBySlug(slug: string) {
       endDate: true,
       location: {
         select: {
+          address: true,
           city: true,
           country: true,
           name: true,
           state: true,
+          zip: true,
         },
       },
       name: true,
       slug: true,
       startDate: true,
+      url: true,
     },
     where: { slug },
   });

@@ -19,7 +19,6 @@ export default async function AppearancesPage() {
         Where I'm speaking and teaching.
       </Page.Header>
       <Page.Body>
-        {/* @ts-expect-error Server Components */}
         <AppearancesFeed events={allEvents} />
       </Page.Body>
     </Page>

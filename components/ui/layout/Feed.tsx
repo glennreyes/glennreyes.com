@@ -1,3 +1,4 @@
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
@@ -8,11 +9,11 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 }
 
 export function Feed({ children, title, ...props }: FeedProps) {
-  const wrapperClasses = 'grid gap-12 md:col-span-3 md:gap-16';
+  const wrapperClasses = 'not-prose grid gap-12 md:col-span-3 md:gap-16';
 
   if (title) {
     return (
-      <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
+      <div className="grid gap-y-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-stone-100 md:px-8">
           <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>
@@ -28,42 +29,31 @@ export function Feed({ children, title, ...props }: FeedProps) {
   );
 }
 
-type FeedItemWithDateProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
+interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+  action?: string;
   children?: ReactNode;
-  date: Date | string;
-  description?: string;
+  date?: Date | string;
+  description?: ReactNode;
   link?: string;
-  meta?: undefined;
+  meta?: ReactNode;
   title: string;
-};
+}
 
-type FeedItemWithMetaProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'> & {
-  children?: ReactNode;
-  date?: undefined;
-  description?: string;
-  link?: string;
-  meta: ReactNode;
-  title: string;
-};
-
-type FeedItemProps = FeedItemWithDateProps | FeedItemWithMetaProps;
-
-function FeedItem({ children, description, link, title, ...rest }: FeedItemProps) {
-  const articleClasses = clsx(link && 'group relative', 'grid gap-2');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
+function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
+  const articleClasses = clsx(action ? 'gap-6' : 'gap-2', link && 'group relative', 'grid');
+  const descriptionClasses = clsx(link && 'relative z-10 line-clamp-6', 'text-stone-500');
   const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
     ...rest,
   };
-
-  return (
-    <article className={articleClasses} {...props}>
-      {date === undefined ? (
+  const content = (
+    <>
+      {meta !== undefined ? (
         <div className={metaClasses}>{meta}</div>
       ) : (
-        <DateDisplay className={metaClasses} value={date} />
+        date !== undefined && <DateDisplay className={metaClasses} value={date} />
       )}
       <h3 className="text-lg font-semibold tracking-tight">
         {link ? (
@@ -75,8 +65,28 @@ function FeedItem({ children, description, link, title, ...rest }: FeedItemProps
           title
         )}
       </h3>
-      {description && <p className={descriptionClasses}>{description}</p>}
+      {typeof description === 'string' ? (
+        <p className={descriptionClasses}>{description}</p>
+      ) : (
+        <div className={descriptionClasses}>{description}</div>
+      )}
       {children}
+    </>
+  );
+
+  return (
+    <article className={articleClasses} {...props}>
+      {action ? (
+        <>
+          <div className="grid gap-2">{content}</div>
+          <p className="relative z-10 inline-flex items-center gap-1 font-semibold text-stone-400">
+            {action}
+            <ChevronRightIcon aria-hidden className="h-5 w-5" />
+          </p>
+        </>
+      ) : (
+        content
+      )}
       {link && (
         <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-[1.75rem] md:-inset-6" />
       )}

@@ -1,5 +1,18 @@
 import { prisma } from '~/lib/prisma';
 
+export function getAllTalks() {
+  return prisma.talk.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+    select: {
+      abstract: true,
+      slug: true,
+      title: true,
+    },
+  });
+}
+
 export function getTalkBySlug(slug: string) {
   return prisma.talk.findUniqueOrThrow({
     select: {

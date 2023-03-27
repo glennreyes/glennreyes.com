@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
-import { ActionLink } from '~/components/ui/elements/ActionLink';
+import { TalkAppearances } from '~/components/talks/TalkAppearances';
 import { TagCloud } from '~/components/ui/elements/TagCloud';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
-import { H2 } from '~/components/ui/typography/H2';
 import { getAllEvents } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
 import { getTalkBySlug } from '~/lib/talks';
@@ -52,12 +50,7 @@ export default async function TalkPage({ params }: TalkPageProps) {
       </Page.Header>
       <Page.Body>
         <MDXRemoteContent source={talk.abstract} />
-        <H2>Appearances</H2>
-        <div className="not-prose grid gap-8">
-          {/* @ts-expect-error Server Components */}
-          <AppearancesFeed events={events} />
-          <ActionLink href="/appearances">All Appearances</ActionLink>
-        </div>
+        {events.length > 0 && <TalkAppearances events={events} />}
       </Page.Body>
     </Page>
   );

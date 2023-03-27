@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { EventAppearances } from '~/components/appearances/EventAppearances';
 import { EventDate } from '~/components/appearances/EventDate';
-import { EventLocation } from '~/components/appearances/EventLocation';
+import { EventLead } from '~/components/appearances/EventLead';
 import { Page } from '~/components/ui/layout/Page';
 import { getAllEvents, getEventBySlug } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
@@ -44,7 +44,7 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
   return (
     <Page>
       <Page.Header
-        lead={<EventLocation location={event.location} />}
+        lead={<EventLead location={event.location} url={event.url} />}
         meta={<EventDate endDate={event.endDate} startDate={event.startDate} />}
       >
         {event.name} {event.startDate.getFullYear()}
