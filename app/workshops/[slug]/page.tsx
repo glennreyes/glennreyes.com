@@ -4,9 +4,8 @@ import { ActionLink } from '~/components/ui/elements/ActionLink';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { H2 } from '~/components/ui/typography/H2';
-import { getAllEvents } from '~/lib/events';
 import { composeTitle } from '~/lib/metadata';
-import { getWorkshopBySlug } from '~/lib/workshops';
+import { getAllWorkshops, getWorkshopBySlug } from '~/lib/workshops';
 
 export const revalidate = 3600;
 
@@ -27,9 +26,9 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
 }
 
 export async function generateStaticParams() {
-  const allEvents = await getAllEvents();
+  const allWorkshops = await getAllWorkshops();
 
-  return allEvents.map((event) => ({ slug: event.slug }));
+  return allWorkshops.map((workshop) => ({ slug: workshop.slug }));
 }
 
 interface WorkshopPageParams {
