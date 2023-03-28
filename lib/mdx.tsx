@@ -15,5 +15,5 @@ export const components: MDXComponents = {
   h2: H2,
   h3: H3,
   h4: H4,
-  pre: (props) => <pre className="rounded-[1.75rem] p-6" {...props} />,
+  pre: (props) => <pre className="-mx-4 rounded-none px-4 py-8 sm:mx-0 sm:rounded-[1.75rem] sm:p-8" {...props} />,
 };
