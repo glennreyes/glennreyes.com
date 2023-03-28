@@ -1,4 +1,4 @@
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 import { components } from '~/lib/mdx';
 
 interface MDXContentProps {
@@ -6,7 +6,7 @@ interface MDXContentProps {
 }
 
 export function MDXContent({ code }: MDXContentProps) {
-  const MDXComponent = useMDXComponent(code);
+  const MDXComponent = getMDXComponent(code);
 
   return <MDXComponent components={components} />;
 }

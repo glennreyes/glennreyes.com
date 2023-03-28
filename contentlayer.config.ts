@@ -46,49 +46,43 @@ export const Post = defineDocumentType(() => ({
   name: 'Post',
 }));
 
-const rehypeAutolinkHeadingsOptions: Partial<RehypeAutolinkHeadingsOptions> = {
-  behavior: 'wrap',
-  content: () => [
-    // {
-    //   children: [],
-    //   properties: { className: ['icon', 'icon-link2'] },
-    //   tagName: 'span',
-    //   type: 'element',
-    // },
-  ],
-  properties: {},
-};
-
-const rehypePrettyCodeOptions: Partial<RehypePrettyCodeOptions> = {
-  onVisitHighlightedLine(node) {
-    // Each line node by default has `class="line"`.
-    node.properties.className.push('highlighted');
-  },
-
-  onVisitHighlightedWord(node) {
-    // Each word node has no className by default.
-    node.properties.className = ['word'];
-  },
-  // Callback hooks to add custom logic to nodes when visiting
-  // them.
-  onVisitLine(node) {
-    // Prevent lines from collapsing in `display: grid` mode, and
-    // allow empty lines to be copy/pasted
-    if (node.children.length === 0) {
-      node.children = [{ type: 'text', value: ' ' }];
-    }
-  },
-  theme: 'nord',
-};
-
 export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Page, Post],
   mdx: {
     rehypePlugins: [
       rehypeSlug,
-      [rehypeAutolinkHeadings, rehypeAutolinkHeadingsOptions],
-      [rehypePrettyCode, rehypePrettyCodeOptions],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'wrap',
+          properties: {},
+        } satisfies Partial<RehypeAutolinkHeadingsOptions>,
+      ],
+      [
+        rehypePrettyCode,
+        {
+          onVisitHighlightedLine(node) {
+            // Each line node by default has `class="line"`.
+            node.properties.className.push('highlighted');
+          },
+
+          onVisitHighlightedWord(node) {
+            // Each word node has no className by default.
+            node.properties.className = ['word'];
+          },
+          // Callback hooks to add custom logic to nodes when visiting
+          // them.
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and
+            // allow empty lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }];
+            }
+          },
+          theme: 'nord',
+        } satisfies Partial<RehypePrettyCodeOptions>,
+      ],
     ],
     remarkPlugins: [remarkGfm],
   },
