@@ -1,7 +1,7 @@
-const { fontFamily } = require('tailwindcss/defaultTheme');
+import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './app/**/*.{css,ts,tsx}',
     './components/**/*.{css,ts,tsx}',
@@ -15,7 +15,6 @@ module.exports = {
   plugins: [
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     require('@tailwindcss/typography'),
   ],
   theme: {
@@ -39,4 +38,4 @@ module.exports = {
       },
     },
   },
-};
+} satisfies Config;

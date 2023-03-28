@@ -61,7 +61,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                 <div className="prose prose-stone">
                   {title && <H2>{title}</H2>}
                   {description && (
-                    <div className="text-stone-500 line-clamp-6">
+                    <div className="line-clamp-6 text-stone-500">
                       <MDXRemoteContent source={description} />
                     </div>
                   )}
@@ -98,7 +98,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
                     </dt>
                     <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-900 underline" href={slides}>
+                      <Link className="text-stone-950 underline" href={slides}>
                         View Slides
                       </Link>
                     </dd>
@@ -111,7 +111,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
                     </dt>
                     <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-900 underline" href={recording}>
+                      <Link className="text-stone-950 underline" href={recording}>
                         Watch Recording
                       </Link>
                     </dd>

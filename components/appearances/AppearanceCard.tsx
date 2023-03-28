@@ -81,7 +81,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                       <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
                     </dt>
                     <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-900 underline" href={slides}>
+                      <Link className="text-stone-950 underline" href={slides}>
                         View Slides
                       </Link>
                     </dd>
@@ -94,7 +94,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                       <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
                     </dt>
                     <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-900 underline" href={recording}>
+                      <Link className="text-stone-950 underline" href={recording}>
                         Watch Recording
                       </Link>
                     </dd>

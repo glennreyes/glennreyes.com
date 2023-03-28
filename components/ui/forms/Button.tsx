@@ -21,7 +21,7 @@ export function Button({ appearance = 'primary', ...props }: ButtonProps) {
     primary:
       'border border-stone-800 bg-stone-800 text-stone-100 hover:border-stone-700 hover:bg-stone-700 focus:text-stone-100 active:border-stone-600 active:bg-stone-600',
     secondary:
-      'border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-800 focus:text-stone-800 active:border-stone-500 active:text-stone-900',
+      'border border-stone-300 text-stone-700 hover:border-stone-400 hover:text-stone-800 focus:text-stone-800 active:border-stone-500 active:text-stone-950',
   };
   const classes = clsx(
     appearances[appearance],

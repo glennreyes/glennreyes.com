@@ -62,7 +62,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
       ) : (
         date !== undefined && <DateDisplay className={metaClasses} value={date} />
       )}
-      <h3 className="text-lg font-semibold tracking-tight">
+      <h3 className="text-lg/tight font-semibold">
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-4 z-20 md:-inset-6" />
