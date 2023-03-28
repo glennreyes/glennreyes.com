@@ -6,12 +6,13 @@ import photo from '~/assets/images/photo.jpg';
 import { name } from '~/lib/constants';
 import { Link } from '../ui/elements/Link';
 import { Container } from '../ui/layout/Container';
+import { NavbarBorder } from './NavbarBorder';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'nav'>, 'className'>;
 
 export function Navbar(props: NavbarProps) {
   return (
-    <header className="sticky top-0 z-30 bg-white/95 supports-[backdrop-filter]:bg-white/50 supports-[backdrop-filter]:backdrop-blur-md">
+    <header className="bg-white-50/95 supports-[backdrop-filter]:bg-white-50/50 sticky top-0 z-30 supports-[backdrop-filter]:backdrop-blur-md">
       <Container className="flex items-center gap-2 md:gap-4">
         <div className="flex flex-1">
           <Link className="flex-none rounded-full" href="/">
@@ -23,6 +24,7 @@ export function Navbar(props: NavbarProps) {
           <SunIcon aria-hidden className="h-6 w-6 text-stone-400" />
         </div>
       </Container>
+      <NavbarBorder />
     </header>
   );
 }
