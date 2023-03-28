@@ -42,7 +42,7 @@ interface EventAppearancesCardProps {
 }
 
 function EventAppearancesCard({ date, length, recording, talk, workshop }: EventAppearancesCardProps) {
-  const slug = talk?.slug ?? workshop?.slug;
+  const path = talk?.slug ? `/talks/${talk.slug}` : workshop?.slug ? `/workshops/${workshop.slug}` : undefined;
   const title = talk?.title ?? workshop?.title;
   const description = talk?.abstract ?? workshop?.description;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
@@ -56,7 +56,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
       <Card.Body title={type}>
         <div className="grid gap-6">
           <div className="grid gap-y-16 gap-x-8 md:grid-cols-3">
-            {(title || description) && slug && (
+            {(title || description) && path && (
               <div className="grid gap-12 md:col-span-2">
                 <div className="prose prose-stone">
                   {title && <H2>{title}</H2>}
@@ -66,7 +66,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                     </div>
                   )}
                 </div>
-                <ActionLink href={`/talks/${slug}`}>View Details</ActionLink>
+                <ActionLink href={path}>View Details</ActionLink>
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">
