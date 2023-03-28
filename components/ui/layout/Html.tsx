@@ -1,14 +1,23 @@
-import { Inter } from 'next/font/google';
+import clsx from 'clsx';
+import { Inter, Roboto_Mono } from 'next/font/google';
 import type { ComponentPropsWithoutRef } from 'react';
 
-const inter = Inter({
+const mono = Roboto_Mono({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-mono',
+  weight: 'variable',
+});
+
+const sans = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
   weight: 'variable',
 });
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
 export function Html(props: HtmlProps) {
-  return <html className={inter.variable} lang="en" {...props} />;
+  const classes = clsx(mono.variable, sans.variable);
+
+  return <html className={classes} lang="en" {...props} />;
 }
