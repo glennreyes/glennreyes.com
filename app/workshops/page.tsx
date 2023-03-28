@@ -14,7 +14,7 @@ export default async function PostsPage() {
 
   return (
     <Page>
-      <Page.Header lead="I've been teaching hundreds of engineers to enhance their skills and knowledge in web development.">
+      <Page.Header lead="Explore my portfolio of successful web development workshops that have empowered hundreds of engineers.">
         Teaching.
       </Page.Header>
       <Feed appearance="grid">

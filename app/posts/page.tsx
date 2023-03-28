@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PostsPage() {
   return (
     <Page>
-      <Page.Header lead="All my thoughts on code and life collected in a longer written form.">
+      <Page.Header lead="Where I share my insights on the intersection of code and life through thought-provoking written articles.">
         Writing on code and life.
       </Page.Header>
       <Page.Body>

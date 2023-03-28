@@ -14,7 +14,9 @@ export default async function PostsPage() {
 
   return (
     <Page>
-      <Page.Header lead="All talks that I gave at conferences and meetups.">Speaking.</Page.Header>
+      <Page.Header lead="Browse through a collection of my past and upcoming conference and meetup talks.">
+        Speaking.
+      </Page.Header>
       <Page.Body>
         <Feed>
           {allTalks.map(({ slug, title, abstract }) => (

@@ -15,8 +15,8 @@ export default async function AppearancesPage() {
 
   return (
     <Page>
-      <Page.Header lead="One way of my favorite ways to share knowledge is by speaking and teaching at tech events.">
-        Where I'm speaking and teaching.
+      <Page.Header lead="Discover where I'm making an impact in the tech community through my speaking and teaching engagements.">
+        Appearances.
       </Page.Header>
       <Page.Body>
         <AppearancesFeed events={allEvents} />
