@@ -25,7 +25,7 @@ export function Button({ appearance = 'primary', ...props }: ButtonProps) {
   };
   const classes = clsx(
     appearances[appearance],
-    'rounded-2xl py-3 px-5 text-sm font-medium transition focus:border-stone-400 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 disabled:opacity-75',
+    'rounded-2xl py-3 px-5 text-sm font-medium transition focus:border-stone-400 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 disabled:opacity-75',
   );
 
   if (props.as === 'link') {
