@@ -1,11 +1,10 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import readingTime from 'reading-time';
-import type { Options as RehypeAutolinkHeadingsOptions } from 'rehype-autolink-headings';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { autoLinkClasses } from './lib/rehype';
 
 export const Page = defineDocumentType(() => ({
   computedFields: {
@@ -51,13 +50,13 @@ export default makeSource({
   documentTypes: [Page, Post],
   mdx: {
     rehypePlugins: [
-      rehypeSlug,
+      [rehypeSlug, {} satisfies Parameters<typeof rehypeSlug>[0]],
       [
         rehypeAutolinkHeadings,
         {
           behavior: 'wrap',
-          properties: {},
-        } satisfies Partial<RehypeAutolinkHeadingsOptions>,
+          properties: { className: [autoLinkClasses] },
+        } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
       ],
       [
         rehypePrettyCode,
@@ -81,7 +80,7 @@ export default makeSource({
             }
           },
           theme: 'nord',
-        } satisfies Partial<RehypePrettyCodeOptions>,
+        } satisfies Parameters<typeof rehypePrettyCode>[0],
       ],
     ],
     remarkPlugins: [remarkGfm],

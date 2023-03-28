@@ -17,7 +17,7 @@ const sans = Inter({
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
 export function Html(props: HtmlProps) {
-  const classes = clsx(mono.variable, sans.variable);
+  const classes = clsx(mono.variable, sans.variable, 'scroll-smooth');
 
   return <html className={classes} lang="en" {...props} />;
 }
