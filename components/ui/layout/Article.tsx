@@ -1,11 +1,12 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
+import { Container } from './Container';
 
 type ArticleProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 export function Article(props: ArticleProps) {
-  return <article className="container mx-auto space-y-12 px-4" {...props} />;
+  return <Container as="article" className="space-y-12" {...props} />;
 }
 
 interface ArticleHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {

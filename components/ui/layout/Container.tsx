@@ -1,15 +1,13 @@
-import type { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef, ElementType } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-type ContainerProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
+type ContainerProps<TElementType extends ElementType> = ComponentPropsWithoutRef<TElementType> & {
+  as?: Extract<TElementType, 'article' | 'div' | 'p' | 'section'>;
+};
 
-export function Container(props: ContainerProps) {
-  return <section className="container mx-auto flex flex-col gap-12 px-4" {...props} />;
+export function Container<TElementType extends ElementType>({ as, className, ...props }: ContainerProps<TElementType>) {
+  const classes = twMerge('container mx-auto px-4', className);
+  const Component = as ?? 'div';
+
+  return <Component className={classes} {...props} />;
 }
-
-type ContainerHeaderProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
-
-function ContainerHeader(props: ContainerHeaderProps) {
-  return <header className="grid gap-4" {...props} />;
-}
-
-Container.Header = ContainerHeader;

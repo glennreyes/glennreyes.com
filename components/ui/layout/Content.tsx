@@ -1,9 +1,10 @@
 import type { ComponentPropsWithoutRef } from 'react';
+import { Container } from './Container';
 
 type ContentProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
 export function Content(props: ContentProps) {
-  return <section className="container mx-auto grid gap-16 px-4 lg:grid-cols-12" {...props} />;
+  return <Container as="section" className="grid gap-16 lg:grid-cols-12" {...props} />;
 }
 
 type ContentPrimaryProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
