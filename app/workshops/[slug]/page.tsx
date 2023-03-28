@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
 import { ActionLink } from '~/components/ui/elements/ActionLink';
+import { TagCloud } from '~/components/ui/elements/TagCloud';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { H2 } from '~/components/ui/typography/H2';
@@ -45,9 +46,11 @@ export default async function WorkshopPage({ params }: WorkshopPageProps) {
 
   return (
     <Page>
-      <Page.Header meta="Workshop">{workshop.title}</Page.Header>
+      <Page.Header lead={<TagCloud tags={workshop.tags} />} meta="Workshop">
+        {workshop.title}
+      </Page.Header>
       <Page.Body>
-        <MDXRemoteContent source={workshop.abstract} />
+        <MDXRemoteContent source={workshop.description} />
         {events.length > 0 && (
           <>
             <H2>Appearances</H2>

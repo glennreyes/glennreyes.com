@@ -6,7 +6,7 @@ export function getAllWorkshops() {
       createdAt: 'desc',
     },
     select: {
-      abstract: true,
+      description: true,
       slug: true,
       title: true,
     },
@@ -16,7 +16,6 @@ export function getAllWorkshops() {
 export function getWorkshopBySlug(slug: string) {
   return prisma.workshop.findUniqueOrThrow({
     select: {
-      abstract: true,
       appearances: {
         orderBy: {
           event: {
@@ -40,7 +39,9 @@ export function getWorkshopBySlug(slug: string) {
           },
         },
       },
+      description: true,
       slug: true,
+      tags: true,
       title: true,
     },
     where: { slug },

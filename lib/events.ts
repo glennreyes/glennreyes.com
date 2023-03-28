@@ -52,7 +52,7 @@ export function getEventBySlug(slug: string) {
           },
           workshop: {
             select: {
-              abstract: true,
+              description: true,
               repository: true,
               slides: true,
               slug: true,

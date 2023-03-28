@@ -106,11 +106,12 @@ model Workshop {
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   title       String
-  abstract    String
+  description String
   repository  String?
   slides      String?
   slug        String       @unique @default(cuid())
   status      Status       @default(ACTIVE)
+  tags        String[]
   appearances Appearance[]
 }
 

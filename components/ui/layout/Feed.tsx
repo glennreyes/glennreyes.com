@@ -5,11 +5,18 @@ import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../elements/Link';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
+  appearance?: 'grid' | 'list';
   title?: string;
 }
 
-export function Feed({ children, title, ...props }: FeedProps) {
-  const wrapperClasses = 'not-prose grid gap-12 md:col-span-3 md:gap-16';
+export function Feed({ appearance = 'list', children, title, ...props }: FeedProps) {
+  const wrapperClasses = clsx(
+    {
+      'col-span-3': title,
+      'grid-cols-2': appearance === 'grid',
+    },
+    'not-prose grid gap-12 md:gap-16',
+  );
 
   if (title) {
     return (
@@ -41,7 +48,7 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 
 function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
   const articleClasses = clsx(action ? 'gap-6' : 'gap-2', link && 'group relative', 'grid');
-  const descriptionClasses = clsx(link && 'relative z-10 line-clamp-6', 'text-stone-500');
+  const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
   const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,

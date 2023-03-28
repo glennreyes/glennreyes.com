@@ -17,19 +17,21 @@ export default async function PostsPage() {
       <Page.Header lead="I've been teaching hundreds of engineers to enhance their skills and knowledge in web development.">
         Teaching.
       </Page.Header>
-      <Page.Body>
-        <Feed>
-          {allWorkshops.map(({ slug, title, abstract }) => (
-            <Feed.Item
-              action="Workshop Details"
-              description={<MDXRemoteContent source={abstract} />}
-              key={slug}
-              link={`/workshops/${slug}`}
-              title={title}
-            />
-          ))}
-        </Feed>
-      </Page.Body>
+      <Feed appearance="grid">
+        {allWorkshops.map(({ slug, title, description }) => (
+          <Feed.Item
+            action="Workshop Details"
+            description={
+              <div className="line-clamp-4">
+                <MDXRemoteContent source={description} />
+              </div>
+            }
+            key={slug}
+            link={`/workshops/${slug}`}
+            title={title}
+          />
+        ))}
+      </Feed>
     </Page>
   );
 }

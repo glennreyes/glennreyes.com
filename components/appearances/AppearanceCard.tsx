@@ -17,12 +17,12 @@ interface AppearanceCardProps {
   recording?: string;
   talk?: Pick<Talk, 'abstract' | 'slides' | 'tags' | 'title'>;
   title?: string;
-  workshop?: Pick<Workshop, 'abstract' | 'slides' | 'title'>;
+  workshop?: Pick<Workshop, 'description' | 'slides' | 'title'>;
 }
 
 export function AppearanceCard({ date, length, recording, talk, workshop }: AppearanceCardProps) {
   const title = talk?.title ?? workshop?.title;
-  const abstract = talk?.abstract ?? workshop?.abstract;
+  const description = talk?.abstract ?? workshop?.description;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
   const dateTime = formatISO(date);
   const tags = talk?.tags;
@@ -46,10 +46,10 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
       <Card.Body title={type}>
         <div className="grid gap-6">
           <div className="grid gap-8 md:grid-cols-3">
-            {(title || abstract) && (
+            {(title || description) && (
               <div className="grid gap-4 md:col-span-2">
                 {title && <H3>{title}</H3>}
-                {abstract && <p className="text-stone-500">{abstract}</p>}
+                {description && <p className="text-stone-500">{description}</p>}
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">

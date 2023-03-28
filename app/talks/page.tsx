@@ -20,7 +20,11 @@ export default async function PostsPage() {
           {allTalks.map(({ slug, title, abstract }) => (
             <Feed.Item
               action="Talk Details"
-              description={<MDXRemoteContent source={abstract} />}
+              description={
+                <div className="line-clamp-4">
+                  <MDXRemoteContent source={abstract} />
+                </div>
+              }
               key={slug}
               link={`/talks/${slug}`}
               title={title}
