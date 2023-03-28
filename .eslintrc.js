@@ -4,5 +4,6 @@ module.exports = {
   parserOptions: { project: './tsconfig.json' },
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
   },
 };

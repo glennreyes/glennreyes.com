@@ -46,7 +46,18 @@ export const Post = defineDocumentType(() => ({
   name: 'Post',
 }));
 
-const rehypeAutolinkHeadingsOptions: Partial<RehypeAutolinkHeadingsOptions> = { properties: {} };
+const rehypeAutolinkHeadingsOptions: Partial<RehypeAutolinkHeadingsOptions> = {
+  behavior: 'wrap',
+  content: () => [
+    // {
+    //   children: [],
+    //   properties: { className: ['icon', 'icon-link2'] },
+    //   tagName: 'span',
+    //   type: 'element',
+    // },
+  ],
+  properties: {},
+};
 
 const rehypePrettyCodeOptions: Partial<RehypePrettyCodeOptions> = {
   onVisitHighlightedLine(node) {

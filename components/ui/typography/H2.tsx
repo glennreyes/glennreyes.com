@@ -1,11 +1,13 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-type H2Props<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
+type H2Props<TElementType extends ElementType> = ComponentPropsWithoutRef<TElementType> & {
   as?: Extract<TElementType, 'h1' | 'h2' | 'h3' | 'h4'>;
 };
 
-export function H2<TElementType extends ElementType>({ as, ...props }: H2Props<TElementType>) {
+export function H2<TElementType extends ElementType>({ as, className, ...props }: H2Props<TElementType>) {
   const Component = as ?? 'h2';
+  const classes = twMerge('text-2xl font-bold', className);
 
-  return <Component className="text-2xl font-bold" {...props} />;
+  return <Component className={classes} {...props} />;
 }
