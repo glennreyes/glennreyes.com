@@ -1,12 +1,28 @@
+import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
 import { Container } from './Container';
 
-type ArticleProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
+interface ArticleProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+  back?: ReactNode;
+}
 
-export function Article(props: ArticleProps) {
-  return <Container as="article" className="space-y-12" {...props} />;
+export function Article({ back, children, ...props }: ArticleProps) {
+  const classes = clsx((back === undefined || back === null) && 'space-y-12');
+
+  return (
+    <Container as="article" className={classes} {...props}>
+      {back !== undefined && back !== null ? (
+        <>
+          <div className="sticky top-20">{back}</div>
+          <div className="space-y-12">{children}</div>
+        </>
+      ) : (
+        children
+      )}
+    </Container>
+  );
 }
 
 interface ArticleHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {

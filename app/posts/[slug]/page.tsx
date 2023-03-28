@@ -1,6 +1,7 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { BackLink } from '~/components/posts/BackLink';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
 import { ReadingTime } from '~/components/ui/elements/ReadingTime';
 import { Article } from '~/components/ui/layout/Article';
@@ -43,7 +44,7 @@ export default function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <Article>
+    <Article back={<BackLink />}>
       <Article.Header
         lead={post.lead}
         meta={
