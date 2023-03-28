@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
 import { ActionLink } from '~/components/ui/elements/ActionLink';
+import { Divider } from '~/components/ui/elements/Divider';
 import { TagCloud } from '~/components/ui/elements/TagCloud';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
@@ -53,6 +54,7 @@ export default async function TalkPage({ params }: TalkPageProps) {
         <MDXRemoteContent source={talk.abstract} />
         {events.length > 0 && (
           <>
+            <Divider />
             <H2>Appearances</H2>
             <AppearancesFeed events={events}>
               <ActionLink href="/appearances">All Appearances</ActionLink>
