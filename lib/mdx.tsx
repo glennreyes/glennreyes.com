@@ -8,7 +8,12 @@ import { H4 } from '~/components/ui/typography/H4';
 import { Lead } from '~/components/ui/typography/Lead';
 
 export const components: MDXComponents = {
-  Image,
+  Image: (props) => (
+    <figure className="-mx-4 sm:mx-0">
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <Image className="sm:rounded-[1.75rem]" {...props} />
+    </figure>
+  ),
   Lead,
   a: ({ href, ...props }) => (href ? <Link href={href} {...props} /> : null),
   h1: H1,
