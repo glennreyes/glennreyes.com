@@ -21,7 +21,14 @@ export const components: MDXComponents = {
     </figure>
   ),
   Lead,
-  a: ({ href, ...props }) => (href ? <Link href={href} {...props} /> : null),
+  a: ({ href, ...props }) =>
+    href ? (
+      <Link
+        className="decoration-slate-200 decoration-2 underline-offset-2 transition hover:text-slate-600 hover:decoration-slate-300 focus-visible:text-slate-600 focus-visible:decoration-slate-300"
+        href={href}
+        {...props}
+      />
+    ) : null,
   div: ({ children, className, ...props }: DivProps) => {
     if (props['data-rehype-pretty-code-title'] !== undefined) {
       return (
