@@ -13,6 +13,10 @@ interface DivProps extends ComponentPropsWithoutRef<'div'> {
   'data-rehype-pretty-code-title'?: string;
 }
 
+interface CodeProps extends ComponentPropsWithoutRef<'code'> {
+  'data-language'?: string;
+}
+
 export const components: MDXComponents = {
   Image: (props) => (
     <figure className="-mx-4 sm:mx-0">
@@ -29,20 +33,35 @@ export const components: MDXComponents = {
         {...props}
       />
     ) : null,
+  code: (props: CodeProps) => {
+    // Handle inline code
+    if (props['data-language'] === undefined) {
+      return (
+        <code
+          className="inline-block rounded-lg border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none"
+          {...props}
+        />
+      );
+    }
+
+    return <code {...props} />;
+  },
   div: ({ children, className, ...props }: DivProps) => {
+    // Handle code block titles
     if (props['data-rehype-pretty-code-title'] !== undefined) {
       return (
         <div
-          className="-mx-4 mt-[1.7142857em] border-b border-slate-700/25 bg-slate-950/90 px-4 py-1.5 sm:mx-0 sm:rounded-t-[1.25rem] sm:px-8 [&+pre]:mt-0 [&+pre]:rounded-t-none"
+          className="-mx-4 mt-[1.7142857em] bg-slate-950/90 px-4 pt-1.5 sm:mx-0 sm:rounded-t-[1.25rem] sm:px-8 [&+pre]:mt-0 [&+pre]:rounded-t-none"
           {...props}
         >
-          <span className="inline-flex items-center rounded-lg border border-slate-700 bg-slate-700/25 px-3 py-1 font-mono text-[0.6875rem] font-semibold text-slate-400">
+          <span className="inline-flex items-center rounded-t-xl border-l border-t border-slate-700 bg-slate-800 px-3 py-1 font-mono text-[0.6875rem] font-semibold text-slate-400">
             {children}
           </span>
         </div>
       );
     }
 
+    // Handle code block wrappers
     if (props['data-rehype-pretty-code-fragment'] !== undefined) {
       return (
         <div className="relative" {...props}>
