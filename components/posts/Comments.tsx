@@ -21,9 +21,9 @@ export function Comments() {
             <p className="lead text-sm text-slate-500">
               All comments are stored as{' '}
               <Link href="https://github.com/glennreyes/glennreyes.com/discussions">discussions on GitHub</Link> via{' '}
-              <Link href="https://giscus.app">giscus</Link>, so feel free to comment there directly. Alternatively, you
-              can reach out to me on <Link href={`https://twitter.com/${twitter}`}>Twitter</Link> or send me an{' '}
-              <Link href={`mailto:${email}`}>email</Link>. I'm always happy to hear from my readers!
+              <Link href="https://giscus.app">giscus</Link>, so feel free to comment there directly if preferred.
+              Alternatively, you can reach out to me on <Link href={`https://twitter.com/${twitter}`}>Twitter</Link> or
+              send me an <Link href={`mailto:${email}`}>email</Link>. I'm always happy to hear from my readers!
             </p>
           </div>
         </div>
