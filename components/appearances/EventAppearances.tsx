@@ -55,13 +55,13 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
     <Card as="article">
       <Card.Body title={type}>
         <div className="grid gap-6">
-          <div className="grid gap-y-16 gap-x-8 md:grid-cols-3">
+          <div className="grid gap-x-8 gap-y-16 md:grid-cols-3">
             {(title || description) && path && (
               <div className="grid gap-12 md:col-span-2">
-                <div className="prose prose-stone">
+                <div className="grid gap-8">
                   {title && <H2>{title}</H2>}
                   {description && (
-                    <div className="line-clamp-6 text-stone-500">
+                    <div className="prose prose-stone line-clamp-6 text-stone-500">
                       <MDXRemoteContent source={description} />
                     </div>
                   )}

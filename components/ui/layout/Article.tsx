@@ -13,7 +13,7 @@ export function Article({ back, children, ...props }: ArticleProps) {
       {back !== undefined && back !== null ? (
         <>
           <div className="lg:sticky lg:top-20">
-            <div className="prose prose-stone mx-auto lg:absolute">{back}</div>
+            <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
           </div>
           <div className="space-y-12">{children}</div>
         </>

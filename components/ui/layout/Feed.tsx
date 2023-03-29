@@ -15,12 +15,12 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
       'col-span-3': title,
       'grid-cols-2': appearance === 'grid',
     },
-    'not-prose grid gap-12 md:gap-16',
+    'grid gap-12 md:gap-16',
   );
 
   if (title) {
     return (
-      <div className="grid gap-y-8 md:grid-cols-4" {...props}>
+      <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-stone-100 md:px-8">
           <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>
