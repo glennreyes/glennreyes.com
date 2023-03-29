@@ -4,7 +4,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import { autoLinkClasses } from './lib/rehype';
+import { classes } from './lib/rehype';
 
 export const Page = defineDocumentType(() => ({
   computedFields: {
@@ -55,7 +55,7 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           behavior: 'wrap',
-          properties: { className: [autoLinkClasses] },
+          properties: { className: [classes.autoLink] },
         } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
       ],
       [
@@ -63,16 +63,13 @@ export default makeSource({
         {
           onVisitHighlightedLine(node) {
             // Each line node by default has `class="line"`.
-            node.properties.className.push('highlighted');
-          },
-
-          onVisitHighlightedWord(node) {
-            // Each word node has no className by default.
-            node.properties.className = ['word'];
+            node.properties.className.push(classes.lineHighlighted);
           },
           // Callback hooks to add custom logic to nodes when visiting
           // them.
           onVisitLine(node) {
+            node.properties.className = [classes.line];
+
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
             if (node.children.length === 0) {
