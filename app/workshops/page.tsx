@@ -22,7 +22,7 @@ export default async function PostsPage() {
           <Feed.Item
             action="Workshop Details"
             description={
-              <div className="line-clamp-4">
+              <div className="prose prose-stone line-clamp-4 text-stone-500">
                 <MDXRemoteContent source={description} />
               </div>
             }

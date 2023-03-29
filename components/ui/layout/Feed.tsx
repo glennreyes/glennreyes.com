@@ -11,10 +11,8 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 
 export function Feed({ appearance = 'list', children, title, ...props }: FeedProps) {
   const wrapperClasses = clsx(
-    {
-      'col-span-3': title,
-      'grid-cols-2': appearance === 'grid',
-    },
+    title ? 'col-span-3' : 'not-prose',
+    appearance === 'grid' && 'grid-cols-2',
     'grid gap-12 md:gap-16',
   );
 
@@ -47,7 +45,7 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 }
 
 function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
-  const articleClasses = clsx(action ? 'gap-6' : 'gap-2', link && 'group relative', 'grid');
+  const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
   const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
   const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
   const { date, meta, ...props } = {
@@ -85,7 +83,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
     <article className={articleClasses} {...props}>
       {action ? (
         <>
-          <div className="grid gap-2">{content}</div>
+          <div className="grid gap-4">{content}</div>
           <p className="relative z-10 inline-flex items-center gap-1 font-semibold text-stone-400">
             {action}
             <ChevronRightIcon aria-hidden className="h-5 w-5" />

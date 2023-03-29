@@ -16,7 +16,7 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
   const past = events.filter((event) => event.startDate <= today);
 
   return (
-    <div className="grid gap-12">
+    <div className="not-prose grid gap-12">
       {upcoming.length > 0 && (
         <Feed title="Upcoming">
           {upcoming.map((event) => (
