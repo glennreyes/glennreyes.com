@@ -19,7 +19,7 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
   if (title) {
     return (
       <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
-        <div className="md:border-l md:border-stone-100 md:px-8">
+        <div className="md:border-l md:border-slate-100 md:px-8">
           <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
@@ -46,8 +46,8 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 
 function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
   const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-stone-500');
-  const metaClasses = clsx(link && 'relative z-10', 'text-stone-400');
+  const descriptionClasses = clsx(link && 'relative z-10', 'text-slate-500');
+  const metaClasses = clsx(link && 'relative z-10', 'text-slate-400');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
@@ -84,7 +84,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
       {action ? (
         <>
           <div className="grid gap-2">{content}</div>
-          <p className="relative z-10 inline-flex items-center gap-1 font-semibold text-stone-400">
+          <p className="relative z-10 inline-flex items-center gap-1 font-semibold text-slate-400">
             {action}
             <ChevronRightIcon aria-hidden className="h-5 w-5" />
           </p>
@@ -93,7 +93,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-stone-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-[1.75rem] md:-inset-6" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-[1.75rem] md:-inset-6" />
       )}
     </article>
   );

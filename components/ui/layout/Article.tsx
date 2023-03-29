@@ -33,7 +33,7 @@ interface ArticleHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'c
 export function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
   return (
     <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
-      {meta !== null && meta !== undefined && <div className="text-stone-400">{meta}</div>}
+      {meta !== null && meta !== undefined && <div className="text-slate-400">{meta}</div>}
       <H1>{children}</H1>
       {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
     </header>
@@ -45,7 +45,7 @@ Article.Header = ArticleHeader;
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function ArticleBody(props: ArticleBodyProps) {
-  return <div className="prose prose-stone mx-auto" {...props} />;
+  return <div className="prose prose-slate mx-auto" {...props} />;
 }
 
 Article.Body = ArticleBody;

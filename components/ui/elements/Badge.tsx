@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 
-type BadgeColors = 'rose' | 'sky' | 'stone' | 'teal';
+type BadgeColors = 'rose' | 'sky' | 'slate' | 'teal';
 
 const colors: Record<BadgeColors, string> = {
   rose: 'border-rose-200 bg-rose-50 text-rose-500',
   sky: 'border-sky-200 bg-sky-50 text-sky-500',
-  stone: 'border-stone-200 bg-stone-50 text-stone-500',
+  slate: 'border-slate-200 bg-slate-50 text-slate-500',
   teal: 'border-teal-200 bg-teal-50 text-teal-500',
 };
 

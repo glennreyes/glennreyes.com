@@ -15,7 +15,7 @@ export function EventLocation({ location }: EventLocationProps) {
 
   return (
     <Link className="group inline-flex items-center gap-2" href={url}>
-      <MapPinIcon className="h-6 w-6 text-stone-300 transition group-hover:text-stone-400" />
+      <MapPinIcon className="h-6 w-6 text-slate-300 transition group-hover:text-slate-400" />
       {location.name} · {composePlaceByLocation(location)}
     </Link>
   );

@@ -9,7 +9,7 @@ export function EventWebsite({ url }: EventWebsiteProps) {
 
   return (
     <Link className="group inline-flex items-center gap-2" href={url}>
-      <ArrowTopRightOnSquareIcon className="h-6 w-6 text-stone-300 transition group-hover:text-stone-400" />
+      <ArrowTopRightOnSquareIcon className="h-6 w-6 text-slate-300 transition group-hover:text-slate-400" />
       {website}
     </Link>
   );

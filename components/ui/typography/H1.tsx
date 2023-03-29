@@ -9,7 +9,7 @@ export function H1<TElementType extends ElementType>({ as, className, ...props }
   const Component = as ?? 'h1';
   // TODO: Switch to tailwind-merge once it supports Tailwind 3.3
   const classes = clsx(
-    'text-4xl/tight sm:text-5xl/tight inline-flex bg-gradient-to-r from-black to-stone-500 bg-clip-text font-extrabold tracking-tighter text-transparent',
+    'text-4xl/tight sm:text-5xl/tight inline-flex bg-gradient-to-r from-black to-slate-500 bg-clip-text font-extrabold tracking-tighter text-transparent',
     className,
   );
 

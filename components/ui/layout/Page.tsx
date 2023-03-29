@@ -17,7 +17,7 @@ interface PageHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'clas
 export function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
-      {meta !== null && meta !== undefined && <div className="text-stone-400">{meta}</div>}
+      {meta !== null && meta !== undefined && <div className="text-slate-400">{meta}</div>}
       <H1>{children}</H1>
       {lead !== null && lead !== undefined && (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
     </header>
@@ -29,7 +29,7 @@ Page.Header = PageHeader;
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function PageBody(props: PageBodyProps) {
-  return <article className="prose prose-stone" {...props} />;
+  return <article className="prose prose-slate" {...props} />;
 }
 
 Page.Body = PageBody;

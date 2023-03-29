@@ -13,7 +13,7 @@ import { H1 } from '../ui/typography/H1';
 export function Hero() {
   return (
     <Container as="section" className="grid gap-8 py-8 lg:flex">
-      <Image alt={name} className="h-36 w-36 rounded-full border-4 border-stone-200" src={photo} />
+      <Image alt={name} className="h-36 w-36 rounded-full border-4 border-slate-200" src={photo} />
       <div className="grid gap-8">
         <div>
           <p className="font-medium">Hello, I'm</p>

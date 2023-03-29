@@ -49,7 +49,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
             {(title || description) && (
               <div className="grid gap-4 md:col-span-2">
                 {title && <H3>{title}</H3>}
-                {description && <p className="text-stone-500">{description}</p>}
+                {description && <p className="text-slate-500">{description}</p>}
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">
@@ -57,9 +57,9 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                 <div className="flex gap-2">
                   <dt className="flex-none">
                     <span className="sr-only">Date & Time</span>
-                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300" />
                   </dt>
-                  <dd className="text-sm font-medium text-stone-500">
+                  <dd className="text-sm font-medium text-slate-500">
                     <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={date} />
                   </dd>
                 </div>
@@ -67,9 +67,9 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Length</span>
-                      <ClockIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
-                    <dd className="text-sm font-medium text-stone-500">
+                    <dd className="text-sm font-medium text-slate-500">
                       {lengths[type][length]} {type}
                     </dd>
                   </div>
@@ -78,10 +78,10 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
-                    <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-950 underline" href={slides}>
+                    <dd className="text-sm font-medium text-slate-500">
+                      <Link className="text-slate-950 underline" href={slides}>
                         View Slides
                       </Link>
                     </dd>
@@ -91,10 +91,10 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <TvIcon aria-hidden className="h-5 w-5 text-stone-300" />
+                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
-                    <dd className="text-sm font-medium text-stone-500">
-                      <Link className="text-stone-950 underline" href={recording}>
+                    <dd className="text-sm font-medium text-slate-500">
+                      <Link className="text-slate-950 underline" href={recording}>
                         Watch Recording
                       </Link>
                     </dd>

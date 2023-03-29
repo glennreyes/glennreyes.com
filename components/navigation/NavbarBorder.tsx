@@ -7,7 +7,7 @@ export function NavbarBorder() {
   const [isScrollTop, setIsScrollTop] = useState(true);
   const classes = clsx(
     'absolute inset-x-0 bottom-0 border-t transition',
-    isScrollTop ? 'border-stone-50/0' : 'border-stone-50/50',
+    isScrollTop ? 'border-slate-50/0' : 'border-slate-50/50',
   );
 
   useEffect(() => {

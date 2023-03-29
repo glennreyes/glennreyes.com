@@ -11,14 +11,14 @@ export function Comments() {
         <div className="grid gap-8">
           <div className="grid gap-4">
             <H4 as="h2">Comments</H4>
-            <p className="lead text-sm text-stone-500">
+            <p className="lead text-sm text-slate-500">
               What do you think about this article? Have you had a similar experience? Share your thoughts in the
               comments below!
             </p>
           </div>
           <Giscus />
-          <div className="prose prose-stone">
-            <p className="lead text-sm text-stone-500">
+          <div className="prose prose-slate">
+            <p className="lead text-sm text-slate-500">
               All comments are stored as{' '}
               <Link href="https://github.com/glennreyes/glennreyes.com/discussions">discussions on GitHub</Link> via{' '}
               <Link href="https://giscus.app">giscus</Link>, so feel free to comment there directly. Alternatively, you

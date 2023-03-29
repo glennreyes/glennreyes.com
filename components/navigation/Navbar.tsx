@@ -15,13 +15,13 @@ export function Navbar(props: NavbarProps) {
     <header className="bg-white-50/95 supports-[backdrop-filter]:bg-white-50/50 sticky top-0 z-30 supports-[backdrop-filter]:backdrop-blur-md">
       <Container className="flex items-center gap-2 md:gap-4">
         <div className="flex flex-1">
-          <Link className="flex-none rounded-full border border-stone-200" href="/">
+          <Link className="flex-none rounded-full border border-slate-200" href="/">
             <Image alt={name} className="h-10 w-10 rounded-full" src={photo} />
           </Link>
         </div>
         <nav className="flex flex-1 gap-2 py-4 md:justify-center md:gap-4" {...props} />
         <div className="flex flex-1 justify-end">
-          <SunIcon aria-hidden className="h-6 w-6 text-stone-400" />
+          <SunIcon aria-hidden className="h-6 w-6 text-slate-400" />
         </div>
       </Container>
       <NavbarBorder />
