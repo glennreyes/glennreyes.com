@@ -37,7 +37,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
   );
 
   return (
-    <form className="grid gap-y-4 gap-x-2 sm:relative sm:flex sm:p-1" onSubmit={handleSubmit} {...props}>
+    <form className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1" onSubmit={handleSubmit} {...props}>
       <div className="sm:flex-1">
         <Input
           aria-label="Email address"
