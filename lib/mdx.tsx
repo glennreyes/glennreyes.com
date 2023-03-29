@@ -24,7 +24,7 @@ export const components: MDXComponents = {
   a: ({ href, ...props }) =>
     href ? (
       <Link
-        className="decoration-teal-200 decoration-2 underline-offset-4 transition hover:text-slate-600 hover:decoration-teal-300 focus-visible:text-slate-600 focus-visible:decoration-teal-300"
+        className="decoration-teal-200 decoration-2 underline-offset-4 transition hover:text-slate-600 hover:decoration-teal-300 focus-visible:text-slate-600 focus-visible:no-underline"
         href={href}
         {...props}
       />
