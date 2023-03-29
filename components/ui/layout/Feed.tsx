@@ -83,7 +83,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
     <article className={articleClasses} {...props}>
       {action ? (
         <>
-          <div className="grid gap-4">{content}</div>
+          <div className="grid gap-2">{content}</div>
           <p className="relative z-10 inline-flex items-center gap-1 font-semibold text-stone-400">
             {action}
             <ChevronRightIcon aria-hidden className="h-5 w-5" />
