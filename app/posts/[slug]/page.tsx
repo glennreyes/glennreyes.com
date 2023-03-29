@@ -1,6 +1,7 @@
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { AboutAuthorCard } from '~/components/posts/AboutAuthorCard';
 import { BackLink } from '~/components/posts/BackLink';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
 import { ReadingTime } from '~/components/ui/elements/ReadingTime';
@@ -58,6 +59,9 @@ export default function PostPage({ params }: PostPageProps) {
       <Article.Body>
         <MDXContent code={post.body.code} />
       </Article.Body>
+      <Article.Footer>
+        <AboutAuthorCard />
+      </Article.Footer>
     </Article>
   );
 }

@@ -40,9 +40,9 @@ type CardItemWithDateProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> 
 type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> & {
   children?: ReactNode;
   date?: undefined;
-  description: string;
+  description?: string;
   link?: string;
-  meta: ReactNode;
+  meta?: ReactNode;
   title: string;
 };
 
@@ -68,7 +68,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       <h3 className="text-sm font-medium">
         {link ? (
           <Link href={link}>
-            <span className="absolute -inset-y-2 -inset-x-6 z-20" />
+            <span className="absolute -inset-x-6 -inset-y-2 z-20" />
             <span className="relative z-10">{title}</span>
           </Link>
         ) : (
@@ -78,7 +78,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-y-2 -inset-x-6 scale-95 bg-stone-50/50 opacity-0 group-hover:scale-100 group-hover:opacity-100" />
+        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-stone-50/50 opacity-0 group-hover:scale-100 group-hover:opacity-100" />
       )}
     </div>
   );

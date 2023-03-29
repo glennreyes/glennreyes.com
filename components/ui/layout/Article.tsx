@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { Divider } from '../elements/Divider';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
 import { Container } from './Container';
@@ -48,3 +49,18 @@ function ArticleBody(props: ArticleBodyProps) {
 }
 
 Article.Body = ArticleBody;
+
+type ArticleFooterProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
+
+function ArticleFooter(props: ArticleFooterProps) {
+  return (
+    <>
+      <div className="mx-auto max-w-[70ch]">
+        <Divider />
+      </div>
+      <footer className="mx-auto max-w-[70ch]" {...props} />
+    </>
+  );
+}
+
+Article.Footer = ArticleFooter;
