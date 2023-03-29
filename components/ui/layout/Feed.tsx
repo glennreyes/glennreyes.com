@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../elements/Link';
+import { H4 } from '../typography/H4';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   appearance?: 'grid' | 'list';
@@ -60,7 +61,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
       ) : (
         date !== undefined && <DateDisplay className={metaClasses} value={date} />
       )}
-      <h3 className="text-lg/tight font-semibold">
+      <H4 as="h3" className="text-lg/tight font-semibold">
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-4 z-20 md:-inset-6" />
@@ -69,7 +70,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         ) : (
           title
         )}
-      </h3>
+      </H4>
       {typeof description === 'string' ? (
         <p className={descriptionClasses}>{description}</p>
       ) : (

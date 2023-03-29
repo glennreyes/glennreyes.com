@@ -65,7 +65,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       ) : (
         <DateDisplay className={metaClasses} value={date} />
       )}
-      <h3 className="text-sm font-medium">
+      <h3 className="text-sm font-medium tracking-tight">
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-x-6 -inset-y-2 z-20" />
