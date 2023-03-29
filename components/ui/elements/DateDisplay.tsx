@@ -13,7 +13,7 @@ export function DateDisplay({ format: formatString, value, ...props }: DateDispl
 
   const date = value instanceof Date ? value : new Date(value);
   const dateTime = props.dateTime ?? format(date, 'yyyy-MM-dd');
-  const text = format(date, formatString ?? (isThisYear(date) ? 'MMMM dd' : 'MMMM dd, yyyy'));
+  const text = format(date, formatString ?? (isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy'));
 
   return (
     <time dateTime={dateTime} {...props}>
