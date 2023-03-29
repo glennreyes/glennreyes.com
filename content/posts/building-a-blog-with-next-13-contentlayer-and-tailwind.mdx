@@ -1,0 +1,308 @@
+---
+title: Building a blog with Next 13, Contentlayer and Tailwind
+excerpt: In this post, we'll build a blog with Next.js 13 new `app` directory, Contentlayer and Tailwind.
+publishedAt: 2023-01-02
+---
+
+[Next](https://nextjs.org) has been rapidly gaining popularity as a framework for building web applications and websites. With [Next 13](https://nextjs.org/blog/next-13), it's now possible to use [React Server Components](https://react.dev/server-components) via the [`app/` directory](https://beta.nextjs.org/docs)
+
+In this blog post, we are going to build a fully customizable blog with Next 13 and the `app/` directory, [Contentlayer](https://contentlayer.dev) for creating the blog posts in MDX, and [Tailwind CSS](https://tailwindcss.com).
+
+## Getting Started
+
+First, we need to create a new Next application. You can use [`pnpm`](https://pnpm.io), [`npm`](https://nodejs.org), or [`yarn`](https://classic.yarnpkg.com). For instance, if you prefer to use `pnpm`, the command to create a new Next application is:
+
+```bash
+pnpm create next-app my-next-blog
+```
+
+When prompted, select to use following configuration:
+
+1. TypeScript: **Yes**
+2. ESLint: **Yes**
+3. `src/` directory: **No**
+4. experimental `app/` directory: **Yes**
+5. `import` alias: `~/*`
+
+After creating the Next application, you can navigate into the `my-next-blog/` directory and start the development server:
+
+```bash
+cd my-next-blog
+pnpm dev
+```
+
+You should see the following output in your terminal:
+
+```bash
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+```
+
+## Exploring the App Router
+
+{/* TODO */}
+
+Visit the [Next documentation](https://beta.nextjs.org/docs) to learn more about the `app/` directory.
+
+## Setting up the blog with Contentlayer
+
+Now that we have our Next application set up, we can start building our blog. Contentlayer is a great tool to use in a Next.js application, as it allows you to write content in Markdown and use it to generate pages.
+
+To get started, we need to install Contentlayer and its dependencies. You can do this by running the following command in your terminal:
+
+```bash
+pnpm add contentlayer next-contentlayer
+```
+
+To hook up Contentlayer with Next.js, we need to wrap our Next config in `next.config.js` with the `withContentlayer` function from `next-contentlayer`:
+
+```js title="next.config.js"
+const { withContentlayer } = require('next-contentlayer');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
+};
+
+module.exports = withContentlayer(nextConfig);
+```
+
+Then we need to include the auto-generated `.contentlayer/generated` folder and add an alias in our `tsconfig.json` file:
+
+```json title="tsconfig.json" {24,27}
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "~/*": ["./*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".contentlayer/generated"],
+  "exclude": ["node_modules"]
+}
+```
+
+Finally, we create a `contentlayer.config.ts` file in the root of our project. This file will contain the configuration for Contentlayer. Here's an example configuration file:
+
+```ts title="contentlayer.config.ts" {6}
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+
+export const Post = defineDocumentType(() => ({
+  name: 'Post',
+  filePathPattern: `**/*.mdx`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      description: 'The title of the post',
+      required: true,
+    },
+    date: {
+      type: 'date',
+      description: 'The date of the post',
+      required: true,
+    },
+  },
+  computedFields: {
+    url: {
+      type: 'string',
+      resolve: (post) => `/posts/${post._raw.flattenedPath}`,
+    },
+  },
+}));
+
+export default makeSource({
+  contentDirPath: 'posts',
+  documentTypes: [Post],
+});
+```
+
+Note that we set the `contentType` to `mdx` in the `Post` document type. This tells Contentlayer to parse the Markdown files as MDX, which allows us to use React components in our blog posts.
+
+## Creating the blog content in MDX
+
+Next, we will create a `posts/` directory in the root of our project to store our blog posts. We can create a sample blog post in Markdown format, like so:
+
+```md title="posts/my-first-blog-post.mdx"
+---
+title: My First Blog Post
+date: 2021-10-01
+---
+
+# Welcome to my blog!
+
+This is my first blog post, powered by Next, Contentlayer, MDX, and Tailwind. With these tools, I can easily create and publish blog posts that are optimized for performance and accessibility.
+
+Stay tuned for more updates!
+```
+
+We can use this Markdown file to create a new blog post page. Contentlayer will automatically parse the Markdown file and generate a JavaScript object with the metadata and content of the blog post. We can then use this object to render the blog post page.
+
+## Creating the blog feed
+
+Once we have our blog posts created in the `posts/` directory, we can create a blog feed to display a list of all the posts. We can do this by creating a new page `/app/posts/page.tsx` in our `app/` directory and importing the `allPosts` from the generated Contentlayer folder. This returns an array of all the blog posts, which we can then map over to render a list of blog posts.
+
+Here's an example code snippet for creating a blog feed:
+
+```tsx title="app/posts/page.tsx"
+import { allPosts } from 'contentlayer/generated';
+
+export default function BlogFeed() {
+  return (
+    <div>
+      {allPosts.map((post) => (
+        <div key={post.slug}>
+          <h2>{post.title}</h2>
+          <p>{post.date}</p>
+          <p>{post.excerpt}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+```
+
+## Creating the blog page
+
+Now that we have our blog feed, we can create a page for each individual blog post. We can do this by creating a new page in our `app` directory and creating a `getPostBySlug` function from Contentlayer.
+
+```tsx
+// TODO `getPostBySlug`
+```
+
+This function returns the blog post object for the given slug, which we can then use to render the blog post page.
+
+Here's an example code snippet for creating a blog post page:
+
+```tsx title="app/posts/[slug]/page.tsx"
+// TODO: app/posts/[slug]/page.tsx
+```
+
+### Generating static paths
+
+TODO `generateStaticParams`
+
+## Set up Tailwind CSS
+
+To set up Tailwind CSS in our Next.js project, we need to follow a few steps:
+
+1. Install Tailwind CSS and its dependencies:
+
+```bash
+pnpm add -D tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+2. Create a configuration file for Tailwind CSS:
+
+```bash
+pnpx tailwindcss init --ts -p
+```
+
+This will create a `tailwind.config.ts` file in the root of our project, where we can configure the various options for Tailwind. The initial configuration file should look something like this:
+
+```ts title="tailwind.config.ts"
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+3. Create a `postcss.config.js` file in the root of our project:
+
+```bash
+touch postcss.config.js
+```
+
+4. Add the following code to the `postcss.config.js` file:
+
+```js title="postcss.config.js"
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+```
+
+Import the Tailwind CSS styles in our application. We can do this by creating a new file called `app/globals.css` and adding the following code to it:
+
+```css title="app/globals.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Adding Typographic styles with Tailwind CSS Typography plugin
+
+In addition to the basic styles provided by Tailwind CSS, we can use the Tailwind CSS Typography plugin to add typographic styles to our blog.The plugin provides a set of typography-related utilities that we can use to easily create beautiful and readable typography.
+
+To add the Tailwind CSS Typography plugin to our project, we need to follow these steps:
+
+1. Install the Tailwind CSS Typography plugin:
+
+```bash
+pnpm add -D @tailwindcss/typography
+```
+
+2. Add the plugin to the `tailwind.config.ts` file:
+
+```ts title="tailwind.config.ts" {9}
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: []
+    require('@tailwindcss/typography'),
+  ]
+} satisfies Config;
+```
+
+3. We can now use the typography utilities in our CSS. For example, we can use the `prose` class to add typography styles to a block of text:
+
+```tsx title="app/posts/[slug]/page.tsx"
+<article className="prose">
+  <MDXContent code={code} />
+</article>
+```
+
+This will apply a set of typography styles to the content inside the `div` element, such as font size, line height, and margins. We can customize the typography styles by configuring the plugin in our `tailwind.config.ts` file.
+
+With the Tailwind CSS Typography plugin, we can easily add beautiful typography to our blog without having to write any custom CSS. This is really all we need to do for creating a consistent and professional-looking blog with minimal effort.
+
+## Recap
+
+We have learned how to build a blog with Next.js 13, Contentlayer, and Tailwind CSS. We started by setting up a new Next.js application and installing the necessary dependencies. We then used Contentlayer to create blog posts in MDX format and generate blog pages.
+
+We also set up Tailwind CSS and used its utility classes to style our components. Additionally, we learned how to use the Tailwind CSS Typography plugin to add beautiful and readable typography to our blog.
+
+By following this tutorial, we now have a fully functional blog with a great user experience. We can easily add new blog posts by creating new MDX files and customize the design of our blog by tweaking the Tailwind CSS configuration.
+
+I hope that this tutorial has been helpful in getting you started with building your own blog with Next.js, Contentlayer, and Tailwind CSS.

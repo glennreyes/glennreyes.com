@@ -1,4 +1,69 @@
 ---
 title: Fully type-safe Polymorphic React components
-excerpt: A guide to creating type-safe polymorphic React components
+excerpt: As a React developer, you might be familiar with the concept of polymorphism - the ability of a component to accept different types of props and render different content based on those props. While polymorphism can make components more flexible and reusable, it can also introduce the risk of type errors and runtime bugs.
+publishedAt: 2023-02-20
 ---
+
+As a React developer, you might be familiar with the concept of polymorphism - the ability of a component to accept different types of props and render different content based on those props. While polymorphism can make components more flexible and reusable, it can also introduce the risk of type errors and runtime bugs. In this blog post, we'll explore how to create fully type-safe polymorphic React components, and the benefits and challenges that come with them.
+
+## Benefits of Fully Type-Safe Polymorphic React Components
+
+The main benefit of fully type-safe polymorphic React components is increased type safety and reliability. By providing compile-time guarantees, you can catch errors earlier in the development process and reduce the risk of runtime bugs. Let's take a look at an example.
+
+Consider the following simple polymorphic component:
+
+```tsx
+type PropsWithText = { text: string };
+type PropsWithChildren = { children: React.ReactNode };
+
+type Props = PropsWithText | PropsWithChildren;
+
+function PolymorphicComponent(props: Props) {
+  if ('text' in props) {
+    return <div>{props.text}</div>;
+  } else {
+    return <div>{props.children}</div>;
+  }
+}
+```
+
+This component can accept either a `text` prop or a `children` prop, and render different content based on which prop is provided. However, it's not fully type-safe. For example, if we accidentally pass a prop with the wrong type, we won't catch the error until runtime:
+
+```tsx
+<PolymorphicComponent text={123} /> // Compiles without error, but causes a runtime error
+```
+
+Now let's make our component fully type-safe by using TypeScript's generics feature:
+
+```tsx
+type PolymorphicProps<T> = { [K in keyof T]: T[K] };
+
+type PropsWithText = { text: string };
+type PropsWithChildren = { children: React.ReactNode };
+
+type Props = PolymorphicProps<PropsWithText | PropsWithChildren>;
+
+function PolymorphicComponent(props: Props) {
+  if ('text' in props) {
+    return <div>{props.text}</div>;
+  } else {
+    return <div>{props.children}</div>;
+  }
+}
+```
+
+In this example, we've created a new `PolymorphicProps` type that takes a generic type parameter `T` and returns an object type with the same keys as `T`, but with the values of each key set to `T[K]`. This effectively makes our component fully type-safe. If we try to pass a prop with the wrong type, we'll get a compile-time error:
+
+```tsx
+<PolymorphicComponent text={123} /> // Type error: 'number' is not assignable to type 'string'
+```
+
+## Challenges of Fully Type-Safe Polymorphic React Components
+
+While fully type-safe polymorphic React components provide increased type safety and reliability, they also come with some challenges. One of the main challenges is that they can be more complex and verbose than non-polymorphic components. The generic type parameter and the PolymorphicProps type can be confusing for developers who are not familiar with TypeScript's generics feature.
+
+Another challenge is that implementing fully type-safe polymorphism can be difficult, especially for more complex components. It can take some trial and error to get the types right, and it's important to test thoroughly to ensure that there are no runtime bugs.
+
+## Conclusion
+
+Fully type-safe polymorphic React components provide increased type safety and reliability, making it easier to catch errors earlier in the development process and reduce the risk of runtime bugs. While they can be more complex and verbose than non-polymorphic components, the benefits they provide make them a valuable technique to
