@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Inter, Roboto_Mono } from 'next/font/google';
+import { Roboto_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const mono = Roboto_Mono({
@@ -8,8 +9,8 @@ const mono = Roboto_Mono({
   weight: 'variable',
 });
 
-const sans = Inter({
-  subsets: ['latin'],
+const sans = localFont({
+  src: '../../../assets/fonts/Inter.var.woff2',
   variable: '--font-sans',
   weight: 'variable',
 });
