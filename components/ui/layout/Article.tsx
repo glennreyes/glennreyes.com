@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
@@ -9,13 +8,13 @@ interface ArticleProps extends Omit<ComponentPropsWithoutRef<'article'>, 'classN
 }
 
 export function Article({ back, children, ...props }: ArticleProps) {
-  const classes = clsx((back === undefined || back === null) && 'space-y-12');
-
   return (
-    <Container as="article" className={classes} {...props}>
+    <Container as="article" className="space-y-6 lg:space-y-0" {...props}>
       {back !== undefined && back !== null ? (
         <>
-          <div className="sticky top-20">{back}</div>
+          <div className="lg:sticky lg:top-20">
+            <div className="prose prose-stone mx-auto lg:absolute">{back}</div>
+          </div>
           <div className="space-y-12">{children}</div>
         </>
       ) : (
