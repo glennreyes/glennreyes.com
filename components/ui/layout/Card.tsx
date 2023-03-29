@@ -3,8 +3,8 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../elements/Link';
 
-type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
-  as?: Extract<TElementType, 'article' | 'div'>;
+export type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
+  as?: Extract<TElementType, 'article' | 'div' | 'section'>;
 };
 
 export function Card<TElementType extends ElementType>({ as, ...props }: CardProps<TElementType>) {

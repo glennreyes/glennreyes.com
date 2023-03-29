@@ -5,7 +5,6 @@ import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
 import { List } from '../ui/layout/List';
-import { Section } from '../ui/layout/Section';
 import { H4 } from '../ui/typography/H4';
 
 export async function Appearances() {
@@ -34,7 +33,7 @@ export async function Appearances() {
   const past = events.filter((event) => event.startDate <= today);
 
   return (
-    <Section>
+    <section className="grid gap-6">
       <H4 as="h2">Appearances</H4>
       <Card>
         <div className="grid gap-8">
@@ -74,6 +73,6 @@ export async function Appearances() {
           </Button>
         </div>
       </Card>
-    </Section>
+    </section>
   );
 }

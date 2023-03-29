@@ -7,7 +7,7 @@ import { H4 } from '../ui/typography/H4';
 
 export function AboutAuthor() {
   return (
-    <Card>
+    <Card as="section">
       <Card.Body>
         <div className="grid items-center gap-6 sm:flex">
           <Link className="flex-none rounded-full" href="/about">

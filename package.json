@@ -13,6 +13,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"commonjs\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@giscus/react": "^2.2.8",
     "@heroicons/react": "^2.0.16",
     "@prisma/client": "^4.12.0",
     "clsx": "^1.2.1",

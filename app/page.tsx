@@ -1,7 +1,7 @@
 import { Appearances } from '~/components/home/Appearances';
 import { Hero } from '~/components/home/Hero';
-import { Newsletter } from '~/components/home/Newsletter';
 import { Posts } from '~/components/home/Posts';
+import { Newsletter } from '~/components/newsletter/Newsletter';
 import { Content } from '~/components/ui/layout/Content';
 
 export const revalidate = 3600;
