@@ -15,8 +15,8 @@ export function Navbar(props: NavbarProps) {
     <header className="bg-white-50/95 supports-[backdrop-filter]:bg-white-50/50 sticky top-0 z-30 supports-[backdrop-filter]:backdrop-blur-md">
       <Container className="flex items-center gap-2 md:gap-4">
         <div className="flex flex-1">
-          <Link className="flex-none rounded-full" href="/">
-            <Image alt={name} className="h-10 w-10 rounded-full border-2 border-stone-200" src={photo} />
+          <Link className="flex-none rounded-full border border-stone-200" href="/">
+            <Image alt={name} className="h-10 w-10 rounded-full" src={photo} />
           </Link>
         </div>
         <nav className="flex flex-1 gap-2 py-4 md:justify-center md:gap-4" {...props} />
