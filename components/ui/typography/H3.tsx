@@ -7,7 +7,7 @@ type H3Props<TElementType extends ElementType> = ComponentPropsWithoutRef<TEleme
 
 export function H3<TElementType extends ElementType>({ as, className, ...props }: H3Props<TElementType>) {
   const Component = as ?? 'h3';
-  const classes = twMerge('text-xl font-semibold', className);
+  const classes = twMerge('text-xl font-semibold tracking-tight', className);
 
   return <Component className={classes} {...props} />;
 }
