@@ -18,8 +18,8 @@ export function NavbarAvatar({ children }: NavbarAvatarProps) {
 
   return (
     <Transition
-      enter="transition delay-150"
-      enterFrom="opacity-0 scale-90 -translate-y-1/2"
+      enter="transition delay-100"
+      enterFrom="opacity-0 scale-90 translate-y-1/4"
       enterTo="opacity-100"
       leave="transition"
       leaveFrom="opacity-100"
