@@ -14,7 +14,7 @@ export function Newsletter({
 }: NewsletterProps) {
   return (
     <Card as="section">
-      <div className="grid gap-8">
+      <div className="grid max-w-md gap-8">
         <Card.Body>
           <H4 as="h2">{title}</H4>
           <p className="text-sm text-slate-500">{children}</p>
