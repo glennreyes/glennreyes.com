@@ -1,8 +1,11 @@
-import type { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export function useIsActivePathname(href: LinkProps['href']) {
+export function useIsActivePathname(path: string) {
   const pathname = usePathname();
 
-  return pathname === (typeof href === 'string' ? href : href.pathname);
+  if (path === '/') {
+    return pathname === path;
+  }
+
+  return pathname.startsWith(path);
 }

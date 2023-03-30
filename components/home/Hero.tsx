@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <Container as="section" className="grid gap-8 py-8 lg:flex">
       <HeroAvatar>
-        <Avatar className="border-4 border-slate-200" />
+        <Avatar className="border-4 border-slate-200" priority />
       </HeroAvatar>
       <div className="grid gap-8">
         <div>

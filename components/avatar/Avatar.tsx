@@ -28,7 +28,7 @@ interface AvatarProps
 
 export function Avatar({ className, size = 40, ...props }: AvatarProps) {
   const { className: sizeClasses, ...sizeAttributes } = sizes[size];
-  const classes = twMerge('rounded-full', sizeClasses, className);
+  const classes = twMerge('rounded-full [view-transition-name:avatar]', sizeClasses, className);
 
   return <Image alt={name} className={classes} placeholder="blur" src={photo} {...sizeAttributes} {...props} />;
 }

@@ -6,9 +6,12 @@ type ActionLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, 'className'>;
 
 export function ActionLink({ children, ...props }: ActionLinkProps) {
   return (
-    <Link className="inline-flex items-center gap-1 font-semibold text-teal-500 hover:text-teal-600" {...props}>
+    <Link
+      className="group inline-flex items-center gap-0.5 font-semibold text-teal-500 transition hover:text-teal-600"
+      {...props}
+    >
       {children}
-      <ChevronRightIcon aria-hidden className="h-5 w-5" />
+      <ChevronRightIcon aria-hidden className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
     </Link>
   );
 }
