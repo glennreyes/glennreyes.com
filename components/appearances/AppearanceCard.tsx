@@ -4,10 +4,10 @@ import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
 import { DateDisplay } from '../ui/elements/DateDisplay';
 import { Divider } from '../ui/elements/Divider';
-import { Link } from '../ui/elements/Link';
 import { TagCloud } from '../ui/elements/TagCloud';
 import { YouTube } from '../ui/elements/YouTube';
 import { Card } from '../ui/layout/Card';
+import { InlineLink } from '../ui/link/InlineLink';
 import { H3 } from '../ui/typography/H3';
 
 interface AppearanceCardProps {
@@ -81,9 +81,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                       <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <Link className="text-slate-950 underline" href={slides}>
-                        View Slides
-                      </Link>
+                      <InlineLink href={slides}>View Slides</InlineLink>
                     </dd>
                   </div>
                 )}
@@ -94,9 +92,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                       <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <Link className="text-slate-950 underline" href={recording}>
-                        Watch Recording
-                      </Link>
+                      <InlineLink href={recording}>Watch Recording</InlineLink>
                     </dd>
                   </div>
                 )}

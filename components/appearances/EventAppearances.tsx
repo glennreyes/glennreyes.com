@@ -3,13 +3,13 @@ import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
-import { ActionLink } from '../ui/elements/ActionLink';
 import { Badge } from '../ui/elements/Badge';
 import { DateDisplay } from '../ui/elements/DateDisplay';
 import { Divider } from '../ui/elements/Divider';
-import { Link } from '../ui/elements/Link';
 import { YouTube } from '../ui/elements/YouTube';
 import { Card } from '../ui/layout/Card';
+import { ActionLink } from '../ui/link/ActionLink';
+import { InlineLink } from '../ui/link/InlineLink';
 import { MDXRemoteContent } from '../ui/mdx/MDXRemoteContent';
 import { H2 } from '../ui/typography/H2';
 
@@ -98,9 +98,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <Link className="text-slate-950 underline" href={slides}>
-                        View Slides
-                      </Link>
+                      <InlineLink href={slides}>View Slides</InlineLink>
                     </dd>
                   </div>
                 )}
@@ -111,9 +109,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <Link className="text-slate-950 underline" href={recording}>
-                        Watch Recording
-                      </Link>
+                      <InlineLink href={recording}>Watch Recording</InlineLink>
                     </dd>
                   </div>
                 )}

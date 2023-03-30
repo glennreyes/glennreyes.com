@@ -1,7 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
-import { Link } from '~/components/ui/elements/Link';
+import { InlineLink } from '~/components/ui/link/InlineLink';
 import { H1 } from '~/components/ui/typography/H1';
 import { H2 } from '~/components/ui/typography/H2';
 import { H3 } from '~/components/ui/typography/H3';
@@ -25,14 +25,7 @@ export const components: MDXComponents = {
     </figure>
   ),
   Lead,
-  a: ({ href, ...props }) =>
-    href ? (
-      <Link
-        className="decoration-teal-200 decoration-2 underline-offset-4 transition hover:text-slate-600 hover:decoration-teal-300 focus-visible:text-slate-600 focus-visible:no-underline"
-        href={href}
-        {...props}
-      />
-    ) : null,
+  a: ({ href, ...props }) => (href ? <InlineLink href={href} {...props} /> : null),
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {

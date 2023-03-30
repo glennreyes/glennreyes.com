@@ -1,5 +1,5 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/solid';
-import { Link } from '../ui/elements/Link';
+import { Link } from '../ui/link/Link';
 
 export function BackLink() {
   return (

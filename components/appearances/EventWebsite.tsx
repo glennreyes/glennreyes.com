@@ -1,6 +1,6 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import type { Event } from '@prisma/client';
-import { Link } from '../ui/elements/Link';
+import { Link } from '../ui/link/Link';
 
 type EventWebsiteProps = Pick<Event, 'url'>;
 

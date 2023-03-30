@@ -4,8 +4,8 @@ import type { LinkProps } from 'next/link';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import photo from '~/assets/images/photo.jpg';
 import { name } from '~/lib/constants';
-import { Link } from '../ui/elements/Link';
 import { Container } from '../ui/layout/Container';
+import { Link } from '../ui/link/Link';
 import { NavbarBorder } from './NavbarBorder';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'nav'>, 'className'>;

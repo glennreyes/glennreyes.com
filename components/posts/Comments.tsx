@@ -1,6 +1,6 @@
 import { email, twitter } from '~/lib/constants';
-import { Link } from '../ui/elements/Link';
 import { Card } from '../ui/layout/Card';
+import { Link } from '../ui/link/Link';
 import { H4 } from '../ui/typography/H4';
 import { Giscus } from './Giscus';
 

@@ -1,6 +1,6 @@
 import { allPosts } from '~/lib/posts';
-import { ActionLink } from '../ui/elements/ActionLink';
 import { Feed } from '../ui/layout/Feed';
+import { ActionLink } from '../ui/link/ActionLink';
 
 export function Posts() {
   const posts = allPosts.slice(0, 4);

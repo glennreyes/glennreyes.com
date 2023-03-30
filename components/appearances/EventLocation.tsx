@@ -1,7 +1,7 @@
 import { MapPinIcon } from '@heroicons/react/24/solid';
 import type { Location } from '@prisma/client';
 import { composePlaceByLocation } from '~/lib/place';
-import { Link } from '../ui/elements/Link';
+import { Link } from '../ui/link/Link';
 
 interface EventLocationProps {
   location: Pick<Location, 'address' | 'address' | 'city' | 'country' | 'name' | 'state' | 'zip'>;

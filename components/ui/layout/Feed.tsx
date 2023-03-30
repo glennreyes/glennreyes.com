@@ -2,7 +2,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
-import { Link } from '../elements/Link';
+import { Link } from '../link/Link';
 import { H4 } from '../typography/H4';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
