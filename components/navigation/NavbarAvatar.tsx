@@ -12,15 +12,19 @@ export function NavbarAvatar({ children }: NavbarAvatarProps) {
   const { isInView } = useContext(Intersection);
   const isHome = useIsActivePathname('/');
 
+  if (!isHome) {
+    return <>{children}</>;
+  }
+
   return (
     <Transition
-      enter="transition"
-      enterFrom="opacity-0 scale-90"
+      enter="transition delay-200"
+      enterFrom="opacity-0 scale-90 -translate-y-1/2"
       enterTo="opacity-100"
       leave="transition"
       leaveFrom="opacity-100"
       leaveTo="opacity-0 scale-90"
-      show={!(isHome && isInView)}
+      show={!isInView}
     >
       {children}
     </Transition>
