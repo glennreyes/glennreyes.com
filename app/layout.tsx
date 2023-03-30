@@ -6,6 +6,7 @@ import faviconIco from '~/assets/favicon/favicon.ico';
 import faviconPng from '~/assets/favicon/favicon.png';
 import { Footer } from '~/components/footer/Footer';
 import { Navbar } from '~/components/navigation/Navbar';
+import { Providers } from '~/components/providers/Providers';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
@@ -31,14 +32,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html>
       <head />
       <Body>
-        <Navbar>
-          <Navbar.Link href="/about">About</Navbar.Link>
-          <Navbar.Link href="/posts">Posts</Navbar.Link>
-          <Navbar.Link href="/appearances">Appearances</Navbar.Link>
-          <Navbar.Link href="/talks">Talks</Navbar.Link>
-          <Navbar.Link href="/workshops">Workshops</Navbar.Link>
-        </Navbar>
-        <Main>{children}</Main>
+        <Providers>
+          <Navbar>
+            <Navbar.Link href="/about">About</Navbar.Link>
+            <Navbar.Link href="/posts">Posts</Navbar.Link>
+            <Navbar.Link href="/appearances">Appearances</Navbar.Link>
+            <Navbar.Link href="/talks">Talks</Navbar.Link>
+            <Navbar.Link href="/workshops">Workshops</Navbar.Link>
+          </Navbar>
+          <Main>{children}</Main>
+        </Providers>
         <Footer />
       </Body>
     </Html>

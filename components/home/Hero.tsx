@@ -1,19 +1,21 @@
-import Image from 'next/image';
-import photo from '~/assets/images/photo.jpg';
 import { GitHub } from '~/icons/GitHub';
 import { Instagram } from '~/icons/Instagram';
 import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
 import { description, github, instagram, linkedin, name, twitter } from '~/lib/constants';
+import { Avatar } from '../avatar/Avatar';
 import { Container } from '../ui/layout/Container';
 import { SocialLink } from '../ui/social/SocialLink';
 import { SocialList } from '../ui/social/SocialList';
 import { H1 } from '../ui/typography/H1';
+import { HeroAvatar } from './HeroAvatar';
 
 export function Hero() {
   return (
     <Container as="section" className="grid gap-8 py-8 lg:flex">
-      <Image alt={name} className="h-36 w-36 rounded-full border-4 border-slate-200" src={photo} />
+      <HeroAvatar>
+        <Avatar className="border-4 border-slate-200" />
+      </HeroAvatar>
       <div className="grid gap-8">
         <div>
           <p className="font-medium">Hello, I'm</p>
