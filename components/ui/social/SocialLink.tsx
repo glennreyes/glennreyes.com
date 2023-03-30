@@ -8,7 +8,7 @@ interface SocialLinkProps extends Omit<LinkProps, 'className'> {
 
 export function SocialLink({ icon: Icon, ...props }: SocialLinkProps) {
   return (
-    <Link className="rounded-full p-2" {...props}>
+    <Link className="rounded-full p-2 text-slate-500" {...props}>
       <Icon aria-hidden className="h-8 w-8" />
     </Link>
   );
