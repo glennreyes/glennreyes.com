@@ -15,7 +15,7 @@ export function Navbar(props: NavbarProps) {
       <Container className="flex items-center gap-2 md:gap-4">
         <div className="flex flex-1">
           <NavbarAvatar>
-            <Link className="block rounded-full" href="/">
+            <Link className="block flex-none rounded-full" href="/">
               <Avatar className="border border-slate-200" size={10} />
             </Link>
           </NavbarAvatar>
