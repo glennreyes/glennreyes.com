@@ -78,7 +78,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50/50 opacity-0 group-hover:scale-100 group-hover:opacity-100" />
+        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
       )}
     </div>
   );
