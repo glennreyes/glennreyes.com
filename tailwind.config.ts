@@ -9,6 +9,7 @@ export default {
     './icons/**/*.{css,ts,tsx}',
     './lib/**/*.{css,ts,tsx}',
   ],
+  darkMode: 'class',
   future: {
     hoverOnlyWhenSupported: true,
   },

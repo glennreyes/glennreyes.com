@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
 import { Page } from '~/components/ui/layout/Page';
 import { getAllEvents } from '~/lib/events';
@@ -6,7 +5,7 @@ import { composeTitle } from '~/lib/metadata';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata = {
   title: composeTitle('Appearances'),
 };
 

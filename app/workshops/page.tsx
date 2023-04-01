@@ -1,11 +1,10 @@
-import type { Metadata } from 'next';
 import { Feed } from '~/components/ui/layout/Feed';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { composeTitle } from '~/lib/metadata';
 import { getAllWorkshops } from '~/lib/workshops';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: composeTitle('Posts'),
 };
 

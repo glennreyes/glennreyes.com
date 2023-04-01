@@ -3,8 +3,9 @@
 import { Listbox } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { useTheme } from 'next-themes';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Theme = 'dark' | 'light' | 'system';
 interface ThemeOption {
@@ -24,13 +25,29 @@ const themes: Record<Theme, Pick<ThemeOption, 'icon' | 'label'>> = {
   system: { icon: ComputerDesktopIcon, label: 'System' },
 };
 
+function isTheme(value: string | undefined): value is Theme {
+  return value === 'dark' || value === 'light' || value === 'system';
+}
+
 interface ThemeSwitchProps {
   native?: boolean;
 }
 
 export function ThemeSwitch({ native }: ThemeSwitchProps) {
-  const [theme, setTheme] = useState<Theme>('light');
-  const { icon: Icon, label } = themes[theme];
+  const { theme: currentTheme, setTheme, resolvedTheme: currentResolvedTheme } = useTheme();
+  const theme = isTheme(currentTheme) ? currentTheme : 'system';
+  const resolvedTheme = isTheme(currentResolvedTheme) ? currentResolvedTheme : 'light';
+  const { label } = themes[theme];
+  const { icon: Icon } = themes[resolvedTheme];
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   if (native) {
     return (
@@ -67,14 +84,14 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
         as="ul"
         className="absolute right-0 top-full mt-2 grid gap-2 rounded-xl border border-slate-100 p-4"
       >
-        {options.map((option) => (
+        {options.map(({ icon: CurrentIcon, ...option }) => (
           <Listbox.Option
             as="li"
             className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-800"
             key={option.value}
             value={option.value}
           >
-            <option.icon aria-hidden className="h-6 w-6 text-slate-400" />
+            <CurrentIcon aria-hidden className="h-6 w-6 text-slate-400" />
             {option.label}
           </Listbox.Option>
         ))}
