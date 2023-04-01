@@ -64,7 +64,7 @@ export function Menu({ children, ...props }: MenuProps) {
                 <div className="md:hidden">
                   <Divider />
                 </div>
-                <div className="md:hidden">
+                <div className="place-self-start self-start md:hidden">
                   <ThemeSwitch native />
                 </div>
               </Popover.Panel>
