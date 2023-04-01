@@ -29,8 +29,8 @@ export function Menu({ children, ...props }: MenuProps) {
     <Popover as="nav" className="grid items-center">
       {({ close, open }) => {
         const buttonClasses = clsx(
-          open && 'opacity-0',
-          '-mx-2 rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 md:hidden',
+          open ? 'hidden' : 'md:hidden',
+          '-mx-2 rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95',
         );
         const wrapperClasses = clsx(
           open
