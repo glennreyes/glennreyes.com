@@ -43,7 +43,7 @@ type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> 
   description?: string;
   link?: string;
   meta?: ReactNode;
-  title?: string;
+  title: string;
 };
 
 type CardItemProps = CardItemWithDateProps | CardItemWithMetaProps;
