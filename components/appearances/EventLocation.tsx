@@ -1,4 +1,4 @@
-import { MapPinIcon } from '@heroicons/react/24/solid';
+import { MapPinIcon } from '@heroicons/react/24/outline';
 import type { Location } from '@prisma/client';
 import { composePlaceByLocation } from '~/lib/place';
 import { Link } from '../ui/link/Link';
