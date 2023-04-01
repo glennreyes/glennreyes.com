@@ -41,9 +41,7 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
   const { icon: Icon } = themes[resolvedTheme];
 
   const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   if (!mounted) {
     return null;
