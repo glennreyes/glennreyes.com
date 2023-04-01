@@ -5,7 +5,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { useTheme } from 'next-themes';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
-import { useEffect, useState } from 'react';
+import { useMounted } from '~/hooks/useMounted';
 
 type Theme = 'dark' | 'light' | 'system';
 interface ThemeOption {
@@ -34,14 +34,12 @@ interface ThemeSwitchProps {
 }
 
 export function ThemeSwitch({ native }: ThemeSwitchProps) {
+  const mounted = useMounted();
   const { theme: currentTheme, setTheme, resolvedTheme: currentResolvedTheme } = useTheme();
   const theme = isTheme(currentTheme) ? currentTheme : 'system';
   const resolvedTheme = isTheme(currentResolvedTheme) ? currentResolvedTheme : 'light';
   const { label } = themes[theme];
   const { icon: Icon } = themes[resolvedTheme];
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
   if (!mounted) {
     return null;
