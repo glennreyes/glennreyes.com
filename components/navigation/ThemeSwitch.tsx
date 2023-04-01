@@ -3,8 +3,10 @@
 import { Listbox } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
+import { Fragment } from 'react';
 import { useMounted } from '~/hooks/useMounted';
 
 type Theme = 'dark' | 'light' | 'system';
@@ -74,22 +76,33 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
 
   return (
     <Listbox as="div" className="relative grid items-center" onChange={setTheme} value={theme}>
-      <Listbox.Button aria-label="Switch Theme" className="p-2">
+      <Listbox.Button
+        aria-label="Switch Theme"
+        className="rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
+      >
         <Icon aria-hidden className="h-6 w-6 text-slate-500" />
       </Listbox.Button>
       <Listbox.Options
         as="ul"
-        className="absolute right-0 top-full mt-2 grid gap-2 rounded-xl border border-slate-100 bg-white p-4"
+        className="absolute right-0 top-full z-10 mt-2 grid overflow-hidden rounded-xl border border-slate-100 bg-white py-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2"
       >
         {options.map(({ icon: CurrentIcon, ...option }) => (
-          <Listbox.Option
-            as="li"
-            className="flex cursor-pointer items-center gap-3 py-1 text-sm font-semibold text-slate-800"
-            key={option.value}
-            value={option.value}
-          >
-            <CurrentIcon aria-hidden className="h-6 w-6 text-slate-400" />
-            {option.label}
+          <Listbox.Option as={Fragment} key={option.value} value={option.value}>
+            {({ active, selected }) => {
+              const itemClasses = clsx(
+                'flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm font-semibold transition',
+                active && 'bg-slate-50',
+                selected ? 'text-teal-600' : 'text-slate-800',
+              );
+              const iconClasses = clsx('h-6 w-6', selected ? 'text-teal-600' : 'text-slate-400');
+
+              return (
+                <li className={itemClasses}>
+                  <CurrentIcon aria-hidden className={iconClasses} />
+                  {option.label}
+                </li>
+              );
+            }}
           </Listbox.Option>
         ))}
       </Listbox.Options>

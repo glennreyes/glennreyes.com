@@ -28,7 +28,10 @@ export function Menu({ children, ...props }: MenuProps) {
   return (
     <Popover as="nav" className="grid items-center">
       {({ close, open }) => {
-        const buttonClasses = clsx(open && 'opacity-0', 'md:hidden');
+        const buttonClasses = clsx(
+          open && 'opacity-0',
+          '-mx-2 rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 md:hidden',
+        );
         const wrapperClasses = clsx(
           open
             ? 'overflow-y-auto fixed inset-0 z-30 h-screen md:h-auto md:static md:overflow-visible p-4 md:p-0'
@@ -47,8 +50,12 @@ export function Menu({ children, ...props }: MenuProps) {
                 static
                 {...props}
               >
-                <div className="absolute right-4 top-4">
-                  <button aria-label="Close Menu" className="relative p-2 md:hidden" onClick={close}>
+                <div className="absolute right-4 top-4 md:hidden">
+                  <button
+                    aria-label="Close Menu"
+                    className="rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
+                    onClick={close}
+                  >
                     <XMarkIcon aria-hidden className="h-6 w-6 text-slate-500" />
                   </button>
                 </div>

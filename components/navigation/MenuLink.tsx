@@ -16,7 +16,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     isActivePathname
       ? 'md:border-slate-100 bg-gradient-to-b from-transparent to-white/50 text-teal-700/90 supports-[backdrop-filter]:backdrop-blur-md'
       : 'md:border-transparent text-slate-800 hover:text-teal-700/90',
-    'block rounded-full md:border md:px-3 py-2 text-sm font-semibold tracking-tight transition md:active:scale-95',
+    'block rounded-full md:border md:px-3 py-2 text-sm font-semibold tracking-tight transition md:active:scale-95 focus-visible:ring-offset-2',
   );
 
   return (
