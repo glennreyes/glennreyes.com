@@ -6,11 +6,11 @@ import type { ReactNode } from 'react';
 import { useIsActivePathname } from '~/hooks/useIsActivePathname';
 import { Link } from '../ui/link/Link';
 
-interface NavbarLinkProps extends Omit<LinkProps, 'className'> {
+interface NavbarMenuLinkProps extends Omit<LinkProps, 'className'> {
   children: ReactNode;
 }
 
-export function NavbarLink({ children, ...props }: NavbarLinkProps) {
+export function NavbarMenuLink({ children, ...props }: NavbarMenuLinkProps) {
   const isActivePathname = useIsActivePathname(props.href.toString());
   const classes = clsx(
     isActivePathname

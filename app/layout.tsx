@@ -5,6 +5,7 @@ import appleTouchIcon from '~/assets/favicon/apple-touch-icon.png';
 import faviconIco from '~/assets/favicon/favicon.ico';
 import faviconPng from '~/assets/favicon/favicon.png';
 import { Footer } from '~/components/footer/Footer';
+import { Menu } from '~/components/navigation/Menu';
 import { Navbar } from '~/components/navigation/Navbar';
 import { Providers } from '~/components/providers/Providers';
 import { Body } from '~/components/ui/layout/Body';
@@ -34,11 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <Body>
         <Providers>
           <Navbar>
-            <Navbar.Link href="/about">About</Navbar.Link>
-            <Navbar.Link href="/posts">Posts</Navbar.Link>
-            <Navbar.Link href="/appearances">Appearances</Navbar.Link>
-            <Navbar.Link href="/talks">Talks</Navbar.Link>
-            <Navbar.Link href="/workshops">Workshops</Navbar.Link>
+            <Menu />
           </Navbar>
           <Main>{children}</Main>
         </Providers>
