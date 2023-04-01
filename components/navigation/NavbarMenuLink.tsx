@@ -14,9 +14,9 @@ export function NavbarMenuLink({ children, ...props }: NavbarMenuLinkProps) {
   const isActivePathname = useIsActivePathname(props.href.toString());
   const classes = clsx(
     isActivePathname
-      ? 'border-slate-100 bg-gradient-to-b from-transparent to-white/50 text-teal-700/90 supports-[backdrop-filter]:backdrop-blur-md'
-      : 'border-transparent text-slate-800 hover:text-teal-700/90',
-    'rounded-full border px-3 py-2 text-sm font-semibold tracking-tight transition active:scale-95',
+      ? 'md:border-slate-100 bg-gradient-to-b from-transparent to-white/50 text-teal-700/90 supports-[backdrop-filter]:backdrop-blur-md'
+      : 'md:border-transparent text-slate-800 hover:text-teal-700/90',
+    'rounded-full md:border md:px-3 py-2 text-sm font-semibold tracking-tight transition md:active:scale-95',
   );
 
   return (
