@@ -1,51 +1,84 @@
 'use client';
 
-import { Menu } from '@headlessui/react';
-import { ChevronDownIcon, SunIcon } from '@heroicons/react/20/solid';
+import { Listbox } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
+import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { useState } from 'react';
+
+type Theme = 'dark' | 'light' | 'system';
+interface ThemeOption {
+  icon: ComponentType<ComponentPropsWithoutRef<'svg'>>;
+  label: string;
+  value: Theme;
+}
+
+const options: ThemeOption[] = [
+  { icon: SunIcon, label: 'Light', value: 'light' },
+  { icon: MoonIcon, label: 'Dark', value: 'dark' },
+  { icon: ComputerDesktopIcon, label: 'System', value: 'system' },
+];
+const themes: Record<Theme, Pick<ThemeOption, 'icon' | 'label'>> = {
+  dark: { icon: MoonIcon, label: 'Dark' },
+  light: { icon: SunIcon, label: 'Light' },
+  system: { icon: ComputerDesktopIcon, label: 'System' },
+};
 
 interface ThemeSwitchProps {
   native?: boolean;
 }
 
 export function ThemeSwitch({ native }: ThemeSwitchProps) {
-  const [theme, setTheme] = useState<'dark' | 'light' | 'system'>('light');
-  const setDark = () => setTheme('dark');
-  const setLight = () => setTheme('light');
-  const setSystem = () => setTheme('system');
-
-  console.info(theme);
+  const [theme, setTheme] = useState<Theme>('light');
+  const { icon: Icon, label } = themes[theme];
 
   if (native) {
     return (
       <div className="relative flex items-center gap-2 text-sm font-semibold text-slate-800">
-        <SunIcon aria-hidden className="h-6 w-6 text-slate-400" />
-        Light <ChevronDownIcon aria-hidden className="h-4 w-4 text-slate-300" />
-        <select aria-label="Switch Theme" className="absolute inset-0 border-none opacity-0">
-          <option onClick={setLight} value="light">
-            Light
-          </option>
-          <option onClick={setDark} value="dark">
-            Dark
-          </option>
-          <option onClick={setSystem} value="system">
-            System
-          </option>
+        <Icon aria-hidden className="h-6 w-6 text-slate-400" />
+        {label} <ChevronDownIcon aria-hidden className="h-4 w-4 text-slate-300" />
+        <select
+          aria-label="Switch Theme"
+          className="absolute inset-0 border-none opacity-0"
+          onChange={(event) => {
+            const selected = options.find((option) => option.value === event.target.value)?.value;
+
+            if (selected) {
+              setTheme(selected);
+            }
+          }}
+        >
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
         </select>
       </div>
     );
   }
 
   return (
-    <Menu as="div" className="relative grid items-center">
-      <Menu.Button aria-label="Switch Theme" className="p-2">
-        <SunIcon aria-hidden className="h-6 w-6 text-slate-500" />
-      </Menu.Button>
-      <Menu.Items className="absolute right-0 top-full">
-        <Menu.Item>{() => <button onClick={setLight}>Light</button>}</Menu.Item>
-        <Menu.Item>{() => <button onClick={setDark}>Dark</button>}</Menu.Item>
-        <Menu.Item>{() => <button onClick={setSystem}>System</button>}</Menu.Item>
-      </Menu.Items>
-    </Menu>
+    <Listbox as="div" className="relative grid items-center" onChange={setTheme} value={theme}>
+      <Listbox.Button aria-label="Switch Theme" className="p-2">
+        <Icon aria-hidden className="h-6 w-6 text-slate-500" />
+      </Listbox.Button>
+      <Listbox.Options
+        as="ul"
+        className="absolute right-0 top-full mt-2 grid gap-2 rounded-xl border border-slate-100 p-4"
+      >
+        {options.map((option) => (
+          <Listbox.Option
+            as="li"
+            className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-800"
+            key={option.value}
+            value={option.value}
+          >
+            <option.icon aria-hidden className="h-6 w-6 text-slate-400" />
+            {option.label}
+          </Listbox.Option>
+        ))}
+      </Listbox.Options>
+    </Listbox>
   );
 }
