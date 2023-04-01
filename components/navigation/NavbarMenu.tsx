@@ -13,7 +13,7 @@ export function NavbarMenu({ children, ...props }: NavbarMenuProps) {
   return (
     <Popover as="nav" className="grid items-center">
       {({ close, open }) => {
-        const buttonClasses = clsx(open ? 'opacity-0' : 'md:hidden');
+        const buttonClasses = clsx(open && 'opacity-0', 'md:hidden');
         const wrapperClasses = clsx(
           open
             ? 'overflow-y-auto fixed inset-0 z-30 h-screen md:h-auto md:static md:overflow-visible p-4 md:p-0'
@@ -32,13 +32,12 @@ export function NavbarMenu({ children, ...props }: NavbarMenuProps) {
                 static
                 {...props}
               >
-                {/* <Popover.Overlay className="absolute inset-0 bg-slate-900/25 md:bg-transparent" /> */}
-                <div className="absolute right-6 top-6">
-                  <button aria-label="Close Menu" className="relative md:hidden" onClick={close}>
+                <div className="absolute right-4 top-4">
+                  <button aria-label="Close Menu" className="relative p-2 md:hidden" onClick={close}>
                     <XMarkIcon aria-hidden className="h-6 w-6 text-slate-500" />
                   </button>
                 </div>
-                <ul className="grid gap-x-4 gap-y-2 pr-8 md:flex md:p-0">{children}</ul>
+                <ul className="grid gap-x-4 gap-y-2 pr-12 md:flex md:p-0">{children}</ul>
                 <div className="md:hidden">
                   <Divider />
                 </div>

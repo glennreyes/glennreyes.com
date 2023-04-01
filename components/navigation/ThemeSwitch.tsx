@@ -64,6 +64,7 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
               setTheme(selected);
             }
           }}
+          value={theme}
         >
           {options.map((option) => (
             <option key={option.value} value={option.value}>
@@ -82,12 +83,12 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
       </Listbox.Button>
       <Listbox.Options
         as="ul"
-        className="absolute right-0 top-full mt-2 grid gap-2 rounded-xl border border-slate-100 p-4"
+        className="absolute right-0 top-full mt-2 grid gap-2 rounded-xl border border-slate-100 bg-white p-4"
       >
         {options.map(({ icon: CurrentIcon, ...option }) => (
           <Listbox.Option
             as="li"
-            className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-slate-800"
+            className="flex cursor-pointer items-center gap-3 py-1 text-sm font-semibold text-slate-800"
             key={option.value}
             value={option.value}
           >
