@@ -1,9 +1,10 @@
+import { ArrowSmallLeftIcon } from '@heroicons/react/20/solid';
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { BackLink } from '~/components/posts/BackLink';
 import { PostFooter } from '~/components/posts/PostFooter';
 import { DateDisplay } from '~/components/ui/elements/DateDisplay';
+import { IconButton } from '~/components/ui/elements/IconButton';
 import { ReadingTime } from '~/components/ui/elements/ReadingTime';
 import { Article } from '~/components/ui/layout/Article';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
@@ -45,7 +46,7 @@ export default function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <Article back={<BackLink />}>
+    <Article back={<IconButton aria-label="Back To Posts" as="link" href="/posts" icon={ArrowSmallLeftIcon} />}>
       <Article.Header
         lead={post.lead}
         meta={

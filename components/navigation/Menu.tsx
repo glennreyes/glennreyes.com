@@ -4,7 +4,9 @@ import { Popover } from '@headlessui/react';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
+import { Fragment } from 'react';
 import { Divider } from '../ui/elements/Divider';
+import { IconButton } from '../ui/elements/IconButton';
 import { MenuLink } from './MenuLink';
 import { ThemeSwitch } from './ThemeSwitch';
 
@@ -28,10 +30,7 @@ export function Menu({ children, ...props }: MenuProps) {
   return (
     <Popover as="nav" className="grid items-center">
       {({ close, open }) => {
-        const buttonClasses = clsx(
-          open ? 'hidden' : 'md:hidden',
-          '-mx-2.5 rounded-full border border-transparent p-2.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95',
-        );
+        const buttonClasses = clsx(open ? 'hidden' : 'md:hidden', '-mx-2.5');
         const wrapperClasses = clsx(
           open
             ? 'overflow-y-auto fixed inset-0 z-30 h-screen md:h-auto md:static md:overflow-visible p-4 md:p-0'
@@ -40,8 +39,8 @@ export function Menu({ children, ...props }: MenuProps) {
 
         return (
           <>
-            <Popover.Button className={buttonClasses}>
-              <Bars2Icon aria-hidden className="h-6 w-6 text-slate-500" />
+            <Popover.Button as={Fragment}>
+              <IconButton appearance="secondary" aria-label="Open Menu" className={buttonClasses} icon={Bars2Icon} />
             </Popover.Button>
             <div className={wrapperClasses}>
               <Popover.Overlay className="absolute inset-0 bg-slate-900/25 md:static md:bg-transparent" />
@@ -51,13 +50,7 @@ export function Menu({ children, ...props }: MenuProps) {
                 {...props}
               >
                 <div className="absolute right-4 top-4 md:hidden">
-                  <button
-                    aria-label="Close Menu"
-                    className="rounded-full border border-transparent p-2.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
-                    onClick={close}
-                  >
-                    <XMarkIcon aria-hidden className="h-6 w-6 text-slate-500" />
-                  </button>
+                  <IconButton appearance="secondary" aria-label="Close Menu" icon={XMarkIcon} onClick={close} />
                 </div>
                 <ul className="grid gap-2 pr-12 md:flex md:p-0">
                   {links.map((link) => (

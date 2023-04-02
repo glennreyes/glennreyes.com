@@ -3,5 +3,5 @@ import type { ComponentPropsWithoutRef } from 'react';
 export type MainProps = Omit<ComponentPropsWithoutRef<'main'>, 'className'>;
 
 export function Main(props: MainProps) {
-  return <main className="my-16 space-y-16 lg:my-24" {...props} />;
+  return <main className="space-y-16 py-12 lg:py-24" {...props} />;
 }

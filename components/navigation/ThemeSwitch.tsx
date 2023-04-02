@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Fragment } from 'react';
 import { useMounted } from '~/hooks/useMounted';
+import { IconButton } from '../ui/elements/IconButton';
 import { Select } from '../ui/forms/Select';
 
 type Theme = 'dark' | 'light' | 'system';
@@ -69,7 +70,7 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
             </option>
           ))}
         </Select>
-        <div className="pointer-events-none relative inset-0 flex items-center gap-2 rounded-2xl border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-600 transition">
+        <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700">
           <Icon aria-hidden className="h-6 w-6 text-slate-400" />
           {label} <ChevronDownIcon aria-hidden className="h-4 w-4 text-slate-300" />
         </div>
@@ -79,11 +80,8 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
 
   return (
     <Listbox as="div" className="relative grid items-center" onChange={setTheme} value={theme}>
-      <Listbox.Button
-        aria-label="Switch Theme"
-        className="rounded-full border border-transparent p-2.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
-      >
-        <Icon aria-hidden className="h-6 w-6 text-slate-500" />
+      <Listbox.Button as={Fragment}>
+        <IconButton appearance="secondary" aria-label="Switch Theme" icon={Icon} />
       </Listbox.Button>
       <Listbox.Options
         as="ul"

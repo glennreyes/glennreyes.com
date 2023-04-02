@@ -4,9 +4,8 @@ import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
 import { description, github, instagram, linkedin, name, twitter } from '~/lib/constants';
 import { Avatar } from '../avatar/Avatar';
+import { IconButton } from '../ui/elements/IconButton';
 import { Container } from '../ui/layout/Container';
-import { SocialLink } from '../ui/social/SocialLink';
-import { SocialList } from '../ui/social/SocialList';
 import { H1 } from '../ui/typography/H1';
 import { HeroAvatar } from './HeroAvatar';
 
@@ -16,7 +15,7 @@ export function Hero() {
       <HeroAvatar>
         <Avatar className="border-4 border-slate-200" priority />
       </HeroAvatar>
-      <div className="grid gap-8">
+      <div className="grid gap-6">
         <div>
           <p className="font-medium">Hello, I'm</p>
           <div className="flex justify-between gap-4">
@@ -26,20 +25,48 @@ export function Hero() {
             </div>
           </div>
         </div>
-        <SocialList>
-          <SocialList.Item>
-            <SocialLink aria-label="Follow on Twitter" href={`https://twitter.com/${twitter}`} icon={Twitter} />
-          </SocialList.Item>
-          <SocialList.Item>
-            <SocialLink aria-label="Follow on Instagram" href={`https://instagram.com/${instagram}`} icon={Instagram} />
-          </SocialList.Item>
-          <SocialList.Item>
-            <SocialLink aria-label="Follow on GitHub" href={`https://github.com/${github}`} icon={GitHub} />
-          </SocialList.Item>
-          <SocialList.Item>
-            <SocialLink aria-label="Follow on LinkedIn" href={`https://linkedin.com/in/${linkedin}`} icon={LinkedIn} />
-          </SocialList.Item>
-        </SocialList>
+        <ul className="-mx-2.5 flex gap-2">
+          <li>
+            <IconButton
+              appearance="tertiary"
+              aria-label="Follow on Twitter"
+              as="link"
+              href={`https://twitter.com/${twitter}`}
+              icon={Twitter}
+              size={7}
+            />
+          </li>
+          <li>
+            <IconButton
+              appearance="tertiary"
+              aria-label="Follow on Instagram"
+              as="link"
+              href={`https://instagram.com/${instagram}`}
+              icon={Instagram}
+              size={7}
+            />
+          </li>
+          <li>
+            <IconButton
+              appearance="tertiary"
+              aria-label="Follow on GitHub"
+              as="link"
+              href={`https://github.com/${github}`}
+              icon={GitHub}
+              size={7}
+            />
+          </li>
+          <li>
+            <IconButton
+              appearance="tertiary"
+              aria-label="Follow on LinkedIn"
+              as="link"
+              href={`https://linkedin.com/in/${linkedin}`}
+              icon={LinkedIn}
+              size={7}
+            />
+          </li>
+        </ul>
       </div>
     </Container>
   );
