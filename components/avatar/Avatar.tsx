@@ -6,13 +6,13 @@ import { twMerge } from 'tailwind-merge';
 import photo from '~/assets/images/photo.jpg';
 import { name } from '~/lib/constants';
 
-type AvatarSize = 10 | 40;
+type AvatarSize = 11 | 40;
 
 const sizes: Record<AvatarSize, Pick<ComponentPropsWithoutRef<typeof Image>, 'className' | 'height' | 'width'>> = {
-  10: {
-    className: 'h-10 w-10',
-    height: 40,
-    width: 40,
+  11: {
+    className: 'h-11 w-11',
+    height: 44,
+    width: 44,
   },
   40: {
     className: 'h-40 w-40',

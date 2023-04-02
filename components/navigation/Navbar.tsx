@@ -14,12 +14,12 @@ export function Navbar({ children, ...props }: NavbarProps) {
       className="sticky top-0 z-30 bg-white/95 supports-[backdrop-filter]:bg-white/25 supports-[backdrop-filter]:backdrop-blur-md"
       {...props}
     >
-      <Container className="flex gap-2 py-3 md:gap-4">
+      <Container className="flex gap-2 py-1.5 md:gap-4 md:py-3">
         <div className="flex flex-1 shrink-0 items-center">
-          <div className="h-10 w-10">
+          <div className="h-11 w-11">
             <NavbarAvatar>
               <Link className="block rounded-full focus-visible:ring-offset-2" href="/">
-                <Avatar className="border border-slate-200" size={10} />
+                <Avatar className="border border-slate-200" size={11} />
               </Link>
             </NavbarAvatar>
           </div>
