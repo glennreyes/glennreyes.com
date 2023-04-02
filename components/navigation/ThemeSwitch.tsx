@@ -78,7 +78,7 @@ export function ThemeSwitch({ native }: ThemeSwitchProps) {
     <Listbox as="div" className="relative grid items-center" onChange={setTheme} value={theme}>
       <Listbox.Button
         aria-label="Switch Theme"
-        className="rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
+        className="rounded-full border border-transparent p-1.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
       >
         <Icon aria-hidden className="h-6 w-6 text-slate-500" />
       </Listbox.Button>

@@ -30,7 +30,7 @@ export function Menu({ children, ...props }: MenuProps) {
       {({ close, open }) => {
         const buttonClasses = clsx(
           open ? 'hidden' : 'md:hidden',
-          '-mx-2 rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95',
+          '-mx-1.5 rounded-full border border-transparent p-1.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95',
         );
         const wrapperClasses = clsx(
           open
@@ -53,7 +53,7 @@ export function Menu({ children, ...props }: MenuProps) {
                 <div className="absolute right-4 top-4 md:hidden">
                   <button
                     aria-label="Close Menu"
-                    className="rounded-full border border-transparent p-2 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
+                    className="rounded-full border border-transparent p-1.5 transition hover:border-slate-100 focus:outline-none focus-visible:border-slate-100 focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95"
                     onClick={close}
                   >
                     <XMarkIcon aria-hidden className="h-6 w-6 text-slate-500" />
