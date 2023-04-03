@@ -20,7 +20,7 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
   if (title) {
     return (
       <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
-        <div className="md:border-l md:border-slate-100 md:px-8">
+        <div className="md:border-l md:border-slate-100 md:px-8 dark:md:border-slate-800/50">
           <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
@@ -47,8 +47,8 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 
 function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
   const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-slate-500');
-  const metaClasses = clsx(link && 'relative z-10', 'text-slate-400');
+  const descriptionClasses = clsx(link && 'relative z-10', 'text-slate-500 dark:text-slate-400');
+  const metaClasses = clsx(link && 'relative z-10 order-first', 'text-slate-400 dark:text-slate-500');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
@@ -56,12 +56,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
   };
   const content = (
     <>
-      {meta !== undefined ? (
-        <div className={metaClasses}>{meta}</div>
-      ) : (
-        date !== undefined && <DateDisplay className={metaClasses} value={date} />
-      )}
-      <H4 as="h3" className="text-lg/tight font-semibold">
+      <H4 as="h3">
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-4 z-20 md:-inset-6" />
@@ -71,6 +66,11 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
           title
         )}
       </H4>
+      {meta !== undefined ? (
+        <div className={metaClasses}>{meta}</div>
+      ) : (
+        date !== undefined && <DateDisplay className={metaClasses} value={date} />
+      )}
       {typeof description === 'string' ? (
         <p className={descriptionClasses}>{description}</p>
       ) : (
@@ -94,7 +94,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:rounded-[1.75rem] md:-inset-6" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 lg:-inset-6 lg:rounded-[1.75rem]" />
       )}
     </article>
   );

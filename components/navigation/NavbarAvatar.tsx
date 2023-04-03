@@ -19,12 +19,12 @@ export function NavbarAvatar({ children }: NavbarAvatarProps) {
   return (
     <Transition
       className="flex flex-none"
-      enter="transition delay-100"
-      enterFrom="opacity-0 scale-90 translate-y-1/4"
+      enter="duration-150 ease-out"
+      enterFrom="opacity-0 scale-95 translate-y-1/4"
       enterTo="opacity-100"
-      leave="transition"
+      leave="duration-150 ease-in"
       leaveFrom="opacity-100"
-      leaveTo="opacity-0 scale-90"
+      leaveTo="opacity-0 scale-95 translate-y-1/4"
       show={!isInView}
     >
       {children}

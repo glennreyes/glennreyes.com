@@ -10,7 +10,12 @@ export type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWit
 export function Card<TElementType extends ElementType>({ as, ...props }: CardProps<TElementType>) {
   const Component = as ?? 'div';
 
-  return <Component className="relative rounded-[1.75rem] border border-slate-100 p-6" {...props} />;
+  return (
+    <Component
+      className="relative rounded-[1.75rem] border border-slate-300/25 p-6 dark:border-slate-500/25"
+      {...props}
+    />
+  );
 }
 
 interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
@@ -20,7 +25,7 @@ interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && <p className="text-xs font-bold uppercase text-teal-700/90">{title}</p>}
+      {title && <p className="text-xs font-bold uppercase text-teal-700/90 dark:text-teal-300/50">{title}</p>}
       {children}
     </div>
   );
@@ -50,8 +55,8 @@ type CardItemProps = CardItemWithDateProps | CardItemWithMetaProps;
 
 function CardItem({ children, description, link, title, ...rest }: CardItemProps) {
   const itemClasses = clsx(link && 'group relative', 'grid gap-1');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-sm text-slate-500');
-  const metaClasses = clsx(link && 'relative z-10', 'text-sm text-slate-400');
+  const descriptionClasses = clsx(link && 'relative z-10', 'text-sm text-slate-500 dark:text-slate-400');
+  const metaClasses = clsx(link && 'relative z-10', 'text-sm text-slate-400 dark:text-slate-500');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
@@ -80,7 +85,7 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
       {description && <p className={descriptionClasses}>{description}</p>}
       {children}
       {link && (
-        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
+        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50" />
       )}
     </div>
   );

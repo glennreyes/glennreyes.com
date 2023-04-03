@@ -12,7 +12,7 @@ export function H1<TElementType extends ElementType>({ as, children, className, 
 
   return (
     <Component className={classes} {...props}>
-      <span className="inline-block bg-gradient-to-r from-black to-slate-500 bg-clip-text pr-2 text-transparent">
+      <span className="inline-block bg-gradient-to-r from-slate-950 to-slate-600 bg-clip-text pr-2 text-transparent dark:from-slate-50 dark:to-slate-400">
         {children}
       </span>
     </Component>

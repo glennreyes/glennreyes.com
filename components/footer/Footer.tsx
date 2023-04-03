@@ -4,9 +4,15 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="grid items-center justify-center border-t border-slate-100 p-4">
-      <p className="text-center text-xs text-slate-400">
-        © {currentYear} Glenn Reyes · <Link href="/legal-notice">Legal Notice</Link>
+    <footer className="grid items-center justify-center border-t border-slate-100 p-4 dark:border-slate-900">
+      <p className="text-center text-xs text-slate-400 dark:text-slate-600">
+        © {currentYear} Glenn Reyes ·{' '}
+        <Link
+          className="text-slate-400 hover:text-slate-500 focus-visible:text-slate-500 dark:text-slate-600 dark:hover:text-slate-500 dark:focus-visible:text-slate-500"
+          href="/legal-notice"
+        >
+          Legal Notice
+        </Link>
       </p>
     </footer>
   );

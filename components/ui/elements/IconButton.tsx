@@ -6,9 +6,12 @@ import { Link } from '../link/Link';
 type IconButtonAppearance = 'primary' | 'secondary' | 'tertiary';
 
 const appearances: Record<IconButtonAppearance, string> = {
-  primary: 'border-slate-100 hover:border-slate-200 active:border-slate-300',
-  secondary: 'border-transparent hover:border-slate-100 active:border-slate-200',
-  tertiary: 'border-transparent hover:text-slate-600 active:text-slate-700',
+  primary:
+    'border-slate-300/25 dark:border-slate-600/25 dark:bg-slate-900/75 hover:border-slate-200 dark:hover:border-slate-700 active:border-slate-300 dark:active:border-slate-700',
+  secondary:
+    'border-transparent hover:border-slate-300/25 dark:hover:border-slate-900 active:border-slate-200 dark:active:border-slate-800',
+  tertiary:
+    'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
 };
 
 type IconButtonSize = 6 | 7;
@@ -38,7 +41,7 @@ export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export function IconButton({ appearance = 'primary', className, icon: Icon, size = 6, ...props }: IconButtonProps) {
   const classes = twMerge(
-    'rounded-full border p-2.5 text-slate-500 transition focus:text-slate-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 active:text-slate-700 disabled:opacity-75',
+    'rounded-full border p-2.5 bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
     appearances[appearance],
     className,
   );
@@ -55,8 +58,13 @@ export function IconButton({ appearance = 'primary', className, icon: Icon, size
     );
   }
 
+  const buttonClasses = clsx(
+    classes,
+    'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+  );
+
   return (
-    <button className={classes} {...props}>
+    <button className={buttonClasses} {...props}>
       <Icon aria-hidden className={iconClasses} />
     </button>
   );

@@ -45,7 +45,7 @@ Article.Header = ArticleHeader;
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function ArticleBody(props: ArticleBodyProps) {
-  return <div className="prose prose-slate mx-auto" {...props} />;
+  return <div className="prose prose-slate mx-auto dark:prose-invert" {...props} />;
 }
 
 Article.Body = ArticleBody;

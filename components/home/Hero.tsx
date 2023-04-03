@@ -13,15 +13,15 @@ export function Hero() {
   return (
     <Container as="section" className="grid gap-8 py-8 lg:flex">
       <HeroAvatar>
-        <Avatar className="border-4 border-slate-200" priority />
+        <Avatar className="border-4 border-slate-200 dark:border-slate-800/50" priority />
       </HeroAvatar>
       <div className="grid gap-6">
         <div>
-          <p className="font-medium">Hello, I'm</p>
+          <p className="font-medium text-slate-900 dark:text-slate-100">Hello, I'm</p>
           <div className="flex justify-between gap-4">
             <div className="grid gap-4">
               <H1>{name}</H1>
-              <p className="max-w-2xl leading-relaxed">{description}</p>
+              <p className="max-w-2xl leading-relaxed text-slate-600 dark:text-slate-400">{description}</p>
             </div>
           </div>
         </div>
