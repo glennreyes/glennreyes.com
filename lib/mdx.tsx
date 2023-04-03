@@ -18,12 +18,8 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 }
 
 export const components: MDXComponents = {
-  Image: (props) => (
-    <figure className="-mx-4 sm:mx-0">
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <Image className="sm:rounded-[1.75rem]" {...props} />
-    </figure>
-  ),
+  // eslint-disable-next-line jsx-a11y/alt-text
+  Image: (props) => <Image className="rounded-[1.75rem]" {...props} />,
   Lead,
   a: ({ href, ...props }) => (href ? <InlineLink href={href} {...props} /> : null),
   code: (props: CodeProps) => {
