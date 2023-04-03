@@ -40,7 +40,7 @@ export const components: MDXComponents = {
     if (props['data-rehype-pretty-code-title'] !== undefined) {
       return (
         <div
-          className="-mx-4 mt-[1.7142857em] bg-slate-950/90 px-4 pt-1.5 sm:mx-0 sm:rounded-t-[1.25rem] sm:px-8 [&+pre]:mt-0 [&+pre]:rounded-t-none"
+          className="mt-[1.7142857em] rounded-t-[1.25rem] bg-slate-950/90 px-4 pt-1.5 sm:px-8 [&+pre]:mt-0 [&+pre]:rounded-t-none"
           {...props}
         >
           <span className="inline-flex items-center rounded-t-xl border-l border-t border-slate-700 bg-slate-800 px-3 py-1 font-mono text-[0.6875rem] font-semibold text-slate-400">
@@ -68,9 +68,6 @@ export const components: MDXComponents = {
   h5: () => null,
   h6: () => null,
   pre: (props) => (
-    <pre
-      className="relative -mx-4 block rounded-none px-0 py-6 selection:bg-white/10 sm:mx-0 sm:rounded-[1.75rem] [&>code]:grid"
-      {...props}
-    />
+    <pre className="relative block rounded-[1.75rem] px-0 py-6 selection:bg-white/10 [&>code]:grid" {...props} />
   ),
 };
