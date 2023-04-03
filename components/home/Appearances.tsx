@@ -27,9 +27,7 @@ export async function Appearances() {
       return aDistance - bDistance;
     })
     .slice(0, 5);
-  const upcoming = events
-    .filter((event) => event.startDate > today)
-    .sort((a, b) => getTime(b.startDate) - getTime(a.startDate));
+  const upcoming = events.filter((event) => event.startDate > today);
   const past = events.filter((event) => event.startDate <= today);
 
   return (
