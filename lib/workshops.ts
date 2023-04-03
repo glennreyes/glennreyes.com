@@ -3,11 +3,11 @@ import { prisma } from '~/lib/prisma';
 export function getAllWorkshops() {
   return prisma.workshop.findMany({
     orderBy: {
-      createdAt: 'desc',
+      status: 'asc',
     },
     select: {
-      description: true,
       slug: true,
+      summary: true,
       title: true,
     },
   });
@@ -39,6 +39,7 @@ export function getWorkshopBySlug(slug: string) {
           },
         },
       },
+      curriculum: true,
       description: true,
       slug: true,
       tags: true,

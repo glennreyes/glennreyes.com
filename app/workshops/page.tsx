@@ -17,12 +17,12 @@ export default async function PostsPage() {
         Teaching.
       </Page.Header>
       <Feed appearance="grid">
-        {allWorkshops.map(({ slug, title, description }) => (
+        {allWorkshops.map(({ slug, title, summary }) => (
           <Feed.Item
             action="Workshop Details"
             description={
-              <div className="prose prose-slate line-clamp-4 text-slate-500">
-                <MDXRemoteContent source={description} />
+              <div className="prose prose-slate text-slate-500">
+                <MDXRemoteContent source={summary} />
               </div>
             }
             key={slug}

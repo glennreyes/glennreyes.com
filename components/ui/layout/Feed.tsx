@@ -13,7 +13,7 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 export function Feed({ appearance = 'list', children, title, ...props }: FeedProps) {
   const wrapperClasses = clsx(
     title ? 'col-span-3' : 'not-prose',
-    appearance === 'grid' && 'grid-cols-2',
+    appearance === 'grid' && 'md:grid-cols-2',
     'grid gap-12 md:gap-16',
   );
 

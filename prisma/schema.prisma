@@ -106,7 +106,9 @@ model Workshop {
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   title       String
+  summary     String
   description String
+  curriculum  String?
   repository  String?
   slides      String?
   slug        String       @unique @default(cuid())
