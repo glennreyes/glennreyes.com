@@ -38,7 +38,7 @@ export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export function IconButton({ appearance = 'primary', className, icon: Icon, size = 6, ...props }: IconButtonProps) {
   const classes = twMerge(
-    'rounded-full border bg-white p-2.5 text-slate-500 transition focus:text-slate-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 active:text-slate-700 disabled:opacity-75',
+    'rounded-full border p-2.5 text-slate-500 transition focus:text-slate-600 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 active:scale-95 active:text-slate-700 disabled:opacity-75',
     appearances[appearance],
     className,
   );
