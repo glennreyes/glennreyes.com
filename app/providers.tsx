@@ -10,7 +10,7 @@ interface ProvidersProps {
 
 export function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light">
+    <ThemeProvider attribute="class">
       <IntersectionProvider>{children}</IntersectionProvider>
     </ThemeProvider>
   );
