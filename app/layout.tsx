@@ -21,6 +21,7 @@ export const metadata = {
   },
   manifest: '/manifest.webmanifest',
   title: composeTitle(),
+  viewport: 'width=device-width, initial-scale=1',
 };
 
 interface RootLayoutProps {
