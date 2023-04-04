@@ -12,7 +12,9 @@ interface AppearancesFeedProps {
 
 export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
   const today = new Date();
-  const upcoming = events.filter((event) => event.startDate > today);
+  const upcoming = events
+    .filter((event) => event.startDate > today)
+    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
   const past = events.filter((event) => event.startDate <= today);
 
   return (

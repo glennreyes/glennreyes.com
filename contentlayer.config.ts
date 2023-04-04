@@ -4,6 +4,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import { visit } from 'unist-util-visit';
 import { classes } from './lib/rehype';
 
 export const Page = defineDocumentType(() => ({
@@ -59,6 +60,23 @@ export default makeSource({
           properties: { className: [classes.autoLink] },
         } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
       ],
+      () => (tree) => {
+        // Extract raw code from `code` element nested inside `pre` tag and store value in `pre` node.
+        // This need to be before `rehypePrettyCode` so that we get the raw value.
+        visit(tree, (node) => {
+          if (!(node?.type === 'element' && node?.tagName === 'pre')) {
+            return;
+          }
+
+          const [element] = node.children;
+
+          if (element.tagName !== 'code') {
+            return;
+          }
+
+          node.raw = element.children?.[0].value;
+        });
+      },
       [
         rehypePrettyCode,
         {
@@ -80,6 +98,24 @@ export default makeSource({
           theme: 'nord',
         } satisfies Parameters<typeof rehypePrettyCode>[0],
       ],
+      () => (tree) => {
+        // Pass raw value found in `pre` node and store to div[data-rehype-pretty-code-fragment]
+        // This is after `rehypePrettyCode` so the stored raw code can be moved to the target div.
+        visit(tree, (node) => {
+          if (
+            !(node?.type === 'element' && node?.tagName === 'div') ||
+            !('data-rehype-pretty-code-fragment' in node.properties)
+          ) {
+            return;
+          }
+
+          for (const child of node.children) {
+            if (child.tagName === 'pre') {
+              node.properties.raw = node.raw;
+            }
+          }
+        });
+      },
     ],
     remarkPlugins: [remarkGfm],
   },

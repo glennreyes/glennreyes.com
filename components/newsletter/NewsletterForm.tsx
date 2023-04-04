@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import type { ComponentPropsWithoutRef, FormEventHandler } from 'react';
-import { useState, useCallback, useTransition } from 'react';
+import type { ComponentPropsWithoutRef, FormEvent } from 'react';
+import { useState, useTransition } from 'react';
 import { Button } from '../ui/forms/Button';
 import { Input } from '../ui/forms/Input';
 
@@ -13,31 +13,29 @@ export function NewsletterForm(props: NewsletterFormProps) {
   const [isPending, startTransition] = useTransition();
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
-  const handleSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
-    async (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const email = data.get('email');
 
-      try {
-        setIsFetching(true);
-        await fetch('/subscribe', {
-          body: JSON.stringify({ email }),
-          headers: { 'Content-Type': 'application/json' },
-          method: 'post',
-        });
-        setIsFetching(false);
-        startTransition(() => push('/subscribe/confirm'));
-      } catch {
-        setIsFetching(false);
-        // TODO: Show error message
-      }
-    },
-    [push],
-  );
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+
+    try {
+      setIsFetching(true);
+      await fetch('/subscribe', {
+        body: JSON.stringify({ email }),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'post',
+      });
+      setIsFetching(false);
+      startTransition(() => push('/subscribe/confirm'));
+    } catch {
+      setIsFetching(false);
+      // TODO: Show error message
+    }
+  }
 
   return (
-    <form className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1" onSubmit={handleSubmit} {...props}>
+    <form className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1" onSubmit={submit} {...props}>
       <div className="sm:flex-1">
         <Input
           aria-label="Email address"

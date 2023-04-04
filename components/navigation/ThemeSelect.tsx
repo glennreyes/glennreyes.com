@@ -20,9 +20,10 @@ interface ThemeOption {
 }
 
 function disableTransitionsTemporarily() {
-  document.body.classList.add('[&_*]:!transition-none');
-  window.setTimeout(() => {
-    document.body.classList.remove('[&_*]:!transition-none');
+  document.documentElement.classList.add('[&_*]:!transition-none');
+
+  setTimeout(() => {
+    document.documentElement.classList.remove('[&_*]:!transition-none');
   }, 0);
 }
 

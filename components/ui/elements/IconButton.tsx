@@ -14,11 +14,18 @@ const appearances: Record<IconButtonAppearance, string> = {
     'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
 };
 
-type IconButtonSize = 6 | 7;
+type IconButtonSize = 5 | 6 | 7;
 
 const sizes: Record<IconButtonSize, string> = {
+  5: 'h-5 w-5',
   6: 'h-6 w-6',
   7: 'h-7 w-7',
+};
+
+const paddings: Record<IconButtonSize, string> = {
+  5: 'p-2',
+  6: 'p-2.5',
+  7: 'p-2.5',
 };
 
 interface IconButtonBaseProps {
@@ -41,7 +48,8 @@ export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export function IconButton({ appearance = 'primary', className, icon: Icon, size = 6, ...props }: IconButtonProps) {
   const classes = twMerge(
-    'rounded-full border p-2.5 bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+    'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+    paddings[size],
     appearances[appearance],
     className,
   );

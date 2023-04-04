@@ -58,6 +58,7 @@
     "shiki": "^0.14.1",
     "tailwindcss": "^3.3.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "unist-util-visit": "^4.1.2"
   }
 }
