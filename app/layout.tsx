@@ -20,6 +20,10 @@ export const metadata = {
     icon: [faviconIco.src, faviconPng.src],
   },
   manifest: '/manifest.webmanifest',
+  themeColor: [
+    { color: '#020617', media: '(prefers-color-scheme: dark)' },
+    { color: '#ffffff', media: '(prefers-color-scheme: light)' },
+  ],
   title: composeTitle(),
   viewport: 'width=device-width, initial-scale=1',
 };
