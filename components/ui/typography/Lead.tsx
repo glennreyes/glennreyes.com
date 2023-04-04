@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react';
+import { Paragraph } from './Paragraph';
 
 type LeadProps = Omit<ComponentPropsWithoutRef<'p'>, 'className'>;
 
 export function Lead(props: LeadProps) {
-  return <p className="lead text-lg text-slate-600" {...props} />;
+  return <Paragraph className="lead text-lg text-slate-600" {...props} />;
 }

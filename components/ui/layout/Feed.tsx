@@ -4,6 +4,8 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../link/Link';
 import { H4 } from '../typography/H4';
+import { Meta } from '../typography/Meta';
+import { Paragraph } from '../typography/Paragraph';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   appearance?: 'grid' | 'list';
@@ -20,8 +22,8 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
   if (title) {
     return (
       <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
-        <div className="md:border-l md:border-slate-100 md:px-8 dark:md:border-slate-800/50">
-          <h2 className="font-semibold text-teal-700/90 md:sticky md:top-20">{title}</h2>
+        <div className="md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
+          <h2 className="font-semibold text-teal-600 dark:text-teal-200/75 md:sticky md:top-20">{title}</h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
       </div>
@@ -46,14 +48,17 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
 }
 
 function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
-  const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-slate-500 dark:text-slate-400');
-  const metaClasses = clsx(link && 'relative z-10 order-first', 'text-slate-400 dark:text-slate-500');
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
     ...rest,
   };
+  const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
+  const descriptionClasses = clsx(link && 'relative z-10');
+  const metaClasses = clsx(
+    link && 'relative z-10 order-first',
+    date !== undefined && 'text-slate-400 dark:text-slate-500',
+  );
   const content = (
     <>
       <H4 as="h3">
@@ -67,15 +72,13 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         )}
       </H4>
       {meta !== undefined ? (
-        <div className={metaClasses}>{meta}</div>
+        <Meta className={metaClasses}>{meta}</Meta>
       ) : (
         date !== undefined && <DateDisplay className={metaClasses} value={date} />
       )}
-      {typeof description === 'string' ? (
-        <p className={descriptionClasses}>{description}</p>
-      ) : (
-        <div className={descriptionClasses}>{description}</div>
-      )}
+      <Paragraph as={typeof description === 'string' ? undefined : 'div'} className={descriptionClasses}>
+        {description}
+      </Paragraph>
       {children}
     </>
   );
@@ -85,7 +88,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
       {action ? (
         <>
           <div className="grid gap-2">{content}</div>
-          <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-500 transition group-hover:text-teal-600">
+          <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-600 transition group-hover:text-teal-700 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
             <ChevronRightIcon aria-hidden className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
           </p>

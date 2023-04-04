@@ -1,6 +1,6 @@
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import type { Location } from '@prisma/client';
-import { composePlaceByLocation } from '~/lib/place';
+import { composeGoogleMapsUrl, composePlaceByLocation } from '~/lib/place';
 import { Link } from '../ui/link/Link';
 
 interface EventLocationProps {
@@ -8,15 +8,13 @@ interface EventLocationProps {
 }
 
 export function EventLocation({ location }: EventLocationProps) {
-  const query = [location.name, location.address, location.city, location.state, location.zip, location.country]
-    .filter(Boolean)
-    .join(', ');
-  const url = `https://maps.google.com/?q=${encodeURIComponent(query)}`;
+  const url = composeGoogleMapsUrl(location);
+  const place = composePlaceByLocation(location);
 
   return (
     <Link className="group inline-flex items-center gap-2" href={url}>
-      <MapPinIcon className="h-6 w-6 text-slate-300 transition group-hover:text-slate-400" />
-      {location.name} · {composePlaceByLocation(location)}
+      <MapPinIcon className="h-6 w-6 text-slate-400 transition group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-400" />
+      {location.name} · {place}
     </Link>
   );
 }

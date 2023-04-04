@@ -1,4 +1,10 @@
-import { CalendarDaysIcon, ClockIcon, PresentationChartLineIcon, TvIcon } from '@heroicons/react/20/solid';
+import {
+  ArrowTopRightOnSquareIcon,
+  CalendarDaysIcon,
+  ClockIcon,
+  PresentationChartLineIcon,
+  TvIcon,
+} from '@heroicons/react/20/solid';
 import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
@@ -98,7 +104,10 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <InlineLink href={slides}>View Slides</InlineLink>
+                      <InlineLink className="inline-flex items-center gap-1" href={slides}>
+                        View Slides
+                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
+                      </InlineLink>
                     </dd>
                   </div>
                 )}
@@ -109,7 +118,10 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                       <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
                     </dt>
                     <dd className="text-sm font-medium text-slate-500">
-                      <InlineLink href={recording}>Watch Recording</InlineLink>
+                      <InlineLink className="inline-flex items-center gap-1" href={recording}>
+                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
+                        Watch Recording
+                      </InlineLink>
                     </dd>
                   </div>
                 )}

@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { H1 } from '../typography/H1';
 import { Lead } from '../typography/Lead';
+import { Meta } from '../typography/Meta';
 import { Container } from './Container';
 
 type PageProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
@@ -17,7 +18,7 @@ interface PageHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'clas
 export function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
-      {meta !== null && meta !== undefined && <div className="text-slate-400">{meta}</div>}
+      {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
       <H1>{children}</H1>
       {lead !== null && lead !== undefined && (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
     </header>

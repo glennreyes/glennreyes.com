@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Card } from '../ui/layout/Card';
 import { H4 } from '../ui/typography/H4';
+import { Paragraph } from '../ui/typography/Paragraph';
 import { NewsletterForm } from './NewsletterForm';
 
 interface NewsletterProps {
@@ -17,7 +18,7 @@ export function Newsletter({
       <div className="grid max-w-md gap-8">
         <Card.Body>
           <H4 as="h2">{title}</H4>
-          <p className="text-sm text-slate-500">{children}</p>
+          <Paragraph>{children}</Paragraph>
         </Card.Body>
         <Card.Body>
           <NewsletterForm />

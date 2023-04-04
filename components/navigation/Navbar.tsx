@@ -18,7 +18,7 @@ export function Navbar({ children, ...props }: NavbarProps) {
           <div className="h-11 w-11">
             <NavbarAvatar>
               <Link className="block rounded-full focus-visible:ring-offset-2" href="/">
-                <Avatar className="border border-slate-200 dark:border-slate-800/50" size={11} />
+                <Avatar size={11} />
               </Link>
             </NavbarAvatar>
           </div>
