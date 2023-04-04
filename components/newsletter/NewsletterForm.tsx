@@ -41,14 +41,14 @@ export function NewsletterForm(props: NewsletterFormProps) {
       <div className="sm:flex-1">
         <Input
           aria-label="Email address"
-          className="peer relative z-10 w-full dark:bg-slate-900 sm:border-transparent sm:focus:border-transparent sm:focus:ring-0"
+          className="peer relative z-10 w-full dark:bg-slate-900 sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:sm:border-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
           disabled={isMutating}
           name="email"
           placeholder="Your email address"
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 text-slate-800 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25 sm:block" />
+        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25 sm:block" />
       </div>
       <div className="relative grid">
         <Button disabled={isMutating} type="submit">
