@@ -38,13 +38,13 @@ interface EventAppearancesCardProps {
   recording?: string;
   talk?: Pick<Talk, 'abstract' | 'slides' | 'slug' | 'tags' | 'title'>;
   title?: string;
-  workshop?: Pick<Workshop, 'description' | 'slides' | 'slug' | 'title'>;
+  workshop?: Pick<Workshop, 'slides' | 'slug' | 'summary' | 'title'>;
 }
 
 function EventAppearancesCard({ date, length, recording, talk, workshop }: EventAppearancesCardProps) {
   const path = talk?.slug ? `/talks/${talk.slug}` : workshop?.slug ? `/workshops/${workshop.slug}` : undefined;
   const title = talk?.title ?? workshop?.title;
-  const description = talk?.abstract ?? workshop?.description;
+  const summary = talk?.abstract ?? workshop?.summary;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
   const dateTime = formatISO(date);
   const tags = talk?.tags;
@@ -56,13 +56,13 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
       <Card.Body title={type}>
         <div className="grid gap-6">
           <div className="grid gap-x-8 gap-y-16 md:grid-cols-3">
-            {(title || description) && path && (
+            {(title || summary) && path && (
               <div className="grid gap-12 md:col-span-2">
                 <div className="grid gap-8">
                   {title && <H2>{title}</H2>}
-                  {description && (
-                    <div className="prose prose-slate line-clamp-6 text-slate-500">
-                      <MDXRemoteContent source={description} />
+                  {summary && (
+                    <div className="prose-slate\ prose text-slate-500">
+                      <MDXRemoteContent source={summary} />
                     </div>
                   )}
                 </div>
