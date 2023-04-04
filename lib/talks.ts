@@ -1,6 +1,7 @@
+import { cache } from 'react';
 import { prisma } from '~/lib/prisma';
 
-export function getAllTalks() {
+export const getAllTalks = cache(function getAllTalks() {
   return prisma.talk.findMany({
     orderBy: {
       createdAt: 'desc',
@@ -11,9 +12,9 @@ export function getAllTalks() {
       title: true,
     },
   });
-}
+});
 
-export function getTalkBySlug(slug: string) {
+export const getTalkBySlug = cache(function getTalkBySlug(slug: string) {
   return prisma.talk.findUniqueOrThrow({
     select: {
       abstract: true,
@@ -46,4 +47,4 @@ export function getTalkBySlug(slug: string) {
     },
     where: { slug },
   });
-}
+});

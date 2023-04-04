@@ -1,6 +1,7 @@
+import { cache } from 'react';
 import { prisma } from '~/lib/prisma';
 
-export function getAllWorkshops() {
+export const getAllWorkshops = cache(function getAllWorkshops() {
   return prisma.workshop.findMany({
     orderBy: {
       status: 'asc',
@@ -11,9 +12,9 @@ export function getAllWorkshops() {
       title: true,
     },
   });
-}
+});
 
-export function getWorkshopBySlug(slug: string) {
+export const getWorkshopBySlug = cache(function getWorkshopBySlug(slug: string) {
   return prisma.workshop.findUniqueOrThrow({
     select: {
       appearances: {
@@ -47,4 +48,4 @@ export function getWorkshopBySlug(slug: string) {
     },
     where: { slug },
   });
-}
+});
