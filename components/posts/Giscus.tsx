@@ -19,7 +19,7 @@ export function Giscus() {
       reactionsEnabled="0"
       repo="glennreyes/glennreyes.com"
       repoId="MDEwOlJlcG9zaXRvcnk0OTUyOTQwMg=="
-      theme={theme}
+      theme={theme === 'dark' ? 'dark_protanopia' : theme}
     />
   );
 }

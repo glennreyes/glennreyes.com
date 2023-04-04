@@ -6,7 +6,7 @@ type ButtonAppearance = 'primary' | 'secondary';
 
 const appearances: Record<ButtonAppearance, string> = {
   primary:
-    'border-slate-800 bg-slate-800 text-slate-100 hover:border-slate-700 hover:bg-slate-700 active:border-slate-800 active:bg-slate-800 dark:border-slate-700 dark:bg-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-600 dark:active:border-slate-700 dark:active:bg-slate-700',
+    'border-slate-800 bg-slate-800 text-slate-100 hover:border-slate-700 hover:bg-slate-700 active:border-slate-800 active:bg-slate-800',
   secondary:
     'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-800 active:border-slate-200 active:text-slate-700 dark:border-slate-800 dark:bg-slate-900/75 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-slate-100 dark:active:border-slate-800 dark:active:text-slate-200',
 };
@@ -38,5 +38,5 @@ export function Button({ appearance = 'primary', ...props }: ButtonProps) {
     return <Link className={linkClasses} {...rest} />;
   }
 
-  return <button className={classes} {...props} />;
+  return <button className={classes} type="button" {...props} />;
 }

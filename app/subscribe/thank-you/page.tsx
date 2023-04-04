@@ -17,7 +17,9 @@ export default function ThankYouPage() {
 
   return (
     <Page>
-      <Page.Header lead={page.lead}>{page.heading ?? page.title}</Page.Header>
+      <Page.Header lead={page.lead} meta={page.meta}>
+        {page.heading ?? page.title}
+      </Page.Header>
       <Page.Body>
         <MDXContent code={page.body.code} />
       </Page.Body>

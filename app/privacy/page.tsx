@@ -4,13 +4,13 @@ import { Page } from '~/components/ui/layout/Page';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { composeTitle } from '~/lib/metadata';
 
-const page = allPages.find(({ path }) => path === 'subscribe/confirm');
+const page = allPages.find(({ path }) => path === 'privacy');
 
 export const metadata = {
   title: composeTitle(page?.title),
 };
 
-export default function ConfirmPage() {
+export default function PrivacyPage() {
   if (!page) {
     notFound();
   }

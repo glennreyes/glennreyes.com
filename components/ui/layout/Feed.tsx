@@ -97,7 +97,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 lg:-inset-6 lg:rounded-[1.75rem]" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 md:-inset-6 md:rounded-[1.75rem]" />
       )}
     </article>
   );

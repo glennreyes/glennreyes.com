@@ -17,7 +17,7 @@ export function AboutAuthor() {
             <H4 as="h2">
               <Link href="/about">{name}</Link>
             </H4>
-            <Paragraph>{description}</Paragraph>
+            <Paragraph className="text-sm">{description}</Paragraph>
           </div>
         </div>
       </Card.Body>

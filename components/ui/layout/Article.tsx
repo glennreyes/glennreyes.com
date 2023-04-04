@@ -59,7 +59,7 @@ function ArticleFooter(props: ArticleFooterProps) {
       <div className="mx-auto max-w-[70ch]">
         <Divider />
       </div>
-      <footer className="mx-auto grid max-w-[70ch] gap-8" {...props} />
+      <footer className="mx-auto grid max-w-[70ch] gap-12" {...props} />
     </>
   );
 }

@@ -17,6 +17,7 @@ export const Page = defineDocumentType(() => ({
   fields: {
     heading: { type: 'string' },
     lead: { type: 'string' },
+    meta: { type: 'string' },
     title: { required: true, type: 'string' },
   },
   filePathPattern: 'pages/**/*.mdx',

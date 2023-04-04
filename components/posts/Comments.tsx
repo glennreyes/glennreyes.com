@@ -6,7 +6,7 @@ import { Giscus } from './Giscus';
 
 export function Comments() {
   return (
-    <div className="prose prose-slate dark:prose-invert prose-p:text-sm">
+    <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
       <H4 as="h2">Comments</H4>
       <Paragraph>
         What do you think about this article? Have you had a similar experience? Share your thoughts in the comments

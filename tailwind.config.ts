@@ -23,6 +23,7 @@ export default {
       container: {
         screens: {
           '2xl': '64rem',
+          lg: '48rem',
           xl: '64rem',
         },
       },

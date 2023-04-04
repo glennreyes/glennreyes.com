@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 import { InlineLink } from '~/components/ui/link/InlineLink';
+import { Link } from '~/components/ui/link/Link';
 import { H1 } from '~/components/ui/typography/H1';
 import { H2 } from '~/components/ui/typography/H2';
 import { H3 } from '~/components/ui/typography/H3';
@@ -21,7 +22,8 @@ export const components: MDXComponents = {
   // eslint-disable-next-line jsx-a11y/alt-text
   Image: (props) => <Image className="rounded-[1.75rem]" {...props} />,
   Lead,
-  a: ({ href, ...props }) => (href ? <InlineLink href={href} {...props} /> : null),
+  a: ({ href, ...props }) =>
+    href?.startsWith('#') ? <Link href={href} {...props} /> : href ? <InlineLink href={href} {...props} /> : null,
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {
