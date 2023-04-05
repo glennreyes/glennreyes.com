@@ -12,10 +12,10 @@ export default function Home() {
     <Page>
       <Hero />
       <Content>
-        <Content.Primary>
+        <Content.Primary className="lg:col-span-7">
           <Posts />
         </Content.Primary>
-        <Content.Secondary>
+        <Content.Secondary className="lg:col-span-5">
           {/* @ts-expect-error Server Components */}
           <Appearances />
           <Newsletter />

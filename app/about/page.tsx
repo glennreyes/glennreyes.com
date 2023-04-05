@@ -19,6 +19,9 @@ import { composeTitle } from '~/lib/metadata';
 const page = allPages.find(({ path }) => path === 'about');
 
 export const metadata = {
+  openGraph: {
+    type: 'profile',
+  },
   title: composeTitle(page?.title),
 };
 
@@ -35,7 +38,10 @@ export default function AboutPage() {
       <Image
         alt="Speaking"
         className="h-96 w-full rounded-[1.75rem] object-cover object-right sm:object-center"
+        height={384}
+        placeholder="blur"
         src={speaking}
+        width={992}
       />
       <Content>
         <Content.Primary>
@@ -107,10 +113,7 @@ export default function AboutPage() {
                 <Card.Item
                   link="mailto:glenn@glennreyes.com"
                   title={
-                    <span className="inline-flex w-full items-center justify-between gap-2">
-                      glenn@glennreyes.com
-                      <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
-                    </span>
+                    <span className="inline-flex w-full items-center justify-between gap-2">glenn@glennreyes.com</span>
                   }
                 >
                   <PaperAirplaneIcon className="h-6 w-6 text-slate-300 dark:text-slate-700" />

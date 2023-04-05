@@ -9,9 +9,12 @@ import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
-import { description } from '~/lib/constants';
+import { description, origin } from '~/lib/constants';
 import { composeTitle } from '~/lib/metadata';
 import { Providers } from './providers';
+
+const title = composeTitle();
+const ogImages = [{ height: 1080, url: `${origin}/og.png`, width: 1920 }];
 
 export const metadata = {
   description,
@@ -20,11 +23,26 @@ export const metadata = {
     icon: [faviconIco.src, faviconPng.src],
   },
   manifest: '/manifest.webmanifest',
+  openGraph: {
+    description,
+    images: ogImages,
+    locale: 'en-US',
+    siteName: title,
+    title,
+    type: 'website',
+    url: origin,
+  },
   themeColor: [
     { color: '#020617', media: '(prefers-color-scheme: dark)' },
     { color: '#ffffff', media: '(prefers-color-scheme: light)' },
   ],
-  title: composeTitle(),
+  title,
+  twitter: {
+    card: 'summary_large_image',
+    description,
+    images: ogImages,
+    title,
+  },
   viewport: 'width=device-width, initial-scale=1',
 };
 

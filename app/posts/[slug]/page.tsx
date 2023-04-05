@@ -8,6 +8,7 @@ import { IconButton } from '~/components/ui/elements/IconButton';
 import { ReadingTime } from '~/components/ui/elements/ReadingTime';
 import { Article } from '~/components/ui/layout/Article';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
+import { origin } from '~/lib/constants';
 import { composeTitle } from '~/lib/metadata';
 
 interface GenerateMetadataConfigParams {
@@ -21,8 +22,38 @@ interface GenerateMetadataConfig {
 export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
+  if (!post) {
+    return {};
+  }
+
+  const { slug, lead: description } = post;
+  const url = `${origin}/posts/${slug}`;
+  const title = composeTitle(post.title);
+  const ogImage = { height: 1080, url: `${origin}/og.png?post=${slug}`, width: 1920 };
+
   return {
-    title: composeTitle(post?.title),
+    description,
+    openGraph: {
+      description,
+      images: [ogImage],
+      locale: 'en-US',
+      siteName: title,
+      title,
+      type: 'article',
+      url,
+    },
+
+    themeColor: [
+      { color: '#020617', media: '(prefers-color-scheme: dark)' },
+      { color: '#ffffff', media: '(prefers-color-scheme: light)' },
+    ],
+    title,
+    twitter: {
+      card: 'summary_large_image',
+      description,
+      images: [ogImage],
+      title,
+    },
   };
 }
 

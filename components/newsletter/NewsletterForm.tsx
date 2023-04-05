@@ -23,7 +23,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
       setIsFetching(true);
       await fetch('/subscribe', {
         body: JSON.stringify({ email }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'content-type': 'application/json' },
         method: 'post',
       });
       setIsFetching(false);
@@ -39,7 +39,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
       <div className="sm:flex-1">
         <Input
           aria-label="Email address"
-          className="peer relative z-10 w-full dark:bg-slate-900/25 sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:sm:border-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
+          className="peer relative z-10 w-full dark:bg-slate-900/25 sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:sm:border-transparent dark:sm:bg-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
           disabled={isMutating}
           name="email"
           placeholder="Your email address"

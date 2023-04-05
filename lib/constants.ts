@@ -11,3 +11,4 @@ export const instagram = 'glnnrys';
 
 // Contact
 export const email = 'glenn@glennreyes.com';
+export const origin = process.env.NODE_ENV === 'production' ? 'https://glennreyes.com' : 'http://localhost:3000';
