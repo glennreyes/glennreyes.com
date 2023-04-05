@@ -15,6 +15,7 @@ import { YouTube } from '../ui/elements/YouTube';
 import { Card } from '../ui/layout/Card';
 import { InlineLink } from '../ui/link/InlineLink';
 import { H3 } from '../ui/typography/H3';
+import { Paragraph } from '../ui/typography/Paragraph';
 
 interface AppearanceCardProps {
   abstract?: string;
@@ -55,7 +56,7 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
             {(title || description) && (
               <div className="grid gap-4 md:col-span-2">
                 {title && <H3>{title}</H3>}
-                {description && <p className="text-slate-500">{description}</p>}
+                {description && <Paragraph>{description}</Paragraph>}
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">
@@ -63,49 +64,49 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                 <div className="flex gap-2">
                   <dt className="flex-none">
                     <span className="sr-only">Date & Time</span>
-                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                   </dt>
-                  <dd className="text-sm font-medium text-slate-500">
+                  <Paragraph as="dd" className="text-sm font-medium">
                     <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={date} />
-                  </dd>
+                  </Paragraph>
                 </div>
                 {type && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Length</span>
-                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       {lengths[type][length]} {type}
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
                 {slides && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={slides}>
                         <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         View Slides
                       </InlineLink>
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
                 {recording && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={recording}>
                         <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         Watch Recording
                       </InlineLink>
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
               </dl>

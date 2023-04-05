@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ElementType } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type ParagraphProps<TElementType extends ElementType> = ComponentPropsWithoutRef<TElementType> & {
-  as?: Extract<TElementType, 'div' | 'p'>;
+  as?: Extract<TElementType, 'dd' | 'div' | 'p'>;
 };
 
 export function Paragraph<TElementType extends ElementType>({ as, className, ...props }: ParagraphProps<TElementType>) {

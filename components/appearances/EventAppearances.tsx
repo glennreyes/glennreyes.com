@@ -16,8 +16,8 @@ import { YouTube } from '../ui/elements/YouTube';
 import { Card } from '../ui/layout/Card';
 import { ActionLink } from '../ui/link/ActionLink';
 import { InlineLink } from '../ui/link/InlineLink';
-import { MDXRemoteContent } from '../ui/mdx/MDXRemoteContent';
 import { H2 } from '../ui/typography/H2';
+import { Paragraph } from '../ui/typography/Paragraph';
 
 const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
   Talk: {
@@ -66,11 +66,7 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
               <div className="grid gap-12 md:col-span-2">
                 <div className="grid gap-8">
                   {title && <H2>{title}</H2>}
-                  {summary && (
-                    <div className="prose-slate\ prose text-slate-500">
-                      <MDXRemoteContent source={summary} />
-                    </div>
-                  )}
+                  {summary && <Paragraph>{summary}</Paragraph>}
                 </div>
                 <ActionLink href={path}>View Details</ActionLink>
               </div>
@@ -80,49 +76,49 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                 <div className="flex gap-2">
                   <dt className="flex-none">
                     <span className="sr-only">Date & Time</span>
-                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                   </dt>
-                  <dd className="text-sm font-medium text-slate-500">
+                  <Paragraph as="dd" className="text-sm font-medium">
                     <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={date} />
-                  </dd>
+                  </Paragraph>
                 </div>
                 {type && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Length</span>
-                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       {lengths[type][length]} {type}
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
                 {slides && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={slides}>
                         View Slides
                         <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                       </InlineLink>
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
                 {recording && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300" />
+                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                     </dt>
-                    <dd className="text-sm font-medium text-slate-500">
+                    <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={recording}>
                         <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         Watch Recording
                       </InlineLink>
-                    </dd>
+                    </Paragraph>
                   </div>
                 )}
                 {tags && (

@@ -53,10 +53,10 @@ export const getEventBySlug = cache(function getEventBySlug(slug: string) {
           },
           workshop: {
             select: {
-              description: true,
               repository: true,
               slides: true,
               slug: true,
+              summary: true,
               title: true,
             },
           },
