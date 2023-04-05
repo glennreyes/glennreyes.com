@@ -7,5 +7,5 @@ export function useIsActivePathname(path: string) {
     return pathname === path;
   }
 
-  return pathname.startsWith(path);
+  return pathname?.startsWith(path);
 }
