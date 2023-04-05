@@ -1,17 +1,14 @@
 import { GitHub } from '~/icons/GitHub';
-import { Instagram } from '~/icons/Instagram';
-import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
-import { description, github, instagram, linkedin, name, twitter } from '~/lib/constants';
+import { description, github, name, twitter } from '~/lib/constants';
 import { Avatar } from '../avatar/Avatar';
 import { IconButton } from '../ui/elements/IconButton';
-import { Container } from '../ui/layout/Container';
 import { H1 } from '../ui/typography/H1';
 import { HeroAvatar } from './HeroAvatar';
 
 export function Hero() {
   return (
-    <Container as="section" className="grid gap-8 py-8 lg:flex">
+    <section className="grid gap-8 py-8 lg:flex">
       <HeroAvatar>
         <Avatar priority />
       </HeroAvatar>
@@ -39,16 +36,6 @@ export function Hero() {
           <li>
             <IconButton
               appearance="tertiary"
-              aria-label="Follow on Instagram"
-              as="link"
-              href={`https://instagram.com/${instagram}`}
-              icon={Instagram}
-              size={7}
-            />
-          </li>
-          <li>
-            <IconButton
-              appearance="tertiary"
               aria-label="Follow on GitHub"
               as="link"
               href={`https://github.com/${github}`}
@@ -56,18 +43,8 @@ export function Hero() {
               size={7}
             />
           </li>
-          <li>
-            <IconButton
-              appearance="tertiary"
-              aria-label="Follow on LinkedIn"
-              as="link"
-              href={`https://linkedin.com/in/${linkedin}`}
-              icon={LinkedIn}
-              size={7}
-            />
-          </li>
         </ul>
       </div>
-    </Container>
+    </section>
   );
 }

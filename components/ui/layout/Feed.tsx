@@ -21,7 +21,7 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
 
   if (title) {
     return (
-      <div className="not-prose grid gap-y-8 md:grid-cols-4" {...props}>
+      <div className="not-prose grid gap-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
           <h2 className="font-semibold text-teal-600 dark:text-teal-200/75 md:sticky md:top-20">{title}</h2>
         </div>

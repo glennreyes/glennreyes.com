@@ -3,12 +3,13 @@ import { Hero } from '~/components/home/Hero';
 import { Posts } from '~/components/home/Posts';
 import { Newsletter } from '~/components/newsletter/Newsletter';
 import { Content } from '~/components/ui/layout/Content';
+import { Page } from '~/components/ui/layout/Page';
 
 export const revalidate = 3600;
 
 export default function Home() {
   return (
-    <>
+    <Page>
       <Hero />
       <Content>
         <Content.Primary>
@@ -20,6 +21,6 @@ export default function Home() {
           <Newsletter />
         </Content.Secondary>
       </Content>
-    </>
+    </Page>
   );
 }

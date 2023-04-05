@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../link/Link';
+import { H3 } from '../typography/H3';
 
 export type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
   as?: Extract<TElementType, 'article' | 'div' | 'section'>;
@@ -33,28 +34,28 @@ function CardBody({ children, title, ...props }: CardBodyProps) {
 
 Card.Body = CardBody;
 
-type CardItemWithDateProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> & {
+type CardItemWithDateProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> & {
   children?: ReactNode;
   date: Date | string;
   description: string;
   link?: string;
   meta?: undefined;
-  title: string;
+  title: ReactNode;
 };
 
-type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'> & {
+type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> & {
   children?: ReactNode;
   date?: undefined;
   description?: string;
   link?: string;
   meta?: ReactNode;
-  title: string;
+  title: ReactNode;
 };
 
 type CardItemProps = CardItemWithDateProps | CardItemWithMetaProps;
 
 function CardItem({ children, description, link, title, ...rest }: CardItemProps) {
-  const itemClasses = clsx(link && 'group relative', 'grid gap-1');
+  const itemClasses = clsx(link && 'group relative', 'flex gap-4');
   const descriptionClasses = clsx(link && 'relative z-10', 'text-sm text-slate-500 dark:text-slate-400');
   const metaClasses = clsx(link && 'relative z-10', 'text-sm text-slate-400 dark:text-slate-500');
   const { date, meta, ...props } = {
@@ -65,28 +66,30 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
 
   return (
     <div className={itemClasses} {...props}>
-      {date === undefined ? (
-        <div className={metaClasses}>{meta}</div>
-      ) : (
-        <DateDisplay className={metaClasses} value={date} />
-      )}
-      {title && (
-        <h3 className="text-sm font-medium tracking-tight">
-          {link ? (
-            <Link href={link}>
-              <span className="absolute -inset-x-6 -inset-y-2 z-20" />
-              <span className="relative z-10">{title}</span>
-            </Link>
-          ) : (
-            title
-          )}
-        </h3>
-      )}
-      {description && <p className={descriptionClasses}>{description}</p>}
-      {children}
-      {link && (
-        <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50" />
-      )}
+      {children !== undefined && children !== null && <div className="relative z-10">{children}</div>}
+      <div className="grid flex-1 items-center gap-1">
+        {meta !== undefined && meta !== null ? (
+          <div className={metaClasses}>{meta}</div>
+        ) : (
+          date !== undefined && <DateDisplay className={metaClasses} value={date} />
+        )}
+        {title !== undefined && (
+          <H3 className="text-sm">
+            {link ? (
+              <Link href={link}>
+                <span className="absolute -inset-x-6 -inset-y-2 z-20" />
+                <span className="relative z-10">{title}</span>
+              </Link>
+            ) : (
+              title
+            )}
+          </H3>
+        )}
+        {description && <p className={descriptionClasses}>{description}</p>}
+        {link && (
+          <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50" />
+        )}
+      </div>
     </div>
   );
 }
