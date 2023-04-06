@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { ReactNode } from 'react';
 import '~/app/globals.css';
 import appleTouchIcon from '~/assets/favicon/apple-touch-icon.png';
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Main>{children}</Main>
         </Providers>
         <Footer />
+        <Analytics />
       </Body>
     </Html>
   );
