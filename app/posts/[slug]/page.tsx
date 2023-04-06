@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
     return {};
   }
 
-  const { slug, lead: description } = post;
+  const { slug, description } = post;
   const url = `${origin}/posts/${slug}`;
   const title = post.title;
   const ogImage = { height: 1080, url: `${origin}/og.png?post=${slug}`, width: 1920 };

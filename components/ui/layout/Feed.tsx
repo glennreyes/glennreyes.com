@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/DateDisplay';
 import { Link } from '../link/Link';
-import { H4 } from '../typography/H4';
+import { H3 } from '../typography/H3';
 import { Meta } from '../typography/Meta';
 import { Paragraph } from '../typography/Paragraph';
 
@@ -61,7 +61,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
   );
   const content = (
     <>
-      <H4 as="h3">
+      <H3>
         {link ? (
           <Link href={link}>
             <span className="absolute -inset-4 z-20 md:-inset-6" />
@@ -70,7 +70,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         ) : (
           title
         )}
-      </H4>
+      </H3>
       {meta !== undefined ? (
         <Meta className={metaClasses}>{meta}</Meta>
       ) : (

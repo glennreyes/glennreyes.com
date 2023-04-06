@@ -4,11 +4,11 @@ import { Feed } from '../ui/layout/Feed';
 export function PostsFeed() {
   return (
     <Feed>
-      {allPosts.map(({ excerpt, publishedAt, slug, title }) => (
+      {allPosts.map(({ description, publishedAt, slug, title }) => (
         <Feed.Item
           action="Read Article"
           date={publishedAt}
-          description={excerpt}
+          description={description}
           key={slug}
           link={`/posts/${slug}`}
           title={title}

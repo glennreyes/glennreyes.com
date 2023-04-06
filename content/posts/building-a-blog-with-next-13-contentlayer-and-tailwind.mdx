@@ -1,6 +1,6 @@
 ---
 title: Building a blog with Next 13, Contentlayer and Tailwind
-excerpt: In this post, we'll build a blog with Next.js 13 new `app` directory, Contentlayer and Tailwind.
+description: In this post, we'll build a blog with Next.js 13 new `app` directory, Contentlayer and Tailwind.
 ---
 
 [Next](https://nextjs.org) has been rapidly gaining popularity as a framework for building web applications and websites. With [Next 13](https://nextjs.org/blog/next-13), it's now possible to use [React Server Components](https://react.dev/server-components) via the [`app/` directory](https://beta.nextjs.org/docs)
@@ -173,7 +173,7 @@ export default function BlogFeed() {
         <div key={post.slug}>
           <h2>{post.title}</h2>
           <p>{post.date}</p>
-          <p>{post.excerpt}</p>
+          <p>{post.description}</p>
         </div>
       ))}
     </div>
