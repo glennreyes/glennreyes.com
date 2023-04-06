@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unknown-property */
 import { ImageResponse } from '@vercel/og';
-import { format, isThisYear } from 'date-fns';
 import type { NextRequest } from 'next/server';
 import { origin } from '~/lib/constants';
 import { allPosts } from '~/lib/posts';
@@ -32,7 +31,7 @@ export default async function handler(request: NextRequest) {
     });
   }
 
-  const date = new Date(post.publishedAt);
+  // const date = new Date(post.publishedAt);
 
   return new ImageResponse(
     (
@@ -40,8 +39,8 @@ export default async function handler(request: NextRequest) {
         style={{ backgroundImage: `url(${origin}/images/og-post.png)` }}
         tw="bg-slate-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
       >
-        <time tw="text-4xl text-slate-500">{format(date, isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy')}</time>
-        <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">{post.title}</h1>
+        {/* <time tw="text-4xl text-slate-500">{format(date, isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy')}</time>
+        <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">{post.title}</h1> */}
       </div>
     ),
     {
