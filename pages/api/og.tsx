@@ -9,15 +9,10 @@ export const config = {
   runtime: 'edge',
 };
 
-const urls = {
-  interBold: new URL('../../assets/fonts/Inter-Bold.otf', import.meta.url),
-  interRegular: new URL('../../assets/fonts/Inter-Regular.otf', import.meta.url),
-};
-
 export default async function handler(request: NextRequest) {
-  const [fontBold, fontRegular] = await Promise.all([
-    fetch(urls.interBold).then((res) => res.arrayBuffer()),
-    fetch(urls.interRegular).then((res) => res.arrayBuffer()),
+  const [interBold, interRegular] = await Promise.all([
+    fetch(new URL('../../assets/fonts/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer()),
+    fetch(new URL('../../assets/fonts/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer()),
   ]);
 
   const { searchParams } = request.nextUrl;
@@ -47,12 +42,12 @@ export default async function handler(request: NextRequest) {
     {
       fonts: [
         {
-          data: fontRegular,
+          data: interRegular,
           name: 'Inter',
           weight: 400,
         },
         {
-          data: fontBold,
+          data: interBold,
           name: 'Inter',
           weight: 700,
         },
