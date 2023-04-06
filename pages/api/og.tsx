@@ -10,8 +10,8 @@ export const config = {
 };
 
 const urls = {
-  interBold: new URL('../../assets/fonts/Inter-Bold.ttf', import.meta.url),
-  interRegular: new URL('../../assets/fonts/Inter-Regular.ttf', import.meta.url),
+  interBold: new URL('../../assets/fonts/Inter-Bold.otf', import.meta.url),
+  interRegular: new URL('../../assets/fonts/Inter-Regular.otf', import.meta.url),
 };
 
 export default async function handler(request: NextRequest) {
