@@ -2,6 +2,7 @@
 import { ImageResponse } from '@vercel/og';
 import { format, isThisYear } from 'date-fns';
 import type { NextRequest } from 'next/server';
+import { origin } from '~/lib/constants';
 import { allPosts } from '~/lib/posts';
 
 export const config = {
@@ -11,8 +12,6 @@ export const config = {
 const urls = {
   interBold: new URL('../../assets/fonts/Inter-Bold.ttf', import.meta.url),
   interRegular: new URL('../../assets/fonts/Inter-Regular.ttf', import.meta.url),
-  og: new URL('../../assets/images/og.png', import.meta.url),
-  ogPost: new URL('../../assets/images/og-post.png', import.meta.url),
 };
 
 export default async function handler(request: NextRequest) {
@@ -27,7 +26,7 @@ export default async function handler(request: NextRequest) {
 
   if (!post) {
     // eslint-disable-next-line @next/next/no-img-element
-    return new ImageResponse(<img alt="" src={urls.og.href} tw="h-full w-full" />, {
+    return new ImageResponse(<img alt="" src={`${origin}/images/og.png`} tw="h-full w-full" />, {
       height: 1080,
       width: 1920,
     });
@@ -38,7 +37,7 @@ export default async function handler(request: NextRequest) {
   return new ImageResponse(
     (
       <div
-        style={{ backgroundImage: `url(${urls.ogPost.href})` }}
+        style={{ backgroundImage: `url(${origin}/images/og-post.png)` }}
         tw="bg-slate-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
       >
         <time tw="text-4xl text-slate-500">{format(date, isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy')}</time>
