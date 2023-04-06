@@ -1,38 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# glennreyes.com
 
-## Getting Started
+This is the source code for my personal website, built using [Next.js](https://nextjs.org) App Router, [Tailwind CSS](https://tailwindcss.com), [Contentlayer](https://contentlayer.dev), and [Prisma](https://prisma.io).
 
-First, run the development server:
+![Banner](https://user-images.githubusercontent.com/5080854/230419923-8374acdf-5746-487d-a404-7139f3d766e8.png)
+
+The site is hosted on [Vercel](https://vercel.com) and uses [Vercel Analytics](https://vercel.com/analytics) for tracking performance. Data is stored using [Supabase](https://supabase.com), a backend-as-a-service platform that provides Postgres databases and other features.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Contentlayer](https://contentlayer.dev)
+- [Prisma](https://prisma.io)
+- [Supabase](https://supabase.com)
+- [Vercel](https://vercel.com)
+- [Vercel Analytics](https://vercel.com/analytics)
+
+## Run the Development Server
+
+This project uses latest [Node](https://nodejs.org), [pnpm](https://pnpm.io) and [Docker](https://www.docker.com) for development.
+
+### Installation
+
+1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/glennreyes/glennreyes.com
+cd glennreyes.com
+```
+
+2. Install dependencies
+
+```bash
+pnpm install
+```
+
+### Database Setup
+
+1. Copy the `.env.example` file to `.env` located in the prisma directory. The default values for `DATABASE_URL` points to a local Postgres database.
+2. Run following Prisma commands to generate the Prisma client and migrate the database.
+
+```bash
+pnpm prisma generate # Generate Prisma client
+pnpm prisma migrate dev # Migrate database
+```
+
+### Development Server
+
+1. Run the development server
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Inspiration
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+I explored various excellent projects to gather ideas and inspiration for my personal website. Here are some of them:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Spotlight by Tailwind CSS](https://tailwindui.com/templates/spotlight)
+- [Lee Robinson's personal website](https://leerob.io)
+- [Delba de Oliveira's personal website](https://delba.dev)
+- [Brian Lovin's personal website](https://brianlovin.com)
