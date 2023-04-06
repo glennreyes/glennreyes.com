@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { PostsFeed } from '~/components/posts/PostsFeed';
 import { Page } from '~/components/ui/layout/Page';
-import { composeTitle } from '~/lib/metadata';
 
 export const metadata: Metadata = {
-  title: composeTitle('Posts'),
+  title: 'Posts',
 };
 
 export default function PostsPage() {

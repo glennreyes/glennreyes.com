@@ -9,7 +9,6 @@ import { ReadingTime } from '~/components/ui/elements/ReadingTime';
 import { Article } from '~/components/ui/layout/Article';
 import { MDXContent } from '~/components/ui/mdx/MDXContent';
 import { origin } from '~/lib/constants';
-import { composeTitle } from '~/lib/metadata';
 
 interface GenerateMetadataConfigParams {
   slug: string;
@@ -28,7 +27,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
 
   const { slug, lead: description } = post;
   const url = `${origin}/posts/${slug}`;
-  const title = composeTitle(post.title);
+  const title = post.title;
   const ogImage = { height: 1080, url: `${origin}/og.png?post=${slug}`, width: 1920 };
 
   return {

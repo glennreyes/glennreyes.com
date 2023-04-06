@@ -1,12 +1,14 @@
 import { AppearancesFeed } from '~/components/appearances/AppearancesFeed';
 import { Page } from '~/components/ui/layout/Page';
 import { getAllEvents } from '~/lib/events';
-import { composeTitle } from '~/lib/metadata';
 
 export const revalidate = 3600;
 
 export const metadata = {
-  title: composeTitle('Appearances'),
+  title: 'Appearances',
+  twitter: {
+    title: 'Appearances',
+  },
 };
 
 export default async function AppearancesPage() {

@@ -6,7 +6,6 @@ import { Page } from '~/components/ui/layout/Page';
 import { ActionLink } from '~/components/ui/link/ActionLink';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
 import { H2 } from '~/components/ui/typography/H2';
-import { composeTitle } from '~/lib/metadata';
 import { getAllTalks, getTalkBySlug } from '~/lib/talks';
 
 export const revalidate = 3600;
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   const talk = await getTalkBySlug(params.slug);
 
   return {
-    title: composeTitle(talk.title),
+    title: talk.title,
   };
 }
 

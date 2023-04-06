@@ -2,14 +2,13 @@ import type { Metadata } from 'next';
 import { Feed } from '~/components/ui/layout/Feed';
 import { Page } from '~/components/ui/layout/Page';
 import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
-import { composeTitle } from '~/lib/metadata';
 import { getAllTalks } from '~/lib/talks';
 
 export const metadata: Metadata = {
-  title: composeTitle('Posts'),
+  title: 'Talks',
 };
 
-export default async function PostsPage() {
+export default async function TalksPage() {
   const allTalks = await getAllTalks();
 
   return (

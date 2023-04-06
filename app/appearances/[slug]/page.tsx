@@ -4,7 +4,6 @@ import { EventDate } from '~/components/appearances/EventDate';
 import { EventLead } from '~/components/appearances/EventLead';
 import { Page } from '~/components/ui/layout/Page';
 import { getAllEvents, getEventBySlug } from '~/lib/events';
-import { composeTitle } from '~/lib/metadata';
 
 export const revalidate = 3600;
 
@@ -20,7 +19,7 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   const event = await getEventBySlug(params.slug);
 
   return {
-    title: composeTitle(event.name),
+    title: event.name,
   };
 }
 

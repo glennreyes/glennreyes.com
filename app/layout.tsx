@@ -9,25 +9,27 @@ import { Navbar } from '~/components/navigation/Navbar';
 import { Body } from '~/components/ui/layout/Body';
 import { Html } from '~/components/ui/layout/Html';
 import { Main } from '~/components/ui/layout/Main';
-import { description, origin } from '~/lib/constants';
-import { composeTitle } from '~/lib/metadata';
+import { description, origin, name } from '~/lib/constants';
 import { Providers } from './providers';
 
-const title = composeTitle();
 const ogImages = [{ height: 1080, url: `${origin}/og.png`, width: 1920 }];
+const title = { default: name, template: `%s | ${name}` };
 
 export const metadata = {
   description,
   icons: {
-    apple: appleTouchIcon.src,
-    icon: [faviconIco.src, faviconPng.src],
+    apple: { type: 'image/png', url: appleTouchIcon.src },
+    icon: [
+      { type: 'image/png', url: faviconIco.src },
+      { type: 'image/png', url: faviconPng.src },
+    ],
   },
   manifest: '/manifest.webmanifest',
   openGraph: {
     description,
     images: ogImages,
     locale: 'en-US',
-    siteName: title,
+    siteName: name,
     title,
     type: 'website',
     url: origin,

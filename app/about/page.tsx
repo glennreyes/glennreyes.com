@@ -14,15 +14,11 @@ import { Instagram } from '~/icons/Instagram';
 import { LinkedIn } from '~/icons/LinkedIn';
 import { Twitter } from '~/icons/Twitter';
 import { github, instagram, linkedin, twitter } from '~/lib/constants';
-import { composeTitle } from '~/lib/metadata';
 
 const page = allPages.find(({ path }) => path === 'about');
 
 export const metadata = {
-  openGraph: {
-    type: 'profile',
-  },
-  title: composeTitle(page?.title),
+  title: page?.title,
 };
 
 export default function AboutPage() {
