@@ -1,8 +1,8 @@
-import androidChrome192 from '~/assets/favicon/android-chrome-192x192.png';
-import androidChrome512 from '~/assets/favicon/android-chrome-512x512.png';
 import { description, name } from '~/lib/constants';
+import androidChrome192 from './android-chrome-192x192.png';
+import androidChrome512 from './android-chrome-512x512.png';
 
-export default function manifest() {
+export default async function manifest() {
   return {
     description,
     display: 'standalone',

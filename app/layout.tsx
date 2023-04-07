@@ -1,9 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { ReactNode } from 'react';
 import '~/app/globals.css';
-import appleTouchIcon from '~/assets/favicon/apple-touch-icon.png';
-import faviconIco from '~/assets/favicon/favicon.ico';
-import faviconPng from '~/assets/favicon/favicon.png';
 import { Footer } from '~/components/footer/Footer';
 import { Menu } from '~/components/navigation/Menu';
 import { Navbar } from '~/components/navigation/Navbar';
@@ -18,14 +15,10 @@ const title = { default: name, template: `%s | ${name}` };
 
 export const metadata = {
   description,
-  icons: {
-    apple: { type: 'image/png', url: appleTouchIcon.src },
-    icon: [
-      { type: 'image/png', url: faviconIco.src },
-      { type: 'image/png', url: faviconPng.src },
-    ],
-  },
-  manifest: '/manifest.webmanifest',
+  // icons: {
+  //   icon: [{ type: 'image/png', url: faviconIco.src }],
+  // },
+  // manifest: '/manifest.webmanifest',
   openGraph: {
     description,
     images: ogImages,
