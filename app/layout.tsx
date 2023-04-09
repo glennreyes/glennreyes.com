@@ -15,10 +15,7 @@ const title = { default: name, template: `%s | ${name}` };
 
 export const metadata = {
   description,
-  // icons: {
-  //   icon: [{ type: 'image/png', url: faviconIco.src }],
-  // },
-  // manifest: '/manifest.webmanifest',
+  manifest: '/manifest.webmanifest',
   openGraph: {
     description,
     images: ogImages,
