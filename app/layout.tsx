@@ -10,7 +10,7 @@ import { Main } from '~/components/ui/layout/Main';
 import { description, origin, name } from '~/lib/constants';
 import { Providers } from './providers';
 
-const ogImages = [{ height: 1080, url: `${origin}/og.png`, width: 1920 }];
+const images = [{ height: 1080, url: `${origin}/og.png`, width: 1920 }];
 const title = { default: name, template: `%s | ${name}` };
 
 export const metadata = {
@@ -18,7 +18,7 @@ export const metadata = {
   manifest: '/manifest.webmanifest',
   openGraph: {
     description,
-    images: ogImages,
+    images,
     locale: 'en-US',
     siteName: name,
     title,
@@ -33,7 +33,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     description,
-    images: ogImages,
+    images,
     title,
   },
   viewport: 'width=device-width, initial-scale=1',
