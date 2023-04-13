@@ -88,7 +88,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
       {action ? (
         <>
           <div className="grid gap-2">{content}</div>
-          <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-600 transition group-hover:text-teal-700 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
+          <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
             <ChevronRightIcon aria-hidden className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
           </p>

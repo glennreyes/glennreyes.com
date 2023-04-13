@@ -26,7 +26,7 @@ interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && <p className="text-xs font-bold uppercase text-teal-600 dark:text-teal-200/75">{title}</p>}
+      {title && <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">{title}</p>}
       {children}
     </div>
   );
