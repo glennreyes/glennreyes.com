@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import { Avatar } from '../avatar/Avatar';
+import { SkipNavigationLink } from '../ui/elements/SkipNavigationLink';
 import { Container } from '../ui/layout/Container';
 import { Link } from '../ui/link/Link';
 import { NavbarAvatar } from './NavbarAvatar';
@@ -15,6 +16,7 @@ export function Navbar({ children, ...props }: NavbarProps) {
       <NavbarBorder />
       <Container className="relative flex gap-2 py-1.5 md:gap-4 md:py-3">
         <div className="flex flex-1 shrink-0 items-center">
+          <SkipNavigationLink />
           <div className="h-11 w-11">
             <NavbarAvatar>
               <Link className="block rounded-full focus-visible:ring-offset-2" href="/">
