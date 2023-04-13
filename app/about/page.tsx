@@ -36,6 +36,7 @@ export default function AboutPage() {
         className="h-96 w-full rounded-[1.75rem] object-cover object-right sm:object-center"
         height={384}
         placeholder="blur"
+        priority
         src={speaking}
         width={992}
       />
