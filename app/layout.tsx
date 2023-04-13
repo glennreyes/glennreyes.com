@@ -15,7 +15,6 @@ const title = { default: name, template: `%s | ${name}` };
 
 export const metadata = {
   description,
-  manifest: '/manifest.webmanifest',
   openGraph: {
     description,
     images,
