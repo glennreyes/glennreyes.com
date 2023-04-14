@@ -46,7 +46,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25 sm:block" />
+        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25 sm:block" />
       </div>
       <div className="relative grid">
         <Button disabled={isMutating} type="submit">
