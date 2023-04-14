@@ -1,0 +1,73 @@
+---
+title: Building my personal website from scratch
+description: My journey of rebuilding my personal website from scratch using Next.js, discussing design inspirations, data management, and my experience working with React Server Components.
+publishedAt: 2023-04-14
+---
+
+<Image src="/og.png" width={1920} height={1080} alt="Glenn Reyes" />
+
+After using Gatsby for my personal site for half a decade, I felt it was time to rebuild it from scratch. Gatsby offered several features I appreciated, such as the GraphQL data layer, easy page creation, and static site generation.
+
+However, I also faced some challenges, including outdated content, a broken deployment process, suboptimal data structure for appearances, talks, and workshops, and the desire for a fresh look and feel with updated technologies. Thus, it was the perfect time to start from the ground up.
+
+## Framework
+
+<Image
+  src="/images/building-my-personal-website-from-scratch/remix-vs-next.png"
+  width={1740}
+  height={1300}
+  alt="Remix vs Next.js"
+/>
+
+As I began the rebuilding process, I considered two frameworks: [Remix](https://remix.run) and [Next.js](https://nextjs.org). After experimenting with both, I chose Next.js 13 for my personal website for several reasons:
+
+- I wanted to learn more about React Server Components (RSC)
+- I was intrigued by the new [Next.js App Router](https://beta.nextjs.org/docs/routing/fundamentals)
+- Next.js, in combination with Vercel, allowed for quick and easy site setup and deployment
+
+I plan to explore Remix in future projects, as I appreciate its focus on the Web API as a first-class citizen.
+
+## React Server Components
+
+My interest in learning about React Server Components was a key factor in choosing Next.js. While experimenting with both frameworks, I attempted to build the early stages of my site without relying on documentation to see how far I could progress. However, I quickly realized I needed to dive deeper into RSC. Some insights I gained include:
+
+- **Optimizing my React components organization for working with RSC**: As I incorporated RSC, I became more mindful of when and where to create React components with hooks and interactivity.
+- **Creating server-rendered components with selective client rehydration.**
+- **Safely using API secrets in RSC without exposing them to the client.**
+
+Although RSC is still in its early stages, I am excited about having built my entire website using this technology. I am eager to see how it evolves and gains support from various libraries.
+
+## Data
+
+For my personal website, I sought a data layer that was easy to work with and that I could envision using for the next five years. I explored several options, eventually settling on the following.
+
+### MDX
+
+Several options compatible with the Next.js App Router were available, such as the [built-in support for MDX](https://beta.nextjs.org/docs/guides/mdx#mdx) in Next.js and [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support) and [Contentlayer](https://contentlayer.io). Ultimately, I utilized all of these tools, primarily for constructing blog content with Contentlayer, `next-mdx-remote` for Markdown data coming from Prisma and built-in MDX for main pages of my site.
+
+### Prisma
+
+I selected [Prisma](https://www.prisma.io) to manage the content for [talks](/talks) and [workshops](/workshops), as it provided the flexibility to design and scale my data model. Prisma pairs well with React's `cache` API for deduping and caching data responses from queries.
+
+## Design
+
+Previously, I used Figma for designing my site before starting the development process. However, this time I chose to design directly in the browser with Tailwind CSS, which allowed for quick and easy experimentation with various design elements, such as fonts, layouts, and colors.
+
+<Image src="/images/building-my-personal-website-from-scratch/design.png" width={1536} height={3648} alt="Design" />
+
+I drew inspiration from several projects, including:
+
+- [Spotlight by Tailwind CSS](https://tailwindui.com/templates/spotlight)
+- [Lee Robinson's personal website](https://leerob.io)
+- [Delba de Oliveira's personal website](https://delba.dev)
+- [Brian Lovin's personal website](https://brianlovin.com)
+
+I enjoyed tinkering and crafting visually appealing user interfaces and often invest a considerable amount of time refining their appearance.
+
+<Image src="/images/building-my-personal-website-from-scratch/themes.png" width={1545} height={1017} alt="Themes" />
+
+## Moving forward
+
+I am delighted with the outcome of my new site and eagerly anticipate adding more content and features. Additionally, I look forward to deepening my understanding of React Server Components and leveraging their potential to enhance my site's user experience.
+
+The source code of my site is available on [GitHub](https://github.com/glennreyes/glennreyes.com) and I love to hear your thoughts on the project!
