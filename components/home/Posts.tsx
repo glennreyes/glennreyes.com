@@ -7,7 +7,7 @@ export function Posts() {
   const posts = allPosts.slice(0, 4);
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-6 lg:gap-12">
       <H4 as="h2">Recent Posts</H4>
       <div className="grid gap-12">
         <Feed>
