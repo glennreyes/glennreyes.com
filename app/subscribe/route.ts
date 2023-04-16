@@ -5,13 +5,13 @@ import { subscribe } from '~/lib/newsletter';
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  const result = z.object({ email: z.string() }).safeParse(data);
+  const result = z.object({ email: z.string(), theme: z.enum(['dark', 'light']).default('light') }).safeParse(data);
 
   if (!result.success) {
     return new NextResponse('Invalid email', { status: 400 });
   }
 
-  await subscribe(result.data.email);
+  await subscribe(result.data);
 
   return new NextResponse('OK', { status: 200 });
 }

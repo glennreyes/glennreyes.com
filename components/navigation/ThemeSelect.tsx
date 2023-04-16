@@ -4,12 +4,11 @@ import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
-import { useTheme } from 'next-themes';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Fragment } from 'react';
 import { useMounted } from '~/hooks/useMounted';
+import { useTheme } from '~/hooks/useTheme';
 import type { Theme } from '~/lib/theme';
-import { parseTheme } from '~/lib/theme';
 import { IconButton } from '../ui/elements/IconButton';
 import { Select } from '../ui/forms/Select';
 
@@ -44,9 +43,7 @@ interface ThemeSelectProps {
 
 export function ThemeSelect({ native }: ThemeSelectProps) {
   const mounted = useMounted();
-  const { theme: currentTheme, setTheme, resolvedTheme: currentResolvedTheme } = useTheme();
-  const theme = parseTheme(currentTheme);
-  const resolvedTheme = parseTheme(currentResolvedTheme);
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const { label } = themes[theme];
   const { icon: Icon } = themes[resolvedTheme];
 

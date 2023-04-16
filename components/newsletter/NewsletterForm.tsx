@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import type { ComponentPropsWithoutRef, FormEvent } from 'react';
 import { useState, useTransition } from 'react';
+import { useTheme } from '~/hooks/useTheme';
 import { Button } from '../ui/forms/Button';
 import { Input } from '../ui/forms/Input';
 
@@ -10,6 +11,7 @@ type NewsletterFormProps = Omit<ComponentPropsWithoutRef<'form'>, 'children' | '
 
 export function NewsletterForm(props: NewsletterFormProps) {
   const { push } = useRouter();
+  const { resolvedTheme } = useTheme();
   const [isPending, startTransition] = useTransition();
   const [isFetching, setIsFetching] = useState(false);
   const isMutating = isFetching || isPending;
@@ -22,7 +24,7 @@ export function NewsletterForm(props: NewsletterFormProps) {
     try {
       setIsFetching(true);
       await fetch('/subscribe', {
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, theme: resolvedTheme }),
         headers: { 'content-type': 'application/json' },
         method: 'post',
       });
