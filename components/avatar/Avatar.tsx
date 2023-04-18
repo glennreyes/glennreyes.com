@@ -11,18 +11,18 @@ type AvatarSize = 11 | 28 | 40;
 const attributes: Record<AvatarSize, Pick<ComponentPropsWithoutRef<typeof Image>, 'className' | 'height' | 'width'>> = {
   11: {
     className: 'h-11 w-11 p-px',
-    height: 44,
-    width: 44,
+    height: 40,
+    width: 40,
   },
   28: {
     className: 'h-28 w-28 p-0.5',
-    height: 112,
-    width: 112,
+    height: 108,
+    width: 108,
   },
   40: {
     className: 'h-40 w-40 p-1',
-    height: 160,
-    width: 160,
+    height: 152,
+    width: 152,
   },
 };
 
