@@ -79,19 +79,6 @@ export default function AboutPage() {
                   </List.Item>
                   <List.Item>
                     <Card.Item
-                      link={`https://instagram.com/${instagram}`}
-                      title={
-                        <span className="inline-flex w-full items-center justify-between gap-2">
-                          Instagram
-                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
-                        </span>
-                      }
-                    >
-                      <Instagram className="h-6 w-6 text-slate-500 dark:text-slate-400" />
-                    </Card.Item>
-                  </List.Item>
-                  <List.Item>
-                    <Card.Item
                       link={`https://linkedin.com/in/${linkedin}`}
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
@@ -101,6 +88,19 @@ export default function AboutPage() {
                       }
                     >
                       <LinkedIn className="h-6 w-6 text-slate-500 dark:text-slate-400" />
+                    </Card.Item>
+                  </List.Item>
+                  <List.Item>
+                    <Card.Item
+                      link={`https://instagram.com/${instagram}`}
+                      title={
+                        <span className="inline-flex w-full items-center justify-between gap-2">
+                          Instagram
+                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                        </span>
+                      }
+                    >
+                      <Instagram className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                     </Card.Item>
                   </List.Item>
                 </List>
