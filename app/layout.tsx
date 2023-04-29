@@ -22,7 +22,6 @@ export const metadata = {
     type: 'website',
     url: origin,
   },
-  themeColor: 'transparent',
   title,
   twitter: {
     card: 'summary_large_image',
