@@ -28,31 +28,18 @@ export async function generateMetadata({ params }: GenerateMetadataConfig): Prom
   const { slug, description } = post;
   const url = `${origin}/posts/${slug}`;
   const title = post.title;
-  const ogImage = { height: 1080, url: `${origin}/og?post=${slug}`, width: 1920 };
 
   return {
     description,
     openGraph: {
       description,
-      images: [ogImage],
       locale: 'en-US',
       siteName: title,
       title,
       type: 'article',
       url,
     },
-
-    themeColor: [
-      { color: '#020617', media: '(prefers-color-scheme: dark)' },
-      { color: '#ffffff', media: '(prefers-color-scheme: light)' },
-    ],
     title,
-    twitter: {
-      card: 'summary_large_image',
-      description,
-      images: [ogImage],
-      title,
-    },
   };
 }
 
