@@ -14,6 +14,7 @@
     "seed": "ts-node --compiler-options {\"module\":\"commonjs\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
     "@giscus/react": "^2.2.8",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",

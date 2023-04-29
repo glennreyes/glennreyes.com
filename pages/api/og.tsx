@@ -16,10 +16,12 @@ const defaultImageResponse = new ImageResponse(<img alt="" src={`${origin}/og.pn
 });
 
 export default async function handler(request: NextRequest) {
-  const [interBold, interRegular] = await Promise.all([
-    fetch(new URL('../../assets/fonts/Inter-Bold.ttf', import.meta.url)).then((res) => res.arrayBuffer()),
-    fetch(new URL('../../assets/fonts/Inter-Regular.ttf', import.meta.url)).then((res) => res.arrayBuffer()),
-  ]);
+  const inter700 = fetch(
+    new URL('../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff', import.meta.url),
+  ).then((res) => res.arrayBuffer());
+  const inter400 = fetch(
+    new URL('../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff', import.meta.url),
+  ).then((res) => res.arrayBuffer());
   const postSlug = request.nextUrl.searchParams.get('post');
 
   if (!postSlug) {
@@ -45,12 +47,12 @@ export default async function handler(request: NextRequest) {
       {
         fonts: [
           {
-            data: interRegular,
+            data: await inter400,
             name: 'Inter',
             weight: 400,
           },
           {
-            data: interBold,
+            data: await inter700,
             name: 'Inter',
             weight: 700,
           },
