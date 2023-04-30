@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
+import { origin } from '@/lib/constants';
+import { allPosts } from '@/lib/posts';
 import { format, isThisYear } from 'date-fns';
 import { ImageResponse } from 'next/server';
-import { origin } from '~/lib/constants';
-import { allPosts } from '~/lib/posts';
 import defaultOpengraphImage from '../../opengraph-image';
 
 export const runtime = 'edge';

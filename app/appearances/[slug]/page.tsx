@@ -1,9 +1,9 @@
+import { EventAppearances } from '@/components/appearances/EventAppearances';
+import { EventDate } from '@/components/appearances/EventDate';
+import { EventLead } from '@/components/appearances/EventLead';
+import { Page } from '@/components/ui/layout/Page';
+import { getAllEvents, getEventBySlug } from '@/lib/events';
 import type { Metadata } from 'next';
-import { EventAppearances } from '~/components/appearances/EventAppearances';
-import { EventDate } from '~/components/appearances/EventDate';
-import { EventLead } from '~/components/appearances/EventLead';
-import { Page } from '~/components/ui/layout/Page';
-import { getAllEvents, getEventBySlug } from '~/lib/events';
 
 export const revalidate = 3600;
 

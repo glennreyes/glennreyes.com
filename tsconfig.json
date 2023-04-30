@@ -10,7 +10,7 @@
     "noUnusedParameters": true,
     "paths": {
       "contentlayer/generated": ["./.contentlayer/generated"],
-      "~/*": ["./*"]
+      "@/*": ["./*"]
     },
     "plugins": [{ "name": "next" }],
     "strict": true

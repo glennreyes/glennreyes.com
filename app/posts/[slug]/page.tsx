@@ -1,14 +1,14 @@
+import { PostFooter } from '@/components/posts/PostFooter';
+import { DateDisplay } from '@/components/ui/elements/DateDisplay';
+import { IconButton } from '@/components/ui/elements/IconButton';
+import { ReadingTime } from '@/components/ui/elements/ReadingTime';
+import { Article } from '@/components/ui/layout/Article';
+import { MDXContent } from '@/components/ui/mdx/MDXContent';
+import { origin } from '@/lib/constants';
 import { ArrowSmallLeftIcon } from '@heroicons/react/20/solid';
 import { allPosts } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { PostFooter } from '~/components/posts/PostFooter';
-import { DateDisplay } from '~/components/ui/elements/DateDisplay';
-import { IconButton } from '~/components/ui/elements/IconButton';
-import { ReadingTime } from '~/components/ui/elements/ReadingTime';
-import { Article } from '~/components/ui/layout/Article';
-import { MDXContent } from '~/components/ui/mdx/MDXContent';
-import { origin } from '~/lib/constants';
 
 interface GenerateMetadataConfigParams {
   slug: string;

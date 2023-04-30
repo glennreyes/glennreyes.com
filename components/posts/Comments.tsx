@@ -1,4 +1,4 @@
-import { email, twitter } from '~/lib/constants';
+import { email, twitter } from '@/lib/constants';
 import { InlineLink } from '../ui/link/InlineLink';
 import { H4 } from '../ui/typography/H4';
 import { Paragraph } from '../ui/typography/Paragraph';

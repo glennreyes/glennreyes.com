@@ -1,19 +1,19 @@
+import speaking from '@/assets/images/speaking.jpg';
+import { Divider } from '@/components/ui/elements/Divider';
+import { Card } from '@/components/ui/layout/Card';
+import { Content } from '@/components/ui/layout/Content';
+import { List } from '@/components/ui/layout/List';
+import { Page } from '@/components/ui/layout/Page';
+import { MDXContent } from '@/components/ui/mdx/MDXContent';
+import { GitHub } from '@/icons/GitHub';
+import { Instagram } from '@/icons/Instagram';
+import { LinkedIn } from '@/icons/LinkedIn';
+import { Twitter } from '@/icons/Twitter';
+import { github, instagram, linkedin, twitter } from '@/lib/constants';
 import { ArrowUpRightIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 import { allPages } from 'contentlayer/generated';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import speaking from '~/assets/images/speaking.jpg';
-import { Divider } from '~/components/ui/elements/Divider';
-import { Card } from '~/components/ui/layout/Card';
-import { Content } from '~/components/ui/layout/Content';
-import { List } from '~/components/ui/layout/List';
-import { Page } from '~/components/ui/layout/Page';
-import { MDXContent } from '~/components/ui/mdx/MDXContent';
-import { GitHub } from '~/icons/GitHub';
-import { Instagram } from '~/icons/Instagram';
-import { LinkedIn } from '~/icons/LinkedIn';
-import { Twitter } from '~/icons/Twitter';
-import { github, instagram, linkedin, twitter } from '~/lib/constants';
 
 const page = allPages.find(({ path }) => path === 'about');
 

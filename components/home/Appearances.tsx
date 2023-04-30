@@ -1,6 +1,6 @@
+import { getAllEvents } from '@/lib/events';
+import { composePlaceByLocation } from '@/lib/place';
 import { getTime } from 'date-fns';
-import { getAllEvents } from '~/lib/events';
-import { composePlaceByLocation } from '~/lib/place';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';

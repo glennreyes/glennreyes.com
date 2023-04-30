@@ -1,5 +1,5 @@
+import { description, name } from '@/lib/constants';
 import Link from 'next/link';
-import { description, name } from '~/lib/constants';
 import { Avatar } from '../avatar/Avatar';
 import { Card } from '../ui/layout/Card';
 import { H4 } from '../ui/typography/H4';

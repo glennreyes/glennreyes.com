@@ -1,6 +1,6 @@
-import { GitHub } from '~/icons/GitHub';
-import { Twitter } from '~/icons/Twitter';
-import { description, github, name, twitter } from '~/lib/constants';
+import { GitHub } from '@/icons/GitHub';
+import { Twitter } from '@/icons/Twitter';
+import { description, github, name, twitter } from '@/lib/constants';
 import { Avatar } from '../avatar/Avatar';
 import { IconButton } from '../ui/elements/IconButton';
 import { H1 } from '../ui/typography/H1';

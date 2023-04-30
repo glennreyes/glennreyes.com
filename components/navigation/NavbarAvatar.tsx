@@ -1,9 +1,9 @@
 'use client';
 
+import { useIsActivePathname } from '@/hooks/useIsActivePathname';
 import { Transition } from '@headlessui/react';
 import type { ComponentPropsWithoutRef } from 'react';
 import { useContext } from 'react';
-import { useIsActivePathname } from '~/hooks/useIsActivePathname';
 import { Intersection } from '../intersection/Intersection';
 
 type NavbarAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;

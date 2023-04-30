@@ -21,7 +21,7 @@ When prompted, select to use following configuration:
 2. ESLint: **Yes**
 3. `src/` directory: **No**
 4. experimental `app/` directory: **Yes**
-5. `import` alias: `~/*`
+5. `import` alias: `@/*`
 
 After creating the Next application, you can navigate into the `my-next-blog/` directory and start the development server:
 
@@ -92,7 +92,7 @@ Then we need to include the auto-generated `.contentlayer/generated` folder and 
       }
     ],
     "paths": {
-      "~/*": ["./*"],
+      "@/*": ["./*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },

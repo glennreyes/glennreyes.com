@@ -1,7 +1,7 @@
-import { Feed } from '~/components/ui/layout/Feed';
-import { Page } from '~/components/ui/layout/Page';
-import { MDXRemoteContent } from '~/components/ui/mdx/MDXRemoteContent';
-import { getAllWorkshops } from '~/lib/workshops';
+import { Feed } from '@/components/ui/layout/Feed';
+import { Page } from '@/components/ui/layout/Page';
+import { MDXRemoteContent } from '@/components/ui/mdx/MDXRemoteContent';
+import { getAllWorkshops } from '@/lib/workshops';
 
 export const metadata = {
   title: 'Workshops',

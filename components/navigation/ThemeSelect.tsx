@@ -1,14 +1,14 @@
 'use client';
 
+import { useMounted } from '@/hooks/useMounted';
+import { useTheme } from '@/hooks/useTheme';
+import type { Theme } from '@/lib/theme';
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Fragment } from 'react';
-import { useMounted } from '~/hooks/useMounted';
-import { useTheme } from '~/hooks/useTheme';
-import type { Theme } from '~/lib/theme';
 import { IconButton } from '../ui/elements/IconButton';
 import { Select } from '../ui/forms/Select';
 

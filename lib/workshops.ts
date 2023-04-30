@@ -1,5 +1,5 @@
+import { prisma } from '@/lib/prisma';
 import { cache } from 'react';
-import { prisma } from '~/lib/prisma';
 
 export const getAllWorkshops = cache(function getAllWorkshops() {
   return prisma.workshop.findMany({

@@ -1,4 +1,4 @@
-import { allPosts } from '~/lib/posts';
+import { allPosts } from '@/lib/posts';
 import { Feed } from '../ui/layout/Feed';
 
 export function PostsFeed() {

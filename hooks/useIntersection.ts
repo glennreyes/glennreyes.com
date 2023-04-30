@@ -1,5 +1,5 @@
+import { Intersection } from '@/components/intersection/Intersection';
 import { useContext, useEffect } from 'react';
-import { Intersection } from '~/components/intersection/Intersection';
 
 export function useIntersection({ root, rootMargin, threshold = 1 }: IntersectionObserverInit = {}) {
   const { ref, isInView, setInstance } = useContext(Intersection);

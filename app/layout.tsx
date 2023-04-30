@@ -1,13 +1,13 @@
+import '@/app/globals.css';
+import { Footer } from '@/components/footer/Footer';
+import { Menu } from '@/components/navigation/Menu';
+import { Navbar } from '@/components/navigation/Navbar';
+import { Body } from '@/components/ui/layout/Body';
+import { Html } from '@/components/ui/layout/Html';
+import { Main } from '@/components/ui/layout/Main';
+import { description, origin, name, twitter } from '@/lib/constants';
 import { Analytics } from '@vercel/analytics/react';
 import type { ReactNode } from 'react';
-import '~/app/globals.css';
-import { Footer } from '~/components/footer/Footer';
-import { Menu } from '~/components/navigation/Menu';
-import { Navbar } from '~/components/navigation/Navbar';
-import { Body } from '~/components/ui/layout/Body';
-import { Html } from '~/components/ui/layout/Html';
-import { Main } from '~/components/ui/layout/Main';
-import { description, origin, name, twitter } from '~/lib/constants';
 import { Providers } from './providers';
 
 const title = { default: name, template: `%s | ${name}` };

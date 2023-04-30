@@ -1,8 +1,8 @@
 'use client';
 
+import { IntersectionProvider } from '@/components/intersection/IntersectionProvider';
 import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
-import { IntersectionProvider } from '~/components/intersection/IntersectionProvider';
 
 interface ProvidersProps {
   children: ReactNode;

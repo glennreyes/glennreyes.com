@@ -1,9 +1,9 @@
 'use client';
 
+import { useTheme } from '@/hooks/useTheme';
 import { useRouter } from 'next/navigation';
 import type { ComponentPropsWithoutRef, FormEvent } from 'react';
 import { useState, useTransition } from 'react';
-import { useTheme } from '~/hooks/useTheme';
 import { Button } from '../ui/forms/Button';
 import { Input } from '../ui/forms/Input';
 

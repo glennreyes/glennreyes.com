@@ -1,15 +1,15 @@
+import { CopyToClipboard } from '@/components/ui/elements/CopyToClipboard';
+import { InlineLink } from '@/components/ui/link/InlineLink';
+import { Link } from '@/components/ui/link/Link';
+import { H1 } from '@/components/ui/typography/H1';
+import { H2 } from '@/components/ui/typography/H2';
+import { H3 } from '@/components/ui/typography/H3';
+import { H4 } from '@/components/ui/typography/H4';
+import { Lead } from '@/components/ui/typography/Lead';
 import { DocumentIcon } from '@heroicons/react/24/outline';
 import type { MDXComponents } from 'mdx/types';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
-import { CopyToClipboard } from '~/components/ui/elements/CopyToClipboard';
-import { InlineLink } from '~/components/ui/link/InlineLink';
-import { Link } from '~/components/ui/link/Link';
-import { H1 } from '~/components/ui/typography/H1';
-import { H2 } from '~/components/ui/typography/H2';
-import { H3 } from '~/components/ui/typography/H3';
-import { H4 } from '~/components/ui/typography/H4';
-import { Lead } from '~/components/ui/typography/Lead';
 
 interface DivProps extends ComponentPropsWithoutRef<'div'> {
   'data-language'?: string;

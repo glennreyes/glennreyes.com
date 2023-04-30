@@ -1,7 +1,7 @@
 'use client';
 
+import { useIsScrollTop } from '@/hooks/useIsScrollTop';
 import clsx from 'clsx';
-import { useIsScrollTop } from '~/hooks/useIsScrollTop';
 
 export function NavbarBorder() {
   const isScrollTop = useIsScrollTop();
