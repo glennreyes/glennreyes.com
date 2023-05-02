@@ -13,7 +13,7 @@ export function Card<TElementType extends ElementType>({ as, ...props }: CardPro
 
   return (
     <Component
-      className="relative rounded-[1.75rem] border border-slate-300/25 p-6 dark:border-slate-500/25"
+      className="relative overflow-hidden rounded-[1.75rem] border border-slate-300/25 p-6 dark:border-slate-500/25"
       {...props}
     />
   );
