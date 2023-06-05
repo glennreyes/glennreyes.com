@@ -16,7 +16,6 @@ export default function Home() {
           <Posts />
         </Content.Primary>
         <Content.Secondary className="lg:col-span-5">
-          {/* @ts-expect-error Server Components */}
           <Appearances />
           <Newsletter />
         </Content.Secondary>
