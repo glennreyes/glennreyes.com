@@ -6,7 +6,7 @@ export const description = `${tagline} with a passion for building innovative pr
 // Social media
 export const twitter = 'glnnrys';
 export const github = 'glennreyes';
-export const linkedin = 'glennreyes';
+export const linkedin = 'glnnrys';
 export const instagram = 'glnnrys';
 
 // Contact
