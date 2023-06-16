@@ -82,7 +82,7 @@ export default makeSource({
         {
           onVisitHighlightedLine(node) {
             // Each line node by default has `class="line"`.
-            node.properties.className.push(classes.lineHighlighted);
+            node.properties.className?.push(classes.lineHighlighted);
           },
           // Callback hooks to add custom logic to nodes when visiting
           // them.
