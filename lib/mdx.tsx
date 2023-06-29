@@ -33,7 +33,7 @@ export const components: MDXComponents = {
     if (props['data-language'] === undefined) {
       return (
         <code
-          className="inline-block rounded-lg border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900"
+          className="rounded-lg border border-slate-200 bg-slate-50 px-1.5 py-0.5 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900"
           {...props}
         />
       );
