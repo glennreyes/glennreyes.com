@@ -89,8 +89,8 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                     </dt>
                     <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={slides}>
-                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         View Slides
+                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                       </InlineLink>
                     </Paragraph>
                   </div>
@@ -103,8 +103,8 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                     </dt>
                     <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={recording}>
-                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         Watch Recording
+                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                       </InlineLink>
                     </Paragraph>
                   </div>

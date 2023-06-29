@@ -115,8 +115,8 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                     </dt>
                     <Paragraph as="dd" className="text-sm font-medium">
                       <InlineLink className="inline-flex items-center gap-1" href={recording}>
-                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                         Watch Recording
+                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
                       </InlineLink>
                     </Paragraph>
                   </div>
