@@ -1,7 +1,7 @@
-import { composePlaceByLocation } from '@/lib/place';
 import type { Event, Location } from '@prisma/client';
 import type { ReactNode } from 'react';
 import { Feed } from '../ui/layout/Feed';
+import { composePlaceByLocation } from '@/lib/place';
 
 interface AppearancesFeedProps {
   children?: ReactNode;

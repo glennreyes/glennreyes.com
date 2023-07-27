@@ -1,7 +1,7 @@
-import { allPosts } from '@/lib/posts';
 import { Feed } from '../ui/layout/Feed';
 import { ActionLink } from '../ui/link/ActionLink';
 import { H4 } from '../ui/typography/H4';
+import { allPosts } from '@/lib/posts';
 
 export function Posts() {
   const posts = allPosts.slice(0, 4);

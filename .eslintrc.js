@@ -1,9 +1,8 @@
 /** @type {import('eslint').Linter.BaseConfig} */
 module.exports = {
   extends: ['next/core-web-vitals', 'banana/react'],
-  parserOptions: { project: './tsconfig.json' },
+  parserOptions: { project: true },
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
-    'jsx-a11y/anchor-has-content': 'off',
   },
 };

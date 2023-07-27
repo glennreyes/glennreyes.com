@@ -1,8 +1,8 @@
-import { email, twitter } from '@/lib/constants';
 import { InlineLink } from '../ui/link/InlineLink';
 import { H4 } from '../ui/typography/H4';
 import { Paragraph } from '../ui/typography/Paragraph';
 import { Giscus } from './Giscus';
+import { email, twitter } from '@/lib/constants';
 
 export function Comments() {
   return (

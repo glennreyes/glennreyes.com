@@ -1,11 +1,11 @@
 'use client';
 
-import { useTheme } from '@/hooks/useTheme';
 import { useRouter } from 'next/navigation';
 import type { ComponentPropsWithoutRef, FormEvent } from 'react';
 import { useState, useTransition } from 'react';
 import { Button } from '../ui/forms/Button';
 import { Input } from '../ui/forms/Input';
+import { useTheme } from '@/hooks/useTheme';
 
 type NewsletterFormProps = Omit<ComponentPropsWithoutRef<'form'>, 'children' | 'className'>;
 

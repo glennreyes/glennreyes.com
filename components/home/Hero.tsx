@@ -1,10 +1,10 @@
-import { GitHub } from '@/icons/GitHub';
-import { Twitter } from '@/icons/Twitter';
-import { description, github, name, twitter } from '@/lib/constants';
 import { Avatar } from '../avatar/Avatar';
 import { IconButton } from '../ui/elements/IconButton';
 import { H1 } from '../ui/typography/H1';
 import { HeroAvatar } from './HeroAvatar';
+import { description, github, name, twitter } from '@/lib/constants';
+import { Twitter } from '@/icons/Twitter';
+import { GitHub } from '@/icons/GitHub';
 
 export function Hero() {
   return (

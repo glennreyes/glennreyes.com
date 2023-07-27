@@ -1,7 +1,7 @@
-import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import type { Location } from '@prisma/client';
 import { Link } from '../ui/link/Link';
+import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 
 interface EventLocationProps {
   location: Pick<Location, 'address' | 'address' | 'city' | 'country' | 'name' | 'state' | 'zip'>;

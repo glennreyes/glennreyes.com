@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { AppearancesFeed } from '@/components/appearances/AppearancesFeed';
 import { Divider } from '@/components/ui/elements/Divider';
 import { TagCloud } from '@/components/ui/elements/TagCloud';
@@ -6,7 +7,6 @@ import { ActionLink } from '@/components/ui/link/ActionLink';
 import { MDXRemoteContent } from '@/components/ui/mdx/MDXRemoteContent';
 import { H2 } from '@/components/ui/typography/H2';
 import { getAllTalks, getTalkBySlug } from '@/lib/talks';
-import type { Metadata } from 'next';
 
 export const revalidate = 3600;
 
