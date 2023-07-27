@@ -16,7 +16,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.5",
     "@giscus/react": "^2.3.0",
-    "@headlessui/react": "^1.7.15",
+    "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
     "@prisma/client": "^4.16.1",
     "@vercel/analytics": "^1.0.1",
