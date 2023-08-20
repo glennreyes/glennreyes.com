@@ -2,8 +2,8 @@ import { Avatar } from '../avatar/Avatar';
 import { IconButton } from '../ui/elements/IconButton';
 import { H1 } from '../ui/typography/H1';
 import { HeroAvatar } from './HeroAvatar';
-import { description, github, name, twitter } from '@/lib/constants';
-import { Twitter } from '@/icons/Twitter';
+import { description, github, name, x } from '@/lib/constants';
+import { X } from '@/icons/X';
 import { GitHub } from '@/icons/GitHub';
 
 export function Hero() {
@@ -26,10 +26,10 @@ export function Hero() {
           <li>
             <IconButton
               appearance="tertiary"
-              aria-label="Follow on Twitter"
+              aria-label="Follow on X, formerly known as X"
               as="link"
-              href={`https://twitter.com/${twitter}`}
-              icon={Twitter}
+              href={`https://twitter.com/${x}`}
+              icon={X}
               size={7}
             />
           </li>

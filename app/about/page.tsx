@@ -11,8 +11,8 @@ import { MDXContent } from '@/components/ui/mdx/MDXContent';
 import { GitHub } from '@/icons/GitHub';
 import { Instagram } from '@/icons/Instagram';
 import { LinkedIn } from '@/icons/LinkedIn';
-import { Twitter } from '@/icons/Twitter';
-import { github, instagram, linkedin, twitter } from '@/lib/constants';
+import { X } from '@/icons/X';
+import { github, instagram, linkedin, x } from '@/lib/constants';
 import { allPages } from 'contentlayer/generated';
 
 const page = allPages.find(({ path }) => path === 'about');
@@ -53,15 +53,15 @@ export default function AboutPage() {
                 <List as="ul">
                   <List.Item>
                     <Card.Item
-                      link={`https://twitter.com/${twitter}`}
+                      link={`https://twitter.com/${x}`}
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
-                          Twitter
+                          X
                           <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
                         </span>
                       }
                     >
-                      <Twitter className="h-6 w-6 text-slate-500 dark:text-slate-400" />
+                      <X className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                     </Card.Item>
                   </List.Item>
                   <List.Item>

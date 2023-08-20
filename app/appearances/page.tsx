@@ -6,7 +6,7 @@ export const revalidate = 3600;
 
 export const metadata = {
   title: 'Appearances',
-  twitter: {
+  x: {
     title: 'Appearances',
   },
 };

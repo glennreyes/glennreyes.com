@@ -4,7 +4,7 @@ export const tagline = 'Software engineer, tech speaker and workshop instructor'
 export const description = `${tagline} with a passion for building innovative products and user interfaces using cutting edge web technologies.`;
 
 // Social media
-export const twitter = 'glnnrys';
+export const x = 'glnnrys';
 export const github = 'glennreyes';
 export const linkedin = 'glnnrys';
 export const instagram = 'glnnrys';

@@ -8,7 +8,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 import { Body } from '@/components/ui/layout/Body';
 import { Html } from '@/components/ui/layout/Html';
 import { Main } from '@/components/ui/layout/Main';
-import { description, origin, name, twitter } from '@/lib/constants';
+import { description, origin, name, x } from '@/lib/constants';
 
 const title = { default: name, template: `%s | ${name}` };
 
@@ -23,12 +23,12 @@ export const metadata = {
     url: origin,
   },
   title,
-  twitter: {
-    card: 'summary_large_image',
-    creator: `@${twitter}`,
-    site: `@${twitter}`,
-  },
   viewport: 'width=device-width, initial-scale=1',
+  x: {
+    card: 'summary_large_image',
+    creator: `@${x}`,
+    site: `@${x}`,
+  },
 };
 
 interface RootLayoutProps {
