@@ -46,7 +46,7 @@ Because our app is splitting bundles both on the client and server, multiple bun
 
 One way would be to create another build step to delete all \[number\].server.js, but that would be the last (or not an) option.
 
-A better way would be to tweak the webpack config to _disable Code Splitting for the server_. Doing some research I came across [this gist](https://gist.github.com/jcenturion/892c718abce234243a156255f8f52468) by [@jcenturion86](https://twitter.com/jcenturion86) and learned about [LimitChunkCountPlugin](https://webpack.js.org/plugins/limit-chunk-count-plugin) that allows me to set a limit ofhow many chunks should be created*.* So the config looks like this:
+A better way would be to tweak the webpack config to _disable Code Splitting for the server_. Doing some research I came across [this gist](https://gist.github.com/jcenturion/892c718abce234243a156255f8f52468) by [@jcenturion86](https://x.com/jcenturion86) and learned about [LimitChunkCountPlugin](https://webpack.js.org/plugins/limit-chunk-count-plugin) that allows me to set a limit ofhow many chunks should be created*.* So the config looks like this:
 
 ```js
 module.exports = {

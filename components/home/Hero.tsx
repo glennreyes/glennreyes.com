@@ -28,7 +28,7 @@ export function Hero() {
               appearance="tertiary"
               aria-label="Follow on X, formerly known as X"
               as="link"
-              href={`https://twitter.com/${x}`}
+              href={`https://x.com/${x}`}
               icon={X}
               size={7}
             />

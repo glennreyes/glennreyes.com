@@ -18,7 +18,7 @@ export function Comments() {
         <InlineLink href="https://github.com/glennreyes/glennreyes.com/discussions">discussions on GitHub</InlineLink>{' '}
         via <InlineLink href="https://giscus.app">giscus</InlineLink>, so feel free to comment there directly if
         preferred. Alternatively, you can reach out to me on{' '}
-        <InlineLink href={`https://twitter.com/${x}`}>X (formerly known as Twitter)</InlineLink> or send me an{' '}
+        <InlineLink href={`https://x.com/${x}`}>X (formerly known as Twitter)</InlineLink> or send me an{' '}
         <InlineLink href={`mailto:${email}`}>email</InlineLink>. I'm always happy to hear from my readers!
       </Paragraph>
     </div>

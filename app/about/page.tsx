@@ -53,7 +53,7 @@ export default function AboutPage() {
                 <List as="ul">
                   <List.Item>
                     <Card.Item
-                      link={`https://twitter.com/${x}`}
+                      link={`https://x.com/${x}`}
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           X
