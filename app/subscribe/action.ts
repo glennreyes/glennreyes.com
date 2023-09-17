@@ -1,8 +1,8 @@
 'use server';
 
-import { subscribe as subscribeBase } from '@/lib/newsletter';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
+import { subscribe as subscribeBase } from '@/lib/newsletter';
 
 export async function subscribe(data: FormData) {
   const email = data.get('email');
@@ -13,15 +13,18 @@ export async function subscribe(data: FormData) {
     .safeParse({ email, theme });
 
   if (!result.success) {
-    // TODO: Show error message
+    // TODO: Display error toast
     return;
   }
 
   try {
     await subscribeBase(result.data);
-    // TODO: Figure out how to redirect correctly
-    redirect('/subscribe/confirm');
-  } catch {
-    // TODO: Show error message
+  } catch (error) {
+    console.error(error);
+
+    // TODO: Display error toast
+    return;
   }
+
+  redirect('/subscribe/confirm');
 }
