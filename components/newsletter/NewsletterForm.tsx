@@ -1,7 +1,7 @@
 'use client';
 
 import type { ComponentPropsWithoutRef } from 'react';
-import { experimental_useFormStatus as useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { Button } from '../ui/forms/Button';
 import { Input } from '../ui/forms/Input';
 import { useTheme } from '@/hooks/useTheme';
