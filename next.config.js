@@ -5,7 +5,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
     mdxRs: true,
-    newNextLinkBehavior: true,
     scrollRestoration: true,
     serverActions: true,
   },
