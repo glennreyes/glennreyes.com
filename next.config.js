@@ -5,8 +5,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
     mdxRs: true,
-    scrollRestoration: true,
-    serverActions: true,
   },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   reactStrictMode: true,
