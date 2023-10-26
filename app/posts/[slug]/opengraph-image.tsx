@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { format, isThisYear } from 'date-fns';
-import { ImageResponse } from 'next/server';
+import { ImageResponse } from 'next/og';
 import defaultOpengraphImage from '../../opengraph-image';
 import { allPosts } from '@/lib/posts';
 import { origin } from '@/lib/constants';
