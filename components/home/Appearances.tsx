@@ -1,3 +1,4 @@
+import { getTime } from 'date-fns';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
@@ -9,11 +10,29 @@ import { getAllEvents } from '@/lib/events';
 export async function Appearances() {
   const allEvents = await getAllEvents();
   const today = new Date();
-  const events = allEvents
-    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
-    .slice(0, 5);
-  const upcoming = events.filter((event) => event.startDate > today);
-  const past = events.filter((event) => event.startDate <= today);
+  const todayInMilliseconds = getTime(today);
+  // Calculate the difference between each date and today's date
+  const dateDistances = allEvents.map((event) => Math.abs(new Date(event.startDate).getTime() - todayInMilliseconds));
+  // Sort the events by their date distance to today's date
+  const sortedEvents = allEvents.slice().sort((a, b) => {
+    const aDistance = dateDistances[allEvents.indexOf(a)];
+    const bDistance = dateDistances[allEvents.indexOf(b)];
+
+    if (aDistance === undefined || bDistance === undefined) {
+      return 0;
+    }
+
+    return aDistance - bDistance;
+  });
+  // Filter upcoming and past events separately
+  const upcomingEventsSorted = sortedEvents.filter((event) => new Date(event.startDate) > today);
+  const pastEventsSorted = sortedEvents.filter((event) => new Date(event.startDate) <= today);
+  // Get the 5 closest upcoming events
+  const topUpcomingEvents = upcomingEventsSorted.slice(0, 5);
+  // Determine the number of past events to include
+  const numberOfPastEvents = 5 - topUpcomingEvents.length;
+  // Get the closest past events if needed
+  const topPastEvents = pastEventsSorted.slice(0, numberOfPastEvents);
 
   return (
     <section className="grid gap-6">
@@ -21,11 +40,11 @@ export async function Appearances() {
       <Card>
         <div className="grid gap-8">
           <div className="grid gap-6">
-            {upcoming.length > 0 && (
+            {topUpcomingEvents.length > 0 && (
               <>
                 <Card.Body title="Upcoming">
                   <List as="ol">
-                    {upcoming.map((event) => (
+                    {topUpcomingEvents.map((event) => (
                       <List.Item key={event.slug}>
                         <Card.Item
                           date={event.startDate}
@@ -40,9 +59,9 @@ export async function Appearances() {
                 <Divider />
               </>
             )}
-            <Card.Body title={upcoming.length > 0 ? 'Past' : undefined}>
+            <Card.Body title={topUpcomingEvents.length > 0 ? 'Past' : undefined}>
               <List as="ol">
-                {past.map((event) => (
+                {topPastEvents.map((event) => (
                   <List.Item key={event.slug}>
                     <Card.Item
                       date={event.startDate}
