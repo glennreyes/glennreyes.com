@@ -1,4 +1,3 @@
-import { getTime } from 'date-fns';
 import { Divider } from '../ui/elements/Divider';
 import { Button } from '../ui/forms/Button';
 import { Card } from '../ui/layout/Card';
@@ -10,22 +9,8 @@ import { getAllEvents } from '@/lib/events';
 export async function Appearances() {
   const allEvents = await getAllEvents();
   const today = new Date();
-  const todayInMilliseconds = getTime(today);
-  // Calculate the difference between each date and today's date
-  const dateDistances = allEvents.map((appearance) => Math.abs(getTime(appearance.startDate) - todayInMilliseconds));
-  // Sort the events by their date distance to today's date and get the 5 closest ones
   const events = allEvents
-    .slice()
-    .sort((a, b) => {
-      const aDistance = dateDistances[allEvents.indexOf(a)];
-      const bDistance = dateDistances[allEvents.indexOf(b)];
-
-      if (aDistance === undefined || bDistance === undefined) {
-        return 0;
-      }
-
-      return aDistance - bDistance;
-    })
+    .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
     .slice(0, 5);
   const upcoming = events.filter((event) => event.startDate > today);
   const past = events.filter((event) => event.startDate <= today);
