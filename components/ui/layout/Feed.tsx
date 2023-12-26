@@ -23,7 +23,7 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
     return (
       <div className="not-prose grid gap-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
-          <h2 className="font-semibold text-teal-600 dark:text-teal-200/75 md:sticky md:top-20">{title}</h2>
+          <h2 className="font-semibold text-teal-600 md:sticky md:top-20 dark:text-teal-200/75">{title}</h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
       </div>
@@ -97,7 +97,7 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 md:-inset-6 md:rounded-[1.75rem]" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-[1.75rem] dark:bg-slate-900/50" />
       )}
     </article>
   );

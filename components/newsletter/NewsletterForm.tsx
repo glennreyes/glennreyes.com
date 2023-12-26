@@ -19,14 +19,14 @@ export function NewsletterForm(props: NewsletterFormProps) {
         <input name="theme" type="hidden" value={resolvedTheme} />
         <Input
           aria-label="Email address"
-          className="peer relative z-10 w-full dark:bg-slate-900/25 sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:sm:border-transparent dark:sm:bg-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
+          className="peer relative z-10 w-full sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:bg-slate-900/25 dark:sm:border-transparent dark:sm:bg-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
           disabled={pending}
           name="email"
           placeholder="Your email address"
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25 sm:block" />
+        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 transition peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 sm:block dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25" />
       </div>
       <div className="relative grid">
         <Button disabled={pending} type="submit">
