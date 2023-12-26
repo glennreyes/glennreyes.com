@@ -36,22 +36,26 @@ export async function Appearances() {
       <Card>
         <div className="grid gap-8">
           <div className="grid gap-6">
-            <Card.Body title="Upcoming">
-              <List as="ol">
-                {upcoming.map((event) => (
-                  <List.Item key={event.slug}>
-                    <Card.Item
-                      date={event.startDate}
-                      description={composePlaceByLocation(event.location)}
-                      link={`/appearances/${event.slug}`}
-                      title={event.name}
-                    />
-                  </List.Item>
-                ))}
-              </List>
-            </Card.Body>
-            <Divider />
-            <Card.Body title="Past">
+            {upcoming.length > 0 && (
+              <>
+                <Card.Body title="Upcoming">
+                  <List as="ol">
+                    {upcoming.map((event) => (
+                      <List.Item key={event.slug}>
+                        <Card.Item
+                          date={event.startDate}
+                          description={composePlaceByLocation(event.location)}
+                          link={`/appearances/${event.slug}`}
+                          title={event.name}
+                        />
+                      </List.Item>
+                    ))}
+                  </List>
+                </Card.Body>
+                <Divider />
+              </>
+            )}
+            <Card.Body title={upcoming.length > 0 ? 'Past' : undefined}>
               <List as="ol">
                 {past.map((event) => (
                   <List.Item key={event.slug}>
