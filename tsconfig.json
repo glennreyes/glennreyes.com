@@ -20,12 +20,11 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "*.js",
-    ".*.js",
+    "*.cjs",
+    ".*.cjs",
     ".contentlayer/generated",
     ".next/types/**/*.ts",
     "contentlayer.config.ts",
-    "next.config.js",
     "next-env.d.ts",
     "tsconfig.json"
   ]
