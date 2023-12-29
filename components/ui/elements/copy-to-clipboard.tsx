@@ -3,7 +3,7 @@
 import { CheckIcon, Square2StackIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { useState } from 'react';
-import { IconButton } from './IconButton';
+import { IconButton } from './icon-button';
 
 interface CopyToClipboardProps {
   value: string;
@@ -13,14 +13,12 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
   const [isCopied, setIsCopied] = useState(false);
 
   async function copyToClipboard() {
-    try {
-      await navigator.clipboard.writeText(value);
-      setIsCopied(true);
+    await navigator.clipboard.writeText(value);
+    setIsCopied(true);
 
-      window.setTimeout(() => setIsCopied(false), 3000);
-    } catch {
-      // TODO: Handle error
-    }
+    window.setTimeout(() => {
+      setIsCopied(false);
+    }, 3000);
   }
 
   const copyIconClasses = clsx(

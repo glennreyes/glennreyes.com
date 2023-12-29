@@ -1,11 +1,11 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { DateDisplay } from '../elements/DateDisplay';
-import { Link } from '../link/Link';
-import { H3 } from '../typography/H3';
-import { Meta } from '../typography/Meta';
-import { Paragraph } from '../typography/Paragraph';
+import { DateDisplay } from '../elements/date-display';
+import { Link } from '../link/link';
+import { H3 } from '../typography/h3';
+import { Meta } from '../typography/meta';
+import { Paragraph } from '../typography/paragraph';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   appearance?: 'grid' | 'list';
@@ -71,10 +71,10 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
           title
         )}
       </H3>
-      {meta !== undefined ? (
-        <Meta className={metaClasses}>{meta}</Meta>
-      ) : (
+      {meta === undefined ? (
         date !== undefined && <DateDisplay className={metaClasses} value={date} />
+      ) : (
+        <Meta className={metaClasses}>{meta}</Meta>
       )}
       <Paragraph as={typeof description === 'string' ? undefined : 'div'} className={descriptionClasses}>
         {description}

@@ -4,8 +4,9 @@ import { z } from 'zod';
 import { subscribe } from '@/lib/newsletter';
 
 export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const result = z.object({ email: z.string(), theme: z.enum(['dark', 'light']).default('light') }).safeParse(data);
+  const result = z
+    .object({ email: z.string(), theme: z.enum(['dark', 'light']).default('light') })
+    .safeParse(await request.json());
 
   if (!result.success) {
     return new NextResponse('Invalid email', { status: 400 });

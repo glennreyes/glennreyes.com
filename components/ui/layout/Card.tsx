@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
-import { DateDisplay } from '../elements/DateDisplay';
-import { Link } from '../link/Link';
-import { H3 } from '../typography/H3';
+import { DateDisplay } from '../elements/date-display';
+import { Link } from '../link/link';
+import { H3 } from '../typography/h3';
 
 export type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
   as?: Extract<TElementType, 'article' | 'div' | 'section'>;

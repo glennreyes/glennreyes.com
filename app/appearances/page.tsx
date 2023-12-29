@@ -1,5 +1,5 @@
-import { AppearancesFeed } from '@/components/appearances/AppearancesFeed';
-import { Page } from '@/components/ui/layout/Page';
+import { AppearancesFeed } from '@/components/appearances/appearances-feed';
+import { Page } from '@/components/ui/layout/page';
 import { getAllEvents } from '@/lib/events';
 
 export const revalidate = 3600;

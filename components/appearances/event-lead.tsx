@@ -1,8 +1,8 @@
 import type { Event } from '@prisma/client';
 import type { ComponentPropsWithoutRef } from 'react';
-import { Lead } from '../ui/typography/Lead';
-import { EventLocation } from './EventLocation';
-import { EventWebsite } from './EventWebsite';
+import { Lead } from '../ui/typography/lead';
+import { EventLocation } from './event-location';
+import { EventWebsite } from './event-website';
 
 interface EventLeadProps extends Pick<Event, 'url'>, ComponentPropsWithoutRef<typeof EventLocation> {}
 

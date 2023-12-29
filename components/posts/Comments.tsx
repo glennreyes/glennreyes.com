@@ -1,7 +1,7 @@
-import { InlineLink } from '../ui/link/InlineLink';
-import { H4 } from '../ui/typography/H4';
-import { Paragraph } from '../ui/typography/Paragraph';
-import { Giscus } from './Giscus';
+import { InlineLink } from '../ui/link/inline-link';
+import { H4 } from '../ui/typography/h4';
+import { Paragraph } from '../ui/typography/paragraph';
+import { Giscus } from './giscus';
 import { email, x } from '@/lib/constants';
 
 export function Comments() {
@@ -19,7 +19,7 @@ export function Comments() {
         via <InlineLink href="https://giscus.app">giscus</InlineLink>, so feel free to comment there directly if
         preferred. Alternatively, you can reach out to me on{' '}
         <InlineLink href={`https://x.com/${x}`}>X (formerly known as Twitter)</InlineLink> or send me an{' '}
-        <InlineLink href={`mailto:${email}`}>email</InlineLink>. I'm always happy to hear from my readers!
+        <InlineLink href={`mailto:${email}`}>email</InlineLink>. I&apos;m always happy to hear from my readers!
       </Paragraph>
     </div>
   );

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { AppearancesFeed } from '@/components/appearances/AppearancesFeed';
-import { Divider } from '@/components/ui/elements/Divider';
-import { TagCloud } from '@/components/ui/elements/TagCloud';
-import { Page } from '@/components/ui/layout/Page';
-import { ActionLink } from '@/components/ui/link/ActionLink';
-import { MDXRemoteContent } from '@/components/ui/mdx/MDXRemoteContent';
-import { H2 } from '@/components/ui/typography/H2';
+import { AppearancesFeed } from '@/components/appearances/appearances-feed';
+import { Divider } from '@/components/ui/elements/divider';
+import { TagCloud } from '@/components/ui/elements/tag-cloud';
+import { Page } from '@/components/ui/layout/page';
+import { ActionLink } from '@/components/ui/link/action-link';
+import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
+import { H2 } from '@/components/ui/typography/h2';
 import { getAllWorkshops, getWorkshopBySlug } from '@/lib/workshops';
 
 export const revalidate = 3600;

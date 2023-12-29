@@ -4,7 +4,7 @@ import { origin } from '@/lib/constants';
 
 export const runtime = 'edge';
 
-export default async function opengraphImage() {
+export default function opengraphImage() {
   // eslint-disable-next-line @next/next/no-img-element
   return new ImageResponse(<img alt="" src={`${origin}/og.png`} tw="h-full w-full" />, {
     height: 1080,

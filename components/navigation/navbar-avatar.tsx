@@ -3,8 +3,8 @@
 import { Transition } from '@headlessui/react';
 import type { ComponentPropsWithoutRef } from 'react';
 import { useContext } from 'react';
-import { Intersection } from '../intersection/Intersection';
-import { useIsActivePathname } from '@/hooks/useIsActivePathname';
+import { Intersection } from '../intersection/intersection';
+import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 
 type NavbarAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 

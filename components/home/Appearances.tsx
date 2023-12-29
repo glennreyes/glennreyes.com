@@ -1,9 +1,9 @@
 import { getTime } from 'date-fns';
-import { Divider } from '../ui/elements/Divider';
-import { Button } from '../ui/forms/Button';
-import { Card } from '../ui/layout/Card';
-import { List } from '../ui/layout/List';
-import { H4 } from '../ui/typography/H4';
+import { Divider } from '../ui/elements/divider';
+import { Button } from '../ui/forms/button';
+import { Card } from '../ui/layout/card';
+import { List } from '../ui/layout/list';
+import { H4 } from '../ui/typography/h4';
 import { composePlaceByLocation } from '@/lib/place';
 import { getAllEvents } from '@/lib/events';
 
@@ -14,7 +14,7 @@ export async function Appearances() {
   // Calculate the difference between each date and today's date
   const dateDistances = allEvents.map((event) => Math.abs(new Date(event.startDate).getTime() - todayInMilliseconds));
   // Sort the events by their date distance to today's date
-  const sortedEvents = allEvents.slice().sort((a, b) => {
+  const sortedEvents = [...allEvents].sort((a, b) => {
     const aDistance = dateDistances[allEvents.indexOf(a)];
     const bDistance = dateDistances[allEvents.indexOf(b)];
 

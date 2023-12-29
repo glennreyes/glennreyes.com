@@ -5,10 +5,10 @@ import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 import { Fragment } from 'react';
-import { Divider } from '../ui/elements/Divider';
-import { IconButton } from '../ui/elements/IconButton';
-import { MenuLink } from './MenuLink';
-import { ThemeSelect } from './ThemeSelect';
+import { Divider } from '../ui/elements/divider';
+import { IconButton } from '../ui/elements/icon-button';
+import { MenuLink } from './menu-link';
+import { ThemeSelect } from './theme-select';
 
 interface MenuLink {
   href: string;
@@ -26,7 +26,7 @@ const links: MenuLink[] = [
 
 type MenuProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export function Menu({ children, ...props }: MenuProps) {
+export function Menu(props: MenuProps) {
   return (
     <Popover as="nav" className="grid items-center">
       {({ close, open }) => {

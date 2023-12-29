@@ -2,12 +2,12 @@ import '@/app/globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import type { ReactNode } from 'react';
 import { Providers } from './providers';
-import { Footer } from '@/components/footer/Footer';
-import { Menu } from '@/components/navigation/Menu';
-import { Navbar } from '@/components/navigation/Navbar';
-import { Body } from '@/components/ui/layout/Body';
-import { Html } from '@/components/ui/layout/Html';
-import { Main } from '@/components/ui/layout/Main';
+import { Footer } from '@/components/footer/footer';
+import { Menu } from '@/components/navigation/menu';
+import { Navbar } from '@/components/navigation/navbar';
+import { Body } from '@/components/ui/layout/body';
+import { Html } from '@/components/ui/layout/html';
+import { Main } from '@/components/ui/layout/main';
 import { description, origin, name, x } from '@/lib/constants';
 import type { Viewport } from 'next';
 

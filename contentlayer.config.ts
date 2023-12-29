@@ -60,11 +60,11 @@ export default makeSource({
           properties: { className: [classes.autoLink] },
         } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
       ],
-      () => (tree) => {
+      () => (tree: Tree) => {
         // Extract raw code from `code` element nested inside `pre` tag and store value in `pre` node.
         // This need to be before `rehypePrettyCode` so that we get the raw value.
-        visit(tree, (node) => {
-          if (!(node?.type === 'element' && node?.tagName === 'pre')) {
+        visit(tree, (node: Node) => {
+          if (!(node.type === 'element' && node.tagName === 'pre')) {
             return;
           }
 

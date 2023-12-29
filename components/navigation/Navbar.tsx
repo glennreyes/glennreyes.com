@@ -1,11 +1,11 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import { Avatar } from '../avatar/Avatar';
-import { SkipNavigationLink } from '../ui/elements/SkipNavigationLink';
-import { Container } from '../ui/layout/Container';
-import { Link } from '../ui/link/Link';
-import { NavbarAvatar } from './NavbarAvatar';
-import { NavbarBorder } from './NavbarBorder';
-import { ThemeSelect } from './ThemeSelect';
+import { Avatar } from '../avatar/avatar';
+import { SkipNavigationLink } from '../ui/elements/skip-navigation-link';
+import { Container } from '../ui/layout/container';
+import { Link } from '../ui/link/link';
+import { NavbarAvatar } from './navbar-avatar';
+import { NavbarBorder } from './navbar-border';
+import { ThemeSelect } from './theme-select';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
 

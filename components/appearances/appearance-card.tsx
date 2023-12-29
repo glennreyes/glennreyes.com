@@ -8,67 +8,55 @@ import {
 import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
-import type { ComponentPropsWithoutRef } from 'react';
-import { Badge } from '../ui/elements/Badge';
-import { DateDisplay } from '../ui/elements/DateDisplay';
-import { Divider } from '../ui/elements/Divider';
-import { YouTube } from '../ui/elements/YouTube';
-import { Card } from '../ui/layout/Card';
-import { ActionLink } from '../ui/link/ActionLink';
-import { InlineLink } from '../ui/link/InlineLink';
-import { H2 } from '../ui/typography/H2';
-import { Paragraph } from '../ui/typography/Paragraph';
+import { DateDisplay } from '../ui/elements/date-display';
+import { Divider } from '../ui/elements/divider';
+import { TagCloud } from '../ui/elements/tag-cloud';
+import { YouTube } from '../ui/elements/youtube';
+import { Card } from '../ui/layout/card';
+import { InlineLink } from '../ui/link/inline-link';
+import { H3 } from '../ui/typography/h3';
+import { Paragraph } from '../ui/typography/paragraph';
 
-const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
-  Talk: {
-    [AppearanceLength.SHORT]: 'Lightning',
-    [AppearanceLength.MEDIUM]: 'Regular',
-    [AppearanceLength.LONG]: 'Extended',
-  },
-  Workshop: {
-    [AppearanceLength.SHORT]: '2-3 Hours',
-    [AppearanceLength.MEDIUM]: 'Half Day',
-    [AppearanceLength.LONG]: 'Full Day',
-  },
-};
-
-type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
-
-export function EventAppearances(props: EventAppearancesProps) {
-  return <section className="grid gap-12 md:gap-16" {...props} />;
-}
-
-interface EventAppearancesCardProps {
+interface AppearanceCardProps {
+  abstract?: string;
   date: Date;
   length: AppearanceLength;
   recording?: string;
-  talk?: Pick<Talk, 'abstract' | 'slides' | 'slug' | 'tags' | 'title'>;
+  talk?: Pick<Talk, 'abstract' | 'slides' | 'tags' | 'title'>;
   title?: string;
-  workshop?: Pick<Workshop, 'slides' | 'slug' | 'summary' | 'title'>;
+  workshop?: Pick<Workshop, 'description' | 'slides' | 'title'>;
 }
 
-function EventAppearancesCard({ date, length, recording, talk, workshop }: EventAppearancesCardProps) {
-  const path = talk?.slug ? `/talks/${talk.slug}` : workshop?.slug ? `/workshops/${workshop.slug}` : undefined;
+export function AppearanceCard({ date, length, recording, talk, workshop }: AppearanceCardProps) {
   const title = talk?.title ?? workshop?.title;
-  const summary = talk?.abstract ?? workshop?.summary;
+  const description = talk?.abstract ?? workshop?.description;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
   const dateTime = formatISO(date);
   const tags = talk?.tags;
+  const lengths: Record<NonNullable<typeof type>, Record<AppearanceLength, string>> = {
+    Talk: {
+      [AppearanceLength.SHORT]: 'Lightning',
+      [AppearanceLength.MEDIUM]: 'Regular',
+      [AppearanceLength.LONG]: 'Extended',
+    },
+    Workshop: {
+      [AppearanceLength.SHORT]: '2-3 Hours',
+      [AppearanceLength.MEDIUM]: 'Half Day',
+      [AppearanceLength.LONG]: 'Full Day',
+    },
+  };
   const slides = talk?.slides ?? workshop?.slides;
   const isYouTube = recording?.startsWith('https://youtu.be/');
 
   return (
-    <Card as="article">
+    <Card>
       <Card.Body title={type}>
         <div className="grid gap-6">
-          <div className="grid gap-x-8 gap-y-16 md:grid-cols-3">
-            {(title || summary) && path && (
-              <div className="grid gap-12 md:col-span-2">
-                <div className="grid gap-8">
-                  {title && <H2>{title}</H2>}
-                  {summary && <Paragraph>{summary}</Paragraph>}
-                </div>
-                <ActionLink href={path}>View Details</ActionLink>
+          <div className="grid gap-8 md:grid-cols-3">
+            {(title ?? description) && (
+              <div className="grid gap-4 md:col-span-2">
+                {title && <H3>{title}</H3>}
+                {description && <Paragraph>{description}</Paragraph>}
               </div>
             )}
             <div className="grid gap-4 md:col-span-1">
@@ -121,17 +109,8 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
                     </Paragraph>
                   </div>
                 )}
-                {tags && (
-                  <div>
-                    <dt className="sr-only">Tags</dt>
-                    <dd className="flex flex-wrap gap-2">
-                      {tags.map((tag, index) => (
-                        <Badge key={index}>{tag}</Badge>
-                      ))}
-                    </dd>
-                  </div>
-                )}
               </dl>
+              {tags && <TagCloud tags={tags} />}
             </div>
           </div>
           {recording && title && isYouTube && (
@@ -145,5 +124,3 @@ function EventAppearancesCard({ date, length, recording, talk, workshop }: Event
     </Card>
   );
 }
-
-EventAppearances.Card = EventAppearancesCard;

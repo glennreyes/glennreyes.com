@@ -13,8 +13,7 @@ export async function subscribe(data: FormData) {
     .safeParse({ email, theme });
 
   if (!result.success) {
-    // TODO: Display error toast
-    return;
+    return 'Invalid data';
   }
 
   try {
@@ -22,8 +21,7 @@ export async function subscribe(data: FormData) {
   } catch (error) {
     console.error(error);
 
-    // TODO: Display error toast
-    return;
+    return 'Error subscribing';
   }
 
   redirect('/subscribe/confirm');

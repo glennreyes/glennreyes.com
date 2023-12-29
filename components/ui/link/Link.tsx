@@ -10,7 +10,7 @@ export function Link({ className, href, ...props }: LinkProps) {
     className,
   );
 
-  const source = href.toString();
+  const source = typeof href === 'object' ? href.pathname ?? '/' : href;
 
   if (source.startsWith('#')) {
     return <a className={classes} href={source} {...props} />;

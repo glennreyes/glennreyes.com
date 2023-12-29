@@ -1,9 +1,9 @@
-import { Appearances } from '@/components/home/Appearances';
-import { Hero } from '@/components/home/Hero';
-import { Posts } from '@/components/home/Posts';
-import { Newsletter } from '@/components/newsletter/Newsletter';
-import { Content } from '@/components/ui/layout/Content';
-import { Page } from '@/components/ui/layout/Page';
+import { Appearances } from '@/components/home/appearances';
+import { Hero } from '@/components/home/hero';
+import { Posts } from '@/components/home/posts';
+import { Newsletter } from '@/components/newsletter/newsletter';
+import { Content } from '@/components/ui/layout/content';
+import { Page } from '@/components/ui/layout/page';
 
 export const revalidate = 3600;
 

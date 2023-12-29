@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { Divider } from '../elements/Divider';
-import { H1 } from '../typography/H1';
-import { Lead } from '../typography/Lead';
-import { Meta } from '../typography/Meta';
-import { Container } from './Container';
+import { Divider } from '../elements/divider';
+import { H1 } from '../typography/h1';
+import { Lead } from '../typography/lead';
+import { Meta } from '../typography/meta';
+import { Container } from './container';
 
 interface ArticleProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
   back?: ReactNode;

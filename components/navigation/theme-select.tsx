@@ -2,15 +2,19 @@
 
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { SunIcon, ComputerDesktopIcon, MoonIcon } from '@heroicons/react/24/outline';
+import {
+  SunIcon,
+  ComputerDesktopIcon,
+  MoonIcon,
+} from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Fragment } from 'react';
-import { IconButton } from '../ui/elements/IconButton';
-import { Select } from '../ui/forms/Select';
+import { IconButton } from '../ui/elements/icon-button';
+import { Select } from '../ui/forms/select';
 import type { Theme } from '@/lib/theme';
-import { useTheme } from '@/hooks/useTheme';
-import { useMounted } from '@/hooks/useMounted';
+import { useTheme } from '@/lib/hooks/use-theme';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface ThemeOption {
   icon: ComponentType<ComponentPropsWithoutRef<'svg'>>;
@@ -59,7 +63,9 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
           className="peer absolute inset-0 cursor-pointer"
           onChange={(event) => {
             disableTransitionsTemporarily();
-            const selected = options.find((option) => option.value === event.target.value)?.value;
+            const selected = options.find(
+              (option) => option.value === event.target.value,
+            )?.value;
 
             if (selected) {
               setTheme(selected);
@@ -74,8 +80,15 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
           ))}
         </Select>
         <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition peer-focus:ring-4 peer-focus:ring-teal-100 dark:border-slate-700 dark:bg-slate-900/75 dark:text-slate-300 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25">
-          <Icon aria-hidden className="h-6 w-6 text-slate-400 dark:text-slate-500" />
-          {label} <ChevronDownIcon aria-hidden className="h-4 w-4 text-slate-300 dark:text-slate-700" />
+          <Icon
+            aria-hidden
+            className="h-6 w-6 text-slate-400 dark:text-slate-500"
+          />
+          {label}{' '}
+          <ChevronDownIcon
+            aria-hidden
+            className="h-4 w-4 text-slate-300 dark:text-slate-700"
+          />
         </div>
       </div>
     );
@@ -94,7 +107,11 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
       {({ open }) => (
         <>
           <Listbox.Button as={Fragment}>
-            <IconButton appearance="secondary" aria-label="Switch Theme" icon={Icon} />
+            <IconButton
+              appearance="secondary"
+              aria-label="Switch Theme"
+              icon={Icon}
+            />
           </Listbox.Button>
           <Transition
             enter="duration-150 ease-out"
@@ -110,16 +127,24 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
               className="absolute right-0 top-full z-10 mt-2 grid overflow-hidden rounded-xl border border-slate-300/25 bg-white py-1 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:border-slate-600/25 dark:bg-slate-950 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
             >
               {options.map(({ icon: CurrentIcon, ...option }) => (
-                <Listbox.Option as={Fragment} key={option.value} value={option.value}>
+                <Listbox.Option
+                  as={Fragment}
+                  key={option.value}
+                  value={option.value}
+                >
                   {({ active, selected }) => {
                     const itemClasses = clsx(
                       'flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm font-semibold transition',
                       active && 'bg-slate-50 dark:bg-slate-900/50',
-                      selected ? 'text-teal-600 dark:text-teal-200/75' : 'text-slate-800 dark:text-slate-200',
+                      selected
+                        ? 'text-teal-600 dark:text-teal-200/75'
+                        : 'text-slate-800 dark:text-slate-200',
                     );
                     const iconClasses = clsx(
                       'h-6 w-6',
-                      selected ? 'text-teal-500/75 dark:text-teal-600/75' : 'text-slate-400 dark:text-slate-500',
+                      selected
+                        ? 'text-teal-500/75 dark:text-teal-600/75'
+                        : 'text-slate-400 dark:text-slate-500',
                     );
 
                     return (

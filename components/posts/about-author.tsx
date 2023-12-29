@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { Avatar } from '../avatar/Avatar';
-import { Card } from '../ui/layout/Card';
-import { H4 } from '../ui/typography/H4';
-import { Paragraph } from '../ui/typography/Paragraph';
+import { Avatar } from '../avatar/avatar';
+import { Card } from '../ui/layout/card';
+import { H4 } from '../ui/typography/h4';
+import { Paragraph } from '../ui/typography/paragraph';
 import { description, name } from '@/lib/constants';
 
 export function AboutAuthor() {

@@ -1,4 +1,4 @@
-import { InlineLink } from '../link/InlineLink';
+import { InlineLink } from '../link/inline-link';
 
 export function SkipNavigationLink() {
   return (

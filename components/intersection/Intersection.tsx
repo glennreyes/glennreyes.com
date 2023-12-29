@@ -12,5 +12,5 @@ interface IntersectionProps {
 export const Intersection = createContext<IntersectionProps>({
   isInView: true,
   ref: { current: null },
-  setInstance: () => undefined,
+  setInstance: () => null,
 });

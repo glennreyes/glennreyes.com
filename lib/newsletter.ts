@@ -1,8 +1,8 @@
 import type { ResolvedTheme } from './theme';
 
-const forms: Record<ResolvedTheme, number> = {
-  dark: 4917152,
-  light: 4917153,
+const forms: Record<ResolvedTheme, string> = {
+  dark: '4917152',
+  light: '4917153',
 };
 const publicApiKey = 'lQbg_unCgg3LrJVBjnboyA';
 

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { Feed } from '@/components/ui/layout/Feed';
-import { Page } from '@/components/ui/layout/Page';
-import { MDXRemoteContent } from '@/components/ui/mdx/MDXRemoteContent';
+import { Feed } from '@/components/ui/layout/feed';
+import { Page } from '@/components/ui/layout/page';
+import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
 import { getAllTalks } from '@/lib/talks';
 
 export const metadata: Metadata = {

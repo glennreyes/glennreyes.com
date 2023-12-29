@@ -1,20 +1,27 @@
 'use client';
 
 import type { ComponentPropsWithoutRef } from 'react';
-import { Button } from '../ui/forms/Button';
-import { Input } from '../ui/forms/Input';
-import { useTheme } from '@/hooks/useTheme';
+import { Button } from '../ui/forms/button';
+import { Input } from '../ui/forms/input';
+import { useTheme } from '@/lib/hooks/use-theme';
 import { subscribe } from '@/app/subscribe/action';
 import { useFormStatus } from 'react-dom';
 
-type NewsletterFormProps = Omit<ComponentPropsWithoutRef<'form'>, 'children' | 'className'>;
+type NewsletterFormProps = Omit<
+  ComponentPropsWithoutRef<'form'>,
+  'children' | 'className'
+>;
 
 export function NewsletterForm(props: NewsletterFormProps) {
   const { resolvedTheme } = useTheme();
   const { pending } = useFormStatus();
 
   return (
-    <form action={subscribe} className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1" {...props}>
+    <form
+      action={subscribe}
+      className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1"
+      {...props}
+    >
       <div className="sm:flex-1">
         <input name="theme" type="hidden" value={resolvedTheme} />
         <Input

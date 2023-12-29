@@ -1,17 +1,20 @@
-import { ArrowUpRightIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowUpRightIcon,
+  PaperAirplaneIcon,
+} from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import speaking from '@/assets/images/speaking.jpg';
-import { Divider } from '@/components/ui/elements/Divider';
-import { Card } from '@/components/ui/layout/Card';
-import { Content } from '@/components/ui/layout/Content';
-import { List } from '@/components/ui/layout/List';
-import { Page } from '@/components/ui/layout/Page';
-import { MDXContent } from '@/components/ui/mdx/MDXContent';
-import { GitHub } from '@/icons/GitHub';
-import { Instagram } from '@/icons/Instagram';
-import { LinkedIn } from '@/icons/LinkedIn';
-import { X } from '@/icons/X';
+import { Divider } from '@/components/ui/elements/divider';
+import { Card } from '@/components/ui/layout/card';
+import { Content } from '@/components/ui/layout/content';
+import { List } from '@/components/ui/layout/list';
+import { Page } from '@/components/ui/layout/page';
+import { MDXContent } from '@/components/ui/mdx/mdx-content';
+import { GitHub } from '@/components/icons/github';
+import { Instagram } from '@/components/icons/instagram';
+import { LinkedIn } from '@/components/icons/linkedin';
+import { X } from '@/components/icons/x';
 import { github, instagram, linkedin, x } from '@/lib/constants';
 import { allPages } from 'contentlayer/generated';
 
@@ -110,7 +113,9 @@ export default function AboutPage() {
                 <Card.Item
                   link="mailto:glenn@glennreyes.com"
                   title={
-                    <span className="inline-flex w-full items-center justify-between gap-2">glenn@glennreyes.com</span>
+                    <span className="inline-flex w-full items-center justify-between gap-2">
+                      glenn@glennreyes.com
+                    </span>
                   }
                 >
                   <PaperAirplaneIcon className="h-6 w-6 text-slate-300 dark:text-slate-700" />

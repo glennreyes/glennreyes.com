@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-import { Card } from '../ui/layout/Card';
-import { H4 } from '../ui/typography/H4';
-import { Paragraph } from '../ui/typography/Paragraph';
-import { NewsletterForm } from './NewsletterForm';
+import { Card } from '../ui/layout/card';
+import { H4 } from '../ui/typography/h4';
+import { Paragraph } from '../ui/typography/paragraph';
+import { NewsletterForm } from './newsletter-form';
 
 interface NewsletterProps {
   children?: ReactNode;

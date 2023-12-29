@@ -3,15 +3,17 @@
 import clsx from 'clsx';
 import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
-import { Link } from '../ui/link/Link';
-import { useIsActivePathname } from '@/hooks/useIsActivePathname';
+import { Link } from '../ui/link/link';
+import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 
 interface MenuLinkProps extends Omit<LinkProps, 'className'> {
   children: ReactNode;
 }
 
 export function MenuLink({ children, ...props }: MenuLinkProps) {
-  const isActivePathname = useIsActivePathname(props.href.toString());
+  const isActivePathname = useIsActivePathname(
+    typeof props.href === 'object' ? props.href.pathname ?? '/' : props.href,
+  );
   const classes = clsx(
     isActivePathname
       ? 'md:border-slate-300/25 dark:md:border-slate-500/25 text-teal-700 bg-white/10 dark:bg-slate-950/10 dark:text-teal-200/75 md:supports-[backdrop-filter]:backdrop-blur-md'

@@ -1,5 +1,5 @@
-import { Page } from '@/components/ui/layout/Page';
-import { MDXContent } from '@/components/ui/mdx/MDXContent';
+import { Page } from '@/components/ui/layout/page';
+import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { allPages } from 'contentlayer/generated';
 
 const page = allPages.find(({ path }) => path === 'not-found');

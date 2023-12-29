@@ -17,5 +17,6 @@ if (process.env.NODE_ENV === 'production') {
     global.prisma = new PrismaClient();
   }
 
+  // eslint-disable-next-line @typescript-eslint/prefer-destructuring
   prisma = global.prisma;
 }
