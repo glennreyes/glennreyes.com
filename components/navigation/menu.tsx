@@ -35,7 +35,12 @@ export function Menu(props: MenuProps) {
         return (
           <>
             <Popover.Button as={Fragment}>
-              <IconButton appearance="secondary" aria-label="Open Menu" className={buttonClasses} icon={Bars2Icon} />
+              <IconButton
+                appearance="secondary"
+                aria-label="Open Menu"
+                className={buttonClasses}
+                icon={Bars2Icon}
+              />
             </Popover.Button>
             <Transition.Root className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden">
               <Transition.Child
@@ -65,7 +70,12 @@ export function Menu(props: MenuProps) {
                   {...props}
                 >
                   <div className="absolute right-4 top-4">
-                    <IconButton appearance="secondary" aria-label="Close Menu" icon={XMarkIcon} onClick={close} />
+                    <IconButton
+                      appearance="secondary"
+                      aria-label="Close Menu"
+                      icon={XMarkIcon}
+                      onClick={close}
+                    />
                   </div>
                   <ul className="grid gap-2 pr-12">
                     {links.map((link) => (

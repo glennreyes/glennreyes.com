@@ -19,7 +19,10 @@ Content.Primary = ContentPrimary;
 
 type ContentSecondaryProps = ComponentPropsWithoutRef<'div'>;
 
-export function ContentSecondary({ className, ...props }: ContentSecondaryProps) {
+export function ContentSecondary({
+  className,
+  ...props
+}: ContentSecondaryProps) {
   const classes = twMerge('grid content-start gap-8 lg:col-span-4', className);
 
   return <div className={classes} {...props} />;

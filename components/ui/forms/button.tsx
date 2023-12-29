@@ -15,11 +15,15 @@ interface ButtonBaseProps {
   appearance?: ButtonAppearance;
 }
 
-interface ButtonDefaultProps extends ButtonBaseProps, Omit<ComponentPropsWithoutRef<'button'>, 'className'> {
+interface ButtonDefaultProps
+  extends ButtonBaseProps,
+    Omit<ComponentPropsWithoutRef<'button'>, 'className'> {
   as?: 'button';
 }
 
-interface ButtonAsLinkProps extends ButtonBaseProps, Omit<ComponentPropsWithoutRef<typeof Link>, 'as' | 'className'> {
+interface ButtonAsLinkProps
+  extends ButtonBaseProps,
+    Omit<ComponentPropsWithoutRef<typeof Link>, 'as' | 'className'> {
   as: 'link';
 }
 

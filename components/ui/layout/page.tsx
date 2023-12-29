@@ -10,17 +10,25 @@ export function Page(props: PageProps) {
   return <Container className="space-y-12" {...props} />;
 }
 
-interface PageHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
+interface PageHeaderProps
+  extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead?: ReactNode;
   meta?: ReactNode;
 }
 
-export function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
+export function PageHeader({
+  children,
+  lead,
+  meta,
+  ...props
+}: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
       <H1>{children}</H1>
-      {lead !== null && lead !== undefined && (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
+      {lead !== null &&
+        lead !== undefined &&
+        (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
     </header>
   );
 }

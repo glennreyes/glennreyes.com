@@ -11,7 +11,10 @@ export function ActionLink({ children, ...props }: ActionLinkProps) {
       {...props}
     >
       {children}
-      <ChevronRightIcon aria-hidden className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+      <ChevronRightIcon
+        aria-hidden
+        className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+      />
     </Link>
   );
 }

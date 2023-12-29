@@ -11,7 +11,8 @@ const colors: Record<BadgeColors, string> = {
   teal: 'border-teal-200 bg-teal-50 text-teal-500 dark:border-teal-800/50 dark:bg-teal-950/50 dark:text-teal-500',
 };
 
-interface BadgeProps extends Omit<ComponentPropsWithoutRef<'span'>, 'className'> {
+interface BadgeProps
+  extends Omit<ComponentPropsWithoutRef<'span'>, 'className'> {
   color?: BadgeColors;
 }
 

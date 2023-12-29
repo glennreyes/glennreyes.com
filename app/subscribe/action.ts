@@ -9,7 +9,10 @@ export async function subscribe(data: FormData) {
   const theme = data.get('theme');
 
   const result = z
-    .object({ email: z.string(), theme: z.enum(['dark', 'light']).default('light') })
+    .object({
+      email: z.string(),
+      theme: z.enum(['dark', 'light']).default('light'),
+    })
     .safeParse({ email, theme });
 
   if (!result.success) {

@@ -17,7 +17,15 @@ export function Link({ className, href, ...props }: LinkProps) {
   }
 
   if (source.startsWith('http')) {
-    return <NextLink className={classes} href={source} rel="noreferrer noopener" target="_blank" {...props} />;
+    return (
+      <NextLink
+        className={classes}
+        href={source}
+        rel="noreferrer noopener"
+        target="_blank"
+        {...props}
+      />
+    );
   }
 
   return <NextLink className={classes} href={href} {...props} />;

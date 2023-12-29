@@ -18,7 +18,9 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: GenerateMetadataConfig): Promise<Metadata> {
   const talk = await getTalkBySlug(params.slug);
 
   return {

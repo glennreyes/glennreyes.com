@@ -5,9 +5,14 @@ import { origin } from '@/lib/constants';
 export const runtime = 'edge';
 
 export default function opengraphImage() {
-  // eslint-disable-next-line @next/next/no-img-element
-  return new ImageResponse(<img alt="" src={`${origin}/og.png`} tw="h-full w-full" />, {
-    height: 1080,
-    width: 1920,
-  });
+  return new ImageResponse(
+    (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img alt="" src={`${origin}/og.png`} tw="h-full w-full" />
+    ),
+    {
+      height: 1080,
+      width: 1920,
+    },
+  );
 }

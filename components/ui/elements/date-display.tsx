@@ -6,14 +6,21 @@ interface DateDisplayProps extends ComponentPropsWithoutRef<'time'> {
   value?: Date | string;
 }
 
-export function DateDisplay({ format: formatString, value, ...props }: DateDisplayProps) {
+export function DateDisplay({
+  format: formatString,
+  value,
+  ...props
+}: DateDisplayProps) {
   if (value === undefined) {
     return <>Draft</>;
   }
 
   const date = value instanceof Date ? value : new Date(value);
   const dateTime = props.dateTime ?? format(date, 'yyyy-MM-dd');
-  const text = format(date, formatString ?? (isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy'));
+  const text = format(
+    date,
+    formatString ?? (isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy'),
+  );
 
   return (
     <time dateTime={dateTime} {...props}>

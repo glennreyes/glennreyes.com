@@ -3,7 +3,10 @@ import { notFound } from 'next/navigation';
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
-import { ReadingTime, parseReadingTimeValue } from '@/components/ui/elements/reading-time';
+import {
+  ReadingTime,
+  parseReadingTimeValue,
+} from '@/components/ui/elements/reading-time';
 import { Article } from '@/components/ui/layout/article';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { origin } from '@/lib/constants';
@@ -42,7 +45,9 @@ export function generateMetadata({ params }: GenerateMetadataConfig) {
 }
 
 export function generateStaticParams() {
-  return allPosts.filter((post) => post.publishedAt).map((post) => ({ slug: post.slug }));
+  return allPosts
+    .filter((post) => post.publishedAt)
+    .map((post) => ({ slug: post.slug }));
 }
 
 interface PostPageParams {
@@ -61,12 +66,22 @@ export default function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <Article back={<IconButton aria-label="Back To Posts" as="link" href="/posts" icon={ArrowLeftIcon} />}>
+    <Article
+      back={
+        <IconButton
+          aria-label="Back To Posts"
+          as="link"
+          href="/posts"
+          icon={ArrowLeftIcon}
+        />
+      }
+    >
       <Article.Header
         lead={post.lead}
         meta={
           <>
-            <DateDisplay value={post.publishedAt} /> · <ReadingTime value={parseReadingTimeValue(post.readingTime)} />
+            <DateDisplay value={post.publishedAt} /> ·{' '}
+            <ReadingTime value={parseReadingTimeValue(post.readingTime)} />
           </>
         }
       >

@@ -18,7 +18,9 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: GenerateMetadataConfig): Promise<Metadata> {
   const workshop = await getWorkshopBySlug(params.slug);
 
   return {
@@ -51,7 +53,9 @@ export default async function WorkshopPage({ params }: WorkshopPageProps) {
       </Page.Header>
       <Page.Body>
         <MDXRemoteContent source={workshop.description} />
-        {workshop.curriculum !== null && <MDXRemoteContent source={workshop.curriculum} />}
+        {workshop.curriculum !== null && (
+          <MDXRemoteContent source={workshop.curriculum} />
+        )}
         {events.length > 0 && (
           <>
             <Divider />

@@ -11,7 +11,10 @@ export function EventDate({ endDate, startDate }: EventDateProps) {
 
   return (
     <>
-      <DateDisplay format={isOneDay ? 'MMMM dd, yyyy' : undefined} value={startDate} />
+      <DateDisplay
+        format={isOneDay ? 'MMMM dd, yyyy' : undefined}
+        value={startDate}
+      />
       {!isOneDay && (
         <>
           {' '}

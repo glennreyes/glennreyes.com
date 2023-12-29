@@ -15,7 +15,9 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({ params }: GenerateMetadataConfig): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: GenerateMetadataConfig): Promise<Metadata> {
   const event = await getEventBySlug(params.slug);
 
   return {
@@ -49,16 +51,18 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
         {event.name} {event.startDate.getFullYear()}
       </Page.Header>
       <EventAppearances>
-        {event.appearances.map(({ date, length, recording, slug, talk, workshop }) => (
-          <EventAppearances.Card
-            date={date}
-            key={slug}
-            length={length}
-            recording={recording ?? undefined}
-            talk={talk ?? undefined}
-            workshop={workshop ?? undefined}
-          />
-        ))}
+        {event.appearances.map(
+          ({ date, length, recording, slug, talk, workshop }) => (
+            <EventAppearances.Card
+              date={date}
+              key={slug}
+              length={length}
+              recording={recording ?? undefined}
+              talk={talk ?? undefined}
+              workshop={workshop ?? undefined}
+            />
+          ),
+        )}
       </EventAppearances>
     </Page>
   );

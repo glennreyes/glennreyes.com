@@ -12,9 +12,12 @@ export interface SubscribeData {
 }
 
 export function subscribe({ email, theme }: SubscribeData) {
-  return fetch(`https://api.convertkit.com/v3/forms/${forms[theme]}/subscribe`, {
-    body: JSON.stringify({ api_key: publicApiKey, email }),
-    headers: { 'content-type': 'application/json' },
-    method: 'post',
-  });
+  return fetch(
+    `https://api.convertkit.com/v3/forms/${forms[theme]}/subscribe`,
+    {
+      body: JSON.stringify({ api_key: publicApiKey, email }),
+      headers: { 'content-type': 'application/json' },
+      method: 'post',
+    },
+  );
 }

@@ -8,7 +8,10 @@ import photo from '@/assets/images/photo.jpg';
 
 type AvatarSize = 11 | 28 | 40;
 
-const attributes: Record<AvatarSize, Pick<ComponentPropsWithoutRef<typeof Image>, 'className' | 'height' | 'width'>> = {
+const attributes: Record<
+  AvatarSize,
+  Pick<ComponentPropsWithoutRef<typeof Image>, 'className' | 'height' | 'width'>
+> = {
   11: {
     className: 'h-11 w-11 p-0.5',
     height: 40,

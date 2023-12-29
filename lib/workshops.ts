@@ -14,7 +14,9 @@ export const getAllWorkshops = cache(function getAllWorkshops() {
   });
 });
 
-export const getWorkshopBySlug = cache(function getWorkshopBySlug(slug: string) {
+export const getWorkshopBySlug = cache(function getWorkshopBySlug(
+  slug: string,
+) {
   return prisma.workshop.findUniqueOrThrow({
     select: {
       appearances: {

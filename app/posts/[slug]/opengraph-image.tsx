@@ -17,10 +17,16 @@ interface OpenGraphImageConfig {
 
 export default async function opengraphImage({ params }: OpenGraphImageConfig) {
   const inter700 = fetch(
-    new URL('../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff', import.meta.url),
+    new URL(
+      '../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff',
+      import.meta.url,
+    ),
   ).then((res) => res.arrayBuffer());
   const inter400 = fetch(
-    new URL('../../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff', import.meta.url),
+    new URL(
+      '../../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff',
+      import.meta.url,
+    ),
   ).then((res) => res.arrayBuffer());
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
@@ -29,7 +35,10 @@ export default async function opengraphImage({ params }: OpenGraphImageConfig) {
   }
 
   const date = new Date(post.publishedAt);
-  const dateFormatted = format(date, isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy');
+  const dateFormatted = format(
+    date,
+    isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy',
+  );
 
   return new ImageResponse(
     (
@@ -38,7 +47,9 @@ export default async function opengraphImage({ params }: OpenGraphImageConfig) {
         tw="bg-slate-900 flex flex-col justify-center h-full w-full px-48 pt-40 pb-80"
       >
         <time tw="text-4xl text-slate-500">{dateFormatted}</time>
-        <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">{post.title}</h1>
+        <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">
+          {post.title}
+        </h1>
       </div>
     ),
     {

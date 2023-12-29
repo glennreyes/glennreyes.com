@@ -41,43 +41,50 @@ export interface IconButtonDefaultProps
   as?: 'button';
 }
 
-export interface IconButtonAsLinkProps extends IconButtonBaseProps, ComponentPropsWithoutRef<typeof Link> {
+export interface IconButtonAsLinkProps
+  extends IconButtonBaseProps,
+    ComponentPropsWithoutRef<typeof Link> {
   as: 'link';
 }
 
 export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
-  { appearance = 'primary', className, icon: Icon, size = 6, ...props },
-  ref,
-) {
-  const classes = twMerge(
-    'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
-    paddings[size],
-    appearances[appearance],
-    className,
-  );
-  const iconClasses = sizes[size];
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
+  function IconButton(
+    { appearance = 'primary', className, icon: Icon, size = 6, ...props },
+    ref,
+  ) {
+    const classes = twMerge(
+      'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+      paddings[size],
+      appearances[appearance],
+      className,
+    );
+    const iconClasses = sizes[size];
 
-  if (props.as === 'link') {
-    const { as, ...rest } = props;
-    const linkClasses = clsx(classes, 'inline-flex justify-center items-center');
+    if (props.as === 'link') {
+      const { as, ...rest } = props;
+      const linkClasses = clsx(
+        classes,
+        'inline-flex justify-center items-center',
+      );
+
+      return (
+        <Link className={linkClasses} {...rest}>
+          <Icon aria-hidden className={iconClasses} />
+        </Link>
+      );
+    }
+
+    const buttonClasses = clsx(
+      classes,
+      'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+    );
 
     return (
-      <Link className={linkClasses} {...rest}>
+      <button className={buttonClasses} ref={ref} {...props}>
         <Icon aria-hidden className={iconClasses} />
-      </Link>
+      </button>
     );
-  }
-
-  const buttonClasses = clsx(
-    classes,
-    'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
-  );
-
-  return (
-    <button className={buttonClasses} ref={ref} {...props}>
-      <Icon aria-hidden className={iconClasses} />
-    </button>
-  );
-});
+  },
+);

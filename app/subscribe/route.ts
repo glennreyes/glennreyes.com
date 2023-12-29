@@ -5,7 +5,10 @@ import { subscribe } from '@/lib/newsletter';
 
 export async function POST(request: NextRequest) {
   const result = z
-    .object({ email: z.string(), theme: z.enum(['dark', 'light']).default('light') })
+    .object({
+      email: z.string(),
+      theme: z.enum(['dark', 'light']).default('light'),
+    })
     .safeParse(await request.json());
 
   if (!result.success) {

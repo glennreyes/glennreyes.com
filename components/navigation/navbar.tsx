@@ -19,7 +19,10 @@ export function Navbar({ children, ...props }: NavbarProps) {
           <SkipNavigationLink />
           <div className="h-11 w-11">
             <NavbarAvatar>
-              <Link className="block rounded-full focus-visible:ring-offset-2" href="/">
+              <Link
+                className="block rounded-full focus-visible:ring-offset-2"
+                href="/"
+              >
                 <Avatar size={11} />
               </Link>
             </NavbarAvatar>

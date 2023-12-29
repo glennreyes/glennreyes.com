@@ -4,7 +4,9 @@ import type { ReadTimeResults } from 'reading-time';
 import { z } from 'zod';
 
 export function parseReadingTimeValue(value: unknown) {
-  const result = z.object({ minutes: z.number(), text: z.string() }).safeParse(value);
+  const result = z
+    .object({ minutes: z.number(), text: z.string() })
+    .safeParse(value);
 
   if (!result.success) {
     return null;
@@ -13,7 +15,8 @@ export function parseReadingTimeValue(value: unknown) {
   return result.data;
 }
 
-interface ReadingTimeProps extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
+interface ReadingTimeProps
+  extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
   value: Pick<ReadTimeResults, 'minutes' | 'text'> | null;
 }
 
