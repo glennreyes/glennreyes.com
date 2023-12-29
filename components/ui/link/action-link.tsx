@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import type { ComponentPropsWithoutRef } from 'react';
-import { Link } from './link';
+import { Link } from './link2';
 
 type ActionLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, 'className'>;
 

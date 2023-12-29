@@ -2,7 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { useState, useRef } from 'react';
-import { Intersection } from './intersection';
+import { Intersection } from './intersection2';
 
 interface IntersectionProviderProps {
   children: ReactNode;

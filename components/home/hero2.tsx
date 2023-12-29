@@ -1,10 +1,10 @@
-import { Avatar } from '../avatar/avatar';
+import { Avatar } from '../avatar/avatar2';
 import { IconButton } from '../ui/elements/icon-button';
-import { H1 } from '../ui/typography/h1';
+import { H1 } from '../ui/typography/h12';
 import { HeroAvatar } from './hero-avatar';
 import { description, github, name, x } from '@/lib/constants';
-import { X } from '@/components/icons/x';
-import { GitHub } from '@/components/icons/github';
+import { X } from '@/components/icons/x2';
+import { GitHub } from '@/components/icons/github2';
 
 export function Hero() {
   return (

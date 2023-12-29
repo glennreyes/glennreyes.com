@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
-import { Link } from '../ui/link/link';
+import { Link } from '../ui/link/link2';
 import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 
 interface MenuLinkProps extends Omit<LinkProps, 'className'> {

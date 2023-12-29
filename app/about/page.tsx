@@ -5,16 +5,16 @@ import {
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import speaking from '@/assets/images/speaking.jpg';
-import { Divider } from '@/components/ui/elements/divider';
-import { Card } from '@/components/ui/layout/card';
-import { Content } from '@/components/ui/layout/content';
-import { List } from '@/components/ui/layout/list';
-import { Page } from '@/components/ui/layout/page';
+import { Divider } from '@/components/ui/elements/divider2';
+import { Card } from '@/components/ui/layout/card2';
+import { Content } from '@/components/ui/layout/content2';
+import { List } from '@/components/ui/layout/list2';
+import { Page } from '@/components/ui/layout/page2';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
-import { GitHub } from '@/components/icons/github';
-import { Instagram } from '@/components/icons/instagram';
-import { LinkedIn } from '@/components/icons/linkedin';
-import { X } from '@/components/icons/x';
+import { GitHub } from '@/components/icons/github2';
+import { Instagram } from '@/components/icons/instagram2';
+import { LinkedIn } from '@/components/icons/linkedin2';
+import { X } from '@/components/icons/x2';
 import { github, instagram, linkedin, x } from '@/lib/constants';
 import { allPages } from 'contentlayer/generated';
 

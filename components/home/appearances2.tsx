@@ -1,9 +1,9 @@
 import { getTime } from 'date-fns';
-import { Divider } from '../ui/elements/divider';
-import { Button } from '../ui/forms/button';
-import { Card } from '../ui/layout/card';
-import { List } from '../ui/layout/list';
-import { H4 } from '../ui/typography/h4';
+import { Divider } from '../ui/elements/divider2';
+import { Button } from '../ui/forms/button2';
+import { Card } from '../ui/layout/card2';
+import { List } from '../ui/layout/list2';
+import { H4 } from '../ui/typography/h42';
 import { composePlaceByLocation } from '@/lib/place';
 import { getAllEvents } from '@/lib/events';
 

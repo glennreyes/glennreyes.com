@@ -5,7 +5,7 @@ import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
 import { Fragment } from 'react';
-import { Divider } from '../ui/elements/divider';
+import { Divider } from '../ui/elements/divider2';
 import { IconButton } from '../ui/elements/icon-button';
 import { MenuLink } from './menu-link';
 import { ThemeSelect } from './theme-select';
@@ -35,7 +35,12 @@ export function Menu(props: MenuProps) {
         return (
           <>
             <Popover.Button as={Fragment}>
-              <IconButton appearance="secondary" aria-label="Open Menu" className={buttonClasses} icon={Bars2Icon} />
+              <IconButton
+                appearance="secondary"
+                aria-label="Open Menu"
+                className={buttonClasses}
+                icon={Bars2Icon}
+              />
             </Popover.Button>
             <Transition.Root className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden">
               <Transition.Child
@@ -65,7 +70,12 @@ export function Menu(props: MenuProps) {
                   {...props}
                 >
                   <div className="absolute right-4 top-4">
-                    <IconButton appearance="secondary" aria-label="Close Menu" icon={XMarkIcon} onClick={close} />
+                    <IconButton
+                      appearance="secondary"
+                      aria-label="Close Menu"
+                      icon={XMarkIcon}
+                      onClick={close}
+                    />
                   </div>
                   <ul className="grid gap-2 pr-12">
                     {links.map((link) => (

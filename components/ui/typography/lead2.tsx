@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import { Paragraph } from './paragraph';
+import { Paragraph } from './paragraph2';
 
 type LeadProps = Omit<ComponentPropsWithoutRef<'p'>, 'className'>;
 

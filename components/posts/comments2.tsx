@@ -1,7 +1,7 @@
 import { InlineLink } from '../ui/link/inline-link';
-import { H4 } from '../ui/typography/h4';
-import { Paragraph } from '../ui/typography/paragraph';
-import { Giscus } from './giscus';
+import { H4 } from '../ui/typography/h42';
+import { Paragraph } from '../ui/typography/paragraph2';
+import { Giscus } from './giscus2';
 import { email, x } from '@/lib/constants';
 
 export function Comments() {

@@ -2,10 +2,10 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/date-display';
-import { Link } from '../link/link';
-import { H3 } from '../typography/h3';
-import { Meta } from '../typography/meta';
-import { Paragraph } from '../typography/paragraph';
+import { Link } from '../link/link2';
+import { H3 } from '../typography/h32';
+import { Meta } from '../typography/meta2';
+import { Paragraph } from '../typography/paragraph2';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   appearance?: 'grid' | 'list';

@@ -9,15 +9,15 @@ import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
-import { Badge } from '../ui/elements/badge';
+import { Badge } from '../ui/elements/badge2';
 import { DateDisplay } from '../ui/elements/date-display';
-import { Divider } from '../ui/elements/divider';
-import { YouTube } from '../ui/elements/youtube';
-import { Card } from '../ui/layout/card';
+import { Divider } from '../ui/elements/divider2';
+import { YouTube } from '../ui/elements/youtube2';
+import { Card } from '../ui/layout/card2';
 import { ActionLink } from '../ui/link/action-link';
 import { InlineLink } from '../ui/link/inline-link';
-import { H2 } from '../ui/typography/h2';
-import { Paragraph } from '../ui/typography/paragraph';
+import { H2 } from '../ui/typography/h22';
+import { Paragraph } from '../ui/typography/paragraph2';
 
 const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
   Talk: {

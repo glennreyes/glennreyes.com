@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { Link } from './link';
+import { Link } from './link2';
 
 type InlineLinkProps = ComponentPropsWithoutRef<typeof Link>;
 

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Page } from '@/components/ui/layout/page';
+import { Page } from '@/components/ui/layout/page2';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { allPages } from 'contentlayer/generated';
 

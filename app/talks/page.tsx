@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { Feed } from '@/components/ui/layout/feed';
-import { Page } from '@/components/ui/layout/page';
+import { Feed } from '@/components/ui/layout/feed2';
+import { Page } from '@/components/ui/layout/page2';
 import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
 import { getAllTalks } from '@/lib/talks';
 
