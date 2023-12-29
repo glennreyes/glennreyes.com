@@ -12,7 +12,12 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   title?: string;
 }
 
-export function Feed({ appearance = 'list', children, title, ...props }: FeedProps) {
+export function Feed({
+  appearance = 'list',
+  children,
+  title,
+  ...props
+}: FeedProps) {
   const wrapperClasses = clsx(
     title ? 'col-span-3' : 'not-prose',
     appearance === 'grid' && 'md:grid-cols-2',
@@ -23,7 +28,9 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
     return (
       <div className="not-prose grid gap-8 md:grid-cols-4" {...props}>
         <div className="md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
-          <h2 className="font-semibold text-teal-600 md:sticky md:top-20 dark:text-teal-200/75">{title}</h2>
+          <h2 className="font-semibold text-teal-600 md:sticky md:top-20 dark:text-teal-200/75">
+            {title}
+          </h2>
         </div>
         <div className={wrapperClasses}>{children}</div>
       </div>
@@ -37,7 +44,8 @@ export function Feed({ appearance = 'list', children, title, ...props }: FeedPro
   );
 }
 
-interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+interface FeedItemProps
+  extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
   action?: string;
   children?: ReactNode;
   date?: Date | string;
@@ -47,13 +55,24 @@ interface FeedItemProps extends Omit<ComponentPropsWithoutRef<'article'>, 'class
   title: string;
 }
 
-function FeedItem({ action, children, description, link, title, ...rest }: FeedItemProps) {
+function FeedItem({
+  action,
+  children,
+  description,
+  link,
+  title,
+  ...rest
+}: FeedItemProps) {
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
     ...rest,
   };
-  const articleClasses = clsx(action ? 'gap-8' : 'gap-2', link && 'group relative', 'grid');
+  const articleClasses = clsx(
+    action ? 'gap-8' : 'gap-2',
+    link && 'group relative',
+    'grid',
+  );
   const descriptionClasses = clsx(link && 'relative z-10');
   const metaClasses = clsx(
     link && 'relative z-10 order-first',
@@ -72,12 +91,22 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
         )}
       </H3>
       {meta === undefined ? (
-        date !== undefined && <DateDisplay className={metaClasses} value={date} />
+        date !== undefined && (
+          <DateDisplay className={metaClasses} value={date} />
+        )
       ) : (
         <Meta className={metaClasses}>{meta}</Meta>
       )}
-      <Paragraph as={typeof description === 'string' ? undefined : 'div'} className={descriptionClasses}>
-        {description}
+
+      <Paragraph
+        asChild={typeof description !== 'string'}
+        className={descriptionClasses}
+      >
+        {typeof description === 'string' ? (
+          description
+        ) : (
+          <div>{description}</div>
+        )}
       </Paragraph>
       {children}
     </>
@@ -90,7 +119,10 @@ function FeedItem({ action, children, description, link, title, ...rest }: FeedI
           <div className="grid gap-2">{content}</div>
           <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
-            <ChevronRightIcon aria-hidden className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
+            <ChevronRightIcon
+              aria-hidden
+              className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+            />
           </p>
         </>
       ) : (

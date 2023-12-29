@@ -8,11 +8,19 @@ export function Posts() {
 
   return (
     <div className="grid gap-6 lg:gap-12">
-      <H4 as="h2">Recent Posts</H4>
+      <H4 asChild>
+        <h2>Recent Posts</h2>
+      </H4>
       <div className="grid gap-12">
         <Feed>
           {posts.map(({ description, publishedAt, slug, title }) => (
-            <Feed.Item date={publishedAt} description={description} key={slug} link={`/posts/${slug}`} title={title} />
+            <Feed.Item
+              date={publishedAt}
+              description={description}
+              key={slug}
+              link={`/posts/${slug}`}
+              title={title}
+            />
           ))}
         </Feed>
         <ActionLink href="/posts">All Posts</ActionLink>

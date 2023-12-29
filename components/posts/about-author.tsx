@@ -7,20 +7,24 @@ import { description, name } from '@/lib/constants';
 
 export function AboutAuthor() {
   return (
-    <Card as="section">
-      <Card.Body title="About The Author">
-        <div className="grid items-center gap-6 sm:flex">
-          <Link className="flex-none rounded-full" href="/about">
-            <Avatar size={28} />
-          </Link>
-          <div className="grid gap-4">
-            <H4 as="h2">
-              <Link href="/about">{name}</Link>
-            </H4>
-            <Paragraph className="text-sm">{description}</Paragraph>
+    <Card asChild>
+      <section>
+        <Card.Body title="About The Author">
+          <div className="grid items-center gap-6 sm:flex">
+            <Link className="flex-none rounded-full" href="/about">
+              <Avatar size={28} />
+            </Link>
+            <div className="grid gap-4">
+              <H4>
+                <h2>
+                  <Link href="/about">{name}</Link>
+                </h2>
+              </H4>
+              <Paragraph className="text-sm">{description}</Paragraph>
+            </div>
           </div>
-        </div>
-      </Card.Body>
+        </Card.Body>
+      </section>
     </Card>
   );
 }

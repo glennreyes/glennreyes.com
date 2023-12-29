@@ -5,33 +5,42 @@ import { Lead } from '../typography/lead';
 import { Meta } from '../typography/meta';
 import { Container } from './container';
 
-interface ArticleProps extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+interface ArticleProps
+  extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
   back?: ReactNode;
 }
 
 export function Article({ back, children, ...props }: ArticleProps) {
   return (
-    <Container as="article" className="space-y-6 lg:space-y-0" {...props}>
-      {back !== undefined && back !== null ? (
-        <>
-          <div className="lg:sticky lg:top-20">
-            <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
-          </div>
-          <div className="space-y-12">{children}</div>
-        </>
-      ) : (
-        children
-      )}
+    <Container asChild className="space-y-6 lg:space-y-0" {...props}>
+      <article>
+        {back !== undefined && back !== null ? (
+          <>
+            <div className="lg:sticky lg:top-20">
+              <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
+            </div>
+            <div className="space-y-12">{children}</div>
+          </>
+        ) : (
+          children
+        )}
+      </article>
     </Container>
   );
 }
 
-interface ArticleHeaderProps extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
+interface ArticleHeaderProps
+  extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead?: ReactNode;
   meta: ReactNode;
 }
 
-export function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
+export function ArticleHeader({
+  children,
+  lead,
+  meta,
+  ...props
+}: ArticleHeaderProps) {
   return (
     <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
@@ -46,12 +55,17 @@ Article.Header = ArticleHeader;
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function ArticleBody(props: ArticleBodyProps) {
-  return <div className="prose prose-slate mx-auto dark:prose-invert" {...props} />;
+  return (
+    <div className="prose prose-slate mx-auto dark:prose-invert" {...props} />
+  );
 }
 
 Article.Body = ArticleBody;
 
-type ArticleFooterProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
+type ArticleFooterProps = Omit<
+  ComponentPropsWithoutRef<'article'>,
+  'className'
+>;
 
 function ArticleFooter(props: ArticleFooterProps) {
   return (

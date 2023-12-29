@@ -27,13 +27,22 @@ interface AppearanceCardProps {
   workshop?: Pick<Workshop, 'description' | 'slides' | 'title'>;
 }
 
-export function AppearanceCard({ date, length, recording, talk, workshop }: AppearanceCardProps) {
+export function AppearanceCard({
+  date,
+  length,
+  recording,
+  talk,
+  workshop,
+}: AppearanceCardProps) {
   const title = talk?.title ?? workshop?.title;
   const description = talk?.abstract ?? workshop?.description;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
   const dateTime = formatISO(date);
   const tags = talk?.tags;
-  const lengths: Record<NonNullable<typeof type>, Record<AppearanceLength, string>> = {
+  const lengths: Record<
+    NonNullable<typeof type>,
+    Record<AppearanceLength, string>
+  > = {
     Talk: {
       [AppearanceLength.SHORT]: 'Lightning',
       [AppearanceLength.MEDIUM]: 'Regular',
@@ -64,20 +73,34 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                 <div className="flex gap-2">
                   <dt className="flex-none">
                     <span className="sr-only">Date & Time</span>
-                    <CalendarDaysIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                    <CalendarDaysIcon
+                      aria-hidden
+                      className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                    />
                   </dt>
-                  <Paragraph as="dd" className="text-sm font-medium">
-                    <DateDisplay dateTime={dateTime} format="MMMM dd, yyyy 'at' p" value={date} />
+                  <Paragraph asChild className="text-sm font-medium">
+                    <dd>
+                      <DateDisplay
+                        dateTime={dateTime}
+                        format="MMMM dd, yyyy 'at' p"
+                        value={date}
+                      />
+                    </dd>
                   </Paragraph>
                 </div>
                 {type && (
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Length</span>
-                      <ClockIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                      <ClockIcon
+                        aria-hidden
+                        className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                      />
                     </dt>
-                    <Paragraph as="dd" className="text-sm font-medium">
-                      {lengths[type][length]} {type}
+                    <Paragraph asChild className="text-sm font-medium">
+                      <dd>
+                        {lengths[type][length]} {type}
+                      </dd>
                     </Paragraph>
                   </div>
                 )}
@@ -85,13 +108,24 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <PresentationChartLineIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                      <PresentationChartLineIcon
+                        aria-hidden
+                        className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                      />
                     </dt>
-                    <Paragraph as="dd" className="text-sm font-medium">
-                      <InlineLink className="inline-flex items-center gap-1" href={slides}>
-                        View Slides
-                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
-                      </InlineLink>
+                    <Paragraph asChild className="text-sm font-medium">
+                      <dd>
+                        <InlineLink
+                          className="inline-flex items-center gap-1"
+                          href={slides}
+                        >
+                          View Slides
+                          <ArrowTopRightOnSquareIcon
+                            aria-hidden
+                            className="h-4 w-4"
+                          />
+                        </InlineLink>
+                      </dd>
                     </Paragraph>
                   </div>
                 )}
@@ -99,13 +133,24 @@ export function AppearanceCard({ date, length, recording, talk, workshop }: Appe
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Slides</span>
-                      <TvIcon aria-hidden className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                      <TvIcon
+                        aria-hidden
+                        className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                      />
                     </dt>
-                    <Paragraph as="dd" className="text-sm font-medium">
-                      <InlineLink className="inline-flex items-center gap-1" href={recording}>
-                        Watch Recording
-                        <ArrowTopRightOnSquareIcon aria-hidden className="h-4 w-4" />
-                      </InlineLink>
+                    <Paragraph asChild className="text-sm font-medium">
+                      <dd>
+                        <InlineLink
+                          className="inline-flex items-center gap-1"
+                          href={recording}
+                        >
+                          Watch Recording
+                          <ArrowTopRightOnSquareIcon
+                            aria-hidden
+                            className="h-4 w-4"
+                          />
+                        </InlineLink>
+                      </dd>
                     </Paragraph>
                   </div>
                 )}

@@ -1,15 +1,17 @@
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
 import { H3 } from '../typography/h3';
+import { Slot } from '@radix-ui/react-slot';
 
-export type CardProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
-  as?: Extract<TElementType, 'article' | 'div' | 'section'>;
-};
+export interface CardProps
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
+  asChild?: boolean;
+}
 
-export function Card<TElementType extends ElementType>({ as, ...props }: CardProps<TElementType>) {
-  const Component = as ?? 'div';
+export function Card({ asChild, ...props }: CardProps) {
+  const Component = asChild ? Slot : 'div';
 
   return (
     <Component
@@ -19,14 +21,19 @@ export function Card<TElementType extends ElementType>({ as, ...props }: CardPro
   );
 }
 
-interface CardBodyProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
+interface CardBodyProps
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
   title?: string;
 }
 
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">{title}</p>}
+      {title && (
+        <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">
+          {title}
+        </p>
+      )}
       {children}
     </div>
   );
@@ -34,7 +41,10 @@ function CardBody({ children, title, ...props }: CardBodyProps) {
 
 Card.Body = CardBody;
 
-type CardItemWithDateProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> & {
+type CardItemWithDateProps = Omit<
+  ComponentPropsWithoutRef<'div'>,
+  'className' | 'title'
+> & {
   children?: ReactNode;
   date: Date | string;
   description: string;
@@ -43,7 +53,10 @@ type CardItemWithDateProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' |
   title: ReactNode;
 };
 
-type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> & {
+type CardItemWithMetaProps = Omit<
+  ComponentPropsWithoutRef<'div'>,
+  'className' | 'title'
+> & {
   children?: ReactNode;
   date?: undefined;
   description?: string;
@@ -54,10 +67,22 @@ type CardItemWithMetaProps = Omit<ComponentPropsWithoutRef<'div'>, 'className' |
 
 type CardItemProps = CardItemWithDateProps | CardItemWithMetaProps;
 
-function CardItem({ children, description, link, title, ...rest }: CardItemProps) {
+function CardItem({
+  children,
+  description,
+  link,
+  title,
+  ...rest
+}: CardItemProps) {
   const itemClasses = clsx(link && 'group relative', 'flex gap-4');
-  const descriptionClasses = clsx(link && 'relative z-10', 'text-sm text-slate-500 dark:text-slate-400');
-  const metaClasses = clsx(link && 'relative z-10', 'text-sm text-slate-400 dark:text-slate-500');
+  const descriptionClasses = clsx(
+    link && 'relative z-10',
+    'text-sm text-slate-500 dark:text-slate-400',
+  );
+  const metaClasses = clsx(
+    link && 'relative z-10',
+    'text-sm text-slate-400 dark:text-slate-500',
+  );
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
@@ -66,12 +91,16 @@ function CardItem({ children, description, link, title, ...rest }: CardItemProps
 
   return (
     <div className={itemClasses} {...props}>
-      {children !== undefined && children !== null && <div className="relative z-10">{children}</div>}
+      {children !== undefined && children !== null && (
+        <div className="relative z-10">{children}</div>
+      )}
       <div className="grid flex-1 items-center gap-1">
         {meta !== undefined && meta !== null ? (
           <div className={metaClasses}>{meta}</div>
         ) : (
-          date !== undefined && <DateDisplay className={metaClasses} value={date} />
+          date !== undefined && (
+            <DateDisplay className={metaClasses} value={date} />
+          )
         )}
         {title !== undefined && (
           <H3 className="text-sm">

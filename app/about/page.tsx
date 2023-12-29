@@ -53,7 +53,7 @@ export default function AboutPage() {
           <Card>
             <div className="grid gap-6">
               <Card.Body title="Online">
-                <List as="ul">
+                <List>
                   <List.Item>
                     <Card.Item
                       link={`https://x.com/${x}`}

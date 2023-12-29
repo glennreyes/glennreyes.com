@@ -1,14 +1,14 @@
-import type { ComponentPropsWithoutRef, ElementType, HTMLAttributes } from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import type { ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type ContainerProps<TElementType extends ElementType> = ComponentPropsWithoutRef<TElementType> &
-  HTMLAttributes<TElementType> & {
-    as?: Extract<TElementType, 'article' | 'div' | 'p' | 'section'>;
-  };
+interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
+  asChild?: boolean;
+}
 
-export function Container<TElementType extends ElementType>({ as, className, ...props }: ContainerProps<TElementType>) {
+export function Container({ asChild, className, ...props }: ContainerProps) {
   const classes = twMerge('container mx-auto px-4', className);
-  const Component = as ?? 'div';
+  const Component = asChild ? Slot : 'div';
 
   return <Component className={classes} {...props} />;
 }

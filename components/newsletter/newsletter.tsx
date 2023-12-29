@@ -14,16 +14,20 @@ export function Newsletter({
   title = 'Stay in the loop',
 }: NewsletterProps) {
   return (
-    <Card as="section">
-      <div className="grid max-w-md gap-8">
-        <Card.Body>
-          <H4 as="h2">{title}</H4>
-          <Paragraph className="text-sm">{children}</Paragraph>
-        </Card.Body>
-        <Card.Body>
-          <NewsletterForm />
-        </Card.Body>
-      </div>
+    <Card asChild>
+      <section>
+        <div className="grid max-w-md gap-8">
+          <Card.Body>
+            <H4 asChild>
+              <h2>{title}</h2>
+            </H4>
+            <Paragraph className="text-sm">{children}</Paragraph>
+          </Card.Body>
+          <Card.Body>
+            <NewsletterForm />
+          </Card.Body>
+        </div>
+      </section>
     </Card>
   );
 }

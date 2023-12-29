@@ -1,11 +1,12 @@
-import type { ElementType, ComponentPropsWithoutRef } from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import type { ComponentPropsWithoutRef } from 'react';
 
-type ListProps<TElementType extends ElementType> = Omit<ComponentPropsWithoutRef<TElementType>, 'className'> & {
-  as?: Extract<TElementType, 'ol' | 'ul'>;
-};
+interface ListProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'className'> {
+  asChild?: boolean;
+}
 
-export function List<TElementType extends ElementType>({ as, ...props }: ListProps<TElementType>) {
-  const Component = as ?? 'ul';
+export function List({ asChild, ...props }: ListProps) {
+  const Component = asChild ? Slot : 'ul';
 
   return <Component className="grid gap-4" {...props} />;
 }

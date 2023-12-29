@@ -27,7 +27,11 @@ export const components: MDXComponents = {
   Image: (props) => <Image className="rounded-[1.75rem]" {...props} />,
   Lead,
   a: ({ href, ...props }) =>
-    href?.startsWith('#') ? <Link href={href} {...props} /> : href ? <InlineLink href={href} {...props} /> : null,
+    href?.startsWith('#') ? (
+      <Link href={href} {...props} />
+    ) : href ? (
+      <InlineLink href={href} {...props} />
+    ) : null,
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {
@@ -45,14 +49,20 @@ export const components: MDXComponents = {
     // Handle code block titles
     const language = props['data-language'];
 
-    if (props['data-rehype-pretty-code-title'] !== undefined || language !== undefined) {
+    if (
+      props['data-rehype-pretty-code-title'] !== undefined ||
+      language !== undefined
+    ) {
       return (
         <div className="absolute inset-x-0 top-[0.9375rem] min-w-0 max-w-full flex-1 pr-12">
           <div className="absolute inset-y-0 left-0 z-10 w-4 bg-gradient-to-l from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="absolute inset-y-0 right-12 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="overflow-x-auto">
             <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 sm:pl-6 dark:text-slate-300/75">
-              <DocumentIcon aria-hidden className="h-4 w-4 flex-none text-slate-600 dark:text-slate-600" />
+              <DocumentIcon
+                aria-hidden
+                className="h-4 w-4 flex-none text-slate-600 dark:text-slate-600"
+              />
               {children}
             </div>
           </div>
