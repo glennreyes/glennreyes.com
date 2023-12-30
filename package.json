@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --write . && pnpm lint --fix",
+    "format": "prettier --list-different --write . && pnpm lint --fix",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "start": "next start"
