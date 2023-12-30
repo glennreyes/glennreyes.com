@@ -1,5 +1,5 @@
-import { Intersection } from '@/components/intersection/intersection';
 import { useContext, useEffect } from 'react';
+import { Intersection } from '@/components/intersection/intersection';
 
 export function useIntersection({
   root,

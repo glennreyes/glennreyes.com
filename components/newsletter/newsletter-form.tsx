@@ -1,11 +1,11 @@
 'use client';
 
 import type { ComponentPropsWithoutRef } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Button } from '../ui/forms/button';
 import { Input } from '../ui/forms/input';
 import { useTheme } from '@/lib/hooks/use-theme';
 import { subscribe } from '@/app/subscribe/action';
-import { useFormStatus } from 'react-dom';
 
 type NewsletterFormProps = Omit<
   ComponentPropsWithoutRef<'form'>,
