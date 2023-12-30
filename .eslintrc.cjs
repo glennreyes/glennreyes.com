@@ -16,8 +16,27 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: ['unused-imports'],
+  plugins: ['@stylistic', 'unused-imports'],
   rules: {
+    '@stylistic/padding-line-between-statements': [
+      'error',
+      {
+        blankLine: 'always',
+        next: 'return',
+        prev: '*',
+      },
+      {
+        blankLine: 'always',
+        next: ['block-like'],
+        prev: '*',
+      },
+      {
+        blankLine: 'always',
+        next: ['*'],
+        prev: ['block-like'],
+      },
+    ],
+    '@stylistic/spaced-comment': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/default-param-last': 'error',
@@ -58,7 +77,6 @@ module.exports = {
     'object-shorthand': 'error',
     'prefer-arrow-callback': [2, { allowNamedFunctions: true }],
     'prefer-template': 'error',
-    'spaced-comment': 'error',
     'unicorn/no-nested-ternary': 'off',
     'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',
