@@ -13,11 +13,9 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
+  plugins: ['unused-imports'],
   rules: {
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      { ignoreRestSiblings: true },
-    ],
+    '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/default-param-last': 'error',
@@ -54,5 +52,16 @@ module.exports = {
     'unicorn/prevent-abbreviations': 'off',
     'unicorn/no-nested-ternary': 'off',
     'unicorn/no-null': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      },
+    ],
   },
 };
