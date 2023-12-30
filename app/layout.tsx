@@ -22,7 +22,7 @@ export const metadata = {
     siteName: name,
     title,
     type: 'website',
-    url: Í,
+    url: origin,
   },
   title,
   twitter: {
