@@ -23,12 +23,12 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
   }
 
   const copyIconClasses = clsx(
-    isCopied && 'opacity-0 scale-0',
+    isCopied && 'scale-0 opacity-0',
     'bg-transparent text-slate-500 transition hover:text-slate-400 active:text-slate-500 dark:bg-transparent dark:text-slate-500 dark:hover:text-slate-400 dark:active:text-slate-500',
   );
   const checkIconClasses = clsx(
-    !isCopied && 'opacity-0 scale-0',
-    'absolute inset-0 grid items-center justify-center text-teal-500 transition pointer-events-none',
+    !isCopied && 'scale-0 opacity-0',
+    'pointer-events-none absolute inset-0 grid items-center justify-center text-teal-500 transition',
   );
 
   return (

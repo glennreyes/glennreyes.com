@@ -10,13 +10,14 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:perfectionist/recommended-natural',
     'plugin:unicorn/recommended',
+    'plugin:tailwindcss/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: ['@stylistic', 'unused-imports'],
+  plugins: ['@stylistic', 'only-error', 'unused-imports'],
   rules: {
     '@stylistic/padding-line-between-statements': [
       'error',

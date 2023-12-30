@@ -18,9 +18,9 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
   );
   const classes = clsx(
     isActivePathname
-      ? 'md:border-slate-300/25 dark:md:border-slate-500/25 text-teal-700 bg-white/10 dark:bg-slate-950/10 dark:text-teal-200/75 md:supports-[backdrop-filter]:backdrop-blur-md'
-      : 'md:border-transparent text-slate-900/90 dark:text-slate-200 hover:text-teal-700/75 dark:hover:text-teal-200/75',
-    'block md:rounded-full md:border md:px-4 py-3 text-sm font-semibold tracking-tight transition md:active:scale-95 focus-visible:ring-offset-2',
+      ? 'bg-white/10 text-teal-700 md:border-slate-300/25 md:supports-[backdrop-filter]:backdrop-blur-md dark:bg-slate-950/10 dark:text-teal-200/75 dark:md:border-slate-500/25'
+      : 'text-slate-900/90 hover:text-teal-700/75 md:border-transparent dark:text-slate-200 dark:hover:text-teal-200/75',
+    'block py-3 text-sm font-semibold tracking-tight transition focus-visible:ring-offset-2 md:rounded-full md:border md:px-4 md:active:scale-95',
   );
 
   return (

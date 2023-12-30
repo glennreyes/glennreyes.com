@@ -68,7 +68,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       const { as, ...rest } = props;
       const linkClasses = clsx(
         classes,
-        'inline-flex justify-center items-center',
+        'inline-flex items-center justify-center',
       );
 
       return (

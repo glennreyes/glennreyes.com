@@ -44,7 +44,7 @@ export function Avatar({ size = 40, ...props }: AvatarProps) {
 
   return (
     <div className={classes}>
-      <div className="dark:from-slate-transparent dark:to-slate-transparent absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:via-slate-800/50" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
       <Image
         alt={name}
         className="relative rounded-full"
