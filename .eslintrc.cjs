@@ -6,8 +6,11 @@ module.exports = {
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:deprecation/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:perfectionist/recommended-natural',
     'plugin:unicorn/recommended',
     'plugin:tailwindcss/recommended',
@@ -19,6 +22,7 @@ module.exports = {
   },
   plugins: ['@stylistic', 'only-error', 'unused-imports'],
   rules: {
+    '@stylistic/jsx-curly-brace-presence': 'error',
     '@stylistic/padding-line-between-statements': [
       'error',
       {
@@ -79,6 +83,10 @@ module.exports = {
     'object-shorthand': 'error',
     'prefer-arrow-callback': [2, { allowNamedFunctions: true }],
     'prefer-template': 'error',
+    'react/jsx-boolean-value': 'error',
+    'react/jsx-handler-names': 'error',
+    'react/react-in-jsx-scope': 'off',
+    'react/self-closing-comp': 'error',
     'unicorn/no-nested-ternary': 'off',
     'unicorn/no-null': 'off',
     'unicorn/prevent-abbreviations': 'off',

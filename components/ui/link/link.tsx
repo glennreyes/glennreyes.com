@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
-export function Link({ className, href, ...props }: LinkProps) {
+export function Link({ children, className, href, ...props }: LinkProps) {
   const classes = twMerge(
     'rounded-lg transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
     className,
@@ -14,7 +14,11 @@ export function Link({ className, href, ...props }: LinkProps) {
   const source = typeof href === 'object' ? href.pathname ?? '/' : href;
 
   if (source.startsWith('#')) {
-    return <a className={classes} href={source} {...props} />;
+    return (
+      <a className={classes} href={source} {...props}>
+        {children}
+      </a>
+    );
   }
 
   if (source.startsWith('http')) {
@@ -25,9 +29,15 @@ export function Link({ className, href, ...props }: LinkProps) {
         rel="noreferrer noopener"
         target="_blank"
         {...props}
-      />
+      >
+        {children}
+      </NextLink>
     );
   }
 
-  return <NextLink className={classes} href={href} {...props} />;
+  return (
+    <NextLink className={classes} href={href} {...props}>
+      {children}
+    </NextLink>
+  );
 }
