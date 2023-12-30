@@ -40,7 +40,7 @@ module.exports = {
     eqeqeq: 'error',
     curly: 'error',
     'multiline-comment-style': ['error', 'separate-lines'],
-    'no-console': ['warn', { allow: ['error', 'info', 'table', 'warn'] }],
+    'no-console': 'error',
     'no-constant-binary-expression': 'error',
     'no-else-return': 'error',
     'no-unneeded-ternary': 'error',
