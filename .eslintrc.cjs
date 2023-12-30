@@ -13,7 +13,7 @@ module.exports = {
     project: true,
     tsconfigRootDir: __dirname,
   },
-  plugins: ['sort-keys-fix', 'unused-imports'],
+  plugins: ['sort-destructure-keys', 'sort-keys-fix', 'unused-imports'],
   rules: {
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/consistent-type-imports': 'error',
@@ -48,6 +48,7 @@ module.exports = {
     'object-shorthand': 'error',
     'prefer-arrow-callback': [2, { allowNamedFunctions: true }],
     'prefer-template': 'error',
+    'sort-destructure-keys/sort-destructure-keys': 'error',
     'sort-keys-fix/sort-keys-fix': 'error',
     'spaced-comment': 'error',
     'unicorn/no-nested-ternary': 'off',
