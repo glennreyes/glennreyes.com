@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
+    'plugin:typescript-sort-keys/recommended',
     'plugin:unicorn/recommended',
   ],
   parser: '@typescript-eslint/parser',

@@ -21,9 +21,7 @@ export async function subscribe(data: FormData) {
 
   try {
     await subscribeBase(result.data);
-  } catch (error) {
-    console.error(error);
-
+  } catch {
     return 'Error subscribing';
   }
 
