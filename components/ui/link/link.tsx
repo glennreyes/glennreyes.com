@@ -1,5 +1,6 @@
-import NextLink from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import NextLink from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { EventAppearances } from '@/components/appearances/event-appearances';
 import { EventDate } from '@/components/appearances/event-date';
 import { EventLead } from '@/components/appearances/event-lead';

@@ -1,6 +1,7 @@
+import type { ComponentPropsWithoutRef } from 'react';
+
 import clsx from 'clsx';
 import { Inter, Roboto_Mono } from 'next/font/google';
-import type { ComponentPropsWithoutRef } from 'react';
 
 const mono = Roboto_Mono({
   subsets: ['latin'],

@@ -1,4 +1,5 @@
 import type { ImageProps } from 'next/image';
+
 import Image from 'next/image';
 
 type PhotoProps = Omit<ImageProps, 'className'>;

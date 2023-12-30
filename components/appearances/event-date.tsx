@@ -1,4 +1,5 @@
 import { isSameDay } from 'date-fns';
+
 import { DateDisplay } from '../ui/elements/date-display';
 
 interface EventDateProps {

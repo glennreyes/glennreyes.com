@@ -1,6 +1,7 @@
+import type { ComponentPropsWithoutRef } from 'react';
+
 import clsx from 'clsx';
 import Link from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
 
 type ButtonAppearance = 'primary' | 'secondary';
 

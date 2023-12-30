@@ -1,5 +1,3 @@
-import { ArrowLeftIcon } from '@heroicons/react/20/solid';
-import { notFound } from 'next/navigation';
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
@@ -10,7 +8,9 @@ import {
 import { Article } from '@/components/ui/layout/article';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { origin } from '@/lib/constants';
+import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { allPosts } from 'contentlayer/generated';
+import { notFound } from 'next/navigation';
 
 interface GenerateMetadataConfigParams {
   slug: string;

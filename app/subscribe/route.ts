@@ -1,7 +1,8 @@
 import type { NextRequest } from 'next/server';
+
+import { subscribe } from '@/lib/newsletter';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { subscribe } from '@/lib/newsletter';
 
 export async function POST(request: NextRequest) {
   const result = z

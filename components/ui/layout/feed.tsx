@@ -1,6 +1,8 @@
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+
 import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
 import { H3 } from '../typography/h3';

@@ -1,10 +1,12 @@
 'use client';
 
+import type { ComponentPropsWithoutRef } from 'react';
+
 import { Popover, Transition } from '@headlessui/react';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import clsx from 'clsx';
-import type { ComponentPropsWithoutRef } from 'react';
 import { Fragment } from 'react';
+
 import { Divider } from '../ui/elements/divider';
 import { IconButton } from '../ui/elements/icon-button';
 import { MenuLink } from './menu-link';

@@ -1,5 +1,5 @@
-import { useTheme as useThemeBase } from 'next-themes';
 import { parseResolvedTheme, parseTheme } from '@/lib/theme';
+import { useTheme as useThemeBase } from 'next-themes';
 
 export function useTheme() {
   const {

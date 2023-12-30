@@ -1,7 +1,6 @@
-import { DocumentIcon } from '@heroicons/react/24/outline';
 import type { MDXComponents } from 'mdx/types';
-import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
+
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Link } from '@/components/ui/link/link';
@@ -10,6 +9,8 @@ import { H2 } from '@/components/ui/typography/h2';
 import { H3 } from '@/components/ui/typography/h3';
 import { H4 } from '@/components/ui/typography/h4';
 import { Lead } from '@/components/ui/typography/lead';
+import { DocumentIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 interface DivProps extends ComponentPropsWithoutRef<'div'> {
   'data-language'?: string;

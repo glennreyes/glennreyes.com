@@ -1,7 +1,9 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useState, useRef } from 'react';
+
+import { useRef, useState } from 'react';
+
 import { Intersection } from './intersection';
 
 interface IntersectionProviderProps {

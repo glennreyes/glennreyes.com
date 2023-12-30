@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react';
+
 import { twMerge } from 'tailwind-merge';
 
 type H3Props = ComponentPropsWithoutRef<'h3'>;

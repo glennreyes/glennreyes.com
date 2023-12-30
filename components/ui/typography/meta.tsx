@@ -3,7 +3,9 @@ import type {
   ElementType,
   HTMLAttributes,
 } from 'react';
+
 import { twMerge } from 'tailwind-merge';
+
 import type { DateDisplay } from '../elements/date-display';
 
 type MetaProps<TElementType extends ElementType> =

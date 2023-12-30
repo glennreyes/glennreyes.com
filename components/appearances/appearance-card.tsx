@@ -1,3 +1,5 @@
+import type { Talk, Workshop } from '@prisma/client';
+
 import {
   ArrowTopRightOnSquareIcon,
   CalendarDaysIcon,
@@ -6,8 +8,8 @@ import {
   TvIcon,
 } from '@heroicons/react/20/solid';
 import { AppearanceLength } from '@prisma/client';
-import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
+
 import { DateDisplay } from '../ui/elements/date-display';
 import { Divider } from '../ui/elements/divider';
 import { TagCloud } from '../ui/elements/tag-cloud';
@@ -44,14 +46,14 @@ export function AppearanceCard({
     Record<AppearanceLength, string>
   > = {
     Talk: {
-      [AppearanceLength.SHORT]: 'Lightning',
-      [AppearanceLength.MEDIUM]: 'Regular',
       [AppearanceLength.LONG]: 'Extended',
+      [AppearanceLength.MEDIUM]: 'Regular',
+      [AppearanceLength.SHORT]: 'Lightning',
     },
     Workshop: {
-      [AppearanceLength.SHORT]: '2-3 Hours',
-      [AppearanceLength.MEDIUM]: 'Half Day',
       [AppearanceLength.LONG]: 'Full Day',
+      [AppearanceLength.MEDIUM]: 'Half Day',
+      [AppearanceLength.SHORT]: '2-3 Hours',
     },
   };
   const slides = talk?.slides ?? workshop?.slides;

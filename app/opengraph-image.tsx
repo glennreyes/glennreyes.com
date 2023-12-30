@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
-import { ImageResponse } from 'next/og';
 import { origin } from '@/lib/constants';
+import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 

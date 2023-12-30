@@ -1,8 +1,9 @@
 'use client';
 
-import { Transition } from '@headlessui/react';
 import type { ComponentPropsWithoutRef } from 'react';
+
 import { useIntersection } from '@/lib/hooks/use-intersection';
+import { Transition } from '@headlessui/react';
 
 type HeroAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 

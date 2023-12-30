@@ -1,5 +1,6 @@
-import { Slot } from '@radix-ui/react-slot';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import { Slot } from '@radix-ui/react-slot';
 import { twMerge } from 'tailwind-merge';
 
 interface ParagraphProps extends ComponentPropsWithoutRef<'p'> {

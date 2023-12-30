@@ -1,6 +1,7 @@
 'use client';
 
 import type { Dispatch, RefObject, SetStateAction } from 'react';
+
 import { createContext } from 'react';
 
 interface IntersectionProps {

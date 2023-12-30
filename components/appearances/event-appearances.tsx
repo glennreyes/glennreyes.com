@@ -1,3 +1,6 @@
+import type { Talk, Workshop } from '@prisma/client';
+import type { ComponentPropsWithoutRef } from 'react';
+
 import {
   ArrowTopRightOnSquareIcon,
   CalendarDaysIcon,
@@ -6,9 +9,8 @@ import {
   TvIcon,
 } from '@heroicons/react/20/solid';
 import { AppearanceLength } from '@prisma/client';
-import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
-import type { ComponentPropsWithoutRef } from 'react';
+
 import { Badge } from '../ui/elements/badge';
 import { DateDisplay } from '../ui/elements/date-display';
 import { Divider } from '../ui/elements/divider';
@@ -21,14 +23,14 @@ import { Paragraph } from '../ui/typography/paragraph';
 
 const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
   Talk: {
-    [AppearanceLength.SHORT]: 'Lightning',
-    [AppearanceLength.MEDIUM]: 'Regular',
     [AppearanceLength.LONG]: 'Extended',
+    [AppearanceLength.MEDIUM]: 'Regular',
+    [AppearanceLength.SHORT]: 'Lightning',
   },
   Workshop: {
-    [AppearanceLength.SHORT]: '2-3 Hours',
-    [AppearanceLength.MEDIUM]: 'Half Day',
     [AppearanceLength.LONG]: 'Full Day',
+    [AppearanceLength.MEDIUM]: 'Half Day',
+    [AppearanceLength.SHORT]: '2-3 Hours',
   },
 };
 

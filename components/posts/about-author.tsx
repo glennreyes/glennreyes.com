@@ -1,9 +1,10 @@
+import { description, name } from '@/lib/constants';
 import Link from 'next/link';
+
 import { Avatar } from '../avatar/avatar';
 import { Card } from '../ui/layout/card';
 import { H4 } from '../ui/typography/h4';
 import { Paragraph } from '../ui/typography/paragraph';
-import { description, name } from '@/lib/constants';
 
 export function AboutAuthor() {
   return (

@@ -1,10 +1,11 @@
 'use client';
 
+import type { ComponentPropsWithoutRef } from 'react';
+
+import photo from '@/assets/images/photo.jpg';
+import { name } from '@/lib/constants';
 import clsx from 'clsx';
 import Image from 'next/image';
-import type { ComponentPropsWithoutRef } from 'react';
-import { name } from '@/lib/constants';
-import photo from '@/assets/images/photo.jpg';
 
 type AvatarSize = 11 | 28 | 40;
 

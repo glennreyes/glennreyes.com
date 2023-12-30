@@ -1,10 +1,12 @@
 'use client';
 
-import clsx from 'clsx';
 import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
-import { Link } from '../ui/link/link';
+
 import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
+import clsx from 'clsx';
+
+import { Link } from '../ui/link/link';
 
 interface MenuLinkProps extends Omit<LinkProps, 'className'> {
   children: ReactNode;

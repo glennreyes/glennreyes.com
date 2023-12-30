@@ -1,8 +1,8 @@
 'use server';
 
+import { subscribe as subscribeBase } from '@/lib/newsletter';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { subscribe as subscribeBase } from '@/lib/newsletter';
 
 export async function subscribe(data: FormData) {
   const email = data.get('email');

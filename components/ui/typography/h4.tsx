@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+
 import { Slot } from '@radix-ui/react-slot';
+import { twMerge } from 'tailwind-merge';
 
 interface H4Props extends ComponentPropsWithoutRef<'h4'> {
   asChild?: boolean;

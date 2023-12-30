@@ -1,11 +1,12 @@
+import { getAllEvents } from '@/lib/events';
+import { composePlaceByLocation } from '@/lib/place';
 import { getTime } from 'date-fns';
+
 import { Divider } from '../ui/elements/divider';
 import { Button } from '../ui/forms/button';
 import { Card } from '../ui/layout/card';
 import { List } from '../ui/layout/list';
 import { H4 } from '../ui/typography/h4';
-import { composePlaceByLocation } from '@/lib/place';
-import { getAllEvents } from '@/lib/events';
 
 export async function Appearances() {
   const allEvents = await getAllEvents();

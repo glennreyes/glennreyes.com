@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react';
+
 import { Avatar } from '../avatar/avatar';
 import { SkipNavigationLink } from '../ui/elements/skip-navigation-link';
 import { Container } from '../ui/layout/container';

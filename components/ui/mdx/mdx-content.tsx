@@ -1,5 +1,5 @@
-import { getMDXComponent } from 'next-contentlayer/hooks';
 import { components } from '@/lib/mdx';
+import { getMDXComponent } from 'next-contentlayer/hooks';
 
 interface MDXContentProps {
   code: string;

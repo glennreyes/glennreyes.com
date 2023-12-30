@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import clsx from 'clsx';
 
 type BadgeColors = 'rose' | 'sky' | 'slate' | 'teal';
 

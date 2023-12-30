@@ -1,7 +1,9 @@
-import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
+
+import clsx from 'clsx';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+
 import { Link } from '../link/link';
 
 type IconButtonAppearance = 'primary' | 'secondary' | 'tertiary';

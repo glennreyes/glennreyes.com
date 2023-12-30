@@ -1,6 +1,7 @@
-import { formatISODuration } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
 import type { ReadTimeResults } from 'reading-time';
+
+import { formatISODuration } from 'date-fns';
 import { z } from 'zod';
 
 export function parseReadingTimeValue(value: unknown) {

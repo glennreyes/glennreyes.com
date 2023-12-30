@@ -1,22 +1,22 @@
-import {
-  ArrowUpRightIcon,
-  PaperAirplaneIcon,
-} from '@heroicons/react/24/outline';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
 import speaking from '@/assets/images/speaking.jpg';
+import { GitHub } from '@/components/icons/github';
+import { Instagram } from '@/components/icons/instagram';
+import { LinkedIn } from '@/components/icons/linkedin';
+import { X } from '@/components/icons/x';
 import { Divider } from '@/components/ui/elements/divider';
 import { Card } from '@/components/ui/layout/card';
 import { Content } from '@/components/ui/layout/content';
 import { List } from '@/components/ui/layout/list';
 import { Page } from '@/components/ui/layout/page';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
-import { GitHub } from '@/components/icons/github';
-import { Instagram } from '@/components/icons/instagram';
-import { LinkedIn } from '@/components/icons/linkedin';
-import { X } from '@/components/icons/x';
 import { github, instagram, linkedin, x } from '@/lib/constants';
+import {
+  ArrowUpRightIcon,
+  PaperAirplaneIcon,
+} from '@heroicons/react/24/outline';
 import { allPages } from 'contentlayer/generated';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 const page = allPages.find(({ path }) => path === 'about');
 

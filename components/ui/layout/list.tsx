@@ -1,5 +1,6 @@
-import { Slot } from '@radix-ui/react-slot';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import { Slot } from '@radix-ui/react-slot';
 
 interface ListProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'className'> {
   asChild?: boolean;

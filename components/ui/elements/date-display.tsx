@@ -1,5 +1,6 @@
-import { format, isThisYear } from 'date-fns';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import { format, isThisYear } from 'date-fns';
 
 interface DateDisplayProps extends ComponentPropsWithoutRef<'time'> {
   format?: string;
