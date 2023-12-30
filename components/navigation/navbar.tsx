@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import { Avatar } from '../avatar/avatar2';
+import { Avatar } from '../avatar/avatar';
 import { SkipNavigationLink } from '../ui/elements/skip-navigation-link';
-import { Container } from '../ui/layout/container2';
-import { Link } from '../ui/link/link2';
+import { Container } from '../ui/layout/container';
+import { Link } from '../ui/link/link';
 import { NavbarAvatar } from './navbar-avatar';
 import { NavbarBorder } from './navbar-border';
 import { ThemeSelect } from './theme-select';

@@ -1,6 +1,6 @@
 import type { Event } from '@prisma/client';
 import type { ComponentPropsWithoutRef } from 'react';
-import { Lead } from '../ui/typography/lead2';
+import { Lead } from '../ui/typography/lead';
 import { EventLocation } from './event-location';
 import { EventWebsite } from './event-website';
 

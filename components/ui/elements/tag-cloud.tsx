@@ -1,4 +1,4 @@
-import { Badge } from './badge2';
+import { Badge } from './badge';
 
 interface TagCloudProps {
   tags: string[];

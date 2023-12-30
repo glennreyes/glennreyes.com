@@ -1,4 +1,4 @@
-import { Intersection } from '@/components/intersection/intersection2';
+import { Intersection } from '@/components/intersection/intersection';
 import { useContext, useEffect } from 'react';
 
 export function useIntersection({

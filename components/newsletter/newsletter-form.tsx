@@ -1,8 +1,8 @@
 'use client';
 
 import type { ComponentPropsWithoutRef } from 'react';
-import { Button } from '../ui/forms/button2';
-import { Input } from '../ui/forms/input2';
+import { Button } from '../ui/forms/button';
+import { Input } from '../ui/forms/input';
 import { useTheme } from '@/lib/hooks/use-theme';
 import { subscribe } from '@/app/subscribe/action';
 import { useFormStatus } from 'react-dom';

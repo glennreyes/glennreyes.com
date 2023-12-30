@@ -1,6 +1,6 @@
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import type { Location } from '@prisma/client';
-import { Link } from '../ui/link/link2';
+import { Link } from '../ui/link/link';
 import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 
 interface EventLocationProps {

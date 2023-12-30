@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { PostsFeed } from '@/components/posts/posts-feed';
-import { Page } from '@/components/ui/layout/page2';
+import { Page } from '@/components/ui/layout/page';
 
 export const metadata: Metadata = {
   title: 'Posts',

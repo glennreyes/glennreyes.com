@@ -1,5 +1,5 @@
-import { Feed } from '@/components/ui/layout/feed2';
-import { Page } from '@/components/ui/layout/page2';
+import { Feed } from '@/components/ui/layout/feed';
+import { Page } from '@/components/ui/layout/page';
 import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
 import { getAllWorkshops } from '@/lib/workshops';
 

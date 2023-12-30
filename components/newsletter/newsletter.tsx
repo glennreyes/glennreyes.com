@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { Card } from '../ui/layout/card2';
-import { H4 } from '../ui/typography/h42';
-import { Paragraph } from '../ui/typography/paragraph2';
+import { Card } from '../ui/layout/card';
+import { H4 } from '../ui/typography/h4';
+import { Paragraph } from '../ui/typography/paragraph';
 import { NewsletterForm } from './newsletter-form';
 
 interface NewsletterProps {

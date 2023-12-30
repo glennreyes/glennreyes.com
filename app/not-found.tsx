@@ -1,4 +1,4 @@
-import { Page } from '@/components/ui/layout/page2';
+import { Page } from '@/components/ui/layout/page';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { allPages } from 'contentlayer/generated';
 

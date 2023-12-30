@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { H1 } from '../typography/h12';
-import { Lead } from '../typography/lead2';
-import { Meta } from '../typography/meta2';
-import { Container } from './container2';
+import { H1 } from '../typography/h1';
+import { Lead } from '../typography/lead';
+import { Meta } from '../typography/meta';
+import { Container } from './container';
 
 type PageProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 

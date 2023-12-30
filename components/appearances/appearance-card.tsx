@@ -9,13 +9,13 @@ import { AppearanceLength } from '@prisma/client';
 import type { Talk, Workshop } from '@prisma/client';
 import { formatISO } from 'date-fns';
 import { DateDisplay } from '../ui/elements/date-display';
-import { Divider } from '../ui/elements/divider2';
+import { Divider } from '../ui/elements/divider';
 import { TagCloud } from '../ui/elements/tag-cloud';
-import { YouTube } from '../ui/elements/youtube2';
-import { Card } from '../ui/layout/card2';
+import { YouTube } from '../ui/elements/youtube';
+import { Card } from '../ui/layout/card';
 import { InlineLink } from '../ui/link/inline-link';
-import { H3 } from '../ui/typography/h32';
-import { Paragraph } from '../ui/typography/paragraph2';
+import { H3 } from '../ui/typography/h3';
+import { Paragraph } from '../ui/typography/paragraph';
 
 interface AppearanceCardProps {
   abstract?: string;

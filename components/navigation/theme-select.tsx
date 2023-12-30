@@ -11,7 +11,7 @@ import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 import { Fragment } from 'react';
 import { IconButton } from '../ui/elements/icon-button';
-import { Select } from '../ui/forms/select2';
+import { Select } from '../ui/forms/select';
 import type { Theme } from '@/lib/theme';
 import { useTheme } from '@/lib/hooks/use-theme';
 import { useMounted } from '@/lib/hooks/use-mounted';

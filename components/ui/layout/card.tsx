@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { DateDisplay } from '../elements/date-display';
-import { Link } from '../link/link2';
-import { H3 } from '../typography/h32';
+import { Link } from '../link/link';
+import { H3 } from '../typography/h3';
 import { Slot } from '@radix-ui/react-slot';
 
 export interface CardProps

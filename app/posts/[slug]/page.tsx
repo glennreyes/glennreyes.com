@@ -7,7 +7,7 @@ import {
   ReadingTime,
   parseReadingTimeValue,
 } from '@/components/ui/elements/reading-time';
-import { Article } from '@/components/ui/layout/article2';
+import { Article } from '@/components/ui/layout/article';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { origin } from '@/lib/constants';
 import { allPosts } from 'contentlayer/generated';

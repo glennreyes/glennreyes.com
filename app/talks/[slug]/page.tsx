@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
-import { Divider } from '@/components/ui/elements/divider2';
+import { Divider } from '@/components/ui/elements/divider';
 import { TagCloud } from '@/components/ui/elements/tag-cloud';
-import { Page } from '@/components/ui/layout/page2';
+import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
 import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
-import { H2 } from '@/components/ui/typography/h22';
+import { H2 } from '@/components/ui/typography/h2';
 import { getAllTalks, getTalkBySlug } from '@/lib/talks';
 
 export const revalidate = 3600;

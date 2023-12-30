@@ -1,6 +1,6 @@
-import { Feed } from '../ui/layout/feed2';
+import { Feed } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
-import { H4 } from '../ui/typography/h42';
+import { H4 } from '../ui/typography/h4';
 import { allPosts } from '@/lib/posts';
 
 export function Posts() {

@@ -1,6 +1,6 @@
-import { Newsletter } from '../newsletter/newsletter2';
+import { Newsletter } from '../newsletter/newsletter';
 import { AboutAuthor } from './about-author';
-import { Comments } from './comments2';
+import { Comments } from './comments';
 
 export function PostFooter() {
   return (
