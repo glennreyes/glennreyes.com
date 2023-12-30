@@ -7,7 +7,7 @@ import { useIntersection } from '@/lib/hooks/use-intersection';
 type HeroAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
 export function HeroAvatar({ children }: HeroAvatarProps) {
-  const { ref, isInView } = useIntersection();
+  const { isInView, ref } = useIntersection();
 
   return (
     <div className="h-40 w-40" ref={ref}>

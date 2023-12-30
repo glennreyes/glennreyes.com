@@ -18,7 +18,7 @@ export default async function TalksPage() {
       </Page.Header>
       <Page.Body>
         <Feed>
-          {allTalks.map(({ slug, title, abstract }) => (
+          {allTalks.map(({ abstract, slug, title }) => (
             <Feed.Item
               action="Talk Details"
               description={

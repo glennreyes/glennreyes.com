@@ -47,7 +47,7 @@ interface ThemeSelectProps {
 
 export function ThemeSelect({ native }: ThemeSelectProps) {
   const mounted = useMounted();
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme, theme } = useTheme();
   const { label } = themes[theme];
   const { icon: Icon } = themes[resolvedTheme];
 

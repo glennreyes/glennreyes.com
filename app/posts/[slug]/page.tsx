@@ -27,7 +27,7 @@ export function generateMetadata({ params }: GenerateMetadataConfig) {
     return {};
   }
 
-  const { slug, description, title } = post;
+  const { description, slug, title } = post;
   const url = `${origin}/posts/${slug}`;
 
   return {

@@ -6,7 +6,7 @@ export function useIntersection({
   rootMargin,
   threshold = 1,
 }: IntersectionObserverInit = {}) {
-  const { ref, isInView, setInstance } = useContext(Intersection);
+  const { isInView, ref, setInstance } = useContext(Intersection);
 
   useEffect(() => {
     if (ref.current && typeof IntersectionObserver === 'function') {

@@ -16,7 +16,7 @@ export default async function WorkshopsPage() {
         Teaching.
       </Page.Header>
       <Feed appearance="grid">
-        {allWorkshops.map(({ slug, title, summary }) => (
+        {allWorkshops.map(({ slug, summary, title }) => (
           <Feed.Item
             action="Workshop Details"
             description={
