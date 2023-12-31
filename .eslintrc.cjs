@@ -65,7 +65,7 @@ module.exports = {
     ],
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
     curly: 'error',
-    eqeqeq: 'error',
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
     'import/first': 'error',
     'import/newline-after-import': 'error',
     'import/no-anonymous-default-export': 'error',
