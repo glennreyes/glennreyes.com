@@ -39,7 +39,7 @@ Page.Header = PageHeader;
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function PageBody(props: PageBodyProps) {
-  return <article className="prose prose-slate dark:prose-invert" {...props} />;
+  return <section className="prose prose-slate dark:prose-invert" {...props} />;
 }
 
 Page.Body = PageBody;
