@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
+import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
@@ -24,8 +25,9 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 }
 
 export const components: MDXComponents = {
-  // eslint-disable-next-line jsx-a11y/alt-text
-  Image: (props) => <Image className="rounded-[1.75rem]" {...props} />,
+  Image: ({ alt, ...props }: ImageProps) => (
+    <Image alt={alt} className="rounded-[1.75rem]" {...props} />
+  ),
   Lead,
   a: ({ href, ...props }) =>
     href?.startsWith('#') ? (

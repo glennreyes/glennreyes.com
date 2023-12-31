@@ -1,12 +1,11 @@
-/* eslint-disable react/no-unknown-property */
-import { origin } from '@/lib/constants';
-import { allPosts } from '@/lib/posts';
-import { format, isThisYear } from 'date-fns';
+import { name, origin } from '@/lib/constants';
 import { ImageResponse } from 'next/og';
-
-import defaultOpengraphImage from '../../opengraph-image';
+import { z } from 'zod';
+// eslint-disable-next-line unicorn/prefer-node-protocol
+// eslint-disable-next-line unicorn/prefer-node-protocol
 
 export const runtime = 'edge';
+export const size = { height: 1080, width: 1920 };
 
 interface OpenGraphImageConfigParams {
   slug: string;
@@ -16,7 +15,11 @@ interface OpenGraphImageConfig {
   params: OpenGraphImageConfigParams;
 }
 
-export default async function opengraphImage({ params }: OpenGraphImageConfig) {
+export default async function OpengraphImage({ params }: OpenGraphImageConfig) {
+  const res = await fetch(`${origin}/posts/${params.slug}/meta`);
+  const { publishedAt, title } = z
+    .object({ publishedAt: z.string(), title: z.string() })
+    .parse(await res.json());
   const inter700 = fetch(
     new URL(
       '../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff',
@@ -29,17 +32,20 @@ export default async function opengraphImage({ params }: OpenGraphImageConfig) {
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
-  const post = allPosts.find(({ slug }) => slug === params.slug);
 
-  if (!post) {
-    return defaultOpengraphImage();
+  if (!title) {
+    return new ImageResponse(
+      (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          alt={name}
+          src={`${origin}/opengraph-image.png`}
+          tw="h-full w-full"
+        />
+      ),
+      size,
+    );
   }
-
-  const date = new Date(post.publishedAt);
-  const dateFormatted = format(
-    date,
-    isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy',
-  );
 
   return new ImageResponse(
     (
@@ -47,9 +53,9 @@ export default async function opengraphImage({ params }: OpenGraphImageConfig) {
         style={{ backgroundImage: `url(${origin}/images/og-content.png)` }}
         tw="bg-slate-900 flex flex-col justify-center h-full w-full px-48 pt-40 pb-80"
       >
-        <time tw="text-4xl text-slate-500">{dateFormatted}</time>
+        <time tw="text-4xl text-slate-500">{publishedAt}</time>
         <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">
-          {post.title}
+          {title}
         </h1>
       </div>
     ),
@@ -66,8 +72,7 @@ export default async function opengraphImage({ params }: OpenGraphImageConfig) {
           weight: 700,
         },
       ],
-      height: 1080,
-      width: 1920,
+      ...size,
     },
   );
 }

@@ -85,6 +85,7 @@ module.exports = {
     'prefer-template': 'error',
     'react/jsx-boolean-value': 'error',
     'react/jsx-handler-names': 'error',
+    'react/no-unknown-property': ['error', { ignore: ['tw'] }],
     'react/react-in-jsx-scope': 'off',
     'react/self-closing-comp': 'error',
     'unicorn/no-nested-ternary': 'off',

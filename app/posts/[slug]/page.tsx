@@ -1,15 +1,10 @@
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
-import {
-  ReadingTime,
-  parseReadingTimeValue,
-} from '@/components/ui/elements/reading-time';
 import { Article } from '@/components/ui/layout/article';
-import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { origin } from '@/lib/constants';
+import { getAllPosts } from '@/lib/posts';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
-import { allPosts } from 'contentlayer/generated';
 import { notFound } from 'next/navigation';
 
 interface GenerateMetadataConfigParams {
@@ -20,33 +15,36 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export function generateMetadata({ params }: GenerateMetadataConfig) {
+export async function generateMetadata({ params }: GenerateMetadataConfig) {
+  const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
   if (!post) {
     return {};
   }
 
-  const { description, slug, title } = post;
+  const { frontmatter, slug } = post;
   const url = `${origin}/posts/${slug}`;
 
   return {
-    description,
+    description: frontmatter.description,
     openGraph: {
-      description,
+      description: frontmatter.description,
       locale: 'en-US',
-      siteName: title,
-      title,
+      siteName: frontmatter.title,
+      title: frontmatter.title,
       type: 'article',
       url,
     },
-    title,
+    title: frontmatter.title,
   };
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const allPosts = await getAllPosts();
+
   return allPosts
-    .filter((post) => post.publishedAt)
+    .filter((post) => post.frontmatter.publishedAt)
     .map((post) => ({ slug: post.slug }));
 }
 
@@ -58,10 +56,11 @@ interface PostPageProps {
   params: PostPageParams;
 }
 
-export default function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: PostPageProps) {
+  const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
-  if (!post?.body.code) {
+  if (!post?.content) {
     notFound();
   }
 
@@ -77,19 +76,17 @@ export default function PostPage({ params }: PostPageProps) {
       }
     >
       <Article.Header
-        lead={post.lead}
+        lead={post.frontmatter.lead}
         meta={
           <>
-            <DateDisplay value={post.publishedAt} /> ·{' '}
-            <ReadingTime value={parseReadingTimeValue(post.readingTime)} />
+            <DateDisplay value={post.frontmatter.publishedAt} /> ·{' '}
+            {/* <ReadingTime value={post.readingTime} /> */}
           </>
         }
       >
-        {post.title}
+        {post.frontmatter.title}
       </Article.Header>
-      <Article.Body>
-        <MDXContent code={post.body.code} />
-      </Article.Body>
+      <Article.Body>{post.content}</Article.Body>
       <Article.Footer>
         <PostFooter />
       </Article.Footer>

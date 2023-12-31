@@ -1,6 +1,6 @@
 # glennreyes.com
 
-This is the source code for my personal website, built using [Next.js](https://nextjs.org) App Router, [Tailwind CSS](https://tailwindcss.com), [Contentlayer](https://contentlayer.dev), and [Prisma](https://prisma.io).
+This is the source code for my personal website, built using [Next.js](https://nextjs.org) App Router, [Tailwind CSS](https://tailwindcss.com), and [Prisma](https://prisma.io).
 
 ![Banner](https://user-images.githubusercontent.com/5080854/230419923-8374acdf-5746-487d-a404-7139f3d766e8.png)
 
@@ -10,7 +10,6 @@ The site is hosted on [Vercel](https://vercel.com) and uses [Vercel Analytics](h
 
 - [Next.js](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
-- [Contentlayer](https://contentlayer.dev)
 - [Prisma](https://prisma.io)
 - [Supabase](https://supabase.com)
 - [Vercel](https://vercel.com)

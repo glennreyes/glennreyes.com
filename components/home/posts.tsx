@@ -1,10 +1,11 @@
-import { allPosts } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
 import { H4 } from '../ui/typography/h4';
 
-export function Posts() {
+export async function Posts() {
+  const allPosts = await getAllPosts();
   const posts = allPosts.slice(0, 4);
 
   return (
@@ -14,13 +15,13 @@ export function Posts() {
       </H4>
       <div className="grid gap-12">
         <Feed>
-          {posts.map(({ description, publishedAt, slug, title }) => (
+          {posts.map(({ frontmatter, slug }) => (
             <Feed.Item
-              date={publishedAt}
-              description={description}
+              date={frontmatter.publishedAt}
+              description={frontmatter.description}
               key={slug}
               link={`/posts/${slug}`}
-              title={title}
+              title={frontmatter.title}
             />
           ))}
         </Feed>

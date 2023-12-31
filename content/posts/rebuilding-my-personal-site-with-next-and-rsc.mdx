@@ -4,7 +4,12 @@ description: My journey of rebuilding my personal website from scratch using Nex
 publishedAt: 2023-04-14
 ---
 
-<Image src="/og.png" width={1920} height={1080} alt="Glenn Reyes" />
+<Image
+  src="/opengraph-image.png"
+  width={1920}
+  height={1080}
+  alt="Glenn Reyes"
+/>
 
 After using Gatsby for my personal site for half a decade, I felt it was time to rebuild it from scratch. Gatsby offered several features I appreciated, such as the GraphQL data layer, easy page creation, and static site generation.
 
@@ -43,7 +48,7 @@ For my personal website, I sought a data layer that was easy to work with and th
 
 ### MDX
 
-Several options compatible with the Next.js App Router were available, such as the [built-in support for MDX](https://beta.nextjs.org/docs/guides/mdx#mdx) in Next.js and [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support) and [Contentlayer](https://contentlayer.io). Ultimately, I utilized all of these tools, primarily for constructing blog content with Contentlayer, `next-mdx-remote` for Markdown data coming from Prisma and built-in MDX for main pages of my site.
+Several options compatible with the Next.js App Router were available, such as the [built-in support for MDX](https://beta.nextjs.org/docs/guides/mdx#mdx) in Next.js and [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support). Ultimately, I utilized both tools, primarily for constructing blog content with `next-mdx-remote` for Markdown data coming from Prisma and built-in MDX for main pages of my site.
 
 ### Prisma
 

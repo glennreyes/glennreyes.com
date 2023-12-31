@@ -2,30 +2,13 @@ import type { ComponentPropsWithoutRef } from 'react';
 import type { ReadTimeResults } from 'reading-time';
 
 import { formatISODuration } from 'date-fns';
-import { z } from 'zod';
-
-export function parseReadingTimeValue(value: unknown) {
-  const result = z
-    .object({ minutes: z.number(), text: z.string() })
-    .safeParse(value);
-
-  if (!result.success) {
-    return null;
-  }
-
-  return result.data;
-}
 
 interface ReadingTimeProps
   extends Omit<ComponentPropsWithoutRef<'time'>, 'dateTime'> {
-  value: Pick<ReadTimeResults, 'minutes' | 'text'> | null;
+  value: Pick<ReadTimeResults, 'minutes' | 'text'>;
 }
 
 export function ReadingTime({ value, ...props }: ReadingTimeProps) {
-  if (!value) {
-    return null;
-  }
-
   const dateTime = formatISODuration({ minutes: value.minutes });
 
   return (

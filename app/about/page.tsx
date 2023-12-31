@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import speaking from '@/assets/images/speaking.jpg';
 import { GitHub } from '@/components/icons/github';
 import { Instagram } from '@/components/icons/instagram';
@@ -8,32 +10,37 @@ import { Card } from '@/components/ui/layout/card';
 import { Content } from '@/components/ui/layout/content';
 import { List } from '@/components/ui/layout/list';
 import { Page } from '@/components/ui/layout/page';
-import { MDXContent } from '@/components/ui/mdx/mdx-content';
-import { github, instagram, linkedin, x } from '@/lib/constants';
+import { email, github, instagram, linkedin, x } from '@/lib/constants';
+import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 import {
   ArrowUpRightIcon,
   PaperAirplaneIcon,
 } from '@heroicons/react/24/outline';
-import { allPages } from 'contentlayer/generated';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
 
-const page = allPages.find(({ path }) => path === 'about');
+interface AboutPageFrontmatter {
+  heading: string;
+  lead: string;
+  title: string;
+}
 
-export const metadata = {
-  title: page?.title,
-};
+const file = 'content/pages/about.mdx';
 
-export default function AboutPage() {
-  if (!page) {
-    notFound();
-  }
+export async function generateMetadata(): Promise<Metadata> {
+  const { frontmatter } = await readMDXFile<AboutPageFrontmatter>(file);
+
+  return {
+    title: frontmatter.title,
+  };
+}
+
+export default async function AboutPage() {
+  const { content, frontmatter } =
+    await readMDXFile<AboutPageFrontmatter>(file);
 
   return (
     <Page>
-      <Page.Header lead={page.lead} meta={page.meta}>
-        {page.heading ?? page.title}
-      </Page.Header>
+      <Page.Header lead={frontmatter.lead}>{frontmatter.heading}</Page.Header>
       <Image
         alt="Speaking"
         className="h-96 w-full rounded-[1.75rem] object-cover object-right sm:object-center"
@@ -45,9 +52,7 @@ export default function AboutPage() {
       />
       <Content>
         <Content.Primary>
-          <Page.Body>
-            <MDXContent code={page.body.code} />
-          </Page.Body>
+          <Page.Body>{content}</Page.Body>
         </Content.Primary>
         <Content.Secondary>
           <Card>
@@ -111,10 +116,10 @@ export default function AboutPage() {
               <Divider />
               <Card.Body title="Email">
                 <Card.Item
-                  link="mailto:glenn@glennreyes.com"
+                  link={`mailto:${email}`}
                   title={
                     <span className="inline-flex w-full items-center justify-between gap-2">
-                      glenn@glennreyes.com
+                      {email}
                     </span>
                   }
                 >

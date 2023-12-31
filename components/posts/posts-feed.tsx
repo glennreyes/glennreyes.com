@@ -1,18 +1,20 @@
-import { allPosts } from '@/lib/posts';
+import { getAllPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 
-export function PostsFeed() {
+export async function PostsFeed() {
+  const allPosts = await getAllPosts();
+
   return (
     <Feed>
-      {allPosts.map(({ description, publishedAt, slug, title }) => (
+      {allPosts.map(({ frontmatter, slug }) => (
         <Feed.Item
           action="Read Article"
-          date={publishedAt}
-          description={description}
+          date={frontmatter.publishedAt}
+          description={frontmatter.description}
           key={slug}
           link={`/posts/${slug}`}
-          title={title}
+          title={frontmatter.title}
         />
       ))}
     </Feed>

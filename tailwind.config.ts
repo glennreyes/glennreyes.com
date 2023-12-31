@@ -1,8 +1,9 @@
 import type { Config } from 'tailwindcss';
-import { fontFamily } from 'tailwindcss/defaultTheme';
+
 import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
   content: [

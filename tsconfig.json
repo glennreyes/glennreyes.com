@@ -9,7 +9,6 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
     "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"],
       "@/*": ["./*"]
     },
     "plugins": [{ "name": "next" }],
@@ -21,10 +20,9 @@
     "**/*.ts",
     "**/*.tsx",
     "*.cjs",
+    "*.mjs",
     ".*.cjs",
-    ".contentlayer/generated",
     ".next/types/**/*.ts",
-    "contentlayer.config.ts",
     "next-env.d.ts",
     "tsconfig.json"
   ]

@@ -1,27 +1,31 @@
+import type { Metadata } from 'next';
+
 import { Page } from '@/components/ui/layout/page';
-import { MDXContent } from '@/components/ui/mdx/mdx-content';
-import { allPages } from 'contentlayer/generated';
-import { notFound } from 'next/navigation';
+import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 
-const page = allPages.find(({ path }) => path === 'subscribe/thank-you');
+interface ThankYouPageFrontmatter {
+  lead: string;
+  title: string;
+}
 
-export const metadata = {
-  title: page?.title,
-};
+const file = 'content/pages/subscribe/thank-you.mdx';
 
-export default function ThankYouPage() {
-  if (!page) {
-    notFound();
-  }
+export async function generateMetadata(): Promise<Metadata> {
+  const { frontmatter } = await readMDXFile<ThankYouPageFrontmatter>(file);
+
+  return {
+    title: frontmatter.title,
+  };
+}
+
+export default async function ThankYouPage() {
+  const { content, frontmatter } =
+    await readMDXFile<ThankYouPageFrontmatter>(file);
 
   return (
     <Page>
-      <Page.Header lead={page.lead} meta={page.meta}>
-        {page.heading ?? page.title}
-      </Page.Header>
-      <Page.Body>
-        <MDXContent code={page.body.code} />
-      </Page.Body>
+      <Page.Header>{frontmatter.title}</Page.Header>
+      <Page.Body>{content}</Page.Body>
     </Page>
   );
 }
