@@ -104,7 +104,7 @@ export const components: MDXComponents = {
   h4: (props) => <H4 className="not-prose scroll-mt-20" {...props} />,
   h5: () => null,
   h6: () => null,
-  pre: (props) => (
+  pre: ({ className, style, ...props }) => (
     <pre
       className="relative block rounded-[1.75rem] rounded-t-none px-0 py-6 selection:bg-white/10 dark:bg-black/75 [&>code]:grid"
       {...props}
