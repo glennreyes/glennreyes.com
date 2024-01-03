@@ -1,5 +1,7 @@
 /** @type {import('prettier').Config} */
-module.exports = {
+const prettierConfig = {
   plugins: ['prettier-plugin-tailwindcss'],
   singleQuote: true,
 };
+
+export default prettierConfig;

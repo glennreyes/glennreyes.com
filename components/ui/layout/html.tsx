@@ -8,7 +8,6 @@ const mono = Roboto_Mono({
   variable: '--font-mono',
   weight: 'variable',
 });
-
 const sans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',

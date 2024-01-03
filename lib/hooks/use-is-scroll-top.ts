@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 export function useIsScrollTop() {
   const [isScrollTop, setIsScrollTop] = useState(true);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrollTop(window.scrollY === 0);

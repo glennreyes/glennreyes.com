@@ -22,8 +22,6 @@
     "*.cjs",
     "*.mjs",
     ".*.cjs",
-    ".next/types/**/*.ts",
-    "next-env.d.ts",
-    "tsconfig.json"
+    ".next/types/**/*.ts"
   ]
 }

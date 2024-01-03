@@ -24,7 +24,6 @@ const sizes: Record<IconButtonSize, string> = {
   6: 'h-6 w-6',
   7: 'h-7 w-7',
 };
-
 const paddings: Record<IconButtonSize, string> = {
   5: 'p-2',
   6: 'p-2.5',

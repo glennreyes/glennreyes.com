@@ -1,8 +1,6 @@
 import { name, origin } from '@/lib/constants';
 import { ImageResponse } from 'next/og';
 import { z } from 'zod';
-// eslint-disable-next-line unicorn/prefer-node-protocol
-// eslint-disable-next-line unicorn/prefer-node-protocol
 
 export const runtime = 'edge';
 export const size = { height: 1080, width: 1920 };

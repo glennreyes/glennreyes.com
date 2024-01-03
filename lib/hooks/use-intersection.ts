@@ -20,6 +20,7 @@ export function useIntersection({
           threshold,
         },
       );
+
       observer.observe(ref.current);
 
       return () => {

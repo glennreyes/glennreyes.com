@@ -7,7 +7,6 @@ import { z } from 'zod';
 export async function subscribe(data: FormData) {
   const email = data.get('email');
   const theme = data.get('theme');
-
   const result = z
     .object({
       email: z.string(),
