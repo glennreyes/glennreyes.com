@@ -7,7 +7,7 @@ import { Page } from '@/components/ui/layout/page';
 
 export const revalidate = 3600;
 
-const HomePage = () => (
+const RootPage = () => (
   <Page>
     <Hero />
     <Content>
@@ -22,4 +22,4 @@ const HomePage = () => (
   </Page>
 );
 
-export default HomePage;
+export default RootPage;
