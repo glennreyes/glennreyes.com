@@ -10,9 +10,7 @@
     "noUnusedParameters": true,
     "paths": {
       "@/*": ["./*"]
-    },
-    "plugins": [{ "name": "next" }],
-    "strict": true
+    }
   },
   "exclude": ["node_modules"],
   "extends": "@tsconfig/next/tsconfig",

@@ -7,9 +7,9 @@ import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
   content: [
-    './app/**/*.{css,ts,tsx}',
-    './components/**/*.{css,ts,tsx}',
-    './lib/**/*.{css,ts,tsx}',
+    './app/**/*.{mdx,ts,tsx}',
+    './components/**/*.{mdx,ts,tsx}',
+    './lib/**/*.{mdx,ts,tsx}',
   ],
   darkMode: 'class',
   future: {

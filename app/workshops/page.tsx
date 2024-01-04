@@ -1,9 +1,11 @@
+import type { Metadata } from 'next';
+
 import { Feed } from '@/components/ui/layout/feed';
 import { Page } from '@/components/ui/layout/page';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { getAllWorkshops } from '@/lib/workshops';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Workshops',
 };
 

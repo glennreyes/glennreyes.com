@@ -1,10 +1,12 @@
+import type { Metadata } from 'next';
+
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Page } from '@/components/ui/layout/page';
 import { getAllEvents } from '@/lib/events';
 
 export const revalidate = 3600;
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Appearances',
   twitter: {
     title: 'Appearances',

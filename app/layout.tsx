@@ -1,4 +1,4 @@
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 import '@/app/globals.css';
@@ -15,7 +15,7 @@ import { Providers } from './providers';
 
 const title = { default: name, template: `%s | ${name}` };
 
-export const metadata = {
+export const metadata: Metadata = {
   description,
   metadataBase: new URL(origin),
   openGraph: {
