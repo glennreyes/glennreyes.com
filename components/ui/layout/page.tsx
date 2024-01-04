@@ -7,7 +7,9 @@ import { Container } from './container';
 
 type PageProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const Page = (props: PageProps) => <Container className="space-y-12" {...props} />;
+export const Page = (props: PageProps) => (
+  <Container className="space-y-12" {...props} />
+);
 
 interface PageHeaderProps
   extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
@@ -20,18 +22,22 @@ export const PageHeader = ({
   lead,
   meta,
   ...props
-}: PageHeaderProps) => <header className="grid max-w-4xl gap-4" {...props}>
-      {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-      <H1>{children}</H1>
-      {lead !== null &&
-        lead !== undefined &&
-        (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
-    </header>;
+}: PageHeaderProps) => (
+  <header className="grid max-w-4xl gap-4" {...props}>
+    {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
+    <H1>{children}</H1>
+    {lead !== null &&
+      lead !== undefined &&
+      (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
+  </header>
+);
 
 Page.Header = PageHeader;
 
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
-const PageBody = (props: PageBodyProps) => <section className="prose prose-slate dark:prose-invert" {...props} />;
+const PageBody = (props: PageBodyProps) => (
+  <section className="prose prose-slate dark:prose-invert" {...props} />
+);
 
 Page.Body = PageBody;

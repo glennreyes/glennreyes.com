@@ -44,19 +44,21 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => <Html suppressHydrationWarning>
-      <head />
-      <Body>
-        <Providers>
-          <Navbar>
-            <Menu />
-          </Navbar>
-          <Main>{children}</Main>
-        </Providers>
-        <Footer />
-        <SpeedInsights />
-        <Analytics />
-      </Body>
-    </Html>;
+const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+  <Html suppressHydrationWarning>
+    <head />
+    <Body>
+      <Providers>
+        <Navbar>
+          <Menu />
+        </Navbar>
+        <Main>{children}</Main>
+      </Providers>
+      <Footer />
+      <SpeedInsights />
+      <Analytics />
+    </Body>
+  </Html>
+);
 
 export default RootLayout;

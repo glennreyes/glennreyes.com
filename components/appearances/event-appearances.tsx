@@ -36,7 +36,9 @@ const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
 
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const EventAppearances = (props: EventAppearancesProps) => <section className="grid gap-12 md:gap-16" {...props} />;
+export const EventAppearances = (props: EventAppearancesProps) => (
+  <section className="grid gap-12 md:gap-16" {...props} />
+);
 
 interface EventAppearancesCardProps {
   date: Date;

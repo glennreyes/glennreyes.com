@@ -3,6 +3,7 @@ import { ImageResponse } from 'next/og';
 import { z } from 'zod';
 
 export const runtime = 'edge';
+
 export const size = { height: 1080, width: 1920 };
 
 interface OpenGraphImageConfigParams {

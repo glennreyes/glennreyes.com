@@ -28,14 +28,16 @@ interface CardBodyProps
   title?: string;
 }
 
-const CardBody = ({ children, title, ...props }: CardBodyProps) => <div className="grid gap-4" {...props}>
-      {title && (
-        <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">
-          {title}
-        </p>
-      )}
-      {children}
-    </div>;
+const CardBody = ({ children, title, ...props }: CardBodyProps) => (
+  <div className="grid gap-4" {...props}>
+    {title && (
+      <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">
+        {title}
+      </p>
+    )}
+    {children}
+  </div>
+);
 
 Card.Body = CardBody;
 

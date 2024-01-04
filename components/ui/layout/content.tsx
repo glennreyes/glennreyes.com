@@ -4,7 +4,9 @@ import { twMerge } from 'tailwind-merge';
 
 type ContentProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
-export const Content = (props: ContentProps) => <section className="grid gap-12 lg:grid-cols-12" {...props} />;
+export const Content = (props: ContentProps) => (
+  <section className="grid gap-12 lg:grid-cols-12" {...props} />
+);
 
 type ContentPrimaryProps = ComponentPropsWithoutRef<'div'>;
 
