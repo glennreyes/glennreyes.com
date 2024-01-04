@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { Feed } from '@/components/ui/layout/feed';
 import { Page } from '@/components/ui/layout/page';
-import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
+import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { getAllTalks } from '@/lib/talks';
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default async function TalksPage() {
               action="Talk Details"
               description={
                 <div className="prose prose-slate text-slate-500">
-                  <MDXRemoteContent source={abstract} />
+                  <MDXContent source={abstract} />
                 </div>
               }
               key={slug}

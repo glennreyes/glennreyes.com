@@ -1,6 +1,6 @@
 import { Feed } from '@/components/ui/layout/feed';
 import { Page } from '@/components/ui/layout/page';
-import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
+import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { getAllWorkshops } from '@/lib/workshops';
 
 export const metadata = {
@@ -21,7 +21,7 @@ export default async function WorkshopsPage() {
             action="Workshop Details"
             description={
               <div className="prose prose-slate text-slate-500">
-                <MDXRemoteContent source={summary} />
+                <MDXContent source={summary} />
               </div>
             }
             key={slug}

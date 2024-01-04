@@ -74,18 +74,16 @@ export const components: MDXComponents = {
     }
 
     // Handle code block wrappers
-    if (props['data-rehype-pretty-code-fragment'] !== undefined) {
+    if (props['data-rehype-pretty-code-fragment'] !== undefined && raw) {
       return (
         <div
           className="relative my-[1.7142857em] overflow-hidden rounded-[1.75rem] border border-slate-300/25 dark:border-slate-500/25 [&+pre]:rounded-t-none [&_pre]:my-0"
           {...props}
         >
           <div className="relative flex items-center justify-end gap-2 rounded-t-[1.75rem] bg-slate-900 px-4 py-1 text-xs text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">
-            {raw && (
-              <div className="-mr-2 flex-none">
-                <CopyToClipboard value={raw} />
-              </div>
-            )}
+            <div className="-mr-2 flex-none">
+              <CopyToClipboard value={raw} />
+            </div>
           </div>
           {children}
         </div>

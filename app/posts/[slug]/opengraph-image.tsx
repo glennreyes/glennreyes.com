@@ -1,4 +1,4 @@
-import { name, origin } from '@/lib/constants';
+import { origin } from '@/lib/constants';
 import { ImageResponse } from 'next/og';
 import { z } from 'zod';
 
@@ -34,10 +34,8 @@ export default async function OpengraphImage({ params }: OpenGraphImageConfig) {
   if (!title) {
     return new ImageResponse(
       (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          alt={name}
-          src={`${origin}/opengraph-image.png`}
+        <div
+          style={{ backgroundImage: `url(${origin}/opengraph-image.png)` }}
           tw="h-full w-full"
         />
       ),

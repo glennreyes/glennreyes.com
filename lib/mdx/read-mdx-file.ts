@@ -1,3 +1,5 @@
+import type { Element, Literal } from 'hast';
+
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
@@ -14,6 +16,45 @@ const classes = {
   line: `border-x-4 border-transparent px-3 sm:px-5`,
   lineHighlighted: `bg-teal-100/10 border-l-teal-100/25`,
 };
+
+// Extract raw code from `code` element nested inside `pre` tag and store value in `pre` node.
+// This need to be before `rehypePrettyCode` so that we get the raw value.
+function preprocessRawCode(tree: Element) {
+  visit(tree, (node) => {
+    if (!(node.type === 'element' && node.tagName === 'pre')) {
+      return;
+    }
+
+    const [element] = node.children as Element[];
+
+    if (element?.tagName !== 'code') {
+      return;
+    }
+
+    const [code] = element.children as (Literal & Text)[];
+
+    (node as Element & { raw?: string }).raw = code?.value;
+  });
+}
+
+// Pass raw value found in `pre` node and store to div[data-rehype-pretty-code-fragment]
+// This need to be after `rehypePrettyCode` so the stored raw code can be moved to the target div.
+function postprocessRawCode(tree: Element) {
+  visit(tree, (node) => {
+    if (
+      !(node.type === 'element' && node.tagName === 'div') ||
+      !('data-rehype-pretty-code-fragment' in node.properties)
+    ) {
+      return;
+    }
+
+    for (const child of node.children as Element[]) {
+      if (child.tagName === 'pre') {
+        node.properties.raw = (node as Element & { raw?: string }).raw;
+      }
+    }
+  });
+}
 
 export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
   file: string,
@@ -33,28 +74,7 @@ export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
               properties: { className: [classes.autoLink] },
             } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
           ],
-          // eslint-disable-next-line unicorn/consistent-function-scoping
-          () => (tree) => {
-            // Extract raw code from `code` element nested inside `pre` tag and store value in `pre` node.
-            // This need to be before `rehypePrettyCode` so that we get the raw value.
-            visit(tree, (node) => {
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              if (!(node?.type === 'element' && node?.tagName === 'pre')) {
-                return;
-              }
-
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-              const [element] = node.children;
-
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              if (element.tagName !== 'code') {
-                return;
-              }
-
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-              node.raw = element.children?.[0].value;
-            });
-          },
+          () => preprocessRawCode,
           [
             rehypePrettyCode,
             {
@@ -76,30 +96,7 @@ export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
               theme: 'nord',
             } satisfies Parameters<typeof rehypePrettyCode>[0],
           ],
-          // eslint-disable-next-line unicorn/consistent-function-scoping
-          () => (tree) => {
-            // Pass raw value found in `pre` node and store to div[data-rehype-pretty-code-fragment]
-            // This is after `rehypePrettyCode` so the stored raw code can be moved to the target div.
-            visit(tree, (node) => {
-              if (
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                !(node?.type === 'element' && node?.tagName === 'div') ||
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                !('data-rehype-pretty-code-fragment' in node.properties)
-              ) {
-                return;
-              }
-
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-              for (const child of node.children) {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                if (child.tagName === 'pre') {
-                  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-                  node.properties.raw = node.raw;
-                }
-              }
-            });
-          },
+          () => postprocessRawCode,
         ],
         remarkPlugins: [remarkGfm],
       },

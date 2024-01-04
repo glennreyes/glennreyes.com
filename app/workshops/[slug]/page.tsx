@@ -5,7 +5,7 @@ import { Divider } from '@/components/ui/elements/divider';
 import { TagCloud } from '@/components/ui/elements/tag-cloud';
 import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
-import { MDXRemoteContent } from '@/components/ui/mdx/mdx-remote-content';
+import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { H2 } from '@/components/ui/typography/h2';
 import { getAllWorkshops, getWorkshopBySlug } from '@/lib/workshops';
 
@@ -53,9 +53,9 @@ export default async function WorkshopPage({ params }: WorkshopPageProps) {
         {workshop.title}
       </Page.Header>
       <Page.Body>
-        <MDXRemoteContent source={workshop.description} />
+        <MDXContent source={workshop.description} />
         {workshop.curriculum !== null && (
-          <MDXRemoteContent source={workshop.curriculum} />
+          <MDXContent source={workshop.curriculum} />
         )}
         {events.length > 0 && (
           <>
