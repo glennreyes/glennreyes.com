@@ -6,9 +6,7 @@ import { Card } from '../ui/layout/card';
 import { H4 } from '../ui/typography/h4';
 import { Paragraph } from '../ui/typography/paragraph';
 
-export function AboutAuthor() {
-  return (
-    <Card asChild>
+export const AboutAuthor = () => <Card asChild>
       <section>
         <Card.Body title="About The Author">
           <div className="grid items-center gap-6 sm:flex">
@@ -26,6 +24,4 @@ export function AboutAuthor() {
           </div>
         </Card.Body>
       </section>
-    </Card>
-  );
-}
+    </Card>;

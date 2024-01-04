@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-export async function GET() {
+export const GET = async () => {
   // Read the JPG photo from the assets/images directory
   const path = join(process.cwd(), 'assets', 'images', 'photo.jpg');
   const buffer = await readFile(path);
@@ -10,4 +10,4 @@ export async function GET() {
   return new Response(buffer, {
     headers: { 'Content-Type': 'image/jpeg' },
   });
-}
+};

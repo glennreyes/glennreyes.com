@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { FC } from 'react';
 
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Divider } from '@/components/ui/elements/divider';
@@ -19,21 +20,21 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: GenerateMetadataConfig): Promise<Metadata> {
+}: GenerateMetadataConfig): Promise<Metadata> => {
   const workshop = await getWorkshopBySlug(params.slug);
 
   return {
     title: workshop.title,
   };
-}
+};
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const allWorkshops = await getAllWorkshops();
 
   return allWorkshops.map((workshop) => ({ slug: workshop.slug }));
-}
+};
 
 interface WorkshopPageParams {
   slug: string;
@@ -43,7 +44,7 @@ interface WorkshopPageProps {
   params: WorkshopPageParams;
 }
 
-export default async function WorkshopPage({ params }: WorkshopPageProps) {
+const WorkshopPage: FC<WorkshopPageProps> = async ({ params }) => {
   const workshop = await getWorkshopBySlug(params.slug);
   const events = workshop.appearances.map((appearance) => appearance.event);
 
@@ -69,4 +70,6 @@ export default async function WorkshopPage({ params }: WorkshopPageProps) {
       </Page.Body>
     </Page>
   );
-}
+};
+
+export default WorkshopPage;

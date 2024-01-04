@@ -10,15 +10,15 @@ interface ConfirmPageFrontmatter {
 
 const file = 'content/pages/subscribe/confirm.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<ConfirmPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function ConfirmPage() {
+const ConfirmPage = async () => {
   const { content, frontmatter } =
     await readMDXFile<ConfirmPageFrontmatter>(file);
 
@@ -28,4 +28,6 @@ export default async function ConfirmPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default ConfirmPage;

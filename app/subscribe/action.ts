@@ -4,7 +4,7 @@ import { subscribe as subscribeBase } from '@/lib/newsletter';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
-export async function subscribe(data: FormData) {
+export const subscribe = async (data: FormData) => {
   const email = data.get('email');
   const theme = data.get('theme');
   const result = z
@@ -25,4 +25,4 @@ export async function subscribe(data: FormData) {
   }
 
   redirect('/subscribe/confirm');
-}
+};

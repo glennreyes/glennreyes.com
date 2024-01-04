@@ -8,7 +8,7 @@ import { Card } from '../ui/layout/card';
 import { List } from '../ui/layout/list';
 import { H4 } from '../ui/typography/h4';
 
-export async function Appearances() {
+export const Appearances = async () => {
   const allEvents = await getAllEvents();
   const today = new Date();
   const todayInMilliseconds = getTime(today);
@@ -96,4 +96,4 @@ export async function Appearances() {
       </Card>
     </section>
   );
-}
+};

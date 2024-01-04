@@ -4,7 +4,7 @@ import { subscribe } from '@/lib/newsletter';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-export async function POST(request: NextRequest) {
+export const POST = async (request: NextRequest) => {
   const result = z
     .object({
       email: z.string(),
@@ -19,4 +19,4 @@ export async function POST(request: NextRequest) {
   await subscribe(result.data);
 
   return new NextResponse('OK', { status: 200 });
-}
+};

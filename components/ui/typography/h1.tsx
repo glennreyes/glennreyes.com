@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 
 type H1Props = ComponentPropsWithoutRef<'h1'>;
 
-export function H1({ children, className, ...props }: H1Props) {
+export const H1 = ({ children, className, ...props }: H1Props) => {
   const classes = twMerge(
     'text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tighter',
     className,
@@ -17,4 +17,4 @@ export function H1({ children, className, ...props }: H1Props) {
       </span>
     </h1>
   );
-}
+};

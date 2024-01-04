@@ -16,10 +16,9 @@ const classes = {
   line: `border-x-4 border-transparent px-3 sm:px-5`,
   lineHighlighted: `bg-teal-100/10 border-l-teal-100/25`,
 };
-
 // Extract raw code from `code` element nested inside `pre` tag and store value in `pre` node.
 // This need to be before `rehypePrettyCode` so that we get the raw value.
-function preprocessRawCode(tree: Element) {
+const preprocessRawCode = (tree: Element) => {
   visit(tree, (node) => {
     if (!(node.type === 'element' && node.tagName === 'pre')) {
       return;
@@ -35,11 +34,10 @@ function preprocessRawCode(tree: Element) {
 
     (node as Element & { raw?: string }).raw = code?.value;
   });
-}
-
+};
 // Pass raw value found in `pre` node and store to div[data-rehype-pretty-code-fragment]
 // This need to be after `rehypePrettyCode` so the stored raw code can be moved to the target div.
-function postprocessRawCode(tree: Element) {
+const postprocessRawCode = (tree: Element) => {
   visit(tree, (node) => {
     if (
       !(node.type === 'element' && node.tagName === 'div') ||
@@ -54,11 +52,11 @@ function postprocessRawCode(tree: Element) {
       }
     }
   });
-}
+};
 
-export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
+export const readMDXFile = async <TFrontmatter = Record<string, unknown>>(
   file: string,
-) {
+) => {
   const filePath = path.join(process.cwd(), file);
   const source = readFileSync(filePath, 'utf8');
   const result = await compileMDX<TFrontmatter>({
@@ -78,13 +76,13 @@ export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
           [
             rehypePrettyCode,
             {
-              onVisitHighlightedLine(node) {
+              onVisitHighlightedLine: (node) => {
                 // Each line node by default has `class="line"`.
                 node.properties.className?.push(classes.lineHighlighted);
               },
               // Callback hooks to add custom logic to nodes when visiting
               // them.
-              onVisitLine(node) {
+              onVisitLine: (node) => {
                 node.properties.className = [classes.line];
 
                 // Prevent lines from collapsing in `display: grid` mode, and
@@ -106,4 +104,4 @@ export async function readMDXFile<TFrontmatter = Record<string, unknown>>(
   });
 
   return { ...result, source };
-}
+};

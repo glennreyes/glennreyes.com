@@ -7,7 +7,7 @@ interface EventDateProps {
   startDate: Date;
 }
 
-export function EventDate({ endDate, startDate }: EventDateProps) {
+export const EventDate = ({ endDate, startDate }: EventDateProps) => {
   const isOneDay = isSameDay(startDate, endDate);
 
   return (
@@ -24,4 +24,4 @@ export function EventDate({ endDate, startDate }: EventDateProps) {
       )}
     </>
   );
-}
+};

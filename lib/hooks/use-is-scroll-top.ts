@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useIsScrollTop() {
+export const useIsScrollTop = () => {
   const [isScrollTop, setIsScrollTop] = useState(true);
 
   useEffect(() => {
@@ -16,4 +16,4 @@ export function useIsScrollTop() {
   }, []);
 
   return isScrollTop;
-}
+};

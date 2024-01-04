@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useMounted() {
+export const useMounted = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -8,4 +8,4 @@ export function useMounted() {
   }, []);
 
   return mounted;
-}
+};

@@ -7,9 +7,9 @@ interface ParagraphProps extends ComponentPropsWithoutRef<'p'> {
   asChild?: boolean;
 }
 
-export function Paragraph({ asChild, className, ...props }: ParagraphProps) {
+export const Paragraph = ({ asChild, className, ...props }: ParagraphProps) => {
   const classes = twMerge('text-slate-500 dark:text-slate-400', className);
   const Component = asChild ? Slot : 'p';
 
   return <Component className={classes} {...props} />;
-}
+};

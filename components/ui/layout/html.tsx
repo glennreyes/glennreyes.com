@@ -16,7 +16,7 @@ const sans = Inter({
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
-export function Html(props: HtmlProps) {
+export const Html = (props: HtmlProps) => {
   const classes = clsx(
     mono.variable,
     sans.variable,
@@ -24,4 +24,4 @@ export function Html(props: HtmlProps) {
   );
 
   return <html className={classes} lang="en" {...props} />;
-}
+};

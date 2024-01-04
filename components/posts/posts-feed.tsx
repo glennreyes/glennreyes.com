@@ -2,7 +2,7 @@ import { getAllPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 
-export async function PostsFeed() {
+export const PostsFeed = async () => {
   const allPosts = await getAllPosts();
 
   return (
@@ -19,4 +19,4 @@ export async function PostsFeed() {
       ))}
     </Feed>
   );
-}
+};

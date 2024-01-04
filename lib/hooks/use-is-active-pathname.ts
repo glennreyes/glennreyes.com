@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 
-export function useIsActivePathname(path: string) {
+export const useIsActivePathname = (path: string) => {
   const pathname = usePathname();
 
   if (path === '/') {
@@ -8,4 +8,4 @@ export function useIsActivePathname(path: string) {
   }
 
   return pathname.startsWith(path);
-}
+};

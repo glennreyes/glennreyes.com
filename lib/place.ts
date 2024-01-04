@@ -1,22 +1,16 @@
 import type { Location } from '@prisma/client';
 
-export function composePlaceByLocation(
-  location: Pick<Location, 'city' | 'country' | 'state'>,
-) {
-  return [
+export const composePlaceByLocation = (location: Pick<Location, 'city' | 'country' | 'state'>) => [
     location.city,
     location.country === 'United States'
       ? location.state ?? location.country
       : location.country,
   ].join(', ');
-}
 
-export function composeGoogleMapsUrl(
-  location: Pick<
+export const composeGoogleMapsUrl = (location: Pick<
     Location,
     'address' | 'city' | 'country' | 'name' | 'state' | 'zip'
-  >,
-) {
+  >) => {
   const query = [
     location.name,
     location.address,
@@ -29,4 +23,4 @@ export function composeGoogleMapsUrl(
     .join(', ');
 
   return `https://maps.google.com/?q=${encodeURIComponent(query)}`;
-}
+};

@@ -11,15 +11,15 @@ interface NotFoundPageFrontmatter {
 
 const file = 'content/pages/not-found.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<NotFoundPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function NotFoundPage() {
+const NotFound = async () => {
   const { content, frontmatter } =
     await readMDXFile<NotFoundPageFrontmatter>(file);
 
@@ -29,4 +29,6 @@ export default async function NotFoundPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default NotFound;

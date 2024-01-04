@@ -51,10 +51,10 @@ export interface IconButtonAsLinkProps
 export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  function IconButton(
+  (
     { appearance = 'primary', className, icon: Icon, size = 6, ...props },
     ref,
-  ) {
+  ) => {
     const classes = twMerge(
       'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none active:scale-95 active:text-slate-700 disabled:opacity-75',
       paddings[size],
@@ -89,3 +89,4 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     );
   },
 );
+IconButton.displayName = 'IconButton';

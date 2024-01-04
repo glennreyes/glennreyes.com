@@ -29,13 +29,13 @@ interface AppearanceCardProps {
   workshop?: Pick<Workshop, 'description' | 'slides' | 'title'>;
 }
 
-export function AppearanceCard({
+export const AppearanceCard = ({
   date,
   length,
   recording,
   talk,
   workshop,
-}: AppearanceCardProps) {
+}: AppearanceCardProps) => {
   const title = talk?.title ?? workshop?.title;
   const description = talk?.abstract ?? workshop?.description;
   const type = talk ? 'Talk' : workshop ? 'Workshop' : undefined;
@@ -170,4 +170,4 @@ export function AppearanceCard({
       </Card.Body>
     </Card>
   );
-}
+};

@@ -14,7 +14,7 @@ type NewsletterFormProps = Omit<
   'children' | 'className'
 >;
 
-export function NewsletterForm(props: NewsletterFormProps) {
+export const NewsletterForm = (props: NewsletterFormProps) => {
   const { resolvedTheme } = useTheme();
   const { pending } = useFormStatus();
 
@@ -44,4 +44,4 @@ export function NewsletterForm(props: NewsletterFormProps) {
       </div>
     </form>
   );
-}
+};

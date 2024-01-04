@@ -7,9 +7,7 @@ import { IconButton } from '../ui/elements/icon-button';
 import { H1 } from '../ui/typography/h1';
 import { HeroAvatar } from './hero-avatar';
 
-export function Hero() {
-  return (
-    <section className="grid gap-8 py-8 lg:flex">
+export const Hero = () => <section className="grid gap-8 py-8 lg:flex">
       <HeroAvatar>
         <Avatar priority />
       </HeroAvatar>
@@ -50,6 +48,4 @@ export function Hero() {
           </li>
         </ul>
       </div>
-    </section>
-  );
-}
+    </section>;

@@ -7,7 +7,7 @@ import { Transition } from '@headlessui/react';
 
 type HeroAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export function HeroAvatar({ children }: HeroAvatarProps) {
+export const HeroAvatar = ({ children }: HeroAvatarProps) => {
   const { isInView, ref } = useIntersection();
 
   return (
@@ -25,4 +25,4 @@ export function HeroAvatar({ children }: HeroAvatarProps) {
       </Transition>
     </div>
   );
-}
+};

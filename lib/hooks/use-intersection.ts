@@ -1,11 +1,11 @@
 import { Intersection } from '@/components/intersection/intersection';
 import { useContext, useEffect } from 'react';
 
-export function useIntersection({
+export const useIntersection = ({
   root,
   rootMargin,
   threshold = 1,
-}: IntersectionObserverInit = {}) {
+}: IntersectionObserverInit = {}) => {
   const { isInView, ref, setInstance } = useContext(Intersection);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ export function useIntersection({
   }, [ref, root, rootMargin, setInstance, threshold]);
 
   return { isInView, ref };
-}
+};

@@ -8,7 +8,7 @@ interface ReadingTimeProps
   value: Pick<ReadTimeResults, 'minutes' | 'text'>;
 }
 
-export function ReadingTime({ value, ...props }: ReadingTimeProps) {
+export const ReadingTime = ({ value, ...props }: ReadingTimeProps) => {
   const dateTime = formatISODuration({ minutes: value.minutes });
 
   return (
@@ -16,4 +16,4 @@ export function ReadingTime({ value, ...props }: ReadingTimeProps) {
       {value.text}
     </time>
   );
-}
+};

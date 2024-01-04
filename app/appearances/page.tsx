@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function AppearancesPage() {
+const AppearancesPage = async () => {
   const allEvents = await getAllEvents();
 
   return (
@@ -26,4 +26,6 @@ export default async function AppearancesPage() {
       </Page.Body>
     </Page>
   );
-}
+};
+
+export default AppearancesPage;

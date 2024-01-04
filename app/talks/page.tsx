@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Talks',
 };
 
-export default async function TalksPage() {
+const TalksPage = async () => {
   const allTalks = await getAllTalks();
 
   return (
@@ -36,4 +36,6 @@ export default async function TalksPage() {
       </Page.Body>
     </Page>
   );
-}
+};
+
+export default TalksPage;

@@ -6,7 +6,7 @@ import { Link } from '../ui/link/link';
 
 type EventWebsiteProps = Pick<Event, 'url'>;
 
-export function EventWebsite({ url }: EventWebsiteProps) {
+export const EventWebsite = ({ url }: EventWebsiteProps) => {
   const website = new URL(url).hostname;
 
   return (
@@ -18,4 +18,4 @@ export function EventWebsite({ url }: EventWebsiteProps) {
       {website}
     </Link>
   );
-}
+};

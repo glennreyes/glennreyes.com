@@ -11,15 +11,15 @@ interface UsesPageFrontmatter {
 
 const file = 'content/pages/uses.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<UsesPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function UsesPage() {
+const UsesPage = async () => {
   const { content, frontmatter } = await readMDXFile<UsesPageFrontmatter>(file);
 
   return (
@@ -28,4 +28,6 @@ export default async function UsesPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default UsesPage;

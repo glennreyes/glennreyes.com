@@ -16,13 +16,13 @@ type MetaProps<TElementType extends ElementType> =
         | Extract<TElementType, 'div' | 'p'>;
     };
 
-export function Meta<TElementType extends ElementType>({
+export const Meta = <TElementType extends ElementType>({
   as,
   className,
   ...props
-}: MetaProps<TElementType>) {
+}: MetaProps<TElementType>) => {
   const Component = as ?? 'div';
   const classes = twMerge('text-slate-400 dark:text-slate-500', className);
 
   return <Component className={classes} {...props} />;
-}
+};

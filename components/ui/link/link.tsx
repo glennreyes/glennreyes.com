@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
-export function Link({ children, className, href, ...props }: LinkProps) {
+export const Link = ({ children, className, href, ...props }: LinkProps) => {
   const classes = twMerge(
     'rounded-lg transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
     className,
@@ -39,4 +39,4 @@ export function Link({ children, className, href, ...props }: LinkProps) {
       {children}
     </NextLink>
   );
-}
+};

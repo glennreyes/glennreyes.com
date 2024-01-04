@@ -1,8 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { cache } from 'react';
 
-export const getAllEvents = cache(function getEventBySlug() {
-  return prisma.event.findMany({
+export const getAllEvents = cache(() => prisma.event.findMany({
     orderBy: { startDate: 'desc' },
     select: {
       appearances: {
@@ -30,11 +29,9 @@ export const getAllEvents = cache(function getEventBySlug() {
       slug: true,
       startDate: true,
     },
-  });
-});
+  }));
 
-export const getEventBySlug = cache(function getEventBySlug(slug: string) {
-  return prisma.event.findUniqueOrThrow({
+export const getEventBySlug = cache((slug: string) => prisma.event.findUniqueOrThrow({
     select: {
       appearances: {
         select: {
@@ -79,5 +76,4 @@ export const getEventBySlug = cache(function getEventBySlug(slug: string) {
       url: true,
     },
     where: { slug },
-  });
-});
+  }));

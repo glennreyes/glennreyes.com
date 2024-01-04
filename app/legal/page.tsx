@@ -9,15 +9,15 @@ interface LegalPageFrontmatter {
 
 const file = 'content/pages/legal.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<LegalPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function LegalPage() {
+const LegalPage = async () => {
   const { content, frontmatter } =
     await readMDXFile<LegalPageFrontmatter>(file);
 
@@ -27,4 +27,6 @@ export default async function LegalPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default LegalPage;

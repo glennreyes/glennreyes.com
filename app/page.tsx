@@ -7,19 +7,19 @@ import { Page } from '@/components/ui/layout/page';
 
 export const revalidate = 3600;
 
-export default function Home() {
-  return (
-    <Page>
-      <Hero />
-      <Content>
-        <Content.Primary className="lg:col-span-7">
-          <Posts />
-        </Content.Primary>
-        <Content.Secondary className="lg:col-span-5">
-          <Appearances />
-          <Newsletter />
-        </Content.Secondary>
-      </Content>
-    </Page>
-  );
-}
+const HomePage = () => (
+  <Page>
+    <Hero />
+    <Content>
+      <Content.Primary className="lg:col-span-7">
+        <Posts />
+      </Content.Primary>
+      <Content.Secondary className="lg:col-span-5">
+        <Appearances />
+        <Newsletter />
+      </Content.Secondary>
+    </Content>
+  </Page>
+);
+
+export default HomePage;

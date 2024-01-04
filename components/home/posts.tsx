@@ -4,7 +4,7 @@ import { Feed } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
 import { H4 } from '../ui/typography/h4';
 
-export async function Posts() {
+export const Posts = async () => {
   const allPosts = await getAllPosts();
   const posts = allPosts.slice(0, 4);
 
@@ -29,4 +29,4 @@ export async function Posts() {
       </div>
     </div>
   );
-}
+};

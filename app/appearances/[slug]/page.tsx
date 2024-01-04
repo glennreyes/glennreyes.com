@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { FC } from 'react';
 
 import { EventAppearances } from '@/components/appearances/event-appearances';
 import { EventDate } from '@/components/appearances/event-date';
@@ -16,21 +17,21 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: GenerateMetadataConfig): Promise<Metadata> {
+}: GenerateMetadataConfig): Promise<Metadata> => {
   const event = await getEventBySlug(params.slug);
 
   return {
     title: event.name,
   };
-}
+};
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const allEvents = await getAllEvents();
 
   return allEvents.map((event) => ({ slug: event.slug }));
-}
+};
 
 interface AppearancePageParams {
   slug: string;
@@ -40,7 +41,7 @@ interface AppearancePageProps {
   params: AppearancePageParams;
 }
 
-export default async function AppearancePage({ params }: AppearancePageProps) {
+const AppearancePage: FC<AppearancePageProps> = async ({ params }) => {
   const event = await getEventBySlug(params.slug);
 
   return (
@@ -67,4 +68,6 @@ export default async function AppearancePage({ params }: AppearancePageProps) {
       </EventAppearances>
     </Page>
   );
-}
+};
+
+export default AppearancePage;

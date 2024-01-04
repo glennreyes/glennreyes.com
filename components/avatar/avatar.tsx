@@ -38,7 +38,7 @@ interface AvatarProps
   size?: AvatarSize;
 }
 
-export function Avatar({ size = 40, ...props }: AvatarProps) {
+export const Avatar = ({ size = 40, ...props }: AvatarProps) => {
   const { className, ...sizeAttributes } = attributes[size];
   const classes = clsx('relative rounded-full', className);
 
@@ -55,4 +55,4 @@ export function Avatar({ size = 40, ...props }: AvatarProps) {
       />
     </div>
   );
-}
+};

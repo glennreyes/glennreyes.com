@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import '@/app/globals.css';
 import { Footer } from '@/components/footer/footer';
@@ -44,9 +44,7 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <Html suppressHydrationWarning>
+const RootLayout: FC<RootLayoutProps> = ({ children }) => <Html suppressHydrationWarning>
       <head />
       <Body>
         <Providers>
@@ -59,6 +57,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <SpeedInsights />
         <Analytics />
       </Body>
-    </Html>
-  );
-}
+    </Html>;
+
+export default RootLayout;

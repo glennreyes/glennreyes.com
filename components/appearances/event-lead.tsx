@@ -9,13 +9,9 @@ interface EventLeadProps
   extends Pick<Event, 'url'>,
     ComponentPropsWithoutRef<typeof EventLocation> {}
 
-export function EventLead({ location, url }: EventLeadProps) {
-  return (
-    <Lead>
+export const EventLead = ({ location, url }: EventLeadProps) => <Lead>
       <span className="flex flex-wrap items-center gap-6">
         <EventLocation location={location} />
         <EventWebsite url={url} />
       </span>
-    </Lead>
-  );
-}
+    </Lead>;

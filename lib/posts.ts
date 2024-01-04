@@ -10,7 +10,7 @@ export interface PostFrontmatter {
   title: string;
 }
 
-export async function getAllPosts() {
+export const getAllPosts = async () => {
   const allPosts = await Promise.all(
     getMDXFiles('content/posts').map(async (file) => {
       const { content, frontmatter } = await readMDXFile<PostFrontmatter>(
@@ -33,4 +33,4 @@ export async function getAllPosts() {
         new Date(b.frontmatter.publishedAt),
       ),
     );
-}
+};

@@ -19,21 +19,21 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   params,
-}: GenerateMetadataConfig): Promise<Metadata> {
+}: GenerateMetadataConfig): Promise<Metadata> => {
   const talk = await getTalkBySlug(params.slug);
 
   return {
     title: talk.title,
   };
-}
+};
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const allTalks = await getAllTalks();
 
   return allTalks.map((talk) => ({ slug: talk.slug }));
-}
+};
 
 interface TalkPageParams {
   slug: string;
@@ -43,7 +43,7 @@ interface TalkPageProps {
   params: TalkPageParams;
 }
 
-export default async function TalkPage({ params }: TalkPageProps) {
+const TalkPage = async ({ params }: TalkPageProps) => {
   const talk = await getTalkBySlug(params.slug);
   const events = talk.appearances.map((appearance) => appearance.event);
 
@@ -66,4 +66,6 @@ export default async function TalkPage({ params }: TalkPageProps) {
       </Page.Body>
     </Page>
   );
-}
+};
+
+export default TalkPage;

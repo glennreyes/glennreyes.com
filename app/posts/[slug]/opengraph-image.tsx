@@ -13,7 +13,7 @@ interface OpenGraphImageConfig {
   params: OpenGraphImageConfigParams;
 }
 
-export default async function OpengraphImage({ params }: OpenGraphImageConfig) {
+const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
   const res = await fetch(`${origin}/posts/${params.slug}/meta`);
   const { publishedAt, title } = z
     .object({ publishedAt: z.string(), title: z.string() })
@@ -71,4 +71,6 @@ export default async function OpengraphImage({ params }: OpenGraphImageConfig) {
       ...size,
     },
   );
-}
+};
+
+export default OpengraphImage;

@@ -12,7 +12,7 @@ interface PostTitleConfig {
   params: PostTitleConfigParams;
 }
 
-export async function GET(_: NextRequest, { params }: PostTitleConfig) {
+export const GET = async (_: NextRequest, { params }: PostTitleConfig) => {
   const { frontmatter } = await readMDXFile<PostFrontmatter>(
     `content/posts/${params.slug}.mdx`,
   );
@@ -23,4 +23,4 @@ export async function GET(_: NextRequest, { params }: PostTitleConfig) {
   );
 
   return Response.json({ publishedAt, title: frontmatter.title });
-}
+};

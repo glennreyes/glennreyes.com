@@ -11,8 +11,7 @@ export interface SubscribeData {
   theme: ResolvedTheme;
 }
 
-export function subscribe({ email, theme }: SubscribeData) {
-  return fetch(
+export const subscribe = ({ email, theme }: SubscribeData) => fetch(
     `https://api.convertkit.com/v3/forms/${forms[theme]}/subscribe`,
     {
       body: JSON.stringify({ api_key: publicApiKey, email }),
@@ -20,4 +19,3 @@ export function subscribe({ email, theme }: SubscribeData) {
       method: 'post',
     },
   );
-}

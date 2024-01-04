@@ -5,6 +5,4 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type MDXContentProps = Omit<MDXRemoteProps, 'components'>;
 
-export function MDXContent(props: MDXContentProps) {
-  return <MDXRemote components={components} {...props} />;
-}
+export const MDXContent = (props: MDXContentProps) => <MDXRemote components={components} {...props} />;

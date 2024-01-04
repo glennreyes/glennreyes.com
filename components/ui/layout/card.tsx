@@ -12,7 +12,7 @@ export interface CardProps
   asChild?: boolean;
 }
 
-export function Card({ asChild, ...props }: CardProps) {
+export const Card = ({ asChild, ...props }: CardProps) => {
   const Component = asChild ? Slot : 'div';
 
   return (
@@ -21,25 +21,21 @@ export function Card({ asChild, ...props }: CardProps) {
       {...props}
     />
   );
-}
+};
 
 interface CardBodyProps
   extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
   title?: string;
 }
 
-function CardBody({ children, title, ...props }: CardBodyProps) {
-  return (
-    <div className="grid gap-4" {...props}>
+const CardBody = ({ children, title, ...props }: CardBodyProps) => <div className="grid gap-4" {...props}>
       {title && (
         <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">
           {title}
         </p>
       )}
       {children}
-    </div>
-  );
-}
+    </div>;
 
 Card.Body = CardBody;
 
@@ -69,13 +65,13 @@ type CardItemWithMetaProps = Omit<
 
 type CardItemProps = CardItemWithDateProps | CardItemWithMetaProps;
 
-function CardItem({
+const CardItem = ({
   children,
   description,
   link,
   title,
   ...rest
-}: CardItemProps) {
+}: CardItemProps) => {
   const itemClasses = clsx(link && 'group relative', 'flex gap-4');
   const descriptionClasses = clsx(
     link && 'relative z-10',
@@ -123,6 +119,6 @@ function CardItem({
       </div>
     </div>
   );
-}
+};
 
 Card.Item = CardItem;

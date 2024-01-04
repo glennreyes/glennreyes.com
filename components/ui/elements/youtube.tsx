@@ -3,7 +3,7 @@ interface YouTubeProps {
   url: string;
 }
 
-export function YouTube({ title, url }: YouTubeProps) {
+export const YouTube = ({ title, url }: YouTubeProps) => {
   const source = url.replace('https://youtu.be/', 'https://youtube.com/embed/');
 
   return (
@@ -15,4 +15,4 @@ export function YouTube({ title, url }: YouTubeProps) {
       title={title}
     />
   );
-}
+};

@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
@@ -15,7 +17,7 @@ interface GenerateMetadataConfig {
   params: GenerateMetadataConfigParams;
 }
 
-export async function generateMetadata({ params }: GenerateMetadataConfig) {
+export const generateMetadata = async ({ params }: GenerateMetadataConfig) => {
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
@@ -38,15 +40,15 @@ export async function generateMetadata({ params }: GenerateMetadataConfig) {
     },
     title: frontmatter.title,
   };
-}
+};
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const allPosts = await getAllPosts();
 
   return allPosts
     .filter((post) => post.frontmatter.publishedAt)
     .map((post) => ({ slug: post.slug }));
-}
+};
 
 interface PostPageParams {
   slug: string;
@@ -56,7 +58,7 @@ interface PostPageProps {
   params: PostPageParams;
 }
 
-export default async function PostPage({ params }: PostPageProps) {
+const PostPage: FC<PostPageProps> = async ({ params }) => {
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
@@ -92,4 +94,6 @@ export default async function PostPage({ params }: PostPageProps) {
       </Article.Footer>
     </Article>
   );
-}
+};
+
+export default PostPage;

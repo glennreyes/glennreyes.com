@@ -10,15 +10,15 @@ interface ThankYouPageFrontmatter {
 
 const file = 'content/pages/subscribe/thank-you.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<ThankYouPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function ThankYouPage() {
+const ThankYouPage = async () => {
   const { content, frontmatter } =
     await readMDXFile<ThankYouPageFrontmatter>(file);
 
@@ -28,4 +28,6 @@ export default async function ThankYouPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default ThankYouPage;

@@ -26,15 +26,15 @@ interface AboutPageFrontmatter {
 
 const file = 'content/pages/about.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<AboutPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function AboutPage() {
+const AboutPage = async () => {
   const { content, frontmatter } =
     await readMDXFile<AboutPageFrontmatter>(file);
 
@@ -132,4 +132,6 @@ export default async function AboutPage() {
       </Content>
     </Page>
   );
-}
+};
+
+export default AboutPage;

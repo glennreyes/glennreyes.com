@@ -9,10 +9,8 @@ interface ProvidersProps {
   children: ReactNode;
 }
 
-export function Providers({ children }: ProvidersProps) {
-  return (
-    <ThemeProvider attribute="class">
-      <IntersectionProvider>{children}</IntersectionProvider>
-    </ThemeProvider>
-  );
-}
+export const Providers = ({ children }: ProvidersProps) => (
+  <ThemeProvider attribute="class">
+    <IntersectionProvider>{children}</IntersectionProvider>
+  </ThemeProvider>
+);

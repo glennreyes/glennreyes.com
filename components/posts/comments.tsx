@@ -5,9 +5,7 @@ import { H4 } from '../ui/typography/h4';
 import { Paragraph } from '../ui/typography/paragraph';
 import { Giscus } from './giscus';
 
-export function Comments() {
-  return (
-    <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
+export const Comments = () => <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
       <H4 asChild>
         <h2>Comments</h2>
       </H4>
@@ -30,6 +28,4 @@ export function Comments() {
         or send me an <InlineLink href={`mailto:${email}`}>email</InlineLink>.
         I&apos;m always happy to hear from my readers!
       </Paragraph>
-    </div>
-  );
-}
+    </div>;

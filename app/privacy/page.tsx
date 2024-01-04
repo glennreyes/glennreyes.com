@@ -10,15 +10,15 @@ interface PrivacyPageFrontmatter {
 
 const file = 'content/pages/privacy.mdx';
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const { frontmatter } = await readMDXFile<PrivacyPageFrontmatter>(file);
 
   return {
     title: frontmatter.title,
   };
-}
+};
 
-export default async function PrivacyPage() {
+const PrivacyPage = async () => {
   const { content, frontmatter } =
     await readMDXFile<PrivacyPageFrontmatter>(file);
 
@@ -28,4 +28,6 @@ export default async function PrivacyPage() {
       <Page.Body>{content}</Page.Body>
     </Page>
   );
-}
+};
+
+export default PrivacyPage;

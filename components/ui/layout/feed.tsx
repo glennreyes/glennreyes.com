@@ -14,12 +14,12 @@ interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   title?: string;
 }
 
-export function Feed({
+export const Feed = ({
   appearance = 'list',
   children,
   title,
   ...props
-}: FeedProps) {
+}: FeedProps) => {
   const wrapperClasses = clsx(
     title ? 'col-span-3' : 'not-prose',
     appearance === 'grid' && 'md:grid-cols-2',
@@ -44,7 +44,7 @@ export function Feed({
       {children}
     </div>
   );
-}
+};
 
 interface FeedItemProps
   extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
@@ -57,14 +57,14 @@ interface FeedItemProps
   title: string;
 }
 
-function FeedItem({
+const FeedItem = ({
   action,
   children,
   description,
   link,
   title,
   ...rest
-}: FeedItemProps) {
+}: FeedItemProps) => {
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
@@ -135,6 +135,6 @@ function FeedItem({
       )}
     </article>
   );
-}
+};
 
 Feed.Item = FeedItem;
