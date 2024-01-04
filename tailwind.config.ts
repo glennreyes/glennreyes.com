@@ -9,8 +9,6 @@ export default {
   content: [
     './app/**/*.{css,ts,tsx}',
     './components/**/*.{css,ts,tsx}',
-    './hooks/**/*.{css,ts,tsx}',
-    './icons/**/*.{css,ts,tsx}',
     './lib/**/*.{css,ts,tsx}',
   ],
   darkMode: 'class',
