@@ -13,11 +13,11 @@ export let prisma: PrismaClient;
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient();
 } else {
-  const { prisma: globalPrisma } = global;
-
-  if (globalPrisma) {
-    prisma = globalPrisma;
-  } else {
+  if (!global.prisma) {
     global.prisma = new PrismaClient();
   }
+
+  const { prisma: globalPrisma } = global;
+
+  prisma = globalPrisma;
 }

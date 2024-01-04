@@ -10,6 +10,7 @@ import { Html } from '@/components/ui/layout/html';
 import { Main } from '@/components/ui/layout/main';
 import { description, name, origin, x } from '@/lib/constants';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Providers } from './providers';
 
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Main>{children}</Main>
         </Providers>
         <Footer />
+        <SpeedInsights />
         <Analytics />
       </Body>
     </Html>
