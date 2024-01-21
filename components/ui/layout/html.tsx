@@ -1,25 +1,15 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 import clsx from 'clsx';
-import { Inter, Roboto_Mono } from 'next/font/google';
-
-const mono = Roboto_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  weight: 'variable',
-});
-const sans = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: 'variable',
-});
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
 export const Html = (props: HtmlProps) => {
   const classes = clsx(
-    mono.variable,
-    sans.variable,
+    GeistSans.variable,
+    GeistMono.variable,
     'motion-safe:scroll-smooth',
   );
 
