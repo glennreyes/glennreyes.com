@@ -15,7 +15,7 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.0.16",
+    "@fontsource/geist-sans": "^5.0.1",
     "@giscus/react": "^2.4.0",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",

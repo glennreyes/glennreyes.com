@@ -19,15 +19,15 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
   const { publishedAt, title } = z
     .object({ publishedAt: z.string(), title: z.string() })
     .parse(await res.json());
-  const inter700 = fetch(
+  const geistSans700 = fetch(
     new URL(
-      '../../../node_modules/@fontsource/inter/files/inter-latin-700-normal.woff',
+      '../../../node_modules/@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
-  const inter400 = fetch(
+  const geistSans400 = fetch(
     new URL(
-      '../../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff',
+      '../../../node_modules/@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
@@ -59,12 +59,12 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
     {
       fonts: [
         {
-          data: await inter400,
+          data: await geistSans400,
           name: 'Inter',
           weight: 400,
         },
         {
-          data: await inter700,
+          data: await geistSans700,
           name: 'Inter',
           weight: 700,
         },
