@@ -27,8 +27,8 @@ dependencies:
     specifier: ^1.1.2
     version: 1.1.2
   '@vercel/speed-insights':
-    specifier: ^1.0.6
-    version: 1.0.6(next@14.1.0)(react@18.2.0)
+    specifier: ^1.0.8
+    version: 1.0.8(next@14.1.0)(react@18.2.0)
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
@@ -57,8 +57,8 @@ dependencies:
     specifier: ^0.33.2
     version: 0.33.2
   tailwind-merge:
-    specifier: ^2.2.0
-    version: 2.2.0
+    specifier: ^2.2.1
+    version: 2.2.1
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^2.0.10
     version: 2.0.10
   '@types/node':
-    specifier: ^20.11.5
-    version: 20.11.5
+    specifier: ^20.11.8
+    version: 20.11.8
   '@types/react':
     specifier: ^18.2.48
     version: 18.2.48
@@ -185,6 +185,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
+
+  /@babel/runtime@7.23.9:
+    resolution: {integrity: sha512-0CX6F+BI2s9dkUqr08KFrAIZgNFj75rdBU/DjCyYLIaV/quFjkk6T+EJ2LkZHyZTbEV4L5p97mNkUsHl2wLFAw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.1
+    dev: false
 
   /@emnapi/runtime@0.45.0:
     resolution: {integrity: sha512-Txumi3td7J4A/xTTwlssKieHKTGl3j4A1tglBx72auZ49YK7ePY6XZricgIg9mnZT4xPfA+UPCUdnhRuEFDL+w==}
@@ -1189,8 +1196,8 @@ packages:
   /@types/ms@0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
 
-  /@types/node@20.11.5:
-    resolution: {integrity: sha512-g557vgQjUUfN76MZAN/dt1z3dzcUsimuysco0KeluHgrPdJXkP/XdAURgyO2W9fZWHRtRBiVKzKn8vyOAwlG+w==}
+  /@types/node@20.11.8:
+    resolution: {integrity: sha512-i7omyekpPTNdv4Jb/Rgqg0RU8YqLcNsI12quKSDkRXNfx7Wxdm6HhK1awT3xTgEkgxPn3bvnSpiEAc7a7Lpyow==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1374,11 +1381,11 @@ packages:
       server-only: 0.0.1
     dev: false
 
-  /@vercel/speed-insights@1.0.6(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-T+6AxPhGMqj4hwY7t1kjtsPFI/alOfakNgzTfB0ujGAddQLqjAlvhWmNgWHcYWqcYoG3r53efzQEnXyjqgmKSg==}
+  /@vercel/speed-insights@1.0.8(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-x1V9MHUMGkaNafmgY0qRbmbr+jfeU+Cvo5KgreeEGo63SFuBYRg9RS52GUJ9p82nEL6NBzc9HNru6fkcvufYcQ==}
     requiresBuild: true
     peerDependencies:
-      '@sveltejs/kit': ^1
+      '@sveltejs/kit': ^1 || ^2
       next: '>= 13'
       react: ^18 || ^19
       svelte: ^4
@@ -5273,10 +5280,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tailwind-merge@2.2.0:
-    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
     dependencies:
-      '@babel/runtime': 7.23.6
+      '@babel/runtime': 7.23.9
     dev: false
 
   /tailwindcss@3.4.1:
