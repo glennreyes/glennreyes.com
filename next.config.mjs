@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  rewrites: () => [
+  redirects: () => [
     {
       destination:
-        'https://www.notion.so/glennreyes/Tools-6df9f0a402784ef7a093452d464e793e',
+        'https://glennreyes.notion.site/Tools-6df9f0a402784ef7a093452d464e793e',
+      permanent: false,
       source: '/tools',
     },
   ],
