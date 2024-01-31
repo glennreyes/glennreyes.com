@@ -9,8 +9,9 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": ["./*"],
+    },
+    "target": "esnext",
   },
   "exclude": ["node_modules"],
   "extends": "@tsconfig/next/tsconfig",
@@ -20,6 +21,6 @@
     "*.cjs",
     "*.mjs",
     ".*.cjs",
-    ".next/types/**/*.ts"
-  ]
+    ".next/types/**/*.ts",
+  ],
 }
