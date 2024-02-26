@@ -93,7 +93,9 @@ Once we have that, we want to capture the most dominant sample from the frequenc
 
 Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume.
 
-Finally, we capture the most dominant sample and convert it to the actually frequency (or pitch). It involves a bit of math, but here's how it looks:
+Finally, we capture the most dominant sample and convert it to the actually frequency (or pitch), as each index of `dataArray` represents a frequency of half the sample rate. So, we can calculate the frequency by `(index * context.sampleRate) / analyser.fftSize`.
+
+Here's how it looks:
 
 ```tsx {11-12, 17-30}
 const context = new AudioContext();
