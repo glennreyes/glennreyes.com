@@ -89,11 +89,11 @@ getData();
 
 ## Capturing the Pitch
 
-Once we have that, we want to capture the most dominant sample from the frequency data. A perfect job for looping through `dataArray` with `.reduce` and capturing the one with the maximum volume.
+Once we have that, we want to capture the most dominant sample from the frequency data. A perfect job for looping through `dataArray` with `.reduce` and capturing the one with the highest value.
 
-Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume, because human ears can only hear (that's what we care about mostly) from 20 to 20,000 Hertz (Hz).
+Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume.
 
-Finally, we capture the most dominant sample and convert it to a frequency (or pitch). It involves a bit of math, but here's how it looks:
+Finally, we capture the most dominant sample and convert it to the actually frequency (or pitch). It involves a bit of math, but here's how it looks:
 
 ```tsx {11-12, 17-30}
 const context = new AudioContext();
