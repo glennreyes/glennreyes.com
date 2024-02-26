@@ -1,7 +1,7 @@
 ---
-title: Building a tuner with Tone.js and React
+title: Building a Tuner with Tone.js and React
 description: I had no idea how the Web Audio API worked, so I decided to build a tuner with it. Here's what I learned.
-# publishedAt: 2024-02-23
+publishedAt: 2024-02-23
 ---
 
 Having attended many tech events over the past years, I have always admired people who showed off their musical skills on stage. Few examples:
@@ -10,13 +10,13 @@ Having attended many tech events over the past years, I have always admired peop
 - [Alive and Kicking. A Vue into Rock& Roll!](https://youtu.be/-4m4TIJ0z20?feature=shared) by [Tim Benniks](https://twitter.com/timbenniks)
 - [Beats in the Browser - Coding Music with JavaScript](https://youtu.be/KtVILY90t4g?feature=shared) by [Rowdy Rabouw](https://twitter.com/RowdyRabouw)
 
-As someone enthusiastic playing guitar and making music, I have never looked into the Web Audio API, so I took some time and thought why not build a tuner for musical instruments?
+As someone enthusiastic about playing guitar and making music, I have dreamed of building a fully-fledged web-based DAW (Digital Audio Workstation), but I had never looked into the Web Audio API to see what it's capable of. So, I took some time and thought, why not start with something small and build a tuner for musical instruments?
 
 ## Web Audio API
 
-The Web Audio API is a high-level JavaScript API that allows developers to create and manipulate audio in the browser. It is a very powerful API for creating music, sound effects, and other audio applications.
+The Web Audio API is a powerful JavaScript API that allows developers to do a lot of things, but most notably: creating and manipulating audio in the browser. It is a very powerful API for creating music, sound effects, and other audio applications.
 
-Before I had any code written, I knew that I needed to get the microphone input and then work from there:
+Before I had any code written, I knew I would need to get a microphone input and then work from there:
 
 ```tsx
 const context = new AudioContext();
@@ -25,10 +25,10 @@ const microphone = context.createMediaStreamSource(stream);
 ```
 
 1. `const context = new AudioContext();` - Represents an audio-processing graph built from audio modules linked together. The `AudioContext` is the main entry point to the Web Audio API and is used to create and manage audio nodes, handle audio processing, and control audio playback.
-2. `const stream = await navigator.mediaDevices.getUserMedia({ audio: true });` - Prompts the user for permission to use a media input which produces audio (such as a microphone). It returns a `Promise` of a `MediaStream` representing the user's audio input.
+2. `const stream = await navigator.mediaDevices.getUserMedia({ audio: true });` - Prompts the user for permission to use a media input that produces audio (such as a microphone). It returns a `Promise` of a `MediaStream` representing the user's audio input.
 3. `const microphone = context.createMediaStreamSource(stream);` - Creates an `AudioNode` from the user's audio stream obtained in the previous step. This `AudioNode` can then be connected to other nodes in the `AudioContext` for processing, analysis, or output.
 
-Now, with `microphone` we can't really do anything helpful yet, so we need to add an `AnalyserNode` to the `AudioContext` to get the frequency data from the microphone input.
+Now, with `microphone`, we can't really do anything helpful yet, so we need to add an `AnalyserNode` to the `AudioContext` to get the frequency data from the microphone input.
 
 <Image
   className="bg-white"
@@ -55,7 +55,7 @@ analyser.getFloatFrequencyData(dataArray);
 1. We create an `AnalyserNode` using `context.createAnalyser()`.
 2. We connect the `microphone` to the `analyser` using `microphone.connect(analyser)`.
 3. We create a `Float32Array` to hold the frequency data represented as FFT (Fast Fourier Transform) data.
-4. We call `analyser.getFloatFrequencyData(dataArray)` to copy the current frequency data into `dataArray`, where each value is a sample, represented as a decibel value for a particular frequency.
+4. We call `analyser.getFloatFrequencyData(dataArray)` to copy the current frequency data into `dataArray`, where each value is a sample represented as a decibel value for a particular frequency.
 
 <Image
   src="/images/tuner/data-array.png"
@@ -64,7 +64,7 @@ analyser.getFloatFrequencyData(dataArray);
   alt="Example of dataArray values"
 />
 
-Sometimes it can contain `-Infinity` which means that the sample is silent.
+Sometimes it can contain `-Infinity`, which means that the sample is silent.
 
 Now that we have a "snapshot" of frequency data, we want to capture frequency data over time by using `requestAnimationFrame`:
 
@@ -87,13 +87,13 @@ const getData = () => {
 getData();
 ```
 
-## Capturing the pitch
+## Capturing the Pitch
 
 Once we have that, we want to capture the most dominant sample from the frequency data. A perfect job for looping through `dataArray` with `.reduce` and capturing the one with the maximum volume.
 
-Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume, because human ears can only hear (that's what care about mostly) from 20 to 20,000 Hertz (Hz).
+Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume, because human ears can only hear (that's what we care about mostly) from 20 to 20,000 Hertz (Hz).
 
-Finally, we capture the most dominant sample and convert it to a frequency (or pitch). It involves a little bit of math, but here's how it looks like:
+Finally, we capture the most dominant sample and convert it to a frequency (or pitch). It involves a bit of math, but here's how it looks:
 
 ```tsx {11-12, 17-30}
 const context = new AudioContext();
@@ -135,9 +135,13 @@ const getData = () => {
 getData();
 ```
 
-## The pitch standard
+## From Pitch to Note
 
-The pitch standard, also known as A440, is a musical pitch standard that specifies the frequency of the A above middle C on the piano as 440 Hz:
+Mapping a pitch to note is fairly simple. Before I go more into that, I think it's important to know about the reference pitch of 440 Hertz, also known as standard pitch, concert pitch or A440.
+
+### The Pitch Standard
+
+The pitch standard, also known as A440, is a very common musical pitch standard that specifies the frequency of the A above middle C on the piano as 440 Hz:
 
 <Image
   className="bg-white p-4"
@@ -146,3 +150,434 @@ The pitch standard, also known as A440, is a musical pitch standard that specifi
   height={171}
   alt="AnalyserNode"
 />
+
+Having this standard is very helpful for musicians to tune their instruments to the same pitch. It's also helpful for building a tuner because we can use it as a reference to calculate the difference between the pitch we captured and the reference pitch.
+
+### Mapping Pitch to Note
+
+With the pitch standard, each note will have a specific frequency. Here are the notes for a standard six-string guitar tuning and their frequencies:
+
+| Note | Frequency (Hz) |
+| ---- | -------------- |
+| E2   | 82.41          |
+| A2   | 110.00         |
+| D3   | 146.83         |
+| G3   | 196.00         |
+| B3   | 246.94         |
+| E4   | 329.63         |
+
+So, your guitar should be tuned to E2, A2, D3, G3, B3, E4, from the lowest to the highest string.
+
+<Image
+  className="mx-auto"
+  src="/images/tuner/tuning.png"
+  width={278}
+  height={371}
+  alt="AnalyserNode"
+/>
+
+Now, for tuning, we want to calculate the difference between the captured pitch and the reference pitch. We can then map the difference to the closest note:
+
+```tsx {14-21, 40-48}
+const context = new AudioContext();
+const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+const microphone = context.createMediaStreamSource(stream);
+
+const analyser = context.createAnalyser();
+analyser.fftSize = 2048;
+microphone.connect(analyser);
+
+const dataArray = new Float32Array(analyser.frequencyBinCount);
+
+const minDecibels = -60; // Minimum decibels representing 0% volume
+const maxDecibels = 0; // Maximum decibels representing 100% volume
+
+const tuning = {
+  '82.41': 'E2',
+  '110': 'A2',
+  '146.83': 'D3',
+  '196': 'G3',
+  '246.94': 'B3',
+  '329.63': 'E4',
+} as const;
+
+const getData = () => {
+  analyser.getFloatFrequencyData(dataArray);
+
+  const data = dataArray.reduce(
+    (acc, decibels, index) => {
+      const volume =
+        ((decibels - minDecibels) / (maxDecibels - minDecibels)) * 100;
+
+      if (volume > acc.maxVolume) {
+        return { maxIndex: index, maxVolume: volume };
+      }
+
+      return acc;
+    },
+    { maxIndex: -1, maxVolume: 0 },
+  );
+  const frequency = (data.maxIndex * context.sampleRate) / analyser.fftSize;
+  const closestPitch = Object.keys(tuning).reduce((prev, current) =>
+    Math.abs(Number(current) - frequency) < Math.abs(Number(prev) - frequency)
+      ? current
+      : prev,
+  );
+  const note = tuning[closestPitch];
+  const difference = frequency - Number(closestPitch);
+
+  // Do something with `note` and `difference` ...
+
+  requestAnimationFrame(getData);
+};
+
+getData();
+```
+
+## Tone.js
+
+So far, we have been using the Web Audio API directly, but there's a library called [Tone.js](https://tonejs.github.io/) which can make working with the Web Audio API much easier. It's meant for creating interactive music in the browser and provides great abstractions and utilities.
+
+Here's how we access the microphone and the analyser node using Tone.js:
+
+```tsx
+import { Analyser, UserMedia, context, start } from 'tone';
+
+await start();
+const analyser = new Analyser();
+const microphone = await new UserMedia().connect(analyser).open();
+
+const getData = () => {
+  const dataArray = analyser.getValue();
+
+  // Do something with `dataArray` ...
+
+  requestAnimationFrame(getData);
+};
+```
+
+Way cleaner, right?
+
+## Tone.js and Pitch Detection with `pitchy`
+
+I have struggled quite a bit to get pitch detection working with [Tone.js](https://github.com/Tonejs/Tone.js) and using FFT, because for some reason it didn't provide accurate enough pitches. If the `fftSize` was set to its maximum of `32768` then every frequency was just `-Infinity`, which means no signal, no matter what.
+
+So I looked around for alternatives on how to get it working accurately, and then stumbled upon a library called [pitchy](https://github.com/ianprime0509/pitchy) that allows me to detect the pitch provided by waveform data.
+
+Here's how this looks:
+
+```tsx
+import { PitchDetector } from 'pitchy';
+import { Analyser, UserMedia, context, start } from 'tone';
+
+await start();
+const analyser = new Analyser('waveform', 2048);
+const microphone = await new UserMedia().connect(analyser).open();
+
+setDevice(deviceName);
+
+const getPitch = () => {
+  const dataArray = analyser.getValue() as Float32Array;
+  const frequency = PitchDetector.forFloat32Array(analyser.size);
+  const [pitch, clarity] = frequency.findPitch(dataArray, context.sampleRate);
+  const volumeDb = meter.getValue() as number;
+  const inputVolume = Math.min(
+    100,
+    Math.max(0, ((volumeDb - minVolume) / (maxVolume - minVolume)) * 100),
+  );
+
+  const isCaptureRange = pitch !== 0 && clarity > 0.96 && inputVolume !== 0;
+
+  if (isCaptureRange) {
+    // Do something with `pitch` ...
+  }
+
+  requestAnimationFrame(getPitch);
+};
+
+getPitch();
+```
+
+### Comparing Waveform and FFT
+
+The waveform data is a time-domain representation of the audio signal, while the FFT data is a frequency-domain representation of the audio signal. Personally, I experienced more accurate pitches when using waveform data and `pitchy` for pitch detection. I'd love to hear from you if you have different experiences.
+
+## Putting It All Together
+
+Now that we have the pitch captured, we can display this, among other useful data, in a React component:
+
+```tsx title="tuner.tsx"
+'use client';
+
+import type { Mode, Note } from '@/lib/modes';
+import type { FC } from 'react';
+
+import { modes } from '@/lib/modes';
+import { getClosestNote, hzToCents, range } from '@/lib/pitch';
+import { cn } from '@/lib/utils';
+import { Mic, MicOff, Volume2 } from 'lucide-react';
+import { PitchDetector } from 'pitchy';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Analyser, Meter, UserMedia, context, start } from 'tone';
+
+import { Button } from './ui/button';
+import { Progress } from './ui/progress';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from './ui/select';
+
+// Volume ranges in dB
+const minVolume = -48;
+const maxVolume = -12;
+// Amount of Hz considered to be in tune
+const deviation = 1;
+const bars = Array.from({ length: range / 2 + 1 }, (_, i) => i - range / 4);
+
+export const Tuner: FC = () => {
+  const requestId = useRef<number>();
+  const [mode, setMode] = useState<Mode>('chromatic');
+  const [pitch, setPitch] = useState<null | number>(null);
+  const [note, setNote] = useState<Note | null>(null);
+  const [isListening, setIsListening] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const [volume, setVolume] = useState(0);
+  const [isInTune, setIsInTune] = useState(false);
+  const [device, setDevice] = useState<string | undefined>();
+  const tuning = modes[mode];
+  const detectPitch = useCallback(async () => {
+    await start();
+    const analyser = new Analyser('waveform', 2048);
+    const meter = new Meter();
+    const microphone = await new UserMedia()
+      .connect(analyser)
+      .connect(meter)
+      .open();
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const deviceName = devices.find(
+      (device) => device.deviceId === microphone.deviceId,
+    )?.label;
+
+    setDevice(deviceName);
+
+    const getPitch = () => {
+      const dataArray = analyser.getValue() as Float32Array;
+      const frequency = PitchDetector.forFloat32Array(analyser.size);
+      const [pitch, clarity] = frequency.findPitch(
+        dataArray,
+        context.sampleRate,
+      );
+      const volumeDb = meter.getValue() as number;
+      const inputVolume = Math.min(
+        100,
+        Math.max(0, ((volumeDb - minVolume) / (maxVolume - minVolume)) * 100),
+      );
+
+      setVolume(inputVolume);
+
+      const isCaptureRange = pitch !== 0 && clarity > 0.96 && inputVolume !== 0;
+
+      if (isCaptureRange) {
+        const closestNote = getClosestNote(pitch, mode);
+
+        if (closestNote !== null) {
+          const referencePitch = tuning[closestNote];
+          const difference = referencePitch
+            ? Math.abs(referencePitch - pitch)
+            : 0;
+          const isInTune = difference <= deviation;
+
+          setIsInTune(isInTune);
+        }
+
+        setNote(closestNote);
+        setPitch(pitch);
+      } else if (pitch) {
+        setPitch(0);
+      }
+
+      setIsCapturing(isCaptureRange);
+      requestId.current = requestAnimationFrame(getPitch);
+    };
+
+    getPitch();
+  }, [mode, tuning]);
+
+  useEffect(() => {
+    if (isListening) {
+      (() => detectPitch())();
+    }
+
+    return () => {
+      if (requestId.current) {
+        cancelAnimationFrame(requestId.current);
+      }
+    };
+  }, [detectPitch, isListening]);
+
+  const handleStart = () => {
+    setIsListening(true);
+  };
+  const handleValueChange = (value: string) => {
+    setMode(value);
+
+    if (requestId.current) {
+      cancelAnimationFrame(requestId.current);
+    }
+  };
+  const tuningPitch = note ? tuning[note] : 0;
+  const cents = pitch && tuningPitch ? hzToCents(pitch, tuningPitch) : 0;
+
+  return (
+    <div>
+      <div
+        className={cn('grid items-center gap-12', {
+          'opacity-25': !isListening,
+        })}
+      >
+        <div className="grid gap-12">
+          <p
+            className={cn(
+              'text-center text-8xl font-semibold',
+              isInTune ? 'text-success' : 'text-muted-foreground',
+              {
+                'opacity-0': !isCapturing || !note,
+              },
+            )}
+          >
+            {note ?? '-'}
+          </p>
+          <div className="grid gap-4">
+            <div className="text-muted flex justify-between">
+              <div className="flex-1 text-left">-50</div>
+              <div className="text-center">0</div>
+              <div className="flex-1 text-right">+50</div>
+            </div>
+            <div>
+              <div
+                className={cn('flex items-end justify-between transition', {
+                  'opacity-50 delay-500': !isCapturing || !note,
+                })}
+              >
+                {bars.map((bar) => (
+                  <div key={bar}>
+                    <div
+                      className={cn(
+                        'h-8 w-px rounded sm:w-0.5',
+                        bar === 0
+                          ? 'bg-primary h-12'
+                          : bar % 5 === 0
+                            ? 'h-10 bg-gray-500'
+                            : 'bg-gray-300',
+                      )}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div
+                className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 items-center justify-center transition duration-75"
+                style={{ transform: `translate(${cents}%, -50%)` }}
+              >
+                <div
+                  className={cn(
+                    'shadow-secondary/25 h-20 w-1 shadow-xl transition-all',
+                    isInTune ? 'bg-success' : 'bg-muted-foreground',
+                    !isCapturing || !note
+                      ? 'scale-95 opacity-0 delay-500'
+                      : 'opacity-95',
+                  )}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid gap-2">
+          <p
+            className={cn(
+              'text-primary text-center text-5xl tabular-nums transition',
+              {
+                'duration-400 opacity-50 delay-500': !isCapturing || !note,
+              },
+            )}
+          >
+            {Math.round(cents)} ct
+          </p>
+
+          <p
+            className={cn('text-primary text-center tabular-nums transition', {
+              'duration-400 opacity-50 delay-500': !isCapturing || !note,
+            })}
+          >
+            {(pitch ?? 0).toFixed(1)} Hz
+          </p>
+        </div>
+        <div className="grid gap-4">
+          <div className="flex justify-between gap-2">
+            <Select
+              disabled={!isListening}
+              onValueChange={handleValueChange}
+              value={mode}
+            >
+              <SelectTrigger className="w-40">
+                <SelectValue placeholder="Mode" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem value="chromatic">Chromatic</SelectItem>
+                </SelectGroup>
+                <SelectSeparator />
+                <SelectGroup>
+                  <SelectLabel>Guitar</SelectLabel>
+                  <SelectItem value="guitarStandard">Standard</SelectItem>
+                  <SelectItem value="guitarDropD">Drop D</SelectItem>
+                </SelectGroup>
+                <SelectSeparator />
+                <SelectGroup>
+                  <SelectLabel>Ukulele</SelectLabel>
+                  <SelectItem value="ukuleleStandard">Standard</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+            <div className="flex items-center gap-2">
+              {device ? (
+                <Mic className="text-muted-foreground h-5 w-5" />
+              ) : (
+                <MicOff className="text-muted-foreground h-5 w-5" />
+              )}
+              <p className="text-muted-foreground truncate text-sm">{device}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Volume2 className="text-muted-foreground h-5 w-5" />
+            <Progress value={volume} />
+          </div>
+        </div>
+      </div>
+      <Button
+        className={cn(
+          'duration-400 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition',
+          { 'pointer-events-none opacity-0 blur-2xl': isListening },
+        )}
+        onClick={handleStart}
+        size="lg"
+      >
+        Start Tuning
+      </Button>
+    </div>
+  );
+};
+```
+
+## Final Thoughts
+
+Building a tuner was a really interesting learning experience in getting into the Web Audio API. I think for beginners to the Web Audio API, building a tuner might be more ambitious than just simply working with an oscillator or with samples first to create sound. With a tuner, I had to play a lot with pitches and frequencies, and it involves a bit of math to get it right.
+
+Nevertheless, I had fun working with [Tone.js](https://github.com/Tonejs/Tone.js) and getting the correct pitch using the `pitchy` library. It's also interesting to see a tuner from a technical perspective because I had never thought about how it works under the hood.
+
+The entire code is available in the [GitHub repository](https://github.com/glennreyes/tuner). I hope you find this helpful and inspiring to build your own tuner or any other music-related application.
