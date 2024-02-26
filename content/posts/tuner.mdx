@@ -173,7 +173,7 @@ So, your guitar should be tuned to E2, A2, D3, G3, B3, E4, from the lowest to th
   src="/images/tuner/tuning.png"
   width={278}
   height={371}
-  alt="AnalyserNode"
+  alt="Guitar tuning"
 />
 
 Now, for tuning, we want to calculate the difference between the captured pitch and the reference pitch. We can then map the difference to the closest note:
@@ -573,6 +573,10 @@ export const Tuner: FC = () => {
   );
 };
 ```
+
+And here's how the UI looks like:
+
+<Image src="/images/tuner/tuner.png" width={2628} height={1816} alt="Tuner" />
 
 ## Final Thoughts
 
