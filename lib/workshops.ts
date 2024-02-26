@@ -8,6 +8,7 @@ export const getAllWorkshops = cache(() =>
     },
     select: {
       slug: true,
+      status: true,
       summary: true,
       title: true,
     },

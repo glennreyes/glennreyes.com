@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 
-import { Feed } from '@/components/ui/layout/feed';
+import { TalksFeed } from '@/components/talks/talks-feed';
 import { Page } from '@/components/ui/layout/page';
-import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { getAllTalks } from '@/lib/talks';
 
 export const metadata: Metadata = {
@@ -18,21 +17,7 @@ const TalksPage = async () => {
         Speaking.
       </Page.Header>
       <Page.Body>
-        <Feed>
-          {allTalks.map(({ abstract, slug, title }) => (
-            <Feed.Item
-              action="Talk Details"
-              description={
-                <div className="prose prose-slate text-slate-500">
-                  <MDXContent source={abstract} />
-                </div>
-              }
-              key={slug}
-              link={`/talks/${slug}`}
-              title={title}
-            />
-          ))}
-        </Feed>
+        <TalksFeed talks={allTalks} />
       </Page.Body>
     </Page>
   );

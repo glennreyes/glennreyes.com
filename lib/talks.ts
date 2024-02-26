@@ -9,6 +9,7 @@ export const getAllTalks = cache(() =>
     select: {
       abstract: true,
       slug: true,
+      status: true,
       title: true,
     },
   }),

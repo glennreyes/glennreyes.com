@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 
-import { Feed } from '@/components/ui/layout/feed';
 import { Page } from '@/components/ui/layout/page';
-import { MDXContent } from '@/components/ui/mdx/mdx-content';
+import { WorkshopsFeed } from '@/components/workshops/workshops-feed';
 import { getAllWorkshops } from '@/lib/workshops';
 
 export const metadata: Metadata = {
@@ -17,21 +16,7 @@ const WorkshopsPage = async () => {
       <Page.Header lead="Explore my portfolio of successful web development workshops that have empowered hundreds of engineers.">
         Teaching.
       </Page.Header>
-      <Feed appearance="grid">
-        {allWorkshops.map(({ slug, summary, title }) => (
-          <Feed.Item
-            action="Workshop Details"
-            description={
-              <div className="prose prose-slate text-slate-500">
-                <MDXContent source={summary} />
-              </div>
-            }
-            key={slug}
-            link={`/workshops/${slug}`}
-            title={title}
-          />
-        ))}
-      </Feed>
+      <WorkshopsFeed workshops={allWorkshops} />
     </Page>
   );
 };

@@ -11,28 +11,33 @@ import { Paragraph } from '../typography/paragraph';
 
 interface FeedProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   appearance?: 'grid' | 'list';
+  description?: string;
   title?: string;
 }
 
 export const Feed = ({
   appearance = 'list',
   children,
+  description,
   title,
   ...props
 }: FeedProps) => {
   const wrapperClasses = clsx(
-    title ? 'col-span-3' : 'not-prose',
+    title ? 'col-span-2' : 'not-prose',
     appearance === 'grid' && 'md:grid-cols-2',
     'grid gap-12 md:gap-16',
   );
 
   if (title) {
     return (
-      <div className="not-prose grid gap-8 md:grid-cols-4" {...props}>
-        <div className="md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
-          <h2 className="font-semibold text-teal-600 md:sticky md:top-20 dark:text-teal-200/75">
-            {title}
-          </h2>
+      <div className="not-prose grid gap-8 md:grid-cols-3" {...props}>
+        <div className="col-span-2 md:col-span-1 md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
+          <div className="md:sticky md:top-20">
+            <h2 className="font-semibold text-teal-600 dark:text-teal-200/75">
+              {title}
+            </h2>
+            {description && <p className="text-slate-500">{description}</p>}
+          </div>
         </div>
         <div className={wrapperClasses}>{children}</div>
       </div>
@@ -131,7 +136,7 @@ const FeedItem = ({
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-[1.75rem] dark:bg-slate-900/50" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 md:-inset-6 md:rounded-[1.75rem]" />
       )}
     </article>
   );
