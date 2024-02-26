@@ -11,6 +11,7 @@ import { H3 } from '@/components/ui/typography/h3';
 import { H4 } from '@/components/ui/typography/h4';
 import { Lead } from '@/components/ui/typography/lead';
 import { DocumentIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 import Image from 'next/image';
 
 interface DivProps extends ComponentPropsWithoutRef<'div'> {
@@ -25,9 +26,11 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 }
 
 export const components: MDXComponents = {
-  Image: ({ alt, ...props }: ImageProps) => (
-    <Image alt={alt} className="rounded-[1.75rem]" {...props} />
-  ),
+  Image: ({ alt, className, ...props }: ImageProps) => {
+    const classes = clsx('rounded-[1.75rem]', className);
+
+    return <Image alt={alt} className={classes} {...props} />;
+  },
   Lead,
   a: ({ href, ...props }) =>
     href?.startsWith('#') ? (

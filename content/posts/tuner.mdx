@@ -1,0 +1,148 @@
+---
+title: Building a tuner with Tone.js and React
+description: I had no idea how the Web Audio API worked, so I decided to build a tuner with it. Here's what I learned.
+# publishedAt: 2024-02-23
+---
+
+Having attended many tech events over the past years, I have always admired people who showed off their musical skills on stage. Few examples:
+
+- [Beats in the Browser](https://youtu.be/z7EQtSK3QHM?feature=shared) by [Ken Wheeler](https://twitter.com/ken_wheeler)
+- [Alive and Kicking. A Vue into Rock& Roll!](https://youtu.be/-4m4TIJ0z20?feature=shared) by [Tim Benniks](https://twitter.com/timbenniks)
+- [Beats in the Browser - Coding Music with JavaScript](https://youtu.be/KtVILY90t4g?feature=shared) by [Rowdy Rabouw](https://twitter.com/RowdyRabouw)
+
+As someone enthusiastic playing guitar and making music, I have never looked into the Web Audio API, so I took some time and thought why not build a tuner for musical instruments?
+
+## Web Audio API
+
+The Web Audio API is a high-level JavaScript API that allows developers to create and manipulate audio in the browser. It is a very powerful API for creating music, sound effects, and other audio applications.
+
+Before I had any code written, I knew that I needed to get the microphone input and then work from there:
+
+```tsx
+const context = new AudioContext();
+const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+const microphone = context.createMediaStreamSource(stream);
+```
+
+1. `const context = new AudioContext();` - Represents an audio-processing graph built from audio modules linked together. The `AudioContext` is the main entry point to the Web Audio API and is used to create and manage audio nodes, handle audio processing, and control audio playback.
+2. `const stream = await navigator.mediaDevices.getUserMedia({ audio: true });` - Prompts the user for permission to use a media input which produces audio (such as a microphone). It returns a `Promise` of a `MediaStream` representing the user's audio input.
+3. `const microphone = context.createMediaStreamSource(stream);` - Creates an `AudioNode` from the user's audio stream obtained in the previous step. This `AudioNode` can then be connected to other nodes in the `AudioContext` for processing, analysis, or output.
+
+Now, with `microphone` we can't really do anything helpful yet, so we need to add an `AnalyserNode` to the `AudioContext` to get the frequency data from the microphone input.
+
+<Image
+  className="bg-white"
+  src="/images/tuner/analyser-node.svg"
+  width={752}
+  height={224}
+  alt="AnalyserNode"
+/>
+
+That's how it looks like in code:
+
+```tsx {5-9}
+const context = new AudioContext();
+const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+const microphone = context.createMediaStreamSource(stream);
+
+const analyser = context.createAnalyser();
+microphone.connect(analyser);
+
+const dataArray = new Float32Array(analyser.frequencyBinCount);
+analyser.getFloatFrequencyData(dataArray);
+```
+
+1. We create an `AnalyserNode` using `context.createAnalyser()`.
+2. We connect the `microphone` to the `analyser` using `microphone.connect(analyser)`.
+3. We create a `Float32Array` to hold the frequency data represented as FFT (Fast Fourier Transform) data.
+4. We call `analyser.getFloatFrequencyData(dataArray)` to copy the current frequency data into `dataArray`, where each value is a sample, represented as a decibel value for a particular frequency.
+
+<Image
+  src="/images/tuner/data-array.png"
+  width={1284}
+  height={768}
+  alt="Example of dataArray values"
+/>
+
+Sometimes it can contain `-Infinity` which means that the sample is silent.
+
+Now that we have a "snapshot" of frequency data, we want to capture frequency data over time by using `requestAnimationFrame`:
+
+```tsx {10-16}
+const context = new AudioContext();
+const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+const microphone = context.createMediaStreamSource(stream);
+
+const analyser = context.createAnalyser();
+analyser.fftSize = 2048;
+microphone.connect(analyser);
+
+const dataArray = new Float32Array(analyser.frequencyBinCount);
+const getData = () => {
+  analyser.getFloatFrequencyData(dataArray);
+
+  requestAnimationFrame(getData);
+};
+
+getData();
+```
+
+## Capturing the pitch
+
+Once we have that, we want to capture the most dominant sample from the frequency data. A perfect job for looping through `dataArray` with `.reduce` and capturing the one with the maximum volume.
+
+Since these are represented in decibels, we specify a range of what we want to capture from, the minimum and maximum volume, because human ears can only hear (that's what care about mostly) from 20 to 20,000 Hertz (Hz).
+
+Finally, we capture the most dominant sample and convert it to a frequency (or pitch). It involves a little bit of math, but here's how it looks like:
+
+```tsx {11-12, 17-30}
+const context = new AudioContext();
+const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+const microphone = context.createMediaStreamSource(stream);
+
+const analyser = context.createAnalyser();
+analyser.fftSize = 2048;
+microphone.connect(analyser);
+
+const dataArray = new Float32Array(analyser.frequencyBinCount);
+
+const minDecibels = -60; // Minimum decibels representing 0% volume
+const maxDecibels = 0; // Maximum decibels representing 100% volume
+
+const getData = () => {
+  analyser.getFloatFrequencyData(dataArray);
+
+  const data = dataArray.reduce(
+    (acc, decibels, index) => {
+      const volume =
+        ((decibels - minDecibels) / (maxDecibels - minDecibels)) * 100;
+
+      if (volume > acc.maxVolume) {
+        return { maxIndex: index, maxVolume: volume };
+      }
+
+      return acc;
+    },
+    { maxIndex: -1, maxVolume: 0 },
+  );
+  const frequency = (data.maxIndex * context.sampleRate) / analyser.fftSize;
+
+  // Do something with `frequency` ...
+
+  requestAnimationFrame(getData);
+};
+
+getData();
+```
+
+## The pitch standard
+
+The pitch standard, also known as A440, is a musical pitch standard that specifies the frequency of the A above middle C on the piano as 440 Hz:
+
+<Image
+  className="bg-white p-4"
+  src="/images/tuner/a440.svg"
+  width={752}
+  height={171}
+  alt="AnalyserNode"
+/>
