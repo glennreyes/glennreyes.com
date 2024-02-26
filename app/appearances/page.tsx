@@ -21,9 +21,7 @@ const AppearancesPage = async () => {
       <Page.Header lead="Discover where I'm making an impact in the tech community through my speaking and teaching engagements.">
         Appearances.
       </Page.Header>
-      <Page.Body>
-        <AppearancesFeed events={allEvents} />
-      </Page.Body>
+      <AppearancesFeed events={allEvents} />
     </Page>
   );
 };

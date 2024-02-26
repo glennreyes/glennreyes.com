@@ -16,9 +16,7 @@ const TalksPage = async () => {
       <Page.Header lead="Browse through a collection of my past and upcoming conference and meetup talks.">
         Speaking.
       </Page.Header>
-      <Page.Body>
-        <TalksFeed talks={allTalks} />
-      </Page.Body>
+      <TalksFeed talks={allTalks} />
     </Page>
   );
 };
