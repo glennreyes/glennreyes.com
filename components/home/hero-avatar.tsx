@@ -13,6 +13,7 @@ export const HeroAvatar = ({ children }: HeroAvatarProps) => {
   return (
     <div className="h-40 w-40" ref={ref}>
       <Transition
+        as="div"
         enter="duration-150 ease-out"
         enterFrom="opacity-0 scale-95"
         enterTo="opacity-100"

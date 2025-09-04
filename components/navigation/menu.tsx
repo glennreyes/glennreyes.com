@@ -43,7 +43,10 @@ export const Menu = (props: MenuProps) => (
               icon={Bars2Icon}
             />
           </Popover.Button>
-          <Transition.Root className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden">
+          <Transition.Root
+            as="div"
+            className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden"
+          >
             <Transition.Child
               as={Fragment}
               enter="duration-150 ease-out"

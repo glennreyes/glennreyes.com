@@ -20,6 +20,7 @@ export const NavbarAvatar = ({ children }: NavbarAvatarProps) => {
 
   return (
     <Transition
+      as="div"
       className="flex flex-none"
       enter="duration-150 ease-out"
       enterFrom="opacity-0 scale-95 translate-y-1/4"

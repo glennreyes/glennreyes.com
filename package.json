@@ -17,7 +17,7 @@
   "dependencies": {
     "@fontsource/geist-sans": "^5.2.5",
     "@giscus/react": "^3.1.0",
-    "@headlessui/react": "^1.7.19",
+    "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^5.13.0",
     "@radix-ui/react-slot": "^1.2.3",

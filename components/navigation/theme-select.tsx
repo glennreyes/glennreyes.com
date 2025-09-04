@@ -115,6 +115,7 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
             />
           </Listbox.Button>
           <Transition
+            as="div"
             enter="duration-150 ease-out"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100"
