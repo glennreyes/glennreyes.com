@@ -7,7 +7,7 @@ export const GET = async () => {
   const buffer = await readFile(path);
 
   // Return the photo as a response with the correct content type
-  return new Response(buffer, {
+  return new Response(new Uint8Array(buffer), {
     headers: { 'Content-Type': 'image/jpeg' },
   });
 };
