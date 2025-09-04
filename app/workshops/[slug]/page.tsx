@@ -17,12 +17,11 @@ interface GenerateMetadataConfigParams {
 }
 
 interface GenerateMetadataConfig {
-  params: GenerateMetadataConfigParams;
+  params: Promise<GenerateMetadataConfigParams>;
 }
 
-export const generateMetadata = async ({
-  params,
-}: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+  const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
 
   return {
@@ -44,7 +43,8 @@ interface WorkshopPageProps {
   params: WorkshopPageParams;
 }
 
-const WorkshopPage: FC<WorkshopPageProps> = async ({ params }) => {
+const WorkshopPage: FC<WorkshopPageProps> = async props => {
+  const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
   const events = workshop.appearances.map((appearance) => appearance.event);
 

@@ -14,12 +14,11 @@ interface GenerateMetadataConfigParams {
 }
 
 interface GenerateMetadataConfig {
-  params: GenerateMetadataConfigParams;
+  params: Promise<GenerateMetadataConfigParams>;
 }
 
-export const generateMetadata = async ({
-  params,
-}: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+  const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
   return {
@@ -41,7 +40,8 @@ interface AppearancePageProps {
   params: AppearancePageParams;
 }
 
-const AppearancePage: FC<AppearancePageProps> = async ({ params }) => {
+const AppearancePage: FC<AppearancePageProps> = async props => {
+  const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
   return (

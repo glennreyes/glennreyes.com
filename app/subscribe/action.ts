@@ -15,13 +15,13 @@ export const subscribe = async (data: FormData) => {
     .safeParse({ email, theme });
 
   if (!result.success) {
-    return 'Invalid data';
+    throw new Error('Invalid data');
   }
 
   try {
     await subscribeBase(result.data);
   } catch {
-    return 'Error subscribing';
+    throw new Error('Error subscribing');
   }
 
   redirect('/subscribe/confirm');

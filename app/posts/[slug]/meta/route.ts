@@ -9,10 +9,11 @@ interface PostTitleConfigParams {
 }
 
 interface PostTitleConfig {
-  params: PostTitleConfigParams;
+  params: Promise<PostTitleConfigParams>;
 }
 
-export const GET = async (_: NextRequest, { params }: PostTitleConfig) => {
+export const GET = async (_: NextRequest, props: PostTitleConfig) => {
+  const params = await props.params;
   const { frontmatter } = await readMDXFile<PostFrontmatter>(
     `content/posts/${params.slug}.mdx`,
   );

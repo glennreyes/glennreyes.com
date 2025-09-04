@@ -6,7 +6,7 @@ import { createContext } from 'react';
 
 interface IntersectionProps {
   isInView: boolean;
-  ref: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement | null>;
   setInstance: Dispatch<SetStateAction<IntersectionObserverEntry | null>>;
 }
 

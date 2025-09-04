@@ -14,10 +14,11 @@ interface GenerateMetadataConfigParams {
 }
 
 interface GenerateMetadataConfig {
-  params: GenerateMetadataConfigParams;
+  params: Promise<GenerateMetadataConfigParams>;
 }
 
-export const generateMetadata = async ({ params }: GenerateMetadataConfig) => {
+export const generateMetadata = async (props: GenerateMetadataConfig) => {
+  const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
@@ -58,7 +59,8 @@ interface PostPageProps {
   params: PostPageParams;
 }
 
-const PostPage: FC<PostPageProps> = async ({ params }) => {
+const PostPage: FC<PostPageProps> = async props => {
+  const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 

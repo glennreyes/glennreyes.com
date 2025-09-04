@@ -16,12 +16,11 @@ interface GenerateMetadataConfigParams {
 }
 
 interface GenerateMetadataConfig {
-  params: GenerateMetadataConfigParams;
+  params: Promise<GenerateMetadataConfigParams>;
 }
 
-export const generateMetadata = async ({
-  params,
-}: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+  const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
 
   return {
@@ -40,10 +39,11 @@ interface TalkPageParams {
 }
 
 interface TalkPageProps {
-  params: TalkPageParams;
+  params: Promise<TalkPageParams>;
 }
 
-const TalkPage = async ({ params }: TalkPageProps) => {
+const TalkPage = async (props: TalkPageProps) => {
+  const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
   const events = talk.appearances.map((appearance) => appearance.event);
 
