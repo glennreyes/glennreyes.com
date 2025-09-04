@@ -9,10 +9,15 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedParameters": true,
     "paths": {
-      "@/*": ["./*"],
+      "@/*": [
+        "./*"
+      ]
     },
+    "target": "ES2017"
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules"
+  ],
   "extends": "@tsconfig/next/tsconfig",
   "include": [
     "**/*.ts",
@@ -20,6 +25,6 @@
     "*.cjs",
     "*.mjs",
     ".*.cjs",
-    ".next/types/**/*.ts",
-  ],
+    ".next/types/**/*.ts"
+  ]
 }
