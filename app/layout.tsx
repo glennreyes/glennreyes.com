@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import type { FC, ReactNode } from 'react';
 
 import '@/app/globals.css';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 import { Footer } from '@/components/footer/footer';
 import { Menu } from '@/components/navigation/menu';
 import { Navbar } from '@/components/navigation/navbar';
@@ -9,8 +12,6 @@ import { Body } from '@/components/ui/layout/body';
 import { Html } from '@/components/ui/layout/html';
 import { Main } from '@/components/ui/layout/main';
 import { description, name, origin, x } from '@/lib/constants';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { Providers } from './providers';
 

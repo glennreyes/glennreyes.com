@@ -1,7 +1,8 @@
 import type { Location } from '@prisma/client';
 
-import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 import { MapPinIcon } from '@heroicons/react/24/outline';
+
+import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 
 import { Link } from '../ui/link/link';
 

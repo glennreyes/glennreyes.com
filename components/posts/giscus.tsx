@@ -1,8 +1,9 @@
 'use client';
 
-import { parseResolvedTheme } from '@/lib/theme';
 import GiscusBase from '@giscus/react';
 import { useTheme } from 'next-themes';
+
+import { parseResolvedTheme } from '@/lib/theme';
 
 export const Giscus = () => {
   const { resolvedTheme } = useTheme();

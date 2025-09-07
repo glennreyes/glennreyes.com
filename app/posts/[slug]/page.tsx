@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 
+import { ArrowLeftIcon } from '@heroicons/react/20/solid';
+import { notFound } from 'next/navigation';
+
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
 import { Article } from '@/components/ui/layout/article';
 import { origin } from '@/lib/constants';
 import { getAllPosts } from '@/lib/posts';
-import { ArrowLeftIcon } from '@heroicons/react/20/solid';
-import { notFound } from 'next/navigation';
 
 export const generateMetadata = async (
   props: PageProps<'/posts/[slug]'>,

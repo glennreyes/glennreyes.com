@@ -2,8 +2,9 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { useIntersection } from '@/lib/hooks/use-intersection';
 import { Transition } from '@headlessui/react';
+
+import { useIntersection } from '@/lib/hooks/use-intersection';
 
 type HeroAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 

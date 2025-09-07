@@ -2,8 +2,9 @@
 
 import type { ReactNode } from 'react';
 
-import { IntersectionProvider } from '@/components/intersection/intersection-provider';
 import { ThemeProvider } from 'next-themes';
+
+import { IntersectionProvider } from '@/components/intersection/intersection-provider';
 
 interface ProvidersProps {
   children: ReactNode;
