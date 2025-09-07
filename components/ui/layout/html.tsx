@@ -1,15 +1,21 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 import clsx from 'clsx';
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
+import { Geist, Geist_Mono } from 'next/font/google';
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
+const geist = Geist({
+  subsets: ['latin'],
+});
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+});
+
 export const Html = (props: HtmlProps) => {
   const classes = clsx(
-    GeistSans.variable,
-    GeistMono.variable,
+    geist.className,
+    geistMono.className,
     'motion-safe:scroll-smooth',
   );
 
