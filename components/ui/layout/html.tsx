@@ -8,14 +8,15 @@ type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 const geist = Geist({
   subsets: ['latin'],
 });
-const geistMono = Geist_Mono({
+
+export const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
 export const Html = (props: HtmlProps) => {
   const classes = clsx(
+    // geistMono.className,
     geist.className,
-    geistMono.className,
     'motion-safe:scroll-smooth',
   );
 

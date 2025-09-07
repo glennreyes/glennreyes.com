@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
+import { geistMono } from '@/components/ui/layout/html';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Link } from '@/components/ui/link/link';
 import { H1 } from '@/components/ui/typography/h1';
@@ -42,15 +43,15 @@ export const components: MDXComponents = {
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {
-      return (
-        <code
-          className="mx-0.5 rounded-md border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900"
-          {...props}
-        />
+      const classes = clsx(
+        'mx-0.5 rounded-md border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900',
+        geistMono.className,
       );
+
+      return <code className={classes} {...props} />;
     }
 
-    return <code {...props} />;
+    return <code className={geistMono.className} {...props} />;
   },
   div: ({ children, className, raw, ...props }: DivProps) => {
     // Handle code block titles
