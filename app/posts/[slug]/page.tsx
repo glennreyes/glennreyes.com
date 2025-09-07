@@ -59,7 +59,7 @@ interface PostPageProps {
   params: PostPageParams;
 }
 
-const PostPage: FC<PostPageProps> = async props => {
+const PostPage: FC<PostPageProps> = async (props) => {
   const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
@@ -81,12 +81,7 @@ const PostPage: FC<PostPageProps> = async props => {
     >
       <Article.Header
         lead={post.frontmatter.lead}
-        meta={
-          <>
-            <DateDisplay value={post.frontmatter.publishedAt} /> ·{' '}
-            {/* <ReadingTime value={post.readingTime} /> */}
-          </>
-        }
+        meta={<DateDisplay value={post.frontmatter.publishedAt} />}
       >
         {post.frontmatter.title}
       </Article.Header>
