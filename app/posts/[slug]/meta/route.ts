@@ -4,15 +4,10 @@ import type { NextRequest } from 'next/server';
 import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 import { format, isThisYear } from 'date-fns';
 
-interface PostTitleConfigParams {
-  slug: string;
-}
-
-interface PostTitleConfig {
-  params: Promise<PostTitleConfigParams>;
-}
-
-export const GET = async (_: NextRequest, props: PostTitleConfig) => {
+export const GET = async (
+  _: NextRequest,
+  props: RouteContext<'/posts/[slug]/meta'>,
+) => {
   const params = await props.params;
   const { frontmatter } = await readMDXFile<PostFrontmatter>(
     `content/posts/${params.slug}.mdx`,

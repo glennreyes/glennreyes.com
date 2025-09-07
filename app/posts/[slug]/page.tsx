@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { Metadata } from 'next';
 
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
@@ -9,15 +9,9 @@ import { getAllPosts } from '@/lib/posts';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { notFound } from 'next/navigation';
 
-interface GenerateMetadataConfigParams {
-  slug: string;
-}
-
-interface GenerateMetadataConfig {
-  params: Promise<GenerateMetadataConfigParams>;
-}
-
-export const generateMetadata = async (props: GenerateMetadataConfig) => {
+export const generateMetadata = async (
+  props: PageProps<'/posts/[slug]'>,
+): Promise<Metadata> => {
   const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
@@ -51,15 +45,7 @@ export const generateStaticParams = async () => {
     .map((post) => ({ slug: post.slug }));
 };
 
-interface PostPageParams {
-  slug: string;
-}
-
-interface PostPageProps {
-  params: PostPageParams;
-}
-
-const PostPage: FC<PostPageProps> = async (props) => {
+const PostPage = async (props: PageProps<'/posts/[slug]'>) => {
   const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);

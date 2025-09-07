@@ -9,15 +9,9 @@ import { getAllEvents, getEventBySlug } from '@/lib/events';
 
 export const revalidate = 3600;
 
-interface GenerateMetadataConfigParams {
-  slug: string;
-}
-
-interface GenerateMetadataConfig {
-  params: Promise<GenerateMetadataConfigParams>;
-}
-
-export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (
+  props: PageProps<'/appearances/[slug]'>,
+): Promise<Metadata> => {
   const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
@@ -32,15 +26,7 @@ export const generateStaticParams = async () => {
   return allEvents.map((event) => ({ slug: event.slug }));
 };
 
-interface AppearancePageParams {
-  slug: string;
-}
-
-interface AppearancePageProps {
-  params: AppearancePageParams;
-}
-
-const AppearancePage: FC<AppearancePageProps> = async props => {
+const AppearancePage: FC<PageProps<'/appearances/[slug]'>> = async (props) => {
   const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
