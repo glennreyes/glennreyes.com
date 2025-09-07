@@ -2,13 +2,6 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-family-mono:
-    var(--font-geist-mono), ui-monospace, SFMono-Regular, 'SF Mono', Consolas,
-    'Liberation Mono', Menlo, monospace;
-  --font-family-sans:
-    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-
   --breakpoint-lg: 48rem;
   --breakpoint-xl: 64rem;
   --breakpoint-2xl: 64rem;
