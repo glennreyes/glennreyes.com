@@ -12,15 +12,9 @@ import { getAllWorkshops, getWorkshopBySlug } from '@/lib/workshops';
 
 export const revalidate = 3600;
 
-interface GenerateMetadataConfigParams {
-  slug: string;
-}
-
-interface GenerateMetadataConfig {
-  params: Promise<GenerateMetadataConfigParams>;
-}
-
-export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (
+  props: PageProps<'/workshops/[slug]'>,
+): Promise<Metadata> => {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
 
@@ -35,15 +29,7 @@ export const generateStaticParams = async () => {
   return allWorkshops.map((workshop) => ({ slug: workshop.slug }));
 };
 
-interface WorkshopPageParams {
-  slug: string;
-}
-
-interface WorkshopPageProps {
-  params: WorkshopPageParams;
-}
-
-const WorkshopPage: FC<WorkshopPageProps> = async props => {
+const WorkshopPage: FC<PageProps<'/workshops/[slug]'>> = async (props) => {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
   const events = workshop.appearances.map((appearance) => appearance.event);

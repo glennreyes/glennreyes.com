@@ -11,15 +11,9 @@ import { getAllTalks, getTalkBySlug } from '@/lib/talks';
 
 export const revalidate = 3600;
 
-interface GenerateMetadataConfigParams {
-  slug: string;
-}
-
-interface GenerateMetadataConfig {
-  params: Promise<GenerateMetadataConfigParams>;
-}
-
-export const generateMetadata = async (props: GenerateMetadataConfig): Promise<Metadata> => {
+export const generateMetadata = async (
+  props: PageProps<'/talks/[slug]'>,
+): Promise<Metadata> => {
   const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
 
@@ -34,15 +28,7 @@ export const generateStaticParams = async () => {
   return allTalks.map((talk) => ({ slug: talk.slug }));
 };
 
-interface TalkPageParams {
-  slug: string;
-}
-
-interface TalkPageProps {
-  params: Promise<TalkPageParams>;
-}
-
-const TalkPage = async (props: TalkPageProps) => {
+const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
   const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
   const events = talk.appearances.map((appearance) => appearance.event);
