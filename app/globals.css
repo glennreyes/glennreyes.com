@@ -27,6 +27,10 @@
   }
 }
 
+@utility prose {
+  max-width: 70ch;
+}
+
 @layer base {
   a {
     @apply text-inherit no-underline;
