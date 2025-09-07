@@ -15,7 +15,7 @@ interface MenuLinkProps extends Omit<LinkProps, 'className'> {
 
 export const MenuLink = ({ children, ...props }: MenuLinkProps) => {
   const isActivePathname = useIsActivePathname(
-    typeof props.href === 'object' ? props.href.pathname ?? '/' : props.href,
+    typeof props.href === 'object' ? (props.href.pathname ?? '/') : props.href,
   );
   const classes = clsx(
     isActivePathname
