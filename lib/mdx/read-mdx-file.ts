@@ -80,6 +80,7 @@ export const readMDXFile = async <TFrontmatter = Record<string, unknown>>(
                 // Each line node by default has `class="line"`.
                 node.properties.className?.push(classes.lineHighlighted);
               },
+
               // Callback hooks to add custom logic to nodes when visiting
               // them.
               onVisitLine: (node) => {

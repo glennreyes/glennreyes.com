@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
 
+import {
+  ArrowUpRightIcon,
+  PaperAirplaneIcon,
+} from '@heroicons/react/24/outline';
+import Image from 'next/image';
+
 import speaking from '@/assets/images/speaking.jpg';
 import { GitHub } from '@/components/icons/github';
 import { Instagram } from '@/components/icons/instagram';
@@ -12,11 +18,6 @@ import { List } from '@/components/ui/layout/list';
 import { Page } from '@/components/ui/layout/page';
 import { email, github, instagram, linkedin, x } from '@/lib/constants';
 import { readMDXFile } from '@/lib/mdx/read-mdx-file';
-import {
-  ArrowUpRightIcon,
-  PaperAirplaneIcon,
-} from '@heroicons/react/24/outline';
-import Image from 'next/image';
 
 interface AboutPageFrontmatter {
   heading: string;

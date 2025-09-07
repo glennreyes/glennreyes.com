@@ -2,9 +2,10 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 import { Transition } from '@headlessui/react';
 import { useContext } from 'react';
+
+import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 
 import { Intersection } from '../intersection/intersection';
 

@@ -1,10 +1,7 @@
 'use client';
 
-import type { Theme } from '@/lib/theme';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
-import { useMounted } from '@/lib/hooks/use-mounted';
-import { useTheme } from '@/lib/hooks/use-theme';
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import {
@@ -14,6 +11,11 @@ import {
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { Fragment } from 'react';
+
+import type { Theme } from '@/lib/theme';
+
+import { useMounted } from '@/lib/hooks/use-mounted';
+import { useTheme } from '@/lib/hooks/use-theme';
 
 import { IconButton } from '../ui/elements/icon-button';
 import { Select } from '../ui/forms/select';

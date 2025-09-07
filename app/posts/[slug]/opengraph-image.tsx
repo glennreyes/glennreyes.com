@@ -1,6 +1,7 @@
-import { origin } from '@/lib/constants';
 import { ImageResponse } from 'next/og';
 import { z } from 'zod';
+
+import { origin } from '@/lib/constants';
 
 export const runtime = 'edge';
 

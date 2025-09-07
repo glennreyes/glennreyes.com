@@ -37,7 +37,7 @@ export const Button = ({ appearance = 'primary', ...props }: ButtonProps) => {
   );
 
   if (props.as === 'link') {
-    const { as, ...rest } = props;
+    const { as: _as, ...rest } = props;
     const linkClasses = clsx(classes, 'text-center');
 
     return <Link className={linkClasses} {...rest} />;

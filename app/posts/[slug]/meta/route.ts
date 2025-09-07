@@ -1,8 +1,10 @@
-import type { PostFrontmatter } from '@/lib/posts';
 import type { NextRequest } from 'next/server';
 
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 import { format, isThisYear } from 'date-fns';
+
+import type { PostFrontmatter } from '@/lib/posts';
+
+import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 
 export const GET = async (
   _: NextRequest,

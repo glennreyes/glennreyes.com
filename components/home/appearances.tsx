@@ -1,6 +1,7 @@
+import { getTime } from 'date-fns';
+
 import { getAllEvents } from '@/lib/events';
 import { composePlaceByLocation } from '@/lib/place';
-import { getTime } from 'date-fns';
 
 import { Divider } from '../ui/elements/divider';
 import { Button } from '../ui/forms/button';

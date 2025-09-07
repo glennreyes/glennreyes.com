@@ -2,6 +2,10 @@ import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
+import { DocumentIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import Image from 'next/image';
+
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Link } from '@/components/ui/link/link';
@@ -10,9 +14,6 @@ import { H2 } from '@/components/ui/typography/h2';
 import { H3 } from '@/components/ui/typography/h3';
 import { H4 } from '@/components/ui/typography/h4';
 import { Lead } from '@/components/ui/typography/lead';
-import { DocumentIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import Image from 'next/image';
 
 interface DivProps extends ComponentPropsWithoutRef<'div'> {
   'data-language'?: string;
@@ -64,7 +65,7 @@ export const components: MDXComponents = {
           <div className="absolute inset-y-0 left-0 z-10 w-4 bg-gradient-to-l from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="absolute inset-y-0 right-12 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="overflow-x-auto">
-            <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 dark:text-slate-300/75 sm:pl-6">
+            <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 sm:pl-6 dark:text-slate-300/75">
               <DocumentIcon
                 aria-hidden
                 className="h-4 w-4 flex-none text-slate-600 dark:text-slate-600"
@@ -83,7 +84,7 @@ export const components: MDXComponents = {
           className="relative my-[1.7142857em] overflow-hidden rounded-[1.75rem] border border-slate-300/25 dark:border-slate-500/25 [&+pre]:rounded-t-none [&_pre]:my-0"
           {...props}
         >
-          <div className="relative flex items-center justify-end gap-2 rounded-t-[1.75rem] bg-slate-900 px-4 py-1 text-xs text-slate-400 dark:bg-slate-950 dark:text-slate-500 sm:px-6">
+          <div className="relative flex items-center justify-end gap-2 rounded-t-[1.75rem] bg-slate-900 px-4 py-1 text-xs text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">
             <div className="-mr-2 flex-none">
               <CopyToClipboard value={raw} />
             </div>
@@ -105,7 +106,7 @@ export const components: MDXComponents = {
   h4: (props) => <H4 className="not-prose scroll-mt-20" {...props} />,
   h5: () => null,
   h6: () => null,
-  pre: ({ className, style, ...props }) => (
+  pre: ({ className: _className, style: _style, ...props }) => (
     <pre
       className="relative block rounded-[1.75rem] rounded-t-none px-0 py-6 selection:bg-white/10 dark:bg-black/75 [&>code]:grid"
       {...props}

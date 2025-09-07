@@ -3,8 +3,9 @@
 import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
 
-import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 import clsx from 'clsx';
+
+import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 
 import { Link } from '../ui/link/link';
 
