@@ -91,11 +91,12 @@ export const components: MDXComponents = {
     );
   },
   h1: H1,
-  h2: (props) => <H2 className="not-prose my-5 scroll-mt-20" {...props} />,
-  h3: (props) => <H3 className="not-prose my-5 scroll-mt-20" {...props} />,
-  h4: (props) => <H4 className="not-prose my-5 scroll-mt-20" {...props} />,
-  h5: () => null,
-  h6: () => null,
+  h2: (props) => <H2 className="not-prose my-4 scroll-mt-23" {...props} />,
+  h3: (props) => <H3 className="not-prose my-4 scroll-mt-23" {...props} />,
+  h4: (props) => <H4 className="not-prose my-4 scroll-mt-23" {...props} />,
+  strong: (props) => {
+    return <strong className="font-medium" {...props} />;
+  },
   pre: ({ className: _className, style: _style, ...props }) => {
     return (
       <pre

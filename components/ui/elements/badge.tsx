@@ -20,7 +20,7 @@ interface BadgeProps
 export const Badge = ({ color = 'teal', ...props }: BadgeProps) => {
   const classes = clsx(
     colors[color],
-    'inline-flex items-center gap-1 rounded-full border px-2.5 py-1.5 text-[0.6875rem] font-medium',
+    'inline-flex items-center gap-1 rounded-full border px-2.5 py-1.5',
   );
 
   return <span className={classes} {...props} />;
