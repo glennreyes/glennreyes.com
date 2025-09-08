@@ -87,11 +87,11 @@ export const components: MDXComponents = {
   figcaption: ({ children, className, ...props }: FigcaptionProps) => {
     return (
       <figcaption
-        className="absolute inset-x-0 top-[0.9375rem] max-w-full min-w-0 flex-1 pr-12 [.prose_&]:m-0"
+        className="absolute inset-x-0 top-[0.9375rem] mr-16 max-w-full min-w-0 flex-1 [.prose_&]:my-0"
         {...props}
       >
         <div className="absolute inset-y-0 left-0 z-10 w-4 bg-gradient-to-l from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
-        <div className="absolute inset-y-0 right-12 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
+        <div className="absolute inset-y-0 right-0 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
         <div className="overflow-x-auto">
           <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 sm:pl-6 dark:text-slate-300/75">
             <DocumentIcon
