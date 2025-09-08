@@ -20,7 +20,7 @@ export const Hero = () => (
         <div className="flex justify-between gap-4">
           <div className="grid gap-4">
             <H1>{name}</H1>
-            <p className="max-w-2xl leading-relaxed text-slate-600 dark:text-slate-400">
+            <p className="max-w-2xl text-slate-600 dark:text-slate-400">
               {description}
             </p>
           </div>
