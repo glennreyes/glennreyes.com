@@ -7,7 +7,7 @@ import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
 import { H3 } from '../typography/h3';
 
-export interface CardProps
+interface CardProps
   extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   asChild?: boolean;
 }

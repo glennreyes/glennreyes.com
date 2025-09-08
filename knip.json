@@ -1,0 +1,7 @@
+{
+  "ignoreDependencies": [
+    "@tailwindcss/typography",
+    "@types/eslint",
+    "tailwindcss"
+  ]
+}

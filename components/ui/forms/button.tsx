@@ -28,7 +28,7 @@ interface ButtonAsLinkProps
   as: 'link';
 }
 
-export type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
+type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
 
 export const Button = ({ appearance = 'primary', ...props }: ButtonProps) => {
   const classes = clsx(

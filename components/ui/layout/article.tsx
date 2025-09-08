@@ -34,7 +34,7 @@ interface ArticleHeaderProps
   meta: ReactNode;
 }
 
-export const ArticleHeader = ({
+const ArticleHeader = ({
   children,
   lead,
   meta,

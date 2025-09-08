@@ -103,7 +103,15 @@ export default defineConfig([
     },
     settings: {
       react: { version: 'detect' },
-      'import/resolver': { typescript: true, node: true },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
     },
   },
 
@@ -119,6 +127,17 @@ export default defineConfig([
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+        node: {
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
       },
     },
     rules: {

@@ -6,7 +6,7 @@ const forms: Record<ResolvedTheme, string> = {
 };
 const publicApiKey = 'lQbg_unCgg3LrJVBjnboyA';
 
-export interface SubscribeData {
+interface SubscribeData {
   email: string;
   theme: ResolvedTheme;
 }
