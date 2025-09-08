@@ -12,7 +12,7 @@ interface ProvidersProps {
 }
 
 export const Providers = ({ children }: ProvidersProps) => (
-  <ThemeProvider attribute="class">
+  <ThemeProvider attribute="data-theme">
     <IntersectionProvider>
       <ScrollRestoration />
       {children}
