@@ -8,7 +8,7 @@ import Image from 'next/image';
 import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
 
-type AvatarSize = 11 | 28 | 40;
+type AvatarSize = 11 | 34;
 
 const attributes: Record<
   AvatarSize,
@@ -19,15 +19,10 @@ const attributes: Record<
     height: 40,
     width: 40,
   },
-  28: {
-    className: 'h-28 w-28 p-0.5',
-    height: 108,
-    width: 108,
-  },
-  40: {
-    className: 'h-40 w-40 p-1',
-    height: 152,
-    width: 152,
+  34: {
+    className: 'h-34 w-34 p-1',
+    height: 136,
+    width: 136,
   },
 };
 
@@ -39,7 +34,7 @@ interface AvatarProps
   size?: AvatarSize;
 }
 
-export const Avatar = ({ size = 40, ...props }: AvatarProps) => {
+export const Avatar = ({ size = 34, ...props }: AvatarProps) => {
   const { className, ...sizeAttributes } = attributes[size];
   const classes = clsx('relative rounded-full', className);
 

@@ -10,7 +10,6 @@ export const PostsFeed = async () => {
       {allPosts.map(({ frontmatter, slug }) => (
         <Feed.Item
           action="Read Article"
-          date={frontmatter.publishedAt}
           description={frontmatter.description}
           key={slug}
           link={`/posts/${slug}`}

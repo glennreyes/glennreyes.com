@@ -76,7 +76,7 @@ const FeedItem = ({
     ...rest,
   };
   const articleClasses = clsx(
-    action ? 'gap-8' : 'gap-2',
+    action ? 'gap-8' : 'gap-4',
     link && 'group relative',
     'grid',
   );

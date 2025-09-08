@@ -1,10 +1,9 @@
 // Basic
 export const name = 'Glenn Reyes';
 
-const tagline =
-  'Software engineer, tech speaker and workshop instructor';
+const tagline = 'Software engineer, tech speaker and workshop instructor';
 
-export const description = `${tagline} with a passion for building innovative products and user interfaces using cutting edge web technologies.`;
+export const description = `${tagline} who loves turning ideas into reality through code. I build innovative products, share knowledge at conferences, and help developers create better user experiences with modern web technologies.`;
 
 // Social media
 export const x = 'glnnrys';
