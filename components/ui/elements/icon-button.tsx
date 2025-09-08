@@ -2,7 +2,6 @@ import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
 import { cva } from 'class-variance-authority';
-
 import { forwardRef } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -32,7 +31,6 @@ const iconButtonVariants = cva(
     },
   },
 );
-
 const iconSizes = {
   5: 'h-5 w-5',
   6: 'h-6 w-6',
@@ -61,7 +59,7 @@ type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   ({ appearance, size, className, icon: Icon, ...props }, ref) => {
     const classes = cn(iconButtonVariants({ appearance, size }), className);
-    const iconClasses = iconSizes[size || 6];
+    const iconClasses = iconSizes[size ?? 6];
 
     if (props.as === 'link') {
       const { as: _as, ...rest } = props;

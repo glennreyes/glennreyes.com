@@ -4,7 +4,6 @@ import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { cva } from 'class-variance-authority';
-
 import Image from 'next/image';
 
 import photo from '@/assets/images/photo.jpg';
@@ -22,7 +21,6 @@ const avatarVariants = cva('relative rounded-full', {
     size: 34,
   },
 });
-
 const avatarImageSizes = {
   11: { height: 40, width: 40 },
   34: { height: 136, width: 136 },
@@ -39,7 +37,7 @@ interface AvatarProps
 
 export const Avatar = ({ size, className, ...props }: AvatarProps) => {
   const classes = cn(avatarVariants({ size }), className);
-  const imageSize = avatarImageSizes[size || 34];
+  const imageSize = avatarImageSizes[size ?? 34];
 
   return (
     <div className={classes}>
