@@ -15,13 +15,13 @@ import {
   MoonIcon,
   SunIcon,
 } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
 import { Fragment } from 'react';
 
 import type { Theme } from '@/lib/theme';
 
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useTheme } from '@/lib/hooks/use-theme';
+import { cn } from '@/lib/utils';
 
 import { IconButton } from '../ui/elements/icon-button';
 import { Select } from '../ui/forms/select';
@@ -143,14 +143,14 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
                   value={option.value}
                 >
                   {({ focus, selected }) => {
-                    const itemClasses = clsx(
+                    const itemClasses = cn(
                       'flex cursor-pointer items-center gap-3 px-4 py-2.5 font-medium transition',
                       focus && 'bg-slate-50 dark:bg-slate-900/50',
                       selected
                         ? 'text-teal-600 dark:text-teal-200/75'
                         : 'text-slate-800 dark:text-slate-200',
                     );
-                    const iconClasses = clsx(
+                    const iconClasses = cn(
                       'h-6 w-6',
                       selected
                         ? 'text-teal-500/75 dark:text-teal-600/75'

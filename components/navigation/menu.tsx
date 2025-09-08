@@ -4,8 +4,9 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import { Popover, Transition } from '@headlessui/react';
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import clsx from 'clsx';
 import { Fragment } from 'react';
+
+import { cn } from '@/lib/utils';
 
 import { Divider } from '../ui/elements/divider';
 import { IconButton } from '../ui/elements/icon-button';
@@ -30,7 +31,7 @@ type MenuProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 export const Menu = (props: MenuProps) => (
   <Popover as="nav" className="grid items-center">
     {({ close, open }) => {
-      const buttonClasses = clsx(open && 'opacity-0', '-mx-2.5 md:hidden');
+      const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
 
       return (
         <>

@@ -1,14 +1,15 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/lib/utils';
 
 interface H4Props extends ComponentPropsWithoutRef<'h4'> {
   asChild?: boolean;
 }
 
 export const H4 = ({ asChild, className, ...props }: H4Props) => {
-  const classes = twMerge(
+  const classes = cn(
     'text-slate-700 dark:text-slate-300 font-medium text-base',
     className,
   );

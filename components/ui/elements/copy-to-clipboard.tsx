@@ -1,8 +1,9 @@
 'use client';
 
 import { CheckIcon, Square2StackIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
 import { useState } from 'react';
+
+import { cn } from '@/lib/utils';
 
 import { IconButton } from './icon-button';
 
@@ -20,11 +21,11 @@ export const CopyToClipboard = ({ value }: CopyToClipboardProps) => {
       setIsCopied(false);
     }, 3000);
   };
-  const copyIconClasses = clsx(
+  const copyIconClasses = cn(
     isCopied && 'scale-0 opacity-0',
     'bg-transparent text-slate-500 transition hover:text-slate-400 focus:transition-none active:text-slate-500 dark:bg-transparent dark:text-slate-500 dark:hover:text-slate-400 dark:active:text-slate-500',
   );
-  const checkIconClasses = clsx(
+  const checkIconClasses = cn(
     !isCopied && 'scale-0 opacity-0',
     'pointer-events-none absolute inset-0 grid items-center justify-center text-teal-500 transition',
   );

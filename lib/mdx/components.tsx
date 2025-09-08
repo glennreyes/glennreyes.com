@@ -2,7 +2,6 @@ import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import clsx from 'clsx';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
@@ -13,6 +12,7 @@ import { H2 } from '@/components/ui/typography/h2';
 import { H3 } from '@/components/ui/typography/h3';
 import { H4 } from '@/components/ui/typography/h4';
 import { Lead } from '@/components/ui/typography/lead';
+import { cn } from '@/lib/utils';
 
 interface FigureProps extends ComponentPropsWithoutRef<'figure'> {
   'data-rehype-pretty-code-figure'?: string;
@@ -30,7 +30,7 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 
 export const components: MDXComponents = {
   Image: ({ alt, className, ...props }: ImageProps) => (
-    <Image alt={alt} className={clsx('rounded-3xl', className)} {...props} />
+    <Image alt={alt} className={cn('rounded-3xl', className)} {...props} />
   ),
   Lead,
   a: ({ href, ...props }) => {

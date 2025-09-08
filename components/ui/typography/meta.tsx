@@ -4,7 +4,7 @@ import type {
   HTMLAttributes,
 } from 'react';
 
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
 import type { DateDisplay } from '../elements/date-display';
 
@@ -22,7 +22,7 @@ export const Meta = <TElementType extends ElementType>({
   ...props
 }: MetaProps<TElementType>) => {
   const Component = as ?? 'div';
-  const classes = twMerge('text-slate-400 dark:text-slate-500', className);
+  const classes = cn('text-slate-400 dark:text-slate-500', className);
 
   return <Component className={classes} {...props} />;
 };
