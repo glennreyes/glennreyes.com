@@ -6,7 +6,7 @@ import { Paragraph } from '../ui/typography/paragraph';
 import { Giscus } from './giscus';
 
 export const Comments = () => (
-  <div className="prose prose-sm prose-slate max-w-none dark:prose-invert">
+  <div className="prose prose-slate dark:prose-invert max-w-none">
     <H4 asChild>
       <h2>Comments</h2>
     </H4>

@@ -10,7 +10,7 @@ import { Paragraph } from '../ui/typography/paragraph';
 export const AboutAuthor = () => (
   <Card asChild>
     <section>
-      <Card.Body title="About The Author">
+      <Card.Body title="About the Author">
         <div className="grid items-center gap-6 sm:flex">
           <Link className="flex-none rounded-full" href="/about">
             <Avatar size={28} />
