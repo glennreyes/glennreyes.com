@@ -7,7 +7,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
-import { geistMono } from '@/components/ui/layout/html';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Link } from '@/components/ui/link/link';
 import { H1 } from '@/components/ui/typography/h1';
@@ -28,11 +27,13 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 }
 
 export const components: MDXComponents = {
-  Image: ({ alt, className, ...props }: ImageProps) => {
-    const classes = clsx('rounded-[1.75rem]', className);
-
-    return <Image alt={alt} className={classes} {...props} />;
-  },
+  Image: ({ alt, className, ...props }: ImageProps) => (
+    <Image
+      alt={alt}
+      className={clsx('rounded-[1.75rem]', className)}
+      {...props}
+    />
+  ),
   Lead,
   a: ({ href, ...props }) =>
     href?.startsWith('#') ? (
@@ -43,15 +44,15 @@ export const components: MDXComponents = {
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {
-      const classes = clsx(
-        'mx-0.5 rounded-md border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900',
-        geistMono.className,
+      return (
+        <code
+          className="mx-0.5 rounded-md border border-slate-200 bg-slate-50 px-1 before:content-none after:content-none dark:border-slate-800 dark:bg-slate-900"
+          {...props}
+        />
       );
-
-      return <code className={classes} {...props} />;
     }
 
-    return <code className={geistMono.className} {...props} />;
+    return <code {...props} />;
   },
   div: ({ children, className, raw, ...props }: DivProps) => {
     // Handle code block titles
@@ -62,7 +63,7 @@ export const components: MDXComponents = {
       language !== undefined
     ) {
       return (
-        <div className="absolute inset-x-0 top-[0.9375rem] min-w-0 max-w-full flex-1 pr-12">
+        <div className="absolute inset-x-0 top-[0.9375rem] max-w-full min-w-0 flex-1 pr-12">
           <div className="absolute inset-y-0 left-0 z-10 w-4 bg-gradient-to-l from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="absolute inset-y-0 right-12 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
           <div className="overflow-x-auto">
@@ -82,7 +83,7 @@ export const components: MDXComponents = {
     if (props['data-rehype-pretty-code-fragment'] !== undefined && raw) {
       return (
         <div
-          className="relative my-[1.7142857em] overflow-hidden rounded-[1.75rem] border border-slate-300/25 dark:border-slate-500/25 [&+pre]:rounded-t-none [&_pre]:my-0"
+          className="relative my-[1.7142857em] overflow-hidden rounded-[1.75rem] border border-slate-300/25 dark:border-slate-500/25 [&_pre]:my-0 [&+pre]:rounded-t-none"
           {...props}
         >
           <div className="relative flex items-center justify-end gap-2 rounded-t-[1.75rem] bg-slate-900 px-4 py-1 text-xs text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">

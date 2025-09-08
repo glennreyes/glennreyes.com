@@ -22,13 +22,13 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
     .parse(await res.json());
   const geistSans700 = fetch(
     new URL(
-      '../../../node_modules/@fontsource/geist-sans/files/geist-sans-latin-700-normal.woff',
+      '../../../node_modules/@fontsource/geist/files/geist-latin-700-normal.woff',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
   const geistSans400 = fetch(
     new URL(
-      '../../../node_modules/@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff',
+      '../../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
