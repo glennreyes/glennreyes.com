@@ -22,7 +22,7 @@ export const CopyToClipboard = ({ value }: CopyToClipboardProps) => {
   };
   const copyIconClasses = clsx(
     isCopied && 'scale-0 opacity-0',
-    'bg-transparent text-slate-500 transition hover:text-slate-400 active:text-slate-500 dark:bg-transparent dark:text-slate-500 dark:hover:text-slate-400 dark:active:text-slate-500',
+    'bg-transparent text-slate-500 transition hover:text-slate-400 focus:transition-none active:text-slate-500 dark:bg-transparent dark:text-slate-500 dark:hover:text-slate-400 dark:active:text-slate-500',
   );
   const checkIconClasses = clsx(
     !isCopied && 'scale-0 opacity-0',

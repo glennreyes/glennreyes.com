@@ -23,7 +23,7 @@ export const MenuLink = ({ children, ...props }: MenuLinkProps) => {
     'text-slate-900/90 hover:text-teal-700/75 md:border-transparent dark:text-slate-200 dark:hover:text-teal-200/75';
   const classes = clsx(
     isActivePathname ? activeClasses : inactiveClasses,
-    'block py-3 text-sm font-semibold tracking-tight transition focus-visible:ring-offset-2 md:rounded-full md:border md:px-4 md:active:scale-95',
+    'block py-3 text-sm font-semibold tracking-tight transition focus-visible:ring-offset-2 focus-visible:transition-none md:rounded-full md:border md:px-4 md:active:scale-95',
   );
 
   return (
