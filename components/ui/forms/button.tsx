@@ -2,7 +2,6 @@ import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { cva } from 'class-variance-authority';
-
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
@@ -29,7 +28,7 @@ const buttonVariants = cva(
   },
 );
 
-interface ButtonBaseProps extends VariantProps<typeof buttonVariants> {}
+type ButtonBaseProps = VariantProps<typeof buttonVariants>;
 
 interface ButtonDefaultProps
   extends ButtonBaseProps,
