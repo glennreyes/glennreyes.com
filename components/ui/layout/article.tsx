@@ -16,7 +16,7 @@ export const Article = ({ back, children, ...props }: ArticleProps) => (
     <article>
       {back !== undefined && back !== null ? (
         <>
-          <div className="lg:sticky lg:top-20">
+          <div className="lg:sticky lg:top-23">
             <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
           </div>
           <div className="space-y-12">{children}</div>
@@ -52,7 +52,7 @@ Article.Header = ArticleHeader;
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 const ArticleBody = (props: ArticleBodyProps) => (
-  <div className="prose prose-slate mx-auto dark:prose-invert" {...props} />
+  <div className="prose prose-slate dark:prose-invert mx-auto" {...props} />
 );
 
 Article.Body = ArticleBody;

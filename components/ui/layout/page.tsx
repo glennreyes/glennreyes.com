@@ -18,7 +18,7 @@ interface PageHeaderProps
 }
 
 const PageHeader = ({ children, lead, meta, ...props }: PageHeaderProps) => (
-  <header className="grid max-w-4xl gap-2" {...props}>
+  <header className="grid max-w-4xl gap-4" {...props}>
     {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
     <H1>{children}</H1>
     {lead !== null &&
