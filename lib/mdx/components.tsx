@@ -2,7 +2,6 @@ import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { DocumentIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -15,11 +14,14 @@ import { H3 } from '@/components/ui/typography/h3';
 import { H4 } from '@/components/ui/typography/h4';
 import { Lead } from '@/components/ui/typography/lead';
 
-interface DivProps extends ComponentPropsWithoutRef<'div'> {
-  'data-language'?: string;
-  'data-rehype-pretty-code-fragment'?: string;
-  'data-rehype-pretty-code-title'?: string;
+interface FigureProps extends ComponentPropsWithoutRef<'figure'> {
+  'data-rehype-pretty-code-figure'?: string;
   raw?: string;
+}
+
+interface FigcaptionProps extends ComponentPropsWithoutRef<'figcaption'> {
+  'data-language'?: string;
+  'data-rehype-pretty-code-title'?: string;
 }
 
 interface CodeProps extends ComponentPropsWithoutRef<'code'> {
