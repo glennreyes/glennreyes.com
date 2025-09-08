@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/geist':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/geist-mono':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@giscus/react':
         specifier: ^3.1.0
         version: 3.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -418,6 +424,12 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fontsource/geist-mono@5.2.6':
+    resolution: {integrity: sha512-I3hsRP+8Gmhk35cwlPAR4w5xqk7e5pro2F1o51ZmB+lN+dPcwN3jYHKN+u0E5AMuiQKpTdkrqfEpvBjzQax3cQ==}
+
+  '@fontsource/geist@5.2.6':
+    resolution: {integrity: sha512-HKRFUn4fApQr9iGaVLUWG5vs+QYFqhKa5X7AFpT6Gey0Kx0ibvpFceMbMDDdlzzqPiGkvCuvYRUN55rvqXgibg==}
 
   '@giscus/react@3.1.0':
     resolution: {integrity: sha512-0TCO2TvL43+oOdyVVGHDItwxD1UMKP2ZYpT6gXmhFOqfAJtZxTzJ9hkn34iAF/b6YzyJ4Um89QIt9z/ajmAEeg==}
@@ -3563,6 +3575,10 @@ snapshots:
       tabbable: 6.2.0
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fontsource/geist-mono@5.2.6': {}
+
+  '@fontsource/geist@5.2.6': {}
 
   '@giscus/react@3.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:

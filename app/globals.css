@@ -5,6 +5,12 @@
   --breakpoint-lg: 48rem;
   --breakpoint-xl: 64rem;
   --breakpoint-2xl: 64rem;
+  --font-sans:
+    'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    'Geist Mono', ui-monospace, SFMono-Regular, 'SF Mono', Consolas,
+    'Liberation Mono', Menlo, monospace;
 }
 
 @utility container {

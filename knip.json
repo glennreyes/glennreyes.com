@@ -1,7 +1,9 @@
 {
   "ignoreDependencies": [
+    "@fontsource/geist",
     "@tailwindcss/typography",
     "@types/eslint",
+    "geist",
     "tailwindcss"
   ]
 }
