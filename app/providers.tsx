@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import { ThemeProvider } from 'next-themes';
 
 import { IntersectionProvider } from '@/components/intersection/intersection-provider';
+import { ScrollRestoration } from '@/components/scroll-restoration';
 
 interface ProvidersProps {
   children: ReactNode;
@@ -12,6 +13,9 @@ interface ProvidersProps {
 
 export const Providers = ({ children }: ProvidersProps) => (
   <ThemeProvider attribute="class">
-    <IntersectionProvider>{children}</IntersectionProvider>
+    <IntersectionProvider>
+      <ScrollRestoration />
+      {children}
+    </IntersectionProvider>
   </ThemeProvider>
 );

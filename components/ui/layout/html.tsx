@@ -7,5 +7,5 @@ import '@fontsource/geist-mono/latin-400.css';
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
 export const Html = (props: HtmlProps) => {
-  return <html className="motion-safe:scroll-smooth" lang="en" {...props} />;
+  return <html lang="en" {...props} />;
 };
