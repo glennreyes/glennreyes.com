@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 type BadgeColors = 'rose' | 'sky' | 'slate' | 'teal';
 
@@ -18,7 +18,7 @@ interface BadgeProps
 }
 
 export const Badge = ({ color = 'teal', ...props }: BadgeProps) => {
-  const classes = clsx(
+  const classes = cn(
     colors[color],
     'inline-flex items-center gap-1 rounded-full border px-2.5 py-1.5',
   );

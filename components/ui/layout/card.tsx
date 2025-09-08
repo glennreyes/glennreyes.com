@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
-import clsx from 'clsx';
+
+import { cn } from '@/lib/utils';
 
 import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
@@ -71,12 +72,12 @@ const CardItem = ({
   title,
   ...rest
 }: CardItemProps) => {
-  const itemClasses = clsx(link && 'group relative', 'flex gap-4');
-  const descriptionClasses = clsx(
+  const itemClasses = cn(link && 'group relative', 'flex gap-4');
+  const descriptionClasses = cn(
     link && 'relative z-10',
     'text-slate-500 dark:text-slate-400',
   );
-  const metaClasses = clsx(
+  const metaClasses = cn(
     link && 'relative z-10',
     'text-slate-400 dark:text-slate-500',
   );

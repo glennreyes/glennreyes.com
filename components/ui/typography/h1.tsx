@@ -1,11 +1,11 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { twMerge } from 'tailwind-merge';
+import { cn } from '@/lib/utils';
 
 type H1Props = ComponentPropsWithoutRef<'h1'>;
 
 export const H1 = ({ children, className, ...props }: H1Props) => {
-  const classes = twMerge('font-medium', className);
+  const classes = cn('font-medium', className);
 
   return (
     <h1 className={classes} {...props}>

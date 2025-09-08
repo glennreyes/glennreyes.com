@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
-import clsx from 'clsx';
 import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/lib/utils';
 
 import { Link } from '../link/link';
 
@@ -53,7 +53,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     { appearance = 'primary', className, icon: Icon, size = 6, ...props },
     ref,
   ) => {
-    const classes = twMerge(
+    const classes = cn(
       'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none focus:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
       paddings[size],
       appearances[appearance],
@@ -63,7 +63,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
     if (props.as === 'link') {
       const { as: _as, ...rest } = props;
-      const linkClasses = clsx(
+      const linkClasses = cn(
         classes,
         'inline-flex items-center justify-center',
       );
@@ -75,7 +75,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       );
     }
 
-    const buttonClasses = clsx(
+    const buttonClasses = cn(
       classes,
       'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
     );

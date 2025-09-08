@@ -1,12 +1,11 @@
 'use client';
 
-import clsx from 'clsx';
-
 import { useIsScrollTop } from '@/lib/hooks/use-is-scroll-top';
+import { cn } from '@/lib/utils';
 
 export const NavbarBorder = () => {
   const isScrollTop = useIsScrollTop();
-  const classes = clsx(
+  const classes = cn(
     'absolute inset-x-0 top-full border-t transition',
     isScrollTop
       ? 'border-slate-50/0 dark:border-slate-500/0'

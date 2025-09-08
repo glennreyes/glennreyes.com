@@ -2,11 +2,11 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import clsx from 'clsx';
 import Image from 'next/image';
 
 import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
+import { cn } from '@/lib/utils';
 
 type AvatarSize = 11 | 34;
 
@@ -36,7 +36,7 @@ interface AvatarProps
 
 export const Avatar = ({ size = 34, ...props }: AvatarProps) => {
   const { className, ...sizeAttributes } = attributes[size];
-  const classes = clsx('relative rounded-full', className);
+  const classes = cn('relative rounded-full', className);
 
   return (
     <div className={classes}>

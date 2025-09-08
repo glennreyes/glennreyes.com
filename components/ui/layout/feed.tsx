@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import clsx from 'clsx';
+
+import { cn } from '@/lib/utils';
 
 import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
@@ -22,7 +23,7 @@ export const Feed = ({
   title,
   ...props
 }: FeedProps) => {
-  const wrapperClasses = clsx(
+  const wrapperClasses = cn(
     title ? 'col-span-2' : 'not-prose',
     appearance === 'grid' && 'md:grid-cols-2',
     'grid gap-12 md:gap-16',
@@ -75,13 +76,13 @@ const FeedItem = ({
     meta: 'meta' in rest && rest.meta !== undefined ? rest.meta : undefined,
     ...rest,
   };
-  const articleClasses = clsx(
+  const articleClasses = cn(
     action ? 'gap-8' : 'gap-4',
     link && 'group relative',
     'grid',
   );
-  const descriptionClasses = clsx(link && 'relative z-10');
-  const metaClasses = clsx(
+  const descriptionClasses = cn(link && 'relative z-10');
+  const metaClasses = cn(
     link && 'relative z-10 order-first',
     date !== undefined && 'text-slate-400 dark:text-slate-500',
   );

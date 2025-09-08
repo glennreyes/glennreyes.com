@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import clsx from 'clsx';
 import Link from 'next/link';
+
+import { cn } from '@/lib/utils';
 
 type ButtonAppearance = 'primary' | 'secondary';
 
@@ -37,7 +38,7 @@ export const Button = ({
   variant = 'default',
   ...props
 }: ButtonProps) => {
-  const classes = clsx(
+  const classes = cn(
     appearances[appearance],
     variant === 'input-button' ? 'rounded-xl' : 'rounded-2xl',
     'border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
@@ -45,7 +46,7 @@ export const Button = ({
 
   if (props.as === 'link') {
     const { as: _as, ...rest } = props;
-    const linkClasses = clsx(classes, 'text-center');
+    const linkClasses = cn(classes, 'text-center');
 
     return <Link className={linkClasses} {...rest} />;
   }

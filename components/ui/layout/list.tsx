@@ -1,7 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
-import clsx from 'clsx';
+
+import { cn } from '@/lib/utils';
 
 interface ListProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'className'> {
   asChild?: boolean;
@@ -13,7 +14,7 @@ export const List = ({ asChild, spacing = 'default', ...props }: ListProps) => {
 
   return (
     <Component
-      className={clsx('grid', spacing === 'dense' ? 'gap-4' : 'gap-8')}
+      className={cn('grid', spacing === 'dense' ? 'gap-4' : 'gap-8')}
       {...props}
     />
   );
