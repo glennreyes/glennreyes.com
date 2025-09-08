@@ -6,7 +6,7 @@ type H3Props = ComponentPropsWithoutRef<'h3'>;
 
 export const H3 = ({ children, className, ...props }: H3Props) => {
   const classes = twMerge(
-    'text-xl text-slate-700 dark:text-slate-300 font-semibold tracking-tight',
+    'text-slate-700 dark:text-slate-300 font-medium',
     className,
   );
 

@@ -7,7 +7,7 @@ export const Footer = () => {
 
   return (
     <footer className="grid items-center justify-center border-t border-slate-300/25 p-4 dark:border-slate-500/25">
-      <p className="text-center text-xs text-slate-500 dark:text-slate-400">
+      <p className="text-center text-slate-500 dark:text-slate-400">
         © {currentYear} Glenn Reyes ·{' '}
         <Link className={linkClasses} href="/privacy">
           Privacy

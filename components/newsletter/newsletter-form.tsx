@@ -22,7 +22,7 @@ export const NewsletterForm = (props: NewsletterFormProps) => {
   return (
     <form
       action={subscribe}
-      className="grid gap-x-2 gap-y-4 sm:relative sm:flex sm:p-1"
+      className="grid gap-2 gap-y-4 sm:relative sm:flex sm:p-1"
       {...props}
     >
       <div className="sm:flex-1">
@@ -36,7 +36,7 @@ export const NewsletterForm = (props: NewsletterFormProps) => {
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-[1.25rem] border border-slate-300 p-1 peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 sm:block dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25" />
+        <span className="absolute inset-0 hidden rounded-2xl border border-slate-300 p-1 peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 sm:block dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25" />
       </div>
       <div className="relative grid">
         <Button disabled={pending} type="submit">

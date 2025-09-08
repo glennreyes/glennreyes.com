@@ -44,7 +44,7 @@ const AboutPage = async () => {
       <Page.Header lead={frontmatter.lead}>{frontmatter.heading}</Page.Header>
       <Image
         alt="Speaking"
-        className="h-96 w-full rounded-[1.75rem] object-cover object-right sm:object-center"
+        className="h-96 w-full rounded-3xl object-cover object-right sm:object-center"
         height={384}
         placeholder="blur"
         priority

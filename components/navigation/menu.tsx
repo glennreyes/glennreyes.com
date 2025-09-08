@@ -69,11 +69,11 @@ export const Menu = (props: MenuProps) => (
               unmount={false}
             >
               <Popover.Panel
-                className="relative grid gap-4 rounded-[1.75rem] border border-slate-100 bg-white p-6 dark:border-slate-900 dark:bg-slate-950"
+                className="relative grid gap-4 rounded-3xl border border-slate-100 bg-white p-6 dark:border-slate-900 dark:bg-slate-950"
                 static
                 {...props}
               >
-                <div className="absolute right-4 top-4">
+                <div className="absolute top-4 right-4">
                   <IconButton
                     appearance="secondary"
                     aria-label="Close Menu"
@@ -81,7 +81,7 @@ export const Menu = (props: MenuProps) => (
                     onClick={close}
                   />
                 </div>
-                <ul className="grid gap-2 pr-12">
+                <ul className="grid gap-2 pe-12">
                   {links.map((link) => (
                     <li key={link.href}>
                       <MenuLink href={link.href} onClick={close}>

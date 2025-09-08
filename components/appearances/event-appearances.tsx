@@ -74,7 +74,7 @@ const EventAppearancesCard = ({
       <article>
         <Card.Body title={type}>
           <div className="grid gap-6">
-            <div className="grid gap-x-8 gap-y-16 md:grid-cols-3">
+            <div className="grid gap-8 gap-y-16 md:grid-cols-3">
               {(title ?? summary) && path && (
                 <div className="grid gap-12 md:col-span-2">
                   <div className="grid gap-8">
@@ -94,7 +94,7 @@ const EventAppearancesCard = ({
                         className="h-5 w-5 text-slate-300 dark:text-slate-700"
                       />
                     </dt>
-                    <Paragraph asChild className="text-sm font-medium">
+                    <Paragraph asChild className="font-medium">
                       <dd>
                         <DateDisplay
                           dateTime={dateTime}
@@ -113,7 +113,7 @@ const EventAppearancesCard = ({
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
                         />
                       </dt>
-                      <Paragraph asChild className="text-sm font-medium">
+                      <Paragraph asChild className="font-medium">
                         <dd>
                           {lengths[type][length]} {type}
                         </dd>
@@ -129,7 +129,7 @@ const EventAppearancesCard = ({
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
                         />
                       </dt>
-                      <Paragraph asChild className="text-sm font-medium">
+                      <Paragraph asChild className="font-medium">
                         <dd>
                           <InlineLink
                             className="inline-flex items-center gap-1"
@@ -154,7 +154,7 @@ const EventAppearancesCard = ({
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
                         />
                       </dt>
-                      <Paragraph asChild className="text-sm font-medium">
+                      <Paragraph asChild className="font-medium">
                         <dd>
                           <InlineLink
                             className="inline-flex items-center gap-1"

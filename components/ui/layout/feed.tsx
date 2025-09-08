@@ -33,7 +33,7 @@ export const Feed = ({
       <div className="not-prose grid gap-8 md:grid-cols-3" {...props}>
         <div className="col-span-2 md:col-span-1 md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
           <div className="md:sticky md:top-20">
-            <h2 className="font-semibold text-teal-600 dark:text-teal-200/75">
+            <h2 className="font-medium text-teal-600 dark:text-teal-200/75">
               {title}
             </h2>
             {description && <p className="text-slate-500">{description}</p>}
@@ -124,7 +124,7 @@ const FeedItem = ({
       {action ? (
         <>
           <div className="grid gap-2">{content}</div>
-          <p className="relative z-10 inline-flex items-center gap-0.5 font-semibold text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
+          <p className="relative z-10 inline-flex items-center gap-0.5 font-medium text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
             <ChevronRightIcon
               aria-hidden
@@ -136,7 +136,7 @@ const FeedItem = ({
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50 md:-inset-6 md:rounded-[1.75rem]" />
+        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-slate-900/50" />
       )}
     </article>
   );

@@ -21,7 +21,7 @@ export const Newsletter = ({
           <H4 asChild>
             <h2>{title}</h2>
           </H4>
-          <Paragraph className="text-sm">{children}</Paragraph>
+          <Paragraph>{children}</Paragraph>
         </Card.Body>
         <Card.Body>
           <NewsletterForm />
