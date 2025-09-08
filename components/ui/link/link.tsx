@@ -7,10 +7,10 @@ type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
 export const Link = ({ children, className, href, ...props }: LinkProps) => {
   const classes = twMerge(
-    'rounded-lg transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+    'rounded-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
     className,
   );
-  const source = typeof href === 'object' ? href.pathname ?? '/' : href;
+  const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
 
   if (source.startsWith('#')) {
     return (
