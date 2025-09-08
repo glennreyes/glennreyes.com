@@ -30,9 +30,7 @@ interface CardBodyProps
 const CardBody = ({ children, title, ...props }: CardBodyProps) => (
   <div className="grid gap-4" {...props}>
     {title && (
-      <p className="font-medium text-teal-700/50 dark:text-teal-200/50">
-        {title}
-      </p>
+      <p className="font-medium text-teal-700 dark:text-teal-200/75">{title}</p>
     )}
     {children}
   </div>
