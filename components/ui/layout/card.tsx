@@ -7,8 +7,7 @@ import { DateDisplay } from '../elements/date-display';
 import { Link } from '../link/link';
 import { H3 } from '../typography/h3';
 
-interface CardProps
-  extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
+interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   asChild?: boolean;
 }
 
@@ -17,7 +16,7 @@ export const Card = ({ asChild, ...props }: CardProps) => {
 
   return (
     <Component
-      className="relative overflow-hidden rounded-[1.75rem] border border-slate-300/25 p-6 dark:border-slate-500/25"
+      className="relative overflow-hidden rounded-3xl border border-slate-300/25 p-6 dark:border-slate-500/25"
       {...props}
     />
   );
@@ -31,7 +30,7 @@ interface CardBodyProps
 const CardBody = ({ children, title, ...props }: CardBodyProps) => (
   <div className="grid gap-4" {...props}>
     {title && (
-      <p className="text-xs font-bold uppercase text-teal-700 dark:text-teal-200/75">
+      <p className="font-medium text-teal-700/50 dark:text-teal-200/50">
         {title}
       </p>
     )}
@@ -77,11 +76,11 @@ const CardItem = ({
   const itemClasses = clsx(link && 'group relative', 'flex gap-4');
   const descriptionClasses = clsx(
     link && 'relative z-10',
-    'text-sm text-slate-500 dark:text-slate-400',
+    'text-slate-500 dark:text-slate-400',
   );
   const metaClasses = clsx(
     link && 'relative z-10',
-    'text-sm text-slate-400 dark:text-slate-500',
+    'text-slate-400 dark:text-slate-500',
   );
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
@@ -103,7 +102,7 @@ const CardItem = ({
           )
         )}
         {title !== undefined && (
-          <H3 className="text-sm">
+          <H3>
             {link ? (
               <Link href={link}>
                 <span className="absolute -inset-x-6 -inset-y-2 z-20" />

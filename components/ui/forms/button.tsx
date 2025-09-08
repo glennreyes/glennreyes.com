@@ -33,7 +33,7 @@ type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
 export const Button = ({ appearance = 'primary', ...props }: ButtonProps) => {
   const classes = clsx(
     appearances[appearance],
-    'rounded-2xl border px-5 py-3 text-sm font-semibold tracking-tight transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+    'rounded-2xl border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
   );
 
   if (props.as === 'link') {

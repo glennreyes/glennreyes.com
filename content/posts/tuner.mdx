@@ -447,7 +447,7 @@ export const Tuner: FC = () => {
         <div className="grid gap-12">
           <p
             className={cn(
-              'text-center text-8xl font-semibold',
+              'text-center text-8xl font-medium',
               isInTune ? 'text-success' : 'text-muted-foreground',
               {
                 'opacity-0': !isCapturing || !note,
@@ -458,9 +458,9 @@ export const Tuner: FC = () => {
           </p>
           <div className="grid gap-4">
             <div className="text-muted flex justify-between">
-              <div className="flex-1 text-left">-50</div>
+              <div className="flex-1 text-start">-50</div>
               <div className="text-center">0</div>
-              <div className="flex-1 text-right">+50</div>
+              <div className="flex-1 text-end">+50</div>
             </div>
             <div>
               <div
@@ -489,7 +489,7 @@ export const Tuner: FC = () => {
               >
                 <div
                   className={cn(
-                    'shadow-secondary/25 h-20 w-1 shadow-xl transition-all',
+                    'shadow-secondary/25 h-20 w-1 shadow-2xl transition-all',
                     isInTune ? 'bg-success' : 'bg-muted-foreground',
                     !isCapturing || !note
                       ? 'scale-95 opacity-0 delay-500'
@@ -553,7 +553,7 @@ export const Tuner: FC = () => {
               ) : (
                 <MicOff className="text-muted-foreground h-5 w-5" />
               )}
-              <p className="text-muted-foreground truncate text-sm">{device}</p>
+              <p className="text-muted-foreground truncate">{device}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">

@@ -49,12 +49,10 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
     (
       <div
         style={{ backgroundImage: `url(${origin}/images/og-content.png)` }}
-        tw="bg-slate-900 flex flex-col justify-center h-full w-full px-48 pt-40 pb-80"
+        tw="bg-slate-900 flex f-c justify-center h-full w-full px-48 pt-40 pb-80"
       >
         <time tw="text-4xl text-slate-500">{publishedAt}</time>
-        <h1 tw="text-9xl font-bold tracking-tighter font-bold text-slate-50 pt-2">
-          {title}
-        </h1>
+        <h1 tw="text-9xl font-medium text-slate-50 pt-2">{title}</h1>
       </div>
     ),
     {

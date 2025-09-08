@@ -14,9 +14,7 @@ export const Hero = () => (
     </HeroAvatar>
     <div className="grid gap-6">
       <div>
-        <p className="font-medium text-slate-900 dark:text-slate-100">
-          Hello, I&apos;m
-        </p>
+        <p className="text-slate-600 dark:text-slate-400">Hello, I&apos;m</p>
         <div className="flex justify-between gap-4">
           <div className="grid gap-4">
             <H1>{name}</H1>
@@ -34,7 +32,7 @@ export const Hero = () => (
             as="link"
             href={`https://x.com/${x}`}
             icon={X}
-            size={7}
+            size={6}
           />
         </li>
         <li>
@@ -44,7 +42,7 @@ export const Hero = () => (
             as="link"
             href={`https://github.com/${github}`}
             icon={GitHub}
-            size={7}
+            size={6}
           />
         </li>
       </ul>

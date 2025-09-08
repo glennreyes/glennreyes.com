@@ -16,12 +16,12 @@ export const AboutAuthor = () => (
             <Avatar size={28} />
           </Link>
           <div className="grid gap-4">
-            <H4>
+            <H4 asChild>
               <h2>
                 <Link href="/about">{name}</Link>
               </h2>
             </H4>
-            <Paragraph className="text-sm">{description}</Paragraph>
+            <Paragraph>{description}</Paragraph>
           </div>
         </div>
       </Card.Body>

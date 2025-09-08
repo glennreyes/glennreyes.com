@@ -9,7 +9,7 @@ interface H4Props extends ComponentPropsWithoutRef<'h4'> {
 
 export const H4 = ({ asChild, className, ...props }: H4Props) => {
   const classes = twMerge(
-    'text-lg text-slate-700 dark:text-slate-300 font-semibold tracking-tight',
+    'text-slate-700 dark:text-slate-300 font-medium',
     className,
   );
   const Component = asChild ? Slot : 'h4';

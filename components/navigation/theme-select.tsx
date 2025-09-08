@@ -82,7 +82,7 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
             </option>
           ))}
         </Select>
-        <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 peer-focus:ring-4 peer-focus:ring-teal-100 dark:border-slate-700 dark:bg-slate-900/75 dark:text-slate-300 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25">
+        <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 font-medium text-slate-700 peer-focus:ring-4 peer-focus:ring-teal-100 dark:border-slate-700 dark:bg-slate-900/75 dark:text-slate-300 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25">
           <Icon
             aria-hidden
             className="h-6 w-6 text-slate-400 dark:text-slate-500"
@@ -138,7 +138,7 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
                 >
                   {({ active, selected }) => {
                     const itemClasses = clsx(
-                      'flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm font-semibold transition',
+                      'flex cursor-pointer items-center gap-3 px-4 py-2.5 font-medium transition',
                       active && 'bg-slate-50 dark:bg-slate-900/50',
                       selected
                         ? 'text-teal-600 dark:text-teal-200/75'

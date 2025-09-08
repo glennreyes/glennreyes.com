@@ -6,7 +6,7 @@ type SelectProps = ComponentPropsWithoutRef<'select'>;
 
 export const Select = ({ className, ...props }: SelectProps) => {
   const classes = twMerge(
-    'rounded-2xl border border-slate-300 px-5 py-3 text-left text-sm font-semibold tracking-tight text-slate-600 opacity-0 focus:border-slate-400 focus:text-slate-700 focus:ring-4 focus:ring-teal-100 disabled:bg-slate-50',
+    'rounded-2xl border border-slate-300 px-5 py-3 text-start font-medium text-slate-600 opacity-0 focus:border-slate-400 focus:text-slate-700 focus:ring-4 focus:ring-teal-100 disabled:bg-slate-50',
     className,
   );
 

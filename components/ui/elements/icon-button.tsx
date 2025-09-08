@@ -17,17 +17,15 @@ const appearances: Record<IconButtonAppearance, string> = {
     'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
 };
 
-type IconButtonSize = 5 | 6 | 7;
+type IconButtonSize = 5 | 6;
 
 const sizes: Record<IconButtonSize, string> = {
   5: 'h-5 w-5',
   6: 'h-6 w-6',
-  7: 'h-7 w-7',
 };
 const paddings: Record<IconButtonSize, string> = {
   5: 'p-2',
   6: 'p-2.5',
-  7: 'p-2.5',
 };
 
 interface IconButtonBaseProps {
