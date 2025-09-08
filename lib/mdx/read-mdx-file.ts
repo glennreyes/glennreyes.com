@@ -40,8 +40,8 @@ const preprocessRawCode = (tree: Element) => {
 const postprocessRawCode = (tree: Element) => {
   visit(tree, (node) => {
     if (
-      !(node.type === 'element' && node.tagName === 'div') ||
-      !('data-rehype-pretty-code-fragment' in node.properties)
+      !(node.type === 'element' && node.tagName === 'figure') ||
+      !('data-rehype-pretty-code-figure' in node.properties)
     ) {
       return;
     }
