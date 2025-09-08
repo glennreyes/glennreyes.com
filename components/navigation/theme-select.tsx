@@ -2,7 +2,13 @@
 
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
 
-import { Listbox, Transition } from '@headlessui/react';
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import {
   ComputerDesktopIcon,
@@ -109,13 +115,13 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
     >
       {({ open }) => (
         <>
-          <Listbox.Button as={Fragment}>
+          <ListboxButton as={Fragment}>
             <IconButton
               appearance="secondary"
               aria-label="Switch Theme"
               icon={Icon}
             />
-          </Listbox.Button>
+          </ListboxButton>
           <Transition
             as="div"
             enter="duration-150 ease-out"
@@ -126,20 +132,20 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
             leaveTo="opacity-0 scale-95"
             show={open}
           >
-            <Listbox.Options
+            <ListboxOptions
               as="ul"
               className="absolute top-full right-0 z-10 mt-2 grid overflow-hidden rounded-xl border border-slate-300/25 bg-white py-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:border-slate-600/25 dark:bg-slate-950 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
             >
               {options.map(({ icon: CurrentIcon, ...option }) => (
-                <Listbox.Option
+                <ListboxOption
                   as={Fragment}
                   key={option.value}
                   value={option.value}
                 >
-                  {({ active, selected }) => {
+                  {({ focus, selected }) => {
                     const itemClasses = clsx(
                       'flex cursor-pointer items-center gap-3 px-4 py-2.5 font-medium transition',
-                      active && 'bg-slate-50 dark:bg-slate-900/50',
+                      focus && 'bg-slate-50 dark:bg-slate-900/50',
                       selected
                         ? 'text-teal-600 dark:text-teal-200/75'
                         : 'text-slate-800 dark:text-slate-200',
@@ -158,9 +164,9 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
                       </li>
                     );
                   }}
-                </Listbox.Option>
+                </ListboxOption>
               ))}
-            </Listbox.Options>
+            </ListboxOptions>
           </Transition>
         </>
       )}

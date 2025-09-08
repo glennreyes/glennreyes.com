@@ -18,7 +18,6 @@ interface MenuLink {
 }
 
 const links: MenuLink[] = [
-  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/posts', label: 'Posts' },
   { href: '/appearances', label: 'Appearances' },

@@ -28,12 +28,19 @@ interface ButtonAsLinkProps
   as: 'link';
 }
 
-type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
+type ButtonProps = (ButtonAsLinkProps | ButtonDefaultProps) & {
+  variant?: 'default' | 'input-button';
+};
 
-export const Button = ({ appearance = 'primary', ...props }: ButtonProps) => {
+export const Button = ({
+  appearance = 'primary',
+  variant = 'default',
+  ...props
+}: ButtonProps) => {
   const classes = clsx(
     appearances[appearance],
-    'rounded-2xl border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+    variant === 'input-button' ? 'rounded-xl' : 'rounded-2xl',
+    'border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
   );
 
   if (props.as === 'link') {

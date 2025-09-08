@@ -33,12 +33,19 @@ export const components: MDXComponents = {
     <Image alt={alt} className={clsx('rounded-3xl', className)} {...props} />
   ),
   Lead,
-  a: ({ href, ...props }) =>
-    href?.startsWith('#') ? (
-      <Link href={href} {...props} />
-    ) : href ? (
-      <InlineLink href={href} {...props} />
-    ) : null,
+  a: ({ href, ...props }) => {
+    const classes = '[.prose_&]:font-normal';
+
+    if (href?.startsWith('#')) {
+      return <Link href={href} className={classes} {...props} />;
+    }
+
+    if (href) {
+      return <InlineLink href={href} className={classes} {...props} />;
+    }
+
+    return null;
+  },
   code: (props: CodeProps) => {
     // Handle inline code
     if (props['data-language'] === undefined) {
