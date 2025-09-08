@@ -91,7 +91,7 @@ const CardItem = ({
       {children !== undefined && children !== null && (
         <div className="relative z-10">{children}</div>
       )}
-      <div className="grid flex-1 items-center gap-1">
+      <div className="grid flex-1 items-center gap-2">
         {meta !== undefined && meta !== null ? (
           <div className={metaClasses}>{meta}</div>
         ) : (

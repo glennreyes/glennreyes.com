@@ -32,7 +32,7 @@ export const Feed = ({
     return (
       <div className="not-prose grid gap-8 md:grid-cols-3" {...props}>
         <div className="col-span-2 md:col-span-1 md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
-          <div className="md:sticky md:top-20">
+          <div className="grid gap-2 md:sticky md:top-20">
             <h2 className="font-medium text-teal-600 dark:text-teal-200/75">
               {title}
             </h2>

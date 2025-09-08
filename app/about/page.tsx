@@ -59,7 +59,7 @@ const AboutPage = async () => {
           <Card>
             <div className="grid gap-6">
               <Card.Body title="Online">
-                <List>
+                <List spacing="dense">
                   <List.Item>
                     <Card.Item
                       link={`https://x.com/${x}`}
