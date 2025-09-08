@@ -82,7 +82,7 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
             </option>
           ))}
         </Select>
-        <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition peer-focus:ring-4 peer-focus:ring-teal-100 dark:border-slate-700 dark:bg-slate-900/75 dark:text-slate-300 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25">
+        <div className="pointer-events-none flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 peer-focus:ring-4 peer-focus:ring-teal-100 dark:border-slate-700 dark:bg-slate-900/75 dark:text-slate-300 dark:peer-focus:border-slate-600 dark:peer-focus:ring-teal-900/25">
           <Icon
             aria-hidden
             className="h-6 w-6 text-slate-400 dark:text-slate-500"
@@ -128,7 +128,7 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
           >
             <Listbox.Options
               as="ul"
-              className="absolute right-0 top-full z-10 mt-2 grid overflow-hidden rounded-xl border border-slate-300/25 bg-white py-1 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:border-slate-600/25 dark:bg-slate-950 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
+              className="absolute top-full right-0 z-10 mt-2 grid overflow-hidden rounded-xl border border-slate-300/25 bg-white py-1 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:border-slate-600/25 dark:bg-slate-950 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
             >
               {options.map(({ icon: CurrentIcon, ...option }) => (
                 <Listbox.Option
