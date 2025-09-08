@@ -17,7 +17,7 @@ interface PageHeaderProps
   meta?: ReactNode;
 }
 
-export const PageHeader = ({
+const PageHeader = ({
   children,
   lead,
   meta,

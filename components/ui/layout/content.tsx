@@ -20,7 +20,7 @@ Content.Primary = ContentPrimary;
 
 type ContentSecondaryProps = ComponentPropsWithoutRef<'div'>;
 
-export const ContentSecondary = ({
+const ContentSecondary = ({
   className,
   ...props
 }: ContentSecondaryProps) => {

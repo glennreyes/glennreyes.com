@@ -36,19 +36,19 @@ interface IconButtonBaseProps {
   size?: IconButtonSize;
 }
 
-export interface IconButtonDefaultProps
+interface IconButtonDefaultProps
   extends IconButtonBaseProps,
     Omit<ComponentPropsWithoutRef<'button'>, 'children'> {
   as?: 'button';
 }
 
-export interface IconButtonAsLinkProps
+interface IconButtonAsLinkProps
   extends IconButtonBaseProps,
     ComponentPropsWithoutRef<typeof Link> {
   as: 'link';
 }
 
-export type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
+type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   (
