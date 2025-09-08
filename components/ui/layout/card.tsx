@@ -91,26 +91,28 @@ const CardItem = ({
       {children !== undefined && children !== null && (
         <div className="relative z-10">{children}</div>
       )}
-      <div className="grid flex-1 items-center gap-2">
-        {meta !== undefined && meta !== null ? (
-          <div className={metaClasses}>{meta}</div>
-        ) : (
-          date !== undefined && (
-            <DateDisplay className={metaClasses} value={date} />
-          )
-        )}
-        {title !== undefined && (
-          <H3>
-            {link ? (
-              <Link href={link}>
-                <span className="absolute -inset-x-6 -inset-y-2 z-20" />
-                <span className="relative z-10">{title}</span>
-              </Link>
-            ) : (
-              title
-            )}
-          </H3>
-        )}
+      <div className="grid flex-1 items-center gap-4">
+        <div>
+          {meta !== undefined && meta !== null ? (
+            <div className={metaClasses}>{meta}</div>
+          ) : (
+            date !== undefined && (
+              <DateDisplay className={metaClasses} value={date} />
+            )
+          )}
+          {title !== undefined && (
+            <H3>
+              {link ? (
+                <Link href={link}>
+                  <span className="absolute -inset-x-6 -inset-y-2 z-20" />
+                  <span className="relative z-10">{title}</span>
+                </Link>
+              ) : (
+                title
+              )}
+            </H3>
+          )}
+        </div>
         {description && <p className={descriptionClasses}>{description}</p>}
         {link && (
           <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50" />

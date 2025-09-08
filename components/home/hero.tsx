@@ -12,7 +12,7 @@ export const Hero = () => (
     <HeroAvatar>
       <Avatar priority />
     </HeroAvatar>
-    <div className="grid gap-6">
+    <div className="grid gap-8">
       <div>
         <p className="text-slate-600 dark:text-slate-400">Hello, I&apos;m</p>
         <div className="flex justify-between gap-4">
