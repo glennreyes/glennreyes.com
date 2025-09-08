@@ -12,7 +12,7 @@ export const HeroAvatar = ({ children }: HeroAvatarProps) => {
   const { isInView, ref } = useIntersection();
 
   return (
-    <div className="h-40 w-40" ref={ref}>
+    <div className="h-34 w-34" ref={ref}>
       <Transition
         as="div"
         enter="duration-150 ease-out"
