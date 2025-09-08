@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
+import { DocumentIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
@@ -85,8 +86,21 @@ export const components: MDXComponents = {
   },
   figcaption: ({ children, className, ...props }: FigcaptionProps) => {
     return (
-      <figcaption className={className} {...props}>
-        {children}
+      <figcaption
+        className="absolute inset-x-0 top-[0.9375rem] max-w-full min-w-0 flex-1 pr-12 [.prose_&]:m-0"
+        {...props}
+      >
+        <div className="absolute inset-y-0 left-0 z-10 w-4 bg-gradient-to-l from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
+        <div className="absolute inset-y-0 right-12 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
+        <div className="overflow-x-auto">
+          <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 sm:pl-6 dark:text-slate-300/75">
+            <DocumentIcon
+              aria-hidden
+              className="h-4 w-4 flex-none text-slate-600 dark:text-slate-600"
+            />
+            {children}
+          </div>
+        </div>
       </figcaption>
     );
   },
