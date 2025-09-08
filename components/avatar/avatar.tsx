@@ -1,6 +1,9 @@
 'use client';
 
+import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import { cva } from 'class-variance-authority';
 
 import Image from 'next/image';
 
@@ -8,35 +11,35 @@ import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-type AvatarSize = 11 | 34;
+const avatarVariants = cva('relative rounded-full', {
+  variants: {
+    size: {
+      11: 'h-11 w-11 p-0.5',
+      34: 'h-34 w-34 p-1',
+    },
+  },
+  defaultVariants: {
+    size: 34,
+  },
+});
 
-const attributes: Record<
-  AvatarSize,
-  Pick<ComponentPropsWithoutRef<typeof Image>, 'className' | 'height' | 'width'>
-> = {
-  11: {
-    className: 'h-11 w-11 p-0.5',
-    height: 40,
-    width: 40,
-  },
-  34: {
-    className: 'h-34 w-34 p-1',
-    height: 136,
-    width: 136,
-  },
-};
+const avatarImageSizes = {
+  11: { height: 40, width: 40 },
+  34: { height: 136, width: 136 },
+} as const;
 
 interface AvatarProps
   extends Omit<
-    ComponentPropsWithoutRef<typeof Image>,
-    'alt' | 'className' | 'height' | 'placeholder' | 'src' | 'width'
-  > {
-  size?: AvatarSize;
+      ComponentPropsWithoutRef<typeof Image>,
+      'alt' | 'className' | 'height' | 'placeholder' | 'src' | 'width'
+    >,
+    VariantProps<typeof avatarVariants> {
+  className?: string;
 }
 
-export const Avatar = ({ size = 34, ...props }: AvatarProps) => {
-  const { className, ...sizeAttributes } = attributes[size];
-  const classes = cn('relative rounded-full', className);
+export const Avatar = ({ size, className, ...props }: AvatarProps) => {
+  const classes = cn(avatarVariants({ size }), className);
+  const imageSize = avatarImageSizes[size || 34];
 
   return (
     <div className={classes}>
@@ -46,7 +49,7 @@ export const Avatar = ({ size = 34, ...props }: AvatarProps) => {
         className="relative rounded-full"
         placeholder="blur"
         src={photo}
-        {...sizeAttributes}
+        {...imageSize}
         {...props}
       />
     </div>

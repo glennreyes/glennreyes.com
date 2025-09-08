@@ -1,4 +1,7 @@
+import type { VariantProps } from 'class-variance-authority';
 import type { ComponentPropsWithoutRef, ComponentType } from 'react';
+
+import { cva } from 'class-variance-authority';
 
 import { forwardRef } from 'react';
 
@@ -6,60 +9,59 @@ import { cn } from '@/lib/utils';
 
 import { Link } from '../link/link';
 
-type IconButtonAppearance = 'primary' | 'secondary' | 'tertiary';
+const iconButtonVariants = cva(
+  'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none focus:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+  {
+    variants: {
+      appearance: {
+        primary:
+          'border-slate-300/25 dark:border-slate-600/25 dark:bg-slate-900/75 hover:border-slate-200 dark:hover:border-slate-700 active:border-slate-300 dark:active:border-slate-700',
+        secondary:
+          'border-transparent hover:border-slate-300/25 dark:hover:border-slate-900 active:border-slate-200 dark:active:border-slate-800',
+        tertiary:
+          'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
+      },
+      size: {
+        5: 'p-2',
+        6: 'p-2.5',
+      },
+    },
+    defaultVariants: {
+      appearance: 'primary',
+      size: 6,
+    },
+  },
+);
 
-const appearances: Record<IconButtonAppearance, string> = {
-  primary:
-    'border-slate-300/25 dark:border-slate-600/25 dark:bg-slate-900/75 hover:border-slate-200 dark:hover:border-slate-700 active:border-slate-300 dark:active:border-slate-700',
-  secondary:
-    'border-transparent hover:border-slate-300/25 dark:hover:border-slate-900 active:border-slate-200 dark:active:border-slate-800',
-  tertiary:
-    'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
-};
-
-type IconButtonSize = 5 | 6;
-
-const sizes: Record<IconButtonSize, string> = {
+const iconSizes = {
   5: 'h-5 w-5',
   6: 'h-6 w-6',
-};
-const paddings: Record<IconButtonSize, string> = {
-  5: 'p-2',
-  6: 'p-2.5',
-};
+} as const;
 
-interface IconButtonBaseProps {
-  appearance?: IconButtonAppearance;
+interface IconButtonBaseProps extends VariantProps<typeof iconButtonVariants> {
   icon: ComponentType<ComponentPropsWithoutRef<'svg'>>;
-  size?: IconButtonSize;
 }
 
 interface IconButtonDefaultProps
   extends IconButtonBaseProps,
     Omit<ComponentPropsWithoutRef<'button'>, 'children'> {
   as?: 'button';
+  className?: string;
 }
 
 interface IconButtonAsLinkProps
   extends IconButtonBaseProps,
     ComponentPropsWithoutRef<typeof Link> {
   as: 'link';
+  className?: string;
 }
 
 type IconButtonProps = IconButtonAsLinkProps | IconButtonDefaultProps;
 
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  (
-    { appearance = 'primary', className, icon: Icon, size = 6, ...props },
-    ref,
-  ) => {
-    const classes = cn(
-      'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none focus:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
-      paddings[size],
-      appearances[appearance],
-      className,
-    );
-    const iconClasses = sizes[size];
+  ({ appearance, size, className, icon: Icon, ...props }, ref) => {
+    const classes = cn(iconButtonVariants({ appearance, size }), className);
+    const iconClasses = iconSizes[size || 6];
 
     if (props.as === 'link') {
       const { as: _as, ...rest } = props;
