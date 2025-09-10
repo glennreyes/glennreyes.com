@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build --turbopack",
+    "build": "next build",
     "dev": "next dev --turbopack",
     "format": "prettier --list-different --write . && pnpm lint --fix",
     "knip": "knip",
