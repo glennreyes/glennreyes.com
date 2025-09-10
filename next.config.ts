@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // Include content files in the build output for Vercel deployment
+  outputFileTracingIncludes: {
+    '/*': ['./content/**/*'],
+  },
   redirects: () =>
     Promise.resolve([
       {
