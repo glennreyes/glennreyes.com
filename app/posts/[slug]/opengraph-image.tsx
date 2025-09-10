@@ -15,6 +15,11 @@ interface OpenGraphImageConfig {
   params: OpenGraphImageConfigParams;
 }
 
+const errorSchema = z.object({ error: z.string() });
+const successSchema = z.object({
+  publishedAt: z.string(),
+  title: z.string(),
+});
 const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
   try {
     const res = await fetch(`${origin}/posts/${params.slug}/meta`);
@@ -23,9 +28,14 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
       throw new Error(`Failed to fetch meta data: ${res.status}`);
     }
 
-    const { publishedAt, title } = z
-      .object({ publishedAt: z.string(), title: z.string() })
-      .parse(await res.json());
+    const rawData = (await res.json()) as unknown;
+    const errorResult = errorSchema.safeParse(rawData);
+
+    if (errorResult.success) {
+      throw new Error(errorResult.data.error);
+    }
+
+    const { publishedAt, title } = successSchema.parse(rawData);
     const geistSans500Response = await fetch(
       new URL(
         '../../../node_modules/@fontsource/geist/files/geist-latin-500-normal.woff2',
@@ -79,7 +89,9 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
         ...size,
       },
     );
-  } catch {
+  } catch (error) {
+    console.error('Error generating OpenGraph image:', error);
+
     // Fallback to default OpenGraph image
     return new ImageResponse(
       (

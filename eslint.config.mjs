@@ -160,7 +160,7 @@ export default defineConfig([
         },
       ],
       'import/consistent-type-specifier-style': 'error',
-      'no-console': 'error',
+      'no-console': ['error', { allow: ['error', 'warn'] }],
       'no-undef': 'off',
       'no-redeclare': 'off',
       'no-unused-vars': 'off',
