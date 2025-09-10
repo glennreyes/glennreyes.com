@@ -36,16 +36,17 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
     }
 
     const { publishedAt, title } = successSchema.parse(rawData);
+    // Load Geist fonts in WOFF format (supported by @vercel/og)
     const geistSans500Response = await fetch(
       new URL(
-        '../../../node_modules/@fontsource/geist/files/geist-latin-500-normal.woff2',
+        '../../../node_modules/@fontsource/geist/files/geist-latin-500-normal.woff',
         import.meta.url,
       ),
     );
     const geistSans500 = await geistSans500Response.arrayBuffer();
     const geistSans400Response = await fetch(
       new URL(
-        '../../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff2',
+        '../../../node_modules/@fontsource/geist/files/geist-latin-400-normal.woff',
         import.meta.url,
       ),
     );
@@ -77,12 +78,12 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
         fonts: [
           {
             data: geistSans400,
-            name: 'Inter',
+            name: 'Geist',
             weight: 400,
           },
           {
             data: geistSans500,
-            name: 'Inter',
+            name: 'Geist',
             weight: 500,
           },
         ],
