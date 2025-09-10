@@ -83,28 +83,31 @@ const FeedItem = ({
   );
   const descriptionClasses = cn(link && 'relative z-10');
   const metaClasses = cn(
-    link && 'relative z-10 order-first',
+    'order-first',
+    link && 'relative z-10',
     date !== undefined && 'text-slate-400 dark:text-slate-500',
   );
   const content = (
     <>
-      <H3>
-        {link ? (
-          <Link href={link}>
-            <span className="absolute -inset-4 z-20 md:-inset-6" />
-            <span className="relative z-10">{title}</span>
-          </Link>
+      <div className="grid">
+        <H3>
+          {link ? (
+            <Link href={link}>
+              <span className="absolute -inset-4 z-20 md:-inset-6" />
+              <span className="relative z-10">{title}</span>
+            </Link>
+          ) : (
+            title
+          )}
+        </H3>
+        {meta === undefined ? (
+          date !== undefined && (
+            <DateDisplay className={metaClasses} value={date} />
+          )
         ) : (
-          title
+          <Meta className={metaClasses}>{meta}</Meta>
         )}
-      </H3>
-      {meta === undefined ? (
-        date !== undefined && (
-          <DateDisplay className={metaClasses} value={date} />
-        )
-      ) : (
-        <Meta className={metaClasses}>{meta}</Meta>
-      )}
+      </div>
 
       <Paragraph
         asChild={typeof description !== 'string'}

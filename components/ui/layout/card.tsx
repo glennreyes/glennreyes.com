@@ -79,7 +79,7 @@ const CardItem = ({
   );
   const metaClasses = cn(
     link && 'relative z-10',
-    'text-slate-400 dark:text-slate-500',
+    'order-first text-slate-400 dark:text-slate-500',
   );
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
@@ -93,14 +93,7 @@ const CardItem = ({
         <div className="relative z-10">{children}</div>
       )}
       <div className="grid flex-1 items-center gap-4">
-        <div>
-          {meta !== undefined && meta !== null ? (
-            <div className={metaClasses}>{meta}</div>
-          ) : (
-            date !== undefined && (
-              <DateDisplay className={metaClasses} value={date} />
-            )
-          )}
+        <div className="grid">
           {title !== undefined && (
             <H3>
               {link ? (
@@ -112,6 +105,13 @@ const CardItem = ({
                 title
               )}
             </H3>
+          )}
+          {meta !== undefined && meta !== null ? (
+            <div className={metaClasses}>{meta}</div>
+          ) : (
+            date !== undefined && (
+              <DateDisplay className={metaClasses} value={date} />
+            )
           )}
         </div>
         {description && <p className={descriptionClasses}>{description}</p>}
