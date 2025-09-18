@@ -3,7 +3,7 @@
 import { useIsScrollTop } from '@/lib/hooks/use-is-scroll-top';
 import { cn } from '@/lib/utils';
 
-export const NavbarBorder = () => {
+export function NavbarBorder() {
   const isScrollTop = useIsScrollTop();
   const classes = cn(
     'absolute inset-x-0 top-full border-t transition',
@@ -13,4 +13,4 @@ export const NavbarBorder = () => {
   );
 
   return <div className={classes} />;
-};
+}

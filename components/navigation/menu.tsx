@@ -28,7 +28,8 @@ const links: MenuLink[] = [
 
 type MenuProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const Menu = (props: MenuProps) => (
+export function Menu(props: MenuProps) {
+  return (
   <Popover as="nav" className="grid items-center">
     {({ close, open }) => {
       const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
@@ -110,4 +111,5 @@ export const Menu = (props: MenuProps) => (
       );
     }}
   </Popover>
-);
+  );
+}

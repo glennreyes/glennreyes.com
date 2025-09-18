@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 type H1Props = ComponentPropsWithoutRef<'h1'>;
 
-export const H1 = ({ children, className, ...props }: H1Props) => {
+export function H1({ children, className, ...props }: H1Props) {
   const classes = cn('font-medium', className);
 
   return (
@@ -14,4 +14,4 @@ export const H1 = ({ children, className, ...props }: H1Props) => {
       </span>
     </h1>
   );
-};
+}

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 type H2Props = ComponentPropsWithoutRef<'h2'>;
 
-export const H2 = ({ children, className, ...props }: H2Props) => {
+export function H2({ children, className, ...props }: H2Props) {
   const classes = cn(
     'text-slate-700 dark:text-slate-300 font-medium',
     className,
@@ -15,4 +15,4 @@ export const H2 = ({ children, className, ...props }: H2Props) => {
       {children}
     </h2>
   );
-};
+}

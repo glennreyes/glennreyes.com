@@ -36,9 +36,11 @@ const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
 
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const EventAppearances = (props: EventAppearancesProps) => (
-  <section className="grid gap-12 md:gap-16" {...props} />
-);
+export function EventAppearances(props: EventAppearancesProps) {
+  return (
+    <section className="grid gap-12 md:gap-16" {...props} />
+  );
+}
 
 interface EventAppearancesCardProps {
   date: Date;
@@ -49,13 +51,13 @@ interface EventAppearancesCardProps {
   workshop?: Pick<Workshop, 'slides' | 'slug' | 'summary' | 'title'>;
 }
 
-const EventAppearancesCard = ({
+function EventAppearancesCard({
   date,
   length,
   recording,
   talk,
   workshop,
-}: EventAppearancesCardProps) => {
+}: EventAppearancesCardProps) {
   const path = talk?.slug
     ? `/talks/${talk.slug}`
     : workshop?.slug
@@ -194,6 +196,6 @@ const EventAppearancesCard = ({
       </article>
     </Card>
   );
-};
+}
 
 EventAppearances.Card = EventAppearancesCard;

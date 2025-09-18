@@ -2,7 +2,8 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 type GitHubProps = ComponentPropsWithoutRef<'svg'>;
 
-export const GitHub = (props: GitHubProps) => (
+export function GitHub(props: GitHubProps) {
+  return (
   <svg viewBox="0 0 24 24" {...props}>
     <path
       clipRule="evenodd"
@@ -11,4 +12,5 @@ export const GitHub = (props: GitHubProps) => (
       fillRule="evenodd"
     />
   </svg>
-);
+  );
+}

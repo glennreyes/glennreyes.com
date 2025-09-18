@@ -10,10 +10,11 @@ interface NewsletterProps {
   title?: string;
 }
 
-export const Newsletter = ({
+export function Newsletter({
   children = 'Get subscribed for latest news and updates. No spam, unsubscribe at any time.',
   title = 'Stay in the loop',
-}: NewsletterProps) => (
+}: NewsletterProps) {
+  return (
   <Card asChild>
     <section>
       <div className="grid max-w-md gap-8">
@@ -29,4 +30,5 @@ export const Newsletter = ({
       </div>
     </section>
   </Card>
-);
+  );
+}

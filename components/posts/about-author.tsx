@@ -7,7 +7,8 @@ import { Card } from '../ui/layout/card';
 import { H4 } from '../ui/typography/h4';
 import { Paragraph } from '../ui/typography/paragraph';
 
-export const AboutAuthor = () => (
+export function AboutAuthor() {
+  return (
   <Card asChild>
     <section>
       <Card.Body title="About the Author">
@@ -27,4 +28,5 @@ export const AboutAuthor = () => (
       </Card.Body>
     </section>
   </Card>
-);
+  );
+}

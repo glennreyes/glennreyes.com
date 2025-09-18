@@ -35,7 +35,7 @@ interface AvatarProps
   className?: string;
 }
 
-export const Avatar = ({ size, className, ...props }: AvatarProps) => {
+export function Avatar({ size, className, ...props }: AvatarProps) {
   const classes = cn(avatarVariants({ size }), className);
   const imageSize = avatarImageSizes[size ?? 34];
 
@@ -52,4 +52,4 @@ export const Avatar = ({ size, className, ...props }: AvatarProps) => {
       />
     </div>
   );
-};
+}

@@ -6,6 +6,6 @@ import '@fontsource/geist-mono/latin-400.css';
 
 type HtmlProps = Omit<ComponentPropsWithoutRef<'html'>, 'className' | 'lang'>;
 
-export const Html = (props: HtmlProps) => {
+export function Html(props: HtmlProps) {
   return <html lang="en" {...props} />;
-};
+}

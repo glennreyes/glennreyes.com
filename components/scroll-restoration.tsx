@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
-export const ScrollRestoration = () => {
+export function ScrollRestoration() {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -12,4 +12,4 @@ export const ScrollRestoration = () => {
   }, [pathname]);
 
   return null;
-};
+}

@@ -9,7 +9,7 @@ interface WorkshopsFeedProps {
   workshops: Pick<Workshop, 'slug' | 'status' | 'summary' | 'title'>[];
 }
 
-export const WorkshopsFeed = ({ children, workshops }: WorkshopsFeedProps) => {
+export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
   const active = workshops.filter((workshop) => workshop.status === 'ACTIVE');
   const inactive = workshops.filter(
     (workshop) => workshop.status === 'INACTIVE',
@@ -57,4 +57,4 @@ export const WorkshopsFeed = ({ children, workshops }: WorkshopsFeedProps) => {
       {children}
     </div>
   );
-};
+}

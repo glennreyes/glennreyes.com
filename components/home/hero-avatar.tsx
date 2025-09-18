@@ -8,7 +8,7 @@ import { useIntersection } from '@/lib/hooks/use-intersection';
 
 type HeroAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const HeroAvatar = ({ children }: HeroAvatarProps) => {
+export function HeroAvatar({ children }: HeroAvatarProps) {
   const { isInView, ref } = useIntersection();
 
   return (
@@ -27,4 +27,4 @@ export const HeroAvatar = ({ children }: HeroAvatarProps) => {
       </Transition>
     </div>
   );
-};
+}

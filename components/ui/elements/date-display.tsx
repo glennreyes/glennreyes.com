@@ -7,11 +7,11 @@ interface DateDisplayProps extends ComponentPropsWithoutRef<'time'> {
   value?: Date | string;
 }
 
-export const DateDisplay = ({
+export function DateDisplay({
   format: formatString,
   value,
   ...props
-}: DateDisplayProps) => {
+}: DateDisplayProps) {
   if (value === undefined) {
     return <>Draft</>;
   }
@@ -28,4 +28,4 @@ export const DateDisplay = ({
       {text}
     </time>
   );
-};
+}

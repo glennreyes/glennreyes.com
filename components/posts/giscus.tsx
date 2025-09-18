@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 
 import { parseResolvedTheme } from '@/lib/theme';
 
-export const Giscus = () => {
+export function Giscus() {
   const { resolvedTheme } = useTheme();
   const theme = parseResolvedTheme(resolvedTheme);
 
@@ -23,4 +23,4 @@ export const Giscus = () => {
       theme={theme === 'dark' ? 'dark_protanopia' : theme}
     />
   );
-};
+}

@@ -12,7 +12,7 @@ interface AppearancesFeedProps {
   })[];
 }
 
-export const AppearancesFeed = ({ children, events }: AppearancesFeedProps) => {
+export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
   const today = new Date();
   const upcoming = events
     .filter((event) => event.startDate > today)
@@ -50,4 +50,4 @@ export const AppearancesFeed = ({ children, events }: AppearancesFeedProps) => {
       {children}
     </div>
   );
-};
+}

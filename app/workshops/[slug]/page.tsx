@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import type { FC } from 'react';
 
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Divider } from '@/components/ui/elements/divider';
@@ -29,7 +28,7 @@ export const generateStaticParams = async () => {
   return allWorkshops.map((workshop) => ({ slug: workshop.slug }));
 };
 
-const WorkshopPage: FC<PageProps<'/workshops/[slug]'>> = async (props) => {
+export default async function WorkshopPage(props: PageProps<'/workshops/[slug]'>) {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
   const events = workshop.appearances.map((appearance) => appearance.event);
@@ -56,6 +55,4 @@ const WorkshopPage: FC<PageProps<'/workshops/[slug]'>> = async (props) => {
       </Page.Body>
     </Page>
   );
-};
-
-export default WorkshopPage;
+}

@@ -10,7 +10,8 @@ import { ThemeSelect } from './theme-select';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
 
-export const Navbar = ({ children, ...props }: NavbarProps) => (
+export function Navbar({ children, ...props }: NavbarProps) {
+  return (
   <header className="sticky top-0 z-30" {...props}>
     <div className="absolute inset-0 bg-white/95 supports-[backdrop-filter]:bg-white/75 supports-[backdrop-filter]:backdrop-blur-lg dark:bg-slate-950/90 dark:supports-[backdrop-filter]:bg-slate-950/50" />
     <NavbarBorder />
@@ -34,4 +35,5 @@ export const Navbar = ({ children, ...props }: NavbarProps) => (
       </div>
     </Container>
   </header>
-);
+  );
+}

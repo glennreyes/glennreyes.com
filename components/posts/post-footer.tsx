@@ -2,7 +2,8 @@ import { Newsletter } from '../newsletter/newsletter';
 import { AboutAuthor } from './about-author';
 import { Comments } from './comments';
 
-export const PostFooter = () => (
+export function PostFooter() {
+  return (
   <>
     <AboutAuthor />
     <Comments />
@@ -11,4 +12,5 @@ export const PostFooter = () => (
       directly to your inbox. No spam, unsubscribe at any time.
     </Newsletter>
   </>
-);
+  );
+}

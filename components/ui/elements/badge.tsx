@@ -29,8 +29,8 @@ interface BadgeProps
   className?: string;
 }
 
-export const Badge = ({ color, className, ...props }: BadgeProps) => {
+export function Badge({ color, className, ...props }: BadgeProps) {
   return (
     <span className={cn(badgeVariants({ color }), className)} {...props} />
   );
-};
+}

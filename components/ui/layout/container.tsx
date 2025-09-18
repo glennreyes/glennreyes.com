@@ -8,9 +8,9 @@ interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
   asChild?: boolean;
 }
 
-export const Container = ({ asChild, className, ...props }: ContainerProps) => {
+export function Container({ asChild, className, ...props }: ContainerProps) {
   const classes = cn('container mx-auto px-4', className);
   const Component = asChild ? Slot : 'div';
 
   return <Component className={classes} {...props} />;
-};
+}

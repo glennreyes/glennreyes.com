@@ -12,7 +12,7 @@ interface MenuLinkProps extends Omit<LinkProps, 'className'> {
   children: ReactNode;
 }
 
-export const MenuLink = ({ children, ...props }: MenuLinkProps) => {
+export function MenuLink({ children, ...props }: MenuLinkProps) {
   const isActivePathname = useIsActivePathname(
     typeof props.href === 'object' ? (props.href.pathname ?? '/') : props.href,
   );
@@ -30,4 +30,4 @@ export const MenuLink = ({ children, ...props }: MenuLinkProps) => {
       {children}
     </Link>
   );
-};
+}
