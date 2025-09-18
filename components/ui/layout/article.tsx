@@ -11,7 +11,8 @@ interface ArticleProps
   back?: ReactNode;
 }
 
-export const Article = ({ back, children, ...props }: ArticleProps) => (
+export function Article({ back, children, ...props }: ArticleProps) {
+  return (
   <Container asChild className="space-y-6 lg:space-y-0" {...props}>
     <article>
       {back !== undefined && back !== null ? (
@@ -26,7 +27,8 @@ export const Article = ({ back, children, ...props }: ArticleProps) => (
       )}
     </article>
   </Container>
-);
+  );
+}
 
 interface ArticleHeaderProps
   extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
@@ -34,26 +36,30 @@ interface ArticleHeaderProps
   meta: ReactNode;
 }
 
-const ArticleHeader = ({
+function ArticleHeader({
   children,
   lead,
   meta,
   ...props
-}: ArticleHeaderProps) => (
+}: ArticleHeaderProps) {
+  return (
   <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
     {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
     <H1>{children}</H1>
     {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
   </header>
-);
+  );
+}
 
 Article.Header = ArticleHeader;
 
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
-const ArticleBody = (props: ArticleBodyProps) => (
-  <div className="prose prose-slate dark:prose-invert mx-auto" {...props} />
-);
+function ArticleBody(props: ArticleBodyProps) {
+  return (
+    <div className="prose prose-slate dark:prose-invert mx-auto" {...props} />
+  );
+}
 
 Article.Body = ArticleBody;
 
@@ -62,13 +68,15 @@ type ArticleFooterProps = Omit<
   'className'
 >;
 
-const ArticleFooter = (props: ArticleFooterProps) => (
-  <>
-    <div className="mx-auto max-w-[70ch]">
-      <Divider />
-    </div>
-    <footer className="mx-auto grid max-w-[70ch] gap-12" {...props} />
-  </>
-);
+function ArticleFooter(props: ArticleFooterProps) {
+  return (
+    <>
+      <div className="mx-auto max-w-[70ch]">
+        <Divider />
+      </div>
+      <footer className="mx-auto grid max-w-[70ch] gap-12" {...props} />
+    </>
+  );
+}
 
 Article.Footer = ArticleFooter;

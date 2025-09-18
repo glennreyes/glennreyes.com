@@ -11,7 +11,7 @@ interface CopyToClipboardProps {
   value: string;
 }
 
-export const CopyToClipboard = ({ value }: CopyToClipboardProps) => {
+export function CopyToClipboard({ value }: CopyToClipboardProps) {
   const [isCopied, setIsCopied] = useState(false);
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(value);
@@ -45,4 +45,4 @@ export const CopyToClipboard = ({ value }: CopyToClipboardProps) => {
       </span>
     </div>
   );
-};
+}

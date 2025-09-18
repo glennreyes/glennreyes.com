@@ -11,7 +11,7 @@ import { Intersection } from '../intersection/intersection';
 
 type NavbarAvatarProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export const NavbarAvatar = ({ children }: NavbarAvatarProps) => {
+export function NavbarAvatar({ children }: NavbarAvatarProps) {
   const { isInView } = useContext(Intersection);
   const isHome = useIsActivePathname('/');
 
@@ -34,4 +34,4 @@ export const NavbarAvatar = ({ children }: NavbarAvatarProps) => {
       {children}
     </Transition>
   );
-};
+}

@@ -9,7 +9,7 @@ interface TalksFeedProps {
   talks: Pick<Talk, 'abstract' | 'slug' | 'status' | 'title'>[];
 }
 
-export const TalksFeed = ({ children, talks }: TalksFeedProps) => {
+export function TalksFeed({ children, talks }: TalksFeedProps) {
   const active = talks.filter((talk) => talk.status === 'ACTIVE');
   const inactive = talks.filter((talk) => talk.status === 'INACTIVE');
 
@@ -55,4 +55,4 @@ export const TalksFeed = ({ children, talks }: TalksFeedProps) => {
       {children}
     </div>
   );
-};
+}

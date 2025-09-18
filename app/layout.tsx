@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import '@/app/globals.css';
 import { Analytics } from '@vercel/analytics/react';
@@ -45,7 +45,8 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
-const RootLayout: FC<RootLayoutProps> = ({ children }) => (
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
   <Html suppressHydrationWarning>
     <head />
     <Body>
@@ -60,6 +61,5 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => (
       <Analytics />
     </Body>
   </Html>
-);
-
-export default RootLayout;
+  );
+}

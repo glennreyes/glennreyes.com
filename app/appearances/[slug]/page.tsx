@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import type { FC } from 'react';
 
 import { EventAppearances } from '@/components/appearances/event-appearances';
 import { EventDate } from '@/components/appearances/event-date';
@@ -26,7 +25,7 @@ export const generateStaticParams = async () => {
   return allEvents.map((event) => ({ slug: event.slug }));
 };
 
-const AppearancePage: FC<PageProps<'/appearances/[slug]'>> = async (props) => {
+export default async function AppearancePage(props: PageProps<'/appearances/[slug]'>) {
   const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
@@ -54,6 +53,4 @@ const AppearancePage: FC<PageProps<'/appearances/[slug]'>> = async (props) => {
       </EventAppearances>
     </Page>
   );
-};
-
-export default AppearancePage;
+}

@@ -5,7 +5,8 @@ import { H4 } from '../ui/typography/h4';
 import { Paragraph } from '../ui/typography/paragraph';
 import { Giscus } from './giscus';
 
-export const Comments = () => (
+export function Comments() {
+  return (
   <div className="prose prose-slate dark:prose-invert max-w-none">
     <H4 asChild>
       <h2>Comments</h2>
@@ -30,4 +31,5 @@ export const Comments = () => (
       I&apos;m always happy to hear from my readers!
     </Paragraph>
   </div>
-);
+  );
+}

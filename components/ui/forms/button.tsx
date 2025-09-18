@@ -46,12 +46,12 @@ interface ButtonAsLinkProps
 
 type ButtonProps = ButtonAsLinkProps | ButtonDefaultProps;
 
-export const Button = ({
+export function Button({
   appearance,
   variant,
   className,
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   const classes = cn(buttonVariants({ appearance, variant }), className);
 
   if (props.as === 'link') {
@@ -62,4 +62,4 @@ export const Button = ({
   }
 
   return <button className={classes} type="button" {...props} />;
-};
+}

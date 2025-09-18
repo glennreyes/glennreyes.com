@@ -32,13 +32,14 @@ interface ThemeOption {
   value: Theme;
 }
 
-const disableTransitionsTemporarily = () => {
+function disableTransitionsTemporarily() {
   document.documentElement.classList.add('[&_*]:!transition-none');
 
   setTimeout(() => {
     document.documentElement.classList.remove('[&_*]:!transition-none');
   }, 0);
-};
+}
+
 const options: ThemeOption[] = [
   { icon: SunIcon, label: 'Light', value: 'light' },
   { icon: MoonIcon, label: 'Dark', value: 'dark' },
@@ -54,7 +55,7 @@ interface ThemeSelectProps {
   native?: boolean;
 }
 
-export const ThemeSelect = ({ native }: ThemeSelectProps) => {
+export function ThemeSelect({ native }: ThemeSelectProps) {
   const mounted = useMounted();
   const { resolvedTheme, setTheme, theme } = useTheme();
   const { label } = themes[theme];
@@ -172,4 +173,4 @@ export const ThemeSelect = ({ native }: ThemeSelectProps) => {
       )}
     </Listbox>
   );
-};
+}

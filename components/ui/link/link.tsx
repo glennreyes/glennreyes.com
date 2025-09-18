@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 type LinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
-export const Link = ({ children, className, href, ...props }: LinkProps) => {
+export function Link({ children, className, href, ...props }: LinkProps) {
   const classes = cn(
     'rounded-lg focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
     className,
@@ -40,4 +40,4 @@ export const Link = ({ children, className, href, ...props }: LinkProps) => {
       {children}
     </NextLink>
   );
-};
+}

@@ -13,7 +13,7 @@ interface EventLocationProps {
   >;
 }
 
-export const EventLocation = ({ location }: EventLocationProps) => {
+export function EventLocation({ location }: EventLocationProps) {
   const url = composeGoogleMapsUrl(location);
   const place = composePlaceByLocation(location);
 
@@ -26,4 +26,4 @@ export const EventLocation = ({ location }: EventLocationProps) => {
       {location.name} · {place}
     </Link>
   );
-};
+}
