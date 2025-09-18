@@ -81,7 +81,7 @@ This is a personal portfolio website built with Next.js 15 using the App Router 
 - **Function declarations**: Use function declarations for React components (`function MyComponent() {}`), arrow functions for everything else
 - **Component typing**: Never use `FC` or `FunctionComponent` types - define prop interfaces/types above the component function
 - **TypeScript strictness**: Never use `any` type - always provide explicit types or use proper type inference
-- **Component props**: Always define explicit interfaces for component props, even for simple components, positioned above the function
+- **Component props**: Always define explicit interfaces for component props, even for simple components, positioned above the function. Name the interface the same as the component with 'Props' appended (e.g., `ButtonProps` for `Button` component)
 - **Imports**: Use explicit named imports, avoid default imports except for React components
 - **File naming**: Use kebab-case for component files, camelCase for utility files
 - **Component structure**: Use function declarations with prop interfaces defined above
