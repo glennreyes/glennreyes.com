@@ -9,6 +9,8 @@
     "format": "prettier --list-different --write . && pnpm lint --fix",
     "knip": "knip",
     "lint": "eslint .",
+    "test": "tsx --test \"tests/**/*.test.ts\"",
+    "test:watch": "tsx --test --watch \"tests/**/*.test.ts\"",
     "mcp:server": "tsx scripts/mcp-server.ts",
     "mcp:inspector": "npx @modelcontextprotocol/inspector tsx scripts/mcp-server.ts",
     "postinstall": "prisma generate",
