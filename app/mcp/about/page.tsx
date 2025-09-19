@@ -24,7 +24,10 @@ const toolGroups: MCPToolGroup[] = [
       { badge: 'get_all_workshops', description: 'Get all workshops' },
       { badge: 'get_workshop_by_slug', description: 'Get specific workshop' },
       { badge: 'get_all_appearances', description: 'Get all appearances' },
-      { badge: 'get_appearance_by_slug', description: 'Get specific appearance' },
+      {
+        badge: 'get_appearance_by_slug',
+        description: 'Get specific appearance',
+      },
     ],
   },
   {
@@ -34,7 +37,10 @@ const toolGroups: MCPToolGroup[] = [
     tools: [
       { badge: 'search_content', description: 'Search across all content' },
       { badge: 'get_content_analytics', description: 'Get analytics data' },
-      { badge: 'get_newsletter_stats', description: 'Get newsletter statistics' },
+      {
+        badge: 'get_newsletter_stats',
+        description: 'Get newsletter statistics',
+      },
       { badge: 'create_newsletter_campaign', description: 'Create newsletter' },
     ],
   },
@@ -42,7 +48,8 @@ const toolGroups: MCPToolGroup[] = [
 
 export const metadata: Metadata = {
   title: 'MCP Server',
-  description: 'Model Context Protocol server interface for Glenn Reyes portfolio',
+  description:
+    'Model Context Protocol server interface for Glenn Reyes portfolio',
 };
 
 const MCPPage = async () => {
@@ -55,7 +62,11 @@ const MCPPage = async () => {
           <Lead>
             Explore the Model Context Protocol interface that powers automated
             access to my content, analytics, and tooling. Learn more about the
-            standard in the <InlineLink href="https://modelcontextprotocol.io">MCP docs</InlineLink>.
+            standard in the{' '}
+            <InlineLink href="https://modelcontextprotocol.io">
+              MCP docs
+            </InlineLink>
+            .
           </Lead>
         }
       >

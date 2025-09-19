@@ -14,16 +14,16 @@ const cloneDefaultOptions = () => ({
   ...mdxRemoteOptions,
   mdxOptions: {
     ...mdxRemoteOptions.mdxOptions,
-    rehypePlugins: [
-      ...(mdxRemoteOptions.mdxOptions?.rehypePlugins ?? []),
-    ],
-    remarkPlugins: [
-      ...(mdxRemoteOptions.mdxOptions?.remarkPlugins ?? []),
-    ],
+    rehypePlugins: [...(mdxRemoteOptions.mdxOptions?.rehypePlugins ?? [])],
+    remarkPlugins: [...(mdxRemoteOptions.mdxOptions?.remarkPlugins ?? [])],
   },
 });
 
-export function MDXContent({ components: overrides, options, ...props }: MDXContentProps) {
+export function MDXContent({
+  components: overrides,
+  options,
+  ...props
+}: MDXContentProps) {
   const mergedComponents = { ...components, ...overrides };
   const defaultOptions = cloneDefaultOptions();
   const mergedOptions = options
@@ -34,9 +34,11 @@ export function MDXContent({ components: overrides, options, ...props }: MDXCont
           ...defaultOptions?.mdxOptions,
           ...options?.mdxOptions,
           rehypePlugins:
-            options?.mdxOptions?.rehypePlugins ?? defaultOptions?.mdxOptions?.rehypePlugins,
+            options?.mdxOptions?.rehypePlugins ??
+            defaultOptions?.mdxOptions?.rehypePlugins,
           remarkPlugins:
-            options?.mdxOptions?.remarkPlugins ?? defaultOptions?.mdxOptions?.remarkPlugins,
+            options?.mdxOptions?.remarkPlugins ??
+            defaultOptions?.mdxOptions?.remarkPlugins,
         },
       }
     : defaultOptions;

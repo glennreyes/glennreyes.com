@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { GET as routeGet, POST as routePost } from '../app/mcp/route.ts';
+import { GET as routeGet, POST as routePost } from '../app/mcp/route';
 
 const GET = routeGet as () => NextResponse;
 const POST = routePost as (request: NextRequest) => Promise<NextResponse>;
@@ -33,7 +33,7 @@ void describe('MCP API route', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
     });
-    const response = (await POST(request));
+    const response = await POST(request);
     const payload = await readJson<{ tools: unknown[] }>(response);
 
     assert.ok(Array.isArray(payload.tools));
@@ -49,7 +49,7 @@ void describe('MCP API route', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
     });
-    const response = (await POST(request));
+    const response = await POST(request);
     const payload = await readJson<{ content: { text: string }[] }>(response);
 
     assert.equal(response.status, 200);
@@ -63,7 +63,7 @@ void describe('MCP API route', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
     });
-    const response = (await POST(request));
+    const response = await POST(request);
 
     assert.equal(response.status, 400);
   });
@@ -74,7 +74,7 @@ void describe('MCP API route', () => {
       headers: { 'content-type': 'application/json' },
       method: 'POST',
     });
-    const response = (await POST(request));
+    const response = await POST(request);
 
     assert.equal(response.status, 400);
   });

@@ -24,7 +24,7 @@ const alertVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 );
 
 interface AlertProps
@@ -41,7 +41,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(
       className={cn(alertVariants({ variant }), className)}
       {...props}
     />
-  )
+  ),
 );
 
 Alert.displayName = 'Alert';
@@ -52,12 +52,8 @@ interface AlertTitleProps extends ComponentPropsWithoutRef<'h5'> {
 
 const AlertTitle = forwardRef<HTMLHeadingElement, AlertTitleProps>(
   ({ className, ...props }, ref) => (
-    <h5
-      ref={ref}
-      className={cn('font-medium', className)}
-      {...props}
-    />
-  )
+    <h5 ref={ref} className={cn('font-medium', className)} {...props} />
+  ),
 );
 
 AlertTitle.displayName = 'AlertTitle';
@@ -68,12 +64,8 @@ interface AlertDescriptionProps extends ComponentPropsWithoutRef<'div'> {
 
 const AlertDescription = forwardRef<HTMLDivElement, AlertDescriptionProps>(
   ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(className)}
-      {...props}
-    />
-  )
+    <div ref={ref} className={cn(className)} {...props} />
+  ),
 );
 
 AlertDescription.displayName = 'AlertDescription';

@@ -46,9 +46,7 @@ export function MCPContent({ source, toolGroups }: MCPContentProps) {
     term: string;
   }) => (
     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-slate-200/70 px-5 py-4 first:border-t-0 dark:border-slate-700/60">
-      <dt className="font-medium text-slate-500 dark:text-slate-400">
-        {term}
-      </dt>
+      <dt className="font-medium text-slate-500 dark:text-slate-400">{term}</dt>
       <dd className="font-medium text-slate-950 dark:text-slate-100">
         {detail}
       </dd>
