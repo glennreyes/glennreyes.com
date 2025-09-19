@@ -5,6 +5,7 @@ import path from 'node:path';
 
 import { MCPContent, type MCPToolGroup } from '@/components/mcp/mcp-content';
 import { Page } from '@/components/ui/layout/page';
+import { InlineLink } from '@/components/ui/link/inline-link';
 
 const file = path.join(process.cwd(), 'content/pages/mcp.mdx');
 
@@ -47,7 +48,18 @@ const MCPPage = async () => {
 
   return (
     <Page>
-      <Page.Header meta="Development Tools">MCP Server Interface</Page.Header>
+      <Page.Header
+        lead={
+          <>
+            Explore the Model Context Protocol interface that powers automated
+            access to my content, analytics, and tooling. Learn more about the
+            standard in the{' '}
+            <InlineLink href="https://modelcontextprotocol.io">MCP docs</InlineLink>.
+          </>
+        }
+      >
+        MCP Server Interface
+      </Page.Header>
       <Page.Body>
         <div className="mx-auto max-w-4xl space-y-8">
           <MCPContent source={source} toolGroups={toolGroups} />
