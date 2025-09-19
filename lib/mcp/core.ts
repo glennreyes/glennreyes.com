@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { getAllEvents } from '@/lib/events';
 import { getAllPosts } from '@/lib/posts';
 import { getAllTalks } from '@/lib/talks';
@@ -23,6 +25,56 @@ export interface MCPResponse {
   isError?: boolean;
   tools?: MCPToolDefinition[];
 }
+
+// Types for searchable content
+export interface SearchablePost {
+  frontmatter: {
+    title: string;
+    description: string;
+    lead?: string;
+    publishedAt: string;
+  };
+  slug: string;
+  content: React.ReactElement;
+}
+
+export interface SearchableTalk {
+  title: string;
+  abstract: string;
+  slug: string;
+  status: string;
+  tags?: string[];
+}
+
+export interface SearchableWorkshop {
+  title: string;
+  summary: string;
+  slug: string;
+  status: string;
+  tags?: string[];
+}
+
+export interface SearchableEvent {
+  name: string;
+  slug: string;
+  startDate: Date;
+  location: {
+    city: string;
+    country: string;
+    state?: string;
+  };
+  appearances: {
+    talk?: { title: string };
+    workshop?: { title: string };
+  }[];
+}
+
+// Union type for all searchable content
+export type SearchableContent =
+  | SearchablePost
+  | SearchableTalk
+  | SearchableWorkshop
+  | SearchableEvent;
 
 export interface MCPDataSources {
   getAllEvents: typeof getAllEvents;
@@ -202,6 +254,28 @@ export function resolveDataSources(
   };
 }
 
+const validateString = (value: unknown, fieldName: string): string => {
+  if (typeof value !== 'string') {
+    throw new Error(`${fieldName} must be a string`);
+  }
+
+  return value;
+};
+const validateSlug = (slug: unknown): string => validateString(slug, 'Slug');
+const findBySlug = <T extends { slug: string }>(
+  items: T[],
+  slug: string,
+  type: string,
+): T => {
+  const item = items.find((candidate) => candidate.slug === slug);
+
+  if (!item) {
+    throw new Error(`${type} with slug "${slug}" not found`);
+  }
+
+  return item;
+};
+
 export async function handleToolCall(
   toolName: string,
   args: Record<string, unknown>,
@@ -211,110 +285,108 @@ export async function handleToolCall(
     switch (toolName) {
       case 'get_all_posts': {
         const posts = await dataSources.getAllPosts();
+
         return toJSONContent(posts);
       }
 
       case 'get_post_by_slug': {
-        const slug = args.slug as string;
-
-        if (typeof slug !== 'string') {
-          throw new Error('Slug must be a string');
-        }
-
+        const slug = validateSlug(args.slug);
         const posts = await dataSources.getAllPosts();
-        const post = posts.find((candidate) => candidate.slug === slug);
-
-        if (!post) {
-          throw new Error(`Post with slug "${slug}" not found`);
-        }
+        const post = findBySlug(posts, slug, 'Post');
 
         return toJSONContent(post);
       }
 
       case 'get_all_talks': {
         const talks = await dataSources.getAllTalks();
+
         return toJSONContent(talks);
       }
 
       case 'get_talk_by_slug': {
-        const slug = args.slug as string;
-
-        if (typeof slug !== 'string') {
-          throw new Error('Slug must be a string');
-        }
-
+        const slug = validateSlug(args.slug);
         const talks = await dataSources.getAllTalks();
-        const talk = talks.find((candidate) => candidate.slug === slug);
-
-        if (!talk) {
-          throw new Error(`Talk with slug "${slug}" not found`);
-        }
+        const talk = findBySlug(talks, slug, 'Talk');
 
         return toJSONContent(talk);
       }
 
       case 'get_all_workshops': {
         const workshops = await dataSources.getAllWorkshops();
+
         return toJSONContent(workshops);
       }
 
       case 'get_workshop_by_slug': {
-        const slug = args.slug as string;
-
-        if (typeof slug !== 'string') {
-          throw new Error('Slug must be a string');
-        }
-
+        const slug = validateSlug(args.slug);
         const workshops = await dataSources.getAllWorkshops();
-        const workshop = workshops.find((candidate) => candidate.slug === slug);
-
-        if (!workshop) {
-          throw new Error(`Workshop with slug "${slug}" not found`);
-        }
+        const workshop = findBySlug(workshops, slug, 'Workshop');
 
         return toJSONContent(workshop);
       }
 
       case 'get_all_appearances': {
         const events = await dataSources.getAllEvents();
+
         return toJSONContent(events);
       }
 
       case 'get_appearance_by_slug': {
-        const slug = args.slug as string;
-
-        if (typeof slug !== 'string') {
-          throw new Error('Slug must be a string');
-        }
-
+        const slug = validateSlug(args.slug);
         const events = await dataSources.getAllEvents();
-        const event = events.find((candidate) => candidate.slug === slug);
-
-        if (!event) {
-          throw new Error(`Appearance with slug "${slug}" not found`);
-        }
+        const event = findBySlug(events, slug, 'Appearance');
 
         return toJSONContent(event);
       }
 
       case 'search_content': {
-        const query = args.query as string;
+        const query = validateString(args.query, 'Query');
         const contentType = (args.contentType as string) ?? 'all';
-
-        if (typeof query !== 'string') {
-          throw new Error('Query must be a string');
-        }
-
         const loweredQuery = query.toLowerCase();
         const results: Record<string, unknown>[] = [];
+        const matchesString = (value: string | undefined): boolean =>
+          Boolean(value?.toLowerCase().includes(loweredQuery));
+        const matchesTags = (tags: string[] | undefined): boolean =>
+          Boolean(tags?.some((tag) => tag.toLowerCase().includes(loweredQuery)));
+        const matchesEntry = (entry: SearchableContent): boolean => {
+          const searchableFields: string[] = [];
+
+          // Extract searchable text fields based on content type
+          if ('title' in entry) {
+            searchableFields.push(entry.title);
+          } else if ('name' in entry) {
+            searchableFields.push(entry.name);
+          }
+
+          if ('frontmatter' in entry) {
+            searchableFields.push(entry.frontmatter.description);
+          }
+
+          if ('abstract' in entry) {
+            searchableFields.push(entry.abstract);
+          }
+
+          if ('summary' in entry) {
+            searchableFields.push(entry.summary);
+          }
+
+          // Check text fields
+          if (searchableFields.some(matchesString)) {
+            return true;
+          }
+
+          // Check tags
+          if ('tags' in entry && matchesTags(entry.tags)) {
+            return true;
+          }
+
+          return false;
+        };
 
         if (contentType === 'all' || contentType === 'posts') {
           const posts = await dataSources.getAllPosts();
-          const matchingPosts = posts.filter(
-            (post) =>
-              post.title.toLowerCase().includes(loweredQuery) ||
-              post.description.toLowerCase().includes(loweredQuery) ||
-              post.tags.some((tag) => tag.toLowerCase().includes(loweredQuery)),
+          const matchingPosts = posts.filter((post) =>
+            matchesEntry(post as SearchablePost),
           );
 
           results.push(
@@ -324,11 +396,8 @@ export async function handleToolCall(
 
         if (contentType === 'all' || contentType === 'talks') {
           const talks = await dataSources.getAllTalks();
-          const matchingTalks = talks.filter(
-            (talk) =>
-              talk.title.toLowerCase().includes(loweredQuery) ||
-              talk.description.toLowerCase().includes(loweredQuery) ||
-              talk.tags.some((tag) => tag.toLowerCase().includes(loweredQuery)),
+          const matchingTalks = talks.filter((talk) =>
+            matchesEntry(talk as SearchableTalk),
           );
 
           results.push(
@@ -338,11 +407,8 @@ export async function handleToolCall(
 
         if (contentType === 'all' || contentType === 'workshops') {
           const workshops = await dataSources.getAllWorkshops();
-          const matchingWorkshops = workshops.filter(
-            (workshop) =>
-              workshop.title.toLowerCase().includes(loweredQuery) ||
-              workshop.description.toLowerCase().includes(loweredQuery) ||
-              workshop.tags.some((tag) => tag.toLowerCase().includes(loweredQuery)),
+          const matchingWorkshops = workshops.filter((workshop) =>
+            matchesEntry(workshop as SearchableWorkshop),
           );
 
           results.push(
@@ -373,14 +439,9 @@ export async function handleToolCall(
       }
 
       case 'create_newsletter_campaign': {
-        const title = args.title as string;
-        const content = args.content as string;
+        const title = validateString(args.title, 'Title');
+        const content = validateString(args.content, 'Content');
         const scheduledDate = args.scheduledDate as string | undefined;
-
-        if (typeof title !== 'string' || typeof content !== 'string') {
-          throw new Error('Title and content must be strings');
-        }
-
         const campaign = {
           content,
           createdAt: new Date().toISOString(),
