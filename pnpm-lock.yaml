@@ -23,6 +23,9 @@ importers:
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.1.1)
+      '@mcp-ui/server':
+        specifier: ^5.11.0
+        version: 5.11.0
       '@modelcontextprotocol/inspector':
         specifier: ^0.16.7
         version: 0.16.7(@types/node@24.5.1)(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(typescript@5.9.2)
@@ -642,6 +645,9 @@ packages:
 
   '@lit/reactive-element@2.1.1':
     resolution: {integrity: sha512-N+dm5PAYdQ8e6UlywyyrgI2t++wFGXfHx+dSJ1oBrg6FAxUj40jId++EaRm80MKX5JnlH1sBsyZ5h0bcZKemCg==}
+
+  '@mcp-ui/server@5.11.0':
+    resolution: {integrity: sha512-DLakzSNA17XsViC+YYQxy2ViVtdJu0SDxQeAIviguXFq58qACvDC5tMFTNn2c0vMB5qfXqz0HLZImE3hHd3C8g==}
 
   '@mdx-js/mdx@3.1.1':
     resolution: {integrity: sha512-f6ZO2ifpwAQIpzGWaBQT2TXxPv6z3RBzQKpVftEWN78Vl/YweF1uwussDx8ECAXVtr3Rs89fKyG9YlzUs9DyGQ==}
@@ -4727,6 +4733,12 @@ snapshots:
   '@lit/reactive-element@2.1.1':
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.4.0
+
+  '@mcp-ui/server@5.11.0':
+    dependencies:
+      '@modelcontextprotocol/sdk': 1.18.0
+    transitivePeerDependencies:
+      - supports-color
 
   '@mdx-js/mdx@3.1.1':
     dependencies:

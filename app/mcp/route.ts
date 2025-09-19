@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import {
-  handleToolCall,
-  listTools,
-} from '@/lib/mcp';
+import { handleToolCall, listTools } from '@/lib/mcp';
 
 export function GET(): NextResponse {
   return NextResponse.json({
     description: 'MCP server for Glenn Reyes portfolio management',
     endpoint: '/mcp',
-    name: 'glennreyes-portfolio',
+    name: 'glennreyes.com',
     tools: listTools(),
     version: '1.0.0',
   });
@@ -45,10 +42,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json(response);
     }
 
-    return NextResponse.json(
-      { error: 'Unsupported method' },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: 'Unsupported method' }, { status: 400 });
   } catch {
     return NextResponse.json(
       { error: 'Failed to process request' },

@@ -20,10 +20,17 @@ export interface MCPContentDocument {
   type: 'text';
 }
 
+export interface MCPUIResource {
+  content: string;
+  metadata?: Record<string, unknown>;
+  type: 'inline-html' | 'external-url' | 'remote-dom';
+}
+
 export interface MCPResponse {
   content?: MCPContentDocument[];
   isError?: boolean;
   tools?: MCPToolDefinition[];
+  uiResource?: MCPUIResource;
 }
 
 // Types for searchable content
@@ -89,8 +96,7 @@ const defaultDataSources: MCPDataSources = {
   getAllTalks,
   getAllWorkshops,
 };
-
-export const MCP_TOOLS: MCPToolDefinition[] = [
+const MCP_TOOLS: MCPToolDefinition[] = [
   {
     description: 'Get all blog posts with their metadata',
     inputSchema: {
@@ -241,6 +247,39 @@ const toJSONContent = (value: unknown): MCPResponse => ({
     },
   ],
 });
+const createInteractiveTable = (
+  data: unknown[],
+  title: string,
+): MCPResponse => {
+  const tableHTML = `
+    <div style="font-family: system-ui, sans-serif; padding: 20px; max-width: 100%; overflow-x: auto;">
+      <h2 style="margin-bottom: 16px; color: #1f2937;">${title}</h2>
+      <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px;">
+        <pre style="margin: 0; white-space: pre-wrap; color: #374151; font-size: 14px;">${JSON.stringify(data, null, 2)}</pre>
+      </div>
+      <p style="margin-top: 12px; color: #6b7280; font-size: 14px;">
+        ${Array.isArray(data) ? data.length : 1} item${Array.isArray(data) && data.length !== 1 ? 's' : ''} found
+      </p>
+    </div>
+  `;
+
+  return {
+    content: [
+      {
+        text: JSON.stringify(data, null, 2),
+        type: 'text',
+      },
+    ],
+    uiResource: {
+      content: tableHTML,
+      type: 'inline-html',
+      metadata: {
+        count: Array.isArray(data) ? data.length : 1,
+        title,
+      },
+    },
+  };
+};
 
 export function resolveDataSources(
   overrides: Partial<MCPDataSources> = {},
@@ -286,7 +325,7 @@ export async function handleToolCall(
       case 'get_all_posts': {
         const posts = await dataSources.getAllPosts();
 
-        return toJSONContent(posts);
+        return createInteractiveTable(posts, 'Blog Posts');
       }
 
       case 'get_post_by_slug': {
@@ -300,7 +339,7 @@ export async function handleToolCall(
       case 'get_all_talks': {
         const talks = await dataSources.getAllTalks();
 
-        return toJSONContent(talks);
+        return createInteractiveTable(talks, 'Talks & Presentations');
       }
 
       case 'get_talk_by_slug': {
@@ -314,7 +353,7 @@ export async function handleToolCall(
       case 'get_all_workshops': {
         const workshops = await dataSources.getAllWorkshops();
 
-        return toJSONContent(workshops);
+        return createInteractiveTable(workshops, 'Workshops & Training');
       }
 
       case 'get_workshop_by_slug': {
@@ -328,7 +367,7 @@ export async function handleToolCall(
       case 'get_all_appearances': {
         const events = await dataSources.getAllEvents();
 
-        return toJSONContent(events);
+        return createInteractiveTable(events, 'Speaking Appearances');
       }
 
       case 'get_appearance_by_slug': {
@@ -376,8 +415,10 @@ export async function handleToolCall(
           }
 
           // Check text fields or tags
-          return searchableFields.some(matchesString) ||
-                 ('tags' in entry && matchesTags(entry.tags));
+          return (
+            searchableFields.some(matchesString) ||
+            ('tags' in entry && matchesTags(entry.tags))
+          );
         };
 
         if (contentType === 'all' || contentType === 'posts') {
@@ -410,7 +451,7 @@ export async function handleToolCall(
           );
         }
 
-        return toJSONContent(results);
+        return createInteractiveTable(results, `Search Results for "${query}"`);
       }
 
       case 'get_newsletter_stats': {

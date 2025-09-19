@@ -19,20 +19,8 @@ export function middleware(request: NextRequest) {
   );
   const isReadMethod = request.method === 'GET' || request.method === 'HEAD';
 
-  if (!isReadMethod) {
-    const url = request.nextUrl.clone();
-
-    url.pathname = '/api/mcp';
-
-    return NextResponse.rewrite(url);
-  }
-
-  if (expectsJSON && isReadMethod) {
-    const url = request.nextUrl.clone();
-
-    url.pathname = '/api/mcp';
-
-    return NextResponse.rewrite(url);
+  if (!isReadMethod || expectsJSON) {
+    return NextResponse.next();
   }
 
   return NextResponse.next();
