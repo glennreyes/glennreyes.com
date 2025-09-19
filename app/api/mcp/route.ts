@@ -8,7 +8,7 @@ import {
 export function GET(): NextResponse {
   return NextResponse.json({
     description: 'MCP server for Glenn Reyes portfolio management',
-    endpoint: '/mcp',
+    endpoint: '/api/mcp',
     name: 'glennreyes-portfolio',
     tools: listTools(),
     version: '1.0.0',
