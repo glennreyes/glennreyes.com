@@ -5,9 +5,7 @@ import { cn } from '@/lib/utils';
 type ContentProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
 export function Content(props: ContentProps) {
-  return (
-    <section className="grid gap-12 lg:grid-cols-12" {...props} />
-  );
+  return <section className="grid gap-12 lg:grid-cols-12" {...props} />;
 }
 
 type ContentPrimaryProps = ComponentPropsWithoutRef<'div'>;

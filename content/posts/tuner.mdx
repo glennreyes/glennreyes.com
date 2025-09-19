@@ -505,7 +505,7 @@ export const Tuner: FC = () => {
             className={cn(
               'text-primary text-center text-5xl tabular-nums transition',
               {
-                'duration-400 opacity-50 delay-500': !isCapturing || !note,
+                'opacity-50 delay-500 duration-400': !isCapturing || !note,
               },
             )}
           >
@@ -514,7 +514,7 @@ export const Tuner: FC = () => {
 
           <p
             className={cn('text-primary text-center tabular-nums transition', {
-              'duration-400 opacity-50 delay-500': !isCapturing || !note,
+              'opacity-50 delay-500 duration-400': !isCapturing || !note,
             })}
           >
             {(pitch ?? 0).toFixed(1)} Hz
@@ -564,7 +564,7 @@ export const Tuner: FC = () => {
       </div>
       <Button
         className={cn(
-          'duration-400 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition',
+          'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition duration-400',
           { 'pointer-events-none opacity-0 blur-2xl': isListening },
         )}
         onClick={handleStart}

@@ -37,9 +37,7 @@ const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
 export function EventAppearances(props: EventAppearancesProps) {
-  return (
-    <section className="grid gap-12 md:gap-16" {...props} />
-  );
+  return <section className="grid gap-12 md:gap-16" {...props} />;
 }
 
 interface EventAppearancesCardProps {

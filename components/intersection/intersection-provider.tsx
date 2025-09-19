@@ -10,9 +10,7 @@ interface IntersectionProviderProps {
   children: ReactNode;
 }
 
-export function IntersectionProvider({
-  children,
-}: IntersectionProviderProps) {
+export function IntersectionProvider({ children }: IntersectionProviderProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [instance, setInstance] = useState<IntersectionObserverEntry | null>(
     null,

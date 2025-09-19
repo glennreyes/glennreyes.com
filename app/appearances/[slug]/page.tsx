@@ -25,7 +25,9 @@ export const generateStaticParams = async () => {
   return allEvents.map((event) => ({ slug: event.slug }));
 };
 
-export default async function AppearancePage(props: PageProps<'/appearances/[slug]'>) {
+export default async function AppearancePage(
+  props: PageProps<'/appearances/[slug]'>,
+) {
   const params = await props.params;
   const event = await getEventBySlug(params.slug);
 
