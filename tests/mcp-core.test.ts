@@ -1,14 +1,9 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import type {MCPDataSources} from '@/lib/mcp';
+import type { MCPDataSources } from '@/lib/mcp';
 
-import {
-  handleToolCall,
-  listTools,
-  resolveDataSources
-  
-} from '@/lib/mcp';
+import { handleToolCall, listTools, resolveDataSources } from '@/lib/mcp';
 
 const sampleData = {
   events: [
@@ -64,7 +59,11 @@ void describe('MCP core utilities', () => {
 
     assert.ok(names.includes('get_all_posts'));
     assert.ok(names.includes('create_newsletter_campaign'));
-    assert.equal(new Set(names).size, names.length, 'tool names must be unique');
+    assert.equal(
+      new Set(names).size,
+      names.length,
+      'tool names must be unique',
+    );
   });
 
   void it('returns all posts as formatted JSON', async () => {
@@ -74,6 +73,16 @@ void describe('MCP core utilities', () => {
     const payload = JSON.parse(response.content[0].text) as unknown[];
 
     assert.equal(payload.length, sampleData.posts.length);
+  });
+
+  void it('returns all posts with UI resource for rich display', async () => {
+    const response = await handleToolCall('get_all_posts', {}, createSources());
+
+    assert.ok(response.uiResource);
+    assert.equal(response.uiResource.type, 'inline-html');
+    assert.ok(response.uiResource.content.includes('Blog Posts'));
+    assert.equal(response.uiResource.metadata?.count, sampleData.posts.length);
+    assert.equal(response.uiResource.metadata?.title, 'Blog Posts');
   });
 
   void it('returns a single post by slug', async () => {
@@ -110,14 +119,35 @@ void describe('MCP core utilities', () => {
     assert.ok(response.content);
     const payload = JSON.parse(response.content[0].text) as { type: string }[];
 
-    assert.deepEqual(payload.map((entry) => entry.type), ['workshop']);
+    assert.deepEqual(
+      payload.map((entry) => entry.type),
+      ['workshop'],
+    );
+  });
+
+  void it('search results include UI resource with query context', async () => {
+    const response = await handleToolCall(
+      'search_content',
+      { contentType: 'workshops', query: 'typescript' },
+      createSources(),
+    );
+
+    assert.ok(response.uiResource);
+    assert.equal(response.uiResource.type, 'inline-html');
+    assert.ok(
+      response.uiResource.content.includes('Search Results for "typescript"'),
+    );
+    assert.equal(
+      response.uiResource.metadata?.title,
+      'Search Results for "typescript"',
+    );
   });
 
   void it('creates newsletter campaigns with sensible defaults', async () => {
-    const response = await handleToolCall(
-      'create_newsletter_campaign',
-      { content: 'Hello there', title: 'Weekly Update' },
-    );
+    const response = await handleToolCall('create_newsletter_campaign', {
+      content: 'Hello there',
+      title: 'Weekly Update',
+    });
 
     assert.ok(response.content);
     const payload = JSON.parse(response.content[0].text) as {
@@ -134,7 +164,11 @@ void describe('MCP core utilities', () => {
   });
 
   void it('surfaces errors for unknown tools', async () => {
-    const response = await handleToolCall('unsupported_tool', {}, createSources());
+    const response = await handleToolCall(
+      'unsupported_tool',
+      {},
+      createSources(),
+    );
 
     assert.equal(response.isError, true);
     assert.ok(response.content?.[0].text.includes('Unknown tool'));
