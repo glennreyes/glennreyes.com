@@ -7,16 +7,11 @@ import {
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
-import {
-  handleToolCall,
-  listTools,
-  resolveDataSources,
-  type MCPDataSources,
-} from '@/lib/mcp/core';
+import type { MCPDataSources } from '@/lib/mcp';
 
-export function createMCPServer(
-  overrides?: Partial<MCPDataSources>,
-): Server<ListToolsRequestSchema | CallToolRequestSchema> {
+import { handleToolCall, listTools, resolveDataSources } from '@/lib/mcp';
+
+export function createMCPServer(overrides?: Partial<MCPDataSources>) {
   const dataSources = resolveDataSources(overrides);
   const server = new Server(
     {
@@ -31,7 +26,7 @@ export function createMCPServer(
     },
   );
 
-  server.setRequestHandler(ListToolsRequestSchema, async () => ({
+  server.setRequestHandler(ListToolsRequestSchema, () => ({
     tools: listTools(),
   }));
 
@@ -42,7 +37,17 @@ export function createMCPServer(
       dataSources,
     );
 
-    return response;
+    // Convert MCPResponse to the format expected by the MCP server
+    if (response.isError) {
+      return {
+        content: response.content,
+        isError: true,
+      };
+    }
+
+    return {
+      content: response.content,
+    };
   });
 
   return server;

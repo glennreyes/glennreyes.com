@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
+import type {MCPDataSources} from '@/lib/mcp';
+
 import {
   handleToolCall,
   listTools,
-  resolveDataSources,
-  type MCPDataSources,
-} from '@/lib/mcp/core';
+  resolveDataSources
+  
+} from '@/lib/mcp';
 
 const sampleData = {
   events: [
@@ -47,17 +49,16 @@ const sampleData = {
     },
   ],
 };
-
 const createSources = (): MCPDataSources =>
   resolveDataSources({
-    getAllEvents: async () => sampleData.events,
-    getAllPosts: async () => sampleData.posts,
-    getAllTalks: async () => sampleData.talks,
-    getAllWorkshops: async () => sampleData.workshops,
+    getAllEvents: () => Promise.resolve(sampleData.events),
+    getAllPosts: () => Promise.resolve(sampleData.posts),
+    getAllTalks: () => Promise.resolve(sampleData.talks),
+    getAllWorkshops: () => Promise.resolve(sampleData.workshops),
   });
 
-describe('MCP core utilities', () => {
-  it('lists all registered tools', () => {
+void describe('MCP core utilities', () => {
+  void it('lists all registered tools', () => {
     const tools = listTools();
     const names = tools.map((tool) => tool.name);
 
@@ -66,15 +67,16 @@ describe('MCP core utilities', () => {
     assert.equal(new Set(names).size, names.length, 'tool names must be unique');
   });
 
-  it('returns all posts as formatted JSON', async () => {
+  void it('returns all posts as formatted JSON', async () => {
     const response = await handleToolCall('get_all_posts', {}, createSources());
 
     assert.ok(response.content);
     const payload = JSON.parse(response.content[0].text) as unknown[];
+
     assert.equal(payload.length, sampleData.posts.length);
   });
 
-  it('returns a single post by slug', async () => {
+  void it('returns a single post by slug', async () => {
     const response = await handleToolCall(
       'get_post_by_slug',
       { slug: 'react-19' },
@@ -83,10 +85,11 @@ describe('MCP core utilities', () => {
 
     assert.ok(response.content);
     const payload = JSON.parse(response.content[0].text) as { slug: string };
+
     assert.equal(payload.slug, 'react-19');
   });
 
-  it('flags an error when slug-specific lookups miss', async () => {
+  void it('flags an error when slug-specific lookups miss', async () => {
     const response = await handleToolCall(
       'get_post_by_slug',
       { slug: 'missing' },
@@ -97,7 +100,7 @@ describe('MCP core utilities', () => {
     assert.ok(response.content?.[0].text.includes('not found'));
   });
 
-  it('searches across the requested content types', async () => {
+  void it('searches across the requested content types', async () => {
     const response = await handleToolCall(
       'search_content',
       { contentType: 'workshops', query: 'typescript' },
@@ -106,10 +109,11 @@ describe('MCP core utilities', () => {
 
     assert.ok(response.content);
     const payload = JSON.parse(response.content[0].text) as { type: string }[];
+
     assert.deepEqual(payload.map((entry) => entry.type), ['workshop']);
   });
 
-  it('creates newsletter campaigns with sensible defaults', async () => {
+  void it('creates newsletter campaigns with sensible defaults', async () => {
     const response = await handleToolCall(
       'create_newsletter_campaign',
       { content: 'Hello there', title: 'Weekly Update' },
@@ -129,7 +133,7 @@ describe('MCP core utilities', () => {
     assert.ok(payload.id.startsWith('campaign_'));
   });
 
-  it('surfaces errors for unknown tools', async () => {
+  void it('surfaces errors for unknown tools', async () => {
     const response = await handleToolCall('unsupported_tool', {}, createSources());
 
     assert.equal(response.isError, true);
