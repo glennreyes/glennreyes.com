@@ -347,40 +347,27 @@ export async function handleToolCall(
         const matchesString = (value: string | undefined): boolean =>
           Boolean(value?.toLowerCase().includes(loweredQuery));
         const matchesTags = (tags: string[] | undefined): boolean =>
-          Boolean(tags?.some((tag) => tag.toLowerCase().includes(loweredQuery)));
+          Boolean(
+            tags?.some((tag) => tag.toLowerCase().includes(loweredQuery)),
+          );
         const matchesEntry = (entry: SearchableContent): boolean => {
-          const searchableFields: string[] = [];
+          // Define field extractors for different content types
+          const fieldExtractors = [
+            // Title/name field
+            () => ('title' in entry ? entry.title : 'name' in entry ? entry.name : undefined),
+            // Description fields
+            () => ('frontmatter' in entry ? entry.frontmatter.description : undefined),
+            () => ('abstract' in entry ? entry.abstract : undefined),
+            () => ('summary' in entry ? entry.summary : undefined),
+          ];
+          // Extract all searchable text fields
+          const searchableFields = fieldExtractors
+            .map(extract => extract())
+            .filter((field): field is string => Boolean(field));
 
-          // Extract searchable text fields based on content type
-          if ('title' in entry) {
-            searchableFields.push(entry.title);
-          } else if ('name' in entry) {
-            searchableFields.push(entry.name);
-          }
-
-          if ('frontmatter' in entry) {
-            searchableFields.push(entry.frontmatter.description);
-          }
-
-          if ('abstract' in entry) {
-            searchableFields.push(entry.abstract);
-          }
-
-          if ('summary' in entry) {
-            searchableFields.push(entry.summary);
-          }
-
-          // Check text fields
-          if (searchableFields.some(matchesString)) {
-            return true;
-          }
-
-          // Check tags
-          if ('tags' in entry && matchesTags(entry.tags)) {
-            return true;
-          }
-
-          return false;
+          // Check text fields or tags
+          return searchableFields.some(matchesString) ||
+                 ('tags' in entry && matchesTags(entry.tags));
         };
 
         if (contentType === 'all' || contentType === 'posts') {
