@@ -1,0 +1,71 @@
+## MCP Server Information
+
+<DefinitionList>
+  <DefinitionListItem detail="glennreyes.com" term="Server Name" />
+  <DefinitionListItem detail="1.0.0" term="Version" />
+  <DefinitionListItem detail="/api/mcp" term="API Endpoint" />
+  <DefinitionListItem detail="Model Context Protocol (MCP)" term="Protocol" />
+</DefinitionList>
+
+## Available Tools
+
+<ToolGrid>
+  <ToolGroup id="content" />
+  <ToolGroup id="analytics" />
+</ToolGrid>
+
+<Alert variant="warning">
+  <AlertTitle>Development Note</AlertTitle>
+  <AlertDescription>
+    This MCP server provides programmatic access to portfolio content and analytics.
+    It can be used with Claude and other AI assistants that support the Model Context
+    Protocol for automated content management and analysis.
+  </AlertDescription>
+</Alert>
+
+<H2>Usage Examples</H2>
+
+<H3>Get All Posts</H3>
+
+```bash
+POST /api/mcp
+{
+  "method": "tools/call",
+  "params": {
+    "name": "get_all_posts",
+    "arguments": {}
+  }
+}
+```
+
+<H3>Search Content</H3>
+
+```bash
+POST /api/mcp
+{
+  "method": "tools/call",
+  "params": {
+    "name": "search_content",
+    "arguments": {
+      "query": "React",
+      "contentType": "posts"
+    }
+  }
+}
+```
+
+<H3>Get Analytics</H3>
+
+```bash
+POST /api/mcp
+{
+  "method": "tools/call",
+  "params": {
+    "name": "get_content_analytics",
+    "arguments": {
+      "contentType": "posts",
+      "slug": "specific-post-slug"
+    }
+  }
+}
+```
