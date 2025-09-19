@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { Link } from '../link/link';
 
 const iconButtonVariants = cva(
-  'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus:text-slate-300 dark:active:text-slate-200 transition focus:text-slate-600 focus:outline-none focus:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+  'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus-visible:text-slate-300 dark:active:text-slate-200 transition focus-visible:text-slate-600 focus-visible:outline-none focus-visible:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
   {
     variants: {
       appearance: {

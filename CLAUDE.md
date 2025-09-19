@@ -105,3 +105,4 @@ This is a personal portfolio website built with Next.js 15 using the App Router 
 - **Typography**: Use consistent font size throughout the website - do not vary font sizes as the design maintains uniform typography
 - **Rendering strategy**: Only render content dynamically when truly necessary. Default to static generation for better performance - reserve dynamic rendering for content that must be personalized or real-time
 - **React features**: Use latest React 19 features where appropriate and beneficial - leverage new hooks, concurrent features, and performance optimizations when they make sense
+- **Focus states**: Always use `focus-visible:` pseudo-class instead of `focus:` for better accessibility and user experience. This only shows focus indicators when navigating with keyboard, not when clicking with mouse
