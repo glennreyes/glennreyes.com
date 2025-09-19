@@ -47,19 +47,19 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-  <Html suppressHydrationWarning>
-    <head />
-    <Body>
-      <Providers>
-        <Navbar>
-          <Menu />
-        </Navbar>
-        <Main>{children}</Main>
-      </Providers>
-      <Footer />
-      <SpeedInsights />
-      <Analytics />
-    </Body>
-  </Html>
+    <Html suppressHydrationWarning>
+      <head />
+      <Body>
+        <Providers>
+          <Navbar>
+            <Menu />
+          </Navbar>
+          <Main>{children}</Main>
+        </Providers>
+        <Footer />
+        <SpeedInsights />
+        <Analytics />
+      </Body>
+    </Html>
   );
 }

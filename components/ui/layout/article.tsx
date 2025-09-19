@@ -13,20 +13,20 @@ interface ArticleProps
 
 export function Article({ back, children, ...props }: ArticleProps) {
   return (
-  <Container asChild className="space-y-6 lg:space-y-0" {...props}>
-    <article>
-      {back !== undefined && back !== null ? (
-        <>
-          <div className="lg:sticky lg:top-23">
-            <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
-          </div>
-          <div className="space-y-12">{children}</div>
-        </>
-      ) : (
-        children
-      )}
-    </article>
-  </Container>
+    <Container asChild className="space-y-6 lg:space-y-0" {...props}>
+      <article>
+        {back !== undefined && back !== null ? (
+          <>
+            <div className="lg:sticky lg:top-23">
+              <div className="mx-auto max-w-[70ch] lg:absolute">{back}</div>
+            </div>
+            <div className="space-y-12">{children}</div>
+          </>
+        ) : (
+          children
+        )}
+      </article>
+    </Container>
   );
 }
 
@@ -36,18 +36,13 @@ interface ArticleHeaderProps
   meta: ReactNode;
 }
 
-function ArticleHeader({
-  children,
-  lead,
-  meta,
-  ...props
-}: ArticleHeaderProps) {
+function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
   return (
-  <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
-    {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-    <H1>{children}</H1>
-    {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
-  </header>
+    <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
+      {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
+      <H1>{children}</H1>
+      {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
+    </header>
   );
 }
 

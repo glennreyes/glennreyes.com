@@ -9,24 +9,24 @@ import { Paragraph } from '../ui/typography/paragraph';
 
 export function AboutAuthor() {
   return (
-  <Card asChild>
-    <section>
-      <Card.Body title="About the Author">
-        <div className="grid items-center gap-6 sm:flex">
-          <Link className="flex-none rounded-full" href="/about">
-            <Avatar />
-          </Link>
-          <div className="grid gap-4">
-            <H4 asChild>
-              <h2>
-                <Link href="/about">{name}</Link>
-              </h2>
-            </H4>
-            <Paragraph>{description}</Paragraph>
+    <Card asChild>
+      <section>
+        <Card.Body title="About the Author">
+          <div className="grid items-center gap-6 sm:flex">
+            <Link className="flex-none rounded-full" href="/about">
+              <Avatar />
+            </Link>
+            <div className="grid gap-4">
+              <H4 asChild>
+                <h2>
+                  <Link href="/about">{name}</Link>
+                </h2>
+              </H4>
+              <Paragraph>{description}</Paragraph>
+            </div>
           </div>
-        </div>
-      </Card.Body>
-    </section>
-  </Card>
+        </Card.Body>
+      </section>
+    </Card>
   );
 }

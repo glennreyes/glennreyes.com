@@ -30,12 +30,14 @@ interface CardBodyProps
 
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
-  <div className="grid gap-4" {...props}>
-    {title && (
-      <p className="font-medium text-teal-700 dark:text-teal-200/75">{title}</p>
-    )}
-    {children}
-  </div>
+    <div className="grid gap-4" {...props}>
+      {title && (
+        <p className="font-medium text-teal-700 dark:text-teal-200/75">
+          {title}
+        </p>
+      )}
+      {children}
+    </div>
   );
 }
 

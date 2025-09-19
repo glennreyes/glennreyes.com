@@ -11,11 +11,11 @@ interface EventLeadProps
 
 export function EventLead({ location, url }: EventLeadProps) {
   return (
-  <Lead>
-    <span className="flex flex-wrap items-center gap-6">
-      <EventLocation location={location} />
-      <EventWebsite url={url} />
-    </span>
-  </Lead>
+    <Lead>
+      <span className="flex flex-wrap items-center gap-6">
+        <EventLocation location={location} />
+        <EventWebsite url={url} />
+      </span>
+    </Lead>
   );
 }

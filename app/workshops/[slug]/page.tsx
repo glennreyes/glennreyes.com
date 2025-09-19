@@ -28,7 +28,9 @@ export const generateStaticParams = async () => {
   return allWorkshops.map((workshop) => ({ slug: workshop.slug }));
 };
 
-export default async function WorkshopPage(props: PageProps<'/workshops/[slug]'>) {
+export default async function WorkshopPage(
+  props: PageProps<'/workshops/[slug]'>,
+) {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
   const events = workshop.appearances.map((appearance) => appearance.event);

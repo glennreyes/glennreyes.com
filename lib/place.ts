@@ -6,7 +6,7 @@ export const composePlaceByLocation = (
   [
     location.city,
     location.country === 'United States'
-      ? location.state ?? location.country
+      ? (location.state ?? location.country)
       : location.country,
   ].join(', ');
 
