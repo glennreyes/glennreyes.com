@@ -351,19 +351,29 @@ export async function handleToolCall(
             tags?.some((tag) => tag.toLowerCase().includes(loweredQuery)),
           );
         const matchesEntry = (entry: SearchableContent): boolean => {
-          // Define field extractors for different content types
-          const fieldExtractors = [
-            // Title/name field
-            () => ('title' in entry ? entry.title : 'name' in entry ? entry.name : undefined),
-            // Description fields
-            () => ('frontmatter' in entry ? entry.frontmatter.description : undefined),
-            () => ('abstract' in entry ? entry.abstract : undefined),
-            () => ('summary' in entry ? entry.summary : undefined),
-          ];
-          // Extract all searchable text fields
-          const searchableFields = fieldExtractors
-            .map(extract => extract())
-            .filter((field): field is string => Boolean(field));
+          const searchableFields: string[] = [];
+
+          // Get title or name
+          if ('title' in entry) {
+            searchableFields.push(entry.title);
+          }
+
+          if ('name' in entry) {
+            searchableFields.push(entry.name);
+          }
+
+          // Get description fields
+          if ('frontmatter' in entry && entry.frontmatter.description) {
+            searchableFields.push(entry.frontmatter.description);
+          }
+
+          if ('abstract' in entry && entry.abstract) {
+            searchableFields.push(entry.abstract);
+          }
+
+          if ('summary' in entry && entry.summary) {
+            searchableFields.push(entry.summary);
+          }
 
           // Check text fields or tags
           return searchableFields.some(matchesString) ||
@@ -372,9 +382,7 @@ export async function handleToolCall(
 
         if (contentType === 'all' || contentType === 'posts') {
           const posts = await dataSources.getAllPosts();
-          const matchingPosts = posts.filter((post) =>
-            matchesEntry(post as SearchablePost),
-          );
+          const matchingPosts = posts.filter(matchesEntry);
 
           results.push(
             ...matchingPosts.map((post) => ({ type: 'post', ...post })),
@@ -383,9 +391,7 @@ export async function handleToolCall(
 
         if (contentType === 'all' || contentType === 'talks') {
           const talks = await dataSources.getAllTalks();
-          const matchingTalks = talks.filter((talk) =>
-            matchesEntry(talk as SearchableTalk),
-          );
+          const matchingTalks = talks.filter(matchesEntry);
 
           results.push(
             ...matchingTalks.map((talk) => ({ type: 'talk', ...talk })),
@@ -394,9 +400,7 @@ export async function handleToolCall(
 
         if (contentType === 'all' || contentType === 'workshops') {
           const workshops = await dataSources.getAllWorkshops();
-          const matchingWorkshops = workshops.filter((workshop) =>
-            matchesEntry(workshop as SearchableWorkshop),
-          );
+          const matchingWorkshops = workshops.filter(matchesEntry);
 
           results.push(
             ...matchingWorkshops.map((workshop) => ({
