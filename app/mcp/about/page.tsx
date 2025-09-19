@@ -3,13 +3,14 @@ import type { Metadata } from 'next';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { MCPContent, type MCPToolGroup } from '@/components/mcp/mcp-content';
+import type { MCPToolGroup } from '@/components/mcp/mcp-content';
+
+import { MCPContent } from '@/components/mcp/mcp-content';
 import { Page } from '@/components/ui/layout/page';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Lead } from '@/components/ui/typography/lead';
 
 const file = path.join(process.cwd(), 'content/pages/mcp.mdx');
-
 const toolGroups: MCPToolGroup[] = [
   {
     badgeColor: 'teal',

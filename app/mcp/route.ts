@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import {
   handleToolCall,
   listTools,
-} from '@/lib/mcp/core';
+} from '@/lib/mcp';
 
 export function GET(): NextResponse {
   return NextResponse.json({

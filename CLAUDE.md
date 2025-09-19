@@ -25,7 +25,7 @@ Code quality commands:
 - `pnpm lint` - Run ESLint checks
 - `pnpm format` - Format and fix code issues
 
-**Important**: Always run `pnpm knip` and `pnpm lint` after making changes to ensure code quality and adherence to project rules.
+**Important**: Always run `pnpm format`, `pnpm knip` and `pnpm lint` after making any file changes to ensure code quality, proper formatting, and adherence to project rules.
 
 ## Architecture
 
@@ -90,7 +90,7 @@ This is a personal portfolio website built with Next.js 15 using the App Router 
 
 - **Function declarations**: Use function declarations for React components (`function MyComponent() {}`), arrow functions for everything else
 - **Component typing**: Never use `FC` or `FunctionComponent` types - define prop interfaces/types above the component function
-- **TypeScript strictness**: Never use `any` type - always provide explicit types or use proper type inference
+- **TypeScript strictness**: Never use `any` type - always provide explicit types or use proper type inference. Never use type assertions (`as string`, `as any`, etc.) - solve type issues through proper typing, type guards, or refactoring instead
 - **Component props**: Always define explicit interfaces for component props, even for simple components, positioned above the function. Name the interface the same as the component with 'Props' appended (e.g., `ButtonProps` for `Button` component)
 - **Imports**: Use explicit named imports, avoid default imports except for React components
 - **File naming**: Use kebab-case for component files, camelCase for utility files

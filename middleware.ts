@@ -1,4 +1,5 @@
 import type { NextRequest } from 'next/server';
+
 import { NextResponse } from 'next/server';
 
 const JSON_CONTENT_TYPES = [
@@ -16,18 +17,21 @@ export function middleware(request: NextRequest) {
   const expectsJSON = JSON_CONTENT_TYPES.some((type) =>
     accepts.toLowerCase().includes(type),
   );
-
   const isReadMethod = request.method === 'GET' || request.method === 'HEAD';
 
   if (!isReadMethod) {
     const url = request.nextUrl.clone();
+
     url.pathname = '/api/mcp';
+
     return NextResponse.rewrite(url);
   }
 
   if (expectsJSON && isReadMethod) {
     const url = request.nextUrl.clone();
+
     url.pathname = '/api/mcp';
+
     return NextResponse.rewrite(url);
   }
 
