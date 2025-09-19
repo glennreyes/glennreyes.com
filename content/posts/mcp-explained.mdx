@@ -1,0 +1,93 @@
+---
+title: What is MCP?
+description: A beginner-friendly introduction to the Model Context Protocol (MCP) - what it is, why it matters, and how I built my own MCP server for portfolio management.
+publishedAt: 2025-09-19
+---
+
+If you've been following AI development lately, you might have heard about something called MCP, or the Model Context Protocol. Don't worry if it sounds technical - I'll break it down in simple terms and show you what it means for the future of AI tools.
+
+## What is MCP?
+
+Think of MCP as a "USB port for AI." Just like USB allowed us to connect any device to any computer with a standard connection, MCP lets AI assistants connect to any system, tool, or data source using a standard protocol.
+
+Before MCP, if you wanted your AI assistant to access your Google Drive, Slack messages, or GitHub repositories, each integration had to be built from scratch. With MCP, there's now a universal way for AI tools to "plug into" these systems.
+
+## Why Does This Matter?
+
+Imagine you're working with Claude and you want to:
+- Search through your company's documentation
+- Check your calendar for meetings
+- Pull data from your database
+- Update a Slack channel
+
+Without MCP, these would require separate, custom integrations. With MCP, your AI assistant can connect to all these systems through a single, standardized protocol.
+
+## My MCP Server
+
+I recently built my own MCP server for this portfolio website. You can check it out at [/mcp](/mcp). Here's what it does:
+
+**Content Management**: It gives AI assistants access to all my blog posts, talks, and workshops. An AI can now search through my content, find specific articles, or get summaries of my work.
+
+**Portfolio Data**: It provides information about my speaking appearances, upcoming events, and professional activities - all in a format that AI tools can easily understand and work with.
+
+**Newsletter Management**: It includes tools for managing newsletter campaigns, checking subscriber statistics, and creating new content for my audience.
+
+The cool thing is that any MCP-compatible AI tool can now access this information about my work without me having to build separate integrations for each tool.
+
+## Popular MCP Examples
+
+The MCP ecosystem has exploded since Anthropic introduced it in late 2024. Here are some popular examples you might find useful:
+
+**Development Tools**:
+- **Git Server** - Let AI assistants read, search, and work with your Git repositories
+- **Filesystem Server** - Give AI secure access to your local files with configurable permissions
+- **GitHub Server** - Connect AI to your GitHub issues, pull requests, and repositories
+
+**Business & Productivity**:
+- **Slack Server** - AI can read messages, send updates, and manage Slack workflows
+- **Google Drive Server** - Access and manage your Google Drive documents
+- **Atlassian Server** - Work with Jira tickets and Confluence pages
+
+**Cloud & Data**:
+- **PostgreSQL Server** - Query and analyze your database directly through AI
+- **AWS Server** - Manage AWS resources and services
+- **Aiven Server** - Connect to various database services like PostgreSQL, Kafka, and ClickHouse
+
+**Finance & Trading**:
+- **Alpaca Server** - Trade stocks, analyze market data, and build trading strategies
+
+## The Technical Side (Simplified)
+
+MCP works with three main components:
+
+1. **Tools** - Actions the AI can perform (like sending an email or querying a database)
+2. **Resources** - Data the AI can read (like files or database records)
+3. **Prompts** - Pre-built templates that help the AI use tools and resources effectively
+
+When you connect an MCP server to an AI assistant, you're essentially giving it a new set of superpowers specific to that system or service.
+
+## What This Means for the Future
+
+MCP is still very new, but it's growing incredibly fast. In just a few months since its release, developers have created over 1,000 MCP servers for different services and tools.
+
+This standardization means:
+- **Easier integrations** - Connect your AI to new tools without custom development
+- **Better workflows** - AI assistants can work across multiple systems seamlessly
+- **More powerful automation** - Combine different tools and data sources in sophisticated ways
+
+Popular development tools like Cursor, Windsurf, and Codeium have already integrated MCP support, making it a one-click setup to connect AI to your development environment.
+
+## Getting Started
+
+If you want to explore MCP, you can:
+1. Check out the [official MCP servers repository](https://github.com/modelcontextprotocol/servers) for examples
+2. Try connecting an existing MCP server to Claude Desktop or another compatible AI tool
+3. Build your own MCP server for a service you use regularly
+
+The protocol is designed to be developer-friendly, and there are plenty of examples to learn from.
+
+## Wrapping Up
+
+MCP might sound complex, but it's really just about making AI assistants more useful by giving them standardized ways to connect to the tools and data you already use. As more services adopt MCP, we'll see AI assistants become much more capable and integrated into our daily workflows.
+
+The fact that we now have a universal protocol for AI integrations is exciting - it means we're moving from isolated AI tools to AI that can work seamlessly across all our systems and data sources.
