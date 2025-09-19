@@ -54,6 +54,47 @@ const postprocessRawCode = (tree: Element) => {
   });
 };
 
+export const mdxRemoteOptions = {
+  mdxOptions: {
+    rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'wrap',
+          properties: { className: [classes.autoLink] },
+        } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
+      ],
+      () => preprocessRawCode,
+      [
+        rehypePrettyCode,
+        {
+          onVisitHighlightedLine: (node) => {
+            // Each line node by default has `class="line"`.
+            node.properties.className?.push(classes.lineHighlighted);
+          },
+
+          // Callback hooks to add custom logic to nodes when visiting
+          // them.
+          onVisitLine: (node) => {
+            node.properties.className = [classes.line];
+
+            // Prevent lines from collapsing in `display: grid` mode, and
+            // allow empty lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }];
+            }
+          },
+          theme: 'nord',
+        } satisfies Parameters<typeof rehypePrettyCode>[0],
+      ],
+      () => postprocessRawCode,
+    ],
+    remarkPlugins: [remarkGfm],
+  },
+  parseFrontmatter: true,
+} satisfies Parameters<typeof compileMDX>[0]['options'];
+
 export const readMDXFile = async <TFrontmatter = Record<string, unknown>>(
   file: string,
 ) => {
@@ -61,46 +102,7 @@ export const readMDXFile = async <TFrontmatter = Record<string, unknown>>(
   const source = readFileSync(filePath, 'utf8');
   const result = await compileMDX<TFrontmatter>({
     components,
-    options: {
-      mdxOptions: {
-        rehypePlugins: [
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behavior: 'wrap',
-              properties: { className: [classes.autoLink] },
-            } satisfies Parameters<typeof rehypeAutolinkHeadings>[0],
-          ],
-          () => preprocessRawCode,
-          [
-            rehypePrettyCode,
-            {
-              onVisitHighlightedLine: (node) => {
-                // Each line node by default has `class="line"`.
-                node.properties.className?.push(classes.lineHighlighted);
-              },
-
-              // Callback hooks to add custom logic to nodes when visiting
-              // them.
-              onVisitLine: (node) => {
-                node.properties.className = [classes.line];
-
-                // Prevent lines from collapsing in `display: grid` mode, and
-                // allow empty lines to be copy/pasted
-                if (node.children.length === 0) {
-                  node.children = [{ type: 'text', value: ' ' }];
-                }
-              },
-              theme: 'nord',
-            } satisfies Parameters<typeof rehypePrettyCode>[0],
-          ],
-          () => postprocessRawCode,
-        ],
-        remarkPlugins: [remarkGfm],
-      },
-      parseFrontmatter: true,
-    },
+    options: mdxRemoteOptions,
     source,
   });
 
