@@ -5,7 +5,7 @@ import { getAllPosts } from '@/lib/posts';
 import { getAllTalks } from '@/lib/talks';
 import { getAllWorkshops } from '@/lib/workshops';
 
-export interface MCPToolDefinition {
+interface MCPToolDefinition {
   description: string;
   inputSchema: {
     properties?: Record<string, unknown>;
@@ -15,18 +15,18 @@ export interface MCPToolDefinition {
   name: string;
 }
 
-export interface MCPContentDocument {
+interface MCPContentDocument {
   text: string;
   type: 'text';
 }
 
-export interface MCPUIResource {
+interface MCPUIResource {
   content: string;
   metadata?: Record<string, unknown>;
   type: 'inline-html' | 'external-url' | 'remote-dom';
 }
 
-export interface MCPResponse {
+interface MCPResponse {
   content?: MCPContentDocument[];
   isError?: boolean;
   tools?: MCPToolDefinition[];
@@ -34,7 +34,7 @@ export interface MCPResponse {
 }
 
 // Types for searchable content
-export interface SearchablePost {
+interface SearchablePost {
   frontmatter: {
     title: string;
     description: string;
@@ -45,7 +45,7 @@ export interface SearchablePost {
   content: React.ReactElement;
 }
 
-export interface SearchableTalk {
+interface SearchableTalk {
   title: string;
   abstract: string;
   slug: string;
@@ -53,7 +53,7 @@ export interface SearchableTalk {
   tags?: string[];
 }
 
-export interface SearchableWorkshop {
+interface SearchableWorkshop {
   title: string;
   summary: string;
   slug: string;
@@ -61,7 +61,7 @@ export interface SearchableWorkshop {
   tags?: string[];
 }
 
-export interface SearchableEvent {
+interface SearchableEvent {
   name: string;
   slug: string;
   startDate: Date;
@@ -77,7 +77,7 @@ export interface SearchableEvent {
 }
 
 // Union type for all searchable content
-export type SearchableContent =
+type SearchableContent =
   | SearchablePost
   | SearchableTalk
   | SearchableWorkshop
@@ -380,7 +380,8 @@ export async function handleToolCall(
 
       case 'search_content': {
         const query = validateString(args.query, 'Query');
-        const contentType = (args.contentType as string) ?? 'all';
+        const contentType =
+          typeof args.contentType === 'string' ? args.contentType : 'all';
         const loweredQuery = query.toLowerCase();
         const results: Record<string, unknown>[] = [];
         const matchesString = (value: string | undefined): boolean =>
@@ -473,7 +474,10 @@ export async function handleToolCall(
       case 'create_newsletter_campaign': {
         const title = validateString(args.title, 'Title');
         const content = validateString(args.content, 'Content');
-        const scheduledDate = args.scheduledDate as string | undefined;
+        const scheduledDate =
+          typeof args.scheduledDate === 'string'
+            ? validateString(args.scheduledDate, 'Scheduled Date')
+            : undefined;
         const campaign = {
           content,
           createdAt: new Date().toISOString(),
