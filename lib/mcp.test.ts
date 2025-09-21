@@ -81,7 +81,11 @@ describe('MCP core utilities', () => {
 
     expect(response.uiResource).toBeDefined();
     expect(response.uiResource).toBeDefined();
-    if (!response.uiResource) throw new Error('Expected uiResource');
+
+    if (!response.uiResource) {
+      throw new Error('Expected uiResource');
+    }
+
     expect(response.uiResource.type).toBe('inline-html');
     expect(response.uiResource.content).toContain('Blog Posts');
     expect(response.uiResource.metadata?.count).toBe(mockPosts.length);
@@ -160,7 +164,11 @@ describe('MCP core utilities', () => {
 
     expect(response.uiResource).toBeDefined();
     expect(response.uiResource).toBeDefined();
-    if (!response.uiResource) throw new Error('Expected uiResource');
+
+    if (!response.uiResource) {
+      throw new Error('Expected uiResource');
+    }
+
     expect(response.uiResource.type).toBe('inline-html');
     expect(response.uiResource.content).toContain(
       'Search Results for "typescript"',

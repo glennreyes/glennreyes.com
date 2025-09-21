@@ -48,6 +48,9 @@ export default defineConfig([
       'prefer-arrow-functions': preferArrowFunctions,
     },
     rules: {
+      // Enforce curly braces on all control statements
+      curly: ['error', 'all'],
+
       // Custom stylistic rules
       '@stylistic/jsx-curly-brace-presence': 'error',
       '@stylistic/lines-around-comment': [
