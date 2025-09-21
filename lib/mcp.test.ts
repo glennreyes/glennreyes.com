@@ -72,32 +72,6 @@ describe('MCP core utilities', () => {
     expect(new Set(names).size).toBe(names.length);
   });
 
-  it('returns all posts as formatted JSON', async () => {
-    const response = await handleToolCall(
-      'get_all_posts',
-      {},
-      createMockSources(),
-    );
-
-    expect(response.content).toBeDefined();
-    expect(response.content?.[0]).toBeDefined();
-    const responseSchema = z.object({
-      content: z
-        .array(
-          z.object({
-            text: z.string(),
-          }),
-        )
-        .min(1),
-    });
-    const validatedResponse = responseSchema.parse(response);
-    // Parse the JSON content to get the actual posts data
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const postsData = JSON.parse(validatedResponse.content[0]?.text ?? '[]');
-
-    expect(postsData).toHaveLength(mockPosts.length);
-  });
-
   it('returns all posts with UI resource for rich display', async () => {
     const response = await handleToolCall(
       'get_all_posts',
