@@ -15,7 +15,6 @@ import {
   MoonIcon,
   SunIcon,
 } from '@heroicons/react/24/outline';
-import { Fragment } from 'react';
 
 import type { Theme } from '@/lib/theme';
 
@@ -116,13 +115,12 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
     >
       {({ open }) => (
         <>
-          <ListboxButton as={Fragment}>
-            <IconButton
-              appearance="secondary"
-              aria-label="Switch Theme"
-              icon={Icon}
-            />
-          </ListboxButton>
+          <ListboxButton
+            as={IconButton}
+            appearance="secondary"
+            aria-label="Switch Theme"
+            icon={Icon}
+          />
           <Transition
             as="div"
             enter="duration-150 ease-out"
@@ -139,32 +137,33 @@ export function ThemeSelect({ native }: ThemeSelectProps) {
             >
               {options.map(({ icon: CurrentIcon, ...option }) => (
                 <ListboxOption
-                  as={Fragment}
+                  as="li"
                   key={option.value}
                   value={option.value}
-                >
-                  {({ focus, selected }) => {
-                    const itemClasses = cn(
+                  className={({ focus, selected }) =>
+                    cn(
                       'flex cursor-pointer items-center gap-3 px-4 py-2.5 font-medium transition',
                       focus && 'bg-slate-50 dark:bg-slate-900/50',
                       selected
                         ? 'text-teal-600 dark:text-teal-200/75'
                         : 'text-slate-800 dark:text-slate-200',
-                    );
-                    const iconClasses = cn(
-                      'h-6 w-6',
-                      selected
-                        ? 'text-teal-500/75 dark:text-teal-600/75'
-                        : 'text-slate-400 dark:text-slate-500',
-                    );
-
-                    return (
-                      <li className={itemClasses}>
-                        <CurrentIcon aria-hidden className={iconClasses} />
-                        {option.label}
-                      </li>
-                    );
-                  }}
+                    )
+                  }
+                >
+                  {({ selected }) => (
+                    <>
+                      <CurrentIcon
+                        aria-hidden
+                        className={cn(
+                          'h-6 w-6',
+                          selected
+                            ? 'text-teal-500/75 dark:text-teal-600/75'
+                            : 'text-slate-400 dark:text-slate-500',
+                        )}
+                      />
+                      {option.label}
+                    </>
+                  )}
                 </ListboxOption>
               ))}
             </ListboxOptions>
