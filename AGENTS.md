@@ -38,7 +38,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Use React function declarations for components; avoid `React.FC`.
 - Define prop interfaces/types above components (`ComponentProps` pattern).
 - No `any`, unchecked type assertions, or implicit truthiness—prefer type guards.
-- Never use type assertions (`as Type`); always refactor to use proper typing or type guards.
+- Never use type assertions (`as Type`) or non-null assertions (`!`); always refactor to use proper typing or type guards. Only allow `as const` if absolutely necessary.
+- Avoid disabling ESLint rules via comments (`// eslint-disable-next-line`). Instead, fix the underlying issue by improving types, refactoring code, or using proper TypeScript patterns.
 - Favour server components; elevate `"use client"` only where interaction is required.
 - Use `const`; structure control flow to avoid reassignment.
 - Prefer `async/await` with explicit `try/catch`; do not chain `.then()`/`.catch()`.
