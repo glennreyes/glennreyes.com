@@ -22,7 +22,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 - `pnpm format` – Prettier + ESLint auto-fix
 - `pnpm lint` – ESLint (strict, no warnings tolerated)
-- `pnpm test` – Node test runner via `tsx`
+- `pnpm test` – Vitest test runner
 - `pnpm knip` – Optional, will flag unused files/deps
 - `tsc --noEmit` (if types feel risky) – TypeScript checks
 
@@ -38,6 +38,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Use React function declarations for components; avoid `React.FC`.
 - Define prop interfaces/types above components (`ComponentProps` pattern).
 - No `any`, unchecked type assertions, or implicit truthiness—prefer type guards.
+- Never use type assertions (`as Type`); always refactor to use proper typing or type guards.
 - Favour server components; elevate `"use client"` only where interaction is required.
 - Use `const`; structure control flow to avoid reassignment.
 - Prefer `async/await` with explicit `try/catch`; do not chain `.then()`/`.catch()`.
@@ -45,6 +46,12 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Typography is intentionally uniform—do not introduce ad-hoc font-size utilities.
 - Accessibility: use `focus-visible:` for focus styles; preserve existing semantics.
 - Keep imports sorted logically (grouped by origin). Use named imports unless a library only exports default.
+
+## Testing Rules
+
+- Use Vitest as the test framework
+- Place test files next to the files they test
+- Test file naming: `{filename}.test.{extension}` (e.g., `utils.ts` → `utils.test.ts`)
 
 ## Content & Data
 
