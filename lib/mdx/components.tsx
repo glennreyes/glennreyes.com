@@ -34,14 +34,14 @@ export const components: MDXComponents = {
     <Image alt={alt} className={cn('rounded-3xl', className)} {...props} />
   ),
   Lead,
-  a: ({ href, ...props }) => {
+  a: ({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const classes = '[.prose_&]:font-normal';
 
-    if (href?.startsWith('#')) {
+    if (typeof href === 'string' && href.startsWith('#')) {
       return <Link href={href} className={classes} {...props} />;
     }
 
-    if (href) {
+    if (typeof href === 'string' && href.length > 0) {
       return <InlineLink href={href} className={classes} {...props} />;
     }
 

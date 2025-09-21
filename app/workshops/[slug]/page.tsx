@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import type { PageProps } from '@/types/next';
+
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Divider } from '@/components/ui/elements/divider';
 import { TagCloud } from '@/components/ui/elements/tag-cloud';
