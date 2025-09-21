@@ -38,7 +38,6 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
         className={copyIconClasses}
         icon={Square2StackIcon}
         onClick={copyToClipboard}
-        size={5}
       />
       <span className={checkIconClasses}>
         <CheckIcon aria-hidden className="h-5 w-5" />
