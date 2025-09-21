@@ -15,7 +15,9 @@ describe('cn utility', () => {
       'base-class conditional-class',
     );
 
-    expect(cn('base-class', condition2 && 'conditional-class')).toBe('base-class');
+    expect(cn('base-class', condition2 && 'conditional-class')).toBe(
+      'base-class',
+    );
   });
 
   it('merges conflicting Tailwind classes', () => {

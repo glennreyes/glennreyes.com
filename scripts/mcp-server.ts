@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
-import { createMCPUIServer } from '@mcp-ui/server';
+import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import {
+  ListToolsRequestSchema,
+  CallToolRequestSchema,
+} from '@modelcontextprotocol/sdk/types.js';
 
 import type { MCPDataSources } from '@/lib/mcp';
 
@@ -9,43 +13,50 @@ import { handleToolCall, listTools, resolveDataSources } from '@/lib/mcp';
 
 export function createMCPServer(overrides?: Partial<MCPDataSources>) {
   const dataSources = resolveDataSources(overrides);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-  const server = createMCPUIServer({
-    name: 'glennreyes.com',
-    version: '1.0.0',
-    description: 'MCP server for Glenn Reyes portfolio management',
-  });
+  const server = new Server(
+    {
+      name: 'glennreyes.com',
+      version: '1.0.0',
+    },
+    {
+      capabilities: {
+        tools: {},
+      },
+    },
+  );
   // Register all tools
   const tools = listTools();
 
-  tools.forEach((tool) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    server.addTool(
-      tool.name,
-      tool.description,
-      async (args: Record<string, unknown>) => {
-        const response = await handleToolCall(tool.name, args, dataSources);
-
-        if (response.isError) {
-          throw new Error(response.content?.[0]?.text ?? 'Unknown error');
-        }
-
-        return response.content?.[0]?.text ?? '';
-      },
-      tool.inputSchema,
-    );
+  server.setRequestHandler(ListToolsRequestSchema, () => {
+    return {
+      tools: tools.map((tool) => ({
+        name: tool.name,
+        description: tool.description,
+        inputSchema: tool.inputSchema,
+      })),
+    };
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    const { name, arguments: args } = request.params;
+    const response = await handleToolCall(name, args ?? {}, dataSources);
+
+    if (response.isError) {
+      throw new Error(response.content?.[0]?.text ?? 'Unknown error');
+    }
+
+    return {
+      content: response.content ?? [],
+    };
+  });
+
   return server;
 }
 
 export async function runMCPServer() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const server = createMCPServer();
   const transport = new StdioServerTransport();
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   await server.connect(transport);
 
   console.error('Glenn Reyes Portfolio MCP-UI Server started');

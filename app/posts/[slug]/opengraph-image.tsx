@@ -28,7 +28,8 @@ const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
       throw new Error(`Failed to fetch meta data: ${res.status}`);
     }
 
-    const rawData = (await res.json()) as unknown;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const rawData = await res.json();
     const errorResult = errorSchema.safeParse(rawData);
 
     if (errorResult.success) {

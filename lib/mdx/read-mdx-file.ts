@@ -1,4 +1,4 @@
-import type { Element, Literal } from 'hast';
+import type { Element } from 'hast';
 
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { readFileSync } from 'node:fs';
@@ -24,15 +24,27 @@ const preprocessRawCode = (tree: Element) => {
       return;
     }
 
-    const [element] = node.children as Element[];
+    const [element] = node.children;
+
+    if (!element || element.type !== 'element') {
+      return;
+    }
 
     if (element?.tagName !== 'code') {
       return;
     }
 
-    const [code] = element.children as (Literal & Text)[];
+    const [code] = element.children;
 
-    (node as Element & { raw?: string }).raw = code?.value;
+    if (!code || code.type !== 'text') {
+      return;
+    }
+
+    if ('raw' in node) {
+      (node as Element & { raw?: string }).raw = code.value;
+    } else {
+      Object.assign(node, { raw: code.value });
+    }
   });
 };
 // Pass raw value found in `pre` node and store to div[data-rehype-pretty-code-fragment]
@@ -46,9 +58,15 @@ const postprocessRawCode = (tree: Element) => {
       return;
     }
 
-    for (const child of node.children as Element[]) {
+    for (const child of node.children) {
+      if (child.type !== 'element') {
+        continue;
+      }
+
       if (child.tagName === 'pre') {
-        node.properties.raw = (node as Element & { raw?: string }).raw;
+        if ('raw' in node) {
+          node.properties.raw = (node as Element & { raw?: string }).raw;
+        }
       }
     }
   });

@@ -1,21 +1,28 @@
 import { NextRequest } from 'next/server';
 import { describe, it, expect } from 'vitest';
+import { z } from 'zod';
 
 import { GET, POST } from './route';
 
-const readJson = async <T>(response: Response): Promise<T> => {
+const parseJsonWith = async <T>(
+  response: Response,
+  schema: z.ZodSchema<T>,
+): Promise<T> => {
   const text = await response.text();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const rawData = JSON.parse(text);
 
-  return JSON.parse(text) as T;
+  return schema.parse(rawData);
 };
 
 describe('MCP API route', () => {
   it('returns server metadata on GET', async () => {
     const response = GET();
-    const payload = await readJson<{
-      endpoint: string;
-      tools: unknown[];
-    }>(response);
+    const schema = z.object({
+      endpoint: z.string(),
+      tools: z.array(z.unknown()),
+    });
+    const payload = await parseJsonWith(response, schema);
 
     expect(payload.endpoint).toBe('/mcp');
     expect(Array.isArray(payload.tools)).toBe(true);
@@ -29,7 +36,10 @@ describe('MCP API route', () => {
       method: 'POST',
     });
     const response = await POST(request);
-    const payload = await readJson<{ tools: unknown[] }>(response);
+    const schema = z.object({
+      tools: z.array(z.unknown()),
+    });
+    const payload = await parseJsonWith(response, schema);
 
     expect(Array.isArray(payload.tools)).toBe(true);
     expect(payload.tools.length).toBeGreaterThan(0);
@@ -45,11 +55,14 @@ describe('MCP API route', () => {
       method: 'POST',
     });
     const response = await POST(request);
-    const payload = await readJson<{ content: { text: string }[] }>(response);
+    const schema = z.object({
+      content: z.array(z.object({ text: z.string() })),
+    });
+    const payload = await parseJsonWith(response, schema);
 
     expect(response.status).toBe(200);
     expect(Array.isArray(payload.content)).toBe(true);
-    expect(payload.content[0].text).toContain('totalSubscribers');
+    expect(payload.content?.[0]?.text).toContain('totalSubscribers');
   });
 
   it('validates missing tool names', async () => {
