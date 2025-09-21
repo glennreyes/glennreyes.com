@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 import { notFound } from 'next/navigation';
 
+import type { PageProps } from '@/types/next';
+
 import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';

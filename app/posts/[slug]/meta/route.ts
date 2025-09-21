@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server';
 import { format, isThisYear } from 'date-fns';
 
 import type { PostFrontmatter } from '@/lib/posts';
+import type { RouteContext } from '@/types/next';
 
 import { readMDXFile } from '@/lib/mdx/read-mdx-file';
 
