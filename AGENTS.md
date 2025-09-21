@@ -65,7 +65,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 - **Always run quality gates before committing** - ensure `pnpm format`, `pnpm lint`, and `pnpm test` pass.
 - Work in small, coherent commits with present-tense summaries.
-- Use natural, readable commit messages - avoid excessive lowercasing or abbreviated terms.
+- **Avoid conventional commit messages** (fix:, feat:, etc.) - use natural, readable descriptions instead.
 - Use commit descriptions to provide context about what was done during the changes.
 - If tooling (lint/test) cannot run, state why and what was attempted.
 - Mention any nonstandard manual steps in the PR/summary.
