@@ -1,5 +1,7 @@
+import { Status } from '@prisma/client';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
+import { z } from 'zod';
 
 import type { MCPDataSources } from '@/lib/mcp';
 
@@ -31,7 +33,7 @@ const mockTalks = [
     title: 'Modern React Patterns',
     abstract: 'Patterns session',
     slug: 'react-patterns',
-    status: 'published',
+    status: Status.ACTIVE,
   },
 ];
 const mockWorkshops = [
@@ -39,7 +41,7 @@ const mockWorkshops = [
     title: 'Advanced TypeScript Workshop',
     summary: 'Deep dive into TypeScript',
     slug: 'typescript-advanced',
-    status: 'published',
+    status: Status.ACTIVE,
   },
 ];
 const mockEvents = [
@@ -78,9 +80,22 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.content).toBeDefined();
-    const payload = JSON.parse(response.content![0].text) as unknown[];
+    expect(response.content?.[0]).toBeDefined();
+    const responseSchema = z.object({
+      content: z
+        .array(
+          z.object({
+            text: z.string(),
+          }),
+        )
+        .min(1),
+    });
+    const validatedResponse = responseSchema.parse(response);
+    // Parse the JSON content to get the actual posts data
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const postsData = JSON.parse(validatedResponse.content[0]?.text ?? '[]');
 
-    expect(payload).toHaveLength(mockPosts.length);
+    expect(postsData).toHaveLength(mockPosts.length);
   });
 
   it('returns all posts with UI resource for rich display', async () => {
@@ -91,10 +106,12 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.uiResource).toBeDefined();
-    expect(response.uiResource!.type).toBe('inline-html');
-    expect(response.uiResource!.content).toContain('Blog Posts');
-    expect(response.uiResource!.metadata?.count).toBe(mockPosts.length);
-    expect(response.uiResource!.metadata?.title).toBe('Blog Posts');
+    expect(response.uiResource).toBeDefined();
+    if (!response.uiResource) throw new Error('Expected uiResource');
+    expect(response.uiResource.type).toBe('inline-html');
+    expect(response.uiResource.content).toContain('Blog Posts');
+    expect(response.uiResource.metadata?.count).toBe(mockPosts.length);
+    expect(response.uiResource.metadata?.title).toBe('Blog Posts');
   });
 
   it('returns a single post by slug', async () => {
@@ -105,7 +122,20 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.content).toBeDefined();
-    const payload = JSON.parse(response.content![0].text) as { slug: string };
+    expect(response.content?.[0]).toBeDefined();
+    const responseSchema = z.object({
+      content: z.tuple([
+        z.object({
+          text: z
+            .string()
+            .transform((text) =>
+              z.object({ slug: z.string() }).parse(JSON.parse(text)),
+            ),
+        }),
+      ]),
+    });
+    const validatedResponse = responseSchema.parse(response);
+    const payload = validatedResponse.content[0].text;
 
     expect(payload.slug).toBe('react-19');
   });
@@ -118,7 +148,7 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.isError).toBe(true);
-    expect(response.content?.[0].text).toContain('not found');
+    expect(response.content?.[0]?.text).toContain('not found');
   });
 
   it('searches across the requested content types', async () => {
@@ -129,7 +159,20 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.content).toBeDefined();
-    const payload = JSON.parse(response.content![0].text) as { type: string }[];
+    expect(response.content?.[0]).toBeDefined();
+    const responseSchema = z.object({
+      content: z.tuple([
+        z.object({
+          text: z
+            .string()
+            .transform((text) =>
+              z.array(z.object({ type: z.string() })).parse(JSON.parse(text)),
+            ),
+        }),
+      ]),
+    });
+    const validatedResponse = responseSchema.parse(response);
+    const payload = validatedResponse.content[0].text;
 
     expect(payload.map((entry) => entry.type)).toEqual(['workshop']);
   });
@@ -142,11 +185,13 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.uiResource).toBeDefined();
-    expect(response.uiResource!.type).toBe('inline-html');
-    expect(response.uiResource!.content).toContain(
+    expect(response.uiResource).toBeDefined();
+    if (!response.uiResource) throw new Error('Expected uiResource');
+    expect(response.uiResource.type).toBe('inline-html');
+    expect(response.uiResource.content).toContain(
       'Search Results for "typescript"',
     );
-    expect(response.uiResource!.metadata?.title).toBe(
+    expect(response.uiResource.metadata?.title).toBe(
       'Search Results for "typescript"',
     );
   });
@@ -158,12 +203,25 @@ describe('MCP core utilities', () => {
     });
 
     expect(response.content).toBeDefined();
-    const payload = JSON.parse(response.content![0].text) as {
-      content: string;
-      id: string;
-      status: string;
-      title: string;
-    };
+    expect(response.content?.[0]).toBeDefined();
+    const responseSchema = z.object({
+      content: z.tuple([
+        z.object({
+          text: z.string().transform((text) =>
+            z
+              .object({
+                content: z.string(),
+                id: z.string(),
+                status: z.string(),
+                title: z.string(),
+              })
+              .parse(JSON.parse(text)),
+          ),
+        }),
+      ]),
+    });
+    const validatedResponse = responseSchema.parse(response);
+    const payload = validatedResponse.content[0].text;
 
     expect(payload.title).toBe('Weekly Update');
     expect(payload.content).toBe('Hello there');
@@ -179,6 +237,6 @@ describe('MCP core utilities', () => {
     );
 
     expect(response.isError).toBe(true);
-    expect(response.content?.[0].text).toContain('Unknown tool');
+    expect(response.content?.[0]?.text).toContain('Unknown tool');
   });
 });
