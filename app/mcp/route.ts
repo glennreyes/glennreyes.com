@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
 import { handleToolCall, listTools } from '@/lib/mcp';
 
@@ -12,15 +13,30 @@ export function GET(): NextResponse {
   });
 }
 
+const MCPRequestSchema = z.object({
+  method: z.string(),
+  params: z
+    .object({
+      arguments: z.record(z.string(), z.unknown()).optional(),
+      name: z.string().optional(),
+    })
+    .optional(),
+});
+
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    const body = (await request.json()) as {
-      method: string;
-      params?: {
-        arguments?: Record<string, unknown>;
-        name?: string;
-      };
-    };
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const rawBody = await request.json();
+    const parseResult = MCPRequestSchema.safeParse(rawBody);
+
+    if (!parseResult.success) {
+      return NextResponse.json(
+        { error: 'Invalid request format' },
+        { status: 400 },
+      );
+    }
+
+    const body = parseResult.data;
 
     if (body.method === 'tools/list') {
       return NextResponse.json({ tools: listTools() });
