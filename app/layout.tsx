@@ -56,9 +56,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Menu />
           </Navbar>
           <Main>{children}</Main>
+          <Footer />
+          <Toaster />
         </Providers>
-        <Footer />
-        <Toaster />
         <SpeedInsights />
         <Analytics />
       </Body>
