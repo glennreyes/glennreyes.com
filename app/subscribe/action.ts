@@ -1,29 +1,46 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { z } from 'zod';
 
 import { subscribe as subscribeBase } from '@/lib/newsletter';
 
-export const subscribe = async (data: FormData) => {
+export interface SubscribeState {
+  message: string;
+  status: 'error' | 'idle' | 'success';
+}
+
+export const subscribe = async (
+  _prevState: SubscribeState | null,
+  data: FormData,
+): Promise<SubscribeState> => {
   const email = data.get('email');
   const theme = data.get('theme');
   const result = z
     .object({
-      email: z.string(),
+      email: z.string().email('Please enter a valid email address'),
       theme: z.enum(['dark', 'light']).default('light'),
     })
     .safeParse({ email, theme });
 
   if (!result.success) {
-    throw new Error('Invalid data');
+    return {
+      message: result.error.issues[0]?.message ?? 'Invalid data',
+      status: 'error',
+    };
   }
 
   try {
     await subscribeBase(result.data);
-  } catch {
-    throw new Error('Error subscribing');
-  }
 
-  redirect('/subscribe/confirm');
+    return {
+      message:
+        'Check your inbox! We sent you a confirmation email to verify your subscription.',
+      status: 'success',
+    };
+  } catch {
+    return {
+      message: 'Something went wrong. Please try again later.',
+      status: 'error',
+    };
+  }
 };
