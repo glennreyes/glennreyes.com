@@ -1,6 +1,6 @@
 import type { Event } from '@prisma/client';
 
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
+import { ExternalLink } from 'lucide-react';
 
 import { Link } from '../ui/link/link';
 
@@ -11,9 +11,10 @@ export function EventWebsite({ url }: EventWebsiteProps) {
 
   return (
     <Link className="group inline-flex items-center gap-2" href={url}>
-      <ArrowTopRightOnSquareIcon
+      <ExternalLink
         aria-hidden
         className="h-6 w-6 text-slate-400 transition group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-400"
+        strokeWidth={2}
       />
       {website}
     </Link>

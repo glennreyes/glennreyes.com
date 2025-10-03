@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { ChevronRight } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -130,9 +130,10 @@ function FeedItem({
           <div className="grid gap-2">{content}</div>
           <p className="relative z-10 inline-flex items-center gap-0.5 font-medium text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
-            <ChevronRightIcon
+            <ChevronRight
               aria-hidden
               className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+              strokeWidth={2}
             />
           </p>
         </>
