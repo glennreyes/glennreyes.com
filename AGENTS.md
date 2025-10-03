@@ -43,6 +43,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Favour server components; elevate `"use client"` only where interaction is required.
 - Use `const`; structure control flow to avoid reassignment.
 - Prefer `async/await` with explicit `try/catch`; do not chain `.then()`/`.catch()`.
+- Always use descriptive event parameter names; never abbreviate to `(e)`; spell out identifiers like `event`.
 - Tailwind classes: inline for static strings, `cn()` helper for conditional logic.
 - Typography is intentionally uniform—do not introduce ad-hoc font-size utilities.
 - Accessibility: use `focus-visible:` for focus styles; preserve existing semantics.
