@@ -1,18 +1,13 @@
 'use client';
 
-import type { ComponentPropsWithoutRef } from 'react';
-
-import {
-  ComputerDesktopIcon,
-  MoonIcon,
-  SunIcon,
-} from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
+import { LayoutGroup, motion } from 'framer-motion';
+import { Monitor, Moon, Sun } from 'lucide-react';
 
 import type { Theme } from '@/lib/theme';
 
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useTheme } from '@/lib/hooks/use-theme';
+import { cn } from '@/lib/utils';
 
 function disableTransitionsTemporarily() {
   document.documentElement.classList.add('[&_*]:!transition-none');
@@ -22,12 +17,11 @@ function disableTransitionsTemporarily() {
   }, 0);
 }
 
-const themes: Theme[] = ['light', 'dark', 'system'];
-const icons: Record<Theme, React.ComponentType<ComponentPropsWithoutRef<'svg'>>> = {
-  light: SunIcon,
-  dark: MoonIcon,
-  system: ComputerDesktopIcon,
-};
+const themes: { icon: typeof Sun; value: Theme }[] = [
+  { icon: Monitor, value: 'system' },
+  { icon: Sun, value: 'light' },
+  { icon: Moon, value: 'dark' },
+];
 
 export function ThemeToggle() {
   const mounted = useMounted();
@@ -37,34 +31,40 @@ export function ThemeToggle() {
     return null;
   }
 
-  const cycleTheme = () => {
-    disableTransitionsTemporarily();
-    const currentIndex = themes.indexOf(theme);
-    const nextIndex = (currentIndex + 1) % themes.length;
-    const nextTheme = themes[nextIndex];
-
-    if (nextTheme) {
-      setTheme(nextTheme);
-    }
-  };
-  const Icon = icons[theme];
-
   return (
-    <button
-      aria-label={`Switch theme (current: ${theme})`}
-      className="rounded-full border border-slate-300/25 bg-white/25 p-2.5 text-slate-500 transition hover:border-slate-200 hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 active:border-slate-300 active:text-slate-700 disabled:opacity-75 dark:border-slate-600/25 dark:bg-slate-900/75 dark:text-slate-400 dark:hover:border-slate-700 dark:hover:text-slate-300 dark:focus-visible:text-slate-300 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950 dark:active:border-slate-700 dark:active:text-slate-200"
-      onClick={cycleTheme}
-      type="button"
-    >
-      <motion.div
-        key={theme}
-        animate={{ scale: 1, rotate: 0 }}
-        exit={{ scale: 0.8, rotate: -180 }}
-        initial={{ scale: 0.8, rotate: 180 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-      >
-        <Icon aria-hidden className="h-6 w-6" />
-      </motion.div>
-    </button>
+    <LayoutGroup>
+      <div className="relative inline-flex items-center gap-0.5 rounded-full border border-slate-300/25 bg-slate-100/50 p-0.5 dark:border-slate-700/25 dark:bg-slate-900/50">
+        {themes.map(({ icon: Icon, value }) => {
+          const isActive = theme === value;
+
+          return (
+            <button
+              key={value}
+              aria-label={`Switch to ${value} theme`}
+              className={cn(
+                'relative rounded-full p-1.5 transition-colors cursor-pointer',
+                isActive
+                  ? 'text-slate-700 dark:text-slate-200'
+                  : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300',
+              )}
+              onClick={() => {
+                disableTransitionsTemporarily();
+                setTheme(value);
+              }}
+              type="button"
+            >
+              {isActive && (
+                <motion.div
+                  className="absolute inset-0 -z-10 rounded-full bg-white shadow-sm dark:bg-slate-800"
+                  layoutId="theme-toggle-active"
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+              )}
+              <Icon className="relative h-4 w-4" strokeWidth={2} />
+            </button>
+          );
+        })}
+      </div>
+    </LayoutGroup>
   );
 }
