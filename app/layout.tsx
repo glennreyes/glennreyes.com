@@ -11,6 +11,7 @@ import { Navbar } from '@/components/navigation/navbar';
 import { Body } from '@/components/ui/layout/body';
 import { Html } from '@/components/ui/layout/html';
 import { Main } from '@/components/ui/layout/main';
+import { Toaster } from '@/components/ui/sonner';
 import { description, name, origin, x } from '@/lib/constants';
 
 import { Providers } from './providers';
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Main>{children}</Main>
         </Providers>
         <Footer />
+        <Toaster />
         <SpeedInsights />
         <Analytics />
       </Body>
