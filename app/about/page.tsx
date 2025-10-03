@@ -63,7 +63,10 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           X
-                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
+                          <ArrowUpRight
+                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                            strokeWidth={2}
+                          />
                         </span>
                       }
                     >
@@ -76,7 +79,10 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           GitHub
-                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
+                          <ArrowUpRight
+                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                            strokeWidth={2}
+                          />
                         </span>
                       }
                     >
@@ -89,7 +95,10 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           LinkedIn
-                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
+                          <ArrowUpRight
+                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                            strokeWidth={2}
+                          />
                         </span>
                       }
                     >
@@ -102,7 +111,10 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           Instagram
-                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
+                          <ArrowUpRight
+                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                            strokeWidth={2}
+                          />
                         </span>
                       }
                     >
@@ -121,7 +133,10 @@ const AboutPage = async () => {
                     </span>
                   }
                 >
-                  <Send className="h-6 w-6 text-slate-300 dark:text-slate-700" strokeWidth={2} />
+                  <Send
+                    className="h-6 w-6 text-slate-300 dark:text-slate-700"
+                    strokeWidth={2}
+                  />
                 </Card.Item>
               </Card.Body>
             </div>
