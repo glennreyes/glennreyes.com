@@ -1,15 +1,9 @@
 import type { Talk, Workshop } from '@prisma/client';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import {
-  ArrowTopRightOnSquareIcon,
-  CalendarDaysIcon,
-  ClockIcon,
-  PresentationChartLineIcon,
-  TvIcon,
-} from '@heroicons/react/20/solid';
 import { AppearanceLength } from '@prisma/client';
 import { formatISO } from 'date-fns';
+import { Calendar, Clock, ExternalLink, Presentation, Tv } from 'lucide-react';
 
 import { Badge } from '../ui/elements/badge';
 import { DateDisplay } from '../ui/elements/date-display';
@@ -89,9 +83,10 @@ function EventAppearancesCard({
                   <div className="flex gap-2">
                     <dt className="flex-none">
                       <span className="sr-only">Date & Time</span>
-                      <CalendarDaysIcon
+                      <Calendar
                         aria-hidden
                         className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                        strokeWidth={2}
                       />
                     </dt>
                     <Paragraph asChild className="font-medium">
@@ -108,9 +103,10 @@ function EventAppearancesCard({
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Length</span>
-                        <ClockIcon
+                        <Clock
                           aria-hidden
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          strokeWidth={2}
                         />
                       </dt>
                       <Paragraph asChild className="font-medium">
@@ -124,9 +120,10 @@ function EventAppearancesCard({
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Slides</span>
-                        <PresentationChartLineIcon
+                        <Presentation
                           aria-hidden
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          strokeWidth={2}
                         />
                       </dt>
                       <Paragraph asChild className="font-medium">
@@ -136,9 +133,10 @@ function EventAppearancesCard({
                             href={slides}
                           >
                             View Slides
-                            <ArrowTopRightOnSquareIcon
+                            <ExternalLink
                               aria-hidden
                               className="h-4 w-4"
+                              strokeWidth={2}
                             />
                           </InlineLink>
                         </dd>
@@ -149,9 +147,10 @@ function EventAppearancesCard({
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Slides</span>
-                        <TvIcon
+                        <Tv
                           aria-hidden
                           className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          strokeWidth={2}
                         />
                       </dt>
                       <Paragraph asChild className="font-medium">
@@ -161,9 +160,10 @@ function EventAppearancesCard({
                             href={recording}
                           >
                             Watch Recording
-                            <ArrowTopRightOnSquareIcon
+                            <ExternalLink
                               aria-hidden
                               className="h-4 w-4"
+                              strokeWidth={2}
                             />
                           </InlineLink>
                         </dd>

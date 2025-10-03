@@ -2,7 +2,7 @@ import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { DocumentIcon } from '@heroicons/react/24/outline';
+import { FileText } from 'lucide-react';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
@@ -94,9 +94,10 @@ export const components: MDXComponents = {
         <div className="absolute inset-y-0 right-0 z-10 w-4 bg-gradient-to-r from-transparent to-slate-900 dark:from-transparent dark:to-slate-950" />
         <div className="overflow-x-auto">
           <div className="flex items-center gap-1.5 pl-4 text-xs text-slate-300/75 sm:pl-6 dark:text-slate-300/75">
-            <DocumentIcon
+            <FileText
               aria-hidden
               className="h-4 w-4 flex-none text-slate-600 dark:text-slate-600"
+              strokeWidth={2}
             />
             {children}
           </div>

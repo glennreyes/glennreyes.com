@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { ChevronRight } from 'lucide-react';
 
 import { Link } from './link';
 
@@ -13,9 +13,10 @@ export function ActionLink({ children, ...props }: ActionLinkProps) {
       {...props}
     >
       {children}
-      <ChevronRightIcon
+      <ChevronRight
         aria-hidden
         className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+        strokeWidth={2}
       />
     </Link>
   );

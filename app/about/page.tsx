@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 
-import {
-  ArrowUpRightIcon,
-  PaperAirplaneIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowUpRight, Send } from 'lucide-react';
 import Image from 'next/image';
 
 import speaking from '@/assets/images/speaking.jpg';
@@ -66,7 +63,7 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           X
-                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
                         </span>
                       }
                     >
@@ -79,7 +76,7 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           GitHub
-                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
                         </span>
                       }
                     >
@@ -92,7 +89,7 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           LinkedIn
-                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
                         </span>
                       }
                     >
@@ -105,7 +102,7 @@ const AboutPage = async () => {
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
                           Instagram
-                          <ArrowUpRightIcon className="h-5 w-5 text-slate-300 dark:text-slate-700" />
+                          <ArrowUpRight className="h-5 w-5 text-slate-300 dark:text-slate-700" strokeWidth={2} />
                         </span>
                       }
                     >
@@ -124,7 +121,7 @@ const AboutPage = async () => {
                     </span>
                   }
                 >
-                  <PaperAirplaneIcon className="h-6 w-6 text-slate-300 dark:text-slate-700" />
+                  <Send className="h-6 w-6 text-slate-300 dark:text-slate-700" strokeWidth={2} />
                 </Card.Item>
               </Card.Body>
             </div>

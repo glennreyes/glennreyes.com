@@ -24,7 +24,6 @@
     "@fontsource/geist": "^5.2.8",
     "@fontsource/geist-mono": "^5.2.7",
     "@giscus/react": "^3.1.0",
-    "@heroicons/react": "^2.2.0",
     "@modelcontextprotocol/inspector": "^0.17.0",
     "@modelcontextprotocol/sdk": "^1.19.1",
     "@prisma/client": "^6.16.3",

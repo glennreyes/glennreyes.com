@@ -1,6 +1,6 @@
 import type { Location } from '@prisma/client';
 
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPin } from 'lucide-react';
 
 import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 
@@ -19,9 +19,10 @@ export function EventLocation({ location }: EventLocationProps) {
 
   return (
     <Link className="group inline-flex items-center gap-2" href={url}>
-      <MapPinIcon
+      <MapPin
         aria-hidden
         className="h-6 w-6 text-slate-400 transition group-hover:text-slate-600 dark:text-slate-600 dark:group-hover:text-slate-400"
+        strokeWidth={2}
       />
       {location.name} · {place}
     </Link>

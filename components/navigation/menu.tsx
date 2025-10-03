@@ -1,7 +1,7 @@
 'use client';
 
-import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { Menu as MenuIcon, X } from 'lucide-react';
 import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -35,7 +35,7 @@ export function Menu() {
           appearance="secondary"
           aria-label="Open Menu"
           className={buttonClasses}
-          icon={Bars2Icon}
+          icon={MenuIcon}
           onClick={toggle}
         />
         <AnimatePresence>
@@ -60,7 +60,7 @@ export function Menu() {
                   <IconButton
                     appearance="secondary"
                     aria-label="Close Menu"
-                    icon={XMarkIcon}
+                    icon={X}
                     onClick={close}
                   />
                 </div>

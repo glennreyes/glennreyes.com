@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckIcon, Square2StackIcon } from '@heroicons/react/24/outline';
+import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -36,11 +36,12 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
         appearance="tertiary"
         aria-label="Copy to Clipboard"
         className={copyIconClasses}
-        icon={Square2StackIcon}
+        icon={Copy}
+        size={5}
         onClick={copyToClipboard}
       />
       <span className={checkIconClasses}>
-        <CheckIcon aria-hidden className="h-5 w-5" />
+        <Check aria-hidden className="h-5 w-5" strokeWidth={2} />
       </span>
     </div>
   );

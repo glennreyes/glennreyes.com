@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { ArrowLeftIcon } from '@heroicons/react/20/solid';
+import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 import type { PageProps } from '@/types/next';
@@ -64,7 +64,7 @@ const PostPage = async (props: PageProps<'/posts/[slug]'>) => {
           aria-label="Back To Posts"
           as="link"
           href="/posts"
-          icon={ArrowLeftIcon}
+          icon={ArrowLeft}
         />
       }
     >
