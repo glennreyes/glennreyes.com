@@ -1,5 +1,6 @@
-/** @type {import('prettier').Config} */
-const prettierConfig = {
+import type { Config } from 'prettier';
+
+const prettierConfig: Config = {
   plugins: ['prettier-plugin-tailwindcss'],
   singleQuote: true,
 };

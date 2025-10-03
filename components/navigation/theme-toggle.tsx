@@ -42,7 +42,7 @@ export function ThemeToggle() {
               key={value}
               aria-label={`Switch to ${value} theme`}
               className={cn(
-                'relative rounded-full p-1.5 transition-colors cursor-pointer',
+                'relative cursor-pointer rounded-full p-1.5 transition-colors',
                 isActive
                   ? 'text-slate-700 dark:text-slate-200'
                   : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300',

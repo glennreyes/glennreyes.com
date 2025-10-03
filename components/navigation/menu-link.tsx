@@ -18,8 +18,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
   const isActivePathname = useIsActivePathname(
     typeof props.href === 'object' ? (props.href.pathname ?? '/') : props.href,
   );
-  const activeClasses =
-    'text-teal-700 dark:text-teal-200/75';
+  const activeClasses = 'text-teal-700 dark:text-teal-200/75';
   const inactiveClasses =
     'text-slate-900/90 hover:text-teal-700/75 dark:text-slate-200 dark:hover:text-teal-200/75';
   const classes = cn(
