@@ -59,6 +59,7 @@
     "@types/react-dom": "19.2.0",
     "@typescript-eslint/parser": "^8.45.0",
     "@vitest/ui": "^3.2.4",
+    "babel-plugin-react-compiler": "19.1.0-rc.3",
     "eslint": "^9.36.0",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
