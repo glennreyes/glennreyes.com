@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { Transition } from '@headlessui/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useContext } from 'react';
 
 import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
@@ -20,18 +20,18 @@ export function NavbarAvatar({ children }: NavbarAvatarProps) {
   }
 
   return (
-    <Transition
-      as="div"
-      className="flex flex-none"
-      enter="duration-150 ease-out"
-      enterFrom="opacity-0 scale-95 translate-y-1/4"
-      enterTo="opacity-100"
-      leave="duration-150 ease-in"
-      leaveFrom="opacity-100"
-      leaveTo="opacity-0 scale-95 translate-y-1/4"
-      show={!isInView}
-    >
-      {children}
-    </Transition>
+    <AnimatePresence>
+      {!isInView && (
+        <motion.div
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="flex flex-none"
+          exit={{ opacity: 0, scale: 0.95, y: '25%' }}
+          initial={{ opacity: 0, scale: 0.95, y: '25%' }}
+          transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

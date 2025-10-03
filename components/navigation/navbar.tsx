@@ -6,7 +6,6 @@ import { Container } from '../ui/layout/container';
 import { Link } from '../ui/link/link';
 import { NavbarAvatar } from './navbar-avatar';
 import { NavbarBorder } from './navbar-border';
-import { ThemeSelect } from './theme-select';
 
 type NavbarProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
 
@@ -30,9 +29,6 @@ export function Navbar({ children, ...props }: NavbarProps) {
           </div>
         </div>
         {children}
-        <div className="hidden flex-1 items-center justify-end md:grid">
-          <ThemeSelect />
-        </div>
       </Container>
     </header>
   );

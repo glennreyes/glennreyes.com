@@ -3,6 +3,8 @@
 import type { LinkProps } from 'next/link';
 import type { ReactNode } from 'react';
 
+import { motion } from 'framer-motion';
+
 import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
 import { cn } from '@/lib/utils';
 
@@ -17,17 +19,24 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     typeof props.href === 'object' ? (props.href.pathname ?? '/') : props.href,
   );
   const activeClasses =
-    'bg-white/10 text-teal-700 md:border-slate-300/25 md:supports-[backdrop-filter]:backdrop-blur-md dark:bg-slate-950/10 dark:text-teal-200/75 dark:md:border-slate-500/25';
+    'text-teal-700 dark:text-teal-200/75';
   const inactiveClasses =
-    'text-slate-900/90 hover:text-teal-700/75 md:border-transparent dark:text-slate-200 dark:hover:text-teal-200/75';
+    'text-slate-900/90 hover:text-teal-700/75 dark:text-slate-200 dark:hover:text-teal-200/75';
   const classes = cn(
     isActivePathname ? activeClasses : inactiveClasses,
-    'block py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:rounded-full md:border md:px-3 md:py-2 md:active:scale-95',
+    'relative block py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:rounded-full md:px-3 md:py-2 md:active:scale-95',
   );
 
   return (
     <Link className={classes} {...props}>
-      {children}
+      {isActivePathname && (
+        <motion.span
+          className="absolute inset-0 z-0 rounded-full border border-slate-300/25 bg-white/10 backdrop-blur-md dark:border-slate-500/25 dark:bg-slate-950/10"
+          layoutId="active-nav-pill"
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        />
+      )}
+      <span className="relative z-10">{children}</span>
     </Link>
   );
 }

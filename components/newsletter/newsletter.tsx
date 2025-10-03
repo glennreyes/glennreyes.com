@@ -11,7 +11,7 @@ interface NewsletterProps {
 }
 
 export function Newsletter({
-  children = 'Get subscribed for latest news and updates. No spam, unsubscribe at any time.',
+  children = 'Get notified when I publish new posts, technical deep-dives, and insights from my work in React and web development. I only send emails when I have something valuable to share.',
   title = 'Stay in the loop',
 }: NewsletterProps) {
   return (

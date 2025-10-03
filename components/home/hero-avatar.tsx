@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { Transition } from '@headlessui/react';
+import { motion } from 'framer-motion';
 
 import { useIntersection } from '@/lib/hooks/use-intersection';
 
@@ -13,18 +13,13 @@ export function HeroAvatar({ children }: HeroAvatarProps) {
 
   return (
     <div className="h-34 w-34" ref={ref}>
-      <Transition
-        as="div"
-        enter="duration-150 ease-out"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100"
-        leave="duration-150 ease-in"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0 scale-95"
-        show={isInView}
+      <motion.div
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 25 }}
       >
         {children}
-      </Transition>
+      </motion.div>
     </div>
   );
 }
