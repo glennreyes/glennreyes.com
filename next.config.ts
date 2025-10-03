@@ -4,6 +4,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    reactCompiler: {
+      compilationMode: 'annotation', // Opt-in mode - only compile files with 'use memo' directive
+    },
+  },
   // Include content files in the build output for Vercel deployment
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
