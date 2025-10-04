@@ -30,14 +30,14 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 - `/mcp` route exposes the MCP server over HTTP; HTML renders for browsers, JSON/POST requests receive MCP responses.
 - Shared logic lives in `lib/mcp/core.ts`.
-- The standalone CLI (`scripts/mcp-server.ts`) is optional—keep only if stdio-based agents are needed.
+- The standalone CLI (`scripts/mcp-server.ts`) is optional: keep only if stdio-based agents are needed.
 - Middleware currently lets `/mcp` handle all traffic directly; no `/api/mcp` proxy exists.
 
 ## Code Style & Engineering Rules
 
 - Use React function declarations for components; avoid `React.FC`.
 - Define prop interfaces/types above components (`ComponentProps` pattern).
-- No `any`, unchecked type assertions, or implicit truthiness—prefer type guards.
+- No `any`, unchecked type assertions, or implicit truthiness: prefer type guards.
 - Never use type assertions (`as Type`) or non-null assertions (`!`); always refactor to use proper typing or type guards. Only allow `as const` if absolutely necessary.
 - Avoid disabling ESLint rules via comments (`// eslint-disable-next-line`). Instead, fix the underlying issue by improving types, refactoring code, or using proper TypeScript patterns.
 - Favour server components; elevate `"use client"` only where interaction is required.
@@ -46,7 +46,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Always use descriptive event parameter names; never abbreviate to `(e)`; spell out identifiers like `event`.
 - For unused array destructuring elements, use array holes (e.g., `const [, setValue] = useState()`) instead of underscore prefixes.
 - Tailwind classes: inline for static strings, `cn()` helper for conditional logic.
-- Typography is intentionally uniform—do not introduce ad-hoc font-size utilities.
+- Typography is intentionally uniform: do not introduce ad-hoc font-size utilities.
 - Accessibility: use `focus-visible:` for focus styles; preserve existing semantics.
 - Keep imports sorted logically (grouped by origin). Use named imports unless a library only exports default.
 
@@ -77,16 +77,16 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 ### Claude Code
 
 - Treat this file as the single source of truth; keep `CLAUDE.md` in sync (it references this document).
-- Run quality gates (`format`, `lint`, `test`) before responding unless infeasible—then explain.
+- Run quality gates (`format`, `lint`, `test`) before responding unless infeasible; then explain.
 - Highlight assumption checks and TODOs for Glenn.
 
 ### Cursor
 
 - Follow the same rules and quality gates as Claude.
 - Prefer using Cursor Tasks/Notebooks to capture command output when collaborating.
-- Keep code actions reversible—avoid auto-fixing files unrelated to the task.
+- Keep code actions reversible: avoid auto-fixing files unrelated to the task.
 
 ## Keeping Documents in Sync
 
 - `AGENTS.md` is canonical; update `CLAUDE.md` and `CURSOR.md` whenever this file changes.
-- Avoid duplicating guidance across multiple Markdown files—link back here instead.
+- Avoid duplicating guidance across multiple Markdown files: link back here instead.
