@@ -161,7 +161,7 @@ import { Link } from './link';
 
 export function TransitionLink({ children, href, onClick, ...props }) {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
 
   // Skip transitions for hash links and external links
