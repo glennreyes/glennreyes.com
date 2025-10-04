@@ -1,6 +1,6 @@
-import type { Event } from '@/drizzle/schema';
-
 import { ExternalLink } from 'lucide-react';
+
+import type { Event } from '@/drizzle/schema';
 
 import { Link } from '../ui/link/link';
 

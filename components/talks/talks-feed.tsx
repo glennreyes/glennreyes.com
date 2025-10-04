@@ -1,5 +1,6 @@
-import type { Talk } from '@/drizzle/schema';
 import type { ReactNode } from 'react';
+
+import type { Talk } from '@/drizzle/schema';
 
 import { Feed } from '../ui/layout/feed';
 import { MDXContent } from '../ui/mdx/mdx-content';

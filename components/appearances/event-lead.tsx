@@ -1,5 +1,6 @@
-import type { Event } from '@/drizzle/schema';
 import type { ComponentPropsWithoutRef } from 'react';
+
+import type { Event } from '@/drizzle/schema';
 
 import { Lead } from '../ui/typography/lead';
 import { EventLocation } from './event-location';
