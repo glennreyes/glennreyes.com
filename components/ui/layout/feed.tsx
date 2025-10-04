@@ -6,7 +6,7 @@ import { unstable_ViewTransition as ViewTransition } from 'react';
 import { cn } from '@/lib/utils';
 
 import { DateDisplay } from '../elements/date-display';
-import { Link } from '../link/link';
+import { TransitionLink } from '../link/transition-link';
 import { H3 } from '../typography/h3';
 import { Meta } from '../typography/meta';
 import { Paragraph } from '../typography/paragraph';
@@ -91,10 +91,10 @@ function FeedItem({
     date !== undefined && 'text-slate-400 dark:text-slate-500',
   );
   const titleContent = link ? (
-    <Link href={link}>
+    <TransitionLink href={link}>
       <span className="absolute -inset-4 z-20 md:-inset-6" />
       <span className="relative z-10">{title}</span>
-    </Link>
+    </TransitionLink>
   ) : (
     title
   );
