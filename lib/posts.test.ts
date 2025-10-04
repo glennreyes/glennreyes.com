@@ -49,10 +49,10 @@ describe('posts', () => {
     it('should return all posts sorted by publishedAt desc', async () => {
       const posts = await getAllPosts();
 
-      expect(posts).toHaveLength(3);
-      expect(posts[0].frontmatter.title).toBe('Future Post');
-      expect(posts[1].frontmatter.title).toBe('Test Post 2');
-      expect(posts[2].frontmatter.title).toBe('Test Post 1');
+  expect(posts).toHaveLength(3);
+  const titles = posts.map((p) => p.frontmatter.title);
+
+  expect(titles).toEqual(['Future Post', 'Test Post 2', 'Test Post 1']);
     });
   });
 
@@ -66,8 +66,9 @@ describe('posts', () => {
       const posts = await getAllPublishedPosts();
 
       expect(posts).toHaveLength(2);
-      expect(posts[0].frontmatter.title).toBe('Test Post 2');
-      expect(posts[1].frontmatter.title).toBe('Test Post 1');
+      const titles = posts.map((p) => p.frontmatter.title);
+
+      expect(titles).toEqual(['Test Post 2', 'Test Post 1']);
       expect(
         posts.find((p) => p.frontmatter.title === 'Future Post'),
       ).toBeUndefined();
@@ -82,8 +83,9 @@ describe('posts', () => {
       const posts = await getAllPublishedPosts();
 
       expect(posts).toHaveLength(2);
-      expect(posts[0].frontmatter.title).toBe('Test Post 2');
-      expect(posts[1].frontmatter.title).toBe('Test Post 1');
+      const titles = posts.map((p) => p.frontmatter.title);
+
+      expect(titles).toEqual(['Test Post 2', 'Test Post 1']);
     });
   });
 });
