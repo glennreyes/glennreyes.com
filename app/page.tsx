@@ -1,22 +1,29 @@
+import { Suspense } from 'react';
+
 import { Appearances } from '@/components/home/appearances';
+import { AppearancesLoading } from '@/components/home/appearances-loading';
 import { Hero } from '@/components/home/hero';
 import { Posts } from '@/components/home/posts';
+import { PostsLoading } from '@/components/home/posts-loading';
 import { Newsletter } from '@/components/newsletter/newsletter';
 import { Content } from '@/components/ui/layout/content';
 import { Page } from '@/components/ui/layout/page';
 
-// Force dynamic rendering to ensure future posts are filtered correctly
-export const dynamic = 'force-dynamic';
+export const experimental_ppr = true;
 
 const RootPage = () => (
   <Page>
     <Hero />
     <Content>
       <Content.Primary className="lg:col-span-7">
-        <Posts />
+        <Suspense fallback={<PostsLoading />}>
+          <Posts />
+        </Suspense>
       </Content.Primary>
       <Content.Secondary className="lg:col-span-5">
-        <Appearances />
+        <Suspense fallback={<AppearancesLoading />}>
+          <Appearances />
+        </Suspense>
         <Newsletter />
       </Content.Secondary>
     </Content>
