@@ -5,7 +5,8 @@ import { Newsletter } from '@/components/newsletter/newsletter';
 import { Content } from '@/components/ui/layout/content';
 import { Page } from '@/components/ui/layout/page';
 
-export const revalidate = 3600;
+// Force dynamic rendering to ensure future posts are filtered correctly
+export const dynamic = 'force-dynamic';
 
 const RootPage = () => (
   <Page>

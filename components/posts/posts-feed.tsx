@@ -1,9 +1,9 @@
-import { getAllPosts } from '@/lib/posts';
+import { getAllPublishedPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 
 export const PostsFeed = async () => {
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPublishedPosts();
 
   return (
     <Feed>
