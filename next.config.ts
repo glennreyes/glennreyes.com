@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     reactCompiler: {
       compilationMode: 'annotation', // Opt-in mode - only compile files with 'use memo' directive
     },
+    viewTransition: true,
   },
   // Include content files in the build output for Vercel deployment
   outputFileTracingIncludes: {
