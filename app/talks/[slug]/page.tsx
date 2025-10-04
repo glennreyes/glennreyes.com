@@ -37,7 +37,11 @@ const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
 
   return (
     <Page>
-      <Page.Header lead={<TagCloud tags={talk.tags} />} meta="Talk">
+      <Page.Header
+        lead={<TagCloud tags={talk.tags} />}
+        meta="Talk"
+        viewTransitionName={`talk-${params.slug}`}
+      >
         {talk.title}
       </Page.Header>
       <Page.Body>
