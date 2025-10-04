@@ -71,6 +71,7 @@ const PostPage = async (props: PageProps<'/posts/[slug]'>) => {
       <Article.Header
         lead={post.frontmatter.lead}
         meta={<DateDisplay value={post.frontmatter.publishedAt} />}
+        viewTransitionName={`post-${params.slug}`}
       >
         {post.frontmatter.title}
       </Article.Header>
