@@ -1,6 +1,6 @@
-import type { Location } from '@/drizzle/schema';
-
 import { MapPin } from 'lucide-react';
+
+import type { Location } from '@/drizzle/schema';
 
 import { composeGoogleMapsUrl, composePlaceByLocation } from '@/lib/place';
 

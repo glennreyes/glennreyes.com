@@ -2,9 +2,6 @@ import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
-
-
-
 export const getAllEvents = cache(async () => {
   const allEvents = await db.query.events.findMany({
     columns: {

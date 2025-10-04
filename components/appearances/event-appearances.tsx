@@ -5,8 +5,6 @@ import { Calendar, Clock, ExternalLink, Presentation, Tv } from 'lucide-react';
 
 import type { AppearanceLengthType, Talk, Workshop } from '@/drizzle/schema';
 
-import { AppearanceLength } from '@/drizzle/schema';
-
 import { Badge } from '../ui/elements/badge';
 import { DateDisplay } from '../ui/elements/date-display';
 import { Divider } from '../ui/elements/divider';

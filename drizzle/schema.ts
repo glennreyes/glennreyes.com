@@ -20,7 +20,10 @@ export const statusEnum = ['ACTIVE', 'INACTIVE'] as const;
 // Enum constants for components
 export type AppearanceLengthType = (typeof appearanceLengthEnum)[number];
 
-export const AppearanceLength: Record<AppearanceLengthType, AppearanceLengthType> = {
+export const AppearanceLength: Record<
+  AppearanceLengthType,
+  AppearanceLengthType
+> = {
   SHORT: 'SHORT',
   MEDIUM: 'MEDIUM',
   LONG: 'LONG',
@@ -196,6 +199,9 @@ export const viewsRelations = relations(views, ({ one }) => ({
 
 // Type exports for components
 export type Talk = typeof talks.$inferSelect;
+
 export type Workshop = typeof workshops.$inferSelect;
+
 export type Event = typeof events.$inferSelect;
+
 export type Location = typeof locations.$inferSelect;

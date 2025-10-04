@@ -1,5 +1,6 @@
-import type { Event, Location } from '@/drizzle/schema';
 import type { ReactNode } from 'react';
+
+import type { Event, Location } from '@/drizzle/schema';
 
 import { composePlaceByLocation } from '@/lib/place';
 
