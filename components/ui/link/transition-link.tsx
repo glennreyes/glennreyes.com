@@ -16,7 +16,7 @@ export function TransitionLink({
   ...props
 }: TransitionLinkProps) {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const [_isPending, startTransition] = useTransition();
   const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
 
   // Handle hash links and external links normally
@@ -29,22 +29,22 @@ export function TransitionLink({
   }
 
   // Handle internal navigation with transitions
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     // Allow default behavior for cmd/ctrl + click, middle click, etc.
     if (
-      e.metaKey ||
-      e.ctrlKey ||
-      e.shiftKey ||
-      e.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.button !== 0 ||
       props.target === '_blank'
     ) {
       return;
     }
 
-    e.preventDefault();
+    event.preventDefault();
 
     if (onClick) {
-      onClick(e);
+      onClick(event);
     }
 
     startTransition(() => {
