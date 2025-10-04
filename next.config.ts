@@ -5,14 +5,15 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    reactCompiler: {
-      compilationMode: 'annotation', // Opt-in mode - only compile files with 'use memo' directive
-    },
+    ppr: 'incremental',
     viewTransition: true,
   },
   // Include content files in the build output for Vercel deployment
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
+  },
+  reactCompiler: {
+    compilationMode: 'annotation', // Opt-in mode - only compile files with 'use memo' directive
   },
   redirects: () =>
     Promise.resolve([
