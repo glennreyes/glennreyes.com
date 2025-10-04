@@ -1,4 +1,4 @@
-import { compareDesc } from 'date-fns';
+import { compareDesc, isAfter } from 'date-fns';
 
 import { getMDXFiles } from './mdx/get-mdx-files';
 import { readMDXFile } from './mdx/read-mdx-file';
@@ -33,4 +33,15 @@ export const getAllPosts = async () => {
         new Date(b.frontmatter.publishedAt),
       ),
     );
+};
+
+export const getAllPublishedPosts = async () => {
+  const allPosts = await getAllPosts();
+  const today = new Date();
+
+  return allPosts.filter((post) => {
+    const publishedDate = new Date(post.frontmatter.publishedAt);
+
+    return !isAfter(publishedDate, today);
+  });
 };

@@ -1,11 +1,11 @@
-import { getAllPosts } from '@/lib/posts';
+import { getAllPublishedPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
 import { H4 } from '../ui/typography/h4';
 
 export const Posts = async () => {
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPublishedPosts();
   const posts = allPosts.slice(0, 4);
 
   return (
