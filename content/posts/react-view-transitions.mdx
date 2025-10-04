@@ -92,12 +92,7 @@ export function Avatar({ size, className, ...props }) {
   return (
     <ViewTransition name="avatar">
       <div className={classes}>
-        <Image
-          alt={name}
-          src={photo}
-          {...imageSize}
-          {...props}
-        />
+        <Image alt={name} src={photo} {...imageSize} {...props} />
       </div>
     </ViewTransition>
   );
@@ -124,9 +119,7 @@ function ArticleHeader({ children, viewTransitionName, ...props }) {
     <header {...props}>
       <H1>
         {viewTransitionName ? (
-          <ViewTransition name={viewTransitionName}>
-            {children}
-          </ViewTransition>
+          <ViewTransition name={viewTransitionName}>{children}</ViewTransition>
         ) : (
           children
         )}
@@ -173,17 +166,26 @@ export function TransitionLink({ children, href, onClick, ...props }) {
 
   // Skip transitions for hash links and external links
   if (source.startsWith('#') || source.startsWith('http')) {
-    return <Link href={href} onClick={onClick} {...props}>{children}</Link>;
+    return (
+      <Link href={href} onClick={onClick} {...props}>
+        {children}
+      </Link>
+    );
   }
 
-  const handleClick = (e) => {
+  const handleClick = (event) => {
     // Allow default behavior for cmd/ctrl + click, etc.
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) {
+    if (
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.button !== 0
+    ) {
       return;
     }
 
-    e.preventDefault();
-    if (onClick) onClick(e);
+    event.preventDefault();
+    if (onClick) onClick(event);
 
     // Wrap navigation in startTransition to trigger ViewTransitions
     startTransition(() => {
@@ -191,7 +193,11 @@ export function TransitionLink({ children, href, onClick, ...props }) {
     });
   };
 
-  return <Link href={href} onClick={handleClick} {...props}>{children}</Link>;
+  return (
+    <Link href={href} onClick={handleClick} {...props}>
+      {children}
+    </Link>
+  );
 }
 ```
 
@@ -203,15 +209,17 @@ const titleContent = link ? (
   <TransitionLink href={link}>
     <span>{title}</span>
   </TransitionLink>
-) : title;
+) : (
+  title
+);
 
 return (
   <H3>
     {viewTransitionName ? (
-      <ViewTransition name={viewTransitionName}>
-        {titleContent}
-      </ViewTransition>
-    ) : titleContent}
+      <ViewTransition name={viewTransitionName}>{titleContent}</ViewTransition>
+    ) : (
+      titleContent
+    )}
   </H3>
 );
 ```
@@ -245,13 +253,21 @@ The React component automatically applies the CSS `view-transition-name` propert
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 ```
 
@@ -299,6 +315,7 @@ The best part? It's progressive enhancement. Browsers that don't support it just
 ## The Future
 
 This is just the beginning. React's ViewTransition integration opens up possibilities for:
+
 - Smooth route changes in SPAs
 - Gallery transitions
 - Modal animations
