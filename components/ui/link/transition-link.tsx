@@ -16,7 +16,7 @@ export function TransitionLink({
   ...props
 }: TransitionLinkProps) {
   const router = useRouter();
-  const [_isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
 
   // Handle hash links and external links normally
