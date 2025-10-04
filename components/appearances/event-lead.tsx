@@ -1,4 +1,4 @@
-import type { Event } from '@prisma/client';
+import type { Event } from '@/drizzle/schema';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import { Lead } from '../ui/typography/lead';

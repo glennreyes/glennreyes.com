@@ -1,53 +1,58 @@
 import { cache } from 'react';
 
-import { prisma } from '@/lib/prisma';
+import { db } from '@/lib/db';
 
 export const getAllWorkshops = cache(() =>
-  prisma.workshop.findMany({
-    orderBy: {
-      status: 'asc',
-    },
-    select: {
+  db.query.workshops.findMany({
+    columns: {
       slug: true,
       status: true,
       summary: true,
       title: true,
     },
+    orderBy: (workshops, { asc }) => [asc(workshops.status)],
   }),
 );
 
-export const getWorkshopBySlug = cache((slug: string) =>
-  prisma.workshop.findUniqueOrThrow({
-    select: {
+export const getWorkshopBySlug = cache(async (slug: string) => {
+  const workshop = await db.query.workshops.findFirst({
+    where: (workshops, { eq }) => eq(workshops.slug, slug),
+    with: {
       appearances: {
-        orderBy: {
+        columns: {},
+        with: {
           event: {
-            startDate: 'desc',
-          },
-        },
-        select: {
-          event: {
-            select: {
+            columns: {
+              name: true,
+              slug: true,
+              startDate: true,
+            },
+            with: {
               location: {
-                select: {
+                columns: {
                   city: true,
                   country: true,
                   state: true,
                 },
               },
-              name: true,
-              slug: true,
-              startDate: true,
             },
           },
         },
       },
-      curriculum: true,
-      description: true,
-      slug: true,
-      tags: true,
-      title: true,
     },
-    where: { slug },
-  }),
-);
+  });
+
+  if (!workshop) {
+    throw new Error(`Workshop with slug "${slug}" not found`);
+  }
+
+  // Sort appearances by event startDate DESC
+  const sortedAppearances = [...workshop.appearances].sort(
+    (a, b) => b.event.startDate.getTime() - a.event.startDate.getTime(),
+  );
+
+  return {
+    ...workshop,
+    appearances: sortedAppearances,
+  };
+});

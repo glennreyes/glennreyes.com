@@ -1,4 +1,4 @@
-import type { Location } from '@prisma/client';
+import type { Location } from '@/drizzle/schema';
 
 export const composePlaceByLocation = (
   location: Pick<Location, 'city' | 'country' | 'state'>,

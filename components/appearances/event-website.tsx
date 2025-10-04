@@ -1,4 +1,4 @@
-import type { Event } from '@prisma/client';
+import type { Event } from '@/drizzle/schema';
 
 import { ExternalLink } from 'lucide-react';
 

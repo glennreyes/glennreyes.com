@@ -5,6 +5,10 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
+    env: {
+      TURSO_DATABASE_URL: 'file:test.db',
+      TURSO_AUTH_TOKEN: 'test-token',
+    },
   },
   resolve: {
     alias: {
