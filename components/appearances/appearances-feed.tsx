@@ -1,4 +1,4 @@
-import type { Event, Location } from '@prisma/client';
+import type { Event, Location } from '@/drizzle/schema';
 import type { ReactNode } from 'react';
 
 import { composePlaceByLocation } from '@/lib/place';

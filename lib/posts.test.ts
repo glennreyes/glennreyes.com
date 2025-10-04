@@ -49,10 +49,10 @@ describe('posts', () => {
     it('should return all posts sorted by publishedAt desc', async () => {
       const posts = await getAllPosts();
 
-  expect(posts).toHaveLength(3);
-  const titles = posts.map((p) => p.frontmatter.title);
+      expect(posts).toHaveLength(3);
+      const titles = posts.map((p) => p.frontmatter.title);
 
-  expect(titles).toEqual(['Future Post', 'Test Post 2', 'Test Post 1']);
+      expect(titles).toEqual(['Future Post', 'Test Post 2', 'Test Post 1']);
     });
   });
 

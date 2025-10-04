@@ -1,10 +1,10 @@
-import { Status } from '@prisma/client';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import { z } from 'zod';
 
 import type { MCPDataSources } from '@/lib/mcp';
 
+import { Status } from '@/drizzle/schema';
 import { handleToolCall, listTools, resolveDataSources } from '@/lib/mcp';
 
 // Mock data that matches the actual types

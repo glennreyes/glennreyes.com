@@ -1,4 +1,4 @@
-import type { Workshop } from '@prisma/client';
+import type { Workshop } from '@/drizzle/schema';
 import type { ReactNode } from 'react';
 
 import { Feed } from '../ui/layout/feed';

@@ -1,9 +1,11 @@
-import type { Talk, Workshop } from '@prisma/client';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { AppearanceLength } from '@prisma/client';
 import { formatISO } from 'date-fns';
 import { Calendar, Clock, ExternalLink, Presentation, Tv } from 'lucide-react';
+
+import type { AppearanceLengthType, Talk, Workshop } from '@/drizzle/schema';
+
+import { AppearanceLength } from '@/drizzle/schema';
 
 import { Badge } from '../ui/elements/badge';
 import { DateDisplay } from '../ui/elements/date-display';
@@ -15,18 +17,18 @@ import { InlineLink } from '../ui/link/inline-link';
 import { H2 } from '../ui/typography/h2';
 import { Paragraph } from '../ui/typography/paragraph';
 
-const lengths: Record<'Talk' | 'Workshop', Record<AppearanceLength, string>> = {
+const lengths = {
   Talk: {
-    [AppearanceLength.LONG]: 'Extended',
-    [AppearanceLength.MEDIUM]: 'Regular',
-    [AppearanceLength.SHORT]: 'Lightning',
+    SHORT: 'Lightning',
+    MEDIUM: 'Regular',
+    LONG: 'Extended',
   },
   Workshop: {
-    [AppearanceLength.LONG]: 'Full Day',
-    [AppearanceLength.MEDIUM]: 'Half Day',
-    [AppearanceLength.SHORT]: '2-3 Hours',
+    SHORT: '2-3 Hours',
+    MEDIUM: 'Half Day',
+    LONG: 'Full Day',
   },
-};
+} as const;
 
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
@@ -36,7 +38,7 @@ export function EventAppearances(props: EventAppearancesProps) {
 
 interface EventAppearancesCardProps {
   date: Date;
-  length: AppearanceLength;
+  length: AppearanceLengthType;
   recording?: string;
   talk?: Pick<Talk, 'abstract' | 'slides' | 'slug' | 'tags' | 'title'>;
   title?: string;

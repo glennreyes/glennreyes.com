@@ -1,50 +1,61 @@
 import { cache } from 'react';
 
-import { prisma } from '@/lib/prisma';
+import { db } from '@/lib/db';
 
-export const getAllEvents = cache(() =>
-  prisma.event.findMany({
-    orderBy: { startDate: 'desc' },
-    select: {
+
+
+
+export const getAllEvents = cache(async () => {
+  const allEvents = await db.query.events.findMany({
+    columns: {
+      name: true,
+      slug: true,
+      startDate: true,
+    },
+    orderBy: (events, { desc }) => [desc(events.startDate)],
+    with: {
       appearances: {
-        select: {
+        columns: {},
+        with: {
           talk: {
-            select: {
+            columns: {
               title: true,
             },
           },
           workshop: {
-            select: {
+            columns: {
               title: true,
             },
           },
         },
       },
       location: {
-        select: {
+        columns: {
           city: true,
           country: true,
           state: true,
         },
       },
-      name: true,
-      slug: true,
-      startDate: true,
     },
-  }),
-);
+  });
 
-export const getEventBySlug = cache((slug: string) =>
-  prisma.event.findUniqueOrThrow({
-    select: {
+  return allEvents;
+});
+
+export const getEventBySlug = cache(async (slug: string) => {
+  const event = await db.query.events.findFirst({
+    where: (events, { eq }) => eq(events.slug, slug),
+    with: {
       appearances: {
-        select: {
+        columns: {
           date: true,
           length: true,
           recording: true,
           slug: true,
+        },
+        with: {
           talk: {
-            select: {
+            columns: {
               abstract: true,
               slides: true,
               slug: true,
@@ -53,7 +64,7 @@ export const getEventBySlug = cache((slug: string) =>
             },
           },
           workshop: {
-            select: {
+            columns: {
               repository: true,
               slides: true,
               slug: true,
@@ -63,9 +74,8 @@ export const getEventBySlug = cache((slug: string) =>
           },
         },
       },
-      endDate: true,
       location: {
-        select: {
+        columns: {
           address: true,
           city: true,
           country: true,
@@ -74,11 +84,12 @@ export const getEventBySlug = cache((slug: string) =>
           zip: true,
         },
       },
-      name: true,
-      slug: true,
-      startDate: true,
-      url: true,
     },
-    where: { slug },
-  }),
-);
+  });
+
+  if (!event) {
+    throw new Error(`Event with slug "${slug}" not found`);
+  }
+
+  return event;
+});
