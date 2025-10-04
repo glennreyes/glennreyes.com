@@ -1,0 +1,319 @@
+---
+title: View Transition in React
+description: Smooth page animations with React's ViewTransition component. Examples and implementation guide.
+publishedAt: 2025-10-09
+---
+
+The web is getting more cinematic. With React's ViewTransition component, you can create smooth, native page transitions that feel like mobile apps—without complex animation libraries.
+
+## The Vanilla JS Way
+
+The browser's ViewTransition API requires manual DOM manipulation:
+
+```js
+// Vanilla JavaScript approach
+function navigateToPost(postId) {
+  // Start the transition
+  document.startViewTransition(() => {
+    // Update the DOM
+    document.getElementById('content').innerHTML = getPostContent(postId);
+  });
+}
+
+// CSS for the transition
+.post-title {
+  view-transition-name: post-title;
+}
+```
+
+This works, but it's verbose and requires managing the DOM directly.
+
+## The React Way
+
+React's `unstable_ViewTransition` component makes it dead simple, but you need to trigger it with `startTransition`:
+
+```tsx
+import { unstable_ViewTransition as ViewTransition } from 'react';
+import { startTransition } from 'react';
+
+function PostTitle({ title, slug }) {
+  return (
+    <ViewTransition name={`post-${slug}`}>
+      <h1>{title}</h1>
+    </ViewTransition>
+  );
+}
+
+// Trigger the transition
+function navigateToPost(postSlug) {
+  startTransition(() => {
+    router.push(`/posts/${postSlug}`);
+  });
+}
+```
+
+The `ViewTransition` component marks which elements should animate. The `startTransition` wrapper tells React when to activate those animations.
+
+## What Are View Transitions?
+
+View transitions create smooth animations between different states of your app. Think of how iOS apps animate between screens—that's what you get on the web now.
+
+The browser automatically creates a transition between the "old" and "new" states, morphing elements that share the same `view-transition-name` CSS property.
+
+### How Transitions Are Triggered
+
+React's view transitions only activate when you wrap state updates in a `startTransition`:
+
+```tsx
+import { startTransition } from 'react';
+
+// ✅ This triggers view transitions
+startTransition(() => {
+  setActivePost(newPost);
+});
+
+// ❌ This does NOT trigger view transitions
+setActivePost(newPost);
+```
+
+For navigation, Next.js Link components automatically use `startTransition` internally, so clicking links will trigger view transitions without extra code.
+
+## Real Implementation
+
+Here's how I implemented this on my personal site. The key is giving elements consistent `viewTransitionName` props across different pages.
+
+### Avatar Consistency
+
+The avatar smoothly morphs between the hero section and navbar:
+
+```tsx
+// components/avatar/avatar.tsx
+export function Avatar({ size, className, ...props }) {
+  return (
+    <ViewTransition name="avatar">
+      <div className={classes}>
+        <Image
+          alt={name}
+          src={photo}
+          {...imageSize}
+          {...props}
+        />
+      </div>
+    </ViewTransition>
+  );
+}
+```
+
+<Image
+  src="/images/react-view-transitions/avatar-example.gif"
+  width={800}
+  height={512}
+  alt="Avatar smoothly morphing between hero and navbar"
+/>
+
+### The Layout Components
+
+The key is building reusable components that accept a `viewTransitionName` prop:
+
+```tsx
+// components/ui/layout/article.tsx
+import { unstable_ViewTransition as ViewTransition } from 'react';
+
+function ArticleHeader({ children, viewTransitionName, ...props }) {
+  return (
+    <header {...props}>
+      <H1>
+        {viewTransitionName ? (
+          <ViewTransition name={viewTransitionName}>
+            {children}
+          </ViewTransition>
+        ) : (
+          children
+        )}
+      </H1>
+    </header>
+  );
+}
+```
+
+Then use it in your pages:
+
+```tsx
+// app/posts/[slug]/page.tsx
+export default async function PostPage({ params }) {
+  const post = await getPost(params.slug);
+
+  return (
+    <Article>
+      <Article.Header viewTransitionName={`post-${params.slug}`}>
+        {post.title}
+      </Article.Header>
+      <Article.Body>{post.content}</Article.Body>
+    </Article>
+  );
+}
+```
+
+### The TransitionLink Component
+
+To ensure navigation triggers view transitions, create a custom Link wrapper:
+
+```tsx
+// components/ui/link/transition-link.tsx
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
+import { Link } from './link';
+
+export function TransitionLink({ children, href, onClick, ...props }) {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
+
+  // Skip transitions for hash links and external links
+  if (source.startsWith('#') || source.startsWith('http')) {
+    return <Link href={href} onClick={onClick} {...props}>{children}</Link>;
+  }
+
+  const handleClick = (e) => {
+    // Allow default behavior for cmd/ctrl + click, etc.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) {
+      return;
+    }
+
+    e.preventDefault();
+    if (onClick) onClick(e);
+
+    // Wrap navigation in startTransition to trigger ViewTransitions
+    startTransition(() => {
+      router.push(source);
+    });
+  };
+
+  return <Link href={href} onClick={handleClick} {...props}>{children}</Link>;
+}
+```
+
+Use it in your feed items:
+
+```tsx
+// components/ui/layout/feed.tsx
+const titleContent = link ? (
+  <TransitionLink href={link}>
+    <span>{title}</span>
+  </TransitionLink>
+) : title;
+
+return (
+  <H3>
+    {viewTransitionName ? (
+      <ViewTransition name={viewTransitionName}>
+        {titleContent}
+      </ViewTransition>
+    ) : titleContent}
+  </H3>
+);
+```
+
+## The CSS Connection
+
+The React component automatically applies the CSS `view-transition-name` property. You can customize the transition:
+
+```css
+::view-transition-old(post-ai-agents) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-new(post-ai-agents) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+```
+
+### Custom Transitions
+
+```css
+/* Smooth fade for post titles */
+::view-transition-old(post-hello-world) {
+  animation: fade-out 0.3s ease-in-out;
+}
+
+::view-transition-new(post-hello-world) {
+  animation: fade-in 0.3s ease-in-out;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+```
+
+### Avatar Transitions
+
+```css
+/* Consistent avatar positioning */
+::view-transition-old(avatar) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-new(avatar) {
+  animation-duration: 0.2s;
+}
+```
+
+## Next.js Configuration
+
+Enable the experimental feature:
+
+```tsx
+// next.config.ts
+const nextConfig = {
+  experimental: {
+    viewTransition: true,
+  },
+};
+
+export default nextConfig;
+```
+
+## Why This Matters
+
+View transitions solve a real problem. Traditional page navigation feels jarring—content just pops in and out. With view transitions, users get visual continuity that makes your app feel polished.
+
+The best part? It's progressive enhancement. Browsers that don't support it just show normal navigation.
+
+## Implementation Tips
+
+1. **Use consistent naming**: `post-${slug}`, `talk-${slug}`, etc.
+2. **Start simple**: Focus on titles and key elements first
+3. **Test across browsers**: Chrome has the best support currently
+4. **Keep it subtle**: Over-animation can feel gimmicky
+
+## The Future
+
+This is just the beginning. React's ViewTransition integration opens up possibilities for:
+- Smooth route changes in SPAs
+- Gallery transitions
+- Modal animations
+- List reordering effects
+
+## Getting Started
+
+Want to try it? Use React's ViewTransition component and start with your most important page transitions. The API is straightforward, and the results are immediately satisfying.
+
+The web is becoming more app-like, and React's ViewTransition integration is a big step in that direction. Your users will notice the difference.
+
+---
+
+👉 **Bottom line**: React's ViewTransition integration makes smooth page animations trivial. It's time to make your app feel more native.
+
+## Source Code
+
+You can explore the complete implementation in the [glennreyes.com repository](https://github.com/glennreyes/glennreyes.com). The ViewTransition integration was added in [this pull request](https://github.com/glennreyes/glennreyes.com/pull/613) with all the changes shown above.
