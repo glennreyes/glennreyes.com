@@ -2,7 +2,6 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { AnimatePresence, motion } from 'framer-motion';
 import { useContext } from 'react';
 
 import { useIsActivePathname } from '@/lib/hooks/use-is-active-pathname';
@@ -19,19 +18,5 @@ export function NavbarAvatar({ children }: NavbarAvatarProps) {
     return <>{children}</>;
   }
 
-  return (
-    <AnimatePresence>
-      {!isInView && (
-        <motion.div
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="flex flex-none"
-          exit={{ opacity: 0, scale: 0.95, y: '25%' }}
-          initial={{ opacity: 0, scale: 0.95, y: '25%' }}
-          transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  return !isInView ? <div className="flex flex-none">{children}</div> : null;
 }

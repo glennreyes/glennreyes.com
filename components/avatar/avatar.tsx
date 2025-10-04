@@ -5,6 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import { cva } from 'class-variance-authority';
 import Image from 'next/image';
+import { unstable_ViewTransition as ViewTransition } from 'react';
 
 import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
@@ -40,16 +41,18 @@ export function Avatar({ size, className, ...props }: AvatarProps) {
   const imageSize = avatarImageSizes[size ?? 34];
 
   return (
-    <div className={classes}>
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
-      <Image
-        alt={name}
-        className="relative rounded-full"
-        placeholder="blur"
-        src={photo}
-        {...imageSize}
-        {...props}
-      />
-    </div>
+    <ViewTransition name="avatar">
+      <div className={classes}>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
+        <Image
+          alt={name}
+          className="relative rounded-full"
+          placeholder="blur"
+          src={photo}
+          {...imageSize}
+          {...props}
+        />
+      </div>
+    </ViewTransition>
   );
 }
