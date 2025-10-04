@@ -48,11 +48,11 @@ For my personal website, I sought a data layer that was easy to work with and th
 
 ### MDX
 
-Several options compatible with the Next.js App Router were available, such as the [built-in support for MDX](https://beta.nextjs.org/docs/guides/mdx#mdx) in Next.js and [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support). Ultimately, I utilized both tools, primarily for constructing blog content with `next-mdx-remote` for Markdown data coming from Prisma and built-in MDX for main pages of my site.
+Several options compatible with the Next.js App Router were available, such as the [built-in support for MDX](https://beta.nextjs.org/docs/guides/mdx#mdx) in Next.js and [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote#react-server-components-rsc--nextjs-app-directory-support). I primarily use `next-mdx-remote` for blog content and static pages.
 
-### Prisma
+### Database
 
-I selected [Prisma](https://www.prisma.io) to manage the content for [talks](/talks) and [workshops](/workshops), as it provided the flexibility to design and scale my data model. Prisma pairs well with React's `cache` API for deduping and caching data responses from queries.
+I use a database to manage content for [talks](/talks) and [workshops](/workshops), providing the flexibility to design and scale my data model. The database layer pairs well with React's `cache` API for deduping and caching data responses from queries.
 
 ## Design
 

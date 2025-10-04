@@ -4,17 +4,15 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Project Snapshot
 
-- **Stack**: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Prisma · PostgreSQL
-- **Content**: MDX files under `content/`; Prisma sources additional data (events, appearances, analytics)
+- **Stack**: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
+- **Content**: MDX files under `content/`; Drizzle sources additional data (events, appearances, analytics)
 - **Hosting**: Vercel (deployment, analytics, speed insights)
 - **Design system**: Tailwind-first components in `components/ui/`
 
 ## Environment & Tooling
 
 1. Install dependencies: `pnpm install`
-2. Database
-   - Copy `prisma/.env.example` ➝ `prisma/.env`
-   - Run `pnpm prisma generate` and `pnpm prisma migrate dev`
+2. Database: Configure Turso connection in `.env`
 3. Development server: `pnpm dev` (Turbopack, served at <http://localhost:3000>)
 4. Production build: `pnpm build` then `pnpm start`
 
@@ -60,7 +58,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 - Blog posts: `content/posts/*.mdx`
 - Static pages: `content/pages/*.mdx`
-- Prisma schema & migrations: `prisma/`
+- Drizzle schema: `drizzle/schema.ts`
 - When adding MDX, ensure frontmatter matches existing conventions.
 
 ## Git & Workflow
