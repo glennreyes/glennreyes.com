@@ -1,5 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
+import { unstable_ViewTransition as ViewTransition } from 'react';
+
 import { H1 } from '../typography/h1';
 import { Lead } from '../typography/lead';
 import { Meta } from '../typography/meta';
@@ -15,13 +17,26 @@ interface PageHeaderProps
   extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead?: ReactNode;
   meta?: ReactNode;
+  viewTransitionName?: string;
 }
 
-function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
+function PageHeader({
+  children,
+  lead,
+  meta,
+  viewTransitionName,
+  ...props
+}: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-      <H1>{children}</H1>
+      <H1>
+        {viewTransitionName ? (
+          <ViewTransition name={viewTransitionName}>{children}</ViewTransition>
+        ) : (
+          children
+        )}
+      </H1>
       {lead !== null &&
         lead !== undefined &&
         (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}

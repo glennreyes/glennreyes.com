@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { ChevronRight } from 'lucide-react';
+import { unstable_ViewTransition as ViewTransition } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -61,6 +62,7 @@ interface FeedItemProps
   link?: string;
   meta?: ReactNode;
   title: string;
+  viewTransitionName?: string;
 }
 
 function FeedItem({
@@ -69,6 +71,7 @@ function FeedItem({
   description,
   link,
   title,
+  viewTransitionName,
   ...rest
 }: FeedItemProps) {
   const { date, meta, ...props } = {
@@ -87,17 +90,24 @@ function FeedItem({
     link && 'relative z-10',
     date !== undefined && 'text-slate-400 dark:text-slate-500',
   );
+  const titleContent = link ? (
+    <Link href={link}>
+      <span className="absolute -inset-4 z-20 md:-inset-6" />
+      <span className="relative z-10">{title}</span>
+    </Link>
+  ) : (
+    title
+  );
   const content = (
     <>
       <div className="grid">
         <H3>
-          {link ? (
-            <Link href={link}>
-              <span className="absolute -inset-4 z-20 md:-inset-6" />
-              <span className="relative z-10">{title}</span>
-            </Link>
+          {viewTransitionName ? (
+            <ViewTransition name={viewTransitionName}>
+              {titleContent}
+            </ViewTransition>
           ) : (
-            title
+            titleContent
           )}
         </H3>
         {meta === undefined ? (
