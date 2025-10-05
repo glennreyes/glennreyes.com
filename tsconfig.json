@@ -25,6 +25,7 @@
     "*.cjs",
     "*.mjs",
     ".*.cjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".storybook/**/*.ts"
   ]
 }
