@@ -5,7 +5,6 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
-
 const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -13,6 +12,36 @@ const nextConfig: NextConfig = {
   experimental: {
     ppr: 'incremental',
     viewTransition: true,
+  },
+  headers() {
+    return Promise.resolve([
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value:
+              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+        ],
+      },
+    ]);
   },
   // Include content files in the build output for Vercel deployment
   outputFileTracingIncludes: {
