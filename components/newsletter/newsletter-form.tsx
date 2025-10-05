@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { useActionState, useEffect, useOptimistic } from 'react';
+import { useActionState, useEffect, useOptimistic, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 import { toast } from 'sonner';
 
@@ -41,13 +41,19 @@ export function NewsletterForm(props: NewsletterFormProps) {
   >(state, (_currentState, _optimisticValue) => ({
     message: 'Subscribing...',
     status: 'idle',
+    timestamp: Date.now(),
   }));
+  const lastTimestamp = useRef<number>(0);
 
   useEffect(() => {
-    if (state?.status === 'success') {
-      toast.success(state.message);
-    } else if (state?.status === 'error') {
-      toast.error(state.message);
+    if (state?.timestamp && state.timestamp !== lastTimestamp.current) {
+      lastTimestamp.current = state.timestamp;
+
+      if (state.status === 'success') {
+        toast.success(state.message);
+      } else if (state.status === 'error') {
+        toast.error(state.message);
+      }
     }
   }, [state]);
 
