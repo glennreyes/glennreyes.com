@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "analyze": "ANALYZE=true next build",
     "build": "next build",
     "dev": "next dev",
     "format": "prettier --list-different --write . && pnpm lint --fix",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@glennreyes/eslint-config": "^1.1.0",
+    "@next/bundle-analyzer": "^15.5.4",
     "@tailwindcss/postcss": "^4.1.14",
     "@tsconfig/next": "^2.0.3",
     "@types/eslint": "^9.6.1",
