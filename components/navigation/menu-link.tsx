@@ -23,7 +23,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     'text-gray-900/90 hover:text-teal-700/75 dark:text-gray-200 dark:hover:text-teal-200/75';
   const classes = cn(
     isActivePathname ? activeClasses : inactiveClasses,
-    'relative block min-h-11 py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:min-h-0 md:rounded-full md:px-3 md:py-2 md:active:scale-95',
+    'relative block min-h-11 px-3 py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:min-h-0 md:rounded-full md:py-2 md:active:scale-95',
   );
 
   return (
@@ -35,7 +35,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     >
       {isActivePathname && (
         <motion.span
-          className="absolute inset-x-3 inset-y-0 z-0 rounded-full border border-gray-300/25 bg-white/10 backdrop-blur-md md:inset-x-1 dark:border-gray-500/25 dark:bg-black/10"
+          className="absolute inset-x-0 inset-y-0 z-0 rounded-full border border-gray-300/25 bg-white/10 backdrop-blur-md md:inset-x-1 dark:border-gray-500/25 dark:bg-black/10"
           layoutId="active-nav-pill"
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         />
