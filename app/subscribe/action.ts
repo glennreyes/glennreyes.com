@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { subscribe as subscribeBase } from '@/lib/newsletter';
 
-export interface SubscribeState {
+interface SubscribeState {
   message: string;
   status: 'error' | 'idle' | 'success';
   timestamp: number;

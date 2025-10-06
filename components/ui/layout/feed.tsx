@@ -35,7 +35,7 @@ export function Feed({
       <div className="not-prose grid gap-8 md:grid-cols-3" {...props}>
         <div className="col-span-2 md:col-span-1 md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
           <div className="grid gap-2 md:sticky md:top-23">
-            <h2 className="font-medium text-teal-600 dark:text-teal-200/75">
+            <h2 className="font-medium text-teal-700 dark:text-teal-200/75">
               {title}
             </h2>
             {description && <p className="text-slate-500">{description}</p>}
