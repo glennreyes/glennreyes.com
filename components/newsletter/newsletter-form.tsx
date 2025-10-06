@@ -2,11 +2,8 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { useActionState, useEffect, useOptimistic, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 import { toast } from 'sonner';
-
-import type { SubscribeState } from '@/app/subscribe/action';
 
 import { subscribe } from '@/app/subscribe/action';
 import { useTheme } from '@/lib/hooks/use-theme';
@@ -28,41 +25,22 @@ const SubmitButton = () => {
     </Button>
   );
 };
+const handleSubscribe = async (formData: FormData) => {
+  const result = await subscribe(null, formData);
+
+  if (result.status === 'success') {
+    toast.success(result.message);
+  } else if (result.status === 'error') {
+    toast.error(result.message);
+  }
+};
 
 export function NewsletterForm(props: NewsletterFormProps) {
   const { resolvedTheme } = useTheme();
-  const [state, formAction] = useActionState<SubscribeState | null, FormData>(
-    subscribe,
-    null,
-  );
-  const [optimisticState, setOptimisticState] = useOptimistic<
-    SubscribeState | null,
-    'subscribing'
-  >(state, (_currentState, _optimisticValue) => ({
-    message: 'Subscribing...',
-    status: 'idle',
-    timestamp: Date.now(),
-  }));
-  const lastTimestamp = useRef<number>(0);
-
-  useEffect(() => {
-    if (state?.timestamp && state.timestamp !== lastTimestamp.current) {
-      lastTimestamp.current = state.timestamp;
-
-      if (state.status === 'success') {
-        toast.success(state.message);
-      } else if (state.status === 'error') {
-        toast.error(state.message);
-      }
-    }
-  }, [state]);
 
   return (
     <form
-      action={(formData: FormData) => {
-        setOptimisticState('subscribing');
-        formAction(formData);
-      }}
+      action={handleSubscribe}
       className="grid gap-2 gap-y-4 sm:relative sm:flex sm:p-1"
       {...props}
     >
@@ -71,7 +49,6 @@ export function NewsletterForm(props: NewsletterFormProps) {
         <Input
           aria-label="Email address"
           className="peer relative z-10 w-full sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:bg-slate-900/25 dark:sm:border-transparent dark:sm:bg-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
-          disabled={optimisticState?.status === 'idle'}
           name="email"
           placeholder="Your email address"
           required

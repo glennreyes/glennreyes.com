@@ -18,7 +18,7 @@ export const subscribe = async (
   const theme = data.get('theme');
   const result = z
     .object({
-      email: z.string().email('Please enter a valid email address'),
+      email: z.email('Please enter a valid email address'),
       theme: z.enum(['dark', 'light']).default('light'),
     })
     .safeParse({ email, theme });
