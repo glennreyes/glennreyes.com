@@ -2,7 +2,7 @@
 
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { Menu as MenuIcon, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -24,15 +24,64 @@ const links: MenuLink[] = [
 
 export function Menu() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
-  const toggle = () => setOpen((prev) => !prev);
+  const toggle = () => setOpen((previous) => !previous);
   const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        close();
+        menuButtonRef.current?.focus();
+      }
+
+      if (event.key === 'Tab') {
+        const menu = menuRef.current;
+
+        if (!menu) {
+          return;
+        }
+
+        const focusableElements = menu.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled])',
+        );
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement?.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    const firstLink = menuRef.current?.querySelector<HTMLElement>('a[href]');
+
+    firstLink?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
 
   return (
     <LayoutGroup>
-      <nav className="grid items-center">
+      <nav aria-label="Main navigation" className="grid items-center">
         <IconButton
+          ref={menuButtonRef}
           appearance="secondary"
+          aria-expanded={open}
           aria-label="Open Menu"
           className={buttonClasses}
           icon={MenuIcon}
@@ -40,9 +89,14 @@ export function Menu() {
         />
         <AnimatePresence>
           {open && (
-            <div className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden">
+            <div
+              aria-modal="true"
+              className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden"
+              role="dialog"
+            >
               <motion.div
                 animate={{ opacity: 1 }}
+                aria-hidden="true"
                 className="absolute inset-0 bg-slate-800/50 backdrop-blur-sm dark:bg-black/75"
                 exit={{ opacity: 0 }}
                 initial={{ opacity: 0 }}
@@ -50,6 +104,7 @@ export function Menu() {
                 transition={{ duration: 0.15 }}
               />
               <motion.div
+                ref={menuRef}
                 animate={{ opacity: 1, scale: 1 }}
                 className="relative grid gap-4 rounded-3xl border border-slate-100 bg-white p-6 dark:border-slate-900 dark:bg-slate-950"
                 exit={{ opacity: 0, scale: 0.95 }}

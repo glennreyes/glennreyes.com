@@ -27,10 +27,15 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
   );
 
   return (
-    <Link className={classes} {...props}>
+    <Link
+      aria-current={isActivePathname ? 'page' : undefined}
+      className={classes}
+      prefetch={false}
+      {...props}
+    >
       {isActivePathname && (
         <motion.span
-          className="absolute inset-0 z-0 rounded-full border border-slate-300/25 bg-white/10 backdrop-blur-md dark:border-slate-500/25 dark:bg-slate-950/10"
+          className="absolute inset-0 z-0 rounded-full border border-slate-300/25 bg-white/10 backdrop-blur-md md:inset-x-1 dark:border-slate-500/25 dark:bg-slate-950/10"
           layoutId="active-nav-pill"
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         />

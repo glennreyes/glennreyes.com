@@ -120,4 +120,9 @@ export const components: MDXComponents = {
       />
     );
   },
+  video: (props: ComponentPropsWithoutRef<'video'>) => {
+    return (
+      <video className="w-full rounded-3xl" {...props} />
+    );
+  },
 };
