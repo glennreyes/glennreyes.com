@@ -1,0 +1,178 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Skip to content":
+          - /url: "#main"
+        - link "Glenn Reyes" [ref=e9] [cursor=pointer]:
+          - /url: /
+          - img "Glenn Reyes" [ref=e12] [cursor=pointer]
+      - navigation "Main navigation" [ref=e13]:
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - link "About" [ref=e16] [cursor=pointer]:
+              - /url: /about
+              - generic [ref=e17] [cursor=pointer]: About
+          - listitem [ref=e18]:
+            - link "Posts" [ref=e19] [cursor=pointer]:
+              - /url: /posts
+              - generic [ref=e20] [cursor=pointer]: Posts
+          - listitem [ref=e21]:
+            - link "Appearances" [ref=e22] [cursor=pointer]:
+              - /url: /appearances
+              - generic [ref=e23] [cursor=pointer]: Appearances
+          - listitem [ref=e24]:
+            - link "Talks" [ref=e25] [cursor=pointer]:
+              - /url: /talks
+              - generic [ref=e26] [cursor=pointer]: Talks
+          - listitem [ref=e27]:
+            - link "Workshops" [ref=e28] [cursor=pointer]:
+              - /url: /workshops
+              - generic [ref=e29] [cursor=pointer]: Workshops
+  - main [ref=e30]:
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - img "Glenn Reyes" [ref=e36]
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: Hello, I'm
+            - generic [ref=e41]:
+              - heading "Glenn Reyes" [level=1] [ref=e42]:
+                - generic [ref=e43]: Glenn Reyes
+              - paragraph [ref=e44]: Software engineer, tech speaker and workshop instructor who loves turning ideas into reality through code. I build innovative products, share knowledge at conferences, and help developers create better user experiences with modern web technologies.
+          - list [ref=e45]:
+            - listitem [ref=e46]:
+              - link "Follow on X, formerly known as X" [ref=e47] [cursor=pointer]:
+                - /url: https://x.com/glnnrys
+                - img [ref=e48] [cursor=pointer]
+            - listitem [ref=e50]:
+              - link "Follow on GitHub" [ref=e51] [cursor=pointer]:
+                - /url: https://github.com/glennreyes
+                - img [ref=e52] [cursor=pointer]
+      - generic [ref=e54]:
+        - generic [ref=e56]:
+          - heading "Recent Posts" [level=2] [ref=e57]
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - article [ref=e60]:
+                - heading "Don’t Sleep on AI Coding Agents" [level=3] [ref=e62]:
+                  - link "Don’t Sleep on AI Coding Agents" [ref=e63] [cursor=pointer]:
+                    - /url: /posts/ai-agents
+                    - generic [ref=e65] [cursor=pointer]: Don’t Sleep on AI Coding Agents
+                - paragraph [ref=e66]: AI coding agents are changing how developers work. This post explains what they are, their pros and cons, and why they give you superpowers.
+              - article [ref=e68]:
+                - heading "What is MCP?" [level=3] [ref=e70]:
+                  - link "What is MCP?" [ref=e71] [cursor=pointer]:
+                    - /url: /posts/mcp-explained
+                    - generic [ref=e73] [cursor=pointer]: What is MCP?
+                - paragraph [ref=e74]: A beginner-friendly introduction to the Model Context Protocol (MCP) - what it is, why it matters, and how I built my own MCP server for portfolio management.
+              - article [ref=e76]:
+                - heading "One Font Size" [level=3] [ref=e78]:
+                  - link "One Font Size" [ref=e79] [cursor=pointer]:
+                    - /url: /posts/font-size
+                    - generic [ref=e81] [cursor=pointer]: One Font Size
+                - paragraph [ref=e82]: I redesigned my site with one font size. Here’s why minimalist typography works, what I love about it, and when it falls short.
+              - article [ref=e84]:
+                - heading "Building a Tuner with Tone.js and React" [level=3] [ref=e86]:
+                  - link "Building a Tuner with Tone.js and React" [ref=e87] [cursor=pointer]:
+                    - /url: /posts/tuner
+                    - generic [ref=e89] [cursor=pointer]: Building a Tuner with Tone.js and React
+                - paragraph [ref=e90]: I had no idea how the Web Audio API worked, so I decided to build a tuner with it. Here's what I learned.
+            - link "All Posts" [ref=e92] [cursor=pointer]:
+              - /url: /posts
+              - text: All Posts
+              - img [ref=e93] [cursor=pointer]
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - heading "Appearances" [level=2] [ref=e97]
+            - generic [ref=e99]:
+              - list [ref=e102]:
+                - listitem [ref=e103]:
+                  - generic [ref=e105]:
+                    - generic [ref=e106]:
+                      - heading "React Alicante" [level=3] [ref=e107]:
+                        - link "React Alicante" [ref=e108] [cursor=pointer]:
+                          - /url: /appearances/2025-10-react-alicante
+                          - generic [ref=e110] [cursor=pointer]: React Alicante
+                      - time [ref=e111]: October 2
+                    - paragraph [ref=e112]: Alicante, Spain
+                - listitem [ref=e114]:
+                  - generic [ref=e116]:
+                    - generic [ref=e117]:
+                      - heading "CityJS London" [level=3] [ref=e118]:
+                        - link "CityJS London" [ref=e119] [cursor=pointer]:
+                          - /url: /appearances/2024-04-cityjs-london
+                          - generic [ref=e121] [cursor=pointer]: CityJS London
+                      - time [ref=e122]: April 4, 2024
+                    - paragraph [ref=e123]: London, United Kingdom
+                - listitem [ref=e125]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - heading "React Cebu" [level=3] [ref=e129]:
+                        - link "React Cebu" [ref=e130] [cursor=pointer]:
+                          - /url: /appearances/2023-12-react-cebu
+                          - generic [ref=e132] [cursor=pointer]: React Cebu
+                      - time [ref=e133]: December 21, 2023
+                    - paragraph [ref=e134]: Cebu, Philippines
+                - listitem [ref=e136]:
+                  - generic [ref=e138]:
+                    - generic [ref=e139]:
+                      - heading "International JavaScript Conference Singapore" [level=3] [ref=e140]:
+                        - link "International JavaScript Conference Singapore" [ref=e141] [cursor=pointer]:
+                          - /url: /appearances/2023-12-international-javascript-conference-singapore
+                          - generic [ref=e143] [cursor=pointer]: International JavaScript Conference Singapore
+                      - time [ref=e144]: December 11, 2023
+                    - paragraph [ref=e145]: Singapore, Singapore
+                - listitem [ref=e147]:
+                  - generic [ref=e149]:
+                    - generic [ref=e150]:
+                      - heading "Øredev" [level=3] [ref=e151]:
+                        - link "Øredev" [ref=e152] [cursor=pointer]:
+                          - /url: /appearances/2023-10-oredev
+                          - generic [ref=e154] [cursor=pointer]: Øredev
+                      - time [ref=e155]: November 8, 2023
+                    - paragraph [ref=e156]: Malmö, Sweden
+              - link "All Appearances" [ref=e158] [cursor=pointer]:
+                - /url: /appearances
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - heading "Stay in the loop" [level=2] [ref=e162]
+              - paragraph [ref=e163]: Get notified when I publish new posts, technical deep-dives, and insights from my work in React and web development. I only send emails when I have something valuable to share.
+            - generic [ref=e165]:
+              - textbox "Email address" [active] [ref=e167]: invalid-email
+              - button "Subscribe" [ref=e170]
+  - contentinfo [ref=e171]:
+    - generic [ref=e172]:
+      - paragraph [ref=e173]:
+        - text: © 2025 Glenn Reyes ·
+        - link "Privacy" [ref=e174] [cursor=pointer]:
+          - /url: /privacy
+        - text: ·
+        - link "Legal" [ref=e175] [cursor=pointer]:
+          - /url: /legal
+      - generic [ref=e176]:
+        - button "Switch to system theme" [ref=e177] [cursor=pointer]:
+          - img [ref=e179] [cursor=pointer]
+        - button "Switch to light theme" [ref=e181] [cursor=pointer]:
+          - img [ref=e182] [cursor=pointer]
+        - button "Switch to dark theme" [ref=e188] [cursor=pointer]:
+          - img [ref=e189] [cursor=pointer]
+  - region "Notifications alt+T"
+  - generic [ref=e195] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e196] [cursor=pointer]:
+      - img [ref=e197] [cursor=pointer]
+    - generic [ref=e200] [cursor=pointer]:
+      - button "Open issues overlay" [ref=e201] [cursor=pointer]:
+        - generic [ref=e202] [cursor=pointer]:
+          - generic [ref=e203] [cursor=pointer]: "1"
+          - generic [ref=e204] [cursor=pointer]: "2"
+        - generic [ref=e205] [cursor=pointer]:
+          - text: Issue
+          - generic [ref=e206] [cursor=pointer]: s
+      - button "Collapse issues badge" [ref=e207] [cursor=pointer]:
+        - img [ref=e208] [cursor=pointer]
+  - alert [ref=e210]
+```

@@ -14,8 +14,10 @@ test.describe('Newsletter', () => {
     await emailInput.fill('invalid-email');
     await submitButton.click();
 
-    // Wait for error toast
-    await expect(page.locator('text=/valid email/i')).toBeVisible({
+    // Wait for error toast with the exact message
+    await expect(
+      page.locator('text=Please enter a valid email address'),
+    ).toBeVisible({
       timeout: 5000,
     });
   });

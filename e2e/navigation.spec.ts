@@ -18,10 +18,7 @@ test.describe('Navigation', () => {
   test('should navigate back to home by clicking avatar', async ({ page }) => {
     await page.goto('/about');
 
-    // Wait for avatar to be visible in navbar
-    await page.waitForSelector('nav a[href="/"]', { state: 'visible' });
-
-    // Click avatar in navbar
+    // Click avatar/logo in navbar to go home
     await page.click('nav a[href="/"]');
 
     // Wait for navigation
@@ -43,7 +40,7 @@ test.describe('Navigation', () => {
     ];
 
     for (const link of navLinks) {
-      const element = page.locator(`a[href="${link.href}"]`);
+      const element = page.locator(`nav a[href="${link.href}"]`).first();
 
       await expect(element).toBeVisible();
     }
