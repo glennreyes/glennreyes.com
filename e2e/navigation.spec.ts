@@ -5,21 +5,26 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Click on About link in navigation
-    await page.click('a[href="/about"]');
+    await page.getByRole('link', { name: 'About' }).click();
 
     // Wait for navigation
     await page.waitForURL('/about');
 
     // Verify we're on the about page
     await expect(page).toHaveURL('/about');
-    await expect(page.locator('h1')).toContainText('Glenn Reyes');
+    await expect(
+      page.getByRole('heading', { level: 1, name: /Glenn Reyes/i }),
+    ).toBeVisible();
   });
 
   test('should navigate back to home by clicking avatar', async ({ page }) => {
     await page.goto('/about');
 
-    // Click avatar/logo in navbar to go home
-    await page.click('nav a[href="/"]');
+    // Click avatar/logo link in navbar to go home
+    await page
+      .getByRole('banner')
+      .getByRole('link', { name: 'Glenn Reyes' })
+      .click();
 
     // Wait for navigation
     await page.waitForURL('/');
@@ -32,17 +37,11 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Verify all main navigation links are present
-    const navLinks = [
-      { href: '/about', text: 'About' },
-      { href: '/posts', text: 'Posts' },
-      { href: '/talks', text: 'Talks' },
-      { href: '/workshops', text: 'Workshops' },
-    ];
+    const navLinks = ['About', 'Posts', 'Talks', 'Workshops'];
+    const nav = page.getByRole('navigation', { name: 'Main navigation' });
 
-    for (const link of navLinks) {
-      const element = page.locator(`nav a[href="${link.href}"]`).first();
-
-      await expect(element).toBeVisible();
+    for (const linkName of navLinks) {
+      await expect(nav.getByRole('link', { name: linkName })).toBeVisible();
     }
   });
 });

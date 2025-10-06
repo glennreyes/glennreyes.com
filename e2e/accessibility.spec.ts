@@ -66,11 +66,11 @@ test.describe('Accessibility', () => {
     await page.goto('/');
     await page.setViewportSize({ width: 375, height: 667 });
 
-    const menuButton = page.locator('button[aria-label="Open Menu"]');
+    const menuButton = page.getByRole('button', { name: 'Open Menu' });
 
     await menuButton.click();
 
-    const dialog = page.locator('[role="dialog"]');
+    const dialog = page.getByRole('dialog');
 
     await expect(dialog).toBeVisible();
 
@@ -85,10 +85,11 @@ test.describe('Accessibility', () => {
     await page.goto('/');
     await page.setViewportSize({ width: 375, height: 667 });
 
-    await page.click('button[aria-label="Open Menu"]');
+    await page.getByRole('button', { name: 'Open Menu' }).click();
 
-    const firstLink = page.locator('[role="dialog"] a[href]').first();
-    const closeButton = page.locator('button[aria-label="Close Menu"]');
+    const dialog = page.getByRole('dialog');
+    const firstLink = dialog.getByRole('link').first();
+    const closeButton = page.getByRole('button', { name: 'Close Menu' });
 
     await expect(firstLink).toBeFocused();
 
@@ -110,13 +111,13 @@ test.describe('Accessibility', () => {
 
     await page.keyboard.press('Tab');
 
-    const skipLink = page.locator('a:has-text("Skip to content")');
+    const skipLink = page.getByRole('link', { name: 'Skip to content' });
 
     await expect(skipLink).toBeFocused();
 
     await page.keyboard.press('Enter');
 
-    const main = page.locator('main');
+    const main = page.getByRole('main');
 
     await expect(main).toBeFocused();
   });

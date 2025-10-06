@@ -5,10 +5,8 @@ test.describe('Newsletter', () => {
     await page.goto('/');
 
     // Find newsletter form
-    const emailInput = page.locator('input[name="email"]');
-    const submitButton = page.locator('button[type="submit"]', {
-      hasText: 'Subscribe',
-    });
+    const emailInput = page.getByRole('textbox', { name: 'Email address' });
+    const submitButton = page.getByRole('button', { name: 'Subscribe' });
 
     // Enter invalid email
     await emailInput.fill('invalid-email');
@@ -16,7 +14,7 @@ test.describe('Newsletter', () => {
 
     // Wait for error toast with the exact message
     await expect(
-      page.locator('text=Please enter a valid email address'),
+      page.getByText('Please enter a valid email address'),
     ).toBeVisible({
       timeout: 5000,
     });
@@ -25,10 +23,8 @@ test.describe('Newsletter', () => {
   test('should show pending state while submitting', async ({ page }) => {
     await page.goto('/');
 
-    const emailInput = page.locator('input[name="email"]');
-    const submitButton = page.locator('button[type="submit"]', {
-      hasText: 'Subscribe',
-    });
+    const emailInput = page.getByRole('textbox', { name: 'Email address' });
+    const submitButton = page.getByRole('button', { name: 'Subscribe' });
 
     // Enter valid email
     await emailInput.fill('test@example.com');
@@ -38,21 +34,21 @@ test.describe('Newsletter', () => {
 
     // Verify button shows pending state
     await expect(
-      page.locator('button[type="submit"]', { hasText: 'Subscribing' }),
+      page.getByRole('button', { name: 'Subscribing...' }),
     ).toBeVisible({ timeout: 2000 });
   });
 
   test('should have accessible newsletter form', async ({ page }) => {
     await page.goto('/');
 
-    // Check form has proper labels
-    const emailInput = page.locator('input[name="email"]');
+    // Check form has proper labels and accessible inputs
+    const emailInput = page.getByRole('textbox', { name: 'Email address' });
 
     await expect(emailInput).toHaveAttribute('type', 'email');
     await expect(emailInput).toHaveAttribute('required');
 
     // Check button is accessible
-    const submitButton = page.locator('button[type="submit"]');
+    const submitButton = page.getByRole('button', { name: 'Subscribe' });
 
     await expect(submitButton).toBeVisible();
   });

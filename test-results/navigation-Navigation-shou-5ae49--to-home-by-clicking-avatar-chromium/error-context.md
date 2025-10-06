@@ -2,133 +2,133 @@
 
 ```yaml
 - generic [active] [ref=e1]:
-  - banner [ref=e2]:
-    - generic [ref=e5]:
-      - generic [ref=e6]:
-        - link "Skip to content":
-          - /url: "#main"
-        - link "Glenn Reyes" [ref=e8] [cursor=pointer]:
-          - /url: /
-          - img "Glenn Reyes" [ref=e11] [cursor=pointer]
-      - navigation "Main navigation" [ref=e12]:
-        - list [ref=e13]:
-          - listitem [ref=e14]:
-            - link "About" [ref=e15] [cursor=pointer]:
-              - /url: /about
-              - generic [ref=e17] [cursor=pointer]: About
-          - listitem [ref=e18]:
-            - link "Posts" [ref=e19] [cursor=pointer]:
-              - /url: /posts
-              - generic [ref=e20] [cursor=pointer]: Posts
-          - listitem [ref=e21]:
-            - link "Appearances" [ref=e22] [cursor=pointer]:
-              - /url: /appearances
-              - generic [ref=e23] [cursor=pointer]: Appearances
-          - listitem [ref=e24]:
-            - link "Talks" [ref=e25] [cursor=pointer]:
-              - /url: /talks
-              - generic [ref=e26] [cursor=pointer]: Talks
-          - listitem [ref=e27]:
-            - link "Workshops" [ref=e28] [cursor=pointer]:
-              - /url: /workshops
-              - generic [ref=e29] [cursor=pointer]: Workshops
-  - main [ref=e30]:
-    - generic [ref=e31]:
-      - generic [ref=e32]:
-        - heading "Hey, I'm Glenn Reyes." [level=1] [ref=e33]:
-          - generic [ref=e34]: Hey, I'm Glenn Reyes.
-        - paragraph [ref=e35]: A software engineer, tech speaker, and workshop instructor based in Vienna.
-      - img "Speaking" [ref=e36]
-      - generic [ref=e37]:
-        - generic [ref=e39]:
-          - paragraph [ref=e40]:
-            - text: I've always been curious about how things work and how they can be refined. That curiosity led me into tech, where I get to build, learn, and share along the way. I
-            - link "speak" [ref=e41] [cursor=pointer]:
-              - /url: /talks
-            - text: at conferences and meetups, and I run
-            - link "workshops" [ref=e42] [cursor=pointer]:
-              - /url: /workshops
-            - text: "on React, GraphQL, and TypeScript: topics I've been passionate about for years. I enjoy shaping UI systems that are both reliable and flexible, and I like keeping products feeling modern and effortless to use."
-          - paragraph [ref=e43]:
-            - text: If you’d like to see the gear and apps I use every day, have a look at my
-            - link "uses page" [ref=e44] [cursor=pointer]:
-              - /url: /uses
-            - text: .
-          - paragraph [ref=e45]:
-            - text: When I’m not coding, I’m usually with the people closest to me, playing guitar, or spending time outdoors. I love
-            - link "diving" [ref=e46] [cursor=pointer]:
-              - /url: https://www.instagram.com/p/DJiPOndzM_8
-            - text: ", and I stay active with"
-            - link "cycling, swimming, and running" [ref=e47] [cursor=pointer]:
-              - /url: https://www.strava.com/athletes/14875783
-            - text: .
-        - generic [ref=e50]:
-          - generic [ref=e51]:
-            - paragraph [ref=e52]: Online
-            - list [ref=e53]:
-              - listitem [ref=e54]:
-                - generic [ref=e55]:
-                  - img [ref=e57]
-                  - heading "X" [level=3] [ref=e61]:
-                    - link "X" [ref=e62] [cursor=pointer]:
-                      - /url: https://x.com/glnnrys
-                      - generic [ref=e65] [cursor=pointer]:
-                        - text: X
-                        - img [ref=e66] [cursor=pointer]
-              - listitem [ref=e70]:
-                - generic [ref=e71]:
-                  - img [ref=e73]
-                  - heading "GitHub" [level=3] [ref=e77]:
-                    - link "GitHub" [ref=e78] [cursor=pointer]:
-                      - /url: https://github.com/glennreyes
-                      - generic [ref=e81] [cursor=pointer]:
-                        - text: GitHub
-                        - img [ref=e82] [cursor=pointer]
-              - listitem [ref=e86]:
-                - generic [ref=e87]:
-                  - img [ref=e89]
-                  - heading "LinkedIn" [level=3] [ref=e93]:
-                    - link "LinkedIn" [ref=e94] [cursor=pointer]:
-                      - /url: https://linkedin.com/in/glnnrys
-                      - generic [ref=e97] [cursor=pointer]:
-                        - text: LinkedIn
-                        - img [ref=e98] [cursor=pointer]
-              - listitem [ref=e102]:
-                - generic [ref=e103]:
-                  - img [ref=e105]
-                  - heading "Instagram" [level=3] [ref=e110]:
-                    - link "Instagram" [ref=e111] [cursor=pointer]:
-                      - /url: https://instagram.com/glnnrys
-                      - generic [ref=e114] [cursor=pointer]:
-                        - text: Instagram
-                        - img [ref=e115] [cursor=pointer]
-          - separator [ref=e119]
-          - generic [ref=e120]:
-            - paragraph [ref=e121]: Email
-            - generic [ref=e122]:
-              - img [ref=e124]
-              - heading "glenn@glennreyes.com" [level=3] [ref=e129]:
-                - link "glenn@glennreyes.com" [ref=e130] [cursor=pointer]:
-                  - /url: mailto:glenn@glennreyes.com
-                  - generic [ref=e133] [cursor=pointer]: glenn@glennreyes.com
-  - contentinfo [ref=e135]:
-    - generic [ref=e136]:
-      - paragraph [ref=e137]:
-        - text: © 2025 Glenn Reyes ·
-        - link "Privacy" [ref=e138] [cursor=pointer]:
-          - /url: /privacy
-        - text: ·
-        - link "Legal" [ref=e139] [cursor=pointer]:
-          - /url: /legal
-      - generic [ref=e140]:
-        - button "Switch to system theme" [ref=e141] [cursor=pointer]:
-          - img [ref=e143] [cursor=pointer]
-        - button "Switch to light theme" [ref=e145] [cursor=pointer]:
-          - img [ref=e146] [cursor=pointer]
-        - button "Switch to dark theme" [ref=e152] [cursor=pointer]:
-          - img [ref=e153] [cursor=pointer]
-  - region "Notifications alt+T"
-  - button "Open Next.js Dev Tools" [ref=e160] [cursor=pointer]:
-    - img [ref=e161] [cursor=pointer]
-  - alert [ref=e164]
+    - banner [ref=e2]:
+        - generic [ref=e5]:
+            - generic [ref=e6]:
+                - link "Skip to content":
+                    - /url: '#main'
+                - link "Glenn Reyes" [ref=e8] [cursor=pointer]:
+                    - /url: /
+                    - img "Glenn Reyes" [ref=e11] [cursor=pointer]
+            - navigation "Main navigation" [ref=e12]:
+                - list [ref=e13]:
+                    - listitem [ref=e14]:
+                        - link "About" [ref=e15] [cursor=pointer]:
+                            - /url: /about
+                            - generic [ref=e17] [cursor=pointer]: About
+                    - listitem [ref=e18]:
+                        - link "Posts" [ref=e19] [cursor=pointer]:
+                            - /url: /posts
+                            - generic [ref=e20] [cursor=pointer]: Posts
+                    - listitem [ref=e21]:
+                        - link "Appearances" [ref=e22] [cursor=pointer]:
+                            - /url: /appearances
+                            - generic [ref=e23] [cursor=pointer]: Appearances
+                    - listitem [ref=e24]:
+                        - link "Talks" [ref=e25] [cursor=pointer]:
+                            - /url: /talks
+                            - generic [ref=e26] [cursor=pointer]: Talks
+                    - listitem [ref=e27]:
+                        - link "Workshops" [ref=e28] [cursor=pointer]:
+                            - /url: /workshops
+                            - generic [ref=e29] [cursor=pointer]: Workshops
+    - main [ref=e30]:
+        - generic [ref=e31]:
+            - generic [ref=e32]:
+                - heading "Hey, I'm Glenn Reyes." [level=1] [ref=e33]:
+                    - generic [ref=e34]: Hey, I'm Glenn Reyes.
+                - paragraph [ref=e35]: A software engineer, tech speaker, and workshop instructor based in Vienna.
+            - img "Speaking" [ref=e36]
+            - generic [ref=e37]:
+                - generic [ref=e39]:
+                    - paragraph [ref=e40]:
+                        - text: I've always been curious about how things work and how they can be refined. That curiosity led me into tech, where I get to build, learn, and share along the way. I
+                        - link "speak" [ref=e41] [cursor=pointer]:
+                            - /url: /talks
+                        - text: at conferences and meetups, and I run
+                        - link "workshops" [ref=e42] [cursor=pointer]:
+                            - /url: /workshops
+                        - text: "on React, GraphQL, and TypeScript: topics I've been passionate about for years. I enjoy shaping UI systems that are both reliable and flexible, and I like keeping products feeling modern and effortless to use."
+                    - paragraph [ref=e43]:
+                        - text: If you’d like to see the gear and apps I use every day, have a look at my
+                        - link "uses page" [ref=e44] [cursor=pointer]:
+                            - /url: /uses
+                        - text: .
+                    - paragraph [ref=e45]:
+                        - text: When I’m not coding, I’m usually with the people closest to me, playing guitar, or spending time outdoors. I love
+                        - link "diving" [ref=e46] [cursor=pointer]:
+                            - /url: https://www.instagram.com/p/DJiPOndzM_8
+                        - text: ', and I stay active with'
+                        - link "cycling, swimming, and running" [ref=e47] [cursor=pointer]:
+                            - /url: https://www.strava.com/athletes/14875783
+                        - text: .
+                - generic [ref=e50]:
+                    - generic [ref=e51]:
+                        - paragraph [ref=e52]: Online
+                        - list [ref=e53]:
+                            - listitem [ref=e54]:
+                                - generic [ref=e55]:
+                                    - img [ref=e57]
+                                    - heading "X" [level=3] [ref=e61]:
+                                        - link "X" [ref=e62] [cursor=pointer]:
+                                            - /url: https://x.com/glnnrys
+                                            - generic [ref=e65] [cursor=pointer]:
+                                                - text: X
+                                                - img [ref=e66] [cursor=pointer]
+                            - listitem [ref=e70]:
+                                - generic [ref=e71]:
+                                    - img [ref=e73]
+                                    - heading "GitHub" [level=3] [ref=e77]:
+                                        - link "GitHub" [ref=e78] [cursor=pointer]:
+                                            - /url: https://github.com/glennreyes
+                                            - generic [ref=e81] [cursor=pointer]:
+                                                - text: GitHub
+                                                - img [ref=e82] [cursor=pointer]
+                            - listitem [ref=e86]:
+                                - generic [ref=e87]:
+                                    - img [ref=e89]
+                                    - heading "LinkedIn" [level=3] [ref=e93]:
+                                        - link "LinkedIn" [ref=e94] [cursor=pointer]:
+                                            - /url: https://linkedin.com/in/glnnrys
+                                            - generic [ref=e97] [cursor=pointer]:
+                                                - text: LinkedIn
+                                                - img [ref=e98] [cursor=pointer]
+                            - listitem [ref=e102]:
+                                - generic [ref=e103]:
+                                    - img [ref=e105]
+                                    - heading "Instagram" [level=3] [ref=e110]:
+                                        - link "Instagram" [ref=e111] [cursor=pointer]:
+                                            - /url: https://instagram.com/glnnrys
+                                            - generic [ref=e114] [cursor=pointer]:
+                                                - text: Instagram
+                                                - img [ref=e115] [cursor=pointer]
+                    - separator [ref=e119]
+                    - generic [ref=e120]:
+                        - paragraph [ref=e121]: Email
+                        - generic [ref=e122]:
+                            - img [ref=e124]
+                            - heading "glenn@glennreyes.com" [level=3] [ref=e129]:
+                                - link "glenn@glennreyes.com" [ref=e130] [cursor=pointer]:
+                                    - /url: mailto:glenn@glennreyes.com
+                                    - generic [ref=e133] [cursor=pointer]: glenn@glennreyes.com
+    - contentinfo [ref=e135]:
+        - generic [ref=e136]:
+            - paragraph [ref=e137]:
+                - text: © 2025 Glenn Reyes ·
+                - link "Privacy" [ref=e138] [cursor=pointer]:
+                    - /url: /privacy
+                - text: ·
+                - link "Legal" [ref=e139] [cursor=pointer]:
+                    - /url: /legal
+            - generic [ref=e140]:
+                - button "Switch to system theme" [ref=e141] [cursor=pointer]:
+                    - img [ref=e143] [cursor=pointer]
+                - button "Switch to light theme" [ref=e145] [cursor=pointer]:
+                    - img [ref=e146] [cursor=pointer]
+                - button "Switch to dark theme" [ref=e152] [cursor=pointer]:
+                    - img [ref=e153] [cursor=pointer]
+    - region "Notifications alt+T"
+    - button "Open Next.js Dev Tools" [ref=e160] [cursor=pointer]:
+        - img [ref=e161] [cursor=pointer]
+    - alert [ref=e164]
 ```

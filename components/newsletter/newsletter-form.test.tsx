@@ -26,7 +26,7 @@ describe('NewsletterForm', () => {
   it('renders email input with required and email type', () => {
     render(<NewsletterForm />);
 
-    const emailInput = screen.getByPlaceholderText('Your email address');
+    const emailInput = screen.getByRole('textbox', { name: 'Email address' });
 
     expect(emailInput).toBeInTheDocument();
     expect(emailInput).toHaveAttribute('type', 'email');
