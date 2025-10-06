@@ -50,6 +50,7 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@chromatic-com/storybook": "^4.1.1",
     "@glennreyes/eslint-config": "^1.1.0",
     "@next/bundle-analyzer": "^15.5.4",

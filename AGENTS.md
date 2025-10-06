@@ -45,8 +45,24 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - For unused array destructuring elements, use array holes (e.g., `const [, setValue] = useState()`) instead of underscore prefixes.
 - Tailwind classes: inline for static strings, `cn()` helper for conditional logic.
 - Typography is intentionally uniform: do not introduce ad-hoc font-size utilities.
-- Accessibility: use `focus-visible:` for focus styles; preserve existing semantics.
 - Keep imports sorted logically (grouped by origin). Use named imports unless a library only exports default.
+
+## Accessibility Rules (WCAG 2.1 AA)
+
+- **Focus Management**: Use `focus-visible:` for focus styles; preserve existing semantics.
+- **Touch Targets**: Minimum 44×44px for all interactive elements (buttons, links).
+- **ARIA Attributes**:
+  - Use `aria-current="page"` for active navigation links.
+  - Use `aria-label` for icon-only buttons.
+  - Use `aria-expanded` for toggle buttons.
+  - Use `aria-modal` and `role="dialog"` for modals.
+- **Keyboard Navigation**:
+  - All interactive elements must be keyboard accessible.
+  - Modals must trap focus and close on ESC key.
+  - Return focus to trigger element when closing modals.
+- **Color & Contrast**: Pure black/white theme with teal accents; ensure 4.5:1 contrast ratio.
+- **Semantic HTML**: Use proper heading hierarchy (h1-h6), landmarks (nav, main, footer).
+- **Testing**: Run E2E accessibility tests with @axe-core/playwright before committing.
 
 ## Testing Rules
 

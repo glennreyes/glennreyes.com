@@ -21,7 +21,7 @@ const iconButtonVariants = cva(
           'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
       },
       size: {
-        5: 'p-2',
+        5: 'p-3',
         6: 'p-2.5',
       },
     },
