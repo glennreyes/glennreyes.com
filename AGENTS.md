@@ -21,8 +21,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - `pnpm format` – Prettier + ESLint auto-fix
 - `pnpm lint` – ESLint (strict, no warnings tolerated)
 - `pnpm test` – Vitest test runner
+- `pnpm tsc --noEmit` – TypeScript type checking
 - `pnpm knip` – Optional, will flag unused files/deps
-- `tsc --noEmit` (if types feel risky) – TypeScript checks
 
 ## MCP Server Notes
 
@@ -33,7 +33,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Code Style & Engineering Rules
 
-- Use React function declarations for components; avoid `React.FC`.
+- Use React function declarations for components; never use `const` with arrow functions. ✅ `function Component(props: Props)` ❌ `const Component = (props: Props) =>`. Avoid `React.FC`.
 - Define prop interfaces/types above components (`ComponentProps` pattern).
 - No `any`, unchecked type assertions, or implicit truthiness: prefer type guards.
 - Never use type assertions (`as Type`) or non-null assertions (`!`); always refactor to use proper typing or type guards. Only allow `as const` if absolutely necessary.
