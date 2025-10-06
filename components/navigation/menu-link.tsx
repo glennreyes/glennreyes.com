@@ -23,7 +23,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     'text-gray-900/90 hover:text-teal-700/75 dark:text-gray-200 dark:hover:text-teal-200/75';
   const classes = cn(
     isActivePathname ? activeClasses : inactiveClasses,
-    'relative block min-h-11 px-3 py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:min-h-0 md:rounded-full md:py-2 md:active:scale-95',
+    'relative block min-h-11 px-4 py-3 transition focus-visible:ring-offset-2 focus-visible:transition-none md:min-h-0 md:rounded-full md:py-2 md:active:scale-95',
   );
 
   return (

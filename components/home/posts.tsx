@@ -1,13 +1,12 @@
-import { unstable_noStore as noStore } from 'next/cache';
-
 import { getAllPublishedPosts } from '@/lib/posts';
 
 import { Feed } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
 import { H4 } from '../ui/typography/h4';
 
+export const revalidate = 86400;
+
 export const Posts = async () => {
-  noStore();
   const allPosts = await getAllPublishedPosts();
   const posts = allPosts.slice(0, 4);
 
