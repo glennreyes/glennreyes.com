@@ -35,7 +35,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     >
       {isActivePathname && (
         <motion.span
-          className="absolute inset-0 z-0 rounded-full border border-gray-300/25 bg-white/10 backdrop-blur-md md:inset-x-1 dark:border-gray-500/25 dark:bg-black/10"
+          className="absolute inset-x-3 inset-y-0 z-0 rounded-full border border-gray-300/25 bg-white/10 backdrop-blur-md md:inset-x-1 dark:border-gray-500/25 dark:bg-black/10"
           layoutId="active-nav-pill"
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         />
