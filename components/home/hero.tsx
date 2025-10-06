@@ -15,11 +15,11 @@ export function Hero() {
       </HeroAvatar>
       <div className="grid gap-8">
         <div>
-          <p className="text-slate-600 dark:text-slate-400">Hello, I&apos;m</p>
+          <p className="text-gray-600 dark:text-gray-400">Hello, I&apos;m</p>
           <div className="flex justify-between gap-4">
             <div className="grid gap-4">
               <H1>{name}</H1>
-              <p className="max-w-2xl text-slate-600 dark:text-slate-400">
+              <p className="max-w-2xl text-gray-600 dark:text-gray-400">
                 {description}
               </p>
             </div>

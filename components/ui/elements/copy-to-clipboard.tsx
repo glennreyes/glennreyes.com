@@ -23,7 +23,7 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
   };
   const copyIconClasses = cn(
     isCopied && 'scale-0 opacity-0',
-    'bg-transparent text-slate-500 transition hover:text-slate-400 focus:transition-none active:text-slate-500 dark:bg-transparent dark:text-slate-500 dark:hover:text-slate-400 dark:active:text-slate-500',
+    'bg-transparent text-gray-500 transition hover:text-gray-400 focus:transition-none active:text-gray-500 dark:bg-transparent dark:text-gray-500 dark:hover:text-gray-400 dark:active:text-gray-500',
   );
   const checkIconClasses = cn(
     !isCopied && 'scale-0 opacity-0',

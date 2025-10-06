@@ -8,8 +8,8 @@ export function NavbarBorder() {
   const classes = cn(
     'absolute inset-x-0 top-full border-t transition',
     isScrollTop
-      ? 'border-slate-50/0 dark:border-slate-500/0'
-      : 'border-slate-300/25 dark:border-slate-500/25',
+      ? 'border-gray-50/0 dark:border-gray-500/0'
+      : 'border-gray-300/25 dark:border-gray-500/25',
   );
 
   return <div className={classes} />;

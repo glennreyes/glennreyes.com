@@ -97,7 +97,7 @@ export function Menu() {
               <motion.div
                 animate={{ opacity: 1 }}
                 aria-hidden="true"
-                className="absolute inset-0 bg-slate-800/50 backdrop-blur-sm dark:bg-black/75"
+                className="absolute inset-0 bg-gray-800/50 backdrop-blur-sm dark:bg-black/75"
                 exit={{ opacity: 0 }}
                 initial={{ opacity: 0 }}
                 onClick={close}
@@ -106,7 +106,7 @@ export function Menu() {
               <motion.div
                 ref={menuRef}
                 animate={{ opacity: 1, scale: 1 }}
-                className="relative grid gap-4 rounded-3xl border border-slate-100 bg-white p-6 dark:border-slate-900 dark:bg-slate-950"
+                className="relative grid gap-4 rounded-3xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-black"
                 exit={{ opacity: 0, scale: 0.95 }}
                 initial={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}

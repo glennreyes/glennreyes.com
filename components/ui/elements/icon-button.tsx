@@ -9,16 +9,16 @@ import { cn } from '@/lib/utils';
 import { Link } from '../link/link';
 
 const iconButtonVariants = cva(
-  'border rounded-full bg-white/25 dark:bg-slate-950/25 text-slate-500 dark:text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 dark:focus-visible:text-slate-300 dark:active:text-slate-200 transition focus-visible:text-slate-600 focus-visible:outline-none focus-visible:transition-none active:scale-95 active:text-slate-700 disabled:opacity-75',
+  'border rounded-full bg-white/25 dark:bg-black/25 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 dark:focus-visible:text-gray-300 dark:active:text-gray-200 transition focus-visible:text-gray-600 focus-visible:outline-none focus-visible:transition-none active:scale-95 active:text-gray-700 disabled:opacity-75',
   {
     variants: {
       appearance: {
         primary:
-          'border-slate-300/25 dark:border-slate-600/25 dark:bg-slate-900/75 hover:border-slate-200 dark:hover:border-slate-700 active:border-slate-300 dark:active:border-slate-700',
+          'border-gray-300/25 dark:border-gray-600/25 dark:bg-gray-900/75 hover:border-gray-200 dark:hover:border-gray-700 active:border-gray-300 dark:active:border-gray-700',
         secondary:
-          'border-transparent hover:border-slate-300/25 dark:hover:border-slate-900 active:border-slate-200 dark:active:border-slate-800',
+          'border-transparent hover:border-gray-300/25 dark:hover:border-gray-900 active:border-gray-200 dark:active:border-gray-800',
         tertiary:
-          'border-transparent hover:text-slate-600 dark:hover:text-slate-300 active:text-slate-700 dark:active:text-slate-200',
+          'border-transparent hover:text-gray-600 dark:hover:text-gray-300 active:text-gray-700 dark:active:text-gray-200',
       },
       size: {
         5: 'p-3',
@@ -80,7 +80,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
 
     const buttonClasses = cn(
       classes,
-      'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+      'focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-black',
     );
 
     return (

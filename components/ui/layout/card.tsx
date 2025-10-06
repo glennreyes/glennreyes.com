@@ -17,7 +17,7 @@ export function Card({ asChild, ...props }: CardProps) {
 
   return (
     <Component
-      className="relative overflow-hidden rounded-3xl border border-slate-300/25 p-6 dark:border-slate-500/25"
+      className="relative overflow-hidden rounded-3xl border border-gray-300/25 p-6 dark:border-gray-500/25"
       {...props}
     />
   );
@@ -79,11 +79,11 @@ function CardItem({
   const itemClasses = cn(link && 'group relative', 'flex gap-4');
   const descriptionClasses = cn(
     link && 'relative z-10',
-    'text-slate-500 dark:text-slate-400',
+    'text-gray-500 dark:text-gray-400',
   );
   const metaClasses = cn(
     link && 'relative z-10',
-    'order-first text-slate-400 dark:text-slate-500',
+    'order-first text-gray-400 dark:text-gray-500',
   );
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
@@ -120,7 +120,7 @@ function CardItem({
         </div>
         {description && <p className={descriptionClasses}>{description}</p>}
         {link && (
-          <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-slate-900/50" />
+          <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-900/50" />
         )}
       </div>
     </div>

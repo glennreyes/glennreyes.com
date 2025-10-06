@@ -17,10 +17,10 @@ export function AppearancesLoading() {
                   {Array.from({ length: 5 }).map((_, index) => (
                     <List.Item key={index}>
                       <div className="flex items-center gap-4">
-                        <div className="h-12 w-12 shrink-0 animate-pulse rounded-full bg-slate-200 dark:bg-slate-800" />
+                        <div className="h-12 w-12 shrink-0 animate-pulse rounded-full bg-gray-200 dark:bg-gray-800" />
                         <div className="grid flex-1 gap-2">
-                          <div className="h-5 w-2/3 animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
-                          <div className="h-4 w-1/2 animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
+                          <div className="h-5 w-2/3 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-800" />
+                          <div className="h-4 w-1/2 animate-pulse rounded-lg bg-gray-200 dark:bg-gray-800" />
                         </div>
                       </div>
                     </List.Item>
@@ -29,7 +29,7 @@ export function AppearancesLoading() {
               </List>
             </Card.Body>
           </div>
-          <div className="h-10 w-full animate-pulse rounded-lg bg-slate-200 dark:bg-slate-800" />
+          <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200 dark:bg-gray-800" />
         </div>
       </Card>
     </section>

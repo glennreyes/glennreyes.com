@@ -22,7 +22,7 @@ export function Meta<TElementType extends ElementType>({
   ...props
 }: MetaProps<TElementType>) {
   const Component = as ?? 'div';
-  const classes = cn('text-slate-400 dark:text-slate-500', className);
+  const classes = cn('text-gray-400 dark:text-gray-500', className);
 
   return <Component className={classes} {...props} />;
 }

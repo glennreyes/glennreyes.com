@@ -6,7 +6,7 @@ type H2Props = ComponentPropsWithoutRef<'h2'>;
 
 export function H2({ children, className, ...props }: H2Props) {
   const classes = cn(
-    'text-base font-medium text-slate-700 dark:text-slate-300',
+    'text-base font-medium text-gray-700 dark:text-gray-300',
     className,
   );
 

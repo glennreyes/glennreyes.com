@@ -10,7 +10,7 @@ interface H4Props extends ComponentPropsWithoutRef<'h4'> {
 
 export function H4({ asChild, className, ...props }: H4Props) {
   const classes = cn(
-    'text-slate-700 dark:text-slate-300 font-medium text-base',
+    'text-gray-700 dark:text-gray-300 font-medium text-base',
     className,
   );
   const Component = asChild ? Slot : 'h4';

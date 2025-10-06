@@ -33,7 +33,7 @@ export function ThemeToggle() {
 
   return (
     <LayoutGroup>
-      <div className="relative inline-flex items-center gap-0.5 rounded-full border border-slate-300/25 bg-slate-100/50 p-0.5 dark:border-slate-700/25 dark:bg-slate-900/50">
+      <div className="relative inline-flex items-center gap-0.5 rounded-full border border-gray-300/25 bg-gray-100/50 p-0.5 dark:border-gray-700/25 dark:bg-gray-900/50">
         {themes.map(({ icon: Icon, value }) => {
           const isActive = theme === value;
 
@@ -44,8 +44,8 @@ export function ThemeToggle() {
               className={cn(
                 'relative cursor-pointer rounded-full p-1.5 transition-colors',
                 isActive
-                  ? 'text-slate-700 dark:text-slate-200'
-                  : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300',
+                  ? 'text-gray-700 dark:text-gray-200'
+                  : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300',
               )}
               onClick={() => {
                 disableTransitionsTemporarily();
@@ -55,7 +55,7 @@ export function ThemeToggle() {
             >
               {isActive && (
                 <motion.div
-                  className="absolute inset-0 -z-10 rounded-full bg-white shadow-sm dark:bg-slate-800"
+                  className="absolute inset-0 -z-10 rounded-full bg-white shadow-sm dark:bg-gray-800"
                   layoutId="theme-toggle-active"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />

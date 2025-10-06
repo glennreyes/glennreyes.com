@@ -13,7 +13,7 @@ const badgeVariants = cva(
         rose: 'border-rose-200 bg-rose-50 text-rose-500 dark:border-rose-800/50 dark:bg-rose-950/50 dark:text-rose-500',
         sky: 'border-sky-200 bg-sky-50 text-sky-500 dark:border-sky-800/50 dark:bg-sky-950/50 dark:text-sky-500',
         slate:
-          'border-slate-200 bg-slate-50 text-slate-500 dark:border-slate-800/50 dark:bg-slate-950/50 dark:text-slate-500',
+          'border-gray-200 bg-gray-50 text-gray-500 dark:border-gray-800/50 dark:bg-gray-950/50 dark:text-gray-500',
         teal: 'border-teal-200 bg-teal-50 text-teal-500 dark:border-teal-800/50 dark:bg-teal-950/50 dark:text-teal-500',
       },
     },

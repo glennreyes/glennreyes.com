@@ -33,12 +33,12 @@ export function Feed({
   if (title) {
     return (
       <div className="not-prose grid gap-8 md:grid-cols-3" {...props}>
-        <div className="col-span-2 md:col-span-1 md:border-l md:border-slate-300/25 md:px-8 dark:md:border-slate-500/25">
+        <div className="col-span-2 md:col-span-1 md:border-l md:border-gray-300/25 md:px-8 dark:md:border-gray-500/25">
           <div className="grid gap-2 md:sticky md:top-23">
             <h2 className="font-medium text-teal-700 dark:text-teal-200/75">
               {title}
             </h2>
-            {description && <p className="text-slate-500">{description}</p>}
+            {description && <p className="text-gray-500">{description}</p>}
           </div>
         </div>
         <div className={wrapperClasses}>{children}</div>
@@ -88,7 +88,7 @@ function FeedItem({
   const metaClasses = cn(
     'order-first',
     link && 'relative z-10',
-    date !== undefined && 'text-slate-400 dark:text-slate-500',
+    date !== undefined && 'text-gray-400 dark:text-gray-500',
   );
   const titleContent = link ? (
     <TransitionLink href={link}>
@@ -151,7 +151,7 @@ function FeedItem({
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-slate-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-slate-900/50" />
+        <div className="absolute -inset-4 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-gray-900/50" />
       )}
     </article>
   );

@@ -6,7 +6,7 @@ type H3Props = ComponentPropsWithoutRef<'h3'>;
 
 export function H3({ children, className, ...props }: H3Props) {
   const classes = cn(
-    'text-base font-medium text-slate-700 dark:text-slate-300',
+    'text-base font-medium text-gray-700 dark:text-gray-300',
     className,
   );
 

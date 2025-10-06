@@ -12,7 +12,7 @@ type NavbarProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
 export function Navbar({ children, ...props }: NavbarProps) {
   return (
     <header className="sticky top-0 z-30" {...props}>
-      <div className="absolute inset-0 bg-white/95 supports-[backdrop-filter]:bg-white/75 supports-[backdrop-filter]:backdrop-blur-lg dark:bg-slate-950/90 dark:supports-[backdrop-filter]:bg-slate-950/50" />
+      <div className="absolute inset-0 bg-white/95 supports-[backdrop-filter]:bg-white/75 supports-[backdrop-filter]:backdrop-blur-lg dark:bg-black/90 dark:supports-[backdrop-filter]:bg-black/50" />
       <NavbarBorder />
       <Container className="relative flex gap-2 py-1.5 md:gap-4 md:py-3">
         <div className="flex flex-1 shrink-0 items-center">

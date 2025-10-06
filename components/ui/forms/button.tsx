@@ -7,14 +7,14 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950',
+  'border px-5 py-3 font-medium transition focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 focus-visible:transition-none active:scale-95 disabled:opacity-75 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-black',
   {
     variants: {
       appearance: {
         primary:
-          'border-slate-800 bg-slate-800 text-slate-100 hover:border-slate-700 hover:bg-slate-700 active:border-slate-800 active:bg-slate-800',
+          'border-gray-800 bg-gray-800 text-gray-100 hover:border-gray-700 hover:bg-gray-700 active:border-gray-800 active:bg-gray-800',
         secondary:
-          'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:text-slate-800 active:border-slate-200 active:text-slate-700 dark:border-slate-800 dark:bg-slate-900/75 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-slate-100 dark:active:border-slate-800 dark:active:text-slate-200',
+          'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:text-gray-800 active:border-gray-200 active:text-gray-700 dark:border-gray-800 dark:bg-gray-900/75 dark:text-gray-200 dark:hover:border-gray-700 dark:hover:text-gray-100 dark:active:border-gray-800 dark:active:text-gray-200',
       },
       variant: {
         default: 'rounded-2xl',
