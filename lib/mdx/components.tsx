@@ -6,6 +6,7 @@ import { FileText } from 'lucide-react';
 import Image from 'next/image';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
+import { Video } from '@/components/ui/elements/video';
 import { InlineLink } from '@/components/ui/link/inline-link';
 import { Link } from '@/components/ui/link/link';
 import { H1 } from '@/components/ui/typography/h1';
@@ -34,6 +35,7 @@ export const components: MDXComponents = {
     <Image alt={alt} className={cn('rounded-3xl', className)} {...props} />
   ),
   Lead,
+  Video,
   a: ({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const classes = '[.prose_&]:font-normal';
 
@@ -63,17 +65,44 @@ export const components: MDXComponents = {
   figure: ({ children, className, raw, ...props }: FigureProps) => {
     // Handle code block wrappers
     if (props['data-rehype-pretty-code-figure'] !== undefined) {
+      // Check if figcaption exists in children
+      const childrenArray = Array.isArray(children) ? children : [children];
+      const hasFigcaption = childrenArray.some((child) => {
+        if (child === null || child === undefined) {
+          return false;
+        }
+
+        if (typeof child !== 'object') {
+          return false;
+        }
+
+        if (!('type' in child)) {
+          return false;
+        }
+
+        const childWithType = child as { type: unknown };
+
+        return childWithType.type === 'figcaption';
+      });
+
       return (
         <figure
-          className="relative my-[1.7142857em] overflow-hidden rounded-3xl border border-slate-300/25 dark:border-slate-500/25 [&_pre]:my-0 [&+pre]:rounded-t-none"
+          className="group relative my-[1.7142857em] overflow-hidden rounded-3xl border border-slate-300/25 dark:border-slate-500/25 [&_pre]:my-0 [&+pre]:rounded-t-none"
           {...props}
         >
-          <div className="relative flex items-center justify-end gap-2 rounded-t-3xl bg-slate-900 px-4 py-1 text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">
-            <div className="-me-2 flex-none">
+          {hasFigcaption && (
+            <div className="relative flex items-center justify-end gap-2 rounded-t-3xl bg-slate-900 px-4 py-1 text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">
+              <div className="-me-2 flex-none">
+                <CopyToClipboard value={raw ?? ''} />
+              </div>
+            </div>
+          )}
+          {children}
+          {!hasFigcaption && (
+            <div className="absolute top-4 right-4 z-10 opacity-0 transition-opacity group-hover:opacity-100">
               <CopyToClipboard value={raw ?? ''} />
             </div>
-          </div>
-          {children}
+          )}
         </figure>
       );
     }
@@ -119,8 +148,5 @@ export const components: MDXComponents = {
         {...props}
       />
     );
-  },
-  video: (props: ComponentPropsWithoutRef<'video'>) => {
-    return <video className="w-full rounded-3xl" {...props} />;
   },
 };
