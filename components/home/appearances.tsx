@@ -1,5 +1,4 @@
 import { getTime } from 'date-fns';
-import { unstable_noStore as noStore } from 'next/cache';
 
 import { getAllEvents } from '@/lib/events';
 import { composePlaceByLocation } from '@/lib/place';
@@ -11,7 +10,6 @@ import { List } from '../ui/layout/list';
 import { H4 } from '../ui/typography/h4';
 
 export const Appearances = async () => {
-  noStore();
   const allEvents = await getAllEvents();
   const today = new Date();
   const todayInMilliseconds = getTime(today);

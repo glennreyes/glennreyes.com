@@ -1,43 +1,53 @@
+import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
-export const getAllEvents = cache(async () => {
-  const allEvents = await db.query.events.findMany({
-    columns: {
-      name: true,
-      slug: true,
-      startDate: true,
-    },
-    orderBy: (events, { desc }) => [desc(events.startDate)],
-    with: {
-      appearances: {
-        columns: {},
-        with: {
-          talk: {
-            columns: {
-              title: true,
-            },
-          },
-          workshop: {
-            columns: {
-              title: true,
-            },
-          },
-        },
-      },
-      location: {
+export const getAllEvents = cache(
+  unstable_cache(
+    async () => {
+      const allEvents = await db.query.events.findMany({
         columns: {
-          city: true,
-          country: true,
-          state: true,
+          name: true,
+          slug: true,
+          startDate: true,
         },
-      },
-    },
-  });
+        orderBy: (events, { desc }) => [desc(events.startDate)],
+        with: {
+          appearances: {
+            columns: {},
+            with: {
+              talk: {
+                columns: {
+                  title: true,
+                },
+              },
+              workshop: {
+                columns: {
+                  title: true,
+                },
+              },
+            },
+          },
+          location: {
+            columns: {
+              city: true,
+              country: true,
+              state: true,
+            },
+          },
+        },
+      });
 
-  return allEvents;
-});
+      return allEvents;
+    },
+    ['all-events'],
+    {
+      revalidate: 86400, // 24 hours in seconds
+      tags: ['events'],
+    },
+  ),
+);
 
 export const getEventBySlug = cache(async (slug: string) => {
   const event = await db.query.events.findFirst({
