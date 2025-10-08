@@ -2,6 +2,7 @@
 
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { Menu as MenuIcon, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -21,14 +22,20 @@ const links: MenuLink[] = [
   { href: '/talks', label: 'Talks' },
   { href: '/workshops', label: 'Workshops' },
 ];
+const mobileLinks: MenuLink[] = [{ href: '/', label: 'Home' }, ...links];
 
 export function Menu() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const close = () => setOpen(false);
   const toggle = () => setOpen((previous) => !previous);
   const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
+
+  useEffect(() => {
+    close();
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) {
@@ -89,47 +96,34 @@ export function Menu() {
         />
         <AnimatePresence>
           {open && (
-            <div
+            <motion.div
+              ref={menuRef}
+              animate={{ opacity: 1 }}
               aria-modal="true"
-              className="fixed inset-0 z-30 h-screen overflow-y-auto p-4 md:hidden"
+              className="fixed inset-0 z-30 grid h-screen content-start gap-4 overflow-y-auto bg-white p-6 md:hidden dark:bg-black"
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
               role="dialog"
+              transition={{ duration: 0.15 }}
             >
-              <motion.div
-                animate={{ opacity: 1 }}
-                aria-hidden="true"
-                className="absolute inset-0 bg-gray-800/50 backdrop-blur-sm dark:bg-black/75"
-                exit={{ opacity: 0 }}
-                initial={{ opacity: 0 }}
-                onClick={close}
-                transition={{ duration: 0.15 }}
-              />
-              <motion.div
-                ref={menuRef}
-                animate={{ opacity: 1, scale: 1 }}
-                className="relative grid gap-4 rounded-3xl border border-gray-100 bg-white p-6 dark:border-gray-900 dark:bg-black"
-                exit={{ opacity: 0, scale: 0.95 }}
-                initial={{ opacity: 0, scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              >
-                <div className="absolute top-4 right-4">
-                  <IconButton
-                    appearance="secondary"
-                    aria-label="Close Menu"
-                    icon={X}
-                    onClick={close}
-                  />
-                </div>
-                <ul className="grid gap-2 pe-12">
-                  {links.map((link) => (
-                    <li key={link.href}>
-                      <MenuLink href={link.href} onClick={close}>
-                        {link.label}
-                      </MenuLink>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
+              <div className="flex justify-end">
+                <IconButton
+                  appearance="secondary"
+                  aria-label="Close Menu"
+                  icon={X}
+                  onClick={close}
+                />
+              </div>
+              <ul className="grid gap-2">
+                {mobileLinks.map((link) => (
+                  <li key={link.href}>
+                    <MenuLink href={link.href} onClick={close}>
+                      {link.label}
+                    </MenuLink>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           )}
         </AnimatePresence>
         <ul className="hidden gap-2 md:flex">

@@ -23,7 +23,7 @@ export function Navbar({ children, ...props }: NavbarProps) {
                 className="block rounded-full focus-visible:ring-offset-2"
                 href="/"
               >
-                <Avatar size={11} />
+                <Avatar size={11} transitionName="navbar-avatar" />
               </Link>
             </NavbarAvatar>
           </div>

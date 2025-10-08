@@ -34,14 +34,20 @@ interface AvatarProps
     >,
     VariantProps<typeof avatarVariants> {
   className?: string;
+  transitionName?: string;
 }
 
-export function Avatar({ size, className, ...props }: AvatarProps) {
+export function Avatar({
+  size,
+  className,
+  transitionName = 'avatar',
+  ...props
+}: AvatarProps) {
   const classes = cn(avatarVariants({ size }), className);
   const imageSize = avatarImageSizes[size ?? 34];
 
   return (
-    <ViewTransition name="avatar">
+    <ViewTransition name={transitionName}>
       <div className={classes}>
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
         <Image

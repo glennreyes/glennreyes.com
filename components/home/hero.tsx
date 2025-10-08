@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section className="grid gap-8 py-8 lg:flex">
       <HeroAvatar>
-        <Avatar priority />
+        <Avatar priority transitionName="hero-avatar" />
       </HeroAvatar>
       <div className="grid gap-8">
         <div>

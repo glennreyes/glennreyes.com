@@ -14,7 +14,7 @@ export function AboutAuthor() {
         <Card.Body title="About the Author">
           <div className="grid items-center gap-6 sm:flex">
             <Link className="flex-none rounded-full" href="/about">
-              <Avatar />
+              <Avatar transitionName="about-author-avatar" />
             </Link>
             <div className="grid gap-4">
               <H4 asChild>
