@@ -5,7 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 import { DateDisplay } from '../elements/date-display';
-import { TransitionLink } from '../link/transition-link';
+import { Link } from '../link/link';
 import { H3 } from '../typography/h3';
 import { Meta } from '../typography/meta';
 import { Paragraph } from '../typography/paragraph';
@@ -90,10 +90,15 @@ function FeedItem({
     date !== undefined && 'text-gray-400 dark:text-gray-500',
   );
   const titleContent = link ? (
-    <TransitionLink href={link}>
+    <Link href={link}>
       <span className="absolute -inset-4 z-20 md:-inset-6" />
+<<<<<<< HEAD
       <span className="pointer-events-none relative z-10">{title}</span>
     </TransitionLink>
+=======
+      <span className="relative z-10">{title}</span>
+    </Link>
+>>>>>>> parent of b3aab94 (Add TransitionLink component with useTransition support)
   ) : (
     title
   );
