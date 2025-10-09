@@ -1,7 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import { unstable_ViewTransition as ViewTransition } from 'react';
-
 import { Divider } from '../elements/divider';
 import { H1 } from '../typography/h1';
 import { Lead } from '../typography/lead';
@@ -49,12 +47,14 @@ function ArticleHeader({
   return (
     <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-      <H1>
-        {viewTransitionName ? (
-          <ViewTransition name={viewTransitionName}>{children}</ViewTransition>
-        ) : (
-          children
-        )}
+      <H1
+        style={
+          viewTransitionName
+            ? { viewTransitionName: viewTransitionName }
+            : undefined
+        }
+      >
+        {children}
       </H1>
       {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
     </header>

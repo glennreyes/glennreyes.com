@@ -53,7 +53,7 @@ const nextConfig: NextConfig = {
     '/*': ['./content/**/*'],
   },
   reactCompiler: {
-    compilationMode: 'all'
+    compilationMode: 'all',
   },
   redirects: () =>
     Promise.resolve([

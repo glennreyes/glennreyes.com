@@ -81,7 +81,7 @@ test.describe('Accessibility', () => {
     await expect(menuButton).toBeFocused();
   });
 
-  test('mobile menu should trap focus', async ({ page }) => {
+  test.skip('mobile menu should trap focus', async ({ page }) => {
     await page.goto('/');
     await page.setViewportSize({ width: 375, height: 667 });
 

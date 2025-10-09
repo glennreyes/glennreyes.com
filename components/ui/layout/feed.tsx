@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { ChevronRight } from 'lucide-react';
-import { unstable_ViewTransition as ViewTransition } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -101,14 +100,14 @@ function FeedItem({
   const content = (
     <>
       <div className="grid">
-        <H3>
-          {viewTransitionName ? (
-            <ViewTransition name={viewTransitionName}>
-              {titleContent}
-            </ViewTransition>
-          ) : (
-            titleContent
-          )}
+        <H3
+          style={
+            viewTransitionName
+              ? { viewTransitionName: viewTransitionName }
+              : undefined
+          }
+        >
+          {titleContent}
         </H3>
         {meta === undefined ? (
           date !== undefined && (
