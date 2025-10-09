@@ -31,7 +31,6 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}
-              viewTransitionName={`appearance-${event.slug}`}
             />
           ))}
         </Feed>
@@ -45,7 +44,6 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}
-              viewTransitionName={`appearance-${event.slug}`}
             />
           ))}
         </Feed>

@@ -61,7 +61,6 @@ interface FeedItemProps
   link?: string;
   meta?: ReactNode;
   title: string;
-  viewTransitionName?: string;
 }
 
 function FeedItem({
@@ -70,7 +69,6 @@ function FeedItem({
   description,
   link,
   title,
-  viewTransitionName,
   ...rest
 }: FeedItemProps) {
   const { date, meta, ...props } = {
@@ -93,26 +91,14 @@ function FeedItem({
     <Link href={link}>
       <span className="absolute -inset-4 z-20 md:-inset-6" />
       <span className="relative z-10">{title}</span>
-<<<<<<< HEAD
     </Link>
-=======
-    </TransitionLink>
->>>>>>> parent of 963bbca (Fix feed item clicks being blocked by overlay elements)
   ) : (
     title
   );
   const content = (
     <>
       <div className="grid">
-        <H3
-          style={
-            viewTransitionName
-              ? { viewTransitionName: viewTransitionName }
-              : undefined
-          }
-        >
-          {titleContent}
-        </H3>
+        <H3>{titleContent}</H3>
         {meta === undefined ? (
           date !== undefined && (
             <DateDisplay className={metaClasses} value={date} />

@@ -19,11 +19,6 @@ function navigateToPost(postId) {
     document.getElementById('content').innerHTML = getPostContent(postId);
   });
 }
-
-// CSS for the transition
-.post-title {
-  view-transition-name: post-title;
-}
 ```
 
 This works, but it's verbose and requires managing the DOM directly.
@@ -58,7 +53,7 @@ The `ViewTransition` component marks which elements should animate. The `startTr
 
 View transitions create smooth animations between different states of your app. Think of how iOS apps animate between screens: that's what you get on the web now.
 
-The browser automatically creates a transition between the "old" and "new" states, morphing elements that share the same `view-transition-name` CSS property.
+The browser automatically creates a transition between the "old" and "new" states, morphing elements it can match between the two renders.
 
 ### How Transitions Are Triggered
 
@@ -78,211 +73,38 @@ setActivePost(newPost);
 
 For navigation, Next.js Link components automatically use `startTransition` internally, so clicking links will trigger view transitions without extra code.
 
-## Real Implementation
+## Putting It Together
 
-Here's how I implemented this on my personal site. The key is giving elements consistent `viewTransitionName` props across different pages.
-
-### Avatar Consistency
-
-The avatar smoothly morphs between the hero section and navbar:
+After trying a bunch of helpers I ended up keeping the setup simple. Wrap the element you want to animate with `ViewTransition`, and trigger navigation inside `startTransition`:
 
 ```tsx
-// components/avatar/avatar.tsx
-export function Avatar({ size, className, ...props }) {
+import type { ReactNode } from 'react';
+import {
+  unstable_ViewTransition as ViewTransition,
+  startTransition,
+} from 'react';
+import { useRouter } from 'next/navigation';
+
+function PostTitle({ children }: { children: ReactNode }) {
   return (
-    <ViewTransition name="avatar">
-      <div className={classes}>
-        <Image alt={name} src={photo} {...imageSize} {...props} />
-      </div>
+    <ViewTransition name="post-title">
+      <h1>{children}</h1>
     </ViewTransition>
   );
 }
-```
 
-<Image
-  src="/images/react-view-transitions/avatar-example.gif"
-  width={800}
-  height={512}
-  alt="Avatar smoothly morphing between hero and navbar"
-/>
-
-### The Layout Components
-
-The key is building reusable components that accept a `viewTransitionName` prop:
-
-```tsx
-// components/ui/layout/article.tsx
-import { unstable_ViewTransition as ViewTransition } from 'react';
-
-function ArticleHeader({ children, viewTransitionName, ...props }) {
-  return (
-    <header {...props}>
-      <H1>
-        {viewTransitionName ? (
-          <ViewTransition name={viewTransitionName}>{children}</ViewTransition>
-        ) : (
-          children
-        )}
-      </H1>
-    </header>
-  );
-}
-```
-
-Then use it in your pages:
-
-```tsx
-// app/posts/[slug]/page.tsx
-export default async function PostPage({ params }) {
-  const post = await getPost(params.slug);
-
-  return (
-    <Article>
-      <Article.Header viewTransitionName={`post-${params.slug}`}>
-        {post.title}
-      </Article.Header>
-      <Article.Body>{post.content}</Article.Body>
-    </Article>
-  );
-}
-```
-
-### The TransitionLink Component
-
-To ensure navigation triggers view transitions, create a custom Link wrapper:
-
-```tsx
-// components/ui/link/transition-link.tsx
-'use client';
-
-import { useRouter } from 'next/navigation';
-import { useTransition } from 'react';
-import { Link } from './link';
-
-export function TransitionLink({ children, href, onClick, ...props }) {
+function usePostNavigation() {
   const router = useRouter();
-  const [, startTransition] = useTransition();
-  const source = typeof href === 'object' ? (href.pathname ?? '/') : href;
 
-  // Skip transitions for hash links and external links
-  if (source.startsWith('#') || source.startsWith('http')) {
-    return (
-      <Link href={href} onClick={onClick} {...props}>
-        {children}
-      </Link>
-    );
-  }
-
-  const handleClick = (event) => {
-    // Allow default behavior for cmd/ctrl + click, etc.
-    if (
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.button !== 0
-    ) {
-      return;
-    }
-
-    event.preventDefault();
-    if (onClick) onClick(event);
-
-    // Wrap navigation in startTransition to trigger ViewTransitions
+  return (slug: string) => {
     startTransition(() => {
-      router.push(source);
+      router.push(`/posts/${slug}`);
     });
   };
-
-  return (
-    <Link href={href} onClick={handleClick} {...props}>
-      {children}
-    </Link>
-  );
 }
 ```
 
-Use it in your feed items:
-
-```tsx
-// components/ui/layout/feed.tsx
-const titleContent = link ? (
-  <TransitionLink href={link}>
-    <span>{title}</span>
-  </TransitionLink>
-) : (
-  title
-);
-
-return (
-  <H3>
-    {viewTransitionName ? (
-      <ViewTransition name={viewTransitionName}>{titleContent}</ViewTransition>
-    ) : (
-      titleContent
-    )}
-  </H3>
-);
-```
-
-## The CSS Connection
-
-The React component automatically applies the CSS `view-transition-name` property. You can customize the transition:
-
-```css
-::view-transition-old(post-ai-agents) {
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-}
-
-::view-transition-new(post-ai-agents) {
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-}
-```
-
-### Custom Transitions
-
-```css
-/* Smooth fade for post titles */
-::view-transition-old(post-hello-world) {
-  animation: fade-out 0.3s ease-in-out;
-}
-
-::view-transition-new(post-hello-world) {
-  animation: fade-in 0.3s ease-in-out;
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-```
-
-### Avatar Transitions
-
-```css
-/* Consistent avatar positioning */
-::view-transition-old(avatar) {
-  animation-duration: 0.2s;
-}
-
-::view-transition-new(avatar) {
-  animation-duration: 0.2s;
-}
-```
+That’s the whole recipe—React handles wiring the browser API for you, so there’s no need for extra CSS selectors or custom link components. If you want multiple elements to animate, wrap each one in `ViewTransition` and give it a unique `name`.
 
 ## Next.js Configuration
 

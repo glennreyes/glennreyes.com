@@ -38,7 +38,6 @@ export default async function AppearancePage(
       <Page.Header
         lead={<EventLead location={event.location} url={event.url} />}
         meta={<EventDate endDate={event.endDate} startDate={event.startDate} />}
-        viewTransitionName={`appearance-${params.slug}`}
       >
         {event.name} {event.startDate.getFullYear()}
       </Page.Header>

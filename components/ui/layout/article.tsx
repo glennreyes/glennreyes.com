@@ -34,28 +34,13 @@ interface ArticleHeaderProps
   extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead?: ReactNode;
   meta: ReactNode;
-  viewTransitionName?: string;
 }
 
-function ArticleHeader({
-  children,
-  lead,
-  meta,
-  viewTransitionName,
-  ...props
-}: ArticleHeaderProps) {
+function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
   return (
     <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-      <H1
-        style={
-          viewTransitionName
-            ? { viewTransitionName: viewTransitionName }
-            : undefined
-        }
-      >
-        {children}
-      </H1>
+      <H1>{children}</H1>
       {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
     </header>
   );

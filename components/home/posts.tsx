@@ -21,7 +21,6 @@ export const Posts = async () => {
               key={slug}
               link={`/posts/${slug}`}
               title={frontmatter.title}
-              viewTransitionName={`post-${slug}`}
             />
           ))}
         </Feed>

@@ -32,7 +32,6 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
               key={slug}
               link={`/talks/${slug}`}
               title={title}
-              viewTransitionName={`talk-${slug}`}
             />
           ))}
         </Feed>
@@ -50,7 +49,6 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
               key={slug}
               link={`/talks/${slug}`}
               title={title}
-              viewTransitionName={`talk-${slug}`}
             />
           ))}
         </Feed>

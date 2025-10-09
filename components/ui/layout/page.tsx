@@ -15,28 +15,13 @@ interface PageHeaderProps
   extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
   lead?: ReactNode;
   meta?: ReactNode;
-  viewTransitionName?: string;
 }
 
-function PageHeader({
-  children,
-  lead,
-  meta,
-  viewTransitionName,
-  ...props
-}: PageHeaderProps) {
+function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
       {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
-      <H1
-        style={
-          viewTransitionName
-            ? { viewTransitionName: viewTransitionName }
-            : undefined
-        }
-      >
-        {children}
-      </H1>
+      <H1>{children}</H1>
       {lead !== null &&
         lead !== undefined &&
         (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
