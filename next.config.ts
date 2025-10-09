@@ -53,7 +53,7 @@ const nextConfig: NextConfig = {
     '/*': ['./content/**/*'],
   },
   reactCompiler: {
-    compilationMode: 'annotation', // Opt-in mode - only compile files with 'use memo' directive
+    compilationMode: 'all'
   },
   redirects: () =>
     Promise.resolve([
