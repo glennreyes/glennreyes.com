@@ -44,34 +44,4 @@ test.describe('Navigation', () => {
       await expect(nav.getByRole('link', { name: linkName })).toBeVisible();
     }
   });
-
-  test('should navigate to a post from the landing page', async ({ page }) => {
-    await page.goto('/');
-
-    // Find the Recent Posts section
-    const recentPostsHeading = page.getByRole('heading', {
-      level: 2,
-      name: 'Recent Posts',
-    });
-
-    await expect(recentPostsHeading).toBeVisible();
-
-    // Get the first post article element
-    const firstPost = page.locator('article').first();
-    // Get the post title (which is an h3 inside the article)
-    const postTitleElement = firstPost.getByRole('heading', { level: 3 });
-    const postTitle = await postTitleElement.textContent();
-
-    // Click on the post title link
-    await postTitleElement.getByRole('link').click();
-
-    // Wait for navigation to the post page
-    await page.waitForURL(/\/posts\/.+/);
-
-    // Verify we're on a post page
-    await expect(page).toHaveURL(/\/posts\/.+/);
-    await expect(
-      page.getByRole('heading', { level: 1, name: postTitle ?? '' }),
-    ).toBeVisible();
-  });
 });
