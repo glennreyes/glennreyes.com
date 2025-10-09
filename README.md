@@ -42,12 +42,3 @@ pnpm dev
 ```
 
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Inspiration
-
-I explored various excellent projects to gather ideas and inspiration for my personal website. Here are some of them:
-
-- [Spotlight by Tailwind CSS](https://tailwindui.com/templates/spotlight)
-- [Lee Robinson's personal website](https://leerob.io)
-- [Delba de Oliveira's personal website](https://delba.dev)
-- [Brian Lovin's personal website](https://brianlovin.com)
