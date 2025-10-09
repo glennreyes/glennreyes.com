@@ -114,7 +114,7 @@ export function Menu() {
                   onClick={close}
                 />
               </div>
-              <ul className="grid gap-2">
+              <ul className="grid gap-4">
                 {mobileLinks.map((link) => (
                   <li key={link.href}>
                     <MenuLink href={link.href} onClick={close}>
