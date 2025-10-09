@@ -82,6 +82,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - **Always run quality gates before committing** - ensure `pnpm format`, `pnpm lint`, and `pnpm test` pass.
 - Work in small, coherent commits with present-tense summaries.
 - **Avoid conventional commit messages** (fix:, feat:, etc.) - use natural, readable descriptions instead.
+- **Use backticks for technical terms** - wrap variables, component names, function names, and file paths in backticks (e.g., `viewTransitionName`, `Avatar`, `utils.ts`).
+- **Never add AI attribution** - do not include "Generated with Claude Code", co-author tags, or any AI branding in commit messages.
 - Use commit descriptions to provide context about what was done during the changes.
 - If tooling (lint/test) cannot run, state why and what was attempted.
 - Mention any nonstandard manual steps in the PR/summary.
