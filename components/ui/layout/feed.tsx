@@ -92,13 +92,8 @@ function FeedItem({
   const titleContent = link ? (
     <Link href={link}>
       <span className="absolute -inset-4 z-20 md:-inset-6" />
-<<<<<<< HEAD
-      <span className="pointer-events-none relative z-10">{title}</span>
-    </TransitionLink>
-=======
       <span className="relative z-10">{title}</span>
     </Link>
->>>>>>> parent of b3aab94 (Add TransitionLink component with useTransition support)
   ) : (
     title
   );
