@@ -83,16 +83,16 @@ function FeedItem({
     link && 'group relative',
     'grid',
   );
-  const descriptionClasses = cn(link && 'relative z-10');
+  const descriptionClasses = cn(link && 'pointer-events-none relative z-10');
   const metaClasses = cn(
     'order-first',
-    link && 'relative z-10',
+    link && 'pointer-events-none relative z-10',
     date !== undefined && 'text-gray-400 dark:text-gray-500',
   );
   const titleContent = link ? (
     <TransitionLink href={link}>
       <span className="absolute -inset-4 z-20 md:-inset-6" />
-      <span className="relative z-10">{title}</span>
+      <span className="pointer-events-none relative z-10">{title}</span>
     </TransitionLink>
   ) : (
     title
@@ -137,7 +137,7 @@ function FeedItem({
       {action ? (
         <>
           <div className="grid gap-2">{content}</div>
-          <p className="relative z-10 inline-flex items-center gap-0.5 font-medium text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
+          <p className="pointer-events-none relative z-10 inline-flex items-center gap-0.5 font-medium text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
             {action}
             <ChevronRight
               aria-hidden
@@ -150,7 +150,7 @@ function FeedItem({
         content
       )}
       {link && (
-        <div className="absolute -inset-4 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-gray-900/50" />
+        <div className="pointer-events-none absolute -inset-4 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-gray-900/50" />
       )}
     </article>
   );
