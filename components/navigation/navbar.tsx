@@ -1,9 +1,10 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { Avatar } from '../avatar/avatar';
+import { Avatar } from '@/components/avatar/avatar';
+import { AvatarLink } from '@/components/avatar/avatar-link';
+
 import { SkipNavigationLink } from '../ui/elements/skip-navigation-link';
 import { Container } from '../ui/layout/container';
-import { Link } from '../ui/link/link';
 import { NavbarAvatar } from './navbar-avatar';
 import { NavbarBorder } from './navbar-border';
 
@@ -19,12 +20,12 @@ export function Navbar({ children, ...props }: NavbarProps) {
           <SkipNavigationLink />
           <div className="h-11 w-11">
             <NavbarAvatar>
-              <Link
-                className="block rounded-full focus-visible:ring-offset-2"
+              <AvatarLink
+                className="block rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
                 href="/"
               >
                 <Avatar size={11} />
-              </Link>
+              </AvatarLink>
             </NavbarAvatar>
           </div>
         </div>

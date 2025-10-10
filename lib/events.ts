@@ -3,6 +3,11 @@ import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
+const EVENT_URL_OVERRIDES: Record<string, string> = {
+  '2023-01-reactjs-philippines':
+    'https://www.meetup.com/reactjs-philippines/events/305645222',
+};
+
 export const getAllEvents = cache(
   unstable_cache(
     async () => {
@@ -96,6 +101,15 @@ export const getEventBySlug = cache(async (slug: string) => {
 
   if (!event) {
     throw new Error(`Event with slug "${slug}" not found`);
+  }
+
+  const overrideUrl = EVENT_URL_OVERRIDES[event.slug];
+
+  if (overrideUrl) {
+    return {
+      ...event,
+      url: overrideUrl,
+    };
   }
 
   return event;

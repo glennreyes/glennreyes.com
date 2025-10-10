@@ -10,6 +10,8 @@ import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
+export const AVATAR_VIEW_TRANSITION_NAME = 'site-avatar';
+
 const avatarVariants = cva('relative rounded-full', {
   variants: {
     size: {
