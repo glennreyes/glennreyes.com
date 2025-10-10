@@ -1,12 +1,13 @@
 'use client';
 
 import type { ComponentPropsWithoutRef, MouseEvent } from 'react';
+
+import NextLink from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   startTransition,
   unstable_ViewTransition as ViewTransition,
 } from 'react';
-import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import { AVATAR_VIEW_TRANSITION_NAME } from './avatar';
 
