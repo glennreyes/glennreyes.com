@@ -19,4 +19,7 @@ export default defineConfig({
       '@': resolve(__dirname, '.'),
     },
   },
+  ssr: {
+    noExternal: ['react-tweet'],
+  },
 });

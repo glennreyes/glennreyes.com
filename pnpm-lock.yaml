@@ -71,6 +71,9 @@ importers:
       react-dom:
         specifier: 19.3.0-canary-4fdf7cf2-20251003
         version: 19.3.0-canary-4fdf7cf2-20251003(react@19.3.0-canary-4fdf7cf2-20251003)
+      react-tweet:
+        specifier: ^3.2.2
+        version: 3.2.2(react-dom@19.3.0-canary-4fdf7cf2-20251003(react@19.3.0-canary-4fdf7cf2-20251003))(react@19.3.0-canary-4fdf7cf2-20251003)
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.3.0-canary-4fdf7cf2-20251003(react@19.3.0-canary-4fdf7cf2-20251003))(react@19.3.0-canary-4fdf7cf2-20251003)
@@ -6149,6 +6152,12 @@ packages:
       '@types/react':
         optional: true
 
+  react-tweet@3.2.2:
+    resolution: {integrity: sha512-hIkxAVPpN2RqWoDEbo3TTnN/pDcp9/Jb6pTgiA4EbXa9S+m2vHIvvZKHR+eS0PDIsYqe+zTmANRa5k6+/iwGog==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
@@ -6684,6 +6693,11 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swr@2.3.6:
+    resolution: {integrity: sha512-wfHRmHWk/isGNMwlLGlZX5Gzz/uTgo0o2IRuTMcf4CPuPFJZlq0rDaKUx+ozB5nBOReNV1kiOyzMfj+MBMikLw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
@@ -6991,6 +7005,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-sync-external-store@1.6.0:
+    resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -13908,6 +13927,14 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.2
 
+  react-tweet@3.2.2(react-dom@19.3.0-canary-4fdf7cf2-20251003(react@19.3.0-canary-4fdf7cf2-20251003))(react@19.3.0-canary-4fdf7cf2-20251003):
+    dependencies:
+      '@swc/helpers': 0.5.15
+      clsx: 2.1.1
+      react: 19.3.0-canary-4fdf7cf2-20251003
+      react-dom: 19.3.0-canary-4fdf7cf2-20251003(react@19.3.0-canary-4fdf7cf2-20251003)
+      swr: 2.3.6(react@19.3.0-canary-4fdf7cf2-20251003)
+
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
@@ -14662,6 +14689,12 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
+  swr@2.3.6(react@19.3.0-canary-4fdf7cf2-20251003):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.3.0-canary-4fdf7cf2-20251003
+      use-sync-external-store: 1.6.0(react@19.3.0-canary-4fdf7cf2-20251003)
+
   symbol-tree@3.2.4: {}
 
   tailwind-merge@2.6.0: {}
@@ -15015,6 +15048,10 @@ snapshots:
       tslib: 2.8.1
     optionalDependencies:
       '@types/react': 19.2.2
+
+  use-sync-external-store@1.6.0(react@19.3.0-canary-4fdf7cf2-20251003):
+    dependencies:
+      react: 19.3.0-canary-4fdf7cf2-20251003
 
   util-deprecate@1.0.2: {}
 

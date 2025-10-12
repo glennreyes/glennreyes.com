@@ -1,9 +1,10 @@
 import type { MDXComponents } from 'mdx/types';
 import type { ImageProps } from 'next/image';
-import type { ComponentPropsWithoutRef } from 'react';
+import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 import { FileText } from 'lucide-react';
 import Image from 'next/image';
+import { Tweet as TweetEmbed } from 'react-tweet';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
 import { Video } from '@/components/ui/elements/video';
@@ -30,12 +31,15 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
   'data-language'?: string;
 }
 
+type TweetComponentProps = ComponentProps<typeof TweetEmbed>;
+
 export const components: MDXComponents = {
   Image: ({ alt, className, ...props }: ImageProps) => (
     <Image alt={alt} className={cn('rounded-3xl', className)} {...props} />
   ),
   Lead,
   Video,
+  Tweet: (props: TweetComponentProps) => <TweetEmbed {...props} />,
   a: ({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const classes = '[.prose_&]:font-normal';
 
