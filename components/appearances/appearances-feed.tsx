@@ -1,9 +1,18 @@
 import type { ReactNode } from 'react';
 
+import { Calendar } from 'lucide-react';
+
 import type { Event, Location } from '@/drizzle/schema';
 
 import { composePlaceByLocation } from '@/lib/place';
 
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '../ui/empty';
 import { Feed } from '../ui/layout/feed';
 
 interface AppearancesFeedProps {
@@ -16,9 +25,45 @@ interface AppearancesFeedProps {
 export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
   const today = new Date();
   const upcoming = events
-    .filter((event) => event.startDate > today)
-    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
-  const past = events.filter((event) => event.startDate <= today);
+    .filter((event) => {
+      const startDate = new Date(event.startDate);
+
+      return startDate > today;
+    })
+    .sort((a, b) => {
+      const aDate = new Date(a.startDate);
+      const bDate = new Date(b.startDate);
+
+      return aDate.getTime() - bDate.getTime();
+    });
+  const past = events
+    .filter((event) => {
+      const startDate = new Date(event.startDate);
+
+      return startDate <= today;
+    })
+    .sort((a, b) => {
+      const aDate = new Date(a.startDate);
+      const bDate = new Date(b.startDate);
+
+      return bDate.getTime() - aDate.getTime();
+    });
+
+  if (events.length === 0) {
+    return (
+      <Empty>
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <Calendar />
+          </EmptyMedia>
+          <EmptyTitle>No appearances yet</EmptyTitle>
+          <EmptyDescription>
+            Check back later for upcoming speaking and teaching engagements.
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    );
+  }
 
   return (
     <div className="not-prose grid gap-12">
