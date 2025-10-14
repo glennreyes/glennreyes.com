@@ -290,6 +290,7 @@ describe('Page Smoke Tests', () => {
       const { container } = render(
         await AppearanceSlugPage({
           params: Promise.resolve({ slug: 'test-event' }),
+          searchParams: Promise.resolve({}),
         }),
       );
 
@@ -299,7 +300,10 @@ describe('Page Smoke Tests', () => {
 
     it('renders post detail page', async () => {
       const { container } = render(
-        await PostSlugPage({ params: Promise.resolve({ slug: 'test-post' }) }),
+        await PostSlugPage({
+          params: Promise.resolve({ slug: 'test-post' }),
+          searchParams: Promise.resolve({}),
+        }),
       );
 
       expect(container).toBeInTheDocument();
@@ -308,7 +312,10 @@ describe('Page Smoke Tests', () => {
 
     it('renders talk detail page', async () => {
       const { container } = render(
-        await TalkSlugPage({ params: Promise.resolve({ slug: 'test-talk' }) }),
+        await TalkSlugPage({
+          params: Promise.resolve({ slug: 'test-talk' }),
+          searchParams: Promise.resolve({}),
+        }),
       );
 
       expect(container).toBeInTheDocument();
@@ -318,6 +325,7 @@ describe('Page Smoke Tests', () => {
       const { container } = render(
         await WorkshopSlugPage({
           params: Promise.resolve({ slug: 'test-workshop' }),
+          searchParams: Promise.resolve({}),
         }),
       );
 
