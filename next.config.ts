@@ -64,6 +64,13 @@ const nextConfig: NextConfig = {
         source: '/tools',
       },
     ]),
+  rewrites: () =>
+    Promise.resolve([
+      {
+        source: '/photo.jpg',
+        destination: '/photo',
+      },
+    ]),
 };
 
 export default withBundleAnalyzer(nextConfig);
