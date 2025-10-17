@@ -29,7 +29,7 @@
     "@giscus/react": "^3.1.0",
     "@libsql/client": "^0.15.15",
     "@modelcontextprotocol/inspector": "^0.17.1",
-    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@modelcontextprotocol/sdk": "^1.20.1",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.5.0",
