@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import { formatISO } from 'date-fns';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
@@ -9,7 +10,7 @@ import { PostFooter } from '@/components/posts/post-footer';
 import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
 import { Article } from '@/components/ui/layout/article';
-import { origin } from '@/lib/constants';
+import { name, origin } from '@/lib/constants';
 import { getAllPosts } from '@/lib/posts';
 
 export const generateMetadata = async (
@@ -34,6 +35,8 @@ export const generateMetadata = async (
       siteName: frontmatter.title,
       title: frontmatter.title,
       type: 'article',
+      authors: name,
+      publishedTime: formatISO(frontmatter.publishedAt),
       url,
     },
     title: frontmatter.title,
