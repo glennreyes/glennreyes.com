@@ -7,21 +7,14 @@ export const runtime = 'edge';
 
 export const size = { height: 1080, width: 1920 };
 
-interface OpenGraphImageConfigParams {
-  slug: string;
-}
-
-interface OpenGraphImageConfig {
-  params: OpenGraphImageConfigParams;
-}
-
 const errorSchema = z.object({ error: z.string() });
 const successSchema = z.object({
   publishedAt: z.string(),
   title: z.string(),
 });
-const OpengraphImage = async ({ params }: OpenGraphImageConfig) => {
+const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
   try {
+    const params = await props.params;
     const res = await fetch(`${origin}/posts/${params.slug}/meta`);
 
     if (!res.ok) {
