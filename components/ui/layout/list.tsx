@@ -9,7 +9,7 @@ interface ListProps extends Omit<ComponentPropsWithoutRef<'ul'>, 'className'> {
   spacing?: 'default' | 'dense';
 }
 
-export function List({ asChild, spacing = 'default', ...props }: ListProps) {
+function List({ asChild, spacing = 'default', ...props }: ListProps) {
   const Component = asChild ? Slot : 'ul';
 
   return (
@@ -26,4 +26,12 @@ function ListItem(props: ListItemProps) {
   return <li {...props} />;
 }
 
-List.Item = ListItem;
+type ListComponent = typeof List & {
+  Item: typeof ListItem;
+};
+
+const ListComponentWithItem: ListComponent = Object.assign(List, {
+  Item: ListItem,
+});
+
+export { ListComponentWithItem as List };

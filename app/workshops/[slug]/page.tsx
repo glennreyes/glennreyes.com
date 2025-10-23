@@ -9,9 +9,8 @@ import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { H2 } from '@/components/ui/typography/h2';
+import { toFeedEvent } from '@/lib/events';
 import { getAllWorkshops, getWorkshopBySlug } from '@/lib/workshops';
-
-export const revalidate = 3600;
 
 export const generateMetadata = async (
   props: PageProps<'/workshops/[slug]'>,
@@ -35,7 +34,9 @@ export default async function WorkshopPage(
 ) {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
-  const events = workshop.appearances.map((appearance) => appearance.event);
+  const events = workshop.appearances.map((appearance) =>
+    toFeedEvent(appearance.event),
+  );
 
   return (
     <Page>

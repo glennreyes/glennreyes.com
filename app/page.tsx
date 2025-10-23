@@ -9,8 +9,6 @@ import { Newsletter } from '@/components/newsletter/newsletter';
 import { Content } from '@/components/ui/layout/content';
 import { Page } from '@/components/ui/layout/page';
 
-export const experimental_ppr = true;
-
 const RootPage = () => (
   <Page>
     <Hero />

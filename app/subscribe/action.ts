@@ -7,7 +7,6 @@ import { subscribe as subscribeBase } from '@/lib/newsletter';
 interface SubscribeState {
   message: string;
   status: 'error' | 'idle' | 'success';
-  timestamp: number;
 }
 
 export const subscribe = async (
@@ -27,7 +26,6 @@ export const subscribe = async (
     return {
       message: result.error.issues[0]?.message ?? 'Invalid data',
       status: 'error',
-      timestamp: Date.now(),
     };
   }
 
@@ -38,13 +36,11 @@ export const subscribe = async (
       message:
         'Check your inbox! We sent you a confirmation email to verify your subscription.',
       status: 'success',
-      timestamp: Date.now(),
     };
   } catch {
     return {
       message: 'Something went wrong. Please try again later.',
       status: 'error',
-      timestamp: Date.now(),
     };
   }
 };

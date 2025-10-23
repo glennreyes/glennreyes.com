@@ -30,7 +30,7 @@ const lengths = {
 
 type EventAppearancesProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export function EventAppearances(props: EventAppearancesProps) {
+function EventAppearances(props: EventAppearancesProps) {
   return <section className="grid gap-12 md:gap-16" {...props} />;
 }
 
@@ -196,4 +196,15 @@ function EventAppearancesCard({
   );
 }
 
-EventAppearances.Card = EventAppearancesCard;
+type EventAppearancesComponent = typeof EventAppearances & {
+  Card: typeof EventAppearancesCard;
+};
+
+const EventAppearancesWithCard: EventAppearancesComponent = Object.assign(
+  EventAppearances,
+  {
+    Card: EventAppearancesCard,
+  },
+);
+
+export { EventAppearancesWithCard as EventAppearances };

@@ -12,7 +12,7 @@ interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
   asChild?: boolean;
 }
 
-export function Card({ asChild, ...props }: CardProps) {
+function Card({ asChild, ...props }: CardProps) {
   const Component = asChild ? Slot : 'div';
 
   return (
@@ -40,8 +40,6 @@ function CardBody({ children, title, ...props }: CardBodyProps) {
     </div>
   );
 }
-
-Card.Body = CardBody;
 
 type CardItemWithDateProps = Omit<
   ComponentPropsWithoutRef<'div'>,
@@ -127,4 +125,14 @@ function CardItem({
   );
 }
 
-Card.Item = CardItem;
+type CardComponent = typeof Card & {
+  Body: typeof CardBody;
+  Item: typeof CardItem;
+};
+
+const CardComponentWithSections: CardComponent = Object.assign(Card, {
+  Body: CardBody,
+  Item: CardItem,
+});
+
+export { CardComponentWithSections as Card };

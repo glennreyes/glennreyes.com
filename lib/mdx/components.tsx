@@ -4,6 +4,7 @@ import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 import { FileText } from 'lucide-react';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import { Tweet as TweetEmbed } from 'react-tweet';
 
 import { CopyToClipboard } from '@/components/ui/elements/copy-to-clipboard';
@@ -39,7 +40,17 @@ export const components: MDXComponents = {
   ),
   Lead,
   Video,
-  Tweet: (props: TweetComponentProps) => <TweetEmbed {...props} />,
+  Tweet: (props: TweetComponentProps) => (
+    <Suspense
+      fallback={
+        <div className="not-prose text-sm text-gray-500">
+          Loading tweet&hellip;
+        </div>
+      }
+    >
+      <TweetEmbed {...props} />
+    </Suspense>
+  ),
   a: ({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
     const classes = '[.prose_&]:font-normal';
 

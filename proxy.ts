@@ -8,7 +8,7 @@ const JSON_CONTENT_TYPES = [
   'application/vnd.modelcontext+json',
 ];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname !== '/mcp') {
     return NextResponse.next();
   }

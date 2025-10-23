@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { email, x } from '@/lib/constants';
 
 import { InlineLink } from '../ui/link/inline-link';
@@ -15,7 +17,9 @@ export function Comments() {
         What do you think about this article? Have you had a similar experience?
         Share your thoughts in the comments below!
       </Paragraph>
-      <Giscus />
+      <Suspense fallback={null}>
+        <Giscus />
+      </Suspense>
       <Paragraph>
         All comments are stored as{' '}
         <InlineLink href="https://github.com/glennreyes/glennreyes.com/discussions">

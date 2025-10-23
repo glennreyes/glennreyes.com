@@ -8,8 +8,6 @@ import { EventLead } from '@/components/appearances/event-lead';
 import { Page } from '@/components/ui/layout/page';
 import { getAllEvents, getEventBySlug } from '@/lib/events';
 
-export const revalidate = 3600;
-
 export const generateMetadata = async (
   props: PageProps<'/appearances/[slug]'>,
 ): Promise<Metadata> => {

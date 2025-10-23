@@ -7,7 +7,7 @@ import { Container } from './container';
 
 type PageProps = Omit<ComponentPropsWithoutRef<'div'>, 'className'>;
 
-export function Page(props: PageProps) {
+function Page(props: PageProps) {
   return <Container className="space-y-12" {...props} />;
 }
 
@@ -29,12 +29,20 @@ function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   );
 }
 
-Page.Header = PageHeader;
-
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function PageBody(props: PageBodyProps) {
   return <section className="prose prose-slate dark:prose-invert" {...props} />;
 }
 
-Page.Body = PageBody;
+type PageComponent = typeof Page & {
+  Body: typeof PageBody;
+  Header: typeof PageHeader;
+};
+
+const PageComponentWithSections = Page as PageComponent;
+
+PageComponentWithSections.Body = PageBody;
+PageComponentWithSections.Header = PageHeader;
+
+export { PageComponentWithSections as Page };

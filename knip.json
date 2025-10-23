@@ -1,4 +1,7 @@
 {
+  "ignore": [
+    "proxy.ts"
+  ],
   "ignoreDependencies": [
     "@tailwindcss/typography",
     "@types/eslint",

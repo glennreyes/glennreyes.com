@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { Workshop } from '@/drizzle/schema';
 
-import { Feed } from '../ui/layout/feed';
+import { Feed, FeedItem } from '../ui/layout/feed';
 import { MDXContent } from '../ui/mdx/mdx-content';
 
 interface WorkshopsFeedProps {
@@ -24,7 +24,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
           title="Current"
         >
           {active.map(({ slug, summary, title }) => (
-            <Feed.Item
+            <FeedItem
               action="Workshop Details"
               description={
                 <div className="prose prose-slate text-slate-500">
@@ -41,7 +41,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
       {inactive.length > 0 && (
         <Feed description="Workshops I've given in the past." title="Past">
           {inactive.map(({ slug, summary, title }) => (
-            <Feed.Item
+            <FeedItem
               action="Workshop Details"
               description={
                 <div className="prose prose-slate text-slate-500">

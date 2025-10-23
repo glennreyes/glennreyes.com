@@ -1,6 +1,6 @@
 import { getAllPublishedPosts } from '@/lib/posts';
 
-import { Feed } from '../ui/layout/feed';
+import { Feed, FeedItem } from '../ui/layout/feed';
 import { ActionLink } from '../ui/link/action-link';
 import { H4 } from '../ui/typography/h4';
 
@@ -16,7 +16,7 @@ export const Posts = async () => {
       <div className="grid gap-12">
         <Feed>
           {posts.map(({ frontmatter, slug }) => (
-            <Feed.Item
+            <FeedItem
               description={frontmatter.description}
               key={slug}
               link={`/posts/${slug}`}

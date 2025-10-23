@@ -4,12 +4,7 @@ import type { ComponentPropsWithoutRef, MouseEvent } from 'react';
 
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
-import {
-  startTransition,
-  unstable_ViewTransition as ViewTransition,
-} from 'react';
-
-import { AVATAR_VIEW_TRANSITION_NAME } from './avatar';
+import { startTransition } from 'react';
 
 type AvatarLinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
@@ -68,9 +63,7 @@ export function AvatarLink({
       scroll={scroll}
       {...props}
     >
-      <ViewTransition name={AVATAR_VIEW_TRANSITION_NAME}>
-        {children}
-      </ViewTransition>
+      {children}
     </NextLink>
   );
 }

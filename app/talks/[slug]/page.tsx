@@ -9,9 +9,8 @@ import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
 import { H2 } from '@/components/ui/typography/h2';
+import { toFeedEvent } from '@/lib/events';
 import { getAllTalks, getTalkBySlug } from '@/lib/talks';
-
-export const revalidate = 3600;
 
 export const generateMetadata = async (
   props: PageProps<'/talks/[slug]'>,
@@ -33,7 +32,9 @@ export const generateStaticParams = async () => {
 const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
   const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
-  const events = talk.appearances.map((appearance) => appearance.event);
+  const events = talk.appearances.map((appearance) =>
+    toFeedEvent(appearance.event),
+  );
 
   return (
     <Page>

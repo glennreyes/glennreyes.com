@@ -1,4 +1,4 @@
-import { compareDesc, isAfter } from 'date-fns';
+import { compareDesc } from 'date-fns';
 
 import { getMDXFiles } from './mdx/get-mdx-files';
 import { readMDXFile } from './mdx/read-mdx-file';
@@ -10,7 +10,7 @@ export interface PostFrontmatter {
   title: string;
 }
 
-export const getAllPosts = async () => {
+const getAllPosts = async () => {
   const allPosts = await Promise.all(
     getMDXFiles('content/posts').map(async (file) => {
       const { content, frontmatter } = await readMDXFile<PostFrontmatter>(
@@ -36,12 +36,14 @@ export const getAllPosts = async () => {
 };
 
 export const getAllPublishedPosts = async () => {
+  'use cache';
+
   const allPosts = await getAllPosts();
-  const today = new Date();
+  const now = Date.now();
 
   return allPosts.filter((post) => {
     const publishedDate = new Date(post.frontmatter.publishedAt);
 
-    return !isAfter(publishedDate, today);
+    return publishedDate.getTime() <= now;
   });
 };

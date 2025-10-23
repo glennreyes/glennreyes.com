@@ -56,7 +56,7 @@ const mockEvents = [
 const createMockSources = (): MCPDataSources => {
   return resolveDataSources({
     getAllEvents: vi.fn().mockResolvedValue(mockEvents),
-    getAllPosts: vi.fn().mockResolvedValue(mockPosts),
+    getAllPublishedPosts: vi.fn().mockResolvedValue(mockPosts),
     getAllTalks: vi.fn().mockResolvedValue(mockTalks),
     getAllWorkshops: vi.fn().mockResolvedValue(mockWorkshops),
   });

@@ -11,13 +11,13 @@ import { DateDisplay } from '@/components/ui/elements/date-display';
 import { IconButton } from '@/components/ui/elements/icon-button';
 import { Article } from '@/components/ui/layout/article';
 import { name, origin } from '@/lib/constants';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPublishedPosts } from '@/lib/posts';
 
 export const generateMetadata = async (
   props: PageProps<'/posts/[slug]'>,
 ): Promise<Metadata> => {
   const params = await props.params;
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPublishedPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
   if (!post) {
@@ -44,7 +44,7 @@ export const generateMetadata = async (
 };
 
 export const generateStaticParams = async () => {
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPublishedPosts();
 
   return allPosts
     .filter((post) => post.frontmatter.publishedAt)
@@ -53,7 +53,7 @@ export const generateStaticParams = async () => {
 
 const PostPage = async (props: PageProps<'/posts/[slug]'>) => {
   const params = await props.params;
-  const allPosts = await getAllPosts();
+  const allPosts = await getAllPublishedPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
 
   if (!post?.content) {

@@ -47,6 +47,9 @@ vi.mock('@/lib/events', () => ({
     },
     appearances: [],
   }),
+  getCurrentTimestamp: vi
+    .fn()
+    .mockResolvedValue(new Date('2024-01-01').getTime()),
 }));
 
 vi.mock('@/lib/talks', () => ({
@@ -163,6 +166,9 @@ vi.mock('react', async (importOriginal) => {
 
   return {
     ...actual,
+    ViewTransition: ({ children }: { children: React.ReactNode }) => (
+      <>{children}</>
+    ),
     unstable_ViewTransition: ({ children }: { children: React.ReactNode }) => (
       <>{children}</>
     ),
@@ -202,10 +208,10 @@ describe('Page Smoke Tests', () => {
   });
 
   describe('Static Pages', () => {
-    it('renders home page', () => {
-      const { container } = render(<RootPage />);
+    it('renders home page', async () => {
+      const { container, findByText } = render(<RootPage />);
 
-      expect(container).toBeInTheDocument();
+      await findByText(/Hello, I'm/i);
       expect(container.textContent).toBeTruthy();
     });
 

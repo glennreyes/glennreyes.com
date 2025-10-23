@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { Talk } from '@/drizzle/schema';
 
-import { Feed } from '../ui/layout/feed';
+import { Feed, FeedItem } from '../ui/layout/feed';
 import { MDXContent } from '../ui/mdx/mdx-content';
 
 interface TalksFeedProps {
@@ -22,7 +22,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
           title="Current"
         >
           {active.map(({ abstract, slug, title }) => (
-            <Feed.Item
+            <FeedItem
               action="Talk Details"
               description={
                 <div className="prose prose-slate text-slate-500">
@@ -39,7 +39,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
       {inactive.length > 0 && (
         <Feed description="Talks I've given in the past." title="Past">
           {inactive.map(({ abstract, slug, title }) => (
-            <Feed.Item
+            <FeedItem
               action="Talk Details"
               description={
                 <div className="prose prose-slate text-slate-500">

@@ -63,7 +63,7 @@ interface FeedItemProps
   title: string;
 }
 
-function FeedItem({
+export function FeedItem({
   action,
   children,
   description,
@@ -145,5 +145,3 @@ function FeedItem({
     </article>
   );
 }
-
-Feed.Item = FeedItem;

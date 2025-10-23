@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getAllEvents } from '@/lib/events';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPublishedPosts } from '@/lib/posts';
 import { getAllTalks } from '@/lib/talks';
 import { getAllWorkshops } from '@/lib/workshops';
 
@@ -85,14 +85,14 @@ type SearchableContent =
 
 export interface MCPDataSources {
   getAllEvents: typeof getAllEvents;
-  getAllPosts: typeof getAllPosts;
+  getAllPublishedPosts: typeof getAllPublishedPosts;
   getAllTalks: typeof getAllTalks;
   getAllWorkshops: typeof getAllWorkshops;
 }
 
 const defaultDataSources: MCPDataSources = {
   getAllEvents,
-  getAllPosts,
+  getAllPublishedPosts,
   getAllTalks,
   getAllWorkshops,
 };
@@ -286,7 +286,8 @@ export function resolveDataSources(
 ): MCPDataSources {
   return {
     getAllEvents: overrides.getAllEvents ?? defaultDataSources.getAllEvents,
-    getAllPosts: overrides.getAllPosts ?? defaultDataSources.getAllPosts,
+    getAllPublishedPosts:
+      overrides.getAllPublishedPosts ?? defaultDataSources.getAllPublishedPosts,
     getAllTalks: overrides.getAllTalks ?? defaultDataSources.getAllTalks,
     getAllWorkshops:
       overrides.getAllWorkshops ?? defaultDataSources.getAllWorkshops,
@@ -323,14 +324,14 @@ export async function handleToolCall(
   try {
     switch (toolName) {
       case 'get_all_posts': {
-        const posts = await dataSources.getAllPosts();
+        const posts = await dataSources.getAllPublishedPosts();
 
         return createInteractiveTable(posts, 'Blog Posts');
       }
 
       case 'get_post_by_slug': {
         const slug = validateSlug(args.slug);
-        const posts = await dataSources.getAllPosts();
+        const posts = await dataSources.getAllPublishedPosts();
         const post = findBySlug(posts, slug, 'Post');
 
         return toJSONContent(post);
@@ -423,7 +424,7 @@ export async function handleToolCall(
         };
 
         if (contentType === 'all' || contentType === 'posts') {
-          const posts = await dataSources.getAllPosts();
+          const posts = await dataSources.getAllPublishedPosts();
           const matchingPosts = posts.filter(matchesEntry);
 
           results.push(

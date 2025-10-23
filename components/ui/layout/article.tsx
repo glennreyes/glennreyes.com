@@ -11,7 +11,7 @@ interface ArticleProps
   back?: ReactNode;
 }
 
-export function Article({ back, children, ...props }: ArticleProps) {
+function Article({ back, children, ...props }: ArticleProps) {
   return (
     <Container asChild className="space-y-6 lg:space-y-0" {...props}>
       <article>
@@ -46,8 +46,6 @@ function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
   );
 }
 
-Article.Header = ArticleHeader;
-
 type ArticleBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function ArticleBody(props: ArticleBodyProps) {
@@ -55,8 +53,6 @@ function ArticleBody(props: ArticleBodyProps) {
     <div className="prose prose-slate dark:prose-invert mx-auto" {...props} />
   );
 }
-
-Article.Body = ArticleBody;
 
 type ArticleFooterProps = Omit<
   ComponentPropsWithoutRef<'article'>,
@@ -74,4 +70,16 @@ function ArticleFooter(props: ArticleFooterProps) {
   );
 }
 
-Article.Footer = ArticleFooter;
+type ArticleComponent = typeof Article & {
+  Body: typeof ArticleBody;
+  Footer: typeof ArticleFooter;
+  Header: typeof ArticleHeader;
+};
+
+const ArticleComponentWithSections: ArticleComponent = Object.assign(Article, {
+  Body: ArticleBody,
+  Footer: ArticleFooter,
+  Header: ArticleHeader,
+});
+
+export { ArticleComponentWithSections as Article };

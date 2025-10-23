@@ -1,8 +1,11 @@
+'use client';
+
 import type { ReactNode } from 'react';
 
 import { Calendar } from 'lucide-react';
+import { useMemo } from 'react';
 
-import type { Event, Location } from '@/drizzle/schema';
+import type { FeedEvent } from '@/lib/events';
 
 import { composePlaceByLocation } from '@/lib/place';
 
@@ -13,41 +16,41 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from '../ui/empty';
-import { Feed } from '../ui/layout/feed';
+import { Feed, FeedItem } from '../ui/layout/feed';
 
 interface AppearancesFeedProps {
   children?: ReactNode;
-  events: (Pick<Event, 'name' | 'slug' | 'startDate'> & {
-    location: Pick<Location, 'city' | 'country' | 'state'>;
-  })[];
+  events: FeedEvent[];
 }
 
 export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
-  const today = new Date();
-  const upcoming = events
-    .filter((event) => {
-      const startDate = new Date(event.startDate);
+  const { past, upcoming } = useMemo(() => {
+    const parsed = events.map((event) => {
+      const startDateObject = new Date(event.startDate);
 
-      return startDate > today;
-    })
-    .sort((a, b) => {
-      const aDate = new Date(a.startDate);
-      const bDate = new Date(b.startDate);
-
-      return aDate.getTime() - bDate.getTime();
+      return {
+        ...event,
+        startDateObject,
+        startDateTimestamp: startDateObject.getTime(),
+      };
     });
-  const past = events
-    .filter((event) => {
-      const startDate = new Date(event.startDate);
+    const now = Date.now();
+    const upcomingEvents = parsed
+      .filter((event) => event.startDateTimestamp > now)
+      .sort(
+        (first, second) => first.startDateTimestamp - second.startDateTimestamp,
+      );
+    const pastEvents = parsed
+      .filter((event) => event.startDateTimestamp <= now)
+      .sort(
+        (first, second) => second.startDateTimestamp - first.startDateTimestamp,
+      );
 
-      return startDate <= today;
-    })
-    .sort((a, b) => {
-      const aDate = new Date(a.startDate);
-      const bDate = new Date(b.startDate);
-
-      return bDate.getTime() - aDate.getTime();
-    });
+    return {
+      past: pastEvents,
+      upcoming: upcomingEvents,
+    };
+  }, [events]);
 
   if (events.length === 0) {
     return (
@@ -70,9 +73,13 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
       {upcoming.length > 0 && (
         <Feed title="Upcoming">
           {upcoming.map((event) => (
-            <Feed.Item
-              date={event.startDate}
-              description={composePlaceByLocation(event.location)}
+            <FeedItem
+              date={event.startDateObject}
+              description={composePlaceByLocation({
+                city: event.location.city,
+                country: event.location.country,
+                state: event.location.state,
+              })}
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}
@@ -83,9 +90,13 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
       {past.length > 0 && (
         <Feed title="Past">
           {past.map((event) => (
-            <Feed.Item
-              date={event.startDate}
-              description={composePlaceByLocation(event.location)}
+            <FeedItem
+              date={event.startDateObject}
+              description={composePlaceByLocation({
+                city: event.location.city,
+                country: event.location.country,
+                state: event.location.state,
+              })}
               key={event.slug}
               link={`/appearances/${event.slug}`}
               title={event.name}

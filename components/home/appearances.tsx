@@ -1,7 +1,6 @@
-import { getTime } from 'date-fns';
-
-import { getAllEvents } from '@/lib/events';
+import { getAllEvents, mapEventsToFeed } from '@/lib/events';
 import { composePlaceByLocation } from '@/lib/place';
+import { getTimestamp } from '@/lib/time';
 
 import { Divider } from '../ui/elements/divider';
 import { Button } from '../ui/forms/button';
@@ -11,29 +10,29 @@ import { H4 } from '../ui/typography/h4';
 
 export const Appearances = async () => {
   const allEvents = await getAllEvents();
-  const today = new Date();
-  const todayInMilliseconds = getTime(today);
+  const events = mapEventsToFeed(allEvents);
+  const now = await getTimestamp();
   // Calculate the difference between each date and today's date
-  const dateDistances = allEvents.map((event) =>
-    Math.abs(new Date(event.startDate).getTime() - todayInMilliseconds),
+  const dateDistances = events.map((event) =>
+    Math.abs(new Date(event.startDate).getTime() - now),
   );
   // Sort the events by their date distance to today's date
-  const sortedEvents = [...allEvents].sort((a, b) => {
-    const aDistance = dateDistances[allEvents.indexOf(a)];
-    const bDistance = dateDistances[allEvents.indexOf(b)];
+  const sortedEvents = [...events].sort((first, second) => {
+    const firstDistance = dateDistances[events.indexOf(first)];
+    const secondDistance = dateDistances[events.indexOf(second)];
 
-    if (aDistance === undefined || bDistance === undefined) {
+    if (firstDistance === undefined || secondDistance === undefined) {
       return 0;
     }
 
-    return aDistance - bDistance;
+    return firstDistance - secondDistance;
   });
   // Filter upcoming and past events separately
   const upcomingEventsSorted = sortedEvents.filter(
-    (event) => new Date(event.startDate) > today,
+    (event) => new Date(event.startDate).getTime() > now,
   );
   const pastEventsSorted = sortedEvents.filter(
-    (event) => new Date(event.startDate) <= today,
+    (event) => new Date(event.startDate).getTime() <= now,
   );
   // Get the 5 closest upcoming events
   const topUpcomingEvents = upcomingEventsSorted.slice(0, 5);

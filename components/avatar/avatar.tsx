@@ -10,8 +10,6 @@ import photo from '@/assets/images/photo.jpg';
 import { name } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-export const AVATAR_VIEW_TRANSITION_NAME = 'site-avatar';
-
 const avatarVariants = cva('relative rounded-full', {
   variants: {
     size: {
@@ -43,7 +41,7 @@ export function Avatar({ size, className, ...props }: AvatarProps) {
 
   return (
     <div className={classes}>
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
+      <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
       <Image
         alt={name}
         className="relative rounded-full"

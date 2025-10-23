@@ -8,6 +8,8 @@ const EVENT_URL_OVERRIDES: Record<string, string> = {
     'https://www.meetup.com/reactjs-philippines/events/305645222',
 };
 
+type SimplifiedEvent = Awaited<ReturnType<typeof getAllEvents>>[number];
+
 export const getAllEvents = cache(
   unstable_cache(
     async () => {
@@ -53,6 +55,50 @@ export const getAllEvents = cache(
     },
   ),
 );
+
+interface FeedEventSource {
+  location: {
+    city: string | null;
+    country: string | null;
+    state: string | null;
+  };
+  name: string;
+  slug: string;
+  startDate: Date | string;
+}
+
+export interface FeedEvent {
+  location: {
+    city: string;
+    country: string;
+    state: string | null;
+  };
+  name: string;
+  slug: string;
+  startDate: string;
+}
+
+export function toFeedEvent(event: FeedEventSource): FeedEvent {
+  const startDate =
+    event.startDate instanceof Date
+      ? event.startDate
+      : new Date(event.startDate);
+
+  return {
+    location: {
+      city: event.location.city ?? '',
+      country: event.location.country ?? '',
+      state: event.location.state,
+    },
+    name: event.name,
+    slug: event.slug,
+    startDate: startDate.toISOString(),
+  };
+}
+
+export function mapEventsToFeed(events: SimplifiedEvent[]): FeedEvent[] {
+  return events.map(toFeedEvent);
+}
 
 export const getEventBySlug = cache(async (slug: string) => {
   const event = await db.query.events.findFirst({

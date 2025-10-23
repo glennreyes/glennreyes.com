@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 type ContentProps = Omit<ComponentPropsWithoutRef<'section'>, 'className'>;
 
-export function Content(props: ContentProps) {
+function Content(props: ContentProps) {
   return <section className="grid gap-12 lg:grid-cols-12" {...props} />;
 }
 
@@ -16,8 +16,6 @@ function ContentPrimary({ className, ...props }: ContentPrimaryProps) {
   return <div className={classes} {...props} />;
 }
 
-Content.Primary = ContentPrimary;
-
 type ContentSecondaryProps = ComponentPropsWithoutRef<'div'>;
 
 function ContentSecondary({ className, ...props }: ContentSecondaryProps) {
@@ -26,4 +24,14 @@ function ContentSecondary({ className, ...props }: ContentSecondaryProps) {
   return <div className={classes} {...props} />;
 }
 
-Content.Secondary = ContentSecondary;
+type ContentComponent = typeof Content & {
+  Primary: typeof ContentPrimary;
+  Secondary: typeof ContentSecondary;
+};
+
+const ContentComponent: ContentComponent = Object.assign(Content, {
+  Primary: ContentPrimary,
+  Secondary: ContentSecondary,
+});
+
+export { ContentComponent as Content };

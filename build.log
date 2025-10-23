@@ -1,0 +1,69 @@
+ ⚠ Prerendering is running in debug mode. Note: This may affect performance and should not be used for production.
+   ▲ Next.js 16.0.0 (Turbopack, Cache Components)
+   - Environments: .env
+   - Experiments (use with caution):
+     ⨯ prerenderEarlyExit (disabled by `--debug-prerender`)
+     ✓ serverSourceMaps (enabled by `--debug-prerender`)
+     ⨯ turbopackMinify (disabled by `--debug-prerender`)
+     ✓ viewTransition
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 4.6s
+   Running TypeScript ...
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+   Generating static pages (0/104) ...
+   Generating static pages (26/104) 
+   Generating static pages (52/104) 
+   Generating static pages (78/104) 
+ ✓ Generating static pages (104/104) in 2.8s
+   Finalizing page optimization ...
+
+Route (app)                                                    Revalidate  Expire
+┌ ◐ /                                                                 15m      1y
+├ ○ /_not-found
+├ ○ /about
+├ ○ /appearances                                                       1d      1y
+├ ◐ /appearances/[slug]
+│ ├ /appearances/[slug]
+│ ├ /appearances/devcon-romania-2025
+│ ├ /appearances/2025-10-react-alicante
+│ └ [+49 more paths]
+├ ○ /apple-icon.png
+├ ○ /icon.png
+├ ○ /legal
+├ ƒ /mcp
+├ ◐ /mcp/about
+├ ○ /opengraph-image.png
+├ ƒ /photo
+├ ○ /posts                                                            15m      1y
+├ ◐ /posts/[slug]                                                     15m      1y
+│ ├ /posts/[slug]                                                     15m      1y
+│ ├ /posts/design-language                                            15m      1y
+│ ├ /posts/building-legacy-code                                       15m      1y
+│ └ [+8 more paths]
+├ ƒ /posts/[slug]/meta
+├ ƒ /posts/[slug]/opengraph-image
+├ ○ /privacy
+├ ○ /subscribe/confirm
+├ ○ /subscribe/thank-you
+├ ◐ /talks
+├ ◐ /talks/[slug]
+│ ├ /talks/[slug]
+│ ├ /talks/mcp-ui-and-the-future-of-interactive-conversations
+│ ├ /talks/from-react-beginner-to-global-speaker
+│ └ [+11 more paths]
+├ ○ /test
+├ ○ /uses
+├ ◐ /workshops
+└ ◐ /workshops/[slug]
+  ├ /workshops/[slug]
+  ├ /workshops/navigating-ui-ux-challenges-of-web3-and-dapps
+  ├ /workshops/advanced-typescript-for-react
+  └ [+3 more paths]
+
+
+○  (Static)             prerendered as static content
+◐  (Partial Prerender)  prerendered as static HTML with dynamic server-streamed content
+ƒ  (Dynamic)            server-rendered on demand
+

@@ -1,6 +1,12 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
 
-import { getAllPosts, getAllPublishedPosts } from './posts';
+const getCurrentTimestampMock = vi.fn(() =>
+  new Date('2024-01-01').getTime(),
+);
+
+vi.mock('./time', () => ({
+  getCurrentTimestamp: getCurrentTimestampMock,
+}));
 
 // Mock the MDX functions
 vi.mock('./mdx/get-mdx-files', () => ({
@@ -44,25 +50,32 @@ vi.mock('./mdx/read-mdx-file', () => ({
   }),
 }));
 
-describe('posts', () => {
-  describe('getAllPosts', () => {
-    it('should return all posts sorted by publishedAt desc', async () => {
-      const posts = await getAllPosts();
+const { getAllPublishedPosts } = await import('./posts');
 
-      expect(posts).toHaveLength(3);
+describe('posts', () => {
+  beforeEach(() => {
+    getCurrentTimestampMock.mockResolvedValue(new Date('2024-01-01').getTime());
+  });
+
+  describe('getAllPublishedPosts', () => {
+    it('should return all posts sorted by publishedAt desc', async () => {
+      getCurrentTimestampMock.mockResolvedValueOnce(
+        new Date('2031-01-01').getTime(),
+      );
+      const posts = await getAllPublishedPosts();
+
+      expect(posts).toHaveLength(2);
       const titles = posts.map((p) => p.frontmatter.title);
 
-      expect(titles).toEqual(['Future Post', 'Test Post 2', 'Test Post 1']);
+      expect(titles).toEqual(['Test Post 2', 'Test Post 1']);
     });
   });
 
   describe('getAllPublishedPosts', () => {
     it('should filter out future posts', async () => {
-      // Mock the current date to be 2023-06-01
-      const mockDate = new Date('2023-06-01');
-
-      vi.setSystemTime(mockDate);
-
+      getCurrentTimestampMock.mockResolvedValueOnce(
+        new Date('2023-06-01').getTime(),
+      );
       const posts = await getAllPublishedPosts();
 
       expect(posts).toHaveLength(2);
@@ -75,11 +88,9 @@ describe('posts', () => {
     });
 
     it('should include posts published today', async () => {
-      // Mock the current date to be 2023-01-02
-      const mockDate = new Date('2023-01-02');
-
-      vi.setSystemTime(mockDate);
-
+      getCurrentTimestampMock.mockResolvedValueOnce(
+        new Date('2023-01-02').getTime(),
+      );
       const posts = await getAllPublishedPosts();
 
       expect(posts).toHaveLength(2);

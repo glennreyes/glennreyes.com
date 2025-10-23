@@ -5,9 +5,13 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
+const buildYear = new Date().getUTCFullYear().toString();
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+  env: {
+    NEXT_PUBLIC_BUILD_YEAR: buildYear,
+  },
   experimental: {
-    ppr: 'incremental',
     viewTransition: true,
   },
   headers() {

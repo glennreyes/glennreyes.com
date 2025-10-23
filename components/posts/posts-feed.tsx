@@ -1,6 +1,6 @@
 import { getAllPublishedPosts } from '@/lib/posts';
 
-import { Feed } from '../ui/layout/feed';
+import { Feed, FeedItem } from '../ui/layout/feed';
 
 export const PostsFeed = async () => {
   const allPosts = await getAllPublishedPosts();
@@ -8,7 +8,7 @@ export const PostsFeed = async () => {
   return (
     <Feed>
       {allPosts.map(({ frontmatter, slug }) => (
-        <Feed.Item
+        <FeedItem
           action="Read Article"
           description={frontmatter.description}
           key={slug}

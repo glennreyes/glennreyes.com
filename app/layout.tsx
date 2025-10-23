@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
-import '@/app/globals.css';
 import { Analytics } from '@vercel/analytics/react';
+
+import '@/app/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Suspense } from 'react';
 
 import { Footer } from '@/components/footer/footer';
 import { Menu } from '@/components/navigation/menu';
@@ -51,14 +53,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html suppressHydrationWarning>
       <head />
       <Body>
-        <Providers>
-          <Navbar>
-            <Menu />
-          </Navbar>
-          <Main>{children}</Main>
-          <Footer />
-          <Toaster />
-        </Providers>
+        <Suspense fallback={null}>
+          <Providers>
+            <Navbar>
+              <Menu />
+            </Navbar>
+            <Main>{children}</Main>
+            <Toaster />
+            <Footer />
+          </Providers>
+        </Suspense>
         <SpeedInsights />
         <Analytics />
       </Body>
