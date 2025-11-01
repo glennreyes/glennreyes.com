@@ -1,8 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
-const getCurrentTimestampMock = vi.fn(() =>
-  new Date('2024-01-01').getTime(),
-);
+const getCurrentTimestampMock = vi.fn(() => new Date('2024-01-01').getTime());
 
 vi.mock('./time', () => ({
   getCurrentTimestamp: getCurrentTimestampMock,
