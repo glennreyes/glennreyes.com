@@ -92,17 +92,35 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ### Claude Code
 
-- Treat this file as the single source of truth; keep `CLAUDE.md` in sync (it references this document).
-- Run quality gates (`format`, `lint`, `test`) before responding unless infeasible; then explain.
-- Highlight assumption checks and TODOs for Glenn.
+**Critical Rules (ALWAYS check BEFORE coding):**
+
+- **File Creation**:
+  - NEVER create files unless absolutely necessary for achieving the goal
+  - ALWAYS prefer editing existing files over creating new ones
+  - NEVER proactively create documentation files (*.md) or README files unless explicitly requested
+  - Ask yourself: "Can I solve this by editing an existing file instead?"
+
+- **Quality Gates** (run BEFORE responding with code changes):
+  1. `pnpm format` - Prettier + ESLint auto-fix
+  2. `pnpm lint` - ESLint checks (no warnings tolerated)
+  3. `pnpm test` - Vitest test runner
+  4. `tsc --noEmit` - TypeScript checks (if types feel risky)
+  - If quality gates can't run, explain why and what was attempted
+
+- **Code Standards** (reinforced for Claude):
+  - No `any` types - use proper typing or type guards
+  - Never use type assertions (`as Type`) or non-null assertions (`!`) - only allow `as const` if necessary
+  - Never disable ESLint rules via comments - fix the underlying issue instead
+  - Never abbreviate event handlers - use `(event)` not `(e)`
+  - For unused destructured values - use array holes `[, setValue]` not `_value`
+
+- **General Workflow**:
+  - Treat this file as the single source of truth
+  - Run quality gates (`format`, `lint`, `test`) before responding unless infeasible; then explain
+  - Highlight assumption checks and TODOs for Glenn
 
 ### Cursor
 
-- Follow the same rules and quality gates as Claude.
-- Prefer using Cursor Tasks/Notebooks to capture command output when collaborating.
-- Keep code actions reversible: avoid auto-fixing files unrelated to the task.
-
-## Keeping Documents in Sync
-
-- `AGENTS.md` is canonical; update `CLAUDE.md` and `CURSOR.md` whenever this file changes.
-- Avoid duplicating guidance across multiple Markdown files: link back here instead.
+- Follow the same rules and quality gates as Claude
+- Prefer using Cursor Tasks/Notebooks to capture command output when collaborating
+- Keep code actions reversible: avoid auto-fixing files unrelated to the task
