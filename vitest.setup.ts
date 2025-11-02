@@ -8,3 +8,9 @@ function Tweet() {
 vi.mock('react-tweet', () => ({
   Tweet,
 }));
+
+// Mock Content Collections for tests
+vi.mock('content-collections', () => ({
+  allPosts: [],
+  allPages: [],
+}));

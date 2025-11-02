@@ -1,30 +1,28 @@
 import type { Metadata } from 'next';
 
 import { Page } from '@/components/ui/layout/page';
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
-
-interface ConfirmPageFrontmatter {
-  lead: string;
-  title: string;
-}
-
-const file = 'content/pages/subscribe/confirm.mdx';
+import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { frontmatter } = await readMDXFile<ConfirmPageFrontmatter>(file);
+  const page = await getPageBySlug('subscribe/confirm');
 
   return {
-    title: frontmatter.title,
+    title: page?.frontmatter.title ?? 'Confirm',
   };
 };
 
 const ConfirmPage = async () => {
-  const { content, frontmatter } =
-    await readMDXFile<ConfirmPageFrontmatter>(file);
+  const page = await getPageBySlug('subscribe/confirm');
+
+  if (!page) {
+    return null;
+  }
+
+  const { content, frontmatter } = page;
 
   return (
     <Page>
-      <Page.Header>{frontmatter.title}</Page.Header>
+      <Page.Header>{frontmatter.heading ?? frontmatter.title}</Page.Header>
       <Page.Body>{content}</Page.Body>
     </Page>
   );

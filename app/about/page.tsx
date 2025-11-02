@@ -14,27 +14,24 @@ import { Content } from '@/components/ui/layout/content';
 import { List } from '@/components/ui/layout/list';
 import { Page } from '@/components/ui/layout/page';
 import { email, github, instagram, linkedin, x } from '@/lib/constants';
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
-
-interface AboutPageFrontmatter {
-  heading: string;
-  lead: string;
-  title: string;
-}
-
-const file = 'content/pages/about.mdx';
+import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { frontmatter } = await readMDXFile<AboutPageFrontmatter>(file);
+  const page = await getPageBySlug('about');
 
   return {
-    title: frontmatter.title,
+    title: page?.frontmatter.title ?? 'About',
   };
 };
 
 const AboutPage = async () => {
-  const { content, frontmatter } =
-    await readMDXFile<AboutPageFrontmatter>(file);
+  const page = await getPageBySlug('about');
+
+  if (!page) {
+    return null;
+  }
+
+  const { content, frontmatter } = page;
 
   return (
     <Page>

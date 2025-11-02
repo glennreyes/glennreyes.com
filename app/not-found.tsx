@@ -1,27 +1,24 @@
 import type { Metadata } from 'next';
 
 import { Page } from '@/components/ui/layout/page';
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
-
-interface NotFoundPageFrontmatter {
-  heading: string;
-  lead: string;
-  title: string;
-}
-
-const file = 'content/pages/not-found.mdx';
+import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { frontmatter } = await readMDXFile<NotFoundPageFrontmatter>(file);
+  const page = await getPageBySlug('not-found');
 
   return {
-    title: frontmatter.title,
+    title: page?.frontmatter.title ?? 'Not Found',
   };
 };
 
 const NotFound = async () => {
-  const { content, frontmatter } =
-    await readMDXFile<NotFoundPageFrontmatter>(file);
+  const page = await getPageBySlug('not-found');
+
+  if (!page) {
+    return null;
+  }
+
+  const { content, frontmatter } = page;
 
   return (
     <Page>

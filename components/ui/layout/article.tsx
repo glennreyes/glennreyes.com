@@ -23,7 +23,7 @@ function Article({ back, children, ...props }: ArticleProps) {
             <div className="space-y-12">{children}</div>
           </>
         ) : (
-          children ?? null
+          (children ?? null)
         )}
       </article>
     </Container>

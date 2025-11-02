@@ -23,7 +23,11 @@ function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
       {meta !== null && meta !== undefined ? <Meta>{meta}</Meta> : null}
       <H1>{children}</H1>
       {lead !== null && lead !== undefined ? (
-        typeof lead === 'string' ? <Lead>{lead}</Lead> : lead
+        typeof lead === 'string' ? (
+          <Lead>{lead}</Lead>
+        ) : (
+          lead
+        )
       ) : null}
     </header>
   );

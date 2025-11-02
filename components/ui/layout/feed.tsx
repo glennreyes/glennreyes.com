@@ -37,7 +37,11 @@ export function Feed({
             <h2 className="font-medium text-teal-700 dark:text-teal-200/75">
               {title}
             </h2>
-            {description !== undefined && description !== null && description !== '' ? <p className="text-gray-500">{description}</p> : null}
+            {description !== undefined &&
+            description !== null &&
+            description !== '' ? (
+              <p className="text-gray-500">{description}</p>
+            ) : null}
           </div>
         </div>
         <div className={wrapperClasses}>{children}</div>
@@ -114,9 +118,9 @@ export function FeedItem({
       >
         {typeof description === 'string' ? (
           description
-        ) : (
-          description !== undefined && description !== null ? <div>{description}</div> : null
-        )}
+        ) : description !== undefined && description !== null ? (
+          <div>{description}</div>
+        ) : null}
       </Paragraph>
       {children}
     </>

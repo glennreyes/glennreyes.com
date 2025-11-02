@@ -110,13 +110,15 @@ function CardItem({
           ) : null}
           {meta !== undefined && meta !== null ? (
             <div className={metaClasses}>{meta}</div>
-          ) : (
-            date !== undefined && date !== null ? (
-              <DateDisplay className={metaClasses} value={date} />
-            ) : null
-          )}
+          ) : date !== undefined && date !== null ? (
+            <DateDisplay className={metaClasses} value={date} />
+          ) : null}
         </div>
-        {description !== undefined && description !== null && description !== '' ? <p className={descriptionClasses}>{description}</p> : null}
+        {description !== undefined &&
+        description !== null &&
+        description !== '' ? (
+          <p className={descriptionClasses}>{description}</p>
+        ) : null}
         {link !== undefined && link !== null && link !== '' ? (
           <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-900/50" />
         ) : null}

@@ -69,11 +69,18 @@ function EventAppearancesCard({
         <Card.Body title={type}>
           <div className="grid gap-6">
             <div className="grid gap-8 gap-y-16 md:grid-cols-3">
-              {(title ?? summary) !== undefined && (title ?? summary) !== null && path !== undefined && path !== null ? (
+              {(title ?? summary) !== undefined &&
+              (title ?? summary) !== null &&
+              path !== undefined &&
+              path !== null ? (
                 <div className="grid gap-12 md:col-span-2">
                   <div className="grid gap-8">
-                    {title !== undefined && title !== null ? <H2>{title}</H2> : null}
-                    {summary !== undefined && summary !== null ? <Paragraph>{summary}</Paragraph> : null}
+                    {title !== undefined && title !== null ? (
+                      <H2>{title}</H2>
+                    ) : null}
+                    {summary !== undefined && summary !== null ? (
+                      <Paragraph>{summary}</Paragraph>
+                    ) : null}
                   </div>
                   <ActionLink href={path}>View Details</ActionLink>
                 </div>
@@ -143,7 +150,9 @@ function EventAppearancesCard({
                       </Paragraph>
                     </div>
                   ) : null}
-                  {recording !== undefined && recording !== null && recording !== '' ? (
+                  {recording !== undefined &&
+                  recording !== null &&
+                  recording !== '' ? (
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Slides</span>
@@ -183,7 +192,12 @@ function EventAppearancesCard({
                 </dl>
               </div>
             </div>
-            {recording !== undefined && recording !== null && recording !== '' && title !== undefined && title !== null && isYouTube ? (
+            {recording !== undefined &&
+            recording !== null &&
+            recording !== '' &&
+            title !== undefined &&
+            title !== null &&
+            isYouTube ? (
               <>
                 <Divider />
                 <YouTube title={title} url={recording} />

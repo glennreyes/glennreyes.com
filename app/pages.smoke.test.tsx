@@ -47,21 +47,36 @@ vi.mock('@/lib/events', () => ({
     },
     appearances: [],
   }),
-  mapEventsToFeed: vi.fn((events) =>
-    events.map((event: { name: string; slug: string; startDate: Date | string; location: { city: string | null; country: string | null; state: string | null } }) => ({
-      name: event.name,
-      slug: event.slug,
-      startDate:
-        event.startDate instanceof Date
-          ? event.startDate.toISOString()
-          : new Date(event.startDate).toISOString(),
-      location: {
-        city: event.location.city ?? '',
-        country: event.location.country ?? '',
-        state: event.location.state,
-      },
-    })),
-  ),
+  mapEventsToFeed: vi.fn((events: unknown[]) => {
+    if (!Array.isArray(events)) {
+      return [];
+    }
+
+    return events.map(
+      (event: {
+        name: string;
+        slug: string;
+        startDate: Date | string;
+        location: {
+          city: string | null;
+          country: string | null;
+          state: string | null;
+        };
+      }) => ({
+        name: event.name,
+        slug: event.slug,
+        startDate:
+          event.startDate instanceof Date
+            ? event.startDate.toISOString()
+            : new Date(event.startDate).toISOString(),
+        location: {
+          city: event.location.city ?? '',
+          country: event.location.country ?? '',
+          state: event.location.state,
+        },
+      }),
+    );
+  }),
   getCurrentTimestamp: vi
     .fn()
     .mockResolvedValue(new Date('2024-01-01').getTime()),
@@ -143,15 +158,65 @@ vi.mock('@/lib/posts', () => ({
   }),
 }));
 
-vi.mock('@/lib/mdx/read-mdx-file', () => ({
-  readMDXFile: vi.fn().mockResolvedValue({
-    content: <div>Test MDX Content</div>,
-    frontmatter: {
-      title: 'Test Title',
+vi.mock('content-collections', () => ({
+  allPosts: [
+    {
+      body: 'Test post content',
+      description: 'Test description',
+      publishedAt: '2025-01-01',
+      slug: 'test-post',
+      title: 'Test Post',
+    },
+  ],
+  allPages: [
+    {
+      body: 'Test page content',
       heading: 'Test Heading',
       lead: 'Test Lead',
+      slug: 'about',
+      title: 'Test Title',
     },
-  }),
+    {
+      body: 'Legal content',
+      slug: 'legal',
+      title: 'Legal',
+    },
+    {
+      body: 'Privacy content',
+      lead: 'Privacy lead',
+      slug: 'privacy',
+      title: 'Privacy',
+    },
+    {
+      body: 'Uses content',
+      heading: 'Uses.',
+      lead: 'Uses lead',
+      slug: 'uses',
+      title: 'Uses',
+    },
+    {
+      body: 'Confirm content',
+      heading: 'Check your inbox to confirm.',
+      slug: 'subscribe/confirm',
+      title: 'Check your inbox',
+    },
+    {
+      body: 'Thank you content',
+      heading: 'Thanks for subscribing.',
+      slug: 'subscribe/thank-you',
+      title: "You're subscribed!",
+    },
+    {
+      body: 'Not found content',
+      heading: 'Not Found',
+      lead: 'Not found lead',
+      slug: 'not-found',
+      title: 'Not Found',
+    },
+  ],
+}));
+
+vi.mock('@/lib/mdx/read-mdx-file', () => ({
   mdxRemoteOptions: {},
 }));
 

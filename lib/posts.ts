@@ -1,7 +1,11 @@
-import { compareDesc } from 'date-fns';
+import type React from 'react';
 
-import { getMDXFiles } from './mdx/get-mdx-files';
-import { readMDXFile } from './mdx/read-mdx-file';
+import { allPosts as allPostsFromCollections } from 'content-collections';
+import { compareDesc } from 'date-fns';
+import { compileMDX } from 'next-mdx-remote/rsc';
+
+import { components } from './mdx/components';
+import { mdxRemoteOptions } from './mdx/read-mdx-file';
 
 export interface PostFrontmatter {
   description: string;
@@ -10,17 +14,31 @@ export interface PostFrontmatter {
   title: string;
 }
 
-const getAllPosts = async () => {
+interface Post {
+  content: React.ReactElement;
+  frontmatter: PostFrontmatter;
+  slug: string;
+}
+
+const getAllPosts = async (): Promise<Post[]> => {
+  const posts = allPostsFromCollections;
   const allPosts = await Promise.all(
-    getMDXFiles('content/posts').map(async (file) => {
-      const { content, frontmatter } = await readMDXFile<PostFrontmatter>(
-        `content/posts/${file}`,
-      );
+    posts.map(async (post) => {
+      const content = await compileMDX({
+        components,
+        options: mdxRemoteOptions,
+        source: post.body,
+      });
 
       return {
-        content,
-        frontmatter,
-        slug: file.replace(/\.mdx?$/, ''),
+        content: content.content,
+        frontmatter: {
+          description: post.description,
+          lead: post.lead,
+          publishedAt: post.publishedAt,
+          title: post.title,
+        },
+        slug: post.slug,
       };
     }),
   );
@@ -35,7 +53,7 @@ const getAllPosts = async () => {
     );
 };
 
-export const getAllPublishedPosts = async () => {
+export const getAllPublishedPosts = async (): Promise<Post[]> => {
   'use cache';
 
   const allPosts = await getAllPosts();

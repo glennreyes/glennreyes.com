@@ -17,6 +17,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, '.'),
+      'content-collections': resolve(
+        __dirname,
+        '__mocks__/content-collections.ts',
+      ),
     },
   },
   ssr: {

@@ -1,26 +1,24 @@
 import type { Metadata } from 'next';
 
 import { Page } from '@/components/ui/layout/page';
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
-
-interface UsesPageFrontmatter {
-  heading: string;
-  lead: string;
-  title: string;
-}
-
-const file = 'content/pages/uses.mdx';
+import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { frontmatter } = await readMDXFile<UsesPageFrontmatter>(file);
+  const page = await getPageBySlug('uses');
 
   return {
-    title: frontmatter.title,
+    title: page?.frontmatter.title ?? 'Uses',
   };
 };
 
 const UsesPage = async () => {
-  const { content, frontmatter } = await readMDXFile<UsesPageFrontmatter>(file);
+  const page = await getPageBySlug('uses');
+
+  if (!page) {
+    return null;
+  }
+
+  const { content, frontmatter } = page;
 
   return (
     <Page>

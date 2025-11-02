@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
 const getCurrentTimestampMock = vi.fn(() => new Date('2024-01-01').getTime());
@@ -6,46 +7,39 @@ vi.mock('./time', () => ({
   getCurrentTimestamp: getCurrentTimestampMock,
 }));
 
-// Mock the MDX functions
-vi.mock('./mdx/get-mdx-files', () => ({
-  getMDXFiles: vi.fn(() => [
-    'test-post-1.mdx',
-    'test-post-2.mdx',
-    'future-post.mdx',
-  ]),
+vi.mock('content-collections', () => ({
+  allPosts: [
+    {
+      body: 'Test content 1',
+      description: 'Test description 1',
+      publishedAt: '2023-01-01',
+      slug: 'test-post-1',
+      title: 'Test Post 1',
+    },
+    {
+      body: 'Test content 2',
+      description: 'Test description 2',
+      publishedAt: '2023-01-02',
+      slug: 'test-post-2',
+      title: 'Test Post 2',
+    },
+    {
+      body: 'Future content',
+      description: 'Future description',
+      publishedAt: '2030-01-01',
+      slug: 'future-post',
+      title: 'Future Post',
+    },
+  ],
 }));
 
-vi.mock('./mdx/read-mdx-file', () => ({
-  readMDXFile: vi.fn((file) => {
-    const mockPosts = {
-      'content/posts/test-post-1.mdx': {
-        content: 'Test content 1',
-        frontmatter: {
-          title: 'Test Post 1',
-          description: 'Test description 1',
-          publishedAt: '2023-01-01',
-        },
-      },
-      'content/posts/test-post-2.mdx': {
-        content: 'Test content 2',
-        frontmatter: {
-          title: 'Test Post 2',
-          description: 'Test description 2',
-          publishedAt: '2023-01-02',
-        },
-      },
-      'content/posts/future-post.mdx': {
-        content: 'Future content',
-        frontmatter: {
-          title: 'Future Post',
-          description: 'Future description',
-          publishedAt: '2030-01-01', // Future date
-        },
-      },
-    };
-
-    return Promise.resolve(mockPosts[file as keyof typeof mockPosts]);
-  }),
+vi.mock('next-mdx-remote/rsc', () => ({
+  compileMDX: vi.fn(({ source }: { source: string }) =>
+    Promise.resolve({
+      content: React.createElement('div', null, source),
+      frontmatter: {},
+    }),
+  ),
 }));
 
 const { getAllPublishedPosts } = await import('./posts');

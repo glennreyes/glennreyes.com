@@ -2,10 +2,9 @@ import type { NextRequest } from 'next/server';
 
 import { format, isThisYear } from 'date-fns';
 
-import type { PostFrontmatter } from '@/lib/posts';
 import type { RouteContext } from '@/types/next';
 
-import { readMDXFile } from '@/lib/mdx/read-mdx-file';
+import { getAllPublishedPosts } from '@/lib/posts';
 
 export const GET = async (
   _: NextRequest,
@@ -13,18 +12,22 @@ export const GET = async (
 ) => {
   try {
     const params = await props.params;
-    const { frontmatter } = await readMDXFile<PostFrontmatter>(
-      `content/posts/${params.slug}.mdx`,
-    );
-    const date = new Date(frontmatter.publishedAt);
+    const allPosts = await getAllPublishedPosts();
+    const post = allPosts.find((p) => p.slug === params.slug);
+
+    if (!post) {
+      return Response.json({ error: 'Post not found' }, { status: 404 });
+    }
+
+    const date = new Date(post.frontmatter.publishedAt);
     const publishedAt = format(
       date,
       isThisYear(date) ? 'MMMM d' : 'MMMM d, yyyy',
     );
 
-    return Response.json({ publishedAt, title: frontmatter.title });
+    return Response.json({ publishedAt, title: post.frontmatter.title });
   } catch (error) {
-    console.error('Error reading MDX file:', error);
+    console.error('Error reading post metadata:', error);
 
     return Response.json(
       { error: 'Failed to read post metadata' },
