@@ -69,15 +69,15 @@ function EventAppearancesCard({
         <Card.Body title={type}>
           <div className="grid gap-6">
             <div className="grid gap-8 gap-y-16 md:grid-cols-3">
-              {(title ?? summary) && path && (
+              {(title ?? summary) !== undefined && (title ?? summary) !== null && path !== undefined && path !== null ? (
                 <div className="grid gap-12 md:col-span-2">
                   <div className="grid gap-8">
-                    {title && <H2>{title}</H2>}
-                    {summary && <Paragraph>{summary}</Paragraph>}
+                    {title !== undefined && title !== null ? <H2>{title}</H2> : null}
+                    {summary !== undefined && summary !== null ? <Paragraph>{summary}</Paragraph> : null}
                   </div>
                   <ActionLink href={path}>View Details</ActionLink>
                 </div>
-              )}
+              ) : null}
               <div className="grid gap-4 md:col-span-1">
                 <dl className="grid content-start gap-4">
                   <div className="flex gap-2">
@@ -99,7 +99,7 @@ function EventAppearancesCard({
                       </dd>
                     </Paragraph>
                   </div>
-                  {type && (
+                  {type !== undefined && type !== null ? (
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Length</span>
@@ -115,8 +115,8 @@ function EventAppearancesCard({
                         </dd>
                       </Paragraph>
                     </div>
-                  )}
-                  {slides && (
+                  ) : null}
+                  {slides !== undefined && slides !== null && slides !== '' ? (
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Slides</span>
@@ -142,8 +142,8 @@ function EventAppearancesCard({
                         </dd>
                       </Paragraph>
                     </div>
-                  )}
-                  {recording && (
+                  ) : null}
+                  {recording !== undefined && recording !== null && recording !== '' ? (
                     <div className="flex gap-2">
                       <dt className="flex-none">
                         <span className="sr-only">Slides</span>
@@ -169,8 +169,8 @@ function EventAppearancesCard({
                         </dd>
                       </Paragraph>
                     </div>
-                  )}
-                  {tags && (
+                  ) : null}
+                  {tags !== undefined && tags !== null && tags.length > 0 ? (
                     <div>
                       <dt className="sr-only">Tags</dt>
                       <dd className="flex flex-wrap gap-2">
@@ -179,16 +179,16 @@ function EventAppearancesCard({
                         ))}
                       </dd>
                     </div>
-                  )}
+                  ) : null}
                 </dl>
               </div>
             </div>
-            {recording && title && isYouTube && (
+            {recording !== undefined && recording !== null && recording !== '' && title !== undefined && title !== null && isYouTube ? (
               <>
                 <Divider />
                 <YouTube title={title} url={recording} />
               </>
-            )}
+            ) : null}
           </div>
         </Card.Body>
       </article>

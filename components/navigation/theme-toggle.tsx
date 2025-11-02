@@ -53,13 +53,13 @@ export function ThemeToggle() {
               }}
               type="button"
             >
-              {isActive && (
+              {isActive ? (
                 <motion.div
                   className="absolute inset-0 -z-10 rounded-full bg-white shadow-sm dark:bg-gray-800"
                   layoutId="theme-toggle-active"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
-              )}
+              ) : null}
               <Icon className="relative h-4 w-4" strokeWidth={2} />
             </button>
           );

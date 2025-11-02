@@ -20,11 +20,11 @@ interface PageHeaderProps
 function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
   return (
     <header className="grid max-w-4xl gap-4" {...props}>
-      {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
+      {meta !== null && meta !== undefined ? <Meta>{meta}</Meta> : null}
       <H1>{children}</H1>
-      {lead !== null &&
-        lead !== undefined &&
-        (typeof lead === 'string' ? <Lead>{lead}</Lead> : lead)}
+      {lead !== null && lead !== undefined ? (
+        typeof lead === 'string' ? <Lead>{lead}</Lead> : lead
+      ) : null}
     </header>
   );
 }

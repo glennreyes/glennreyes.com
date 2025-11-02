@@ -95,7 +95,7 @@ export function Menu() {
           onClick={toggle}
         />
         <AnimatePresence>
-          {open && (
+          {open ? (
             <motion.div
               ref={menuRef}
               animate={{ opacity: 1 }}
@@ -124,7 +124,7 @@ export function Menu() {
                 ))}
               </ul>
             </motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
         <ul className="hidden gap-2 md:flex">
           {links.map((link) => (

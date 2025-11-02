@@ -70,7 +70,7 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
 
   return (
     <div className="not-prose grid gap-12">
-      {upcoming.length > 0 && (
+      {upcoming.length > 0 ? (
         <Feed title="Upcoming">
           {upcoming.map((event) => (
             <FeedItem
@@ -86,8 +86,8 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
             />
           ))}
         </Feed>
-      )}
-      {past.length > 0 && (
+      ) : null}
+      {past.length > 0 ? (
         <Feed title="Past">
           {past.map((event) => (
             <FeedItem
@@ -103,7 +103,7 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
             />
           ))}
         </Feed>
-      )}
+      ) : null}
       {children}
     </div>
   );

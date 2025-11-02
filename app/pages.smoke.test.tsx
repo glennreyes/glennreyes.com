@@ -47,6 +47,21 @@ vi.mock('@/lib/events', () => ({
     },
     appearances: [],
   }),
+  mapEventsToFeed: vi.fn((events) =>
+    events.map((event: { name: string; slug: string; startDate: Date | string; location: { city: string | null; country: string | null; state: string | null } }) => ({
+      name: event.name,
+      slug: event.slug,
+      startDate:
+        event.startDate instanceof Date
+          ? event.startDate.toISOString()
+          : new Date(event.startDate).toISOString(),
+      location: {
+        city: event.location.city ?? '',
+        country: event.location.country ?? '',
+        state: event.location.state,
+      },
+    })),
+  ),
   getCurrentTimestamp: vi
     .fn()
     .mockResolvedValue(new Date('2024-01-01').getTime()),

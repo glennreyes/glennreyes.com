@@ -31,11 +31,11 @@ interface CardBodyProps
 function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
-      {title && (
+      {title !== undefined && title !== null && title !== '' ? (
         <p className="font-medium text-teal-700 dark:text-teal-200/75">
           {title}
         </p>
-      )}
+      ) : null}
       {children}
     </div>
   );
@@ -91,14 +91,14 @@ function CardItem({
 
   return (
     <div className={itemClasses} {...props}>
-      {children !== undefined && children !== null && (
+      {children !== undefined && children !== null ? (
         <div className="relative z-10">{children}</div>
-      )}
+      ) : null}
       <div className="grid flex-1 items-center gap-4">
         <div className="grid">
-          {title !== undefined && (
+          {title !== undefined && title !== null ? (
             <H3>
-              {link ? (
+              {link !== undefined && link !== null && link !== '' ? (
                 <Link href={link}>
                   <span className="absolute -inset-x-6 -inset-y-2 z-20" />
                   <span className="relative z-10">{title}</span>
@@ -107,19 +107,19 @@ function CardItem({
                 title
               )}
             </H3>
-          )}
+          ) : null}
           {meta !== undefined && meta !== null ? (
             <div className={metaClasses}>{meta}</div>
           ) : (
-            date !== undefined && (
+            date !== undefined && date !== null ? (
               <DateDisplay className={metaClasses} value={date} />
-            )
+            ) : null
           )}
         </div>
-        {description && <p className={descriptionClasses}>{description}</p>}
-        {link && (
+        {description !== undefined && description !== null && description !== '' ? <p className={descriptionClasses}>{description}</p> : null}
+        {link !== undefined && link !== null && link !== '' ? (
           <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-900/50" />
-        )}
+        ) : null}
       </div>
     </div>
   );

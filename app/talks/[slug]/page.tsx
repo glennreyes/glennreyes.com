@@ -43,7 +43,7 @@ const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
       </Page.Header>
       <Page.Body>
         <MDXContent source={talk.abstract} />
-        {events.length > 0 && (
+        {events.length > 0 ? (
           <>
             <Divider />
             <H2>Appearances</H2>
@@ -51,7 +51,7 @@ const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
               <ActionLink href="/appearances">All Appearances</ActionLink>
             </AppearancesFeed>
           </>
-        )}
+        ) : null}
       </Page.Body>
     </Page>
   );

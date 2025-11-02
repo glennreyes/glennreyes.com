@@ -18,7 +18,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
 
   return (
     <div className="not-prose grid gap-12">
-      {active.length > 0 && (
+      {active.length > 0 ? (
         <Feed
           description="Workshops I'm currently giving or have upcoming."
           title="Current"
@@ -37,8 +37,8 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
             />
           ))}
         </Feed>
-      )}
-      {inactive.length > 0 && (
+      ) : null}
+      {inactive.length > 0 ? (
         <Feed description="Workshops I've given in the past." title="Past">
           {inactive.map(({ slug, summary, title }) => (
             <FeedItem
@@ -54,7 +54,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
             />
           ))}
         </Feed>
-      )}
+      ) : null}
       {children}
     </div>
   );

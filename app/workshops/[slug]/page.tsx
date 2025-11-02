@@ -45,10 +45,10 @@ export default async function WorkshopPage(
       </Page.Header>
       <Page.Body>
         <MDXContent source={workshop.description} />
-        {workshop.curriculum !== null && (
+        {workshop.curriculum !== null ? (
           <MDXContent source={workshop.curriculum} />
-        )}
-        {events.length > 0 && (
+        ) : null}
+        {events.length > 0 ? (
           <>
             <Divider />
             <H2>Appearances</H2>
@@ -56,7 +56,7 @@ export default async function WorkshopPage(
               <ActionLink href="/appearances">All Appearances</ActionLink>
             </AppearancesFeed>
           </>
-        )}
+        ) : null}
       </Page.Body>
     </Page>
   );

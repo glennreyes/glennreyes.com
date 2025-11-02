@@ -49,7 +49,7 @@ export const Appearances = async () => {
       <Card>
         <div className="grid gap-8">
           <div className="grid gap-6">
-            {topUpcomingEvents.length > 0 && (
+            {topUpcomingEvents.length > 0 ? (
               <>
                 <Card.Body title="Upcoming">
                   <List asChild>
@@ -69,7 +69,7 @@ export const Appearances = async () => {
                 </Card.Body>
                 <Divider />
               </>
-            )}
+            ) : null}
             <Card.Body
               title={topUpcomingEvents.length > 0 ? 'Past' : undefined}
             >

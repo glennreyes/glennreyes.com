@@ -37,7 +37,7 @@ export function Feed({
             <h2 className="font-medium text-teal-700 dark:text-teal-200/75">
               {title}
             </h2>
-            {description && <p className="text-gray-500">{description}</p>}
+            {description !== undefined && description !== null && description !== '' ? <p className="text-gray-500">{description}</p> : null}
           </div>
         </div>
         <div className={wrapperClasses}>{children}</div>
@@ -100,9 +100,9 @@ export function FeedItem({
       <div className="grid">
         <H3>{titleContent}</H3>
         {meta === undefined ? (
-          date !== undefined && (
+          date !== undefined && date !== null ? (
             <DateDisplay className={metaClasses} value={date} />
-          )
+          ) : null
         ) : (
           <Meta className={metaClasses}>{meta}</Meta>
         )}
@@ -115,7 +115,7 @@ export function FeedItem({
         {typeof description === 'string' ? (
           description
         ) : (
-          <div>{description}</div>
+          description !== undefined && description !== null ? <div>{description}</div> : null
         )}
       </Paragraph>
       {children}
@@ -124,7 +124,7 @@ export function FeedItem({
 
   return (
     <article className={articleClasses} {...props}>
-      {action ? (
+      {action !== undefined && action !== null && action !== '' ? (
         <>
           <div className="grid gap-2">{content}</div>
           <p className="relative z-10 inline-flex items-center gap-0.5 font-medium text-teal-700 transition group-hover:text-teal-800 dark:text-teal-200/75 dark:group-hover:text-teal-200/90">
@@ -139,9 +139,9 @@ export function FeedItem({
       ) : (
         content
       )}
-      {link && (
+      {link !== undefined && link !== null && link !== '' ? (
         <div className="absolute -inset-4 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 md:-inset-6 md:rounded-3xl dark:bg-gray-900/50" />
-      )}
+      ) : null}
     </article>
   );
 }

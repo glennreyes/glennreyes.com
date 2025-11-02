@@ -105,19 +105,19 @@ export const components: MDXComponents = {
           className="group relative my-[1.7142857em] overflow-hidden rounded-3xl border border-slate-300/25 dark:border-slate-500/25 [&_pre]:my-0 [&+pre]:rounded-t-none"
           {...props}
         >
-          {hasFigcaption && (
+          {hasFigcaption ? (
             <div className="relative flex items-center justify-end gap-2 rounded-t-3xl bg-slate-900 px-4 py-1 text-slate-400 sm:px-6 dark:bg-slate-950 dark:text-slate-500">
               <div className="-me-2 flex-none">
                 <CopyToClipboard value={raw ?? ''} />
               </div>
             </div>
-          )}
+          ) : null}
           {children}
-          {!hasFigcaption && (
+          {!hasFigcaption ? (
             <div className="absolute top-4 right-4 z-10 opacity-0 transition-opacity group-hover:opacity-100">
               <CopyToClipboard value={raw ?? ''} />
             </div>
-          )}
+          ) : null}
         </figure>
       );
     }

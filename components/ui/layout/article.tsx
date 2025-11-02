@@ -23,7 +23,7 @@ function Article({ back, children, ...props }: ArticleProps) {
             <div className="space-y-12">{children}</div>
           </>
         ) : (
-          children
+          children ?? null
         )}
       </article>
     </Container>
@@ -39,9 +39,9 @@ interface ArticleHeaderProps
 function ArticleHeader({ children, lead, meta, ...props }: ArticleHeaderProps) {
   return (
     <header className="mx-auto grid max-w-[70ch] gap-4" {...props}>
-      {meta !== null && meta !== undefined && <Meta>{meta}</Meta>}
+      {meta !== null && meta !== undefined ? <Meta>{meta}</Meta> : null}
       <H1>{children}</H1>
-      {lead !== null && lead !== undefined && <Lead>{lead}</Lead>}
+      {lead !== null && lead !== undefined ? <Lead>{lead}</Lead> : null}
     </header>
   );
 }

@@ -16,7 +16,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
 
   return (
     <div className="not-prose grid gap-12">
-      {active.length > 0 && (
+      {active.length > 0 ? (
         <Feed
           description="Talks I'm currently giving or have upcoming."
           title="Current"
@@ -35,8 +35,8 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
             />
           ))}
         </Feed>
-      )}
-      {inactive.length > 0 && (
+      ) : null}
+      {inactive.length > 0 ? (
         <Feed description="Talks I've given in the past." title="Past">
           {inactive.map(({ abstract, slug, title }) => (
             <FeedItem
@@ -52,7 +52,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
             />
           ))}
         </Feed>
-      )}
+      ) : null}
       {children}
     </div>
   );
