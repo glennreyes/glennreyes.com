@@ -32,9 +32,11 @@ jobs:
         continue-on-error: true
         env:
           CI: true
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 
       - name: Run tests
         run: pnpm test
 
       - name: Run type checking
-        run: tsc --noEmit
+        run: pnpm exec tsc --noEmit
