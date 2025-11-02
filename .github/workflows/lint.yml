@@ -27,6 +27,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Content Collections
+        run: pnpm next build
+        continue-on-error: true
+        env:
+          CI: true
+
       - name: Run ESLint
         run: pnpm lint
 

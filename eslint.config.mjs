@@ -5,6 +5,6 @@ export default [
   ...baseConfig,
   ...storybook.configs['flat/recommended'],
   {
-    ignores: ['storybook-static/**'],
+    ignores: ['storybook-static/**', '.content-collections/**'],
   },
 ];
