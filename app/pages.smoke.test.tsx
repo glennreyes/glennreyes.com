@@ -52,17 +52,38 @@ vi.mock('@/lib/events', () => ({
       return [];
     }
 
-    return events.map(
-      (event: {
-        name: string;
-        slug: string;
-        startDate: Date | string;
-        location: {
-          city: string | null;
-          country: string | null;
-          state: string | null;
-        };
-      }) => ({
+    function isFeedEventSource(
+      value: unknown,
+    ): value is {
+      name: string;
+      slug: string;
+      startDate: Date | string;
+      location: {
+        city: string | null;
+        country: string | null;
+        state: string | null;
+      };
+    } {
+      return (
+        typeof value === 'object' &&
+        value !== null &&
+        'name' in value &&
+        'slug' in value &&
+        'startDate' in value &&
+        'location' in value &&
+        typeof (value as { name: unknown }).name === 'string' &&
+        typeof (value as { slug: unknown }).slug === 'string' &&
+        typeof (value as { location: unknown }).location === 'object' &&
+        (value as { location: unknown }).location !== null
+      );
+    }
+
+    return events.map((event: unknown) => {
+      if (!isFeedEventSource(event)) {
+        throw new Error('Invalid event structure');
+      }
+
+      return {
         name: event.name,
         slug: event.slug,
         startDate:
@@ -74,8 +95,8 @@ vi.mock('@/lib/events', () => ({
           country: event.location.country ?? '',
           state: event.location.state,
         },
-      }),
-    );
+      };
+    });
   }),
   getCurrentTimestamp: vi
     .fn()
