@@ -52,9 +52,7 @@ vi.mock('@/lib/events', () => ({
       return [];
     }
 
-    function isFeedEventSource(
-      value: unknown,
-    ): value is {
+    function isFeedEventSource(value: unknown): value is {
       name: string;
       slug: string;
       startDate: Date | string;
