@@ -97,7 +97,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - **File Creation**:
   - NEVER create files unless absolutely necessary for achieving the goal
   - ALWAYS prefer editing existing files over creating new ones
-  - NEVER proactively create documentation files (*.md) or README files unless explicitly requested
+  - NEVER proactively create documentation files (\*.md) or README files unless explicitly requested
   - Ask yourself: "Can I solve this by editing an existing file instead?"
 
 - **Quality Gates** (run BEFORE responding with code changes):

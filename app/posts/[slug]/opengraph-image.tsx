@@ -1,6 +1,8 @@
 import { ImageResponse } from 'next/og';
 import { z } from 'zod';
 
+import type { RouteContext } from '@/types/next';
+
 import { origin } from '@/lib/constants';
 
 export const runtime = 'edge';
@@ -14,7 +16,8 @@ const successSchema = z.object({
 });
 const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
   try {
-    const params = await props.params;
+    const params: Awaited<RouteContext<'/posts/[slug]/meta'>['params']> =
+      await props.params;
     const res = await fetch(`${origin}/posts/${params.slug}/meta`);
 
     if (!res.ok) {

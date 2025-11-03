@@ -12,34 +12,28 @@ export const Appearances = async () => {
   const allEvents = await getAllEvents();
   const events = mapEventsToFeed(allEvents);
   const now = await getTimestamp();
-  // Calculate the difference between each date and today's date
-  const dateDistances = events.map((event) =>
-    Math.abs(new Date(event.startDate).getTime() - now),
-  );
-  // Sort the events by their date distance to today's date
-  const sortedEvents = [...events].sort((first, second) => {
-    const firstDistance = dateDistances[events.indexOf(first)];
-    const secondDistance = dateDistances[events.indexOf(second)];
-
-    if (firstDistance === undefined || secondDistance === undefined) {
-      return 0;
-    }
-
-    return firstDistance - secondDistance;
-  });
-  // Filter upcoming and past events separately
-  const upcomingEventsSorted = sortedEvents.filter(
-    (event) => new Date(event.startDate).getTime() > now,
-  );
-  const pastEventsSorted = sortedEvents.filter(
-    (event) => new Date(event.startDate).getTime() <= now,
-  );
+  // Filter and sort upcoming events (future dates, ascending)
+  const upcomingEvents = events
+    .filter((event) => new Date(event.startDate).getTime() > now)
+    .sort(
+      (first, second) =>
+        new Date(first.startDate).getTime() -
+        new Date(second.startDate).getTime(),
+    );
+  // Filter and sort past events (past dates, descending - most recent first)
+  const pastEvents = events
+    .filter((event) => new Date(event.startDate).getTime() <= now)
+    .sort(
+      (first, second) =>
+        new Date(second.startDate).getTime() -
+        new Date(first.startDate).getTime(),
+    );
   // Get the 5 closest upcoming events
-  const topUpcomingEvents = upcomingEventsSorted.slice(0, 5);
+  const topUpcomingEvents = upcomingEvents.slice(0, 5);
   // Determine the number of past events to include
   const numberOfPastEvents = 5 - topUpcomingEvents.length;
   // Get the closest past events if needed
-  const topPastEvents = pastEventsSorted.slice(0, numberOfPastEvents);
+  const topPastEvents = pastEvents.slice(0, numberOfPastEvents);
 
   return (
     <section className="grid gap-6">
