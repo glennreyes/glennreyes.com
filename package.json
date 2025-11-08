@@ -49,7 +49,7 @@
     "react-dom": "19.3.0-canary-4fdf7cf2-20251003",
     "react-tweet": "^3.2.2",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.3.1",
+    "tailwind-merge": "^3.4.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
