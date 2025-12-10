@@ -24,8 +24,7 @@ const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
       throw new Error(`Failed to fetch meta data: ${res.status}`);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const rawData = await res.json();
+    const rawData: unknown = await res.json();
     const errorResult = errorSchema.safeParse(rawData);
 
     if (errorResult.success) {
@@ -51,26 +50,22 @@ const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
 
     if (!title) {
       return new ImageResponse(
-        (
-          <div
-            style={{ backgroundImage: `url(${origin}/opengraph-image.png)` }}
-            tw="h-full w-full"
-          />
-        ),
+        <div
+          style={{ backgroundImage: `url(${origin}/opengraph-image.png)` }}
+          tw="h-full w-full"
+        />,
         size,
       );
     }
 
     return new ImageResponse(
-      (
-        <div
-          style={{ backgroundImage: `url(${origin}/images/og-content.png)` }}
-          tw="bg-slate-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
-        >
-          <time tw="text-8xl text-slate-500">{publishedAt}</time>
-          <h1 tw="text-8xl font-medium text-slate-50 pt-6">{title}</h1>
-        </div>
-      ),
+      <div
+        style={{ backgroundImage: `url(${origin}/images/og-content.png)` }}
+        tw="bg-slate-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
+      >
+        <time tw="text-8xl text-slate-500">{publishedAt}</time>
+        <h1 tw="text-8xl font-medium text-slate-50 pt-6">{title}</h1>
+      </div>,
       {
         fonts: [
           {
@@ -92,12 +87,10 @@ const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
 
     // Fallback to default OpenGraph image
     return new ImageResponse(
-      (
-        <div
-          style={{ backgroundImage: `url(${origin}/opengraph-image.png)` }}
-          tw="h-full w-full"
-        />
-      ),
+      <div
+        style={{ backgroundImage: `url(${origin}/opengraph-image.png)` }}
+        tw="h-full w-full"
+      />,
       size,
     );
   }

@@ -31,14 +31,16 @@ const buttonVariants = cva(
 type ButtonBaseProps = VariantProps<typeof buttonVariants>;
 
 interface ButtonDefaultProps
-  extends ButtonBaseProps,
+  extends
+    ButtonBaseProps,
     Omit<ComponentPropsWithoutRef<'button'>, 'className'> {
   as?: 'button';
   className?: string;
 }
 
 interface ButtonAsLinkProps
-  extends ButtonBaseProps,
+  extends
+    ButtonBaseProps,
     Omit<ComponentPropsWithoutRef<typeof Link>, 'as' | 'className'> {
   as: 'link';
   className?: string;

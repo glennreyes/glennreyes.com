@@ -23,8 +23,10 @@ function Card({ asChild, ...props }: CardProps) {
   );
 }
 
-interface CardBodyProps
-  extends Omit<ComponentPropsWithoutRef<'div'>, 'className' | 'title'> {
+interface CardBodyProps extends Omit<
+  ComponentPropsWithoutRef<'div'>,
+  'className' | 'title'
+> {
   title?: string;
 }
 

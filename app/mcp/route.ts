@@ -25,8 +25,7 @@ const MCPRequestSchema = z.object({
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const rawBody = await request.json();
+    const rawBody: unknown = await request.json();
     const parseResult = MCPRequestSchema.safeParse(rawBody);
 
     if (!parseResult.success) {
@@ -59,7 +58,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     return NextResponse.json({ error: 'Unsupported method' }, { status: 400 });
-  } catch {
+  } catch (error) {
+    console.error('MCP route error:', error);
+
     return NextResponse.json(
       { error: 'Failed to process request' },
       { status: 500 },

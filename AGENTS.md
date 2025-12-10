@@ -27,7 +27,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 ## MCP Server Notes
 
 - `/mcp` route exposes the MCP server over HTTP; HTML renders for browsers, JSON/POST requests receive MCP responses.
-- Shared logic lives in `lib/mcp/core.ts`.
+- Shared logic lives in `lib/mcp.ts`.
 - The standalone CLI (`scripts/mcp-server.ts`) is optional: keep only if stdio-based agents are needed.
 - Middleware currently lets `/mcp` handle all traffic directly; no `/api/mcp` proxy exists.
 

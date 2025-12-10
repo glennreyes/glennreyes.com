@@ -6,8 +6,10 @@ import { Lead } from '../typography/lead';
 import { Meta } from '../typography/meta';
 import { Container } from './container';
 
-interface ArticleProps
-  extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+interface ArticleProps extends Omit<
+  ComponentPropsWithoutRef<'article'>,
+  'className'
+> {
   back?: ReactNode;
 }
 
@@ -30,8 +32,10 @@ function Article({ back, children, ...props }: ArticleProps) {
   );
 }
 
-interface ArticleHeaderProps
-  extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
+interface ArticleHeaderProps extends Omit<
+  ComponentPropsWithoutRef<'header'>,
+  'className' | 'title'
+> {
   lead?: ReactNode;
   meta: ReactNode;
 }

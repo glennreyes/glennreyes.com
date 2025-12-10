@@ -27,7 +27,8 @@ const avatarImageSizes = {
 } as const;
 
 interface AvatarProps
-  extends Omit<
+  extends
+    Omit<
       ComponentPropsWithoutRef<typeof Image>,
       'alt' | 'className' | 'height' | 'placeholder' | 'src' | 'width'
     >,

@@ -9,8 +9,7 @@ const parseJsonWith = async <T>(
   schema: z.ZodSchema<T>,
 ): Promise<T> => {
   const text = await response.text();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const rawData = JSON.parse(text);
+  const rawData: unknown = JSON.parse(text);
 
   return schema.parse(rawData);
 };

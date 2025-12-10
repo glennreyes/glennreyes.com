@@ -27,33 +27,36 @@ const alertVariants = cva(
 );
 
 interface AlertProps
-  extends Omit<ComponentPropsWithoutRef<'div'>, 'className'>,
+  extends
+    Omit<ComponentPropsWithoutRef<'div'>, 'className'>,
     VariantProps<typeof alertVariants> {
   className?: string;
 }
 
-const Alert = ({ className, variant, ...props }: AlertProps) => (
-  <div
-    role="alert"
-    className={cn(alertVariants({ variant }), className)}
-    {...props}
-  />
-);
+function Alert({ className, variant, ...props }: AlertProps) {
+  return (
+    <div
+      role="alert"
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    />
+  );
+}
 
 interface AlertTitleProps extends ComponentPropsWithoutRef<'h5'> {
   className?: string;
 }
 
-const AlertTitle = ({ className, ...props }: AlertTitleProps) => (
-  <h5 className={cn('font-medium', className)} {...props} />
-);
+function AlertTitle({ className, ...props }: AlertTitleProps) {
+  return <h5 className={cn('font-medium', className)} {...props} />;
+}
 
 interface AlertDescriptionProps extends ComponentPropsWithoutRef<'div'> {
   className?: string;
 }
 
-const AlertDescription = ({ className, ...props }: AlertDescriptionProps) => (
-  <div className={cn(className)} {...props} />
-);
+function AlertDescription({ className, ...props }: AlertDescriptionProps) {
+  return <div className={cn(className)} {...props} />;
+}
 
 export { Alert, AlertDescription, AlertTitle };

@@ -16,7 +16,7 @@ type NewsletterFormProps = Omit<
   'children' | 'className'
 >;
 
-const SubmitButton = () => {
+function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
@@ -24,7 +24,8 @@ const SubmitButton = () => {
       {pending ? 'Subscribing...' : 'Subscribe'}
     </Button>
   );
-};
+}
+
 const handleSubscribe = async (formData: FormData) => {
   const result = await subscribe(null, formData);
 

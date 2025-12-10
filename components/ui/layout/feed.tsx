@@ -56,8 +56,10 @@ export function Feed({
   );
 }
 
-interface FeedItemProps
-  extends Omit<ComponentPropsWithoutRef<'article'>, 'className'> {
+interface FeedItemProps extends Omit<
+  ComponentPropsWithoutRef<'article'>,
+  'className'
+> {
   action?: string;
   children?: ReactNode;
   date?: Date | string;

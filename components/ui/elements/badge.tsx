@@ -24,7 +24,8 @@ const badgeVariants = cva(
 );
 
 interface BadgeProps
-  extends Omit<ComponentPropsWithoutRef<'span'>, 'className' | 'color'>,
+  extends
+    Omit<ComponentPropsWithoutRef<'span'>, 'className' | 'color'>,
     VariantProps<typeof badgeVariants> {
   className?: string;
 }

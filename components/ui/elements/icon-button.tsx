@@ -41,15 +41,15 @@ interface IconButtonBaseProps extends VariantProps<typeof iconButtonVariants> {
 }
 
 interface IconButtonDefaultProps
-  extends IconButtonBaseProps,
+  extends
+    IconButtonBaseProps,
     Omit<ComponentPropsWithoutRef<'button'>, 'children'> {
   as?: 'button';
   className?: string;
 }
 
 interface IconButtonAsLinkProps
-  extends IconButtonBaseProps,
-    ComponentPropsWithoutRef<typeof Link> {
+  extends IconButtonBaseProps, ComponentPropsWithoutRef<typeof Link> {
   as: 'link';
   className?: string;
 }

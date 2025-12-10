@@ -28,23 +28,33 @@ interface MCPContentProps {
   toolGroups: ToolGroup[];
 }
 
-export function MCPContent({ source, toolGroups }: MCPContentProps) {
-  const groups = new Map(toolGroups.map((group) => [group.id, group]));
-  const ToolGrid = ({ children }: { children?: ReactNode }) => (
-    <div className="grid gap-6">{children}</div>
-  );
-  const DefinitionList = ({ children }: { children?: ReactNode }) => (
+interface ToolGridProps {
+  children?: ReactNode;
+}
+
+function ToolGrid({ children }: ToolGridProps) {
+  return <div className="grid gap-6">{children}</div>;
+}
+
+interface DefinitionListProps {
+  children?: ReactNode;
+}
+
+function DefinitionList({ children }: DefinitionListProps) {
+  return (
     <dl className="not-prose overflow-hidden rounded-3xl border border-slate-200 bg-white/70 text-slate-600 shadow-sm dark:border-slate-700/80 dark:bg-slate-800/60 dark:text-slate-300">
       {children}
     </dl>
   );
-  const DefinitionListItem = ({
-    detail,
-    term,
-  }: {
-    detail: ReactNode;
-    term: string;
-  }) => (
+}
+
+interface DefinitionListItemProps {
+  detail: ReactNode;
+  term: string;
+}
+
+function DefinitionListItem({ detail, term }: DefinitionListItemProps) {
+  return (
     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-slate-200/70 px-5 py-4 first:border-t-0 dark:border-slate-700/60">
       <dt className="font-medium text-slate-500 dark:text-slate-400">{term}</dt>
       <dd className="font-medium text-slate-950 dark:text-slate-100">
@@ -52,7 +62,16 @@ export function MCPContent({ source, toolGroups }: MCPContentProps) {
       </dd>
     </div>
   );
-  const ToolGroupComponent = ({ id }: { id: string }) => {
+}
+
+export function MCPContent({ source, toolGroups }: MCPContentProps) {
+  const groups = new Map(toolGroups.map((group) => [group.id, group]));
+
+  interface ToolGroupComponentProps {
+    id: string;
+  }
+
+  function ToolGroupComponent({ id }: ToolGroupComponentProps) {
     const group = groups.get(id);
 
     if (!group) {
@@ -75,7 +94,7 @@ export function MCPContent({ source, toolGroups }: MCPContentProps) {
         </div>
       </div>
     );
-  };
+  }
 
   return (
     <MDXContent

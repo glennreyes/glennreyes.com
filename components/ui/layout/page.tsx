@@ -11,8 +11,10 @@ function Page(props: PageProps) {
   return <Container className="space-y-12" {...props} />;
 }
 
-interface PageHeaderProps
-  extends Omit<ComponentPropsWithoutRef<'header'>, 'className' | 'title'> {
+interface PageHeaderProps extends Omit<
+  ComponentPropsWithoutRef<'header'>,
+  'className' | 'title'
+> {
   lead?: ReactNode;
   meta?: ReactNode;
 }
