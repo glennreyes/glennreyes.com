@@ -14,21 +14,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 'latest'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Generate Content Collections
-        run: pnpm next build
+        run: bun next build
         continue-on-error: true
         env:
           CI: true
@@ -36,7 +31,7 @@ jobs:
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 
       - name: Run tests
-        run: pnpm test
+        run: bun run test
 
       - name: Run type checking
-        run: pnpm exec tsc --noEmit
+        run: bun tsc --noEmit

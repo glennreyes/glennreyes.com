@@ -7,7 +7,7 @@
     "analyze": "ANALYZE=true next build",
     "build": "next build",
     "dev": "next dev",
-    "format": "prettier --list-different --write . && pnpm lint --fix",
+    "format": "prettier --list-different --write . && bun lint --fix",
     "knip": "knip",
     "lint": "eslint .",
     "test": "vitest run",
@@ -15,6 +15,7 @@
     "test:ui": "vitest --ui",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "benchmark": "bun scripts/benchmark.ts",
     "mcp:server": "tsx scripts/mcp-server.ts",
     "mcp:inspector": "npx @modelcontextprotocol/inspector tsx scripts/mcp-server.ts",
     "start": "next start",
@@ -96,9 +97,7 @@
     "unist-util-visit": "^5.0.0",
     "vitest": "^4.0.16"
   },
-  "pnpm": {
-    "overrides": {
-      "esbuild": "^0.25.0"
-    }
+  "overrides": {
+    "esbuild": "^0.25.0"
   }
 }

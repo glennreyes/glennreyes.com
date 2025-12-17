@@ -11,18 +11,18 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Environment & Tooling
 
-1. Install dependencies: `pnpm install`
+1. Install dependencies: `bun install`
 2. Database: Configure Turso connection in `.env`
-3. Development server: `pnpm dev` (Turbopack, served at <http://localhost:3000>)
-4. Production build: `pnpm build` then `pnpm start`
+3. Development server: `bun dev` (Turbopack, served at <http://localhost:3000>)
+4. Production build: `bun build` then `bun start`
 
 ## Quality Gates (run before handing work back)
 
-- `pnpm format` – Prettier + ESLint auto-fix
-- `pnpm lint` – ESLint (strict, no warnings tolerated)
-- `pnpm test` – Vitest test runner
-- `pnpm tsc --noEmit` – TypeScript type checking
-- `pnpm knip` – Optional, will flag unused files/deps
+- `bun format` – Prettier + ESLint auto-fix
+- `bun lint` – ESLint (strict, no warnings tolerated)
+- `bun test` – Vitest test runner
+- `bun tsc --noEmit` – TypeScript type checking
+- `bun knip` – Optional, will flag unused files/deps
 
 ## MCP Server Notes
 
@@ -79,7 +79,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Git & Workflow
 
-- **Always run quality gates before committing** - ensure `pnpm format`, `pnpm lint`, and `pnpm test` pass.
+- **Always run quality gates before committing** - ensure `bun format`, `bun lint`, and `bun test` pass.
 - Work in small, coherent commits with present-tense summaries.
 - **Avoid conventional commit messages** (fix:, feat:, etc.) - use natural, readable descriptions instead.
 - **Use backticks for technical terms** - wrap variables, component names, function names, and file paths in backticks (e.g., `viewTransitionName`, `Avatar`, `utils.ts`).
@@ -101,9 +101,9 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
   - Ask yourself: "Can I solve this by editing an existing file instead?"
 
 - **Quality Gates** (run BEFORE responding with code changes):
-  1. `pnpm format` - Prettier + ESLint auto-fix
-  2. `pnpm lint` - ESLint checks (no warnings tolerated)
-  3. `pnpm test` - Vitest test runner
+  1. `bun format` - Prettier + ESLint auto-fix
+  2. `bun lint` - ESLint checks (no warnings tolerated)
+  3. `bun test` - Vitest test runner
   4. `tsc --noEmit` - TypeScript checks (if types feel risky)
   - If quality gates can't run, explain why and what was attempted
 

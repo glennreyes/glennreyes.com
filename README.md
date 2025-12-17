@@ -16,7 +16,7 @@ The site is hosted on [Vercel](https://vercel.com) and uses [Vercel Analytics](h
 
 ## Run the Development Server
 
-This project uses latest [Node](https://nodejs.org), [pnpm](https://pnpm.io) and [Docker](https://www.docker.com) for development.
+This project uses latest [Node](https://nodejs.org), [Bun](https://bun.sh) and [Docker](https://www.docker.com) for development.
 
 ### Installation
 
@@ -30,7 +30,7 @@ cd glennreyes.com
 2. Install dependencies
 
 ```bash
-pnpm install
+bun install
 ```
 
 ### Development Server
@@ -38,7 +38,7 @@ pnpm install
 1. Run the development server
 
 ```bash
-pnpm dev
+bun dev
 ```
 
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
