@@ -30,7 +30,7 @@ jobs:
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 
-      - name: Run ESLint
+      - name: Run Oxlint
         run: bun lint
 
       - name: Run Knip

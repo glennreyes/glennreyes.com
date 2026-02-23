@@ -1,0 +1,40 @@
+{
+  "location": {
+    "name": "DeFabrique",
+    "address": "Westkanaaldijk 7",
+    "city": "Utrecht",
+    "state": null,
+    "country": "Netherlands",
+    "zip": "3542DA",
+    "type": "EVENT_HALL"
+  },
+  "event": {
+    "slug": "2026-03-dutch-ai-conference",
+    "name": "Dutch AI Conference 2026",
+    "url": "https://aiconference.nl",
+    "type": "CONFERENCE",
+    "startDateTime": "2026-03-10T00:00:00+01:00",
+    "endDateTime": "2026-03-12T23:59:59+01:00"
+  },
+  "talk": {
+    "matchKeywords": ["mcp-ui", "interactive", "conversation"],
+    "appearance": {
+      "slug": "2026-03-dutch-ai-conference-talk",
+      "dateTime": "2026-03-12T15:35:00+01:00",
+      "length": "MEDIUM"
+    }
+  },
+  "workshop": {
+    "slug": "building-interactive-chat-interfaces-with-mcp-ui",
+    "title": "Building Interactive Chat Interfaces with MCP-UI",
+    "status": "ACTIVE",
+    "tags": ["AI", "MCP", "UI"],
+    "summary": "A hands-on workshop for building interactive React components inside conversational interfaces with MCP-UI.",
+    "description": "Chat interfaces are everywhere, but they're still stuck with text-only interactions. In this hands-on full-day workshop, you'll learn how to build real, interactive React components that live inside conversational interfaces using MCP-UI. You'll go from basics to building production-ready chat-embedded UIs, and leave with practical skills for building interfaces in the age of conversational software."
+  },
+  "workshopAppearance": {
+    "slug": "2026-03-dutch-ai-conference-workshop",
+    "dateTime": "2026-03-11T13:30:00+01:00",
+    "length": "MEDIUM"
+  }
+}

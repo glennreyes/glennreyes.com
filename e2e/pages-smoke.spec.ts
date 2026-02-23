@@ -65,7 +65,9 @@ test.describe('Page Smoke Tests', () => {
       await page.goto('/subscribe/thank-you');
 
       await expect(page.locator('h1')).toBeVisible();
-      await expect(page.locator('body')).toContainText('subscribed');
+      await expect(page.locator('body')).toContainText(
+        'Thanks for subscribing',
+      );
     });
 
     test('talks page loads and displays content', async ({ page }) => {

@@ -1,0 +1,96 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "eslint",
+    "import",
+    "jsx-a11y",
+    "nextjs",
+    "oxc",
+    "react",
+    "typescript",
+    "unicorn",
+    "vitest"
+  ],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.content-collections/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/next-env.d.ts"
+  ],
+  "settings": {
+    "next": {
+      "rootDir": "."
+    }
+  },
+  "rules": {
+    "curly": "error",
+    "import/consistent-type-specifier-style": "error",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-unassigned-import": "off",
+    "jsx-a11y/heading-has-content": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "nextjs/no-img-element": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": ["error", "warn"]
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true,
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "react/jsx-curly-brace-presence": "error",
+    "react/iframe-missing-sandbox": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": ["tw"]
+      }
+    ],
+    "react/prop-types": "off",
+    "typescript/no-confusing-void-expression": [
+      "error",
+      {
+        "ignoreArrowShorthand": true
+      }
+    ],
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "off",
+    "typescript/no-misused-spread": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/no-unused-vars": "off",
+    "typescript/strict-boolean-expressions": [
+      "error",
+      {
+        "allowNullableBoolean": true,
+        "allowNullableNumber": true,
+        "allowNullableString": true
+      }
+    ],
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-sort": "off",
+    "unicorn/no-nested-ternary": "off",
+    "unicorn/no-null": "off"
+  }
+}

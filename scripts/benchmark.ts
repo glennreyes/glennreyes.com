@@ -91,7 +91,7 @@ writeOutput(
 
 // 4. Lint
 writeOutput('\n🔍 Running lint benchmark...');
-const lintResult = timeOperation('Lint', 'bun run lint');
+const lintResult = timeOperation('Lint (oxlint)', 'bun run lint');
 
 results.push(lintResult);
 writeOutput(
