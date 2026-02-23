@@ -18,8 +18,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Quality Gates (run before handing work back)
 
-- `bun format` – Prettier + ESLint auto-fix
-- `bun lint` – ESLint (strict, no warnings tolerated)
+- `bun format` – Prettier + oxlint auto-fix
+- `bun lint` – oxlint (strict, no warnings tolerated)
 - `bun test` – Vitest test runner
 - `bun tsc --noEmit` – TypeScript type checking
 - `bun knip` – Optional, will flag unused files/deps
@@ -37,7 +37,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Define prop interfaces/types above components (`ComponentProps` pattern).
 - No `any`, unchecked type assertions, or implicit truthiness: prefer type guards.
 - Never use type assertions (`as Type`) or non-null assertions (`!`); always refactor to use proper typing or type guards. Only allow `as const` if absolutely necessary.
-- Avoid disabling ESLint rules via comments (`// eslint-disable-next-line`). Instead, fix the underlying issue by improving types, refactoring code, or using proper TypeScript patterns.
+- Avoid disabling lint rules via comments (`// oxlint-disable-next-line`, `// eslint-disable-next-line`). Instead, fix the underlying issue by improving types, refactoring code, or using proper TypeScript patterns.
 - Favour server components; elevate `"use client"` only where interaction is required.
 - Use `const`; structure control flow to avoid reassignment.
 - Prefer `async/await` with explicit `try/catch`; do not chain `.then()`/`.catch()`.
@@ -101,8 +101,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
   - Ask yourself: "Can I solve this by editing an existing file instead?"
 
 - **Quality Gates** (run BEFORE responding with code changes):
-  1. `bun format` - Prettier + ESLint auto-fix
-  2. `bun lint` - ESLint checks (no warnings tolerated)
+  1. `bun format` - Prettier + oxlint auto-fix
+  2. `bun lint` - oxlint checks (no warnings tolerated)
   3. `bun test` - Vitest test runner
   4. `tsc --noEmit` - TypeScript checks (if types feel risky)
   - If quality gates can't run, explain why and what was attempted
@@ -110,7 +110,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - **Code Standards** (reinforced for Claude):
   - No `any` types - use proper typing or type guards
   - Never use type assertions (`as Type`) or non-null assertions (`!`) - only allow `as const` if necessary
-  - Never disable ESLint rules via comments - fix the underlying issue instead
+  - Never disable lint rules via comments - fix the underlying issue instead
   - Never abbreviate event handlers - use `(event)` not `(e)`
   - For unused destructured values - use array holes `[, setValue]` not `_value`
 
