@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { Slot } from '@radix-ui/react-slot';
+import { cloneElement, isValidElement } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -10,7 +10,21 @@ interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
 
 export function Container({ asChild, className, ...props }: ContainerProps) {
   const classes = cn('container mx-auto px-4', className);
-  const Component = asChild ? Slot : 'div';
 
-  return <Component className={classes} {...props} />;
+  if (!asChild) {
+    return <div className={classes} {...props} />;
+  }
+
+  const { children, ...rest } = props;
+
+  if (
+    !isValidElement<Record<string, unknown> & { className?: string }>(children)
+  ) {
+    return null;
+  }
+
+  return cloneElement(children, {
+    ...rest,
+    className: cn(classes, children.props.className),
+  });
 }
