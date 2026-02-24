@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-import { Slot } from '@radix-ui/react-slot';
+import { cloneElement, isValidElement } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -13,14 +13,25 @@ interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 }
 
 function Card({ asChild, ...props }: CardProps) {
-  const Component = asChild ? Slot : 'div';
+  const classes =
+    'relative overflow-hidden rounded-3xl border border-gray-300/25 p-6 dark:border-gray-500/25';
 
-  return (
-    <Component
-      className="relative overflow-hidden rounded-3xl border border-gray-300/25 p-6 dark:border-gray-500/25"
-      {...props}
-    />
-  );
+  if (!asChild) {
+    return <div className={classes} {...props} />;
+  }
+
+  const { children, ...rest } = props;
+
+  if (
+    !isValidElement<Record<string, unknown> & { className?: string }>(children)
+  ) {
+    return null;
+  }
+
+  return cloneElement(children, {
+    ...rest,
+    className: cn(classes, children.props.className),
+  });
 }
 
 interface CardBodyProps extends Omit<

@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
-import { Slot } from '@radix-ui/react-slot';
+import { cloneElement, isValidElement } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -13,7 +13,21 @@ export function H4({ asChild, className, ...props }: H4Props) {
     'text-gray-700 dark:text-gray-300 font-medium text-base',
     className,
   );
-  const Component = asChild ? Slot : 'h4';
 
-  return <Component className={classes} {...props} />;
+  if (!asChild) {
+    return <h4 className={classes} {...props} />;
+  }
+
+  const { children, ...rest } = props;
+
+  if (
+    !isValidElement<Record<string, unknown> & { className?: string }>(children)
+  ) {
+    return null;
+  }
+
+  return cloneElement(children, {
+    ...rest,
+    className: cn(classes, children.props.className),
+  });
 }
