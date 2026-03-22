@@ -12,8 +12,6 @@ export const github = 'glennreyes';
 
 export const linkedin = 'glnnrys';
 
-export const instagram = 'glnnrys';
-
 // Contact
 export const email = 'glenn@glennreyes.com';
 

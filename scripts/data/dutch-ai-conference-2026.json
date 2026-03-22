@@ -1,8 +1,8 @@
 {
   "location": {
-    "name": "DeFabrique",
+    "name": "Pathe Amsterdam Noord",
     "address": "Westkanaaldijk 7",
-    "city": "Utrecht",
+    "city": "Amsterdam",
     "state": null,
     "country": "Netherlands",
     "zip": "3542DA",
@@ -13,28 +13,28 @@
     "name": "Dutch AI Conference 2026",
     "url": "https://aiconference.nl",
     "type": "CONFERENCE",
-    "startDateTime": "2026-03-10T00:00:00+01:00",
-    "endDateTime": "2026-03-12T23:59:59+01:00"
+    "startDateTime": "2026-03-11T00:00:00Z",
+    "endDateTime": "2026-03-12T23:59:59Z"
   },
   "talk": {
-    "matchKeywords": ["mcp-ui", "interactive", "conversation"],
+    "matchKeywords": ["ui that builds itself"],
     "appearance": {
       "slug": "2026-03-dutch-ai-conference-talk",
-      "dateTime": "2026-03-12T15:35:00+01:00",
+      "dateTime": "2026-03-12T15:35:00Z",
       "length": "MEDIUM"
     }
   },
   "workshop": {
-    "slug": "building-interactive-chat-interfaces-with-mcp-ui",
-    "title": "Building Interactive Chat Interfaces with MCP-UI",
+    "slug": "building-generative-ui-with-mcp-in-react",
+    "title": "Building Generative UI with MCP in React",
     "status": "ACTIVE",
-    "tags": ["AI", "MCP", "UI"],
-    "summary": "A hands-on workshop for building interactive React components inside conversational interfaces with MCP-UI.",
-    "description": "Chat interfaces are everywhere, but they're still stuck with text-only interactions. In this hands-on full-day workshop, you'll learn how to build real, interactive React components that live inside conversational interfaces using MCP-UI. You'll go from basics to building production-ready chat-embedded UIs, and leave with practical skills for building interfaces in the age of conversational software."
+    "tags": ["mcp", "mcp-apps", "ai", "agents", "ui", "generative-ui"],
+    "summary": "A hands-on workshop on building generative React UIs inside conversational interfaces with MCP.",
+    "description": "Chat interfaces are everywhere, but most of them are still limited to text.\n\nIn this hands-on workshop, you will learn how to build interactive React components that live inside conversational interfaces. Instead of returning static responses, your apps will generate UI based on user intent.\n\nWe will explore Generative UI and how MCP enables it. You will see how the same prompt can produce different interfaces depending on context, and how this leads to more personal and adaptive user experiences.\n\nThis workshop follows a collaborative, mob-style format. We will build together using AI coding agents, focusing on understanding patterns and decisions rather than writing everything from scratch."
   },
   "workshopAppearance": {
     "slug": "2026-03-dutch-ai-conference-workshop",
-    "dateTime": "2026-03-11T13:30:00+01:00",
+    "dateTime": "2026-03-11T13:30:00Z",
     "length": "MEDIUM"
   }
 }

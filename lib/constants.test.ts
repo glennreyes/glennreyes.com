@@ -1,14 +1,13 @@
 import { describe, it, expect } from 'vitest';
 
 import {
-  name,
   description,
-  x,
+  email,
   github,
   linkedin,
-  instagram,
-  email,
+  name,
   origin,
+  x,
 } from './constants';
 
 describe('constants', () => {
@@ -22,7 +21,6 @@ describe('constants', () => {
     expect(x).toBe('glnnrys');
     expect(github).toBe('glennreyes');
     expect(linkedin).toBe('glnnrys');
-    expect(instagram).toBe('glnnrys');
   });
 
   it('exports origin based on environment', () => {

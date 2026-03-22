@@ -60,6 +60,16 @@ const nextConfig: NextConfig = {
   redirects: () =>
     Promise.resolve([
       {
+        destination: '/talks/ui-that-builds-itself',
+        permanent: true,
+        source: '/talks/mcp-ui-and-the-future-of-interactive-conversations',
+      },
+      {
+        destination: '/workshops/building-generative-ui-with-mcp-in-react',
+        permanent: true,
+        source: '/workshops/building-interactive-chat-interfaces-with-mcp-ui',
+      },
+      {
         destination:
           'https://glennreyes.notion.site/Tools-6df9f0a402784ef7a093452d464e793e',
         permanent: false,

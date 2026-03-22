@@ -37,6 +37,10 @@
     @apply text-inherit no-underline;
   }
 
+  html {
+    font-size: 17px;
+  }
+
   * {
     @apply box-border;
   }
