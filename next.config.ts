@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
   redirects: () =>
     Promise.resolve([
       {
+        destination:
+          'https://youtube.com/playlist?list=PLsRdk5eWpljHyLv2oJwTuefYzEMCIM7qq',
+        permanent: true,
+        source: '/talks/videos',
+      },
+      {
         destination: '/talks/ui-that-builds-itself',
         permanent: true,
         source: '/talks/mcp-ui-and-the-future-of-interactive-conversations',
@@ -81,6 +87,10 @@ const nextConfig: NextConfig = {
       {
         source: '/photo.jpg',
         destination: '/photo',
+      },
+      {
+        source: '/photo/speaking.jpg',
+        destination: '/photo/speaking',
       },
     ]),
 };
