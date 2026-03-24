@@ -1,16 +1,16 @@
 ---
 title: From Screens to Intent
 description: My thoughts on Generative UI, MCP, and what changes when interfaces adapt to user intent and context.
-publishedAt: 2026-03-29
+publishedAt: 2026-03-24
 ---
 
-We have spent years getting good at drawing the interface before the user ever arrives.
+I've been thinking a lot about how much of frontend work starts before the user even arrives.
 
 We define layouts, flows, empty states, happy paths, edge cases, breakpoints, and every pixel in between. Then we polish the system until the product feels predictable and coherent.
 
-That model still matters. But it is no longer the whole picture.
+I still think that model matters. But I don't think it is the whole picture anymore.
 
-As AI becomes a real interaction layer, users are starting from intent instead of navigation. They are not always moving through a fixed tree of screens. They are asking for an outcome, and increasingly they expect software to respond with the right interface for that moment.
+As AI becomes a real interaction layer, more users are starting from intent instead of navigation. They are not always moving through a fixed tree of screens. They are asking for an outcome, and increasingly they expect software to respond with the right interface for that moment.
 
 <Image
   src="/images/from-screens-to-intent/intent-to-ui.svg"
@@ -21,23 +21,23 @@ As AI becomes a real interaction layer, users are starting from intent instead o
 
 ## The Old Contract Was Simple
 
-Traditional product development gave us a stable contract:
+Traditional product development gave us a pretty stable contract:
 
 - designers define the experience
 - frontend engineers implement the experience
 - users discover the right screen and operate within it
 
-The interface was the starting point. Even when it was dynamic, it was still a controlled set of predefined decisions.
+The interface was the starting point. Even when it was dynamic, it still came from a controlled set of predefined decisions.
 
-Generative UI changes that contract.
+Generative UI changes that contract in a way I find hard to ignore.
 
 The user starts with a goal. The system decides what interface helps most. The UI becomes a response, not only a container.
 
-That does not mean design disappears. It means design moves up a level. Instead of designing one static screen, we design the rules, components, and constraints that allow the right screen to emerge.
+That doesn't mean design disappears. It means design moves up a level. Instead of designing one static screen, we design the rules, components, and constraints that let the right screen emerge.
 
 ## The Same Prompt Can Produce Different UI
 
-One of the most interesting things about Generative UI is that the same request can lead to different results depending on context.
+One of the things I keep coming back to with Generative UI is that the same request can lead to different results depending on context.
 
 Ask for "show me my project status" and the right interface depends on what the system knows:
 
@@ -54,13 +54,13 @@ The prompt is the same. The interface is not.
   alt="Diagram showing one prompt resulting in different interfaces for different roles"
 />
 
-This is the shift that makes the topic so important for frontend engineers. We are no longer only composing pages. We are building systems that can compose experiences from primitives.
+This is the shift that makes the topic so interesting to me as a frontend engineer. We are no longer only composing pages. We are building systems that can compose experiences from primitives.
 
 That requires more than clever prompting. It requires strong components, clear semantics, predictable state transitions, and a way for models to request UI safely.
 
 ## MCP Is the Missing Transport Layer
 
-If Generative UI is the experience layer, MCP is one of the protocols that makes it practical.
+If Generative UI is the experience layer, MCP is one of the protocols that makes it feel practical.
 
 MCP gives models a structured way to discover capabilities, call tools, access data, and coordinate with application logic. Instead of stuffing everything into text, it creates a cleaner contract between the model and the software around it.
 
@@ -77,7 +77,7 @@ What I like about MCP is that it shifts the conversation away from "can the mode
 
 ## Frontend Systems Need to Evolve
 
-This does not replace frontend engineering. It raises the bar for it.
+This doesn't replace frontend engineering. If anything, it raises the bar for it.
 
 In a world of Generative UI, the valuable frontend work moves toward:
 
@@ -99,11 +99,11 @@ It is closer to:
 
 "What set of composable UI primitives, data contracts, and policies lets the system build the right interface repeatedly?"
 
-That is a different mindset. It pushes us toward systems thinking. It also makes frontend work more strategic, not less.
+That is a different mindset. It pushes us toward systems thinking. I also think it makes frontend work more strategic, not less.
 
 ## This Is Where Things Get Hard
 
-The exciting demos are easy to love. The production constraints are where the real work starts.
+The demos are easy to love. The production constraints are where the real work starts.
 
 Generative UI introduces new failure modes:
 
@@ -112,7 +112,7 @@ Generative UI introduces new failure modes:
 - the interface can become inconsistent across repeated requests
 - accessibility can regress if generated output is not grounded in trusted primitives
 
-This is why I do not think the answer is free-form generation everywhere.
+This is why I don't think the answer is free-form generation everywhere.
 
 The strongest implementations will likely feel constrained in the right ways. Models should orchestrate from a well-designed set of components, actions, and patterns. The system should know what is allowed, what is not, and how to degrade gracefully when confidence is low.
 
@@ -126,4 +126,4 @@ That does not erase everything we already know. It reframes it.
 
 We still need strong visual design. We still need accessibility. We still need hierarchy, motion, feedback, and trust. But now we also need interfaces that can adapt their shape when the context changes.
 
-That is why I keep coming back to Generative UI. It is not a novelty layer on top of chat. It is a new design and engineering problem space, and it is one we can already start building for today.
+That is why I keep coming back to Generative UI. For me, it is not a novelty layer on top of chat. It is a new design and engineering problem space, and it is one we can already start building for today.

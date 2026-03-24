@@ -42,7 +42,7 @@ vi.mock('next-mdx-remote/rsc', () => ({
   ),
 }));
 
-const { getAllPublishedPosts } = await import('./posts');
+const { getAllPublishedPosts, getPostBySlug } = await import('./posts');
 
 describe('posts', () => {
   beforeEach(() => {
@@ -89,6 +89,28 @@ describe('posts', () => {
       const titles = posts.map((p) => p.frontmatter.title);
 
       expect(titles).toEqual(['Test Post 2', 'Test Post 1']);
+    });
+  });
+
+  describe('getPostBySlug', () => {
+    it('returns undefined for future posts by default', async () => {
+      getCurrentTimestampMock.mockResolvedValueOnce(
+        new Date('2024-01-01').getTime(),
+      );
+
+      const post = await getPostBySlug('future-post');
+
+      expect(post).toBeUndefined();
+    });
+
+    it('returns future posts when includeFuture is enabled', async () => {
+      getCurrentTimestampMock.mockResolvedValueOnce(
+        new Date('2024-01-01').getTime(),
+      );
+
+      const post = await getPostBySlug('future-post', { includeFuture: true });
+
+      expect(post?.frontmatter.title).toBe('Future Post');
     });
   });
 });

@@ -14,13 +14,17 @@ export interface PostFrontmatter {
   title: string;
 }
 
-interface Post {
+export interface Post {
   content: React.ReactElement;
   frontmatter: PostFrontmatter;
   slug: string;
 }
 
-const getAllPosts = async (): Promise<Post[]> => {
+interface GetPostBySlugOptions {
+  includeFuture?: boolean;
+}
+
+export const getAllPosts = async (): Promise<Post[]> => {
   const posts = allPostsFromCollections;
   const allPosts = await Promise.all(
     posts.map(async (post) => {
@@ -65,3 +69,14 @@ export const getAllPublishedPosts = async (): Promise<Post[]> => {
     return publishedDate.getTime() <= now;
   });
 };
+
+export async function getPostBySlug(
+  slug: string,
+  options: GetPostBySlugOptions = {},
+): Promise<Post | undefined> {
+  const posts = options.includeFuture
+    ? await getAllPosts()
+    : await getAllPublishedPosts();
+
+  return posts.find((post) => post.slug === slug);
+}
