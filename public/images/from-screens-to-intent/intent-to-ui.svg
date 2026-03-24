@@ -11,15 +11,15 @@
   <text x="615" y="390" fill="#334155" font-family="Arial, sans-serif" font-size="28">Product state</text>
   <text x="615" y="440" fill="#334155" font-family="Arial, sans-serif" font-size="28">Available tools</text>
   <text x="615" y="490" fill="#334155" font-family="Arial, sans-serif" font-size="28">Design-system primitives</text>
-  <rect x="1170" y="250" width="280" height="220" rx="28" fill="#CCFBF1" stroke="#0F766E" stroke-width="5"/>
-  <text x="1215" y="320" fill="#134E4A" font-family="Arial, sans-serif" font-size="38" font-weight="700">Generated UI</text>
-  <rect x="1215" y="365" width="190" height="24" rx="12" fill="#14B8A6"/>
-  <rect x="1215" y="410" width="150" height="24" rx="12" fill="#99F6E4"/>
-  <rect x="1215" y="455" width="210" height="44" rx="14" fill="#0F172A"/>
-  <text x="1262" y="484" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="22" font-weight="700">Take action</text>
+  <rect x="1140" y="250" width="300" height="220" rx="28" fill="#CCFBF1" stroke="#0F766E" stroke-width="5"/>
+  <text x="1290" y="320" fill="#134E4A" font-family="Arial, sans-serif" font-size="34" font-weight="700" text-anchor="middle">Generated UI</text>
+  <rect x="1185" y="365" width="190" height="24" rx="12" fill="#14B8A6"/>
+  <rect x="1185" y="410" width="150" height="24" rx="12" fill="#99F6E4"/>
+  <rect x="1185" y="455" width="210" height="44" rx="14" fill="#0F172A"/>
+  <text x="1290" y="484" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Take action</text>
   <path d="M445 360H525" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
   <path d="M510 330L560 360L510 390" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M1075 360H1155" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
   <path d="M1140 330L1190 360L1140 390" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="565" y="660" fill="#475569" font-family="Arial, sans-serif" font-size="34">The interface becomes a response to intent, grounded in context.</text>
+  <text x="800" y="660" fill="#475569" font-family="Arial, sans-serif" font-size="34" text-anchor="middle">The interface becomes a response to intent, grounded in context.</text>
 </svg>

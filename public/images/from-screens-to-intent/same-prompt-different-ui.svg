@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
   <rect width="1600" height="900" fill="#F8FAFC"/>
-  <rect x="505" y="70" width="590" height="130" rx="30" fill="#0F172A"/>
-  <text x="585" y="150" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="42" font-weight="700">"Show me project status"</text>
+  <rect x="430" y="70" width="740" height="130" rx="30" fill="#0F172A"/>
+  <text x="800" y="150" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="38" font-weight="700" text-anchor="middle">"Show me project status"</text>
   <path d="M800 220V310" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
   <path d="M760 292L800 332L840 292" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="90" y="360" width="420" height="390" rx="34" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
@@ -21,8 +21,8 @@
   <rect x="1090" y="360" width="420" height="390" rx="34" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
   <text x="1140" y="430" fill="#0F172A" font-family="Arial, sans-serif" font-size="40" font-weight="700">Support view</text>
   <text x="1140" y="480" fill="#0F766E" font-family="Arial, sans-serif" font-size="26" font-weight="700">Customer impact first</text>
-  <rect x="1140" y="535" width="290" height="90" rx="18" fill="#FEF3C7"/>
-  <text x="1170" y="585" fill="#92400E" font-family="Arial, sans-serif" font-size="24">14 tickets mention sync delays</text>
+  <rect x="1125" y="535" width="320" height="90" rx="18" fill="#FEF3C7"/>
+  <text x="1285" y="585" fill="#92400E" font-family="Arial, sans-serif" font-size="22" text-anchor="middle">14 tickets mention sync delays</text>
   <rect x="1140" y="655" width="250" height="20" rx="10" fill="#E2E8F0"/>
-  <text x="460" y="820" fill="#475569" font-family="Arial, sans-serif" font-size="34">Same intent. Different interfaces. Context decides the shape.</text>
+  <text x="800" y="820" fill="#475569" font-family="Arial, sans-serif" font-size="34" text-anchor="middle">Same intent. Different interfaces. Context decides the shape.</text>
 </svg>
