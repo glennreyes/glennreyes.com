@@ -1,30 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <style>
+    .headline {
+      fill: #0f172a;
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .body {
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 28px;
+    }
+
+    .body-strong {
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .caption {
+      fill: #475569;
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+  </style>
   <rect width="1600" height="900" fill="#F8FAFC"/>
-  <text x="315" y="120" fill="#0F172A" font-family="Arial, sans-serif" font-size="44" font-weight="700">Frontend before</text>
-  <text x="1015" y="120" fill="#0F172A" font-family="Arial, sans-serif" font-size="44" font-weight="700">Frontend for Generative UI</text>
+  <text x="370" y="118" class="headline" text-anchor="middle">Frontend before</text>
+  <text x="1105" y="118" class="headline" text-anchor="middle">Frontend for Generative UI</text>
   <rect x="120" y="180" width="500" height="560" rx="36" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="4"/>
   <rect x="190" y="260" width="360" height="70" rx="18" fill="#E2E8F0"/>
-  <text x="235" y="305" fill="#334155" font-family="Arial, sans-serif" font-size="28">Pages</text>
+  <text x="370" y="305" fill="#334155" class="body" text-anchor="middle">Pages</text>
   <rect x="190" y="370" width="360" height="70" rx="18" fill="#E2E8F0"/>
-  <text x="235" y="415" fill="#334155" font-family="Arial, sans-serif" font-size="28">Flows</text>
+  <text x="370" y="415" fill="#334155" class="body" text-anchor="middle">Flows</text>
   <rect x="190" y="480" width="360" height="70" rx="18" fill="#E2E8F0"/>
-  <text x="235" y="525" fill="#334155" font-family="Arial, sans-serif" font-size="28">Routes</text>
+  <text x="370" y="525" fill="#334155" class="body" text-anchor="middle">Routes</text>
   <rect x="190" y="590" width="360" height="70" rx="18" fill="#E2E8F0"/>
-  <text x="235" y="635" fill="#334155" font-family="Arial, sans-serif" font-size="28">Manual decision trees</text>
+  <text x="370" y="635" fill="#334155" class="body" text-anchor="middle">Manual decision trees</text>
   <rect x="730" y="180" width="750" height="560" rx="36" fill="#FFFFFF" stroke="#0F766E" stroke-width="5"/>
   <rect x="810" y="235" width="260" height="72" rx="18" fill="#CCFBF1"/>
-  <text x="865" y="281" fill="#134E4A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Components</text>
+  <text x="940" y="281" fill="#134E4A" class="body-strong" text-anchor="middle">Components</text>
   <rect x="1130" y="235" width="260" height="72" rx="18" fill="#CCFBF1"/>
-  <text x="1200" y="281" fill="#134E4A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Contracts</text>
+  <text x="1260" y="281" fill="#134E4A" class="body-strong" text-anchor="middle">Contracts</text>
   <rect x="810" y="350" width="260" height="72" rx="18" fill="#CCFBF1"/>
-  <text x="885" y="396" fill="#134E4A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Context</text>
+  <text x="940" y="396" fill="#134E4A" class="body-strong" text-anchor="middle">Context</text>
   <rect x="1130" y="350" width="260" height="72" rx="18" fill="#CCFBF1"/>
-  <text x="1200" y="396" fill="#134E4A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Policies</text>
+  <text x="1260" y="396" fill="#134E4A" class="body-strong" text-anchor="middle">Policies</text>
   <rect x="970" y="495" width="260" height="72" rx="18" fill="#0F172A"/>
-  <text x="1028" y="541" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="28" font-weight="700">Adaptive UI</text>
+  <text x="1100" y="541" fill="#F8FAFC" class="body-strong" text-anchor="middle">Adaptive UI</text>
   <path d="M940 307L1080 490" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
   <path d="M1260 307L1120 490" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
   <path d="M940 422L1060 490" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
   <path d="M1260 422L1140 490" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
-  <text x="410" y="815" fill="#475569" font-family="Arial, sans-serif" font-size="34">The job shifts from drawing every screen to designing the system that can assemble the right one.</text>
+  <text x="800" y="800" class="caption" text-anchor="middle">
+    <tspan x="800" dy="0">The job shifts from drawing every screen</tspan>
+    <tspan x="800" dy="36">to designing the system that can assemble the right one.</tspan>
+  </text>
 </svg>
