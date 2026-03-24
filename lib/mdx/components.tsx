@@ -1,9 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
-import type { ImageProps } from 'next/image';
 import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 import { FileText } from 'lucide-react';
-import Image from 'next/image';
 import { Suspense } from 'react';
 import { Tweet as TweetEmbed } from 'react-tweet';
 
@@ -34,9 +32,16 @@ interface CodeProps extends ComponentPropsWithoutRef<'code'> {
 
 type TweetComponentProps = ComponentProps<typeof TweetEmbed>;
 
-function MDXImage({ alt, className, ...props }: ImageProps) {
+type MDXImageProps = ComponentPropsWithoutRef<'img'>;
+
+function MDXImage({ alt, className, loading, ...props }: MDXImageProps) {
   return (
-    <Image alt={alt} className={cn('rounded-3xl', className)} {...props} />
+    <img
+      alt={alt}
+      className={cn('h-auto w-full rounded-3xl', className)}
+      loading={loading ?? 'lazy'}
+      {...props}
+    />
   );
 }
 
