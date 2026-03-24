@@ -19,7 +19,7 @@
   <text x="1290" y="484" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Take action</text>
   <path d="M445 360H525" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
   <path d="M510 330L560 360L510 390" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M1075 360H1155" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
-  <path d="M1140 330L1190 360L1140 390" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1075 360H1115" stroke="#0F766E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1100 330L1150 360L1100 390" fill="none" stroke="#0F766E" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="800" y="660" fill="#475569" font-family="Arial, sans-serif" font-size="34" text-anchor="middle">The interface becomes a response to intent, grounded in context.</text>
 </svg>
