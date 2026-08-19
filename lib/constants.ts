@@ -10,10 +10,6 @@ export const x = 'glnnreyes';
 
 export const github = 'glennreyes';
 
-export const instagram = 'glnnreyes';
-
-export const linkedin = 'glnnreyes';
-
 // Contact
 export const email = 'glenn@glennreyes.com';
 

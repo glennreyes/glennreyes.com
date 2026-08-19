@@ -5,15 +5,13 @@ import Image from 'next/image';
 
 import speaking from '@/assets/images/speaking.jpg';
 import { GitHub } from '@/components/icons/github';
-import { Instagram } from '@/components/icons/instagram';
-import { LinkedIn } from '@/components/icons/linkedin';
 import { X } from '@/components/icons/x';
 import { Divider } from '@/components/ui/elements/divider';
 import { Card } from '@/components/ui/layout/card';
 import { Content } from '@/components/ui/layout/content';
 import { List } from '@/components/ui/layout/list';
 import { Page } from '@/components/ui/layout/page';
-import { email, github, instagram, linkedin, x } from '@/lib/constants';
+import { email, github, x } from '@/lib/constants';
 import { getPageBySlug } from '@/lib/pages';
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -72,22 +70,6 @@ const AboutPage = async () => {
                   </List.Item>
                   <List.Item>
                     <Card.Item
-                      link={`https://instagram.com/${instagram}`}
-                      title={
-                        <span className="inline-flex w-full items-center justify-between gap-2">
-                          Instagram
-                          <ArrowUpRight
-                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
-                            strokeWidth={2}
-                          />
-                        </span>
-                      }
-                    >
-                      <Instagram className="h-6 w-6 text-slate-500 dark:text-slate-400" />
-                    </Card.Item>
-                  </List.Item>
-                  <List.Item>
-                    <Card.Item
                       link={`https://github.com/${github}`}
                       title={
                         <span className="inline-flex w-full items-center justify-between gap-2">
@@ -100,22 +82,6 @@ const AboutPage = async () => {
                       }
                     >
                       <GitHub className="h-6 w-6 text-slate-500 dark:text-slate-400" />
-                    </Card.Item>
-                  </List.Item>
-                  <List.Item>
-                    <Card.Item
-                      link={`https://linkedin.com/in/${linkedin}`}
-                      title={
-                        <span className="inline-flex w-full items-center justify-between gap-2">
-                          LinkedIn
-                          <ArrowUpRight
-                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
-                            strokeWidth={2}
-                          />
-                        </span>
-                      }
-                    >
-                      <LinkedIn className="h-6 w-6 text-slate-500 dark:text-slate-400" />
                     </Card.Item>
                   </List.Item>
                 </List>

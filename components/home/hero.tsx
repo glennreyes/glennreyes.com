@@ -1,15 +1,6 @@
 import { GitHub } from '@/components/icons/github';
-import { Instagram } from '@/components/icons/instagram';
-import { LinkedIn } from '@/components/icons/linkedin';
 import { X } from '@/components/icons/x';
-import {
-  description,
-  github,
-  instagram,
-  linkedin,
-  name,
-  x,
-} from '@/lib/constants';
+import { description, github, name, x } from '@/lib/constants';
 
 import { Avatar } from '../avatar/avatar';
 import { IconButton } from '../ui/elements/icon-button';
@@ -48,30 +39,10 @@ export function Hero() {
           <li>
             <IconButton
               appearance="tertiary"
-              aria-label="Follow on Instagram"
-              as="link"
-              href={`https://instagram.com/${instagram}`}
-              icon={Instagram}
-              size={6}
-            />
-          </li>
-          <li>
-            <IconButton
-              appearance="tertiary"
               aria-label="Follow on GitHub"
               as="link"
               href={`https://github.com/${github}`}
               icon={GitHub}
-              size={6}
-            />
-          </li>
-          <li>
-            <IconButton
-              appearance="tertiary"
-              aria-label="Follow on LinkedIn"
-              as="link"
-              href={`https://linkedin.com/in/${linkedin}`}
-              icon={LinkedIn}
               size={6}
             />
           </li>
