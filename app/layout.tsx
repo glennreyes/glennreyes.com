@@ -60,7 +60,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <OfflineBanner />
           </Suspense>
           <Navbar>
-            <Menu />
+            <Suspense fallback={null}>
+              <Menu />
+            </Suspense>
           </Navbar>
           <ErrorBoundary>
             <Main>{children}</Main>
