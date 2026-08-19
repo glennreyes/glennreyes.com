@@ -6,11 +6,13 @@ const tagline = 'Software engineer, tech speaker and workshop instructor';
 export const description = `${tagline} who loves turning ideas into reality through code. I build innovative products, share knowledge at conferences, and help developers create better user experiences with modern web technologies.`;
 
 // Social media
-export const x = 'glnnrys';
+export const x = 'glnnreyes';
 
 export const github = 'glennreyes';
 
-export const linkedin = 'glnnrys';
+export const instagram = 'glnnreyes';
+
+export const linkedin = 'glnnreyes';
 
 // Contact
 export const email = 'glenn@glennreyes.com';

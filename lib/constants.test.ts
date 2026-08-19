@@ -4,6 +4,7 @@ import {
   description,
   email,
   github,
+  instagram,
   linkedin,
   name,
   origin,
@@ -18,9 +19,10 @@ describe('constants', () => {
   });
 
   it('exports social media handles', () => {
-    expect(x).toBe('glnnrys');
+    expect(x).toBe('glnnreyes');
     expect(github).toBe('glennreyes');
-    expect(linkedin).toBe('glnnrys');
+    expect(instagram).toBe('glnnreyes');
+    expect(linkedin).toBe('glnnreyes');
   });
 
   it('exports origin based on environment', () => {
