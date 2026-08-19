@@ -7,9 +7,11 @@ import '@/app/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 
+import { ErrorBoundary } from '@/components/error-boundary';
 import { Footer } from '@/components/footer/footer';
 import { Menu } from '@/components/navigation/menu';
 import { Navbar } from '@/components/navigation/navbar';
+import { OfflineBanner } from '@/components/offline-banner';
 import { Body } from '@/components/ui/layout/body';
 import { Html } from '@/components/ui/layout/html';
 import { Main } from '@/components/ui/layout/main';
@@ -55,10 +57,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <Body>
         <Suspense fallback={null}>
           <Providers>
+            <OfflineBanner />
             <Navbar>
               <Menu />
             </Navbar>
-            <Main>{children}</Main>
+            <ErrorBoundary>
+              <Main>{children}</Main>
+            </ErrorBoundary>
             <Toaster />
             <Footer />
           </Providers>

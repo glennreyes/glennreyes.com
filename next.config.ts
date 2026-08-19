@@ -9,12 +9,23 @@ const withBundleAnalyzer = bundleAnalyzer({
 const buildYear = new Date().getUTCFullYear().toString();
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  cacheLife: {
+    events: {
+      expire: 604800,
+      revalidate: 86400,
+      stale: 3600,
+    },
+  },
   env: {
     NEXT_PUBLIC_BUILD_YEAR: buildYear,
   },
   experimental: {
-    viewTransition: true,
+    turbopackRustReactCompiler: true,
+    useOffline: true,
+    useTypeScriptCli: true,
   },
+  partialPrefetching: true,
+  typedRoutes: true,
   headers() {
     return Promise.resolve([
       {

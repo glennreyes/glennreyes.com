@@ -1,13 +1,6 @@
 import { describe, it, expect } from 'vitest';
 
-import {
-  description,
-  email,
-  github,
-  name,
-  origin,
-  x,
-} from './constants';
+import { description, email, github, name, origin, x } from './constants';
 
 describe('constants', () => {
   it('exports basic information', () => {

@@ -78,10 +78,7 @@ interface SearchableEvent {
 
 // Union type for all searchable content
 type SearchableContent =
-  | SearchablePost
-  | SearchableTalk
-  | SearchableWorkshop
-  | SearchableEvent;
+  SearchablePost | SearchableTalk | SearchableWorkshop | SearchableEvent;
 
 export interface MCPDataSources {
   getAllEvents: typeof getAllEvents;

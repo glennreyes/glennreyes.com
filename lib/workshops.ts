@@ -1,9 +1,14 @@
+import { cacheLife, cacheTag } from 'next/cache';
 import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
-export const getAllWorkshops = cache(() =>
-  db.query.workshops.findMany({
+export async function getAllWorkshops() {
+  'use cache';
+  cacheLife('days');
+  cacheTag('workshops');
+
+  return db.query.workshops.findMany({
     columns: {
       slug: true,
       status: true,
@@ -11,8 +16,8 @@ export const getAllWorkshops = cache(() =>
       title: true,
     },
     orderBy: (workshops, { asc }) => [asc(workshops.status)],
-  }),
-);
+  });
+}
 
 export const getWorkshopBySlug = cache(async (slug: string) => {
   const workshop = await db.query.workshops.findFirst({
@@ -46,7 +51,6 @@ export const getWorkshopBySlug = cache(async (slug: string) => {
     throw new Error(`Workshop with slug "${slug}" not found`);
   }
 
-  // Sort appearances by event startDate DESC
   const sortedAppearances = [...workshop.appearances].sort(
     (a, b) => b.event.startDate.getTime() - a.event.startDate.getTime(),
   );

@@ -2,6 +2,7 @@ import type React from 'react';
 
 import { allPosts as allPostsFromCollections } from 'content-collections';
 import { compareDesc } from 'date-fns';
+import { cacheLife, cacheTag } from 'next/cache';
 import { compileMDX } from 'next-mdx-remote/rsc';
 
 import { components } from './mdx/components';
@@ -59,6 +60,8 @@ export const getAllPosts = async (): Promise<Post[]> => {
 
 export const getAllPublishedPosts = async (): Promise<Post[]> => {
   'use cache';
+  cacheLife('max');
+  cacheTag('posts');
 
   const allPosts = await getAllPosts();
   const now = Date.now();

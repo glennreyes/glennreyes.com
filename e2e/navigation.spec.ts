@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { instant } from '@next/playwright';
 
 test.describe('Navigation', () => {
   test('should navigate from home to about page', async ({ page }) => {
@@ -15,6 +16,35 @@ test.describe('Navigation', () => {
     await expect(
       page.getByRole('heading', { level: 1, name: /Glenn Reyes/i }),
     ).toBeVisible();
+  });
+
+  test('about heading is available immediately during navigation', async ({
+    page,
+  }) => {
+    await page.goto('/');
+
+    await instant(page, async () => {
+      await page.getByRole('link', { name: 'About' }).click();
+      await expect(
+        page.getByRole('heading', { level: 1, name: /Glenn Reyes/i }),
+      ).toBeVisible();
+    });
+  });
+
+  test('posts heading is available immediately during navigation', async ({
+    page,
+  }) => {
+    await page.goto('/');
+
+    await instant(page, async () => {
+      await page.getByRole('link', { name: 'Posts' }).click();
+      await expect(
+        page.getByRole('heading', {
+          level: 1,
+          name: /Writing on code and life/i,
+        }),
+      ).toBeVisible();
+    });
   });
 
   test('should navigate back to home by clicking avatar', async ({ page }) => {

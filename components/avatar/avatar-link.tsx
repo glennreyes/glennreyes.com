@@ -6,6 +6,8 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
 import { startTransition } from 'react';
 
+import { isAppRoute } from '@/lib/route';
+
 type AvatarLinkProps = ComponentPropsWithoutRef<typeof NextLink>;
 
 export function AvatarLink({
@@ -36,7 +38,7 @@ export function AvatarLink({
 
     const destination = event.currentTarget.getAttribute('href');
 
-    if (!destination) {
+    if (destination === null || !isAppRoute(destination)) {
       return;
     }
 
