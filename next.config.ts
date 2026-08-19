@@ -8,6 +8,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 const buildYear = new Date().getUTCFullYear().toString();
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['127.0.0.1'],
   cacheComponents: true,
   cacheLife: {
     events: {
