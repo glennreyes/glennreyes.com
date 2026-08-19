@@ -321,8 +321,8 @@ describe('Page Smoke Tests', () => {
       expect(container.textContent).toBeTruthy();
     });
 
-    it('renders about page', async () => {
-      const { container } = render(await AboutPage());
+    it('renders about page', () => {
+      const { container } = render(<AboutPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();

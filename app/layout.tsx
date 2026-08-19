@@ -55,19 +55,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html suppressHydrationWarning>
       <head />
       <Body>
-        <Suspense fallback={null}>
-          <Providers>
+        <Providers>
+          <Suspense fallback={null}>
             <OfflineBanner />
-            <Navbar>
-              <Menu />
-            </Navbar>
-            <ErrorBoundary>
-              <Main>{children}</Main>
-            </ErrorBoundary>
-            <Toaster />
-            <Footer />
-          </Providers>
-        </Suspense>
+          </Suspense>
+          <Navbar>
+            <Menu />
+          </Navbar>
+          <ErrorBoundary>
+            <Main>{children}</Main>
+          </ErrorBoundary>
+          <Toaster />
+          <Footer />
+        </Providers>
         <SpeedInsights />
         <Analytics />
       </Body>

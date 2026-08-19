@@ -1,5 +1,4 @@
 import { cacheLife, cacheTag } from 'next/cache';
-import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
@@ -97,7 +96,15 @@ export function mapEventsToFeed(events: SimplifiedEvent[]): FeedEvent[] {
   return events.map(toFeedEvent);
 }
 
-export const getEventBySlug = cache(async (slug: string) => {
+export async function getEventBySlug(slug: string) {
+  'use cache';
+  cacheLife({
+    expire: 604800,
+    revalidate: 86400,
+    stale: 3600,
+  });
+  cacheTag('events', `event-${slug}`);
+
   const event = await db.query.events.findFirst({
     where: (events, { eq }) => eq(events.slug, slug),
     with: {
@@ -156,4 +163,4 @@ export const getEventBySlug = cache(async (slug: string) => {
   }
 
   return event;
-});
+}

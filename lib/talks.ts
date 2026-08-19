@@ -1,5 +1,4 @@
 import { cacheLife, cacheTag } from 'next/cache';
-import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
@@ -19,7 +18,11 @@ export async function getAllTalks() {
   });
 }
 
-export const getTalkBySlug = cache(async (slug: string) => {
+export async function getTalkBySlug(slug: string) {
+  'use cache';
+  cacheLife('days');
+  cacheTag('talks', `talk-${slug}`);
+
   const talk = await db.query.talks.findFirst({
     where: (talks, { eq }) => eq(talks.slug, slug),
     with: {
@@ -59,4 +62,4 @@ export const getTalkBySlug = cache(async (slug: string) => {
     ...talk,
     appearances: sortedAppearances,
   };
-});
+}

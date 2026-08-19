@@ -1,5 +1,4 @@
 import { cacheLife, cacheTag } from 'next/cache';
-import { cache } from 'react';
 
 import { db } from '@/lib/db';
 
@@ -19,7 +18,11 @@ export async function getAllWorkshops() {
   });
 }
 
-export const getWorkshopBySlug = cache(async (slug: string) => {
+export async function getWorkshopBySlug(slug: string) {
+  'use cache';
+  cacheLife('days');
+  cacheTag('workshops', `workshop-${slug}`);
+
   const workshop = await db.query.workshops.findFirst({
     where: (workshops, { eq }) => eq(workshops.slug, slug),
     with: {
@@ -59,4 +62,4 @@ export const getWorkshopBySlug = cache(async (slug: string) => {
     ...workshop,
     appearances: sortedAppearances,
   };
-});
+}
