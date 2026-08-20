@@ -68,6 +68,7 @@ test.describe('Accessibility', () => {
 
     const menuButton = page.getByRole('button', { name: 'Open Menu' });
 
+    await expect(menuButton).toBeVisible();
     await menuButton.click();
 
     const dialog = page.getByRole('dialog');

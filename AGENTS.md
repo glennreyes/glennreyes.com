@@ -4,7 +4,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Project Snapshot
 
-- **Stack**: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
+- **Stack**: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
 - **Content**: MDX files under `content/`; Drizzle sources additional data (events, appearances, analytics)
 - **Hosting**: Vercel (deployment, analytics, speed insights)
 - **Design system**: Tailwind-first components in `components/ui/`

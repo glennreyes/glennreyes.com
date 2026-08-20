@@ -1,15 +1,11 @@
 import type { Element } from 'hast';
 
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
-
-import { components } from './components';
 
 const classes = {
   autoLink: `before:absolute before:translate-x-[-0.85em] before:text-slate-400 before:opacity-0 before:transition before:content-['#'] md:before:hover:translate-x-[-1em] md:before:hover:opacity-100 md:before:focus-visible:translate-x-[-1em] md:before:focus-visible:opacity-100 md:before:focus-visible:transition-none`,
@@ -112,17 +108,3 @@ export const mdxRemoteOptions = {
   },
   parseFrontmatter: true,
 } satisfies Parameters<typeof compileMDX>[0]['options'];
-
-export const readMDXFile = async <TFrontmatter = Record<string, unknown>>(
-  file: string,
-) => {
-  const filePath = path.join(process.cwd(), file);
-  const source = readFileSync(filePath, 'utf8');
-  const result = await compileMDX<TFrontmatter>({
-    components,
-    options: mdxRemoteOptions,
-    source,
-  });
-
-  return { ...result, source };
-};

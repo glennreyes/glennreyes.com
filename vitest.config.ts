@@ -3,6 +3,9 @@ import { resolve } from 'path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
+  esbuild: {
+    jsx: 'automatic',
+  },
   plugins: [react()],
   test: {
     environment: 'jsdom',
@@ -12,6 +15,7 @@ export default defineConfig({
     env: {
       TURSO_DATABASE_URL: 'file:test.db',
       TURSO_AUTH_TOKEN: 'test-token',
+      __NEXT_USE_CACHE: 'true',
     },
   },
   resolve: {

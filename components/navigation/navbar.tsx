@@ -1,5 +1,7 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
+import { Suspense } from 'react';
+
 import { Avatar } from '@/components/avatar/avatar';
 import { AvatarLink } from '@/components/avatar/avatar-link';
 
@@ -19,14 +21,16 @@ export function Navbar({ children, ...props }: NavbarProps) {
         <div className="flex flex-1 shrink-0 items-center">
           <SkipNavigationLink />
           <div className="h-11 w-11">
-            <NavbarAvatar>
-              <AvatarLink
-                className="block rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
-                href="/"
-              >
-                <Avatar size={11} />
-              </AvatarLink>
-            </NavbarAvatar>
+            <Suspense fallback={<div className="h-11 w-11" />}>
+              <NavbarAvatar>
+                <AvatarLink
+                  className="block rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
+                  href="/"
+                >
+                  <Avatar size={11} />
+                </AvatarLink>
+              </NavbarAvatar>
+            </Suspense>
           </div>
         </div>
         {children}

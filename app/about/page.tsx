@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { ArrowUpRight, Send } from 'lucide-react';
 import Image from 'next/image';
+import { Suspense } from 'react';
 
 import speaking from '@/assets/images/speaking.jpg';
 import { GitHub } from '@/components/icons/github';
@@ -22,18 +23,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const AboutPage = async () => {
+async function AboutBody() {
   const page = await getPageBySlug('about');
 
   if (!page) {
     return null;
   }
 
-  const { content, frontmatter } = page;
-
   return (
-    <Page>
-      <Page.Header lead={frontmatter.lead}>{frontmatter.heading}</Page.Header>
+    <>
       <Image
         alt="Speaking"
         className="h-96 w-full rounded-3xl object-cover object-right sm:object-center"
@@ -45,7 +43,7 @@ const AboutPage = async () => {
       />
       <Content>
         <Content.Primary>
-          <Page.Body>{content}</Page.Body>
+          <Page.Body>{page.content}</Page.Body>
         </Content.Primary>
         <Content.Secondary>
           <Card>
@@ -106,8 +104,25 @@ const AboutPage = async () => {
           </Card>
         </Content.Secondary>
       </Content>
+    </>
+  );
+}
+
+function AboutPage() {
+  return (
+    <Page>
+      <Page.Header lead="A software engineer building AI-native products, speaking about MCP and Generative UI, and teaching modern React from Vienna.">
+        Hey, I&apos;m Glenn Reyes.
+      </Page.Header>
+      <Suspense
+        fallback={
+          <div className="h-96 animate-pulse rounded-3xl bg-gray-200 dark:bg-gray-800" />
+        }
+      >
+        <AboutBody />
+      </Suspense>
     </Page>
   );
-};
+}
 
 export default AboutPage;
