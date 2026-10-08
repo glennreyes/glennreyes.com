@@ -24,6 +24,14 @@ vi.mock('content-collections', () => ({
       title: 'Test Post 2',
     },
     {
+      body: 'Unpublished draft content',
+      description: 'Draft description',
+      draft: true,
+      publishedAt: '2023-01-03',
+      slug: 'draft-post',
+      title: 'Draft Post',
+    },
+    {
       body: 'Future content',
       description: 'Future description',
       publishedAt: '2030-01-01',
@@ -77,6 +85,7 @@ describe('posts', () => {
       expect(
         posts.find((p) => p.frontmatter.title === 'Future Post'),
       ).toBeUndefined();
+      expect(posts.find((p) => p.slug === 'draft-post')).toBeUndefined();
     });
 
     it('should include posts published today', async () => {
@@ -93,6 +102,17 @@ describe('posts', () => {
   });
 
   describe('getPostBySlug', () => {
+    it('keeps drafts off the public route while allowing preview access', async () => {
+      expect(await getPostBySlug('draft-post')).toBeUndefined();
+
+      const preview = await getPostBySlug('draft-post', {
+        includeFuture: true,
+      });
+
+      expect(preview?.frontmatter.draft).toBe(true);
+      expect(preview?.frontmatter.title).toBe('Draft Post');
+    });
+
     it('returns undefined for future posts by default', async () => {
       getCurrentTimestampMock.mockResolvedValueOnce(
         new Date('2024-01-01').getTime(),
