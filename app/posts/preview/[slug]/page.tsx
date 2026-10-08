@@ -39,7 +39,10 @@ export const generateMetadata = async (
       title: frontmatter.title,
       type: 'article',
       authors: name,
-      publishedTime: formatISO(frontmatter.publishedAt),
+      publishedTime:
+        frontmatter.draft === true
+          ? undefined
+          : formatISO(frontmatter.publishedAt),
       url,
     },
     robots: {
@@ -75,10 +78,12 @@ async function PreviewPostPage(props: PageProps<'/posts/preview/[slug]'>) {
       <Article.Header
         lead={post.frontmatter.lead}
         meta={
-          <DateDisplay
-            className="text-gray-600 dark:text-gray-400"
-            value={post.frontmatter.publishedAt}
-          />
+          post.frontmatter.draft === true ? undefined : (
+            <DateDisplay
+              className="text-gray-600 dark:text-gray-400"
+              value={post.frontmatter.publishedAt}
+            />
+          )
         }
       >
         {post.frontmatter.title}
