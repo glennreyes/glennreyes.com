@@ -14,7 +14,7 @@ interface CardProps extends Omit<ComponentPropsWithoutRef<'div'>, 'className'> {
 
 function Card({ asChild, ...props }: CardProps) {
   const classes =
-    'relative overflow-hidden rounded-3xl border border-gray-300/25 p-6 dark:border-gray-500/25';
+    'relative overflow-hidden rounded-3xl border border-neutral-300/25 p-6 dark:border-neutral-500/25';
 
   if (!asChild) {
     return <div className={classes} {...props} />;
@@ -45,7 +45,7 @@ function CardBody({ children, title, ...props }: CardBodyProps) {
   return (
     <div className="grid gap-4" {...props}>
       {title !== undefined && title !== null && title !== '' ? (
-        <p className="font-medium text-teal-700 dark:text-teal-200/75">
+        <p className="font-medium text-neutral-700 dark:text-neutral-200/75">
           {title}
         </p>
       ) : null}
@@ -90,11 +90,11 @@ function CardItem({
   const itemClasses = cn(link && 'group relative', 'flex gap-4');
   const descriptionClasses = cn(
     link && 'relative z-10',
-    'text-gray-500 dark:text-gray-400',
+    'text-neutral-500 dark:text-neutral-400',
   );
   const metaClasses = cn(
     link && 'relative z-10',
-    'order-first text-gray-400 dark:text-gray-500',
+    'order-first text-neutral-400 dark:text-neutral-500',
   );
   const { date, meta, ...props } = {
     date: 'date' in rest && rest.date !== undefined ? rest.date : undefined,
@@ -133,7 +133,7 @@ function CardItem({
           <p className={descriptionClasses}>{description}</p>
         ) : null}
         {link !== undefined && link !== null && link !== '' ? (
-          <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-gray-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-gray-900/50" />
+          <div className="absolute -inset-x-6 -inset-y-2 scale-95 bg-neutral-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-neutral-900/50" />
         ) : null}
       </div>
     </div>

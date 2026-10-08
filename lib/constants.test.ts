@@ -1,18 +1,11 @@
 import { describe, it, expect } from 'vitest';
 
-import {
-  description,
-  email,
-  github,
-  name,
-  origin,
-  x,
-} from './constants';
+import { description, email, github, name, origin, x } from './constants';
 
 describe('constants', () => {
   it('exports basic information', () => {
     expect(name).toBe('Glenn Reyes');
-    expect(description).toContain('Software engineer, tech speaker');
+    expect(description).toContain('Software engineer, freediver, runner');
     expect(email).toBe('glenn@glennreyes.com');
   });
 

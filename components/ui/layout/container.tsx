@@ -9,7 +9,7 @@ interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export function Container({ asChild, className, ...props }: ContainerProps) {
-  const classes = cn('container mx-auto px-4', className);
+  const classes = cn('container', className);
 
   if (!asChild) {
     return <div className={classes} {...props} />;

@@ -1,65 +1,42 @@
 'use client';
-
 import type { ComponentPropsWithoutRef } from 'react';
-
-import { useFormStatus } from 'react-dom';
-import { toast } from 'sonner';
-
+import { useActionState, useId } from 'react';
+import type { SubscribeState } from '@/app/subscribe/action';
 import { subscribe } from '@/app/subscribe/action';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useTheme } from '@/lib/hooks/use-theme';
-
-import { Button } from '../ui/forms/button';
-import { Input } from '../ui/forms/input';
-
 type NewsletterFormProps = Omit<
   ComponentPropsWithoutRef<'form'>,
-  'children' | 'className'
+  'children' | 'className' | 'action'
 >;
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button disabled={pending} type="submit" variant="input-button">
-      {pending ? 'Subscribing...' : 'Subscribe'}
-    </Button>
-  );
-}
-
-const handleSubscribe = async (formData: FormData) => {
-  const result = await subscribe(null, formData);
-
-  if (result.status === 'success') {
-    toast.success(result.message);
-  } else if (result.status === 'error') {
-    toast.error(result.message);
-  }
-};
-
 export function NewsletterForm(props: NewsletterFormProps) {
   const { resolvedTheme } = useTheme();
-
+  const initialState: SubscribeState = { status: 'idle', message: '' };
+  const [state, action, pending] = useActionState(subscribe, initialState);
+  const statusId = useId();
   return (
-    <form
-      action={handleSubscribe}
-      className="grid gap-2 gap-y-4 sm:relative sm:flex sm:p-1"
-      {...props}
-    >
-      <div className="sm:flex-1">
-        <input name="theme" type="hidden" value={resolvedTheme} />
+    <form action={action} className="grid gap-4" {...props}>
+      <input name="theme" type="hidden" value={resolvedTheme} />
+      <div className="flex flex-col gap-3 sm:flex-row">
         <Input
+          aria-describedby={state.status !== 'idle' ? statusId : undefined}
+          aria-invalid={state.status === 'error' ? true : undefined}
           aria-label="Email address"
-          className="peer relative z-10 w-full sm:border-transparent sm:focus:border-transparent sm:focus:ring-0 dark:bg-slate-900/25 dark:sm:border-transparent dark:sm:bg-transparent dark:sm:focus:border-transparent dark:sm:focus:ring-0"
+          autoComplete="email"
+          className="min-w-0 flex-1"
           name="email"
           placeholder="Your email address"
           required
           type="email"
         />
-        <span className="absolute inset-0 hidden rounded-2xl border border-slate-300 p-1 peer-focus:border-slate-400 peer-focus:ring-4 peer-focus:ring-teal-100 peer-disabled:opacity-75 sm:block dark:border-slate-700 dark:bg-slate-900/25 dark:peer-focus:border-slate-500 dark:peer-focus:ring-teal-900/25" />
+        <Button disabled={pending} type="submit">
+          {pending ? 'Subscribing…' : 'Subscribe'}
+        </Button>
       </div>
-      <div className="relative grid">
-        <SubmitButton />
-      </div>
+      <output aria-live="polite" id={statusId}>
+        {state.message}
+      </output>
     </form>
   );
 }

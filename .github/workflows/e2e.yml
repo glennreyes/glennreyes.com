@@ -25,9 +25,16 @@ jobs:
       - name: Install Playwright browsers
         run: bun playwright install chromium --with-deps
 
+      - name: Build production site
+        run: bun run build
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+
       - name: Run E2E tests
         run: bun test:e2e
         env:
+          PLAYWRIGHT_BUILD: 1
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 

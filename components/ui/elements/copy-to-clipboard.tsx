@@ -23,11 +23,11 @@ export function CopyToClipboard({ value }: CopyToClipboardProps) {
   };
   const copyIconClasses = cn(
     isCopied && 'scale-0 opacity-0',
-    'bg-transparent text-gray-500 transition hover:text-gray-400 focus:transition-none active:text-gray-500 dark:bg-transparent dark:text-gray-500 dark:hover:text-gray-400 dark:active:text-gray-500',
+    'bg-transparent text-neutral-500 transition hover:text-neutral-400 focus:transition-none active:text-neutral-500 dark:bg-transparent dark:text-neutral-500 dark:hover:text-neutral-400 dark:active:text-neutral-500',
   );
   const checkIconClasses = cn(
     !isCopied && 'scale-0 opacity-0',
-    'pointer-events-none absolute inset-0 grid items-center justify-center text-teal-500 transition',
+    'pointer-events-none absolute inset-0 grid items-center justify-center text-neutral-500 transition',
   );
 
   return (

@@ -11,7 +11,7 @@ interface NewsletterProps {
 }
 
 export function Newsletter({
-  children = 'Get notified when I publish new posts, technical deep-dives, and insights from my work in React and web development. I only send emails when I have something valuable to share.',
+  children = 'Occasional notes about things I’m building and learning. A little software, a little life.',
   title = 'Stay in the loop',
 }: NewsletterProps) {
   return (

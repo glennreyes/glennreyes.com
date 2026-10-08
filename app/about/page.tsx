@@ -1,113 +1,57 @@
 import type { Metadata } from 'next';
-
-import { ArrowUpRight, Send } from 'lucide-react';
 import Image from 'next/image';
-
-import speaking from '@/assets/images/speaking.jpg';
-import { GitHub } from '@/components/icons/github';
-import { X } from '@/components/icons/x';
-import { Divider } from '@/components/ui/elements/divider';
-import { Card } from '@/components/ui/layout/card';
-import { Content } from '@/components/ui/layout/content';
-import { List } from '@/components/ui/layout/list';
+import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
-import { email, github, x } from '@/lib/constants';
-import { getPageBySlug } from '@/lib/pages';
-
-export const generateMetadata = async (): Promise<Metadata> => {
-  const page = await getPageBySlug('about');
-
-  return {
-    title: page?.frontmatter.title ?? 'About',
-  };
+import { email } from '@/lib/constants';
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Software engineer, freediver, runner. Get to know Glenn Reyes.',
 };
-
-const AboutPage = async () => {
-  const page = await getPageBySlug('about');
-
-  if (!page) {
-    return null;
-  }
-
-  const { content, frontmatter } = page;
-
+export default function AboutPage() {
   return (
     <Page>
-      <Page.Header lead={frontmatter.lead}>{frontmatter.heading}</Page.Header>
-      <Image
-        alt="Speaking"
-        className="h-96 w-full rounded-3xl object-cover object-right sm:object-center"
-        height={384}
-        placeholder="blur"
-        priority
-        src={speaking}
-        width={992}
-      />
-      <Content>
-        <Content.Primary>
-          <Page.Body>{content}</Page.Body>
-        </Content.Primary>
-        <Content.Secondary>
-          <Card>
-            <div className="grid gap-6">
-              <Card.Body title="Online">
-                <List spacing="dense">
-                  <List.Item>
-                    <Card.Item
-                      link={`https://x.com/${x}`}
-                      title={
-                        <span className="inline-flex w-full items-center justify-between gap-2">
-                          X
-                          <ArrowUpRight
-                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
-                            strokeWidth={2}
-                          />
-                        </span>
-                      }
-                    >
-                      <X className="h-6 w-6 text-slate-500 dark:text-slate-400" />
-                    </Card.Item>
-                  </List.Item>
-                  <List.Item>
-                    <Card.Item
-                      link={`https://github.com/${github}`}
-                      title={
-                        <span className="inline-flex w-full items-center justify-between gap-2">
-                          GitHub
-                          <ArrowUpRight
-                            className="h-5 w-5 text-slate-300 dark:text-slate-700"
-                            strokeWidth={2}
-                          />
-                        </span>
-                      }
-                    >
-                      <GitHub className="h-6 w-6 text-slate-500 dark:text-slate-400" />
-                    </Card.Item>
-                  </List.Item>
-                </List>
-              </Card.Body>
-              <Divider />
-              <Card.Body title="Email">
-                <Card.Item
-                  link={`mailto:${email}`}
-                  title={
-                    <span className="inline-flex w-full items-center justify-between gap-2">
-                      {email}
-                    </span>
-                  }
-                >
-                  <Send
-                    className="h-6 w-6 text-slate-300 dark:text-slate-700"
-                    strokeWidth={2}
-                  />
-                </Card.Item>
-              </Card.Body>
-            </div>
-          </Card>
-        </Content.Secondary>
-      </Content>
+      <Page.Header lead="A few parts of the same life.">
+        Hey, I&apos;m Glenn Reyes.
+      </Page.Header>
+      <section className="grid gap-10 md:grid-cols-2">
+        <div className="aspect-portrait relative overflow-hidden rounded-4xl">
+          <Image
+            alt="Glenn wearing a diving mask in clear water above a reef"
+            className="object-cover"
+            fill
+            priority
+            sizes="(max-width: 767px) 100vw, 50vw"
+            src="/media/freediving/portrait.webp"
+          />
+        </div>
+        <div className="grid content-center gap-7">
+          <p>
+            I&apos;m a software engineer based in Vienna. I enjoy making things
+            that feel clear, considered, and useful.
+          </p>
+          <p>
+            Freediving is a big part of my life. I love the quiet below the
+            surface, exploring with a camera, and having a reason to slow down.
+          </p>
+          <p>
+            On land, I run, do HYROX, and make room for whatever keeps me
+            moving. There are a few marathons ahead in 2027.
+          </p>
+          <p className="text-muted-foreground">
+            I also speak, teach, play guitar, and spend time with the people
+            closest to me.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <SectionLink href={'mailto:' + email}>Say hello</SectionLink>
+            <SectionLink href="/uses">Things I use</SectionLink>
+          </div>
+        </div>
+      </section>
+      <div className="flex flex-wrap gap-3">
+        <SectionLink href="/freediving">Freediving</SectionLink>
+        <SectionLink href="/sport">Sport</SectionLink>
+        <SectionLink href="/work">Work</SectionLink>
+      </div>
     </Page>
   );
-};
-
-export default AboutPage;
+}

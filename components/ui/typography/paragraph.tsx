@@ -9,7 +9,7 @@ interface ParagraphProps extends ComponentPropsWithoutRef<'p'> {
 }
 
 export function Paragraph({ asChild, className, ...props }: ParagraphProps) {
-  const classes = cn('text-gray-500 dark:text-gray-400', className);
+  const classes = cn('text-neutral-500 dark:text-neutral-400', className);
 
   if (!asChild) {
     return <p className={classes} {...props} />;

@@ -8,12 +8,11 @@ const withBundleAnalyzer = bundleAnalyzer({
 });
 const buildYear = new Date().getUTCFullYear().toString();
 const nextConfig: NextConfig = {
+  allowedDevOrigins: ['127.0.0.1'],
   cacheComponents: true,
+  partialPrefetching: true,
   env: {
     NEXT_PUBLIC_BUILD_YEAR: buildYear,
-  },
-  experimental: {
-    viewTransition: true,
   },
   headers() {
     return Promise.resolve([

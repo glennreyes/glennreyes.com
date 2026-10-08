@@ -1,7 +1,9 @@
 import React from 'react';
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 
-const getCurrentTimestampMock = vi.fn(() => new Date('2024-01-01').getTime());
+const { getCurrentTimestampMock } = vi.hoisted(() => ({
+  getCurrentTimestampMock: vi.fn<() => Promise<number>>(),
+}));
 
 vi.mock('./time', () => ({
   getCurrentTimestamp: getCurrentTimestampMock,
@@ -34,12 +36,11 @@ vi.mock('content-collections', () => ({
 }));
 
 vi.mock('next-mdx-remote/rsc', () => ({
-  compileMDX: vi.fn(({ source }: { source: string }) =>
+  compileMDX: ({ source }: { source: string }) =>
     Promise.resolve({
       content: React.createElement('div', null, source),
       frontmatter: {},
     }),
-  ),
 }));
 
 const { getAllPublishedPosts, getPostBySlug } = await import('./posts');

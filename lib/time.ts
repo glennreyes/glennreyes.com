@@ -5,9 +5,3 @@ export async function getTimestamp() {
 
   return Date.now();
 }
-
-export async function getCurrentYear() {
-  await connection();
-
-  return new Date().getFullYear();
-}
