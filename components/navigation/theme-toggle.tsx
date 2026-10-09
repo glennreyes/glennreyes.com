@@ -20,10 +20,7 @@ export function ThemeToggle() {
     return null;
   }
   return (
-    <fieldset
-      aria-label="Color theme"
-      className="bg-muted inline-flex gap-1 rounded-full border p-1"
-    >
+    <fieldset aria-label="Color theme" className="inline-flex gap-1">
       {themes.map(({ icon: Icon, value }) => (
         <Button
           key={value}
@@ -31,7 +28,7 @@ export function ThemeToggle() {
           aria-pressed={theme === value}
           className={cn(
             theme === value
-              ? 'bg-foreground text-background hover:bg-foreground/80 hover:text-background'
+              ? 'bg-muted text-foreground'
               : 'text-muted-foreground',
           )}
           onClick={() => setTheme(value)}

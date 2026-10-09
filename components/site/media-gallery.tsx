@@ -14,14 +14,14 @@ interface MediaGalleryProps {
 }
 export function MediaGallery({ items }: MediaGalleryProps) {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((media) => (
         <Dialog key={media.id}>
           <div className="grid gap-4">
             <DialogTrigger asChild>
               <button
                 aria-label={'Open ' + media.collection + ': ' + media.caption}
-                className="group aspect-portrait bg-muted relative overflow-hidden rounded-4xl focus-visible:outline-2 focus-visible:outline-offset-4"
+                className="group aspect-portrait bg-muted relative overflow-hidden rounded-md focus-visible:outline-2 focus-visible:outline-offset-4"
                 type="button"
               >
                 <Image
@@ -31,7 +31,7 @@ export function MediaGallery({ items }: MediaGalleryProps) {
                   sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                   src={media.src}
                 />
-                <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-full bg-black text-white">
+                <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-md bg-black text-white">
                   {media.video !== undefined ? (
                     <Play aria-hidden="true" className="size-4" />
                   ) : (
@@ -40,7 +40,7 @@ export function MediaGallery({ items }: MediaGalleryProps) {
                 </span>
               </button>
             </DialogTrigger>
-            <div className="grid gap-1 px-2">
+            <div className="flex flex-wrap justify-between gap-2">
               <p>{media.caption}</p>
               <p className="text-muted-foreground">{media.collection}</p>
             </div>
@@ -51,7 +51,7 @@ export function MediaGallery({ items }: MediaGalleryProps) {
             {media.video !== undefined ? (
               <video
                 aria-label={media.alt}
-                className="max-h-gallery w-full rounded-2xl bg-black"
+                className="max-h-gallery w-full rounded-md bg-black"
                 controls
                 playsInline
                 poster={media.src}
@@ -64,7 +64,7 @@ export function MediaGallery({ items }: MediaGalleryProps) {
               <div className="sm:h-gallery relative h-80">
                 <Image
                   alt={media.alt}
-                  className="rounded-2xl object-contain"
+                  className="rounded-md object-contain"
                   fill
                   sizes="80vw"
                   src={media.src}

@@ -4,7 +4,7 @@ import { freedivingMedia } from '@/lib/site-content';
 
 import { MediaCard } from './media-card';
 
-const media = freedivingMedia.find((item) => item.id === 'blue');
+const media = freedivingMedia.find((item) => item.id === 'cave');
 if (media === undefined) {
   throw new Error('Missing hero media');
 }

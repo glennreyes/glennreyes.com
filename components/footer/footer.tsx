@@ -10,10 +10,7 @@ export function Footer() {
     <footer className="border-t py-8">
       <Container className="grid gap-8 md:grid-cols-2">
         <div className="grid gap-2">
-          <p>Glenn Reyes</p>
-          <p className="text-muted-foreground">
-            In the water. On the move. Making things.
-          </p>
+          <p>Let’s talk.</p>
           <Link
             className="inline-flex min-h-11 w-fit items-center"
             href={'mailto:' + email}

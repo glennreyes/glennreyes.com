@@ -39,7 +39,7 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Verify all main navigation links are present
-    const navLinks = ['Freediving', 'Sport', 'Work', 'About'];
+    const navLinks = ['Freediving', 'Sport', 'Tech', 'About'];
     const nav = page.getByRole('navigation', { name: 'Main navigation' });
 
     for (const linkName of navLinks) {

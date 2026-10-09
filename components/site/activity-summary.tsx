@@ -15,7 +15,7 @@ export async function ActivitySummary() {
       </div>
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {activities.map((activity) => (
-          <li className="grid gap-6 rounded-3xl border p-6" key={activity.id}>
+          <li className="grid gap-6 rounded-md border p-6" key={activity.id}>
             <time dateTime={activity.day}>
               {new Date(activity.day + 'T12:00:00Z').toLocaleDateString(
                 'en-GB',

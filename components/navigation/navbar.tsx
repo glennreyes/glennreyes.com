@@ -13,10 +13,9 @@ export function Navbar({ children, ...props }: NavbarProps) {
         <SkipNavigationLink />
         <Link
           aria-label="Glenn Reyes, home"
-          className="inline-flex min-h-11 items-center gap-3 rounded-full px-2"
+          className="inline-flex min-h-11 items-center gap-3 rounded-md"
           href="/"
         >
-          <span className="bg-foreground size-2 rounded-full" />
           Glenn Reyes
         </Link>
         {children}

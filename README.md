@@ -45,9 +45,9 @@ bun dev
 
 ## Personal site
 
-The top-level chapters are Freediving, Sport, Work, and About. Sport contains Running and HYROX; Work links to AI, projects, appearances, talks, workshops, and writing. Existing content URLs continue to work. Geist stays at one text size, with monochrome themes and large radii.
+The top-level chapters are Freediving, Sport, Tech, and About. Sport contains Running and HYROX; Tech links to AI, projects, appearances, talks, workshops, and writing. Existing content URLs continue to work. Geist stays at one text size, with monochrome themes, borderless navigation/actions, and restrained corners. The earlier `/work` URLs redirect to `/tech`.
 
-Original freediving photos and silent, trimmed films live under `public/media/freediving/`. The HYROX image is the public cover of [Glenn's October 2026 gym reel](https://www.instagram.com/glnnreyes/reel/DeG4OCCtiGY/). Captions and portfolio entries live in `lib/site-content.ts`.
+High-resolution freediving photos and silent 1080p films from Glenn’s Downloads folder live under `public/media/freediving/`. The HYROX image is the public cover of [Glenn's October 2026 gym reel](https://www.instagram.com/glnnreyes/reel/DeG4OCCtiGY/). Captions and portfolio entries live in `lib/site-content.ts`.
 
 ### Activity sync
 

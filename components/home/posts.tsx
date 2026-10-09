@@ -1,21 +1,16 @@
+import { SectionLink } from '@/components/site/section-link';
 import { getAllPublishedPosts } from '@/lib/posts';
-
-import { Feed, FeedItem } from '../ui/layout/feed';
 
 export async function Posts() {
   const allPosts = await getAllPublishedPosts();
   const posts = allPosts.slice(0, 2);
-
   return (
-    <Feed>
+    <ul className="grid gap-2">
       {posts.map(({ frontmatter, slug }) => (
-        <FeedItem
-          description={frontmatter.description}
-          key={slug}
-          link={'/posts/' + slug}
-          title={frontmatter.title}
-        />
+        <li key={slug}>
+          <SectionLink href={'/posts/' + slug}>{frontmatter.title}</SectionLink>
+        </li>
       ))}
-    </Feed>
+    </ul>
   );
 }

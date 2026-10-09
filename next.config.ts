@@ -58,6 +58,8 @@ const nextConfig: NextConfig = {
   },
   redirects: () =>
     Promise.resolve([
+      { source: '/work', destination: '/tech', permanent: true },
+      { source: '/work/:path*', destination: '/tech/:path*', permanent: true },
       {
         destination:
           'https://youtube.com/playlist?list=PLsRdk5eWpljHyLv2oJwTuefYzEMCIM7qq',

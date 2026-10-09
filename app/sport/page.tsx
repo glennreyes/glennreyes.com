@@ -5,72 +5,55 @@ import { Page } from '@/components/ui/layout/page';
 import { stravaProfile } from '@/lib/site-content';
 export const metadata: Metadata = {
   title: 'Sport',
-  description: 'Running, HYROX, and a life on the move. Glenn Reyes.',
+  description: 'Running, HYROX, and life on the move with Glenn Reyes.',
 };
 export default function SportPage() {
   return (
     <Page>
-      <Page.Header
-        meta="02 / On the move"
-        lead="Running, strength, and everything in between."
-      >
-        Sport.
-      </Page.Header>
-      <div className="grid gap-6 md:grid-cols-2">
-        <section className="bg-foreground text-background flex min-h-96 flex-col justify-between gap-16 rounded-4xl p-8 md:p-12">
-          <span>01 / Going the distance</span>
-          <div className="grid gap-6">
-            <h2 className="font-medium">Running</h2>
-            <p>
-              A few marathons ahead in 2027. For now, getting out the door and
-              putting one foot in front of the other.
-            </p>
-            <div>
-              <SectionLink href="/sport/running">
-                The running chapter
-              </SectionLink>
-            </div>
-          </div>
-          <span>One kilometre at a time.</span>
-        </section>
-        <section className="flex min-h-96 flex-col justify-between gap-16 rounded-4xl border p-8 md:p-12">
-          <span className="text-muted-foreground">
-            02 / A different challenge
-          </span>
-          <div className="grid gap-6">
-            <h2 className="font-medium">HYROX</h2>
-            <p>
-              Running meets strength. Another way to challenge myself and keep
-              showing up.
-            </p>
-            <div>
-              <SectionLink href="/sport/hyrox">The HYROX chapter</SectionLink>
-            </div>
-          </div>
-          <div className="relative h-64 overflow-hidden rounded-3xl">
+      <header className="flex flex-wrap justify-between gap-4">
+        <h1 className="font-medium">Sport.</h1>
+        <p className="text-muted-foreground">
+          Running, strength, and the everyday sessions.
+        </p>
+      </header>
+      <div className="grid gap-8 md:grid-cols-2">
+        <section className="grid content-start gap-4">
+          <div className="aspect-portrait relative overflow-hidden rounded-md">
             <Image
-              alt="A weighted sled on the gym track during Glenn’s session"
+              alt="Glenn running at dusk during a race"
+              className="object-cover"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 50vw"
+              src="/media/sport/running.webp"
+            />
+          </div>
+          <h2>
+            <SectionLink href="/sport/running">Running</SectionLink>
+          </h2>
+          <p className="text-muted-foreground">
+            VCM & BIM. Marathon season, 2027.
+          </p>
+        </section>
+        <section className="grid content-start gap-4 md:pt-16">
+          <div className="aspect-portrait relative overflow-hidden rounded-md">
+            <Image
+              alt="Glenn pushing a weighted sled on the gym track"
               className="object-cover"
               fill
               sizes="(max-width: 767px) 100vw, 50vw"
               src="/media/sport/hyrox.webp"
             />
           </div>
+          <h2>
+            <SectionLink href="/sport/hyrox">HYROX</SectionLink>
+          </h2>
+          <p className="text-muted-foreground">Running meets strength.</p>
         </section>
       </div>
-      <section className="grid gap-5 border-t pt-8 md:grid-cols-2">
-        <h2>The everyday sessions count, too.</h2>
-        <div className="grid gap-6">
-          <p className="text-muted-foreground">
-            Commutes, mobility, cycling, and the smaller things that make
-            movement part of my day.
-          </p>
-          <div>
-            <SectionLink href={stravaProfile}>
-              Follow along on Strava
-            </SectionLink>
-          </div>
-        </div>
+      <section className="flex flex-wrap items-center justify-between gap-4 border-t pt-6">
+        <h2>Commutes, mobility, and everything in between.</h2>
+        <SectionLink href={stravaProfile}>Strava</SectionLink>
       </section>
     </Page>
   );

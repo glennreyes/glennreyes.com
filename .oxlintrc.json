@@ -102,7 +102,7 @@
         "components/ui/input.tsx",
         "app/freediving/**/*.tsx",
         "app/sport/**/*.tsx",
-        "app/work/**/*.tsx"
+        "app/tech/**/*.tsx"
       ],
       "rules": {
         "shadcn/no-arbitrary-values": "error",

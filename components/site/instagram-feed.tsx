@@ -25,7 +25,7 @@ export async function InstagramFeed() {
         {posts.map((post) => (
           <li key={post.id}>
             <Link className="grid gap-4" href={post.href}>
-              <div className="aspect-portrait relative overflow-hidden rounded-4xl">
+              <div className="aspect-portrait relative overflow-hidden rounded-md">
                 <Image
                   alt={post.caption}
                   className="object-cover"
@@ -35,7 +35,7 @@ export async function InstagramFeed() {
                   unoptimized
                 />
                 {post.video ? (
-                  <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-full bg-black text-white">
+                  <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-md bg-black text-white">
                     <Play aria-hidden="true" className="size-4" />
                   </span>
                 ) : null}

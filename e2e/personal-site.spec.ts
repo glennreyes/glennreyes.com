@@ -6,8 +6,8 @@ const routes = [
   '/sport',
   '/sport/running',
   '/sport/hyrox',
-  '/work',
-  '/work/ai',
+  '/tech',
+  '/tech/ai',
 ];
 for (const route of routes) {
   test('accessible chapter ' + route, async ({ page }) => {
@@ -27,7 +27,7 @@ test('opens a film with controls, closes on escape, and returns focus', async ({
 }) => {
   await page.goto('/freediving');
   const trigger = page.getByRole('button', {
-    name: 'Open From the water · May 2025: A different kind of quiet.',
+    name: 'Open Napaling · August 2026: No fins. One breath.',
   });
   await trigger.click();
   const dialog = page.getByRole('dialog');
@@ -82,13 +82,13 @@ test('maintains one font size, Geist, and no horizontal overflow on mobile', asy
     expect(result.overflow).toBe(false);
   }
 });
-test('keeps the Work chapter active for legacy speaking URLs', async ({
+test('keeps the Tech chapter active for legacy speaking URLs', async ({
   page,
 }) => {
   await page.goto('/talks');
   const work = page
     .getByRole('navigation', { name: 'Main navigation' })
-    .getByRole('link', { name: 'Work', exact: true });
+    .getByRole('link', { name: 'Tech', exact: true });
   await expect(work).toHaveAttribute('aria-current', 'page');
 });
 test('dark themes retain accessible contrast', async ({ page }) => {

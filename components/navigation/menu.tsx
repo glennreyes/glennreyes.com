@@ -15,7 +15,7 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '/freediving', label: 'Freediving' },
   { href: '/sport', label: 'Sport' },
-  { href: '/work', label: 'Work' },
+  { href: '/tech', label: 'Tech' },
   { href: '/about', label: 'About' },
 ];
 export function Menu() {
@@ -25,7 +25,7 @@ export function Menu() {
     return (
       pathname === href ||
       pathname.startsWith(href + '/') ||
-      (href === '/work' &&
+      (href === '/tech' &&
         ['/talks', '/workshops', '/appearances', '/posts'].some((path) =>
           pathname.startsWith(path),
         ))
@@ -33,16 +33,16 @@ export function Menu() {
   }
   return (
     <nav aria-label="Main navigation">
-      <ul className="bg-background hidden gap-1 rounded-full border p-1 md:flex">
+      <ul className="hidden gap-2 md:flex">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               aria-current={isCurrent(link.href) ? 'page' : undefined}
               className={cn(
-                'inline-flex min-h-11 items-center rounded-full px-5 transition-colors',
+                'inline-flex min-h-11 items-center rounded-none px-3 transition-colors',
                 isCurrent(link.href)
-                  ? 'bg-foreground text-background'
-                  : 'hover:bg-muted',
+                  ? 'font-medium underline underline-offset-8'
+                  : 'text-muted-foreground hover:text-foreground',
               )}
               href={link.href}
             >
@@ -58,20 +58,20 @@ export function Menu() {
             aria-label="Open Menu"
             className="md:hidden"
             size="icon"
-            variant="outline"
+            variant="ghost"
           >
             <MenuIcon aria-hidden="true" />
           </Button>
         </SheetTrigger>
         <SheetContent className="gap-8 p-8" side="right">
           <SheetTitle>Explore</SheetTitle>
-          <SheetDescription>A few parts of the same life.</SheetDescription>
+          <SheetDescription>Freediving, sport, and Tech.</SheetDescription>
           <ul className="grid gap-4">
             {[{ href: '/', label: 'Home' }, ...links].map((link) => (
               <li key={link.href}>
                 <Link
                   aria-current={pathname === link.href ? 'page' : undefined}
-                  className="hover:bg-muted flex min-h-11 items-center rounded-full px-4"
+                  className="hover:bg-muted flex min-h-11 items-center rounded-md px-4"
                   href={link.href}
                   onClick={() => setOpen(false)}
                 >

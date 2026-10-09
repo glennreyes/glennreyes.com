@@ -10,36 +10,29 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <Page>
-      <Page.Header lead="A few parts of the same life.">
-        Hey, I&apos;m Glenn Reyes.
-      </Page.Header>
+      <Page.Header>Hey, I&apos;m Glenn Reyes.</Page.Header>
       <section className="grid gap-10 md:grid-cols-2">
-        <div className="aspect-portrait relative overflow-hidden rounded-4xl">
+        <div className="aspect-portrait relative overflow-hidden rounded-md">
           <Image
-            alt="Glenn wearing a diving mask in clear water above a reef"
+            alt="Glenn at the waterline below a rocky coastline"
             className="object-cover"
             fill
             priority
             sizes="(max-width: 767px) 100vw, 50vw"
-            src="/media/freediving/portrait.webp"
+            src="/media/freediving/surface.webp"
           />
         </div>
         <div className="grid content-center gap-7">
           <p>
-            I&apos;m a software engineer based in Vienna. I enjoy making things
-            that feel clear, considered, and useful.
+            Software engineer in Vienna. Freediver, runner, and HYROX
+            enthusiast.
           </p>
           <p>
-            Freediving is a big part of my life. I love the quiet below the
-            surface, exploring with a camera, and having a reason to slow down.
-          </p>
-          <p>
-            On land, I run, do HYROX, and make room for whatever keeps me
-            moving. There are a few marathons ahead in 2027.
+            I build products, explore AI interfaces, and teach what I learn.
           </p>
           <p className="text-muted-foreground">
-            I also speak, teach, play guitar, and spend time with the people
-            closest to me.
+            Away from a screen: the ocean, a run, a guitar, and my favourite
+            people.
           </p>
           <div className="flex flex-wrap gap-3">
             <SectionLink href={'mailto:' + email}>Say hello</SectionLink>
@@ -50,7 +43,7 @@ export default function AboutPage() {
       <div className="flex flex-wrap gap-3">
         <SectionLink href="/freediving">Freediving</SectionLink>
         <SectionLink href="/sport">Sport</SectionLink>
-        <SectionLink href="/work">Work</SectionLink>
+        <SectionLink href="/tech">Tech</SectionLink>
       </div>
     </Page>
   );
