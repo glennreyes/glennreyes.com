@@ -53,16 +53,26 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html suppressHydrationWarning>
       <head />
       <Body>
-        <Suspense fallback={null}>
-          <Providers>
-            <Navbar>
+        <Providers>
+          <Navbar>
+            <Suspense fallback={<span className="min-h-11" />}>
               <Menu />
-            </Navbar>
-            <Main>{children}</Main>
-            <Toaster />
-            <Footer />
-          </Providers>
-        </Suspense>
+            </Suspense>
+          </Navbar>
+          <Main>
+            <Suspense
+              fallback={
+                <div className="container py-12">
+                  <p>Just a moment.</p>
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+          </Main>
+          <Toaster />
+          <Footer />
+        </Providers>
         <SpeedInsights />
         <Analytics />
       </Body>

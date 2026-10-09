@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
-export const useMounted = () => {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return mounted;
-};
+function subscribe() {
+  return () => {};
+}
+function clientSnapshot() {
+  return true;
+}
+function serverSnapshot() {
+  return false;
+}
+export function useMounted() {
+  return useSyncExternalStore(subscribe, clientSnapshot, serverSnapshot);
+}

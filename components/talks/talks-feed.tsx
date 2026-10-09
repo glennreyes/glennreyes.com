@@ -25,7 +25,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
             <FeedItem
               action="Talk Details"
               description={
-                <div className="prose prose-slate text-slate-500">
+                <div className="prose prose-slate text-neutral-500">
                   <MDXContent source={abstract} />
                 </div>
               }
@@ -42,7 +42,7 @@ export function TalksFeed({ children, talks }: TalksFeedProps) {
             <FeedItem
               action="Talk Details"
               description={
-                <div className="prose prose-slate text-slate-500">
+                <div className="prose prose-slate text-neutral-500">
                   <MDXContent source={abstract} />
                 </div>
               }

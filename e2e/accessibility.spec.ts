@@ -81,7 +81,7 @@ test.describe('Accessibility', () => {
     await expect(menuButton).toBeFocused();
   });
 
-  test.skip('mobile menu should trap focus', async ({ page }) => {
+  test('mobile menu should trap focus', async ({ page }) => {
     await page.goto('/');
     await page.setViewportSize({ width: 375, height: 667 });
 
@@ -91,6 +91,8 @@ test.describe('Accessibility', () => {
     const firstLink = dialog.getByRole('link').first();
     const closeButton = page.getByRole('button', { name: 'Close Menu' });
 
+    await expect(closeButton).toBeFocused();
+    await page.keyboard.press('Tab');
     await expect(firstLink).toBeFocused();
 
     await page.keyboard.press('Tab');

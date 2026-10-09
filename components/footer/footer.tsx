@@ -1,27 +1,41 @@
-import { getCurrentYear } from '@/lib/time';
-
-import { ThemeToggle } from '../navigation/theme-toggle';
-import { Container } from '../ui/layout/container';
-import { Link } from '../ui/link/link';
-
+import { ThemeToggle } from '@/components/navigation/theme-toggle';
+import { Container } from '@/components/ui/layout/container';
+import { Link } from '@/components/ui/link/link';
+import { email } from '@/lib/constants';
+function getCopyrightYear() {
+  return process.env.NEXT_PUBLIC_BUILD_YEAR ?? '2026';
+}
 export function Footer() {
-  const linkClasses =
-    'text-slate-500 hover:text-slate-600 focus-visible:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300 dark:focus-visible:text-slate-300';
-
   return (
-    <footer className="border-t border-slate-300/25 p-4 dark:border-slate-500/25">
-      <Container className="flex items-center justify-between gap-4">
-        <p className="text-slate-500 dark:text-slate-400">
-          © {getCurrentYear()} Glenn Reyes ·{' '}
-          <Link className={linkClasses} href="/privacy">
+    <footer className="border-t py-8">
+      <Container className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-2">
+          <p>Let’s talk.</p>
+          <Link
+            className="inline-flex min-h-11 w-fit items-center"
+            href={'mailto:' + email}
+          >
+            {email}
+          </Link>
+        </div>
+        <div className="flex flex-wrap items-center justify-start gap-x-6 gap-y-2 md:justify-end">
+          <Link className="inline-flex min-h-11 items-center" href="/posts">
+            Writing
+          </Link>
+          <Link className="inline-flex min-h-11 items-center" href="/uses">
+            Uses
+          </Link>
+          <Link className="inline-flex min-h-11 items-center" href="/privacy">
             Privacy
-          </Link>{' '}
-          ·{' '}
-          <Link className={linkClasses} href="/legal">
+          </Link>
+          <Link className="inline-flex min-h-11 items-center" href="/legal">
             Legal
           </Link>
+          <ThemeToggle />
+        </div>
+        <p className="text-muted-foreground">
+          © {getCopyrightYear()} Glenn Reyes
         </p>
-        <ThemeToggle />
       </Container>
     </footer>
   );

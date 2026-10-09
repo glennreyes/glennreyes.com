@@ -68,7 +68,6 @@
         "ignore": ["tw"]
       }
     ],
-    "react/prop-types": "off",
     "typescript/no-confusing-void-expression": [
       "error",
       {
@@ -92,5 +91,24 @@
     "unicorn/no-array-sort": "off",
     "unicorn/no-nested-ternary": "off",
     "unicorn/no-null": "off"
-  }
+  },
+  "jsPlugins": ["@shadcn/lint"],
+  "overrides": [
+    {
+      "files": [
+        "components/site/**/*.tsx",
+        "components/home/hero.tsx",
+        "components/ui/button.tsx",
+        "components/ui/input.tsx",
+        "app/freediving/**/*.tsx",
+        "app/sport/**/*.tsx",
+        "app/tech/**/*.tsx"
+      ],
+      "rules": {
+        "shadcn/no-arbitrary-values": "error",
+        "shadcn/require-static-classes": "error",
+        "shadcn/no-inline-styles": "error"
+      }
+    }
+  ]
 }

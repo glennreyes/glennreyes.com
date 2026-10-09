@@ -5,6 +5,7 @@ import type { PageProps } from '@/types/next';
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Divider } from '@/components/ui/elements/divider';
 import { TagCloud } from '@/components/ui/elements/tag-cloud';
+import { getTimestamp } from '@/lib/time';
 import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
@@ -34,6 +35,7 @@ export default async function WorkshopPage(
 ) {
   const params = await props.params;
   const workshop = await getWorkshopBySlug(params.slug);
+  const now = await getTimestamp();
   const events = workshop.appearances.map((appearance) =>
     toFeedEvent(appearance.event),
   );
@@ -52,7 +54,7 @@ export default async function WorkshopPage(
           <>
             <Divider />
             <H2>Appearances</H2>
-            <AppearancesFeed events={events}>
+            <AppearancesFeed events={events} now={now}>
               <ActionLink href="/appearances">All Appearances</ActionLink>
             </AppearancesFeed>
           </>

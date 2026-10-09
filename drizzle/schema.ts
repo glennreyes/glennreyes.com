@@ -1,5 +1,11 @@
 import { relations } from 'drizzle-orm';
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import {
+  index,
+  integer,
+  real,
+  sqliteTable,
+  text,
+} from 'drizzle-orm/sqlite-core';
 
 // Enums
 export const appearanceLengthEnum = ['SHORT', 'MEDIUM', 'LONG'] as const;
@@ -131,6 +137,18 @@ export const views = sqliteTable('View', {
   appearanceId: text('appearanceId').references(() => appearances.id),
   postId: text('postId').references(() => posts.id),
 });
+
+export const activitySummaries = sqliteTable(
+  'ActivitySummary',
+  {
+    id: text('id').primaryKey(),
+    day: text('day').notNull(),
+    startedAt: integer('startedAt').notNull(),
+    distanceKm: real('distanceKm').notNull(),
+    durationSeconds: integer('durationSeconds').notNull(),
+  },
+  (table) => [index('ActivitySummary_startedAt').on(table.startedAt)],
+);
 
 // Relations
 export const locationsRelations = relations(locations, ({ many }) => ({
