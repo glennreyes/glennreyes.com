@@ -71,7 +71,12 @@ async function PostPage(props: PageProps<'/posts/[slug]'>) {
     >
       <Article.Header
         lead={post.frontmatter.lead}
-        meta={<DateDisplay value={post.frontmatter.publishedAt} />}
+        meta={
+          <DateDisplay
+            className="text-gray-600 dark:text-gray-400"
+            value={post.frontmatter.publishedAt}
+          />
+        }
       >
         {post.frontmatter.title}
       </Article.Header>

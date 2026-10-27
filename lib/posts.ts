@@ -9,6 +9,7 @@ import { mdxRemoteOptions } from './mdx/read-mdx-file';
 
 export interface PostFrontmatter {
   description: string;
+  draft?: boolean;
   lead?: string;
   publishedAt: string;
   title: string;
@@ -38,6 +39,7 @@ export const getAllPosts = async (): Promise<Post[]> => {
         content: content.content,
         frontmatter: {
           description: post.description,
+          draft: post.draft,
           lead: post.lead,
           publishedAt: post.publishedAt,
           title: post.title,
@@ -66,7 +68,7 @@ export const getAllPublishedPosts = async (): Promise<Post[]> => {
   return allPosts.filter((post) => {
     const publishedDate = new Date(post.frontmatter.publishedAt);
 
-    return publishedDate.getTime() <= now;
+    return post.frontmatter.draft !== true && publishedDate.getTime() <= now;
   });
 };
 
