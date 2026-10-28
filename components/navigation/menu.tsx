@@ -1,141 +1,87 @@
 'use client';
-
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import { Menu as MenuIcon, X } from 'lucide-react';
+import { Menu as MenuIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
-
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Link } from '@/components/ui/link/link';
 import { cn } from '@/lib/utils';
-
-import { IconButton } from '../ui/elements/icon-button';
-import { MenuLink } from './menu-link';
-
-interface MenuLink {
-  href: string;
-  label: string;
-}
-
-const links: MenuLink[] = [
+const links = [
+  { href: '/freediving', label: 'Freediving' },
+  { href: '/sport', label: 'Sport' },
+  { href: '/tech', label: 'Tech' },
   { href: '/about', label: 'About' },
-  { href: '/posts', label: 'Posts' },
-  { href: '/appearances', label: 'Appearances' },
-  { href: '/talks', label: 'Talks' },
-  { href: '/workshops', label: 'Workshops' },
 ];
-const mobileLinks: MenuLink[] = [{ href: '/', label: 'Home' }, ...links];
-
 export function Menu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const close = () => setOpen(false);
-  const toggle = () => setOpen((previous) => !previous);
-  const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
-
-  useEffect(() => {
-    close();
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        close();
-        menuButtonRef.current?.focus();
-      }
-
-      if (event.key === 'Tab') {
-        const menu = menuRef.current;
-
-        if (!menu) {
-          return;
-        }
-
-        const focusableElements = menu.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled])',
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-          event.preventDefault();
-          lastElement?.focus();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-          event.preventDefault();
-          firstElement?.focus();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    const firstLink = menuRef.current?.querySelector<HTMLElement>('a[href]');
-
-    firstLink?.focus();
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [open]);
-
+  function isCurrent(href: string) {
+    return (
+      pathname === href ||
+      pathname.startsWith(href + '/') ||
+      (href === '/tech' &&
+        ['/talks', '/workshops', '/appearances', '/posts'].some((path) =>
+          pathname.startsWith(path),
+        ))
+    );
+  }
   return (
-    <LayoutGroup>
-      <nav aria-label="Main navigation" className="grid items-center">
-        <IconButton
-          ref={menuButtonRef}
-          appearance="secondary"
-          aria-expanded={open}
-          aria-label="Open Menu"
-          className={buttonClasses}
-          icon={MenuIcon}
-          onClick={toggle}
-        />
-        <AnimatePresence>
-          {open ? (
-            <motion.div
-              ref={menuRef}
-              animate={{ opacity: 1 }}
-              aria-modal="true"
-              className="fixed inset-0 z-30 grid h-screen content-start gap-4 overflow-y-auto bg-white p-6 md:hidden dark:bg-black"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              role="dialog"
-              transition={{ duration: 0.15 }}
+    <nav aria-label="Main navigation">
+      <ul className="hidden gap-2 md:flex">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              className={cn(
+                'inline-flex min-h-11 items-center rounded-none px-3 transition-colors',
+                isCurrent(link.href)
+                  ? 'font-medium underline underline-offset-8'
+                  : 'text-muted-foreground hover:text-foreground',
+              )}
+              href={link.href}
             >
-              <div className="flex justify-end">
-                <IconButton
-                  appearance="secondary"
-                  aria-label="Close Menu"
-                  icon={X}
-                  onClick={close}
-                />
-              </div>
-              <ul className="grid gap-4">
-                {mobileLinks.map((link) => (
-                  <li key={link.href}>
-                    <MenuLink href={link.href} onClick={close}>
-                      {link.label}
-                    </MenuLink>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-        <ul className="hidden gap-2 md:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <MenuLink href={link.href} onClick={close}>
-                {link.label}
-              </MenuLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </LayoutGroup>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <Sheet onOpenChange={setOpen} open={open}>
+        <SheetTrigger asChild>
+          <Button
+            aria-expanded={open}
+            aria-label="Open Menu"
+            className="md:hidden"
+            size="icon"
+            variant="ghost"
+          >
+            <MenuIcon aria-hidden="true" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="gap-8 p-8" side="right">
+          <SheetTitle>Explore</SheetTitle>
+          <SheetDescription>Freediving, sport, and Tech.</SheetDescription>
+          <ul className="grid gap-4">
+            {[{ href: '/', label: 'Home' }, ...links].map((link) => (
+              <li key={link.href}>
+                <Link
+                  aria-current={pathname === link.href ? 'page' : undefined}
+                  className="hover:bg-muted flex min-h-11 items-center rounded-md px-4"
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </SheetContent>
+      </Sheet>
+    </nav>
   );
 }

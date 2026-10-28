@@ -1,9 +1,8 @@
 // Basic
 export const name = 'Glenn Reyes';
 
-const tagline = 'Software engineer, tech speaker and workshop instructor';
-
-export const description = `${tagline} who loves turning ideas into reality through code. I build innovative products, share knowledge at conferences, and help developers create better user experiences with modern web technologies.`;
+export const description =
+  'Glenn Reyes. Software engineer, freediver, runner. Building thoughtful software, finding quiet underwater, and keeping moving. Based in Vienna.';
 
 // Social media
 export const x = 'glnnreyes';

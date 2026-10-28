@@ -5,8 +5,6 @@ import type { RouteContext } from '@/types/next';
 
 import { origin } from '@/lib/constants';
 
-export const runtime = 'edge';
-
 export const size = { height: 1080, width: 1920 };
 
 const errorSchema = z.object({ error: z.string() });
@@ -61,10 +59,10 @@ const OpengraphImage = async (props: RouteContext<'/posts/[slug]/meta'>) => {
     return new ImageResponse(
       <div
         style={{ backgroundImage: `url(${origin}/images/og-content.png)` }}
-        tw="bg-slate-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
+        tw="bg-neutral-900 flex flex-col h-full w-full px-48 pt-40 pb-80"
       >
-        <time tw="text-8xl text-slate-500">{publishedAt}</time>
-        <h1 tw="text-8xl font-medium text-slate-50 pt-6">{title}</h1>
+        <time tw="text-8xl text-neutral-500">{publishedAt}</time>
+        <h1 tw="text-8xl font-medium text-neutral-50 pt-6">{title}</h1>
       </div>,
       {
         fonts: [

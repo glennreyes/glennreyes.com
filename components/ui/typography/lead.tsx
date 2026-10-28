@@ -5,5 +5,7 @@ import { Paragraph } from './paragraph';
 type LeadProps = Omit<ComponentPropsWithoutRef<'p'>, 'className'>;
 
 export function Lead(props: LeadProps) {
-  return <Paragraph className="text-gray-600 dark:text-gray-400" {...props} />;
+  return (
+    <Paragraph className="text-neutral-600 dark:text-neutral-400" {...props} />
+  );
 }

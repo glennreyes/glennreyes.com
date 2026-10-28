@@ -27,7 +27,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
             <FeedItem
               action="Workshop Details"
               description={
-                <div className="prose prose-slate text-slate-500">
+                <div className="prose prose-slate text-neutral-500">
                   <MDXContent source={summary} />
                 </div>
               }
@@ -44,7 +44,7 @@ export function WorkshopsFeed({ children, workshops }: WorkshopsFeedProps) {
             <FeedItem
               action="Workshop Details"
               description={
-                <div className="prose prose-slate text-slate-500">
+                <div className="prose prose-slate text-neutral-500">
                   <MDXContent source={summary} />
                 </div>
               }

@@ -4,14 +4,7 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { NewsletterForm } from './newsletter-form';
 
 vi.mock('@/app/subscribe/action', () => ({
-  subscribe: vi.fn(),
-}));
-
-vi.mock('sonner', () => ({
-  toast: {
-    success: vi.fn(),
-    error: vi.fn(),
-  },
+  subscribe: async () => ({ status: 'idle', message: '' }),
 }));
 
 vi.mock('@/lib/hooks/use-theme', () => ({

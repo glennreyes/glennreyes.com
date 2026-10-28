@@ -23,8 +23,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Generate Content Collections
-        run: bun next build
-        continue-on-error: true
+        run: bun next typegen
         env:
           CI: true
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}

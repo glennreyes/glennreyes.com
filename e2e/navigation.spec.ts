@@ -5,7 +5,7 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Click on About link in navigation
-    await page.getByRole('link', { name: 'About' }).click();
+    await page.getByRole('link', { name: 'About', exact: true }).click();
 
     // Wait for navigation
     await page.waitForURL('/about');
@@ -13,11 +13,13 @@ test.describe('Navigation', () => {
     // Verify we're on the about page
     await expect(page).toHaveURL('/about');
     await expect(
-      page.getByRole('heading', { level: 1, name: /Glenn Reyes/i }),
+      page.getByRole('heading', { level: 1, name: /Hey, I.m Glenn Reyes/i }),
     ).toBeVisible();
   });
 
-  test('should navigate back to home by clicking avatar', async ({ page }) => {
+  test('should navigate back to home by clicking the name', async ({
+    page,
+  }) => {
     await page.goto('/about');
 
     // Click avatar/logo link in navbar to go home
@@ -37,7 +39,7 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Verify all main navigation links are present
-    const navLinks = ['About', 'Posts', 'Talks', 'Workshops'];
+    const navLinks = ['Freediving', 'Sport', 'Tech', 'About'];
     const nav = page.getByRole('navigation', { name: 'Main navigation' });
 
     for (const linkName of navLinks) {

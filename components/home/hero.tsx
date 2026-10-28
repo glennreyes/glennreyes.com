@@ -1,52 +1,83 @@
-import { GitHub } from '@/components/icons/github';
-import { X } from '@/components/icons/x';
-import { description, github, name, x } from '@/lib/constants';
+import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 
-import { Avatar } from '../avatar/avatar';
-import { IconButton } from '../ui/elements/icon-button';
-import { H1 } from '../ui/typography/h1';
-import { HeroAvatar } from './hero-avatar';
+import { MediaCard } from '@/components/site/media-card';
+import { Link } from '@/components/ui/link/link';
+import { freedivingMedia } from '@/lib/site-content';
 
 export function Hero() {
+  const cover = freedivingMedia.find((media) => media.id === 'cave');
   return (
-    <section className="grid gap-8 py-8 lg:flex">
-      <HeroAvatar>
-        <Avatar priority />
-      </HeroAvatar>
-      <div className="grid gap-8">
-        <div>
-          <p className="text-gray-600 dark:text-gray-400">Hello, I&apos;m</p>
-          <div className="flex justify-between gap-4">
-            <div className="grid gap-4">
-              <H1>{name}</H1>
-              <p className="max-w-2xl text-gray-600 dark:text-gray-400">
-                {description}
-              </p>
+    <section className="grid gap-8" id="explore">
+      <header className="flex flex-wrap items-start justify-between gap-4 pb-2">
+        <h1 className="font-medium">Hello, I&apos;m Glenn.</h1>
+        <p className="text-muted-foreground">
+          Software engineer. Freediver. Runner.
+        </p>
+      </header>
+      <div className="grid gap-5 lg:grid-cols-12">
+        {cover !== undefined ? (
+          <Link
+            aria-label="Explore freediving"
+            className="group grid gap-2 lg:col-span-7"
+            href="/freediving"
+          >
+            <MediaCard
+              className="h-hero"
+              media={cover}
+              priority
+              showCaption={false}
+            />
+            <div className="flex min-h-11 items-center justify-between gap-4">
+              <span>Freediving</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
+              />
             </div>
-          </div>
+          </Link>
+        ) : null}
+        <div className="grid content-start gap-8 lg:col-span-5">
+          <Link
+            aria-label="Explore running and HYROX"
+            className="group grid gap-2"
+            href="/sport"
+          >
+            <div className="relative h-80 overflow-hidden rounded-md bg-black">
+              <Image
+                alt="Glenn running at dusk during a race"
+                className="object-cover object-top"
+                fill
+                priority
+                sizes="(max-width: 1023px) 100vw, 40vw"
+                src="/media/sport/running.webp"
+              />
+            </div>
+            <div className="flex min-h-11 items-center justify-between gap-4">
+              <span>Running & HYROX</span>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
+              />
+            </div>
+          </Link>
+          <Link
+            aria-label="Explore Tech"
+            className="group bg-muted grid min-h-48 content-between gap-8 rounded-md p-7"
+            href="/tech"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <h2 className="font-medium">Tech</h2>
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
+              />
+            </div>
+            <p className="text-muted-foreground">
+              Software, AI, and shared ideas.
+            </p>
+          </Link>
         </div>
-        <ul className="-mx-2.5 flex gap-2">
-          <li>
-            <IconButton
-              appearance="tertiary"
-              aria-label="Follow on X"
-              as="link"
-              href={`https://x.com/${x}`}
-              icon={X}
-              size={6}
-            />
-          </li>
-          <li>
-            <IconButton
-              appearance="tertiary"
-              aria-label="Follow on GitHub"
-              as="link"
-              href={`https://github.com/${github}`}
-              icon={GitHub}
-              size={6}
-            />
-          </li>
-        </ul>
       </div>
     </section>
   );

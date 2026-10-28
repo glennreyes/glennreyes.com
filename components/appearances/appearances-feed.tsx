@@ -3,7 +3,6 @@
 import type { ReactNode } from 'react';
 
 import { Calendar } from 'lucide-react';
-import { useMemo } from 'react';
 
 import type { FeedEvent } from '@/lib/events';
 
@@ -21,10 +20,15 @@ import { Feed, FeedItem } from '../ui/layout/feed';
 interface AppearancesFeedProps {
   children?: ReactNode;
   events: FeedEvent[];
+  now: number;
 }
 
-export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
-  const { past, upcoming } = useMemo(() => {
+export function AppearancesFeed({
+  children,
+  events,
+  now,
+}: AppearancesFeedProps) {
+  const { past, upcoming } = (() => {
     const parsed = events.map((event) => {
       const startDateObject = new Date(event.startDate);
 
@@ -34,7 +38,6 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
         startDateTimestamp: startDateObject.getTime(),
       };
     });
-    const now = Date.now();
     const upcomingEvents = parsed
       .filter((event) => event.startDateTimestamp > now)
       .sort(
@@ -50,7 +53,7 @@ export function AppearancesFeed({ children, events }: AppearancesFeedProps) {
       past: pastEvents,
       upcoming: upcomingEvents,
     };
-  }, [events]);
+  })();
 
   if (events.length === 0) {
     return (
