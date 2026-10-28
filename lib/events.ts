@@ -1,5 +1,4 @@
-import { unstable_cache } from 'next/cache';
-import { cache } from 'react';
+import { cacheLife, cacheTag } from 'next/cache';
 
 import { db } from '@/lib/db';
 
@@ -10,51 +9,48 @@ const EVENT_URL_OVERRIDES: Record<string, string> = {
 
 type SimplifiedEvent = Awaited<ReturnType<typeof getAllEvents>>[number];
 
-export const getAllEvents = cache(
-  unstable_cache(
-    async () => {
-      const allEvents = await db.query.events.findMany({
-        columns: {
-          name: true,
-          slug: true,
-          startDate: true,
-        },
-        orderBy: (events, { desc }) => [desc(events.startDate)],
-        with: {
-          appearances: {
-            columns: {},
-            with: {
-              talk: {
-                columns: {
-                  title: true,
-                },
-              },
-              workshop: {
-                columns: {
-                  title: true,
-                },
-              },
-            },
-          },
-          location: {
-            columns: {
-              city: true,
-              country: true,
-              state: true,
-            },
-          },
-        },
-      });
+export async function getAllEvents() {
+  'use cache';
+  cacheLife({
+    expire: 604800,
+    revalidate: 86400,
+    stale: 3600,
+  });
+  cacheTag('events');
 
-      return allEvents;
+  return db.query.events.findMany({
+    columns: {
+      name: true,
+      slug: true,
+      startDate: true,
     },
-    ['all-events'],
-    {
-      revalidate: 86400, // 24 hours in seconds
-      tags: ['events'],
+    orderBy: (events, { desc }) => [desc(events.startDate)],
+    with: {
+      appearances: {
+        columns: {},
+        with: {
+          talk: {
+            columns: {
+              title: true,
+            },
+          },
+          workshop: {
+            columns: {
+              title: true,
+            },
+          },
+        },
+      },
+      location: {
+        columns: {
+          city: true,
+          country: true,
+          state: true,
+        },
+      },
     },
-  ),
-);
+  });
+}
 
 interface FeedEventSource {
   location: {
@@ -100,7 +96,15 @@ export function mapEventsToFeed(events: SimplifiedEvent[]): FeedEvent[] {
   return events.map(toFeedEvent);
 }
 
-export const getEventBySlug = cache(async (slug: string) => {
+export async function getEventBySlug(slug: string) {
+  'use cache';
+  cacheLife({
+    expire: 604800,
+    revalidate: 86400,
+    stale: 3600,
+  });
+  cacheTag('events', `event-${slug}`);
+
   const event = await db.query.events.findFirst({
     where: (events, { eq }) => eq(events.slug, slug),
     with: {
@@ -159,4 +163,4 @@ export const getEventBySlug = cache(async (slug: string) => {
   }
 
   return event;
-});
+}

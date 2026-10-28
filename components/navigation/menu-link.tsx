@@ -1,7 +1,6 @@
 'use client';
 
-import type { LinkProps } from 'next/link';
-import type { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { motion } from 'framer-motion';
 
@@ -10,14 +9,16 @@ import { cn } from '@/lib/utils';
 
 import { Link } from '../ui/link/link';
 
-interface MenuLinkProps extends Omit<LinkProps, 'className'> {
+interface MenuLinkProps extends Omit<
+  ComponentPropsWithoutRef<typeof Link>,
+  'className'
+> {
   children: ReactNode;
 }
 
-export function MenuLink({ children, ...props }: MenuLinkProps) {
-  const isActivePathname = useIsActivePathname(
-    typeof props.href === 'object' ? (props.href.pathname ?? '/') : props.href,
-  );
+export function MenuLink({ children, href, ...props }: MenuLinkProps) {
+  const pathname = typeof href === 'object' ? (href.pathname ?? '/') : href;
+  const isActivePathname = useIsActivePathname(pathname);
   const activeClasses = 'text-teal-700 dark:text-teal-200/75';
   const inactiveClasses =
     'text-gray-900/90 hover:text-teal-700/75 dark:text-gray-200 dark:hover:text-teal-200/75';
@@ -30,7 +31,7 @@ export function MenuLink({ children, ...props }: MenuLinkProps) {
     <Link
       aria-current={isActivePathname ? 'page' : undefined}
       className={classes}
-      prefetch={false}
+      href={href}
       {...props}
     >
       {isActivePathname ? (

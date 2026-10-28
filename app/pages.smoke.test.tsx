@@ -139,43 +139,48 @@ vi.mock('@/lib/workshops', () => ({
   }),
 }));
 
-vi.mock('@/lib/posts', () => ({
-  getAllPosts: vi.fn().mockResolvedValue([
-    {
+vi.mock('@/lib/posts', async () => {
+  const { createElement } = await import('react');
+  const content = createElement('div', null, 'Test content');
+
+  return {
+    getAllPosts: vi.fn().mockResolvedValue([
+      {
+        frontmatter: {
+          title: 'Test Post',
+          description: 'Test description',
+          date: '2025-01-01',
+          publishedAt: '2025-01-01',
+        },
+        slug: 'test-post',
+        content,
+        readingTime: 5,
+      },
+    ]),
+    getAllPublishedPosts: vi.fn().mockResolvedValue([
+      {
+        frontmatter: {
+          title: 'Test Post',
+          description: 'Test description',
+          date: '2025-01-01',
+        },
+        slug: 'test-post',
+        content,
+      },
+    ]),
+    getPostBySlug: vi.fn().mockResolvedValue({
       frontmatter: {
         title: 'Test Post',
         description: 'Test description',
+        slug: 'test-post',
         date: '2025-01-01',
-        publishedAt: '2025-01-01',
+        image: '/test.png',
       },
-      slug: 'test-post',
-      content: <div>Test content</div>,
+      content,
       readingTime: 5,
-    },
-  ]),
-  getAllPublishedPosts: vi.fn().mockResolvedValue([
-    {
-      frontmatter: {
-        title: 'Test Post',
-        description: 'Test description',
-        date: '2025-01-01',
-      },
-      slug: 'test-post',
-      content: <div>Test content</div>,
-    },
-  ]),
-  getPostBySlug: vi.fn().mockResolvedValue({
-    frontmatter: {
-      title: 'Test Post',
-      description: 'Test description',
-      slug: 'test-post',
-      date: '2025-01-01',
-      image: '/test.png',
-    },
-    content: <div>Test content</div>,
-    readingTime: 5,
-  }),
-}));
+    }),
+  };
+});
 
 vi.mock('content-collections', () => ({
   allPosts: [
@@ -239,18 +244,20 @@ vi.mock('@/lib/mdx/read-mdx-file', () => ({
   mdxRemoteOptions: {},
 }));
 
-vi.mock('next/image', () => ({
-  default: ({
-    alt,
-    priority,
-    placeholder,
-    ...props
-  }: {
-    alt: string;
-    priority?: boolean;
-    placeholder?: string;
-  }) => <img alt={alt} {...props} />,
-}));
+vi.mock('next/image', async () => {
+  const { createElement } = await import('react');
+
+  return {
+    default: ({
+      alt,
+      ...props
+    }: {
+      alt: string;
+      priority?: boolean;
+      placeholder?: string;
+    }) => createElement('img', { alt, ...props }),
+  };
+});
 
 vi.mock('@/lib/hooks/use-theme', () => ({
   useTheme: () => ({ resolvedTheme: 'light' }),
@@ -263,14 +270,14 @@ vi.mock('@/lib/hooks/use-intersection', () => ({
 vi.mock('react', async (importOriginal) => {
   const actual = await importOriginal<typeof import('react')>();
 
+  function PassThrough({ children }: { children: import('react').ReactNode }) {
+    return children;
+  }
+
   return {
     ...actual,
-    ViewTransition: ({ children }: { children: React.ReactNode }) => (
-      <>{children}</>
-    ),
-    unstable_ViewTransition: ({ children }: { children: React.ReactNode }) => (
-      <>{children}</>
-    ),
+    ViewTransition: PassThrough,
+    unstable_ViewTransition: PassThrough,
   };
 });
 
@@ -314,15 +321,15 @@ describe('Page Smoke Tests', () => {
       expect(container.textContent).toBeTruthy();
     });
 
-    it('renders about page', async () => {
-      const { container } = render(await AboutPage());
+    it('renders about page', () => {
+      const { container } = render(<AboutPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();
     });
 
-    it('renders appearances page', async () => {
-      const { container } = render(await AppearancesPage());
+    it('renders appearances page', () => {
+      const { container } = render(<AppearancesPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();
@@ -368,8 +375,8 @@ describe('Page Smoke Tests', () => {
       expect(container.textContent).toBeTruthy();
     });
 
-    it('renders talks page', async () => {
-      const { container } = render(await TalksPage());
+    it('renders talks page', () => {
+      const { container } = render(<TalksPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();
@@ -382,8 +389,8 @@ describe('Page Smoke Tests', () => {
       expect(container.textContent).toBeTruthy();
     });
 
-    it('renders workshops page', async () => {
-      const { container } = render(await WorkshopsPage());
+    it('renders workshops page', () => {
+      const { container } = render(<WorkshopsPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();

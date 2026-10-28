@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 
+import { Suspense } from 'react';
+
 import { PostsFeed } from '@/components/posts/posts-feed';
+import { FeedLoading } from '@/components/ui/layout/feed-loading';
 import { Page } from '@/components/ui/layout/page';
 
 export const metadata: Metadata = {
@@ -13,7 +16,9 @@ const PostsPage = () => (
       Writing on code and life.
     </Page.Header>
     <Page.Body>
-      <PostsFeed />
+      <Suspense fallback={<FeedLoading />}>
+        <PostsFeed />
+      </Suspense>
     </Page.Body>
   </Page>
 );

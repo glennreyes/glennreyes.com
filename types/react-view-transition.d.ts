@@ -6,5 +6,6 @@ declare module 'react' {
     name?: string;
   }
 
+  export const ViewTransition: ComponentType<ViewTransitionProps>;
   export const unstable_ViewTransition: ComponentType<ViewTransitionProps>;
 }

@@ -1,6 +1,7 @@
 import type React from 'react';
 
 import { allPages } from 'content-collections';
+import { cacheLife, cacheTag } from 'next/cache';
 import { compileMDX } from 'next-mdx-remote/rsc';
 
 import { components } from './mdx/components';
@@ -21,6 +22,10 @@ interface Page {
 export const getPageBySlug = async (
   slug: string,
 ): Promise<Page | undefined> => {
+  'use cache';
+  cacheLife('max');
+  cacheTag('pages', `page-${slug}`);
+
   const pages = allPages;
   const page = pages.find((p) => p.slug === slug);
 

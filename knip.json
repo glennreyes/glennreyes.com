@@ -1,17 +1,6 @@
 {
-  "ignore": [
-    "proxy.ts",
-    ".content-collections/cache/**/*",
-    ".content-collections/generated/**/*",
-    "content-collections.config.ts",
-    "content-collections.ts",
-    "lib/mdx/read-mdx-file.ts"
-  ],
-  "ignoreDependencies": [
-    "@tailwindcss/typography",
-    "@types/eslint",
-    "@content-collections/mdx",
-    "tailwindcss"
-  ],
-  "ignoreExportsUsedInFile": true
+  "ignore": ["content-collections.config.ts", "content-collections.ts"],
+  "ignoreDependencies": ["@content-collections/mdx"],
+  "ignoreExportsUsedInFile": true,
+  "ignoreFiles": ["content/**/*.mdx"]
 }

@@ -7,9 +7,11 @@ import '@/app/globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 
+import { ErrorBoundary } from '@/components/error-boundary';
 import { Footer } from '@/components/footer/footer';
 import { Menu } from '@/components/navigation/menu';
 import { Navbar } from '@/components/navigation/navbar';
+import { OfflineBanner } from '@/components/offline-banner';
 import { Body } from '@/components/ui/layout/body';
 import { Html } from '@/components/ui/layout/html';
 import { Main } from '@/components/ui/layout/main';
@@ -53,16 +55,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html suppressHydrationWarning>
       <head />
       <Body>
-        <Suspense fallback={null}>
-          <Providers>
-            <Navbar>
+        <Providers>
+          <Suspense fallback={null}>
+            <OfflineBanner />
+          </Suspense>
+          <Navbar>
+            <Suspense fallback={null}>
               <Menu />
-            </Navbar>
+            </Suspense>
+          </Navbar>
+          <ErrorBoundary>
             <Main>{children}</Main>
-            <Toaster />
-            <Footer />
-          </Providers>
-        </Suspense>
+          </ErrorBoundary>
+          <Toaster />
+          <Footer />
+        </Providers>
         <SpeedInsights />
         <Analytics />
       </Body>
