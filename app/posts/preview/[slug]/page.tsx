@@ -17,6 +17,8 @@ import { getAllPosts } from '@/lib/posts';
 export const generateMetadata = async (
   props: PageProps<'/posts/preview/[slug]'>,
 ): Promise<Metadata> => {
+  await connection();
+
   const params = await props.params;
   const allPosts = await getAllPosts();
   const post = allPosts.find(({ slug }) => slug === params.slug);
@@ -37,7 +39,10 @@ export const generateMetadata = async (
       title: frontmatter.title,
       type: 'article',
       authors: name,
-      publishedTime: formatISO(frontmatter.publishedAt),
+      publishedTime:
+        frontmatter.draft === true
+          ? undefined
+          : formatISO(frontmatter.publishedAt),
       url,
     },
     robots: {
@@ -72,7 +77,14 @@ async function PreviewPostPage(props: PageProps<'/posts/preview/[slug]'>) {
     >
       <Article.Header
         lead={post.frontmatter.lead}
-        meta={<DateDisplay value={post.frontmatter.publishedAt} />}
+        meta={
+          post.frontmatter.draft === true ? undefined : (
+            <DateDisplay
+              className="text-gray-600 dark:text-gray-400"
+              value={post.frontmatter.publishedAt}
+            />
+          )
+        }
       >
         {post.frontmatter.title}
       </Article.Header>
