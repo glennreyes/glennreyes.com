@@ -17,11 +17,7 @@ export function Hero() {
       </header>
       <div className="grid gap-5 lg:grid-cols-12">
         {cover !== undefined ? (
-          <Link
-            aria-label="Explore freediving"
-            className="group grid gap-2 lg:col-span-7"
-            href="/freediving"
-          >
+          <Link className="group grid gap-2 lg:col-span-7" href="/freediving">
             <MediaCard
               className="h-hero"
               media={cover}
@@ -38,11 +34,7 @@ export function Hero() {
           </Link>
         ) : null}
         <div className="grid content-start gap-8 lg:col-span-5">
-          <Link
-            aria-label="Explore running and HYROX"
-            className="group grid gap-2"
-            href="/sport"
-          >
+          <Link className="group grid gap-2" href="/sport">
             <div className="relative h-80 overflow-hidden rounded-md bg-black">
               <Image
                 alt="Glenn running at dusk during a race"
@@ -62,7 +54,6 @@ export function Hero() {
             </div>
           </Link>
           <Link
-            aria-label="Explore Tech"
             className="group bg-muted grid min-h-48 content-between gap-8 rounded-md p-7"
             href="/tech"
           >
