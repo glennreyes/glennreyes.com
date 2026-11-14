@@ -101,7 +101,7 @@
     "@types/react": "19.3.0"
   },
   "engines": {
-    "node": "24.x"
+    "bun": "1.4.x"
   },
   "packageManager": "bun@1.4.4"
 }
