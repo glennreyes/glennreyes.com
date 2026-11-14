@@ -13,7 +13,7 @@ export default function HyroxPage() {
         <h1 className="font-medium">HYROX.</h1>
         <p className="text-muted-foreground">Running meets strength.</p>
       </header>
-      <figure className="grid max-w-xl gap-3">
+      <figure className="grid max-w-xl scroll-mt-28 gap-3" id="sessions">
         <div className="aspect-portrait relative overflow-hidden rounded-md">
           <Image
             alt="Glenn pushing a weighted sled down the gym track"

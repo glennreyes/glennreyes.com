@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { Suspense } from 'react';
+import { InstagramFeed } from '@/components/site/instagram-feed';
 import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
-import { stravaProfile } from '@/lib/site-content';
+import { stravaProfile } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Sport',
   description: 'Running, HYROX, and life on the move with Glenn Reyes.',
@@ -55,6 +57,9 @@ export default function SportPage() {
         <h2>Commutes, mobility, and everything in between.</h2>
         <SectionLink href={stravaProfile}>Strava</SectionLink>
       </section>
+      <Suspense fallback={null}>
+        <InstagramFeed />
+      </Suspense>
     </Page>
   );
 }

@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { ActivitySummary } from '@/components/site/activity-summary';
 import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
-import { stravaProfile } from '@/lib/site-content';
+import { stravaProfile } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Running',
   description: 'The road to marathon season, 2027. Running with Glenn Reyes.',
@@ -27,7 +27,7 @@ export default function RunningPage() {
             src="/media/sport/river.webp"
           />
         </div>
-        <div className="grid content-center gap-8">
+        <div className="grid scroll-mt-28 content-center gap-8" id="races">
           <h2>Marathon season, 2027.</h2>
           <ul className="grid gap-8">
             <li className="grid gap-2 border-b pb-6">

@@ -1,75 +1,37 @@
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
 
-import { MediaCard } from '@/components/site/media-card';
-import { Link } from '@/components/ui/link/link';
-import { freedivingMedia } from '@/lib/site-content';
+import speaking from '@/assets/images/speaking.jpg';
+import { SectionLink } from '@/components/site/section-link';
 
 export function Hero() {
-  const cover = freedivingMedia.find((media) => media.id === 'cave');
   return (
-    <section className="grid gap-8" id="explore">
-      <header className="flex flex-wrap items-start justify-between gap-4 pb-2">
-        <h1 className="font-medium">Hello, I&apos;m Glenn.</h1>
-        <p className="text-muted-foreground">
-          Software engineer. Freediver. Runner.
+    <section className="bg-muted grid items-stretch overflow-hidden rounded-md md:grid-cols-2">
+      <div className="grid content-center gap-6 p-7 md:p-10 lg:p-12">
+        <div className="grid gap-2">
+          <h1 className="font-medium">Hello, I&apos;m Glenn.</h1>
+          <p className="text-muted-foreground">
+            Software engineer based in Vienna.
+          </p>
+        </div>
+        <p className="max-w-sm">
+          I build for the web, explore AI interfaces, and teach what I learn.
         </p>
-      </header>
-      <div className="grid gap-5 lg:grid-cols-12">
-        {cover !== undefined ? (
-          <Link className="group grid gap-2 lg:col-span-7" href="/freediving">
-            <MediaCard
-              className="h-hero"
-              media={cover}
-              priority
-              showCaption={false}
-            />
-            <div className="flex min-h-11 items-center justify-between gap-4">
-              <span>Freediving</span>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
-              />
-            </div>
-          </Link>
-        ) : null}
-        <div className="grid content-start gap-8 lg:col-span-5">
-          <Link className="group grid gap-2" href="/sport">
-            <div className="relative h-80 overflow-hidden rounded-md bg-black">
-              <Image
-                alt="Glenn running at dusk during a race"
-                className="object-cover object-top"
-                fill
-                priority
-                sizes="(max-width: 1023px) 100vw, 40vw"
-                src="/media/sport/running.webp"
-              />
-            </div>
-            <div className="flex min-h-11 items-center justify-between gap-4">
-              <span>Running & HYROX</span>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
-              />
-            </div>
-          </Link>
-          <Link
-            className="group bg-muted grid min-h-48 content-between gap-8 rounded-md p-7"
-            href="/tech"
-          >
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="font-medium">Tech</h2>
-              <ArrowUpRight
-                aria-hidden="true"
-                className="size-4 transition-transform motion-safe:group-hover:translate-x-1"
-              />
-            </div>
-            <p className="text-muted-foreground">
-              Software, AI, and shared ideas.
-            </p>
-          </Link>
+        <div className="flex flex-wrap gap-x-6">
+          <SectionLink href="#projects">Selected projects</SectionLink>
+          <SectionLink href="/tech/ai">AI & interfaces</SectionLink>
         </div>
       </div>
+      <figure className="relative min-h-64 overflow-hidden bg-black lg:min-h-80">
+        <Image
+          alt="Glenn speaking at a software conference"
+          className="object-cover grayscale"
+          fill
+          placeholder="blur"
+          preload
+          sizes="(max-width: 767px) 100vw, (min-width: 1360px) 630px, 50vw"
+          src={speaking}
+        />
+      </figure>
     </section>
   );
 }

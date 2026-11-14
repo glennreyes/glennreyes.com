@@ -45,7 +45,7 @@ bun dev
 
 ## Personal site
 
-The top-level chapters are Freediving, Sport, Tech, and About. Sport contains Running and HYROX; Tech links to AI, projects, appearances, talks, workshops, and writing. Existing content URLs continue to work. Geist stays at one text size, with monochrome themes, borderless navigation/actions, and restrained corners. The earlier `/work` URLs redirect to `/tech`.
+Tech is the homepage. Its main navigation links to Posts, Talks, Workshops, Appearances, and About. Freediving, Running, and HYROX have their own chapter links and a route back to Tech. The Sport overview remains available, and earlier Tech and Work URLs redirect to their current destinations. Geist stays at one text size.
 
 High-resolution freediving photos and silent 1080p films from Glenn’s Downloads folder live under `public/media/freediving/`. The HYROX image is the public cover of [Glenn's October 2026 gym reel](https://www.instagram.com/glnnreyes/reel/DeG4OCCtiGY/). Captions and portfolio entries live in `lib/site-content.ts`.
 
@@ -64,7 +64,7 @@ Strava remains linked as the full activity destination. This site does not redis
 
 ### Instagram sync
 
-The optional home feed reads three recent posts through Meta's [Instagram API with Instagram Login](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/). It requires a Creator or Business account, a Meta app with `instagram_business_basic` access, and an authorized long-lived token belonging to Glenn's account.
+The optional Sport feed reads three recent posts through Meta's [Instagram API with Instagram Login](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/). It requires a Creator or Business account, a Meta app with `instagram_business_basic` access, and an authorized long-lived token belonging to Glenn's account.
 
 Set `INSTAGRAM_USER_ID` and server-only `INSTAGRAM_ACCESS_TOKEN` in Vercel. The feed caches for an hour, links to originals, uses video covers, and stays hidden when disconnected or unavailable. Renew the token through Meta before it expires. No account credentials are committed; this PR does not authorize an account or change its type. Local media and the selected gym reel work independently.
 

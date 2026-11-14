@@ -35,15 +35,75 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('should have working navigation menu', async ({ page }) => {
+  test('puts Tech first and swaps the primary links when switching chapters', async ({
+    page,
+  }) => {
     await page.goto('/');
-
-    // Verify all main navigation links are present
-    const navLinks = ['Freediving', 'Sport', 'Tech', 'About'];
     const nav = page.getByRole('navigation', { name: 'Main navigation' });
+    const primary = nav.getByRole('list', { name: 'Chapter links' });
+    const secondary = nav.getByRole('list', { name: 'Other chapters' });
+    await expect(primary.getByRole('link')).toHaveText([
+      'Posts',
+      'Talks',
+      'Workshops',
+      'Appearances',
+      'About',
+    ]);
+    await expect(secondary.getByRole('link')).toHaveText([
+      'Freediving',
+      'Running',
+      'HYROX',
+    ]);
 
-    for (const linkName of navLinks) {
-      await expect(nav.getByRole('link', { name: linkName })).toBeVisible();
-    }
+    await secondary.getByRole('link', { name: 'Freediving' }).click();
+    await expect(page).toHaveURL('/freediving');
+    await expect(primary.getByRole('link')).toHaveText([
+      'Freediving',
+      'Gallery',
+      'Unitydive',
+    ]);
+    await expect(
+      primary.getByRole('link', { name: 'Freediving' }),
+    ).toHaveAttribute('aria-current', 'page');
+    await primary.getByRole('link', { name: 'Unitydive' }).click();
+    await expect(page).toHaveURL('/freediving#unitydive');
+
+    await secondary.getByRole('link', { name: 'Running' }).click();
+    await expect(page).toHaveURL('/sport/running');
+    await expect(primary.getByRole('link')).toHaveText([
+      'Running',
+      'Races',
+      'Strava',
+    ]);
+
+    await secondary.getByRole('link', { name: 'HYROX' }).click();
+    await expect(page).toHaveURL('/sport/hyrox');
+    await expect(primary.getByRole('link')).toHaveText(['HYROX', 'Sessions']);
+
+    await secondary.getByRole('link', { name: 'Tech' }).click();
+    await expect(page).toHaveURL('/');
+    await expect(primary.getByRole('link', { name: 'Posts' })).toBeVisible();
+  });
+
+  test('switches chapters and dismisses the menu on a phone', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/');
+    const menu = page.getByRole('button', { name: 'Open Menu' });
+    const dialog = page.getByRole('dialog');
+    await menu.click();
+    await expect(dialog.getByRole('heading', { name: 'Tech' })).toBeVisible();
+    await dialog.getByRole('link', { name: 'Freediving' }).click();
+    await expect(page).toHaveURL('/freediving');
+    await expect(dialog).toBeHidden();
+
+    await menu.click();
+    await expect(
+      dialog.getByRole('heading', { name: 'Freediving' }),
+    ).toBeVisible();
+    await dialog.getByRole('link', { name: 'Tech' }).click();
+    await expect(page).toHaveURL('/');
+    await expect(dialog).toBeHidden();
   });
 });

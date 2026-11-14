@@ -43,7 +43,7 @@ export default function AboutPage() {
       <div className="flex flex-wrap gap-3">
         <SectionLink href="/freediving">Freediving</SectionLink>
         <SectionLink href="/sport">Sport</SectionLink>
-        <SectionLink href="/tech">Tech</SectionLink>
+        <SectionLink href="/">Tech</SectionLink>
       </div>
     </Page>
   );

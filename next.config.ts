@@ -79,7 +79,8 @@ const nextConfig: NextConfig = {
   },
   redirects: () =>
     Promise.resolve([
-      { source: '/work', destination: '/tech', permanent: true },
+      { source: '/tech', destination: '/', permanent: true },
+      { source: '/work', destination: '/', permanent: true },
       { source: '/work/:path*', destination: '/tech/:path*', permanent: true },
       {
         destination:

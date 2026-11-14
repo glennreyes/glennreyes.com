@@ -6,7 +6,6 @@ const routes = [
   '/sport',
   '/sport/running',
   '/sport/hyrox',
-  '/tech',
   '/tech/ai',
 ];
 for (const route of routes) {
@@ -82,14 +81,12 @@ test('maintains one font size, Geist, and no horizontal overflow on mobile', asy
     expect(result.overflow).toBe(false);
   }
 });
-test('keeps the Tech chapter active for legacy speaking URLs', async ({
-  page,
-}) => {
-  await page.goto('/talks');
-  const work = page
+test('keeps the Talks link current on a talk detail page', async ({ page }) => {
+  await page.goto('/talks/ui-that-builds-itself');
+  const talks = page
     .getByRole('navigation', { name: 'Main navigation' })
-    .getByRole('link', { name: 'Tech', exact: true });
-  await expect(work).toHaveAttribute('aria-current', 'page');
+    .getByRole('link', { name: 'Talks', exact: true });
+  await expect(talks).toHaveAttribute('aria-current', 'location');
 });
 test('dark themes retain accessible contrast', async ({ page }) => {
   await page.addInitScript(() => {

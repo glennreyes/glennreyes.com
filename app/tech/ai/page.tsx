@@ -32,7 +32,7 @@ export default function AiPage() {
           </SectionLink>
         </div>
       </section>
-      <SectionLink href="/tech">All Tech</SectionLink>
+      <SectionLink href="/">All Tech</SectionLink>
     </Page>
   );
 }

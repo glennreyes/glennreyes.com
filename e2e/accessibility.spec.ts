@@ -88,17 +88,18 @@ test.describe('Accessibility', () => {
     await page.getByRole('button', { name: 'Open Menu' }).click();
 
     const dialog = page.getByRole('dialog');
-    const firstLink = dialog.getByRole('link').first();
+    const links = dialog.getByRole('link');
+    const firstLink = links.first();
     const closeButton = page.getByRole('button', { name: 'Close Menu' });
 
     await expect(closeButton).toBeFocused();
     await page.keyboard.press('Tab');
     await expect(firstLink).toBeFocused();
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
+    for (const link of (await links.all()).slice(1)) {
+      await page.keyboard.press('Tab');
+      await expect(link).toBeFocused();
+    }
     await page.keyboard.press('Tab');
 
     await expect(closeButton).toBeFocused();

@@ -60,21 +60,17 @@ export const projects = [
     title: 'Generative UI with MCP',
     description: 'React, MCP, and interfaces inside conversations.',
     href: 'https://github.com/glennreyes/generative-ui-mcp-workshop',
-    label: 'Build & teach',
   },
   {
     slug: 'tuner',
     title: 'Tuner',
     description: 'Sound, made visible in the browser.',
     href: '/posts/tuner',
-    label: 'A little curiosity',
   },
   {
-    slug: 'unitydive',
-    title: 'Unitydive',
-    description: 'A new freediving project. In the making.',
-    href: '/freediving#unitydive',
-    label: 'In the making',
+    slug: 'aguila',
+    title: 'AGUILA Tattoo',
+    description: 'A digital home for a tattoo studio.',
+    href: '/posts/building-aguila-tattoo',
   },
 ];
-export const stravaProfile = 'https://www.strava.com/athletes/14875783';
