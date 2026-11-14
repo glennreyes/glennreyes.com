@@ -28,7 +28,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Install Playwright browsers
-        run: bun playwright install chromium --with-deps
+        run: bun playwright install chromium webkit --with-deps
 
       - name: Build production site
         run: bun run build

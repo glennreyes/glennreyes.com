@@ -7,6 +7,24 @@ const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 const buildYear = new Date().getUTCFullYear().toString();
+const isHosted =
+  process.env.VERCEL_ENV === 'production' ||
+  process.env.VERCEL_ENV === 'preview';
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://giscus.app",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https:",
+  "font-src 'self' data:",
+  "connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-analytics.com https://giscus.app",
+  'frame-src https://giscus.app',
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  // WebKit also upgrades localhost requests, but the local server uses HTTP.
+  ...(isHosted ? ['upgrade-insecure-requests'] : []),
+].join('; ');
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['127.0.0.1'],
   cacheComponents: true,
@@ -21,8 +39,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://giscus.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com https://*.vercel-analytics.com https://giscus.app; frame-src https://giscus.app; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests;",
+            value: contentSecurityPolicy,
           },
           {
             key: 'X-Frame-Options',
@@ -41,10 +58,14 @@ const nextConfig: NextConfig = {
             value:
               'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
+          ...(isHosted
+            ? [
+                {
+                  key: 'Strict-Transport-Security',
+                  value: 'max-age=63072000; includeSubDomains; preload',
+                },
+              ]
+            : []),
         ],
       },
     ]);
