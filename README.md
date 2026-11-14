@@ -16,7 +16,7 @@ The site is hosted on [Vercel](https://vercel.com) and uses [Vercel Analytics](h
 
 ## Run the Development Server
 
-This project uses Bun 1.4.4 and TypeScript. Vercel builds with the pinned Bun version and runs Next.js functions on Bun 1.4.x. Node 24 is the supported fallback for Node-based tooling. Use `bun run build` and `bun run test` to run the package scripts; `bun build` and `bun test` invoke Bun’s own bundler and test runner.
+This project uses Bun 1.4.4 and TypeScript. CI uses the pinned version; Vercel manages the Bun 1.4.x patch version for builds and Next.js functions. CI uses Node 24 for Node-based tooling. Use `bun run build` and `bun run test` to run the package scripts; `bun build` and `bun test` invoke Bun’s own bundler and test runner.
 
 ### Installation
 
