@@ -6,8 +6,8 @@ interface NewsletterProps {
   title?: string;
 }
 export function Newsletter({
-  children = 'Occasional notes. Software and life.',
-  title = 'Stay in the loop',
+  children = 'What I’m building, learning, and thinking about. Occasionally.',
+  title = 'Notes from my desk',
 }: NewsletterProps) {
   return (
     <section className="grid max-w-xl content-start gap-6">

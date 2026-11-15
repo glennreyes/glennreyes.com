@@ -4,10 +4,14 @@ export const name = 'Glenn Reyes';
 export const description =
   'Glenn Reyes, software engineer in Vienna. Projects, writing, talks, and workshops on web development and AI interfaces.';
 
+export const personalChaptersPublished: boolean = false;
+
 // Social media
 export const x = 'glnnreyes';
 
 export const github = 'glennreyes';
+
+export const instagramProfile = 'https://www.instagram.com/glnnreyes/';
 
 export const stravaProfile = 'https://www.strava.com/athletes/14875783';
 

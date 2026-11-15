@@ -1,12 +1,20 @@
+import { ChapterPreview } from '@/components/site/chapter-preview';
+import { personalChaptersPublished } from '@/lib/constants';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
 export const metadata: Metadata = {
+  robots: personalChaptersPublished
+    ? undefined
+    : { index: false, follow: true },
   title: 'HYROX',
   description: 'Running meets strength. HYROX with Glenn Reyes.',
 };
 export default function HyroxPage() {
+  if (!personalChaptersPublished) {
+    return <ChapterPreview chapter="sport" />;
+  }
   return (
     <Page>
       <header className="flex flex-wrap justify-between gap-4">

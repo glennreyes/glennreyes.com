@@ -2,23 +2,15 @@
 
 import type { ToasterProps } from 'sonner';
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/lib/hooks/use-theme';
 import { Toaster as Sonner } from 'sonner';
 
 function Toaster({ ...props }: ToasterProps) {
-  const { theme = 'system' } = useTheme();
-
-  function isValidTheme(
-    value: string | undefined,
-  ): value is ToasterProps['theme'] {
-    return value === 'light' || value === 'dark' || value === 'system';
-  }
-
-  const validTheme = isValidTheme(theme) ? theme : 'system';
+  const { theme } = useTheme();
 
   return (
     <Sonner
-      theme={validTheme}
+      theme={theme}
       className="toaster group"
       position="bottom-right"
       toastOptions={{

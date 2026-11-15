@@ -1,3 +1,5 @@
+import { ChapterPreview } from '@/components/site/chapter-preview';
+import { personalChaptersPublished } from '@/lib/constants';
 import type { Metadata } from 'next';
 import { MediaCard } from '@/components/site/media-card';
 import { MediaGallery } from '@/components/site/media-gallery';
@@ -5,10 +7,16 @@ import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
 import { freedivingMedia } from '@/lib/site-content';
 export const metadata: Metadata = {
+  robots: personalChaptersPublished
+    ? undefined
+    : { index: false, follow: true },
   title: 'Freediving',
   description: 'Freediving films and photographs by Glenn Reyes.',
 };
 export default function FreedivingPage() {
+  if (!personalChaptersPublished) {
+    return <ChapterPreview chapter="freediving" />;
+  }
   const cover = freedivingMedia.find((media) => media.id === 'sardines');
   return (
     <Page>

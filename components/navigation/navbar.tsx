@@ -6,7 +6,7 @@ type NavbarProps = Omit<ComponentPropsWithoutRef<'header'>, 'className'>;
 export function Navbar({ children, ...props }: NavbarProps) {
   return (
     <header
-      className="bg-background/95 sticky top-0 z-30 backdrop-blur-xl"
+      className="bg-background/95 sticky top-0 z-30 backdrop-blur-xl lg:bg-transparent lg:backdrop-blur-none"
       {...props}
     >
       <Container className="flex items-center justify-between gap-4 py-5">

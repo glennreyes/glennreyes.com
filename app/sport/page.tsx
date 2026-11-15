@@ -1,3 +1,5 @@
+import { ChapterPreview } from '@/components/site/chapter-preview';
+import { personalChaptersPublished } from '@/lib/constants';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Suspense } from 'react';
@@ -6,10 +8,16 @@ import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
 import { stravaProfile } from '@/lib/constants';
 export const metadata: Metadata = {
+  robots: personalChaptersPublished
+    ? undefined
+    : { index: false, follow: true },
   title: 'Sport',
   description: 'Running, HYROX, and life on the move with Glenn Reyes.',
 };
 export default function SportPage() {
+  if (!personalChaptersPublished) {
+    return <ChapterPreview chapter="sport" />;
+  }
   return (
     <Page>
       <header className="flex flex-wrap justify-between gap-4">

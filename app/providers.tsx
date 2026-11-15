@@ -4,7 +4,8 @@ import type { ReactNode } from 'react';
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { ThemeProvider } from 'next-themes';
+import { Preferences } from '@ui-sdk/react/preferences';
+import { colorScheme } from '@/lib/theme';
 
 import { useMounted } from '@/lib/hooks/use-mounted';
 
@@ -13,7 +14,7 @@ interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
-  return <ThemeProvider attribute="data-theme">{children}</ThemeProvider>;
+  return <Preferences preferences={[colorScheme]}>{children}</Preferences>;
 }
 
 export function SiteTelemetry() {

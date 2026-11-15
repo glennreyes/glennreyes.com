@@ -74,9 +74,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/*': ['./content/**/*'],
   },
-  reactCompiler: {
-    compilationMode: 'all',
-  },
+  reactCompiler: true,
   redirects: () =>
     Promise.resolve([
       { source: '/tech', destination: '/', permanent: true },

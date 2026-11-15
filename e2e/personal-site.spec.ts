@@ -7,6 +7,8 @@ const routes = [
   '/sport/running',
   '/sport/hyrox',
   '/tech/ai',
+  '/projects',
+  '/speaking',
 ];
 for (const route of routes) {
   test('accessible chapter ' + route, async ({ page }) => {
@@ -21,43 +23,31 @@ for (const route of routes) {
     ).toEqual([]);
   });
 }
-test('opens a film with controls, closes on escape, and returns focus', async ({
+test('personal chapters show launch previews without unfinished sections', async ({
   page,
 }) => {
-  await page.goto('/freediving');
-  const trigger = page.getByRole('button', {
-    name: 'Open Napaling · August 2026: No fins. One breath.',
-  });
-  await trigger.click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toBeVisible();
-  const video = dialog.locator('video');
-  await expect(video).toHaveAttribute('controls', '');
-  await expect(video).toHaveAttribute('preload', 'none');
-  await video.evaluate(async (element) => {
-    if (!(element instanceof HTMLVideoElement)) {
-      throw new Error('Missing video');
-    }
-    await element.play();
-  });
-  await expect
-    .poll(() =>
-      video.evaluate((element) =>
-        element instanceof HTMLVideoElement ? element.currentTime : 0,
-      ),
-    )
-    .toBeGreaterThan(0);
-  expect(
-    (
-      await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
-        .analyze()
-    ).violations,
-  ).toEqual([]);
-  await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
-  await expect(trigger).toBeFocused();
+  for (const route of [
+    '/freediving',
+    '/sport',
+    '/sport/running',
+    '/sport/hyrox',
+  ]) {
+    await page.goto(route);
+    await expect(
+      page.getByText('More of this side of me, soon.'),
+    ).toBeVisible();
+    await expect(page.getByRole('main').getByRole('img')).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      /noindex/,
+    );
+    await expect(
+      page.getByRole('heading', { name: 'Gallery', exact: true }),
+    ).toHaveCount(0);
+    await expect(page.locator('video')).toHaveCount(0);
+  }
 });
+
 test('maintains one font size, Geist, and no horizontal overflow on mobile', async ({
   page,
 }) => {
@@ -81,11 +71,11 @@ test('maintains one font size, Geist, and no horizontal overflow on mobile', asy
     expect(result.overflow).toBe(false);
   }
 });
-test('keeps the Talks link current on a talk detail page', async ({ page }) => {
+test('keeps Speaking current on a talk detail page', async ({ page }) => {
   await page.goto('/talks/ui-that-builds-itself');
   const talks = page
     .getByRole('navigation', { name: 'Main navigation' })
-    .getByRole('link', { name: 'Talks', exact: true });
+    .getByRole('link', { name: 'Speaking', exact: true });
   await expect(talks).toHaveAttribute('aria-current', 'location');
 });
 test('dark themes retain accessible contrast', async ({ page }) => {
@@ -93,7 +83,10 @@ test('dark themes retain accessible contrast', async ({ page }) => {
     localStorage.setItem('theme', 'dark');
   });
   await page.goto('/');
-  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('html')).toHaveAttribute(
+    'data-color-scheme',
+    'dark',
+  );
   expect(
     (
       await new AxeBuilder({ page })
@@ -101,4 +94,39 @@ test('dark themes retain accessible contrast', async ({ page }) => {
         .analyze()
     ).violations,
   ).toEqual([]);
+});
+
+test('project hover fills the card and All posts follows the writing list', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const card = page
+    .getByRole('main')
+    .getByRole('link', { name: /Tuner Sound/ });
+  await expect(card.locator('svg')).toHaveCount(0);
+  const resting = await card.evaluate(
+    (element) => getComputedStyle(element).backgroundColor,
+  );
+  await card.hover();
+  await expect
+    .poll(() =>
+      card.evaluate((element) => getComputedStyle(element).backgroundColor),
+    )
+    .not.toBe(resting);
+  const writing = page.getByRole('heading', { name: 'Writing', exact: true });
+  const more = page.getByRole('link', { name: 'All posts', exact: true });
+  const lastPost = page
+    .getByRole('main')
+    .getByRole('link', { name: 'From Screens to Intent', exact: true });
+  const boxes = await Promise.all([
+    writing.boundingBox(),
+    more.boundingBox(),
+    lastPost.boundingBox(),
+  ]);
+  const [headingBox, moreBox, postBox] = boxes;
+  if (!headingBox || !moreBox || !postBox) {
+    throw new Error('Writing layout is missing');
+  }
+  expect(moreBox.y).toBeGreaterThan(postBox.y + postBox.height);
+  expect(Math.abs(moreBox.x + 12.75 - headingBox.x)).toBeLessThan(2);
 });

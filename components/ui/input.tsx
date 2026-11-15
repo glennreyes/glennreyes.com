@@ -1,11 +1,16 @@
+'use client';
+
 import type { ComponentProps } from 'react';
+import { Input as InputPrimitive } from '@ui-sdk/react/input';
 
 import { cn } from '@/lib/utils';
 
-type InputProps = ComponentProps<'input'>;
+type InputProps = Omit<ComponentProps<typeof InputPrimitive>, 'className'> & {
+  className?: string;
+};
 function Input({ className, type, ...props }: InputProps) {
   return (
-    <input
+    <InputPrimitive
       type={type}
       data-slot="input"
       className={cn(

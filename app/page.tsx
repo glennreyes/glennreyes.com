@@ -3,10 +3,10 @@ import { Suspense } from 'react';
 import { Hero } from '@/components/home/hero';
 import { Posts } from '@/components/home/posts';
 import { PostsLoading } from '@/components/home/posts-loading';
+import { ProjectCards } from '@/components/site/project-cards';
 import { Newsletter } from '@/components/newsletter/newsletter';
 import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
-import { projects } from '@/lib/site-content';
 
 export default function RootPage() {
   return (
@@ -19,26 +19,17 @@ export default function RootPage() {
         <h2 className="scroll-mt-28 font-medium" id="projects">
           Selected projects
         </h2>
-        <ul className="grid gap-6 md:col-span-3 md:grid-cols-3">
-          {projects.map((project) => (
-            <li className="grid content-start gap-1" key={project.slug}>
-              <h3>
-                <SectionLink href={project.href}>{project.title}</SectionLink>
-              </h3>
-              <p className="text-muted-foreground">{project.description}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="md:col-span-3">
+          <ProjectCards />
+        </div>
       </section>
       <div className="grid gap-10 border-t pt-6 lg:grid-cols-2 lg:gap-20">
         <section className="grid content-start gap-3">
-          <div className="flex flex-wrap items-center justify-between gap-x-4">
-            <h2 className="font-medium">Writing</h2>
-            <SectionLink href="/posts">All posts</SectionLink>
-          </div>
+          <h2 className="font-medium">Writing</h2>
           <Suspense fallback={<PostsLoading />}>
             <Posts />
           </Suspense>
+          <SectionLink href="/posts">All posts</SectionLink>
         </section>
         <section className="grid content-start gap-3">
           <h2 className="font-medium">Speaking & teaching</h2>

@@ -1,10 +1,10 @@
 'use client';
 
-import { Menu as MenuIcon } from 'lucide-react';
+import { ArrowLeft, Menu as MenuIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Link } from '@/components/ui/link/link';
 import {
   Sheet,
@@ -13,7 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { stravaProfile } from '@/lib/constants';
+import { personalChaptersPublished } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 interface ChapterLink {
@@ -21,51 +21,40 @@ interface ChapterLink {
   label: string;
 }
 
-type Chapter = 'tech' | 'freediving' | 'sport' | 'running' | 'hyrox';
+type Chapter = 'tech' | 'freediving' | 'sport';
 
 const chapterLinks: Record<Chapter, ChapterLink> = {
   tech: { href: '/', label: 'Tech' },
   freediving: { href: '/freediving', label: 'Freediving' },
-  sport: { href: '/sport', label: 'Sport' },
-  running: { href: '/sport/running', label: 'Running' },
-  hyrox: { href: '/sport/hyrox', label: 'HYROX' },
+  sport: { href: '/sport', label: 'Running & fitness' },
 };
 
 const chapterNavigation: Record<Chapter, ChapterLink[]> = {
   tech: [
     { href: '/posts', label: 'Posts' },
-    { href: '/talks', label: 'Talks' },
-    { href: '/workshops', label: 'Workshops' },
-    { href: '/appearances', label: 'Appearances' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/speaking', label: 'Speaking' },
     { href: '/about', label: 'About' },
   ],
   freediving: [
     chapterLinks.freediving,
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#unitydive', label: 'Unitydive' },
+    ...(personalChaptersPublished
+      ? [
+          { href: '#gallery', label: 'Gallery' },
+          { href: '#unitydive', label: 'Unitydive' },
+        ]
+      : []),
   ],
-  sport: [chapterLinks.sport, chapterLinks.running, chapterLinks.hyrox],
-  running: [
-    chapterLinks.running,
-    { href: '#races', label: 'Races' },
-    { href: stravaProfile, label: 'Strava' },
-  ],
-  hyrox: [chapterLinks.hyrox, { href: '#sessions', label: 'Sessions' }],
+  sport: [chapterLinks.sport],
 };
 
-const chapters: Chapter[] = ['tech', 'freediving', 'running', 'hyrox'];
+const chapters: Chapter[] = ['tech', 'freediving', 'sport'];
 
 function getChapter(pathname: string): Chapter {
   if (pathname === '/freediving') {
     return 'freediving';
   }
-  if (pathname === '/sport/running') {
-    return 'running';
-  }
-  if (pathname === '/sport/hyrox') {
-    return 'hyrox';
-  }
-  if (pathname === '/sport') {
+  if (pathname === '/sport' || pathname.startsWith('/sport/')) {
     return 'sport';
   }
   return 'tech';
@@ -97,7 +86,11 @@ function ChapterLinks({
       {links.map(({ href, label }) => {
         const current = href === pathname;
         const ancestor =
-          href.startsWith('/') && pathname.startsWith(href + '/');
+          (href.startsWith('/') && pathname.startsWith(href + '/')) ||
+          (href === '/speaking' &&
+            ['/talks', '/workshops', '/appearances'].some(
+              (path) => pathname === path || pathname.startsWith(path + '/'),
+            ));
         return (
           <li key={href}>
             <Link
@@ -106,9 +99,11 @@ function ChapterLinks({
               }
               className={cn(
                 'inline-flex min-h-11 items-center whitespace-nowrap transition-colors',
-                mobile ? 'hover:bg-muted flex px-3' : 'rounded-none px-2',
+                mobile
+                  ? 'hover:bg-muted flex px-3'
+                  : 'hover:bg-foreground/5 rounded-full px-3',
                 current || ancestor
-                  ? 'font-medium underline underline-offset-8'
+                  ? 'bg-foreground/5 font-medium'
                   : secondary
                     ? 'text-muted-foreground hover:text-foreground'
                     : 'hover:text-muted-foreground',
@@ -131,11 +126,7 @@ export function Menu() {
   const chapter = getChapter(pathname);
   const primary = chapterNavigation[chapter];
   const secondary = chapters
-    .filter(
-      (item) =>
-        item !== chapter &&
-        (chapter !== 'sport' || (item !== 'running' && item !== 'hyrox')),
-    )
+    .filter((item) => item !== chapter)
     .map((item) => chapterLinks[item]);
 
   function closeMenu() {
@@ -146,47 +137,58 @@ export function Menu() {
     <>
       <nav
         aria-label="Main navigation"
-        className="hidden items-center gap-3 lg:flex"
+        className="bg-background/80 ring-foreground/10 hidden items-center gap-3 rounded-full p-2 shadow-lg ring-1 shadow-black/5 backdrop-blur-2xl backdrop-saturate-150 lg:flex dark:bg-neutral-900/70 dark:shadow-black/20"
       >
         <ChapterLinks links={primary} pathname={pathname} />
         <ChapterLinks links={secondary} pathname={pathname} secondary />
       </nav>
-      <Sheet onOpenChange={setOpen} open={open}>
-        <SheetTrigger asChild>
-          <Button
+      <div className="flex items-center gap-2 lg:hidden">
+        {chapter !== 'tech' ? (
+          <Link
+            className="hover:bg-accent inline-flex min-h-11 items-center gap-2 rounded-full px-3"
+            href="/"
+          >
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Tech
+          </Link>
+        ) : null}
+        <Sheet onOpenChange={setOpen} open={open} side="right">
+          <SheetTrigger
             aria-expanded={open}
             aria-label="Open Menu"
-            className="lg:hidden"
-            size="icon"
-            variant="ghost"
+            className={buttonVariants({
+              size: 'icon',
+              variant: 'ghost',
+              className: 'rounded-full',
+            })}
           >
             <MenuIcon aria-hidden="true" />
-          </Button>
-        </SheetTrigger>
-        <SheetContent className="overflow-y-auto p-6 pt-8" side="right">
-          <SheetTitle className="pr-12">
-            {chapterLinks[chapter].label}
-          </SheetTitle>
-          <SheetDescription className="sr-only">
-            Navigate within this chapter or switch to another.
-          </SheetDescription>
-          <nav aria-label="Main navigation" className="grid gap-4 pb-4">
-            <ChapterLinks
-              links={primary}
-              pathname={pathname}
-              onNavigate={closeMenu}
-              mobile
-            />
-            <ChapterLinks
-              links={secondary}
-              pathname={pathname}
-              onNavigate={closeMenu}
-              mobile
-              secondary
-            />
-          </nav>
-        </SheetContent>
-      </Sheet>
+          </SheetTrigger>
+          <SheetContent className="overflow-y-auto p-6 pt-8">
+            <SheetTitle className="pr-12">
+              {chapterLinks[chapter].label}
+            </SheetTitle>
+            <SheetDescription className="sr-only">
+              Navigate within this chapter or switch to another.
+            </SheetDescription>
+            <nav aria-label="Main navigation" className="grid gap-4 pb-4">
+              <ChapterLinks
+                links={primary}
+                pathname={pathname}
+                onNavigate={closeMenu}
+                mobile
+              />
+              <ChapterLinks
+                links={secondary}
+                pathname={pathname}
+                onNavigate={closeMenu}
+                mobile
+                secondary
+              />
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
     </>
   );
 }

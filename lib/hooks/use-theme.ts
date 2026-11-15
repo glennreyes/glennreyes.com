@@ -1,15 +1,11 @@
-import { useTheme as useThemeBase } from 'next-themes';
+import { usePreference } from '@ui-sdk/react/preferences';
+import { colorScheme, parseResolvedTheme } from '@/lib/theme';
 
-import { parseResolvedTheme, parseTheme } from '@/lib/theme';
-
-export const useTheme = () => {
-  const {
-    resolvedTheme: resolvedThemeBase,
-    setTheme,
-    theme: themeBase,
-  } = useThemeBase();
-  const theme = parseTheme(themeBase);
-  const resolvedTheme = parseResolvedTheme(resolvedThemeBase);
-
-  return { resolvedTheme, setTheme, theme };
-};
+export function useTheme() {
+  const { value, resolved } = usePreference(colorScheme);
+  return {
+    theme: value,
+    resolvedTheme: parseResolvedTheme(resolved),
+    setTheme: colorScheme.set,
+  };
+}

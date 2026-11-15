@@ -45,7 +45,11 @@ bun dev
 
 ## Personal site
 
-Tech is the homepage. Its main navigation links to Posts, Talks, Workshops, Appearances, and About. Freediving, Running, and HYROX have their own chapter links and a route back to Tech. The Sport overview remains available, and earlier Tech and Work URLs redirect to their current destinations. Geist stays at one text size.
+Tech is the homepage. Its glass navigation links to Posts, Projects, Speaking, and About. Speaking groups the existing Talks, Workshops, and Appearances archives. Freediving and Running & fitness stay in a quieter second group; personal chapters keep a visible Tech link on mobile. Earlier Tech and Work URLs redirect to their current destinations. Geist stays at one text size.
+
+Personal chapters currently show photo-led launch previews, marked noindex. Set `personalChaptersPublished` in `lib/constants.ts` to true to publish the retained galleries, running journal, and HYROX pages. HYROX stays under Running & fitness in the main navigation.
+
+Interactive primitives use the pinned Vercel UI SDK beta (`@ui-sdk/core` and `@ui-sdk/react`) with Tailwind styling. It replaces Radix and next-themes; existing `theme` localStorage choices are preserved. The React Compiler uses its default inference mode.
 
 High-resolution freediving photos and silent 1080p films from Glenn’s Downloads folder live under `public/media/freediving/`. The HYROX image is the public cover of [Glenn's October 2026 gym reel](https://www.instagram.com/glnnreyes/reel/DeG4OCCtiGY/). Captions and portfolio entries live in `lib/site-content.ts`.
 
@@ -70,4 +74,4 @@ Set `INSTAGRAM_USER_ID` and server-only `INSTAGRAM_ACCESS_TOKEN` in Vercel. The 
 
 ## Verification
 
-Run `bun format`, `bun lint`, `bun run test`, `bun tsc --noEmit`, `bun run build`, `PLAYWRIGHT_BUILD=1 bun test:e2e`, and `bun run build-storybook`. Playwright checks WCAG, mobile focus, gallery playback, and uniform typography against the production build. Storybook includes the media gallery and shadcn primitives.
+Run `bun format`, `bun lint`, `bun run test`, `bun tsc --noEmit`, `bun run build`, `PLAYWRIGHT_BUILD=1 bun test:e2e`, and `bun run build-storybook`. Playwright checks WCAG, mobile navigation and focus, Safari asset loading, theme persistence, and uniform typography against the production build. Storybook includes the media gallery and UI SDK primitives.

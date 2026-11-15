@@ -18,27 +18,25 @@ export function MediaGallery({ items }: MediaGalleryProps) {
       {items.map((media) => (
         <Dialog key={media.id}>
           <div className="grid gap-4">
-            <DialogTrigger asChild>
-              <button
-                aria-label={'Open ' + media.collection + ': ' + media.caption}
-                className="group aspect-portrait bg-muted relative overflow-hidden rounded-md focus-visible:outline-2 focus-visible:outline-offset-4"
-                type="button"
-              >
-                <Image
-                  alt={media.alt}
-                  className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
-                  fill
-                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                  src={media.src}
-                />
-                <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-md bg-black text-white">
-                  {media.video !== undefined ? (
-                    <Play aria-hidden="true" className="size-4" />
-                  ) : (
-                    <Plus aria-hidden="true" className="size-4" />
-                  )}
-                </span>
-              </button>
+            <DialogTrigger
+              aria-label={'Open ' + media.collection + ': ' + media.caption}
+              className="group aspect-portrait bg-muted relative overflow-hidden rounded-md focus-visible:outline-2 focus-visible:outline-offset-4"
+              type="button"
+            >
+              <Image
+                alt={media.alt}
+                className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
+                fill
+                sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                src={media.src}
+              />
+              <span className="absolute right-5 bottom-5 grid size-11 place-items-center rounded-md bg-black text-white">
+                {media.video !== undefined ? (
+                  <Play aria-hidden="true" className="size-4" />
+                ) : (
+                  <Plus aria-hidden="true" className="size-4" />
+                )}
+              </span>
             </DialogTrigger>
             <div className="flex flex-wrap justify-between gap-2">
               <p>{media.caption}</p>
