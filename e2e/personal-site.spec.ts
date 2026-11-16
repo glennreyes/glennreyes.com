@@ -128,5 +128,17 @@ test('project hover fills the card and All posts follows the writing list', asyn
     throw new Error('Writing layout is missing');
   }
   expect(moreBox.y).toBeGreaterThan(postBox.y + postBox.height);
-  expect(Math.abs(moreBox.x + 12.75 - headingBox.x)).toBeLessThan(2);
+  expect(Math.abs(moreBox.x - postBox.x)).toBeLessThan(2);
+  const speakingBox = await page
+    .getByRole('heading', { name: 'Speaking & teaching', exact: true })
+    .boundingBox();
+  const talksBox = await page
+    .getByRole('main')
+    .getByRole('link', { name: 'Talks & recordings', exact: true })
+    .boundingBox();
+  if (!speakingBox || !talksBox) {
+    throw new Error('Speaking layout is missing');
+  }
+  expect(Math.abs(speakingBox.x - headingBox.x)).toBeLessThan(2);
+  expect(Math.abs(talksBox.x - postBox.x)).toBeLessThan(2);
 });

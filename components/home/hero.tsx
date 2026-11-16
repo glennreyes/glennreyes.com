@@ -28,6 +28,7 @@ export function Hero() {
           fill
           placeholder="blur"
           preload
+          quality={90}
           sizes="(max-width: 767px) 100vw, (min-width: 1360px) 630px, 50vw"
           src={speaking}
         />

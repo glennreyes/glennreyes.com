@@ -137,7 +137,7 @@ export function Menu() {
     <>
       <nav
         aria-label="Main navigation"
-        className="bg-background/80 ring-foreground/10 hidden items-center gap-3 rounded-full p-2 shadow-lg ring-1 shadow-black/5 backdrop-blur-2xl backdrop-saturate-150 lg:flex dark:bg-neutral-900/70 dark:shadow-black/20"
+        className="hidden items-center gap-3 lg:flex"
       >
         <ChapterLinks links={primary} pathname={pathname} />
         <ChapterLinks links={secondary} pathname={pathname} secondary />

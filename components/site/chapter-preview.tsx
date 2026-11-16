@@ -16,16 +16,17 @@ export function ChapterPreview({ chapter }: ChapterPreviewProps) {
           <Image
             alt={
               underwater
-                ? 'A freediver surrounded by a swirling school of sardines'
+                ? 'A freediver above a school of jacks in clear blue water'
                 : 'Glenn running alongside the river in Vienna'
             }
             className="object-cover"
             fill
-            priority
+            preload
+            quality={90}
             sizes="(max-width: 767px) 100vw, 50vw"
             src={
               underwater
-                ? '/media/freediving/sardines.webp'
+                ? '/media/freediving/jacks.webp'
                 : '/media/sport/river.webp'
             }
           />

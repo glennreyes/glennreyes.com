@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ['127.0.0.1'],
   cacheComponents: true,
   partialPrefetching: true,
+  images: { qualities: [75, 90] },
   env: {
     NEXT_PUBLIC_BUILD_YEAR: buildYear,
   },
