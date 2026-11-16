@@ -5,7 +5,7 @@ test.describe('Navigation', () => {
     await page.goto('/');
 
     // Click on About link in navigation
-    await page.getByRole('link', { name: 'About' }).click();
+    await page.getByRole('link', { name: 'About', exact: true }).click();
 
     // Wait for navigation
     await page.waitForURL('/about');
@@ -13,11 +13,13 @@ test.describe('Navigation', () => {
     // Verify we're on the about page
     await expect(page).toHaveURL('/about');
     await expect(
-      page.getByRole('heading', { level: 1, name: /Glenn Reyes/i }),
+      page.getByRole('heading', { level: 1, name: /Hey, I.m Glenn Reyes/i }),
     ).toBeVisible();
   });
 
-  test('should navigate back to home by clicking avatar', async ({ page }) => {
+  test('should navigate back to home by clicking the name', async ({
+    page,
+  }) => {
     await page.goto('/about');
 
     // Click avatar/logo link in navbar to go home
@@ -33,15 +35,81 @@ test.describe('Navigation', () => {
     await expect(page).toHaveURL('/');
   });
 
-  test('should have working navigation menu', async ({ page }) => {
+  test('groups Tech navigation and keeps personal chapters discoverable', async ({
+    page,
+  }) => {
     await page.goto('/');
-
-    // Verify all main navigation links are present
-    const navLinks = ['About', 'Posts', 'Talks', 'Workshops'];
     const nav = page.getByRole('navigation', { name: 'Main navigation' });
-
-    for (const linkName of navLinks) {
-      await expect(nav.getByRole('link', { name: linkName })).toBeVisible();
+    const primary = nav.getByRole('list', { name: 'Chapter links' });
+    const secondary = nav.getByRole('list', { name: 'Other chapters' });
+    await expect(primary.getByRole('link')).toHaveText([
+      'Posts',
+      'Projects',
+      'Speaking',
+      'About',
+    ]);
+    await expect(secondary.getByRole('link')).toHaveText([
+      'Freediving',
+      'Running & fitness',
+    ]);
+    await primary.getByRole('link', { name: 'Speaking' }).click();
+    await expect(page).toHaveURL('/speaking');
+    for (const name of ['Talks & recordings', 'Workshops', 'Appearances']) {
+      await expect(
+        page.getByRole('main').getByRole('link', { name, exact: false }),
+      ).toBeVisible();
     }
+    await secondary.getByRole('link', { name: 'Freediving' }).click();
+    await expect(page).toHaveURL('/freediving');
+    await expect(primary.getByRole('link')).toHaveText(['Freediving']);
+    await expect(
+      primary.getByRole('link', { name: 'Freediving' }),
+    ).toHaveAttribute('aria-current', 'page');
+    await secondary.getByRole('link', { name: 'Running & fitness' }).click();
+    await expect(page).toHaveURL('/sport');
+    await expect(primary.getByRole('link')).toHaveText(['Running & fitness']);
+    await secondary.getByRole('link', { name: 'Tech', exact: true }).click();
+    await expect(page).toHaveURL('/');
+  });
+
+  test('returns to Tech on mobile without opening a menu', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    for (const route of [
+      '/freediving',
+      '/sport',
+      '/sport/running',
+      '/sport/hyrox',
+    ]) {
+      await page.goto(route);
+      await expect(page.getByRole('dialog')).toBeHidden();
+      const tech = page
+        .getByRole('banner')
+        .getByRole('link', { name: 'Tech', exact: true });
+      await expect(tech).toBeVisible();
+      await tech.click();
+      await expect(page).toHaveURL('/');
+    }
+  });
+
+  test('switches chapters and dismisses the menu on a phone', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/');
+    const menu = page.getByRole('button', { name: 'Open Menu' });
+    const dialog = page.getByRole('dialog');
+    await menu.click();
+    await expect(dialog.getByRole('heading', { name: 'Tech' })).toBeVisible();
+    await dialog.getByRole('link', { name: 'Freediving' }).click();
+    await expect(page).toHaveURL('/freediving');
+    await expect(dialog).toBeHidden();
+
+    await menu.click();
+    await expect(
+      dialog.getByRole('heading', { name: 'Freediving' }),
+    ).toBeVisible();
+    await dialog.getByRole('link', { name: 'Tech' }).click();
+    await expect(page).toHaveURL('/');
+    await expect(dialog).toBeHidden();
   });
 });

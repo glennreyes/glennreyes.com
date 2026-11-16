@@ -2,20 +2,30 @@
 
 import type { ReactNode } from 'react';
 
-import { ThemeProvider } from 'next-themes';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Preferences } from '@ui-sdk/react/preferences';
+import { colorScheme } from '@/lib/theme';
 
-import { IntersectionProvider } from '@/components/intersection/intersection-provider';
-import { ScrollRestoration } from '@/components/scroll-restoration';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface ProvidersProps {
   children: ReactNode;
 }
 
-export const Providers = ({ children }: ProvidersProps) => (
-  <ThemeProvider attribute="data-theme">
-    <IntersectionProvider>
-      <ScrollRestoration />
-      {children}
-    </IntersectionProvider>
-  </ThemeProvider>
-);
+export function Providers({ children }: ProvidersProps) {
+  return <Preferences preferences={[colorScheme]}>{children}</Preferences>;
+}
+
+export function SiteTelemetry() {
+  const mounted = useMounted();
+  if (!mounted) {
+    return null;
+  }
+  return (
+    <>
+      <SpeedInsights />
+      <Analytics />
+    </>
+  );
+}

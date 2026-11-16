@@ -1,31 +1,16 @@
+import { SectionLink } from '@/components/site/section-link';
 import { getAllPublishedPosts } from '@/lib/posts';
 
-import { Feed, FeedItem } from '../ui/layout/feed';
-import { ActionLink } from '../ui/link/action-link';
-import { H4 } from '../ui/typography/h4';
-
-export const Posts = async () => {
+export async function Posts() {
   const allPosts = await getAllPublishedPosts();
-  const posts = allPosts.slice(0, 4);
-
+  const posts = allPosts.slice(0, 2);
   return (
-    <div className="grid gap-6 lg:gap-12">
-      <H4 asChild>
-        <h2>Recent Posts</h2>
-      </H4>
-      <div className="grid gap-12">
-        <Feed>
-          {posts.map(({ frontmatter, slug }) => (
-            <FeedItem
-              description={frontmatter.description}
-              key={slug}
-              link={`/posts/${slug}`}
-              title={frontmatter.title}
-            />
-          ))}
-        </Feed>
-        <ActionLink href="/posts">All Posts</ActionLink>
-      </div>
-    </div>
+    <ul className="grid gap-2">
+      {posts.map(({ frontmatter, slug }) => (
+        <li key={slug}>
+          <SectionLink href={'/posts/' + slug}>{frontmatter.title}</SectionLink>
+        </li>
+      ))}
+    </ul>
   );
-};
+}

@@ -12,7 +12,7 @@ const posts = defineCollection({
     lead: z.string().optional(),
   }),
   transform: (data) => {
-    const slug = data._meta.path.replace(/\.mdx$/, '');
+    const slug = data['_meta'].path.replace(/\.mdx$/, '');
 
     return {
       ...data,
@@ -28,7 +28,7 @@ const pages = defineCollection({
     title: z.string(),
   }),
   transform: (data) => {
-    const slug = data._meta.path.replace(/\.mdx$/, '');
+    const slug = data['_meta'].path.replace(/\.mdx$/, '');
 
     return {
       ...data,

@@ -92,7 +92,7 @@ function EventAppearancesCard({
                       <span className="sr-only">Date & Time</span>
                       <Calendar
                         aria-hidden
-                        className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                        className="h-5 w-5 text-neutral-300 dark:text-neutral-700"
                         strokeWidth={2}
                       />
                     </dt>
@@ -112,7 +112,7 @@ function EventAppearancesCard({
                         <span className="sr-only">Length</span>
                         <Clock
                           aria-hidden
-                          className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          className="h-5 w-5 text-neutral-300 dark:text-neutral-700"
                           strokeWidth={2}
                         />
                       </dt>
@@ -129,7 +129,7 @@ function EventAppearancesCard({
                         <span className="sr-only">Slides</span>
                         <Presentation
                           aria-hidden
-                          className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          className="h-5 w-5 text-neutral-300 dark:text-neutral-700"
                           strokeWidth={2}
                         />
                       </dt>
@@ -158,7 +158,7 @@ function EventAppearancesCard({
                         <span className="sr-only">Slides</span>
                         <Tv
                           aria-hidden
-                          className="h-5 w-5 text-slate-300 dark:text-slate-700"
+                          className="h-5 w-5 text-neutral-300 dark:text-neutral-700"
                           strokeWidth={2}
                         />
                       </dt>

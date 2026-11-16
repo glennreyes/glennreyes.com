@@ -16,7 +16,7 @@ export function AboutAuthor() {
           <div className="grid items-center gap-6 sm:flex">
             <AvatarLink
               aria-label="About Glenn Reyes"
-              className="flex-none rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-teal-300 focus-visible:ring-offset-2 dark:focus-visible:ring-teal-700/50 dark:focus-visible:ring-offset-slate-950"
+              className="flex-none rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-neutral-300 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-700/50 dark:focus-visible:ring-offset-neutral-950"
               href="/about"
             >
               <Avatar />

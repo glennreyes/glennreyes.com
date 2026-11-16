@@ -4,15 +4,15 @@ import { z } from 'zod';
 
 import { subscribe as subscribeBase } from '@/lib/newsletter';
 
-interface SubscribeState {
+export interface SubscribeState {
   message: string;
   status: 'error' | 'idle' | 'success';
 }
 
-export const subscribe = async (
+export async function subscribe(
   _prevState: SubscribeState | null,
   data: FormData,
-): Promise<SubscribeState> => {
+): Promise<SubscribeState> {
   const email = data.get('email');
   const theme = data.get('theme');
   const result = z
@@ -43,4 +43,4 @@ export const subscribe = async (
       status: 'error',
     };
   }
-};
+}

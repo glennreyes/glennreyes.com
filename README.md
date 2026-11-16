@@ -16,7 +16,7 @@ The site is hosted on [Vercel](https://vercel.com) and uses [Vercel Analytics](h
 
 ## Run the Development Server
 
-This project uses latest [Node](https://nodejs.org), [Bun](https://bun.sh) and [Docker](https://www.docker.com) for development.
+This project uses Bun 1.4.4 and TypeScript. CI uses the pinned version; Vercel manages the Bun 1.4.x patch version for builds and Next.js functions. CI uses Node 24 for Node-based tooling. Use `bun run build` and `bun run test` to run the package scripts; `bun build` and `bun test` invoke Bun’s own bundler and test runner.
 
 ### Installation
 
@@ -42,3 +42,36 @@ bun dev
 ```
 
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Personal site
+
+Tech is the homepage. Its glass navigation links to Posts, Projects, Speaking, and About. Speaking groups the existing Talks, Workshops, and Appearances archives. Freediving and Running & fitness stay in a quieter second group; personal chapters keep a visible Tech link on mobile. Earlier Tech and Work URLs redirect to their current destinations. Geist stays at one text size.
+
+Personal chapters currently show photo-led launch previews, marked noindex. Set `personalChaptersPublished` in `lib/constants.ts` to true to publish the retained galleries, running journal, and HYROX pages. HYROX stays under Running & fitness in the main navigation.
+
+Interactive primitives use the pinned Vercel UI SDK beta (`@ui-sdk/core` and `@ui-sdk/react`) with Tailwind styling. It replaces Radix and next-themes; existing `theme` localStorage choices are preserved. The React Compiler uses its default inference mode.
+
+High-resolution freediving photos and silent 1080p films from Glenn’s Downloads folder live under `public/media/freediving/`. The HYROX image is the public cover of [Glenn's October 2026 gym reel](https://www.instagram.com/glnnreyes/reel/DeG4OCCtiGY/). Captions and portfolio entries live in `lib/site-content.ts`.
+
+### Activity sync
+
+The optional running journal accepts [Health Auto Export v2](https://help.healthyapps.dev/en/health-auto-export/export-format/workouts/) REST API exports from Apple Health. Enable Garmin Connect's workout/distance permissions and verify a Garmin run reaches Health first.
+
+1. Apply `drizzle/activity-summaries.sql` to the chosen Turso database. This PR does not apply changes to the production database.
+2. Set `ACTIVITY_SYNC_TOKEN` to a random secret of at least 32 characters in the deployment environment.
+3. Configure Health Auto Export: REST API, POST to `https://glennreyes.com/api/integrations/health`, JSON, Workouts, export version 2, header `Authorization: Bearer <ACTIVITY_SYNC_TOKEN>`. Export running workouts; disable routes, detailed workout metrics, and metadata. Keep each batch below 1 MB and 500 workouts.
+4. Send a small test export and check the Running page before enabling recurring exports on the phone. iOS background timing depends on device availability and permissions.
+
+The endpoint stores only running summaries, converts distance to kilometres, hashes source IDs, and deduplicates overlapping watch recordings. Only date, distance, and duration appear publicly. Every imported run is intended for the public journal; select appropriate workouts before sending. Other sports are ignored. No routes, heart rate, or health metrics are stored. Without a token, the journal stays hidden. Precise start times are used privately for sorting and duplicate detection.
+
+Strava remains linked as the full activity destination. This site does not redistribute data from the Strava API.
+
+### Instagram sync
+
+The optional Sport feed reads three recent posts through Meta's [Instagram API with Instagram Login](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/). It requires a Creator or Business account, a Meta app with `instagram_business_basic` access, and an authorized long-lived token belonging to Glenn's account.
+
+Set `INSTAGRAM_USER_ID` and server-only `INSTAGRAM_ACCESS_TOKEN` in Vercel. The feed caches for an hour, links to originals, uses video covers, and stays hidden when disconnected or unavailable. Renew the token through Meta before it expires. No account credentials are committed; this PR does not authorize an account or change its type. Local media and the selected gym reel work independently.
+
+## Verification
+
+Run `bun format`, `bun lint`, `bun run test`, `bun tsc --noEmit`, `bun run build`, `PLAYWRIGHT_BUILD=1 bun test:e2e`, and `bun run build-storybook`. Playwright checks WCAG, mobile navigation and focus, Safari asset loading, theme persistence, and uniform typography against the production build. Storybook includes the media gallery and UI SDK primitives.

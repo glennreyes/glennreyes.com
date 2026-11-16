@@ -18,8 +18,14 @@ import UsesPage from './uses/page';
 import WorkshopSlugPage from './workshops/[slug]/page';
 import WorkshopsPage from './workshops/page';
 
+vi.mock('@/lib/instagram', () => ({ getInstagramPosts: async () => [] }));
+
+vi.mock('@/lib/time', () => ({
+  getTimestamp: async () => new Date('2024-01-01').getTime(),
+}));
+
 vi.mock('@/lib/events', () => ({
-  getAllEvents: vi.fn().mockResolvedValue([
+  getAllEvents: async () => [
     {
       name: 'Test Event',
       slug: 'test-event',
@@ -30,8 +36,8 @@ vi.mock('@/lib/events', () => ({
         state: null,
       },
     },
-  ]),
-  getEventBySlug: vi.fn().mockResolvedValue({
+  ],
+  getEventBySlug: async () => ({
     name: 'Test Event',
     slug: 'test-event',
     startDate: new Date('2025-12-01'),
@@ -47,70 +53,20 @@ vi.mock('@/lib/events', () => ({
     },
     appearances: [],
   }),
-  mapEventsToFeed: vi.fn((events: unknown[]) => {
-    if (!Array.isArray(events)) {
-      return [];
-    }
-
-    function isFeedEventSource(value: unknown): value is {
-      name: string;
-      slug: string;
-      startDate: Date | string;
-      location: {
-        city: string | null;
-        country: string | null;
-        state: string | null;
-      };
-    } {
-      return (
-        typeof value === 'object' &&
-        value !== null &&
-        'name' in value &&
-        'slug' in value &&
-        'startDate' in value &&
-        'location' in value &&
-        typeof (value as { name: unknown }).name === 'string' &&
-        typeof (value as { slug: unknown }).slug === 'string' &&
-        typeof (value as { location: unknown }).location === 'object' &&
-        (value as { location: unknown }).location !== null
-      );
-    }
-
-    return events.map((event: unknown) => {
-      if (!isFeedEventSource(event)) {
-        throw new Error('Invalid event structure');
-      }
-
-      return {
-        name: event.name,
-        slug: event.slug,
-        startDate:
-          event.startDate instanceof Date
-            ? event.startDate.toISOString()
-            : new Date(event.startDate).toISOString(),
-        location: {
-          city: event.location.city ?? '',
-          country: event.location.country ?? '',
-          state: event.location.state,
-        },
-      };
-    });
-  }),
-  getCurrentTimestamp: vi
-    .fn()
-    .mockResolvedValue(new Date('2024-01-01').getTime()),
+  mapEventsToFeed: (events: unknown[]) => events,
+  getCurrentTimestamp: async () => new Date('2024-01-01').getTime(),
 }));
 
 vi.mock('@/lib/talks', () => ({
-  getAllTalks: vi.fn().mockResolvedValue([
+  getAllTalks: async () => [
     {
       title: 'Test Talk',
       slug: 'test-talk',
       abstract: 'Test abstract',
       tags: ['react'],
     },
-  ]),
-  getTalkBySlug: vi.fn().mockResolvedValue({
+  ],
+  getTalkBySlug: async () => ({
     title: 'Test Talk',
     slug: 'test-talk',
     abstract: 'Test abstract',
@@ -121,15 +77,15 @@ vi.mock('@/lib/talks', () => ({
 }));
 
 vi.mock('@/lib/workshops', () => ({
-  getAllWorkshops: vi.fn().mockResolvedValue([
+  getAllWorkshops: async () => [
     {
       title: 'Test Workshop',
       slug: 'test-workshop',
       summary: 'Test summary',
       tags: ['react'],
     },
-  ]),
-  getWorkshopBySlug: vi.fn().mockResolvedValue({
+  ],
+  getWorkshopBySlug: async () => ({
     title: 'Test Workshop',
     slug: 'test-workshop',
     summary: 'Test summary',
@@ -140,7 +96,7 @@ vi.mock('@/lib/workshops', () => ({
 }));
 
 vi.mock('@/lib/posts', () => ({
-  getAllPosts: vi.fn().mockResolvedValue([
+  getAllPosts: async () => [
     {
       frontmatter: {
         title: 'Test Post',
@@ -152,8 +108,8 @@ vi.mock('@/lib/posts', () => ({
       content: <div>Test content</div>,
       readingTime: 5,
     },
-  ]),
-  getAllPublishedPosts: vi.fn().mockResolvedValue([
+  ],
+  getAllPublishedPosts: async () => [
     {
       frontmatter: {
         title: 'Test Post',
@@ -163,8 +119,8 @@ vi.mock('@/lib/posts', () => ({
       slug: 'test-post',
       content: <div>Test content</div>,
     },
-  ]),
-  getPostBySlug: vi.fn().mockResolvedValue({
+  ],
+  getPostBySlug: async () => ({
     frontmatter: {
       title: 'Test Post',
       description: 'Test description',
@@ -256,10 +212,6 @@ vi.mock('@/lib/hooks/use-theme', () => ({
   useTheme: () => ({ resolvedTheme: 'light' }),
 }));
 
-vi.mock('@/lib/hooks/use-intersection', () => ({
-  useIntersection: () => ({ ref: { current: null } }),
-}));
-
 vi.mock('react', async (importOriginal) => {
   const actual = await importOriginal<typeof import('react')>();
 
@@ -275,24 +227,17 @@ vi.mock('react', async (importOriginal) => {
 });
 
 vi.mock('@/app/subscribe/action', () => ({
-  subscribe: vi.fn(),
-}));
-
-vi.mock('sonner', () => ({
-  toast: {
-    success: vi.fn(),
-    error: vi.fn(),
-  },
+  subscribe: async () => ({ status: 'idle', message: '' }),
 }));
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
-    push: vi.fn(),
-    replace: vi.fn(),
-    back: vi.fn(),
-    forward: vi.fn(),
-    refresh: vi.fn(),
-    prefetch: vi.fn(),
+    push: () => {},
+    replace: () => {},
+    back: () => {},
+    forward: () => {},
+    refresh: () => {},
+    prefetch: () => {},
   }),
   usePathname: () => '/test',
   useSearchParams: () => new URLSearchParams(),
@@ -315,7 +260,7 @@ describe('Page Smoke Tests', () => {
     });
 
     it('renders about page', async () => {
-      const { container } = render(await AboutPage());
+      const { container } = render(<AboutPage />);
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();

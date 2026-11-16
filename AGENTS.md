@@ -4,7 +4,7 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 
 ## Project Snapshot
 
-- **Stack**: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
+- **Stack**: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
 - **Content**: MDX files under `content/`; Drizzle sources additional data (events, appearances, analytics)
 - **Hosting**: Vercel (deployment, analytics, speed insights)
 - **Design system**: Tailwind-first components in `components/ui/`
@@ -15,6 +15,8 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 2. Database: Configure Turso connection in `.env`
 3. Development server: `bun dev` (Turbopack, served at <http://localhost:3000>)
 4. Production build: `bun build` then `bun start`
+
+UI behaviors use `@ui-sdk/core` and `@ui-sdk/react`. Read the installed component docs in `node_modules/@ui-sdk/react/docs/` before changing primitives; use `render` composition and preserve focus, names, and keyboard behavior.
 
 ## Quality Gates (run before handing work back)
 
@@ -124,3 +126,13 @@ Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to 
 - Follow the same rules and quality gates as Claude
 - Prefer using Cursor Tasks/Notebooks to capture command output when collaborating
 - Keep code actions reversible: avoid auto-fixing files unrelated to the task
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

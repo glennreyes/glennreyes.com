@@ -9,7 +9,7 @@ type ActionLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, 'className'>;
 export function ActionLink({ children, ...props }: ActionLinkProps) {
   return (
     <Link
-      className="group inline-flex items-center gap-0.5 font-medium text-teal-700 transition hover:text-teal-800 focus-visible:transition-none dark:text-teal-200/75 dark:hover:text-teal-200/90"
+      className="group inline-flex items-center gap-0.5 font-medium text-neutral-700 transition hover:text-neutral-800 focus-visible:transition-none dark:text-neutral-200/75 dark:hover:text-neutral-200/90"
       {...props}
     >
       {children}

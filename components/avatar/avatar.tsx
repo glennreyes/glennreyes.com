@@ -42,7 +42,7 @@ export function Avatar({ size, className, ...props }: AvatarProps) {
 
   return (
     <div className={classes}>
-      <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-slate-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-slate-800/50 dark:to-transparent" />
+      <div className="absolute inset-0 rounded-full bg-linear-to-r from-transparent via-neutral-200 to-transparent motion-safe:animate-spin motion-safe:[animation-duration:10s] dark:from-transparent dark:via-neutral-800/50 dark:to-transparent" />
       <Image
         alt={name}
         className="relative rounded-full"

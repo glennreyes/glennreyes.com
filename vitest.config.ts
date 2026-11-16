@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -16,9 +16,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, '.'),
+      '@': resolve(import.meta.dirname, '.'),
       'content-collections': resolve(
-        __dirname,
+        import.meta.dirname,
         '__mocks__/content-collections.ts',
       ),
     },

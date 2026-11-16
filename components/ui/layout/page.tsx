@@ -38,7 +38,9 @@ function PageHeader({ children, lead, meta, ...props }: PageHeaderProps) {
 type PageBodyProps = Omit<ComponentPropsWithoutRef<'article'>, 'className'>;
 
 function PageBody(props: PageBodyProps) {
-  return <section className="prose prose-slate dark:prose-invert" {...props} />;
+  return (
+    <section className="prose prose-neutral dark:prose-invert" {...props} />
+  );
 }
 
 type PageComponent = typeof Page & {
@@ -46,9 +48,9 @@ type PageComponent = typeof Page & {
   Header: typeof PageHeader;
 };
 
-const PageComponentWithSections = Page as PageComponent;
-
-PageComponentWithSections.Body = PageBody;
-PageComponentWithSections.Header = PageHeader;
+const PageComponentWithSections: PageComponent = Object.assign(Page, {
+  Body: PageBody,
+  Header: PageHeader,
+});
 
 export { PageComponentWithSections as Page };

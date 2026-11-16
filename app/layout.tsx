@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
-import { Analytics } from '@vercel/analytics/react';
-
 import '@/app/globals.css';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 
 import { Footer } from '@/components/footer/footer';
@@ -16,7 +13,7 @@ import { Main } from '@/components/ui/layout/main';
 import { Toaster } from '@/components/ui/sonner';
 import { description, name, origin, x } from '@/lib/constants';
 
-import { Providers } from './providers';
+import { Providers, SiteTelemetry } from './providers';
 
 const title = { default: name, template: `%s | ${name}` };
 
@@ -53,18 +50,29 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <Html suppressHydrationWarning>
       <head />
       <Body>
-        <Suspense fallback={null}>
-          <Providers>
-            <Navbar>
+        <Providers>
+          <Navbar>
+            <Suspense fallback={<span className="min-h-11" />}>
               <Menu />
-            </Navbar>
-            <Main>{children}</Main>
-            <Toaster />
-            <Footer />
-          </Providers>
+            </Suspense>
+          </Navbar>
+          <Main>
+            <Suspense
+              fallback={
+                <div className="container py-12">
+                  <p>Just a moment.</p>
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+          </Main>
+          <Toaster />
+          <Footer />
+        </Providers>
+        <Suspense fallback={null}>
+          <SiteTelemetry />
         </Suspense>
-        <SpeedInsights />
-        <Analytics />
       </Body>
     </Html>
   );

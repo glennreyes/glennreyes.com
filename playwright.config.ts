@@ -8,7 +8,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 3,
   reporter: 'html',
   use: {
     baseURL,
@@ -19,9 +19,17 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'webkit',
+      testMatch: '**/preview-assets.spec.ts',
+      use: { ...devices['Desktop Safari'] },
+    },
   ],
   webServer: {
-    command: `PORT=${port} bun dev`,
+    command:
+      process.env.PLAYWRIGHT_BUILD === '1'
+        ? `PORT=${port} bun start`
+        : `PORT=${port} bun dev`,
     timeout: 120 * 1000,
     url: baseURL,
     reuseExistingServer: false,

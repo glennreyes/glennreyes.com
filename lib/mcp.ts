@@ -78,16 +78,17 @@ interface SearchableEvent {
 
 // Union type for all searchable content
 type SearchableContent =
-  | SearchablePost
-  | SearchableTalk
-  | SearchableWorkshop
-  | SearchableEvent;
+  SearchablePost | SearchableTalk | SearchableWorkshop | SearchableEvent;
 
 export interface MCPDataSources {
-  getAllEvents: typeof getAllEvents;
-  getAllPublishedPosts: typeof getAllPublishedPosts;
-  getAllTalks: typeof getAllTalks;
-  getAllWorkshops: typeof getAllWorkshops;
+  getAllEvents: () => PromiseLike<Awaited<ReturnType<typeof getAllEvents>>>;
+  getAllPublishedPosts: () => PromiseLike<
+    Awaited<ReturnType<typeof getAllPublishedPosts>>
+  >;
+  getAllTalks: () => PromiseLike<Awaited<ReturnType<typeof getAllTalks>>>;
+  getAllWorkshops: () => PromiseLike<
+    Awaited<ReturnType<typeof getAllWorkshops>>
+  >;
 }
 
 const defaultDataSources: MCPDataSources = {

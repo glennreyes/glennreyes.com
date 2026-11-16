@@ -8,7 +8,7 @@ type InlineLinkProps = ComponentPropsWithoutRef<typeof Link>;
 
 export function InlineLink({ className, ...props }: InlineLinkProps) {
   const classes = cn(
-    'text-slate-800 underline decoration-teal-200 decoration-1 underline-offset-4 transition hover:text-slate-950 hover:decoration-teal-400 focus-visible:text-slate-600 focus-visible:no-underline focus-visible:transition-none dark:text-slate-200 dark:decoration-teal-700 hover:dark:text-slate-50 dark:hover:decoration-teal-500',
+    'text-neutral-800 underline decoration-neutral-200 decoration-1 underline-offset-4 transition hover:text-neutral-950 hover:decoration-neutral-400 focus-visible:text-neutral-600 focus-visible:no-underline focus-visible:transition-none dark:text-neutral-200 dark:decoration-neutral-700 hover:dark:text-neutral-50 dark:hover:decoration-neutral-500',
     className,
   );
 

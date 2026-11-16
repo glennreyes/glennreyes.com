@@ -1,141 +1,194 @@
 'use client';
 
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import { Menu as MenuIcon, X } from 'lucide-react';
+import { ArrowLeft, Menu as MenuIcon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
+import { buttonVariants } from '@/components/ui/button';
+import { Link } from '@/components/ui/link/link';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { personalChaptersPublished } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
-import { IconButton } from '../ui/elements/icon-button';
-import { MenuLink } from './menu-link';
-
-interface MenuLink {
+interface ChapterLink {
   href: string;
   label: string;
 }
 
-const links: MenuLink[] = [
-  { href: '/about', label: 'About' },
-  { href: '/posts', label: 'Posts' },
-  { href: '/appearances', label: 'Appearances' },
-  { href: '/talks', label: 'Talks' },
-  { href: '/workshops', label: 'Workshops' },
-];
-const mobileLinks: MenuLink[] = [{ href: '/', label: 'Home' }, ...links];
+type Chapter = 'tech' | 'freediving' | 'sport';
+
+const chapterLinks: Record<Chapter, ChapterLink> = {
+  tech: { href: '/', label: 'Tech' },
+  freediving: { href: '/freediving', label: 'Freediving' },
+  sport: { href: '/sport', label: 'Running & fitness' },
+};
+
+const chapterNavigation: Record<Chapter, ChapterLink[]> = {
+  tech: [
+    { href: '/posts', label: 'Posts' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/speaking', label: 'Speaking' },
+    { href: '/about', label: 'About' },
+  ],
+  freediving: [
+    chapterLinks.freediving,
+    ...(personalChaptersPublished
+      ? [
+          { href: '#gallery', label: 'Gallery' },
+          { href: '#unitydive', label: 'Unitydive' },
+        ]
+      : []),
+  ],
+  sport: [chapterLinks.sport],
+};
+
+const chapters: Chapter[] = ['tech', 'freediving', 'sport'];
+
+function getChapter(pathname: string): Chapter {
+  if (pathname === '/freediving') {
+    return 'freediving';
+  }
+  if (pathname === '/sport' || pathname.startsWith('/sport/')) {
+    return 'sport';
+  }
+  return 'tech';
+}
+
+interface ChapterLinksProps {
+  links: ChapterLink[];
+  pathname: string;
+  mobile?: boolean;
+  secondary?: boolean;
+  onNavigate?: () => void;
+}
+
+function ChapterLinks({
+  links,
+  pathname,
+  mobile = false,
+  secondary = false,
+  onNavigate,
+}: ChapterLinksProps) {
+  return (
+    <ul
+      aria-label={secondary ? 'Other chapters' : 'Chapter links'}
+      className={cn(
+        mobile ? 'grid gap-1' : 'flex items-center gap-1',
+        secondary && (mobile ? 'border-t pt-4' : 'border-l pl-3'),
+      )}
+    >
+      {links.map(({ href, label }) => {
+        const current = href === pathname;
+        const ancestor =
+          (href.startsWith('/') && pathname.startsWith(href + '/')) ||
+          (href === '/speaking' &&
+            ['/talks', '/workshops', '/appearances'].some(
+              (path) => pathname === path || pathname.startsWith(path + '/'),
+            ));
+        return (
+          <li key={href}>
+            <Link
+              aria-current={
+                current ? 'page' : ancestor ? 'location' : undefined
+              }
+              className={cn(
+                'inline-flex min-h-11 items-center whitespace-nowrap transition-colors',
+                mobile
+                  ? 'hover:bg-muted flex px-3'
+                  : 'hover:bg-foreground/5 rounded-full px-3',
+                current || ancestor
+                  ? 'bg-foreground/5 font-medium'
+                  : secondary
+                    ? 'text-muted-foreground hover:text-foreground'
+                    : 'hover:text-muted-foreground',
+              )}
+              href={href}
+              onClick={onNavigate}
+            >
+              {label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 export function Menu() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const close = () => setOpen(false);
-  const toggle = () => setOpen((previous) => !previous);
-  const buttonClasses = cn(open && 'opacity-0', '-mx-2.5 md:hidden');
+  const chapter = getChapter(pathname);
+  const primary = chapterNavigation[chapter];
+  const secondary = chapters
+    .filter((item) => item !== chapter)
+    .map((item) => chapterLinks[item]);
 
-  useEffect(() => {
-    close();
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        close();
-        menuButtonRef.current?.focus();
-      }
-
-      if (event.key === 'Tab') {
-        const menu = menuRef.current;
-
-        if (!menu) {
-          return;
-        }
-
-        const focusableElements = menu.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled])',
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-          event.preventDefault();
-          lastElement?.focus();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-          event.preventDefault();
-          firstElement?.focus();
-        }
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    const firstLink = menuRef.current?.querySelector<HTMLElement>('a[href]');
-
-    firstLink?.focus();
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [open]);
+  function closeMenu() {
+    setOpen(false);
+  }
 
   return (
-    <LayoutGroup>
-      <nav aria-label="Main navigation" className="grid items-center">
-        <IconButton
-          ref={menuButtonRef}
-          appearance="secondary"
-          aria-expanded={open}
-          aria-label="Open Menu"
-          className={buttonClasses}
-          icon={MenuIcon}
-          onClick={toggle}
-        />
-        <AnimatePresence>
-          {open ? (
-            <motion.div
-              ref={menuRef}
-              animate={{ opacity: 1 }}
-              aria-modal="true"
-              className="fixed inset-0 z-30 grid h-screen content-start gap-4 overflow-y-auto bg-white p-6 md:hidden dark:bg-black"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              role="dialog"
-              transition={{ duration: 0.15 }}
-            >
-              <div className="flex justify-end">
-                <IconButton
-                  appearance="secondary"
-                  aria-label="Close Menu"
-                  icon={X}
-                  onClick={close}
-                />
-              </div>
-              <ul className="grid gap-4">
-                {mobileLinks.map((link) => (
-                  <li key={link.href}>
-                    <MenuLink href={link.href} onClick={close}>
-                      {link.label}
-                    </MenuLink>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-        <ul className="hidden gap-2 md:flex">
-          {links.map((link) => (
-            <li key={link.href}>
-              <MenuLink href={link.href} onClick={close}>
-                {link.label}
-              </MenuLink>
-            </li>
-          ))}
-        </ul>
+    <>
+      <nav
+        aria-label="Main navigation"
+        className="hidden items-center gap-3 lg:flex"
+      >
+        <ChapterLinks links={primary} pathname={pathname} />
+        <ChapterLinks links={secondary} pathname={pathname} secondary />
       </nav>
-    </LayoutGroup>
+      <div className="flex items-center gap-2 lg:hidden">
+        {chapter !== 'tech' ? (
+          <Link
+            className="hover:bg-accent inline-flex min-h-11 items-center gap-2 rounded-full px-3"
+            href="/"
+          >
+            <ArrowLeft aria-hidden="true" className="size-4" />
+            Tech
+          </Link>
+        ) : null}
+        <Sheet onOpenChange={setOpen} open={open} side="right">
+          <SheetTrigger
+            aria-expanded={open}
+            aria-label="Open Menu"
+            className={buttonVariants({
+              size: 'icon',
+              variant: 'ghost',
+              className: 'rounded-full',
+            })}
+          >
+            <MenuIcon aria-hidden="true" />
+          </SheetTrigger>
+          <SheetContent className="overflow-y-auto p-6 pt-8">
+            <SheetTitle className="pr-12">
+              {chapterLinks[chapter].label}
+            </SheetTitle>
+            <SheetDescription className="sr-only">
+              Navigate within this chapter or switch to another.
+            </SheetDescription>
+            <nav aria-label="Main navigation" className="grid gap-4 pb-4">
+              <ChapterLinks
+                links={primary}
+                pathname={pathname}
+                onNavigate={closeMenu}
+                mobile
+              />
+              <ChapterLinks
+                links={secondary}
+                pathname={pathname}
+                onNavigate={closeMenu}
+                mobile
+                secondary
+              />
+            </nav>
+          </SheetContent>
+        </Sheet>
+      </div>
+    </>
   );
 }

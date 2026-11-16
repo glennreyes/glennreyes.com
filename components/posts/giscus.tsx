@@ -1,7 +1,7 @@
 'use client';
 
 import GiscusBase from '@giscus/react';
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/lib/hooks/use-theme';
 
 import { parseResolvedTheme } from '@/lib/theme';
 

@@ -49,16 +49,22 @@ const mockEvents = [
     name: 'Vienna JS',
     slug: 'vienna-js',
     startDate: new Date('2024-01-15'),
-    location: { city: 'Vienna', country: 'Austria' },
+    location: { city: 'Vienna', country: 'Austria', state: null },
     appearances: [],
   },
 ];
 const createMockSources = (): MCPDataSources => {
   return resolveDataSources({
-    getAllEvents: vi.fn().mockResolvedValue(mockEvents),
-    getAllPublishedPosts: vi.fn().mockResolvedValue(mockPosts),
-    getAllTalks: vi.fn().mockResolvedValue(mockTalks),
-    getAllWorkshops: vi.fn().mockResolvedValue(mockWorkshops),
+    getAllEvents: vi.fn<() => Promise<typeof mockEvents>>(
+      async () => mockEvents,
+    ),
+    getAllPublishedPosts: vi.fn<() => Promise<typeof mockPosts>>(
+      async () => mockPosts,
+    ),
+    getAllTalks: vi.fn<() => Promise<typeof mockTalks>>(async () => mockTalks),
+    getAllWorkshops: vi.fn<() => Promise<typeof mockWorkshops>>(
+      async () => mockWorkshops,
+    ),
   });
 };
 

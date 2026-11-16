@@ -5,6 +5,7 @@ import type { PageProps } from '@/types/next';
 import { AppearancesFeed } from '@/components/appearances/appearances-feed';
 import { Divider } from '@/components/ui/elements/divider';
 import { TagCloud } from '@/components/ui/elements/tag-cloud';
+import { getTimestamp } from '@/lib/time';
 import { Page } from '@/components/ui/layout/page';
 import { ActionLink } from '@/components/ui/link/action-link';
 import { MDXContent } from '@/components/ui/mdx/mdx-content';
@@ -32,6 +33,7 @@ export const generateStaticParams = async () => {
 const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
   const params = await props.params;
   const talk = await getTalkBySlug(params.slug);
+  const now = await getTimestamp();
   const events = talk.appearances.map((appearance) =>
     toFeedEvent(appearance.event),
   );
@@ -47,7 +49,7 @@ const TalkPage = async (props: PageProps<'/talks/[slug]'>) => {
           <>
             <Divider />
             <H2>Appearances</H2>
-            <AppearancesFeed events={events}>
+            <AppearancesFeed events={events} now={now}>
               <ActionLink href="/appearances">All Appearances</ActionLink>
             </AppearancesFeed>
           </>
