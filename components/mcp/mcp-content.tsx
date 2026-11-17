@@ -91,11 +91,6 @@ const toolGroups: ToolGroup[] = [
     tools: [
       { badge: 'search_content', description: 'Search across all content' },
       { badge: 'get_content_analytics', description: 'Get analytics data' },
-      {
-        badge: 'get_newsletter_stats',
-        description: 'Get newsletter statistics',
-      },
-      { badge: 'create_newsletter_campaign', description: 'Create newsletter' },
     ],
   },
 ];

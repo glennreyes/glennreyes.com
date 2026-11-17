@@ -44,25 +44,28 @@ describe('MCP API route', () => {
     expect(payload.tools.length).toBeGreaterThan(0);
   });
 
-  it('invokes tool calls through the core handler', async () => {
-    const request = new NextRequest('http://localhost/mcp', {
-      body: JSON.stringify({
-        method: 'tools/call',
-        params: { name: 'get_newsletter_stats' },
-      }),
-      headers: { 'content-type': 'application/json' },
-      method: 'POST',
-    });
-    const response = await POST(request);
-    const schema = z.object({
-      content: z.array(z.object({ text: z.string() })),
-    });
-    const payload = await parseJsonWith(response, schema);
+  it.each(['get_newsletter_stats', 'create_newsletter_campaign'])(
+    'rejects the retired %s tool',
+    async (name) => {
+      const request = new NextRequest('http://localhost/mcp', {
+        body: JSON.stringify({
+          method: 'tools/call',
+          params: { name },
+        }),
+        headers: { 'content-type': 'application/json' },
+        method: 'POST',
+      });
+      const response = await POST(request);
+      const schema = z.object({
+        content: z.array(z.object({ text: z.string() })),
+      });
+      const payload = await parseJsonWith(response, schema);
 
-    expect(response.status).toBe(200);
-    expect(Array.isArray(payload.content)).toBe(true);
-    expect(payload.content?.[0]?.text).toContain('totalSubscribers');
-  });
+      expect(response.status).toBe(200);
+      expect(Array.isArray(payload.content)).toBe(true);
+      expect(payload.content?.[0]?.text).toContain('Unknown tool');
+    },
+  );
 
   it('validates missing tool names', async () => {
     const request = new NextRequest('http://localhost/mcp', {

@@ -1,65 +1,34 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Newsletter', () => {
-  test('should validate email input', async ({ page }) => {
+test.describe('Newsletter retirement', () => {
+  test('home and article pages no longer offer email signup', async ({
+    page,
+  }) => {
     await page.goto('/');
 
-    // Find newsletter form
-    const emailInput = page.getByRole('textbox', { name: 'Email address' });
+    await expect(
+      page.getByRole('textbox', { name: 'Email address' }),
+    ).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Subscribe' })).toHaveCount(
+      0,
+    );
 
-    // Verify email input has proper validation attributes
-    await expect(emailInput).toHaveAttribute('type', 'email');
-    await expect(emailInput).toHaveAttribute('required');
+    await page.goto('/posts/mcp-explained');
 
-    // Fill with invalid email to test validation
-    await emailInput.fill('invalid-email');
-
-    // The browser's built-in validation should prevent submission
-    // or the form should show an error message
-    const submitButton = page.getByRole('button', { name: 'Subscribe' });
-
-    await expect(submitButton).toBeVisible();
-    await expect(submitButton).toBeEnabled();
+    await expect(page.locator('article')).toBeVisible();
+    await expect(
+      page.getByRole('textbox', { name: 'Email address' }),
+    ).toHaveCount(0);
+    await expect(page.getByRole('button', { name: 'Subscribe' })).toHaveCount(
+      0,
+    );
   });
 
-  test.skip('should submit valid email', async ({ page }) => {
-    await page.goto('/');
+  for (const path of ['/subscribe/confirm', '/subscribe/thank-you']) {
+    test(`${path} no longer advertises a subscription`, async ({ request }) => {
+      const response = await request.get(path);
 
-    const emailInput = page.getByRole('textbox', { name: 'Email address' });
-    const submitButton = page.getByRole('button', { name: 'Subscribe' });
-
-    // Enter valid email
-    await emailInput.fill('test@example.com');
-
-    const requestPromise = page.waitForRequest((request) => {
-      const postData = request.postData() ?? '';
-
-      if (request.method() !== 'POST') {
-        return false;
-      }
-
-      return (
-        postData.includes('test@example.com') ||
-        postData.includes('test%40example.com')
-      );
+      expect(response.status()).toBe(404);
     });
-
-    await submitButton.click();
-    await requestPromise;
-  });
-
-  test('should have accessible newsletter form', async ({ page }) => {
-    await page.goto('/');
-
-    // Check form has proper labels and accessible inputs
-    const emailInput = page.getByRole('textbox', { name: 'Email address' });
-
-    await expect(emailInput).toHaveAttribute('type', 'email');
-    await expect(emailInput).toHaveAttribute('required');
-
-    // Check button is accessible
-    const submitButton = page.getByRole('button', { name: 'Subscribe' });
-
-    await expect(submitButton).toBeVisible();
-  });
+  }
 });

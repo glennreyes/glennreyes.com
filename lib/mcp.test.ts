@@ -74,7 +74,8 @@ describe('MCP core utilities', () => {
     const names = tools.map((tool) => tool.name);
 
     expect(names).toContain('get_all_posts');
-    expect(names).toContain('create_newsletter_campaign');
+    expect(names).not.toContain('get_newsletter_stats');
+    expect(names).not.toContain('create_newsletter_campaign');
     expect(new Set(names).size).toBe(names.length);
   });
 
@@ -182,39 +183,6 @@ describe('MCP core utilities', () => {
     expect(response.uiResource.metadata?.title).toBe(
       'Search Results for "typescript"',
     );
-  });
-
-  it('creates newsletter campaigns with sensible defaults', async () => {
-    const response = await handleToolCall('create_newsletter_campaign', {
-      content: 'Hello there',
-      title: 'Weekly Update',
-    });
-
-    expect(response.content).toBeDefined();
-    expect(response.content?.[0]).toBeDefined();
-    const responseSchema = z.object({
-      content: z.tuple([
-        z.object({
-          text: z.string().transform((text) =>
-            z
-              .object({
-                content: z.string(),
-                id: z.string(),
-                status: z.string(),
-                title: z.string(),
-              })
-              .parse(JSON.parse(text)),
-          ),
-        }),
-      ]),
-    });
-    const validatedResponse = responseSchema.parse(response);
-    const payload = validatedResponse.content[0].text;
-
-    expect(payload.title).toBe('Weekly Update');
-    expect(payload.content).toBe('Hello there');
-    expect(payload.status).toBe('draft');
-    expect(payload.id).toMatch(/^campaign_/);
   });
 
   it('surfaces errors for unknown tools', async () => {

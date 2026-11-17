@@ -206,36 +206,6 @@ const MCP_TOOLS: MCPToolDefinition[] = [
     },
     name: 'search_content',
   },
-  {
-    description: 'Get newsletter subscription statistics',
-    inputSchema: {
-      properties: {},
-      type: 'object',
-    },
-    name: 'get_newsletter_stats',
-  },
-  {
-    description: 'Create a newsletter campaign',
-    inputSchema: {
-      properties: {
-        content: {
-          description: 'Newsletter content',
-          type: 'string',
-        },
-        scheduledDate: {
-          description: 'Scheduled date (ISO string)',
-          type: 'string',
-        },
-        title: {
-          description: 'Campaign title',
-          type: 'string',
-        },
-      },
-      required: ['title', 'content'],
-      type: 'object',
-    },
-    name: 'create_newsletter_campaign',
-  },
 ];
 
 export const listTools = () => MCP_TOOLS;
@@ -455,42 +425,6 @@ export async function handleToolCall(
         }
 
         return createInteractiveTable(results, `Search Results for "${query}"`);
-      }
-
-      case 'get_newsletter_stats': {
-        const stats = {
-          growthRate: '+12%',
-          lastCampaign: {
-            clickRate: '15%',
-            openRate: '68%',
-            sentDate: '2024-01-15',
-            title: 'React 19 Updates & Performance Tips',
-          },
-          totalSubscribers: 1250,
-          upcomingCampaigns: 2,
-        };
-
-        return toJSONContent(stats);
-      }
-
-      case 'create_newsletter_campaign': {
-        const title = validateString(args.title, 'Title');
-        const content = validateString(args.content, 'Content');
-        const scheduledDate =
-          typeof args.scheduledDate === 'string'
-            ? validateString(args.scheduledDate, 'Scheduled Date')
-            : undefined;
-        const campaign = {
-          content,
-          createdAt: new Date().toISOString(),
-          estimatedRecipients: 1250,
-          id: `campaign_${Date.now()}`,
-          scheduledDate: scheduledDate ?? new Date().toISOString(),
-          status: 'draft',
-          title,
-        };
-
-        return toJSONContent(campaign);
       }
 
       default:
