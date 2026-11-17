@@ -96,9 +96,7 @@ test('dark themes retain accessible contrast', async ({ page }) => {
   ).toEqual([]);
 });
 
-test('project hover fills the card and All posts follows the writing list', async ({
-  page,
-}) => {
+test('project hover fills the card', async ({ page }) => {
   await page.goto('/');
   const card = page
     .getByRole('main')
@@ -113,32 +111,131 @@ test('project hover fills the card and All posts follows the writing list', asyn
       card.evaluate((element) => getComputedStyle(element).backgroundColor),
     )
     .not.toBe(resting);
-  const writing = page.getByRole('heading', { name: 'Writing', exact: true });
-  const more = page.getByRole('link', { name: 'All posts', exact: true });
-  const lastPost = page
-    .getByRole('main')
-    .getByRole('link', { name: 'From Screens to Intent', exact: true });
-  const boxes = await Promise.all([
-    writing.boundingBox(),
-    more.boundingBox(),
-    lastPost.boundingBox(),
-  ]);
-  const [headingBox, moreBox, postBox] = boxes;
-  if (!headingBox || !moreBox || !postBox) {
-    throw new Error('Writing layout is missing');
-  }
-  expect(moreBox.y).toBeGreaterThan(postBox.y + postBox.height);
-  expect(Math.abs(moreBox.x - postBox.x)).toBeLessThan(2);
-  const speakingBox = await page
-    .getByRole('heading', { name: 'Speaking & teaching', exact: true })
-    .boundingBox();
-  const talksBox = await page
-    .getByRole('main')
-    .getByRole('link', { name: 'Talks & recordings', exact: true })
-    .boundingBox();
-  if (!speakingBox || !talksBox) {
-    throw new Error('Speaking layout is missing');
-  }
-  expect(Math.abs(speakingBox.x - headingBox.x)).toBeLessThan(2);
-  expect(Math.abs(talksBox.x - postBox.x)).toBeLessThan(2);
+});
+
+for (const viewport of [
+  { name: 'desktop', width: 1280, height: 900 },
+  { name: 'mobile', width: 390, height: 844 },
+]) {
+  test('homepage cards and footer flow on ' + viewport.name, async ({
+    page,
+  }) => {
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    const cards = page.getByRole('region', {
+      name: 'Writing, speaking, and teaching',
+    });
+    await expect(cards.getByRole('link')).toHaveCount(3);
+    for (const card of [
+      { title: 'Writing', href: '/posts', action: 'Read articles' },
+      { title: 'Speaking', href: '/talks', action: 'Explore talks' },
+      { title: 'Teaching', href: '/workshops', action: 'View workshops' },
+    ]) {
+      const link = cards.getByRole('link', {
+        name: card.title,
+        exact: true,
+      });
+      await expect(link).toHaveAttribute('href', card.href);
+      await expect(
+        link.getByRole('heading', { level: 2, name: card.title }),
+      ).toBeVisible();
+      await expect(link.locator('p')).toBeVisible();
+      await expect(link).toContainText(card.action);
+    }
+    const [writing, speaking, teaching] = await Promise.all(
+      (await cards.getByRole('link').all()).map((link) =>
+        link.boundingBox(),
+      ),
+    );
+    if (
+      writing === null ||
+      writing === undefined ||
+      speaking === null ||
+      speaking === undefined ||
+      teaching === null ||
+      teaching === undefined
+    ) {
+      throw new Error('Homepage cards are missing');
+    }
+    expect(Math.abs(writing.width - speaking.width)).toBeLessThan(2);
+    expect(Math.abs(writing.width - teaching.width)).toBeLessThan(2);
+    if (viewport.name === 'desktop') {
+      expect(Math.abs(writing.y - speaking.y)).toBeLessThan(2);
+      expect(Math.abs(writing.y - teaching.y)).toBeLessThan(2);
+      expect(Math.abs(writing.height - speaking.height)).toBeLessThan(2);
+      expect(Math.abs(writing.height - teaching.height)).toBeLessThan(2);
+      expect(speaking.x).toBeGreaterThan(writing.x + writing.width);
+      expect(teaching.x).toBeGreaterThan(speaking.x + speaking.width);
+    } else {
+      expect(Math.abs(writing.x - speaking.x)).toBeLessThan(2);
+      expect(Math.abs(writing.x - teaching.x)).toBeLessThan(2);
+      expect(speaking.y).toBeGreaterThan(writing.y + writing.height);
+      expect(teaching.y).toBeGreaterThan(speaking.y + speaking.height);
+    }
+    const contact = page.getByRole('region', {
+      name: 'Let’s build something together.',
+    });
+    await expect(contact.getByRole('link')).toHaveAttribute(
+      'href',
+      'mailto:glenn@glennreyes.com',
+    );
+    const beyond = page.getByRole('navigation', {
+      name: 'Beyond the screen',
+    });
+    await expect(
+      beyond.getByRole('link', { name: 'Freediving', exact: true }),
+    ).toHaveAttribute('href', '/freediving');
+    await expect(
+      beyond.getByRole('link', { name: 'Running & HYROX', exact: true }),
+    ).toHaveAttribute('href', '/sport');
+    const contactBox = await contact.boundingBox();
+    const beyondBox = await beyond.boundingBox();
+    if (contactBox === null || beyondBox === null) {
+      throw new Error('Footer sections are missing');
+    }
+    expect(contactBox.y).toBeGreaterThan(teaching.y + teaching.height);
+    expect(beyondBox.y).toBeGreaterThan(contactBox.y + contactBox.height);
+    await expect(page.locator('input[type="email"]')).toHaveCount(0);
+    await expect(
+      page.getByRole('button', { name: /subscribe/i }),
+    ).toHaveCount(0);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth,
+      ),
+    ).toBe(false);
+    expect(
+      (
+        await new AxeBuilder({ page })
+          .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+          .analyze()
+      ).violations,
+    ).toEqual([]);
+  });
+}
+
+test('homepage cards support keyboard navigation', async ({ page }) => {
+  await page.goto('/');
+  const cards = page.getByRole('region', {
+    name: 'Writing, speaking, and teaching',
+  });
+  const writing = cards.getByRole('link', { name: 'Writing', exact: true });
+  await writing.focus();
+  await expect(writing).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(
+    cards.getByRole('link', { name: 'Speaking', exact: true }),
+  ).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(
+    cards.getByRole('link', { name: 'Teaching', exact: true }),
+  ).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(
+    page
+      .getByRole('region', { name: 'Let’s build something together.' })
+      .getByRole('link'),
+  ).toBeFocused();
+  await writing.press('Enter');
+  await expect(page).toHaveURL(/\/posts$/);
 });
