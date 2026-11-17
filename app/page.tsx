@@ -4,7 +4,6 @@ import { Hero } from '@/components/home/hero';
 import { Posts } from '@/components/home/posts';
 import { PostsLoading } from '@/components/home/posts-loading';
 import { ProjectCards } from '@/components/site/project-cards';
-import { Newsletter } from '@/components/newsletter/newsletter';
 import { SectionLink } from '@/components/site/section-link';
 import { Page } from '@/components/ui/layout/page';
 
@@ -56,7 +55,6 @@ export default function RootPage() {
           <SectionLink href="/appearances">Appearances</SectionLink>
         </div>
       </section>
-      <Newsletter />
     </Page>
   );
 }

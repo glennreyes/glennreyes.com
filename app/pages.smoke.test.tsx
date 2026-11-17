@@ -10,8 +10,6 @@ import RootPage from './page';
 import PostSlugPage from './posts/[slug]/page';
 import PostsPage from './posts/page';
 import PrivacyPage from './privacy/page';
-import SubscribeConfirmPage from './subscribe/confirm/page';
-import SubscribeThankYouPage from './subscribe/thank-you/page';
 import TalkSlugPage from './talks/[slug]/page';
 import TalksPage from './talks/page';
 import UsesPage from './uses/page';
@@ -170,18 +168,6 @@ vi.mock('content-collections', () => ({
       title: 'Uses',
     },
     {
-      body: 'Confirm content',
-      heading: 'Check your inbox to confirm.',
-      slug: 'subscribe/confirm',
-      title: 'Check your inbox',
-    },
-    {
-      body: 'Thank you content',
-      heading: 'Thanks for subscribing.',
-      slug: 'subscribe/thank-you',
-      title: "You're subscribed!",
-    },
-    {
       body: 'Not found content',
       heading: 'Not Found',
       lead: 'Not found lead',
@@ -225,10 +211,6 @@ vi.mock('react', async (importOriginal) => {
     ),
   };
 });
-
-vi.mock('@/app/subscribe/action', () => ({
-  subscribe: async () => ({ status: 'idle', message: '' }),
-}));
 
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
@@ -294,20 +276,6 @@ describe('Page Smoke Tests', () => {
 
     it('renders privacy page', async () => {
       const { container } = render(await PrivacyPage());
-
-      expect(container).toBeInTheDocument();
-      expect(container.textContent).toBeTruthy();
-    });
-
-    it('renders subscribe confirm page', async () => {
-      const { container } = render(await SubscribeConfirmPage());
-
-      expect(container).toBeInTheDocument();
-      expect(container.textContent).toBeTruthy();
-    });
-
-    it('renders subscribe thank you page', async () => {
-      const { container } = render(await SubscribeThankYouPage());
 
       expect(container).toBeInTheDocument();
       expect(container.textContent).toBeTruthy();
