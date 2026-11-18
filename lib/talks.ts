@@ -1,5 +1,9 @@
 import { cache } from 'react';
 
+import {
+  appearanceHistory,
+  newestAppearancesFirst,
+} from '@/lib/appearance-history';
 import { db } from '@/lib/db';
 
 export const getAllTalks = cache(() =>
@@ -18,27 +22,7 @@ export const getTalkBySlug = cache(async (slug: string) => {
   const talk = await db.query.talks.findFirst({
     where: (talks, { eq }) => eq(talks.slug, slug),
     with: {
-      appearances: {
-        columns: {},
-        with: {
-          event: {
-            columns: {
-              name: true,
-              slug: true,
-              startDate: true,
-            },
-            with: {
-              location: {
-                columns: {
-                  city: true,
-                  country: true,
-                  state: true,
-                },
-              },
-            },
-          },
-        },
-      },
+      appearances: appearanceHistory,
     },
   });
 
@@ -46,13 +30,8 @@ export const getTalkBySlug = cache(async (slug: string) => {
     throw new Error(`Talk with slug "${slug}" not found`);
   }
 
-  // Sort appearances by event startDate DESC
-  const sortedAppearances = [...talk.appearances].sort(
-    (a, b) => b.event.startDate.getTime() - a.event.startDate.getTime(),
-  );
-
   return {
     ...talk,
-    appearances: sortedAppearances,
+    appearances: newestAppearancesFirst(talk.appearances),
   };
 });
