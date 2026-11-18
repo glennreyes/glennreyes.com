@@ -5,7 +5,7 @@ import { description, email, github, name, origin, x } from './constants';
 describe('constants', () => {
   it('exports basic information', () => {
     expect(name).toBe('Glenn Reyes');
-    expect(description).toContain('software engineer in Vienna');
+    expect(description).toContain('I make software.');
     expect(email).toBe('glenn@glennreyes.com');
   });
 
