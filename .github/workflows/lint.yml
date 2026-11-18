@@ -29,10 +29,6 @@ jobs:
 
       - name: Generate Content Collections
         run: bun next typegen
-        env:
-          CI: true
-          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
-          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
 
       - name: Run Oxlint
         run: bun lint
