@@ -12,9 +12,8 @@ export function Footer() {
         <div className="grid gap-2">
           <p>Let’s build something together.</p>
           <p className="text-muted-foreground max-w-sm">
-            I’m looking for a full-time engineering role, especially as a
-            founding engineer. I work remotely from Vienna and am also open to
-            freelance projects.
+            Have a question about something I built or taught? I’d love to hear
+            from you.
           </p>
           <Link
             className="inline-flex min-h-11 w-fit items-center"
