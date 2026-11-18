@@ -5,7 +5,8 @@ import { Page } from '@/components/ui/layout/page';
 import { email } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Software engineer, freediver, runner. Get to know Glenn Reyes.',
+  description:
+    'Glenn Reyes makes software in Vienna, teaches workshops, and spends time freediving and running.',
 };
 export default function AboutPage() {
   return (
@@ -23,16 +24,14 @@ export default function AboutPage() {
           />
         </div>
         <div className="grid content-center gap-7">
+          <p>I make software.</p>
           <p>
-            Software engineer in Vienna. Freediver, runner, and HYROX
-            enthusiast.
-          </p>
-          <p>
-            I build products, explore AI interfaces, and teach what I learn.
+            I live in Vienna, where I build tools for the web. I also give talks
+            and teach workshops.
           </p>
           <p className="text-muted-foreground">
-            Away from a screen: the ocean, a run, a guitar, and my favourite
-            people.
+            Away from the keyboard, I play guitar, run, train for HYROX, and
+            freedive whenever I can get to the sea.
           </p>
           <div className="flex flex-wrap gap-3">
             <SectionLink href={'mailto:' + email}>Say hello</SectionLink>

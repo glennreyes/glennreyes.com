@@ -9,13 +9,8 @@ export function Hero() {
       <div className="grid content-center gap-6 p-7 md:p-10 lg:p-12">
         <div className="grid gap-2">
           <h1 className="font-medium">Hello, I&apos;m Glenn.</h1>
-          <p className="text-muted-foreground">
-            Software engineer based in Vienna.
-          </p>
+          <p className="text-muted-foreground">I make software.</p>
         </div>
-        <p className="max-w-sm">
-          I build for the web, explore AI interfaces, and teach what I learn.
-        </p>
         <div className="flex flex-wrap gap-x-6">
           <SectionLink href="#projects">Selected projects</SectionLink>
           <SectionLink href="/tech/ai">AI & interfaces</SectionLink>

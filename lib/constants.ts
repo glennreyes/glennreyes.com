@@ -2,7 +2,7 @@
 export const name = 'Glenn Reyes';
 
 export const description =
-  'Glenn Reyes, software engineer in Vienna. Projects, writing, talks, and workshops on web development and AI interfaces.';
+  'I make software. I live in Vienna and share what I learn through writing, talks, and workshops.';
 
 export const personalChaptersPublished: boolean = false;
 
