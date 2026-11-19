@@ -1,131 +1,42 @@
-# AGENTS.md
+# Working on glennreyes.com
 
-Canonical playbook for automation agents (Claude, Cursor, etc.) contributing to `glennreyes.com`.
+## Repository map
 
-## Project Snapshot
+| When changing                                | Start here                                                                                                                                                                                                        |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Routes, metadata, redirects                  | [App Router](app), [Next.js configuration](next.config.ts)                                                                                                                                                        |
+| Portfolio entries, media, chapter visibility | [Site content](lib/site-content.ts), [site constants](lib/constants.ts), [publication guide](README.md#personal-site)                                                                                             |
+| Posts and static copy                        | [MDX content](content), [collection schemas](content-collections.ts), [post queries](lib/posts.ts)                                                                                                                |
+| Talks, workshops, appearances                | [Talk queries](lib/talks.ts), [workshop queries](lib/workshops.ts), [event queries](lib/events.ts), [shared appearance history](lib/appearance-history.ts), [archive feed](components/speaking/speaking-feed.tsx) |
+| Persistence and integrations                 | [Drizzle schema](drizzle/schema.ts), [database client](lib/db.ts), [activity storage](lib/activity-store.ts), [integration setup](README.md#activity-sync)                                                        |
+| MCP                                          | [HTTP route](app/mcp/route.ts), [shared tools](lib/mcp.ts), [stdio entry point](scripts/mcp-server.ts)                                                                                                            |
+| UI and browser behavior                      | [UI primitives](components/ui), [browser tests](e2e), [Playwright configuration](playwright.config.ts)                                                                                                            |
 
-- **Stack**: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Drizzle · Turso
-- **Content**: MDX files under `content/`; Drizzle sources additional data (events, appearances, analytics)
-- **Hosting**: Vercel (deployment, analytics, speed insights)
-- **Design system**: Tailwind-first components in `components/ui/`
+## Working locally
 
-## Environment & Tooling
+Use the Bun version in [package.json](package.json) and install with `bun install --frozen-lockfile`. For development with Turso, configure `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` in `.env` and run `bun dev`. The production commands are `bun run build` and `bun start`. For verification from a fresh checkout, follow the [test commands](README.md#verification).
 
-1. Install dependencies: `bun install`
-2. Database: Configure Turso connection in `.env`
-3. Development server: `bun dev` (Turbopack, served at <http://localhost:3000>)
-4. Production build: `bun build` then `bun start`
+## Code and content
 
-UI behaviors use `@ui-sdk/core` and `@ui-sdk/react`. Read the installed component docs in `node_modules/@ui-sdk/react/docs/` before changing primitives; use `render` composition and preserve focus, names, and keyboard behavior.
+- Keep queries in `lib/`. Routes and components consume domain functions. [Oxlint](.oxlintrc.json) checks imports at that boundary. The HTTP and stdio MCP transports use the same tool definitions.
+- Define React components with function declarations and props types above them. Prefer server components. Put `use client` on the component that owns browser interaction.
+- Use explicit types or guards. Avoid `any`, type assertions, non-null assertions, implicit truthiness and lint suppressions. Use `as const` only when literal inference requires it.
+- Use named imports where supported. Group imports by origin. Prefer `const` and `async/await`; handle errors where recovery is possible. Spell out event parameters and use holes for unused destructured array elements.
+- Use inline static Tailwind classes and `cn()` for conditional classes. Preserve the site's uniform type size and black, white and teal palette. Read the installed UI SDK documentation in `node_modules/@ui-sdk/react/docs/` before changing primitives. Use its `render` composition.
+- Follow existing MDX frontmatter and validate changes against the collection schemas.
 
-## Quality Gates (run before handing work back)
+## Accessibility
 
-- `bun format` – Prettier + oxlint auto-fix
-- `bun lint` – oxlint (strict, no warnings tolerated)
-- `bun test` – Vitest test runner
-- `bun tsc --noEmit` – TypeScript type checking
-- `bun knip` – Optional, will flag unused files/deps
+Meet WCAG 2.1 AA. Keep semantic landmarks, ordered headings, 4.5:1 text contrast, 44×44 px touch targets, keyboard operation and visible `focus-visible` styles. Use `aria-current="page"` on current links, `aria-label` on icon-only controls and `aria-expanded` on toggles. Modal dialogs need a name, `role="dialog"`, `aria-modal`, trapped focus, Escape dismissal and focus restoration.
 
-## MCP Server Notes
+## Verification and handoff
 
-- `/mcp` route exposes the MCP server over HTTP; HTML renders for browsers, JSON/POST requests receive MCP responses.
-- Shared logic lives in `lib/mcp.ts`.
-- The standalone CLI (`scripts/mcp-server.ts`) is optional: keep only if stdio-based agents are needed.
-- Middleware currently lets `/mcp` handle all traffic directly; no `/api/mcp` proxy exists.
-
-## Code Style & Engineering Rules
-
-- Use React function declarations for components; never use `const` with arrow functions. ✅ `function Component(props: Props)` ❌ `const Component = (props: Props) =>`. Avoid `React.FC`.
-- Define prop interfaces/types above components (`ComponentProps` pattern).
-- No `any`, unchecked type assertions, or implicit truthiness: prefer type guards.
-- Never use type assertions (`as Type`) or non-null assertions (`!`); always refactor to use proper typing or type guards. Only allow `as const` if absolutely necessary.
-- Avoid disabling lint rules via comments (`// oxlint-disable-next-line`, `// eslint-disable-next-line`). Instead, fix the underlying issue by improving types, refactoring code, or using proper TypeScript patterns.
-- Favour server components; elevate `"use client"` only where interaction is required.
-- Use `const`; structure control flow to avoid reassignment.
-- Prefer `async/await` with explicit `try/catch`; do not chain `.then()`/`.catch()`.
-- Always use descriptive event parameter names; never abbreviate to `(e)`; spell out identifiers like `event`.
-- For unused array destructuring elements, use array holes (e.g., `const [, setValue] = useState()`) instead of underscore prefixes.
-- Tailwind classes: inline for static strings, `cn()` helper for conditional logic.
-- Typography is intentionally uniform: do not introduce ad-hoc font-size utilities.
-- Keep imports sorted logically (grouped by origin). Use named imports unless a library only exports default.
-
-## Accessibility Rules (WCAG 2.1 AA)
-
-- **Focus Management**: Use `focus-visible:` for focus styles; preserve existing semantics.
-- **Touch Targets**: Minimum 44×44px for all interactive elements (buttons, links).
-- **ARIA Attributes**:
-  - Use `aria-current="page"` for active navigation links.
-  - Use `aria-label` for icon-only buttons.
-  - Use `aria-expanded` for toggle buttons.
-  - Use `aria-modal` and `role="dialog"` for modals.
-- **Keyboard Navigation**:
-  - All interactive elements must be keyboard accessible.
-  - Modals must trap focus and close on ESC key.
-  - Return focus to trigger element when closing modals.
-- **Color & Contrast**: Pure black/white theme with teal accents; ensure 4.5:1 contrast ratio.
-- **Semantic HTML**: Use proper heading hierarchy (h1-h6), landmarks (nav, main, footer).
-- **Testing**: Run E2E accessibility tests with @axe-core/playwright before committing.
-
-## Testing Rules
-
-- Use Vitest as the test framework
-- Place test files next to the files they test
-- Test file naming: `{filename}.test.{extension}` (e.g., `utils.ts` → `utils.test.ts`)
-
-## Content & Data
-
-- Blog posts: `content/posts/*.mdx`
-- Static pages: `content/pages/*.mdx`
-- Drizzle schema: `drizzle/schema.ts`
-- When adding MDX, ensure frontmatter matches existing conventions.
-
-## Git & Workflow
-
-- **Always run quality gates before committing** - ensure `bun format`, `bun lint`, and `bun test` pass.
-- Work in small, coherent commits with present-tense summaries.
-- **Avoid conventional commit messages** (fix:, feat:, etc.) - use natural, readable descriptions instead.
-- **Use backticks for technical terms** - wrap variables, component names, function names, and file paths in backticks (e.g., `viewTransitionName`, `Avatar`, `utils.ts`).
-- **Never add AI attribution** - do not include "Generated with Claude Code", co-author tags, or any AI branding in commit messages.
-- Use commit descriptions to provide context about what was done during the changes.
-- If tooling (lint/test) cannot run, state why and what was attempted.
-- Mention any nonstandard manual steps in the PR/summary.
-
-## Agent-Specific Guidance
-
-### Claude Code
-
-**Critical Rules (ALWAYS check BEFORE coding):**
-
-- **File Creation**:
-  - NEVER create files unless absolutely necessary for achieving the goal
-  - ALWAYS prefer editing existing files over creating new ones
-  - NEVER proactively create documentation files (\*.md) or README files unless explicitly requested
-  - Ask yourself: "Can I solve this by editing an existing file instead?"
-
-- **Quality Gates** (run BEFORE responding with code changes):
-  1. `bun format` - Prettier + oxlint auto-fix
-  2. `bun lint` - oxlint checks (no warnings tolerated)
-  3. `bun test` - Vitest test runner
-  4. `tsc --noEmit` - TypeScript checks (if types feel risky)
-  - If quality gates can't run, explain why and what was attempted
-
-- **Code Standards** (reinforced for Claude):
-  - No `any` types - use proper typing or type guards
-  - Never use type assertions (`as Type`) or non-null assertions (`!`) - only allow `as const` if necessary
-  - Never disable lint rules via comments - fix the underlying issue instead
-  - Never abbreviate event handlers - use `(event)` not `(e)`
-  - For unused destructured values - use array holes `[, setValue]` not `_value`
-
-- **General Workflow**:
-  - Treat this file as the single source of truth
-  - Run quality gates (`format`, `lint`, `test`) before responding unless infeasible; then explain
-  - Highlight assumption checks and TODOs for Glenn
-
-### Cursor
-
-- Follow the same rules and quality gates as Claude
-- Prefer using Cursor Tasks/Notebooks to capture command output when collaborating
-- Keep code actions reversible: avoid auto-fixing files unrelated to the task
+- Run `bun format` and review its changes. Keep unrelated formatting out of the patch.
+- Run `bun run check` for generated types, strict lint, TypeScript, Vitest and unused code. Keep unit tests beside their source as `{filename}.test.{extension}`.
+- Before committing, run `bun run test:e2e:fixture`. It builds the site against a temporary SQLite speaking archive and runs the browser and accessibility tests. Install the browsers once per Playwright version as described in the [verification guide](README.md#verification).
+- Prefer editing existing files. Add files only when needed for the change. Keep repository documentation here and add standalone guides only when requested.
+- Make small, coherent commits with present-tense summaries and a body explaining the reason. Use backticks for technical names. Omit conventional prefixes and AI attribution.
+- In the handoff, identify remaining decisions, failed checks, what you tried and any nonstandard manual steps.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

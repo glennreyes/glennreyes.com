@@ -6,6 +6,7 @@
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "build": "bun --bun next build",
+    "check": "bun next typegen && bun run lint && bun tsc --noEmit && bun run test && bun run knip",
     "dev": "bun --bun next dev",
     "format": "prettier --list-different --write . && bun run lint:fix",
     "knip": "knip",
@@ -15,6 +16,7 @@
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:e2e": "playwright test",
+    "test:e2e:fixture": "bun scripts/test-portfolio.ts",
     "test:e2e:ui": "playwright test --ui",
     "benchmark": "bun scripts/benchmark.ts",
     "mcp:server": "tsx scripts/mcp-server.ts",

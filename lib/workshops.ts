@@ -1,5 +1,9 @@
 import { cache } from 'react';
 
+import {
+  appearanceHistory,
+  newestAppearancesFirst,
+} from '@/lib/appearance-history';
 import { db } from '@/lib/db';
 
 export const getAllWorkshops = cache(() =>
@@ -18,27 +22,7 @@ export const getWorkshopBySlug = cache(async (slug: string) => {
   const workshop = await db.query.workshops.findFirst({
     where: (workshops, { eq }) => eq(workshops.slug, slug),
     with: {
-      appearances: {
-        columns: {},
-        with: {
-          event: {
-            columns: {
-              name: true,
-              slug: true,
-              startDate: true,
-            },
-            with: {
-              location: {
-                columns: {
-                  city: true,
-                  country: true,
-                  state: true,
-                },
-              },
-            },
-          },
-        },
-      },
+      appearances: appearanceHistory,
     },
   });
 
@@ -46,13 +30,8 @@ export const getWorkshopBySlug = cache(async (slug: string) => {
     throw new Error(`Workshop with slug "${slug}" not found`);
   }
 
-  // Sort appearances by event startDate DESC
-  const sortedAppearances = [...workshop.appearances].sort(
-    (a, b) => b.event.startDate.getTime() - a.event.startDate.getTime(),
-  );
-
   return {
     ...workshop,
-    appearances: sortedAppearances,
+    appearances: newestAppearancesFirst(workshop.appearances),
   };
 });

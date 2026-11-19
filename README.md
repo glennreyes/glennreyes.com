@@ -74,4 +74,15 @@ Set `INSTAGRAM_USER_ID` and server-only `INSTAGRAM_ACCESS_TOKEN` in Vercel. The 
 
 ## Verification
 
-Run `bun format`, `bun lint`, `bun run test`, `bun tsc --noEmit`, `bun run build`, `PLAYWRIGHT_BUILD=1 bun test:e2e`, and `bun run build-storybook`. Playwright checks WCAG, mobile navigation and focus, Safari asset loading, theme persistence, and uniform typography against the production build. Storybook includes the media gallery and UI SDK primitives.
+From a fresh checkout, install the pinned dependencies with `bun install --frozen-lockfile`. These checks run without Turso credentials.
+
+| Command                                  | What it checks                                                                                                                     |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `bun run check`                          | Generates route and MDX types, checks lint and database import boundaries, runs TypeScript and Vitest, and checks for unused code. |
+| `bun playwright install chromium webkit` | Installs the browser versions used by Playwright. On Linux CI, add `--with-deps`.                                                  |
+| `bun run test:e2e:fixture`               | Builds the site with a local speaking archive and runs the Chromium and WebKit suites, including axe accessibility checks.         |
+| `bun run build-storybook`                | Builds the component stories for changes to UI primitives or the media gallery.                                                    |
+
+The [browser test runner](scripts/test-portfolio.ts) creates a temporary SQLite database from the [Drizzle schema](drizzle/schema.ts), seeds a talk and imports the [Dutch AI Conference appearance](scripts/data/dutch-ai-conference-2026.json) through the regular importer. The build and browser server use that same database. The runner removes the database on exit and stores the test build in `build/portfolio-tests`. Each worktree can select a free port with `PLAYWRIGHT_PORT`.
+
+To reproduce one suite, run `bun run test:e2e:fixture e2e/pages-smoke.spec.ts`. Open the HTML report with `bun playwright show-report`.

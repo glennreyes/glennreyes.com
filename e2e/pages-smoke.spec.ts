@@ -73,83 +73,49 @@ test.describe('Page Smoke Tests', () => {
   });
 
   test.describe('Dynamic Pages', () => {
-    test('appearance detail page loads and displays content', async ({
-      page,
-    }) => {
-      // Navigate to appearances page first to find a valid slug
-      await page.goto('/appearances');
+    for (const archive of ['appearances', 'posts', 'talks', 'workshops']) {
+      test(`opens a detail page from /${archive}`, async ({ page }) => {
+        await page.goto(`/${archive}`);
+        const entry = page
+          .getByRole('main')
+          .locator(`h3 a[href^="/${archive}/"]`)
+          .first();
+        await expect(entry).toBeVisible();
+        const title = await entry.innerText();
+        await entry.click();
+        await expect(page).toHaveURL(new RegExp(`/${archive}/[^/]+$`));
+        await expect(page.getByRole('heading', { level: 1 })).toContainText(
+          title,
+        );
+        if (archive === 'posts') {
+          await expect(page.getByRole('article').first()).toBeVisible();
+        }
+      });
+    }
+  });
 
-      // Find the first appearance link
-      const firstAppearanceLink = page
-        .locator('a[href^="/appearances/"]')
-        .first();
-      const href = await firstAppearanceLink.getAttribute('href');
+  test.describe('Seeded conference', () => {
+    test.skip(
+      process.env.PORTFOLIO_TEST_BUILD !== '1',
+      'Uses the conference in the local test database.',
+    );
 
-      if (href) {
-        await page.goto(href);
-
-        await expect(page.locator('h1')).toBeVisible();
-      } else {
-        // Skip if no appearances exist
-        test.skip();
-      }
-    });
-
-    test('post detail page loads and displays content', async ({ page }) => {
-      // Navigate to posts page first to find a valid slug
-      await page.goto('/posts');
-
-      // Find the first post link
-      const firstPostLink = page.locator('a[href^="/posts/"]').first();
-      const href = await firstPostLink.getAttribute('href');
-
-      if (href) {
-        await page.goto(href);
-
-        await expect(page.locator('h1')).toBeVisible();
-        await expect(page.locator('article')).toBeVisible();
-      } else {
-        // Skip if no posts exist
-        test.skip();
-      }
-    });
-
-    test('talk detail page loads and displays content', async ({ page }) => {
-      // Navigate to talks page first to find a valid slug
-      await page.goto('/talks');
-
-      // Find the first talk link
-      const firstTalkLink = page.locator('a[href^="/talks/"]').first();
-      const href = await firstTalkLink.getAttribute('href');
-
-      if (href) {
-        await page.goto(href);
-
-        await expect(page.locator('h1')).toBeVisible();
-      } else {
-        // Skip if no talks exist
-        test.skip();
-      }
-    });
-
-    test('workshop detail page loads and displays content', async ({
-      page,
-    }) => {
-      // Navigate to workshops page first to find a valid slug
-      await page.goto('/workshops');
-
-      // Find the first workshop link
-      const firstWorkshopLink = page.locator('a[href^="/workshops/"]').first();
-      const href = await firstWorkshopLink.getAttribute('href');
-
-      if (href) {
-        await page.goto(href);
-
-        await expect(page.locator('h1')).toBeVisible();
-      } else {
-        // Skip if no workshops exist
-        test.skip();
-      }
-    });
+    for (const archive of ['talks', 'workshops']) {
+      test(`links an appearance to its ${archive} archive and back`, async ({
+        page,
+      }) => {
+        const appearance = '/appearances/2026-03-dutch-ai-conference';
+        await page.goto(appearance);
+        const main = page.getByRole('main');
+        const session = main.locator(`a[href^="/${archive}/"]`).first();
+        await session.click();
+        await expect(page).toHaveURL(new RegExp(`/${archive}/[^/]+$`));
+        await main.locator(`a[href="${appearance}"]`).first().click();
+        await expect(page).toHaveURL(appearance);
+        await expect(main.getByRole('heading', { level: 1 })).toContainText(
+          'Dutch AI Conference',
+        );
+      });
+    }
   });
 });

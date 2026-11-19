@@ -6,30 +6,22 @@ import { resolve } from 'node:path';
 import { and, eq } from 'drizzle-orm';
 import { z } from 'zod';
 
-import { db } from '@/lib/db';
 import {
+  appearanceLengthEnum,
   appearances,
   events,
+  eventTypeEnum,
   locations,
+  locationTypeEnum,
+  statusEnum,
   talks,
   workshops,
 } from '@/drizzle/schema';
-
-const appearanceLengthValues = ['SHORT', 'MEDIUM', 'LONG'] as const;
-const eventTypeValues = ['CLASS', 'CONFERENCE', 'MEETUP'] as const;
-const locationTypeValues = [
-  'CAFE',
-  'COMPANY_OFFICE',
-  'COWORKING_SPACE',
-  'EVENT_HALL',
-  'THEATER',
-  'UNIVERSITY',
-] as const;
-const statusValues = ['ACTIVE', 'INACTIVE'] as const;
+import { db } from '@/lib/db';
 
 const appearanceSchema = z.object({
   dateTime: z.string().min(1),
-  length: z.enum(appearanceLengthValues),
+  length: z.enum(appearanceLengthEnum),
   recording: z.string().url().nullable().optional(),
   slug: z.string().min(1),
 });
@@ -40,7 +32,7 @@ const payloadSchema = z.object({
     name: z.string().min(1),
     slug: z.string().min(1),
     startDateTime: z.string().min(1),
-    type: z.enum(eventTypeValues).default('CONFERENCE'),
+    type: z.enum(eventTypeEnum).default('CONFERENCE'),
     url: z.string().url(),
   }),
   location: z.object({
@@ -49,7 +41,7 @@ const payloadSchema = z.object({
     country: z.string().min(1),
     name: z.string().min(1),
     state: z.string().nullable().optional(),
-    type: z.enum(locationTypeValues).default('EVENT_HALL'),
+    type: z.enum(locationTypeEnum).default('EVENT_HALL'),
     zip: z.string().min(1),
   }),
   talk: z.object({
@@ -59,7 +51,7 @@ const payloadSchema = z.object({
   workshop: z.object({
     description: z.string().min(1),
     slug: z.string().min(1),
-    status: z.enum(statusValues).default('ACTIVE'),
+    status: z.enum(statusEnum).default('ACTIVE'),
     summary: z.string().min(1),
     tags: z.array(z.string().min(1)).min(1),
     title: z.string().min(1),

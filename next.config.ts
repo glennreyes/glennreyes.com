@@ -26,6 +26,10 @@ const contentSecurityPolicy = [
   ...(isHosted ? ['upgrade-insecure-requests'] : []),
 ].join('; ');
 const nextConfig: NextConfig = {
+  distDir:
+    process.env.PORTFOLIO_TEST_BUILD === '1'
+      ? 'build/portfolio-tests'
+      : '.next',
   allowedDevOrigins: ['127.0.0.1'],
   cacheComponents: true,
   partialPrefetching: true,

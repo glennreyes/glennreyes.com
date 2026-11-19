@@ -95,6 +95,30 @@
   "jsPlugins": ["@shadcn/lint"],
   "overrides": [
     {
+      "files": ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": [
+                  "**/lib/db",
+                  "**/lib/db.*",
+                  "@libsql/client",
+                  "@libsql/client/*",
+                  "drizzle-orm",
+                  "drizzle-orm/*"
+                ],
+                "message": "Put database access in lib/ and call the domain query from the route or component.",
+                "allowTypeImports": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "files": [
         "components/site/**/*.tsx",
         "components/home/hero.tsx",

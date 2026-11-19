@@ -1,2 +1,7 @@
 .next
 pnpm-lock.yaml
+.content-collections
+/build
+/playwright-report
+/test-results
+/storybook-static
