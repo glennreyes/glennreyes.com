@@ -116,6 +116,7 @@
   html {
     font-size: 17px;
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
@@ -166,10 +167,6 @@
 .prose :where(a) {
   text-decoration: underline;
   text-underline-offset: 0.25em;
-}
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 180ms;
 }
 @media (prefers-reduced-motion: reduce) {
   html {
