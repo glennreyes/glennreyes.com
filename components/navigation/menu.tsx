@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowLeft, Menu as MenuIcon } from 'lucide-react';
+import { m, useReducedMotion } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -75,6 +76,9 @@ function ChapterLinks({
   secondary = false,
   onNavigate,
 }: ChapterLinksProps) {
+  const reducedMotion = useReducedMotion();
+  const primaryBar = !mobile && !secondary;
+
   return (
     <ul
       aria-label={secondary ? 'Other chapters' : 'Chapter links'}
@@ -98,12 +102,12 @@ function ChapterLinks({
                 current ? 'page' : ancestor ? 'location' : undefined
               }
               className={cn(
-                'inline-flex min-h-11 items-center whitespace-nowrap transition-colors',
-                mobile
-                  ? 'hover:bg-muted flex px-3'
-                  : 'hover:bg-foreground/5 rounded-full px-3',
+                'relative isolate inline-flex min-h-11 items-center px-3 whitespace-nowrap transition-colors',
+                mobile ? 'hover:bg-muted flex' : 'rounded-full',
+                secondary && !mobile && 'hover:bg-foreground/5',
+                !primaryBar && 'aria-[current]:bg-foreground/5',
                 current || ancestor
-                  ? 'bg-foreground/5 font-medium'
+                  ? 'font-medium'
                   : secondary
                     ? 'text-muted-foreground hover:text-foreground'
                     : 'hover:text-muted-foreground',
@@ -111,6 +115,19 @@ function ChapterLinks({
               href={href}
               onClick={onNavigate}
             >
+              {primaryBar && (current || ancestor) ? (
+                <m.span
+                  aria-hidden="true"
+                  className="bg-foreground/5 pointer-events-none absolute inset-0 -z-10 rounded-full"
+                  initial={false}
+                  layoutId="primary-nav-indicator"
+                  transition={
+                    reducedMotion
+                      ? { duration: 0 }
+                      : { type: 'spring', stiffness: 440, damping: 38 }
+                  }
+                />
+              ) : null}
               {label}
             </Link>
           </li>

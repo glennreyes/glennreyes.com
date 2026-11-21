@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import {
   LazyMotion,
-  domAnimation,
+  domMax,
   m,
   useMotionValueEvent,
   useReducedMotion,
@@ -32,7 +32,7 @@ export function Navbar({ children, ...props }: NavbarProps) {
     >
       <Container>
         <SkipNavigationLink />
-        <LazyMotion features={domAnimation} strict>
+        <LazyMotion features={domMax} strict>
           <m.div
             animate={{
               maxWidth: scrolled ? 1120 : 1280,

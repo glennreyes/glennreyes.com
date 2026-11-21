@@ -1,6 +1,46 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Navigation', () => {
+  test('slides the current highlight between primary links', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.goto('/posts');
+    const nav = page.getByRole('navigation', { name: 'Main navigation' });
+    const posts = nav.getByRole('link', { name: 'Posts' });
+    const about = nav.getByRole('link', { name: 'About' });
+    await expect(posts).toHaveAttribute('aria-current', 'page');
+
+    const previousRight = await posts.evaluate(
+      (link) => link.getBoundingClientRect().right,
+    );
+    await Promise.all([
+      page.waitForFunction((start) => {
+        const link = document.querySelector(
+          'header a[href="/about"][aria-current="page"]',
+        );
+        const highlight = link?.querySelector('[aria-hidden="true"]');
+        if (!link || !highlight) {
+          return false;
+        }
+        const { left } = highlight.getBoundingClientRect();
+        return left > start && left < link.getBoundingClientRect().left - 1;
+      }, previousRight),
+      about.press('Enter'),
+    ]);
+    await expect
+      .poll(() =>
+        about.evaluate((link) => {
+          const highlight = link.querySelector('[aria-hidden="true"]');
+          return (
+            highlight?.getBoundingClientRect().left ===
+            link.getBoundingClientRect().left
+          );
+        }),
+      )
+      .toBe(true);
+  });
+
   test('should navigate from home to about page', async ({ page }) => {
     await page.goto('/');
 
