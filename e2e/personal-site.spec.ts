@@ -96,9 +96,7 @@ test('dark themes retain accessible contrast', async ({ page }) => {
   ).toEqual([]);
 });
 
-test('project hover fills the card and All posts follows the writing list', async ({
-  page,
-}) => {
+test('project hover fills the card', async ({ page }) => {
   await page.goto('/');
   const card = page
     .getByRole('main')
@@ -113,32 +111,75 @@ test('project hover fills the card and All posts follows the writing list', asyn
       card.evaluate((element) => getComputedStyle(element).backgroundColor),
     )
     .not.toBe(resting);
-  const writing = page.getByRole('heading', { name: 'Writing', exact: true });
-  const more = page.getByRole('link', { name: 'All posts', exact: true });
-  const lastPost = page
-    .getByRole('main')
-    .getByRole('link', { name: 'From Screens to Intent', exact: true });
-  const boxes = await Promise.all([
+});
+
+test('homepage cards form one row on desktop and stack on mobile', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/');
+
+  const main = page.getByRole('main');
+  const writing = main.getByRole('link', { name: /^Writing / });
+  const speaking = main.getByRole('link', { name: /^Speaking / });
+  const teaching = main.getByRole('link', { name: /^Teaching / });
+
+  for (const [card, title, href] of [
+    [writing, 'Writing', '/posts'],
+    [speaking, 'Speaking', '/speaking'],
+    [teaching, 'Teaching', '/workshops'],
+  ] as const) {
+    await expect(card).toHaveAttribute('href', href);
+    await expect(card.getByRole('heading', { name: title })).toBeVisible();
+    await expect(card.locator('p')).not.toBeEmpty();
+  }
+
+  const desktopBoxes = await Promise.all([
     writing.boundingBox(),
-    more.boundingBox(),
-    lastPost.boundingBox(),
+    speaking.boundingBox(),
+    teaching.boundingBox(),
   ]);
-  const [headingBox, moreBox, postBox] = boxes;
-  if (!headingBox || !moreBox || !postBox) {
-    throw new Error('Writing layout is missing');
+  const [first, second, third] = desktopBoxes;
+  if (!first || !second || !third) {
+    throw new Error('Homepage cards are missing');
   }
-  expect(moreBox.y).toBeGreaterThan(postBox.y + postBox.height);
-  expect(Math.abs(moreBox.x - postBox.x)).toBeLessThan(2);
-  const speakingBox = await page
-    .getByRole('heading', { name: 'Speaking & teaching', exact: true })
-    .boundingBox();
-  const talksBox = await page
-    .getByRole('main')
-    .getByRole('link', { name: 'Talks & recordings', exact: true })
-    .boundingBox();
-  if (!speakingBox || !talksBox) {
-    throw new Error('Speaking layout is missing');
+  expect(Math.abs(first.y - second.y)).toBeLessThan(2);
+  expect(Math.abs(second.y - third.y)).toBeLessThan(2);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobileBoxes = await Promise.all([
+    writing.boundingBox(),
+    speaking.boundingBox(),
+    teaching.boundingBox(),
+  ]);
+  const [firstMobile, secondMobile, thirdMobile] = mobileBoxes;
+  if (!firstMobile || !secondMobile || !thirdMobile) {
+    throw new Error('Mobile homepage cards are missing');
   }
-  expect(Math.abs(speakingBox.x - headingBox.x)).toBeLessThan(2);
-  expect(Math.abs(talksBox.x - postBox.x)).toBeLessThan(2);
+  expect(secondMobile.y).toBeGreaterThan(firstMobile.y + firstMobile.height - 2);
+  expect(thirdMobile.y).toBeGreaterThan(
+    secondMobile.y + secondMobile.height - 2,
+  );
+});
+
+test('homepage ends with contact, then subtle personal links', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const footer = page.getByRole('contentinfo');
+  await expect(
+    footer.getByRole('heading', { name: 'Let’s build something together.' }),
+  ).toBeVisible();
+  await expect(
+    footer.getByRole('link', { name: 'glenn@glennreyes.com' }),
+  ).toHaveAttribute('href', 'mailto:glenn@glennreyes.com');
+  await expect(
+    footer.getByRole('link', { name: 'Freediving' }),
+  ).toHaveAttribute('href', '/freediving');
+  await expect(
+    footer.getByRole('link', { name: 'Running & HYROX' }),
+  ).toHaveAttribute('href', '/sport');
+  await expect(
+    page.getByRole('main').getByRole('link', { name: 'All posts' }),
+  ).toHaveCount(0);
 });
