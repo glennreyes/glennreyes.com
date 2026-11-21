@@ -107,7 +107,7 @@ function ChapterLinks({
                 secondary && !mobile && 'hover:bg-foreground/5',
                 !primaryBar && 'aria-[current]:bg-foreground/5',
                 current || ancestor
-                  ? 'font-medium'
+                  ? !primaryBar && 'font-medium'
                   : secondary
                     ? 'text-muted-foreground hover:text-foreground'
                     : 'hover:text-muted-foreground',

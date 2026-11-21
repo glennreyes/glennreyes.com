@@ -11,10 +11,18 @@ test.describe('Navigation', () => {
     const about = nav.getByRole('link', { name: 'About' });
     await expect(posts).toHaveAttribute('aria-current', 'page');
 
+    await page.evaluate(() =>
+      window.scrollTo({ top: 500, behavior: 'instant' }),
+    );
+    await expect(page.getByRole('banner')).toHaveAttribute(
+      'data-scrolled',
+      'true',
+    );
+
     const previousRight = await posts.evaluate(
       (link) => link.getBoundingClientRect().right,
     );
-    await Promise.all([
+    const [midSlide] = await Promise.all([
       page.waitForFunction((start) => {
         const link = document.querySelector(
           'header a[href="/about"][aria-current="page"]',
@@ -23,11 +31,26 @@ test.describe('Navigation', () => {
         if (!link || !highlight) {
           return false;
         }
-        const { left } = highlight.getBoundingClientRect();
-        return left > start && left < link.getBoundingClientRect().left - 1;
+        const pill = highlight.getBoundingClientRect();
+        const target = link.getBoundingClientRect();
+        if (pill.left <= start || pill.left >= target.left - 1) {
+          return false;
+        }
+        const hit = document.elementFromPoint(
+          target.left + target.width / 2,
+          target.top + target.height / 2,
+        );
+        return {
+          clickable: link.contains(hit),
+          inRow: Math.abs(pill.top - target.top) < 2,
+        };
       }, previousRight),
       about.press('Enter'),
     ]);
+    expect(await midSlide.jsonValue()).toEqual({
+      clickable: true,
+      inRow: true,
+    });
     await expect
       .poll(() =>
         about.evaluate((link) => {
@@ -39,6 +62,36 @@ test.describe('Navigation', () => {
         }),
       )
       .toBe(true);
+  });
+
+  test('keeps the primary links in place when clicking between pages', async ({
+    page,
+  }) => {
+    await page.goto('/posts');
+    const nav = page.getByRole('list', { name: 'Chapter links' });
+    const links = nav.getByRole('link');
+    const projects = nav.getByRole('link', { name: 'Projects' });
+    await expect(nav.getByRole('link', { name: 'Posts' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+    });
+
+    function linkPositions() {
+      return links.evaluateAll((elements) =>
+        elements.map((element) => {
+          const { left, width } = element.getBoundingClientRect();
+          return { left, width };
+        }),
+      );
+    }
+
+    const before = await linkPositions();
+    await projects.click();
+    await expect(projects).toHaveAttribute('aria-current', 'page');
+    expect(await linkPositions()).toEqual(before);
   });
 
   test('should navigate from home to about page', async ({ page }) => {

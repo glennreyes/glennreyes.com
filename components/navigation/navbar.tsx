@@ -40,6 +40,8 @@ export function Navbar({ children, ...props }: NavbarProps) {
             }}
             className="pointer-events-auto relative mx-auto flex w-full items-center justify-between gap-2 rounded-full py-2"
             initial={false}
+            layout="position"
+            layoutRoot
             transition={
               reducedMotion
                 ? { duration: 0 }
