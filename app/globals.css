@@ -116,7 +116,9 @@
   html {
     font-size: 17px;
     scroll-behavior: smooth;
-    scrollbar-gutter: stable;
+    @variant lg {
+      scrollbar-gutter: stable both-edges;
+    }
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
