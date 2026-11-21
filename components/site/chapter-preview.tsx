@@ -16,8 +16,8 @@ export function ChapterPreview({ chapter }: ChapterPreviewProps) {
           <Image
             alt={
               underwater
-                ? 'A freediver above a school of jacks in clear blue water'
-                : 'Glenn running alongside the river in Vienna'
+                ? 'A freediver silhouetted in blue water between two rock walls'
+                : 'Glenn gripping the rowing handle at HYROX Barcelona'
             }
             className="object-cover"
             fill
@@ -26,8 +26,8 @@ export function ChapterPreview({ chapter }: ChapterPreviewProps) {
             sizes="(max-width: 767px) 100vw, 50vw"
             src={
               underwater
-                ? '/media/freediving/jacks.webp'
-                : '/media/sport/river.webp'
+                ? '/media/freediving/blue-canyon.webp'
+                : '/media/sport/hyrox-barcelona-row.webp'
             }
           />
         </div>

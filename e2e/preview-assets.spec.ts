@@ -70,7 +70,7 @@ test('loads styles, Geist, and freediving photos on the HTTP preview', async ({
   expect(loadedFonts).toContain('Geist');
 
   const photo = page.getByRole('img', {
-    name: /above a school of jacks/,
+    name: /freediver silhouetted in blue water/,
   });
   await expect(photo).toBeVisible();
   await expect
